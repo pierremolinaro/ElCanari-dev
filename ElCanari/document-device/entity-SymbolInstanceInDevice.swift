@@ -75,7 +75,14 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mPinInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
-      return self.mPinInstances_property.prop
+    return self.mPinInstances_property.prop
+  }
+
+  //····················································································································
+
+  var mPinInstances : [SymbolPinInstanceInDevice] {
+    get { return self.mPinInstances_property.propval }
+    set { self.mPinInstances_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -87,19 +94,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mInstanceName : String {
-    get {
-      return self.mInstanceName_property.propval
-    }
-    set {
-      self.mInstanceName_property.setProp (newValue)
-    }
+    get { return self.mInstanceName_property.propval }
+    set { self.mInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mInstanceName_property_selection : EBSelection <String> {
-    return self.mInstanceName_property.prop
-  }
+  var mInstanceName_property_selection : EBSelection <String> { return self.mInstanceName_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -110,19 +111,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mX : Int {
-    get {
-      return self.mX_property.propval
-    }
-    set {
-      self.mX_property.setProp (newValue)
-    }
+    get { return self.mX_property.propval }
+    set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
-  }
+  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -133,19 +128,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mY : Int {
-    get {
-      return self.mY_property.propval
-    }
-    set {
-      self.mY_property.setProp (newValue)
-    }
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
-  }
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To one property: mType

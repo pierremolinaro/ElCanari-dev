@@ -152,19 +152,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var selectedPageIndex : Int {
-    get {
-      return self.selectedPageIndex_property.propval
-    }
-    set {
-      self.selectedPageIndex_property.setProp (newValue)
-    }
+    get { return self.selectedPageIndex_property.propval }
+    set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
-  }
+  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -175,19 +169,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var selectedInspector : Int {
-    get {
-      return self.selectedInspector_property.propval
-    }
-    set {
-      self.selectedInspector_property.setProp (newValue)
-    }
+    get { return self.selectedInspector_property.propval }
+    set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> {
-    return self.selectedInspector_property.prop
-  }
+  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -198,19 +186,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var comments : String {
-    get {
-      return self.comments_property.propval
-    }
-    set {
-      self.comments_property.setProp (newValue)
-    }
+    get { return self.comments_property.propval }
+    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
-  }
+  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: program
@@ -221,19 +203,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var program : String {
-    get {
-      return self.program_property.propval
-    }
-    set {
-      self.program_property.setProp (newValue)
-    }
+    get { return self.program_property.propval }
+    set { self.program_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var program_property_selection : EBSelection <String> {
-    return self.program_property.prop
-  }
+  var program_property_selection : EBSelection <String> { return self.program_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -244,19 +220,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var horizontalFlip : Bool {
-    get {
-      return self.horizontalFlip_property.propval
-    }
-    set {
-      self.horizontalFlip_property.setProp (newValue)
-    }
+    get { return self.horizontalFlip_property.propval }
+    set { self.horizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> {
-    return self.horizontalFlip_property.prop
-  }
+  var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: verticalFlip
@@ -267,19 +237,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var verticalFlip : Bool {
-    get {
-      return self.verticalFlip_property.propval
-    }
-    set {
-      self.verticalFlip_property.setProp (newValue)
-    }
+    get { return self.verticalFlip_property.propval }
+    set { self.verticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> {
-    return self.verticalFlip_property.prop
-  }
+  var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -290,19 +254,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var gridStyle : GridStyle {
-    get {
-      return self.gridStyle_property.propval
-    }
-    set {
-      self.gridStyle_property.setProp (newValue)
-    }
+    get { return self.gridStyle_property.propval }
+    set { self.gridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle> {
-    return self.gridStyle_property.prop
-  }
+  var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: gridStep
@@ -313,19 +271,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var gridStep : Int {
-    get {
-      return self.gridStep_property.propval
-    }
-    set {
-      self.gridStep_property.setProp (newValue)
-    }
+    get { return self.gridStep_property.propval }
+    set { self.gridStep_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStep_property_selection : EBSelection <Int> {
-    return self.gridStep_property.prop
-  }
+  var gridStep_property_selection : EBSelection <Int> { return self.gridStep_property.prop }
 
   //····················································································································
   //   Atomic property: gridStepUnit
@@ -336,19 +288,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var gridStepUnit : Int {
-    get {
-      return self.gridStepUnit_property.propval
-    }
-    set {
-      self.gridStepUnit_property.setProp (newValue)
-    }
+    get { return self.gridStepUnit_property.propval }
+    set { self.gridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStepUnit_property_selection : EBSelection <Int> {
-    return self.gridStepUnit_property.prop
-  }
+  var gridStepUnit_property_selection : EBSelection <Int> { return self.gridStepUnit_property.prop }
 
   //····················································································································
   //   Atomic property: gridDisplayFactor
@@ -359,19 +305,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var gridDisplayFactor : Int {
-    get {
-      return self.gridDisplayFactor_property.propval
-    }
-    set {
-      self.gridDisplayFactor_property.setProp (newValue)
-    }
+    get { return self.gridDisplayFactor_property.propval }
+    set { self.gridDisplayFactor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridDisplayFactor_property_selection : EBSelection <Int> {
-    return self.gridDisplayFactor_property.prop
-  }
+  var gridDisplayFactor_property_selection : EBSelection <Int> { return self.gridDisplayFactor_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -382,19 +322,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var zoom : Int {
-    get {
-      return self.zoom_property.propval
-    }
-    set {
-      self.zoom_property.setProp (newValue)
-    }
+    get { return self.zoom_property.propval }
+    set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> {
-    return self.zoom_property.prop
-  }
+  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: padNumbering
@@ -405,19 +339,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var padNumbering : PadNumbering {
-    get {
-      return self.padNumbering_property.propval
-    }
-    set {
-      self.padNumbering_property.setProp (newValue)
-    }
+    get { return self.padNumbering_property.propval }
+    set { self.padNumbering_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumbering_property_selection : EBSelection <PadNumbering> {
-    return self.padNumbering_property.prop
-  }
+  var padNumbering_property_selection : EBSelection <PadNumbering> { return self.padNumbering_property.prop }
 
   //····················································································································
   //   Atomic property: xPlacardUnit
@@ -428,19 +356,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var xPlacardUnit : Int {
-    get {
-      return self.xPlacardUnit_property.propval
-    }
-    set {
-      self.xPlacardUnit_property.setProp (newValue)
-    }
+    get { return self.xPlacardUnit_property.propval }
+    set { self.xPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int> {
-    return self.xPlacardUnit_property.prop
-  }
+  var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -451,19 +373,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var yPlacardUnit : Int {
-    get {
-      return self.yPlacardUnit_property.propval
-    }
-    set {
-      self.yPlacardUnit_property.setProp (newValue)
-    }
+    get { return self.yPlacardUnit_property.propval }
+    set { self.yPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int> {
-    return self.yPlacardUnit_property.prop
-  }
+  var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
 
   //····················································································································
   //   To many property: packageObjects
@@ -474,7 +390,14 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var packageObjects_property_selection : EBSelection < [PackageObject] > {
-      return self.packageObjects_property.prop
+    return self.packageObjects_property.prop
+  }
+
+  //····················································································································
+
+  var packageObjects : [PackageObject] {
+    get { return self.packageObjects_property.propval }
+    set { self.packageObjects_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -486,7 +409,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var packagePads_property_selection : EBSelection < [PackagePad] > {
-      return self.packagePads_property.prop
+    return self.packagePads_property.prop
+  }
+
+  //····················································································································
+
+  var packagePads : [PackagePad] {
+    get { return self.packagePads_property.propval }
   }
 
   //····················································································································
@@ -498,7 +427,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var packageSlavePads_property_selection : EBSelection < [PackageSlavePad] > {
-      return self.packageSlavePads_property.prop
+    return self.packageSlavePads_property.prop
+  }
+
+  //····················································································································
+
+  var packageSlavePads : [PackageSlavePad] {
+    get { return self.packageSlavePads_property.propval }
   }
 
   //····················································································································
@@ -510,7 +445,13 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   var packageZones_property_selection : EBSelection < [PackageZone] > {
-      return self.packageZones_property.prop
+    return self.packageZones_property.prop
+  }
+
+  //····················································································································
+
+  var packageZones : [PackageZone] {
+    get { return self.packageZones_property.propval }
   }
 
   //····················································································································

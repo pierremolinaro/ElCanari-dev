@@ -96,19 +96,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var selectedTab : Int {
-    get {
-      return self.selectedTab_property.propval
-    }
-    set {
-      self.selectedTab_property.setProp (newValue)
-    }
+    get { return self.selectedTab_property.propval }
+    set { self.selectedTab_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int> {
-    return self.selectedTab_property.prop
-  }
+  var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -119,19 +113,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var comments : String {
-    get {
-      return self.comments_property.propval
-    }
-    set {
-      self.comments_property.setProp (newValue)
-    }
+    get { return self.comments_property.propval }
+    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
-  }
+  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: minPPTPTTTWdisplayUnit
@@ -142,19 +130,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minPPTPTTTWdisplayUnit : Int {
-    get {
-      return self.minPPTPTTTWdisplayUnit_property.propval
-    }
-    set {
-      self.minPPTPTTTWdisplayUnit_property.setProp (newValue)
-    }
+    get { return self.minPPTPTTTWdisplayUnit_property.propval }
+    set { self.minPPTPTTTWdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> {
-    return self.minPPTPTTTWdisplayUnit_property.prop
-  }
+  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minPPTPTTTW
@@ -165,19 +147,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minPPTPTTTW : Int {
-    get {
-      return self.minPPTPTTTW_property.propval
-    }
-    set {
-      self.minPPTPTTTW_property.setProp (newValue)
-    }
+    get { return self.minPPTPTTTW_property.propval }
+    set { self.minPPTPTTTW_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minPPTPTTTW_property_selection : EBSelection <Int> {
-    return self.minPPTPTTTW_property.prop
-  }
+  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForOARdisplayUnit
@@ -188,19 +164,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForOARdisplayUnit : Int {
-    get {
-      return self.minValueForOARdisplayUnit_property.propval
-    }
-    set {
-      self.minValueForOARdisplayUnit_property.setProp (newValue)
-    }
+    get { return self.minValueForOARdisplayUnit_property.propval }
+    set { self.minValueForOARdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> {
-    return self.minValueForOARdisplayUnit_property.prop
-  }
+  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForOARinEBUnit
@@ -211,19 +181,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForOARinEBUnit : Int {
-    get {
-      return self.minValueForOARinEBUnit_property.propval
-    }
-    set {
-      self.minValueForOARinEBUnit_property.setProp (newValue)
-    }
+    get { return self.minValueForOARinEBUnit_property.propval }
+    set { self.minValueForOARinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int> {
-    return self.minValueForOARinEBUnit_property.prop
-  }
+  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForPHDdisplayUnit
@@ -234,19 +198,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForPHDdisplayUnit : Int {
-    get {
-      return self.minValueForPHDdisplayUnit_property.propval
-    }
-    set {
-      self.minValueForPHDdisplayUnit_property.setProp (newValue)
-    }
+    get { return self.minValueForPHDdisplayUnit_property.propval }
+    set { self.minValueForPHDdisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> {
-    return self.minValueForPHDdisplayUnit_property.prop
-  }
+  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForPHDinEBUnit
@@ -257,19 +215,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForPHDinEBUnit : Int {
-    get {
-      return self.minValueForPHDinEBUnit_property.propval
-    }
-    set {
-      self.minValueForPHDinEBUnit_property.setProp (newValue)
-    }
+    get { return self.minValueForPHDinEBUnit_property.propval }
+    set { self.minValueForPHDinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> {
-    return self.minValueForPHDinEBUnit_property.prop
-  }
+  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidthDisplayUnit
@@ -280,19 +232,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForBoardLimitWidthDisplayUnit : Int {
-    get {
-      return self.minValueForBoardLimitWidthDisplayUnit_property.propval
-    }
-    set {
-      self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue)
-    }
+    get { return self.minValueForBoardLimitWidthDisplayUnit_property.propval }
+    set { self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> {
-    return self.minValueForBoardLimitWidthDisplayUnit_property.prop
-  }
+  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.prop }
 
   //····················································································································
   //   Atomic property: minValueForBoardLimitWidth
@@ -303,19 +249,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var minValueForBoardLimitWidth : Int {
-    get {
-      return self.minValueForBoardLimitWidth_property.propval
-    }
-    set {
-      self.minValueForBoardLimitWidth_property.setProp (newValue)
-    }
+    get { return self.minValueForBoardLimitWidth_property.propval }
+    set { self.minValueForBoardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> {
-    return self.minValueForBoardLimitWidth_property.prop
-  }
+  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: drillDataFileExtension
@@ -326,19 +266,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var drillDataFileExtension : String {
-    get {
-      return self.drillDataFileExtension_property.propval
-    }
-    set {
-      self.drillDataFileExtension_property.setProp (newValue)
-    }
+    get { return self.drillDataFileExtension_property.propval }
+    set { self.drillDataFileExtension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var drillDataFileExtension_property_selection : EBSelection <String> {
-    return self.drillDataFileExtension_property.prop
-  }
+  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.prop }
 
   //····················································································································
   //   To many property: fileGenerationParameterArray
@@ -349,7 +283,14 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   var fileGenerationParameterArray_property_selection : EBSelection < [ArtworkFileGenerationParameters] > {
-      return self.fileGenerationParameterArray_property.prop
+    return self.fileGenerationParameterArray_property.prop
+  }
+
+  //····················································································································
+
+  var fileGenerationParameterArray : [ArtworkFileGenerationParameters] {
+    get { return self.fileGenerationParameterArray_property.propval }
+    set { self.fileGenerationParameterArray_property.setProp (newValue) }
   }
 
   //····················································································································

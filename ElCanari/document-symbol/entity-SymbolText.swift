@@ -68,19 +68,13 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   var y : Int {
-    get {
-      return self.y_property.propval
-    }
-    set {
-      self.y_property.setProp (newValue)
-    }
+    get { return self.y_property.propval }
+    set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
-  }
+  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: text
@@ -91,19 +85,13 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   var text : String {
-    get {
-      return self.text_property.propval
-    }
-    set {
-      self.text_property.setProp (newValue)
-    }
+    get { return self.text_property.propval }
+    set { self.text_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var text_property_selection : EBSelection <String> {
-    return self.text_property.prop
-  }
+  var text_property_selection : EBSelection <String> { return self.text_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalAlignment
@@ -114,19 +102,13 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   var horizontalAlignment : HorizontalAlignment {
-    get {
-      return self.horizontalAlignment_property.propval
-    }
-    set {
-      self.horizontalAlignment_property.setProp (newValue)
-    }
+    get { return self.horizontalAlignment_property.propval }
+    set { self.horizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.horizontalAlignment_property.prop
-  }
+  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -137,19 +119,13 @@ class SymbolText : SymbolObject,
   //····················································································································
 
   var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
+    get { return self.x_property.propval }
+    set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
+  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //    init

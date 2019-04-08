@@ -14,38 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func updateDeviceAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-       let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
-        var messages = [String] ()
-        for device in selectedDevices {
-          let pathes = deviceFilePathInLibraries (device.mDeviceName)
-          if pathes.count == 0 {
-            messages.append ("No file for \(device.mDeviceName) device in Library")
-          }else if pathes.count == 1 {
-            if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-               let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
-               let version = metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
-               let deviceRoot = rootObject as? DeviceRoot {
-              if device.mDeviceVersion < version {
-                device.mDeviceVersion = version
-                device.mDeviceFileData = data
-              }
-              deviceRoot.removeRecursivelyAllRelationsShips ()
-             }else{
-              messages.append ("Cannot read \(pathes [0]) file.")
-            }
-          }else{ // pathes.count > 1
-            messages.append ("Several files for \(device.mDeviceName) font in Library:")
-            for path in pathes {
-              messages.append ("  - \(path)")
-            }
-          }
-        }
-        if messages.count > 0 {
-          let alert = NSAlert ()
-          alert.messageText = "Error updating device"
-          alert.informativeText = messages.joined (separator: "\n")
-          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-        }
+          self.updateDeviceAction ()
 //--- END OF USER ZONE 2
   }
 }

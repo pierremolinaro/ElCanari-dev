@@ -138,19 +138,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var y1 : Int {
-    get {
-      return self.y1_property.propval
-    }
-    set {
-      self.y1_property.setProp (newValue)
-    }
+    get { return self.y1_property.propval }
+    set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
-  }
+  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -161,19 +155,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var x2 : Int {
-    get {
-      return self.x2_property.propval
-    }
-    set {
-      self.x2_property.setProp (newValue)
-    }
+    get { return self.x2_property.propval }
+    set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
-  }
+  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -184,19 +172,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var y2 : Int {
-    get {
-      return self.y2_property.propval
-    }
-    set {
-      self.y2_property.setProp (newValue)
-    }
+    get { return self.y2_property.propval }
+    set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
-  }
+  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //   Atomic property: xDimension
@@ -207,19 +189,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var xDimension : Int {
-    get {
-      return self.xDimension_property.propval
-    }
-    set {
-      self.xDimension_property.setProp (newValue)
-    }
+    get { return self.xDimension_property.propval }
+    set { self.xDimension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xDimension_property_selection : EBSelection <Int> {
-    return self.xDimension_property.prop
-  }
+  var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.prop }
 
   //····················································································································
   //   Atomic property: yDimension
@@ -230,19 +206,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var yDimension : Int {
-    get {
-      return self.yDimension_property.propval
-    }
-    set {
-      self.yDimension_property.setProp (newValue)
-    }
+    get { return self.yDimension_property.propval }
+    set { self.yDimension_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yDimension_property_selection : EBSelection <Int> {
-    return self.yDimension_property.prop
-  }
+  var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.prop }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -253,19 +223,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var x1Unit : Int {
-    get {
-      return self.x1Unit_property.propval
-    }
-    set {
-      self.x1Unit_property.setProp (newValue)
-    }
+    get { return self.x1Unit_property.propval }
+    set { self.x1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.prop
-  }
+  var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -276,19 +240,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var y1Unit : Int {
-    get {
-      return self.y1Unit_property.propval
-    }
-    set {
-      self.y1Unit_property.setProp (newValue)
-    }
+    get { return self.y1Unit_property.propval }
+    set { self.y1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.prop
-  }
+  var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -299,19 +257,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var x2Unit : Int {
-    get {
-      return self.x2Unit_property.propval
-    }
-    set {
-      self.x2Unit_property.setProp (newValue)
-    }
+    get { return self.x2Unit_property.propval }
+    set { self.x2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.prop
-  }
+  var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -322,19 +274,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var y2Unit : Int {
-    get {
-      return self.y2Unit_property.propval
-    }
-    set {
-      self.y2Unit_property.setProp (newValue)
-    }
+    get { return self.y2Unit_property.propval }
+    set { self.y2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.prop
-  }
+  var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: xDimensionUnit
@@ -345,19 +291,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var xDimensionUnit : Int {
-    get {
-      return self.xDimensionUnit_property.propval
-    }
-    set {
-      self.xDimensionUnit_property.setProp (newValue)
-    }
+    get { return self.xDimensionUnit_property.propval }
+    set { self.xDimensionUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xDimensionUnit_property_selection : EBSelection <Int> {
-    return self.xDimensionUnit_property.prop
-  }
+  var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yDimensionUnit
@@ -368,19 +308,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var yDimensionUnit : Int {
-    get {
-      return self.yDimensionUnit_property.propval
-    }
-    set {
-      self.yDimensionUnit_property.setProp (newValue)
-    }
+    get { return self.yDimensionUnit_property.propval }
+    set { self.yDimensionUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yDimensionUnit_property_selection : EBSelection <Int> {
-    return self.yDimensionUnit_property.prop
-  }
+  var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.prop }
 
   //····················································································································
   //   Atomic property: distanceUnit
@@ -391,19 +325,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var distanceUnit : Int {
-    get {
-      return self.distanceUnit_property.propval
-    }
-    set {
-      self.distanceUnit_property.setProp (newValue)
-    }
+    get { return self.distanceUnit_property.propval }
+    set { self.distanceUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var distanceUnit_property_selection : EBSelection <Int> {
-    return self.distanceUnit_property.prop
-  }
+  var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.prop }
 
   //····················································································································
   //   Atomic property: x1
@@ -414,19 +342,13 @@ class PackageDimension : PackageObject,
   //····················································································································
 
   var x1 : Int {
-    get {
-      return self.x1_property.propval
-    }
-    set {
-      self.x1_property.setProp (newValue)
-    }
+    get { return self.x1_property.propval }
+    set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
-  }
+  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Transient property: distanceInCanariUnit

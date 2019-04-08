@@ -103,19 +103,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var comments : String {
-    get {
-      return self.comments_property.propval
-    }
-    set {
-      self.comments_property.setProp (newValue)
-    }
+    get { return self.comments_property.propval }
+    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
-  }
+  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: nominalSize
@@ -126,19 +120,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var nominalSize : Int {
-    get {
-      return self.nominalSize_property.propval
-    }
-    set {
-      self.nominalSize_property.setProp (newValue)
-    }
+    get { return self.nominalSize_property.propval }
+    set { self.nominalSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var nominalSize_property_selection : EBSelection <Int> {
-    return self.nominalSize_property.prop
-  }
+  var nominalSize_property_selection : EBSelection <Int> { return self.nominalSize_property.prop }
 
   //····················································································································
   //   Atomic property: selectedTab
@@ -149,19 +137,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var selectedTab : Int {
-    get {
-      return self.selectedTab_property.propval
-    }
-    set {
-      self.selectedTab_property.setProp (newValue)
-    }
+    get { return self.selectedTab_property.propval }
+    set { self.selectedTab_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int> {
-    return self.selectedTab_property.prop
-  }
+  var selectedTab_property_selection : EBSelection <Int> { return self.selectedTab_property.prop }
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -172,19 +154,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var selectedInspector : Int {
-    get {
-      return self.selectedInspector_property.propval
-    }
-    set {
-      self.selectedInspector_property.setProp (newValue)
-    }
+    get { return self.selectedInspector_property.propval }
+    set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> {
-    return self.selectedInspector_property.prop
-  }
+  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: currentCharacterCodePoint
@@ -195,19 +171,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var currentCharacterCodePoint : Int {
-    get {
-      return self.currentCharacterCodePoint_property.propval
-    }
-    set {
-      self.currentCharacterCodePoint_property.setProp (newValue)
-    }
+    get { return self.currentCharacterCodePoint_property.propval }
+    set { self.currentCharacterCodePoint_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
-    return self.currentCharacterCodePoint_property.prop
-  }
+  var currentCharacterCodePoint_property_selection : EBSelection <Int> { return self.currentCharacterCodePoint_property.prop }
 
   //····················································································································
 
@@ -224,7 +194,14 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var characters_property_selection : EBSelection < [FontCharacter] > {
-      return self.characters_property.prop
+    return self.characters_property.prop
+  }
+
+  //····················································································································
+
+  var characters : [FontCharacter] {
+    get { return self.characters_property.propval }
+    set { self.characters_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -404,7 +381,6 @@ class FontRoot : EBManagedObject,
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.ebUndoManager = self.ebUndoManager
-//    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
     self.currentCharacterCodePoint_property.validationFunction = { [weak self] in
       return self?.validate_currentCharacterCodePoint (currentValue: $0, proposedValue: $1) ?? .rejectWithBeep
     }

@@ -117,19 +117,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var y1 : Int {
-    get {
-      return self.y1_property.propval
-    }
-    set {
-      self.y1_property.setProp (newValue)
-    }
+    get { return self.y1_property.propval }
+    set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
-  }
+  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -140,19 +134,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var x2 : Int {
-    get {
-      return self.x2_property.propval
-    }
-    set {
-      self.x2_property.setProp (newValue)
-    }
+    get { return self.x2_property.propval }
+    set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
-  }
+  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -163,19 +151,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var y2 : Int {
-    get {
-      return self.y2_property.propval
-    }
-    set {
-      self.y2_property.setProp (newValue)
-    }
+    get { return self.y2_property.propval }
+    set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
-  }
+  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //   Atomic property: x1Unit
@@ -186,19 +168,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var x1Unit : Int {
-    get {
-      return self.x1Unit_property.propval
-    }
-    set {
-      self.x1Unit_property.setProp (newValue)
-    }
+    get { return self.x1Unit_property.propval }
+    set { self.x1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.prop
-  }
+  var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -209,19 +185,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var y1Unit : Int {
-    get {
-      return self.y1Unit_property.propval
-    }
-    set {
-      self.y1Unit_property.setProp (newValue)
-    }
+    get { return self.y1Unit_property.propval }
+    set { self.y1Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.prop
-  }
+  var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.prop }
 
   //····················································································································
   //   Atomic property: x2Unit
@@ -232,19 +202,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var x2Unit : Int {
-    get {
-      return self.x2Unit_property.propval
-    }
-    set {
-      self.x2Unit_property.setProp (newValue)
-    }
+    get { return self.x2Unit_property.propval }
+    set { self.x2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.prop
-  }
+  var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -255,19 +219,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var y2Unit : Int {
-    get {
-      return self.y2Unit_property.propval
-    }
-    set {
-      self.y2Unit_property.setProp (newValue)
-    }
+    get { return self.y2Unit_property.propval }
+    set { self.y2Unit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.prop
-  }
+  var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.prop }
 
   //····················································································································
   //   Atomic property: lengthUnit
@@ -278,19 +236,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var lengthUnit : Int {
-    get {
-      return self.lengthUnit_property.propval
-    }
-    set {
-      self.lengthUnit_property.setProp (newValue)
-    }
+    get { return self.lengthUnit_property.propval }
+    set { self.lengthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var lengthUnit_property_selection : EBSelection <Int> {
-    return self.lengthUnit_property.prop
-  }
+  var lengthUnit_property_selection : EBSelection <Int> { return self.lengthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: x1
@@ -301,19 +253,13 @@ class PackageSegment : PackageObject,
   //····················································································································
 
   var x1 : Int {
-    get {
-      return self.x1_property.propval
-    }
-    set {
-      self.x1_property.setProp (newValue)
-    }
+    get { return self.x1_property.propval }
+    set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
-  }
+  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Transient property: strokeBezierPath

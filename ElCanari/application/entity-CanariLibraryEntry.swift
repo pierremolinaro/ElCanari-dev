@@ -54,19 +54,13 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   var mPath : String {
-    get {
-      return self.mPath_property.propval
-    }
-    set {
-      self.mPath_property.setProp (newValue)
-    }
+    get { return self.mPath_property.propval }
+    set { self.mPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPath_property_selection : EBSelection <String> {
-    return self.mPath_property.prop
-  }
+  var mPath_property_selection : EBSelection <String> { return self.mPath_property.prop }
 
   //····················································································································
   //   Atomic property: mUses
@@ -77,19 +71,13 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   var mUses : Bool {
-    get {
-      return self.mUses_property.propval
-    }
-    set {
-      self.mUses_property.setProp (newValue)
-    }
+    get { return self.mUses_property.propval }
+    set { self.mUses_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUses_property_selection : EBSelection <Bool> {
-    return self.mUses_property.prop
-  }
+  var mUses_property_selection : EBSelection <Bool> { return self.mUses_property.prop }
 
   //····················································································································
   //   Atomic property: mLibraryRepositoryURL
@@ -100,19 +88,13 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   var mLibraryRepositoryURL : String {
-    get {
-      return self.mLibraryRepositoryURL_property.propval
-    }
-    set {
-      self.mLibraryRepositoryURL_property.setProp (newValue)
-    }
+    get { return self.mLibraryRepositoryURL_property.propval }
+    set { self.mLibraryRepositoryURL_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mLibraryRepositoryURL_property_selection : EBSelection <String> {
-    return self.mLibraryRepositoryURL_property.prop
-  }
+  var mLibraryRepositoryURL_property_selection : EBSelection <String> { return self.mLibraryRepositoryURL_property.prop }
 
   //····················································································································
   //   Atomic property: mUserAndPasswordTag
@@ -123,19 +105,13 @@ class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   var mUserAndPasswordTag : String {
-    get {
-      return self.mUserAndPasswordTag_property.propval
-    }
-    set {
-      self.mUserAndPasswordTag_property.setProp (newValue)
-    }
+    get { return self.mUserAndPasswordTag_property.propval }
+    set { self.mUserAndPasswordTag_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mUserAndPasswordTag_property_selection : EBSelection <String> {
-    return self.mUserAndPasswordTag_property.prop
-  }
+  var mUserAndPasswordTag_property_selection : EBSelection <String> { return self.mUserAndPasswordTag_property.prop }
 
   //····················································································································
   //   Transient property: mStatusImage

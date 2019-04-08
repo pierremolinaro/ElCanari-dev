@@ -61,19 +61,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   var x1 : Int {
-    get {
-      return self.x1_property.propval
-    }
-    set {
-      self.x1_property.setProp (newValue)
-    }
+    get { return self.x1_property.propval }
+    set { self.x1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
-  }
+  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //   Atomic property: y1
@@ -84,19 +78,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   var y1 : Int {
-    get {
-      return self.y1_property.propval
-    }
-    set {
-      self.y1_property.setProp (newValue)
-    }
+    get { return self.y1_property.propval }
+    set { self.y1_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
-  }
+  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
 
   //····················································································································
   //   Atomic property: x2
@@ -107,19 +95,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   var x2 : Int {
-    get {
-      return self.x2_property.propval
-    }
-    set {
-      self.x2_property.setProp (newValue)
-    }
+    get { return self.x2_property.propval }
+    set { self.x2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
-  }
+  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
 
   //····················································································································
   //   Atomic property: y2
@@ -130,19 +112,13 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   var y2 : Int {
-    get {
-      return self.y2_property.propval
-    }
-    set {
-      self.y2_property.setProp (newValue)
-    }
+    get { return self.y2_property.propval }
+    set { self.y2_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
-  }
+  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
 
   //····················································································································
   //    init

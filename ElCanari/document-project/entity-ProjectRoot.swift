@@ -26,42 +26,50 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mSelectedPageIndex : Int {
-    get {
-      return self.mSelectedPageIndex_property.propval
-    }
-    set {
-      self.mSelectedPageIndex_property.setProp (newValue)
-    }
+    get { return self.mSelectedPageIndex_property.propval }
+    set { self.mSelectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> {
-    return self.mSelectedPageIndex_property.prop
-  }
+  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
   //   To many property: mFonts
   //····················································································································
 
-  var mFonts_property = StoredArrayOf_ProjectFont ()
+  var mFonts_property = StoredArrayOf_FontInProject ()
 
   //····················································································································
 
-  var mFonts_property_selection : EBSelection < [ProjectFont] > {
-      return self.mFonts_property.prop
+  var mFonts_property_selection : EBSelection < [FontInProject] > {
+    return self.mFonts_property.prop
+  }
+
+  //····················································································································
+
+  var mFonts : [FontInProject] {
+    get { return self.mFonts_property.propval }
+    set { self.mFonts_property.setProp (newValue) }
   }
 
   //····················································································································
   //   To many property: mDevices
   //····················································································································
 
-  var mDevices_property = StoredArrayOf_ProjectDevice ()
+  var mDevices_property = StoredArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var mDevices_property_selection : EBSelection < [ProjectDevice] > {
-      return self.mDevices_property.prop
+  var mDevices_property_selection : EBSelection < [DeviceInProject] > {
+    return self.mDevices_property.prop
+  }
+
+  //····················································································································
+
+  var mDevices : [DeviceInProject] {
+    get { return self.mDevices_property.propval }
+    set { self.mDevices_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -197,13 +205,13 @@ class ProjectRoot : EBManagedObject,
       inRelationshipName: "mFonts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ProjectFont])
+    ) as! [FontInProject])
   //--- To many property: mDevices
     self.mDevices_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mDevices",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ProjectDevice])
+    ) as! [DeviceInProject])
   }
 
   //····················································································································

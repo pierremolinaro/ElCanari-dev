@@ -2,7 +2,7 @@
 
 graphic entity DeviceRoot {
 #--- Selected page index
-  property Int selectedPageIndex default 0 ;
+  property Int mSelectedPageIndex default 0 ;
 
 #--- Title
   property @signature String mTitle default "" ;

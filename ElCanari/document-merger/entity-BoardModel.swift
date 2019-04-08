@@ -383,19 +383,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var name : String {
-    get {
-      return self.name_property.propval
-    }
-    set {
-      self.name_property.setProp (newValue)
-    }
+    get { return self.name_property.propval }
+    set { self.name_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String> {
-    return self.name_property.prop
-  }
+  var name_property_selection : EBSelection <String> { return self.name_property.prop }
 
   //····················································································································
   //   Atomic property: modelWidth
@@ -406,19 +400,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelWidth : Int {
-    get {
-      return self.modelWidth_property.propval
-    }
-    set {
-      self.modelWidth_property.setProp (newValue)
-    }
+    get { return self.modelWidth_property.propval }
+    set { self.modelWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelWidth_property_selection : EBSelection <Int> {
-    return self.modelWidth_property.prop
-  }
+  var modelWidth_property_selection : EBSelection <Int> { return self.modelWidth_property.prop }
 
   //····················································································································
   //   Atomic property: modelWidthUnit
@@ -429,19 +417,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelWidthUnit : Int {
-    get {
-      return self.modelWidthUnit_property.propval
-    }
-    set {
-      self.modelWidthUnit_property.setProp (newValue)
-    }
+    get { return self.modelWidthUnit_property.propval }
+    set { self.modelWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelWidthUnit_property_selection : EBSelection <Int> {
-    return self.modelWidthUnit_property.prop
-  }
+  var modelWidthUnit_property_selection : EBSelection <Int> { return self.modelWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: modelHeight
@@ -452,19 +434,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelHeight : Int {
-    get {
-      return self.modelHeight_property.propval
-    }
-    set {
-      self.modelHeight_property.setProp (newValue)
-    }
+    get { return self.modelHeight_property.propval }
+    set { self.modelHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelHeight_property_selection : EBSelection <Int> {
-    return self.modelHeight_property.prop
-  }
+  var modelHeight_property_selection : EBSelection <Int> { return self.modelHeight_property.prop }
 
   //····················································································································
   //   Atomic property: modelHeightUnit
@@ -475,19 +451,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelHeightUnit : Int {
-    get {
-      return self.modelHeightUnit_property.propval
-    }
-    set {
-      self.modelHeightUnit_property.setProp (newValue)
-    }
+    get { return self.modelHeightUnit_property.propval }
+    set { self.modelHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelHeightUnit_property_selection : EBSelection <Int> {
-    return self.modelHeightUnit_property.prop
-  }
+  var modelHeightUnit_property_selection : EBSelection <Int> { return self.modelHeightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -498,19 +468,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var zoom : Int {
-    get {
-      return self.zoom_property.propval
-    }
-    set {
-      self.zoom_property.setProp (newValue)
-    }
+    get { return self.zoom_property.propval }
+    set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> {
-    return self.zoom_property.prop
-  }
+  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   To many property: frontLegendLines
@@ -521,7 +485,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontLegendLines_property.prop
+    return self.frontLegendLines_property.prop
+  }
+
+  //····················································································································
+
+  var frontLegendLines : [SegmentEntity] {
+    get { return self.frontLegendLines_property.propval }
+    set { self.frontLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -533,7 +504,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backLegendLines_property.prop
+    return self.backLegendLines_property.prop
+  }
+
+  //····················································································································
+
+  var backLegendLines : [SegmentEntity] {
+    get { return self.backLegendLines_property.propval }
+    set { self.backLegendLines_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -545,7 +523,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontLegendTexts_property.prop
+    return self.frontLegendTexts_property.prop
+  }
+
+  //····················································································································
+
+  var frontLegendTexts : [SegmentEntity] {
+    get { return self.frontLegendTexts_property.propval }
+    set { self.frontLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -557,7 +542,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontLayoutTexts_property.prop
+    return self.frontLayoutTexts_property.prop
+  }
+
+  //····················································································································
+
+  var frontLayoutTexts : [SegmentEntity] {
+    get { return self.frontLayoutTexts_property.propval }
+    set { self.frontLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -569,7 +561,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backLegendTexts_property.prop
+    return self.backLegendTexts_property.prop
+  }
+
+  //····················································································································
+
+  var backLegendTexts : [SegmentEntity] {
+    get { return self.backLegendTexts_property.propval }
+    set { self.backLegendTexts_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -581,7 +580,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backLayoutTexts_property.prop
+    return self.backLayoutTexts_property.prop
+  }
+
+  //····················································································································
+
+  var backLayoutTexts : [SegmentEntity] {
+    get { return self.backLayoutTexts_property.propval }
+    set { self.backLayoutTexts_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -593,7 +599,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
-      return self.internalBoardsLimits_property.prop
+    return self.internalBoardsLimits_property.prop
+  }
+
+  //····················································································································
+
+  var internalBoardsLimits : [SegmentEntity] {
+    get { return self.internalBoardsLimits_property.propval }
+    set { self.internalBoardsLimits_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -605,7 +618,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var drills_property_selection : EBSelection < [SegmentEntity] > {
-      return self.drills_property.prop
+    return self.drills_property.prop
+  }
+
+  //····················································································································
+
+  var drills : [SegmentEntity] {
+    get { return self.drills_property.propval }
+    set { self.drills_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -617,7 +637,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var vias_property_selection : EBSelection < [BoardModelVia] > {
-      return self.vias_property.prop
+    return self.vias_property.prop
+  }
+
+  //····················································································································
+
+  var vias : [BoardModelVia] {
+    get { return self.vias_property.propval }
+    set { self.vias_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -629,7 +656,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontPads_property_selection : EBSelection < [BoardModelPad] > {
-      return self.frontPads_property.prop
+    return self.frontPads_property.prop
+  }
+
+  //····················································································································
+
+  var frontPads : [BoardModelPad] {
+    get { return self.frontPads_property.propval }
+    set { self.frontPads_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -641,7 +675,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backPads_property_selection : EBSelection < [BoardModelPad] > {
-      return self.backPads_property.prop
+    return self.backPads_property.prop
+  }
+
+  //····················································································································
+
+  var backPads : [BoardModelPad] {
+    get { return self.backPads_property.propval }
+    set { self.backPads_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -653,19 +694,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelLimitWidth : Int {
-    get {
-      return self.modelLimitWidth_property.propval
-    }
-    set {
-      self.modelLimitWidth_property.setProp (newValue)
-    }
+    get { return self.modelLimitWidth_property.propval }
+    set { self.modelLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelLimitWidth_property_selection : EBSelection <Int> {
-    return self.modelLimitWidth_property.prop
-  }
+  var modelLimitWidth_property_selection : EBSelection <Int> { return self.modelLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: modelLimitWidthUnit
@@ -676,19 +711,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var modelLimitWidthUnit : Int {
-    get {
-      return self.modelLimitWidthUnit_property.propval
-    }
-    set {
-      self.modelLimitWidthUnit_property.setProp (newValue)
-    }
+    get { return self.modelLimitWidthUnit_property.propval }
+    set { self.modelLimitWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var modelLimitWidthUnit_property_selection : EBSelection <Int> {
-    return self.modelLimitWidthUnit_property.prop
-  }
+  var modelLimitWidthUnit_property_selection : EBSelection <Int> { return self.modelLimitWidthUnit_property.prop }
 
   //····················································································································
   //   To many property: backComponentNames
@@ -699,7 +728,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backComponentNames_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backComponentNames_property.prop
+    return self.backComponentNames_property.prop
+  }
+
+  //····················································································································
+
+  var backComponentNames : [SegmentEntity] {
+    get { return self.backComponentNames_property.propval }
+    set { self.backComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -711,7 +747,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontComponentNames_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontComponentNames_property.prop
+    return self.frontComponentNames_property.prop
+  }
+
+  //····················································································································
+
+  var frontComponentNames : [SegmentEntity] {
+    get { return self.frontComponentNames_property.propval }
+    set { self.frontComponentNames_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -723,7 +766,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontComponentValues_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontComponentValues_property.prop
+    return self.frontComponentValues_property.prop
+  }
+
+  //····················································································································
+
+  var frontComponentValues : [SegmentEntity] {
+    get { return self.frontComponentValues_property.propval }
+    set { self.frontComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -735,7 +785,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backComponentValues_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backComponentValues_property.prop
+    return self.backComponentValues_property.prop
+  }
+
+  //····················································································································
+
+  var backComponentValues : [SegmentEntity] {
+    get { return self.backComponentValues_property.propval }
+    set { self.backComponentValues_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -747,7 +804,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backTracks_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backTracks_property.prop
+    return self.backTracks_property.prop
+  }
+
+  //····················································································································
+
+  var backTracks : [SegmentEntity] {
+    get { return self.backTracks_property.propval }
+    set { self.backTracks_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -759,7 +823,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontTracks_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontTracks_property.prop
+    return self.frontTracks_property.prop
+  }
+
+  //····················································································································
+
+  var frontTracks : [SegmentEntity] {
+    get { return self.frontTracks_property.propval }
+    set { self.frontTracks_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -771,7 +842,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var frontPackages_property_selection : EBSelection < [SegmentEntity] > {
-      return self.frontPackages_property.prop
+    return self.frontPackages_property.prop
+  }
+
+  //····················································································································
+
+  var frontPackages : [SegmentEntity] {
+    get { return self.frontPackages_property.propval }
+    set { self.frontPackages_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -783,7 +861,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var backPackages_property_selection : EBSelection < [SegmentEntity] > {
-      return self.backPackages_property.prop
+    return self.backPackages_property.prop
+  }
+
+  //····················································································································
+
+  var backPackages : [SegmentEntity] {
+    get { return self.backPackages_property.propval }
+    set { self.backPackages_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -795,19 +880,13 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var artworkName : String {
-    get {
-      return self.artworkName_property.propval
-    }
-    set {
-      self.artworkName_property.setProp (newValue)
-    }
+    get { return self.artworkName_property.propval }
+    set { self.artworkName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var artworkName_property_selection : EBSelection <String> {
-    return self.artworkName_property.prop
-  }
+  var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
 
   //····················································································································
   //   To many property: myInstances
@@ -818,7 +897,14 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
-      return self.myInstances_property.prop
+    return self.myInstances_property.prop
+  }
+
+  //····················································································································
+
+  var myInstances : [MergerBoardInstance] {
+    get { return self.myInstances_property.propval }
+    set { self.myInstances_property.setProp (newValue) }
   }
 
   //····················································································································

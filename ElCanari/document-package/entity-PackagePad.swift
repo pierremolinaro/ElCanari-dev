@@ -194,19 +194,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var xCenter : Int {
-    get {
-      return self.xCenter_property.propval
-    }
-    set {
-      self.xCenter_property.setProp (newValue)
-    }
+    get { return self.xCenter_property.propval }
+    set { self.xCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.prop
-  }
+  var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.prop }
 
   //····················································································································
   //   Atomic property: yCenter
@@ -217,19 +211,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var yCenter : Int {
-    get {
-      return self.yCenter_property.propval
-    }
-    set {
-      self.yCenter_property.setProp (newValue)
-    }
+    get { return self.yCenter_property.propval }
+    set { self.yCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenter_property_selection : EBSelection <Int> {
-    return self.yCenter_property.prop
-  }
+  var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -240,19 +228,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var width : Int {
-    get {
-      return self.width_property.propval
-    }
-    set {
-      self.width_property.setProp (newValue)
-    }
+    get { return self.width_property.propval }
+    set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
-  }
+  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -263,19 +245,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var height : Int {
-    get {
-      return self.height_property.propval
-    }
-    set {
-      self.height_property.setProp (newValue)
-    }
+    get { return self.height_property.propval }
+    set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
-  }
+  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: holeDiameter
@@ -286,19 +262,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var holeDiameter : Int {
-    get {
-      return self.holeDiameter_property.propval
-    }
-    set {
-      self.holeDiameter_property.setProp (newValue)
-    }
+    get { return self.holeDiameter_property.propval }
+    set { self.holeDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var holeDiameter_property_selection : EBSelection <Int> {
-    return self.holeDiameter_property.prop
-  }
+  var holeDiameter_property_selection : EBSelection <Int> { return self.holeDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: padShape
@@ -309,19 +279,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var padShape : PadShape {
-    get {
-      return self.padShape_property.propval
-    }
-    set {
-      self.padShape_property.setProp (newValue)
-    }
+    get { return self.padShape_property.propval }
+    set { self.padShape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padShape_property_selection : EBSelection <PadShape> {
-    return self.padShape_property.prop
-  }
+  var padShape_property_selection : EBSelection <PadShape> { return self.padShape_property.prop }
 
   //····················································································································
   //   Atomic property: padStyle
@@ -332,19 +296,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var padStyle : PadStyle {
-    get {
-      return self.padStyle_property.propval
-    }
-    set {
-      self.padStyle_property.setProp (newValue)
-    }
+    get { return self.padStyle_property.propval }
+    set { self.padStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padStyle_property_selection : EBSelection <PadStyle> {
-    return self.padStyle_property.prop
-  }
+  var padStyle_property_selection : EBSelection <PadStyle> { return self.padStyle_property.prop }
 
   //····················································································································
   //   Atomic property: padNumber
@@ -355,19 +313,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var padNumber : Int {
-    get {
-      return self.padNumber_property.propval
-    }
-    set {
-      self.padNumber_property.setProp (newValue)
-    }
+    get { return self.padNumber_property.propval }
+    set { self.padNumber_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padNumber_property_selection : EBSelection <Int> {
-    return self.padNumber_property.prop
-  }
+  var padNumber_property_selection : EBSelection <Int> { return self.padNumber_property.prop }
 
   //····················································································································
   //   Atomic property: xCenterUnit
@@ -378,19 +330,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var xCenterUnit : Int {
-    get {
-      return self.xCenterUnit_property.propval
-    }
-    set {
-      self.xCenterUnit_property.setProp (newValue)
-    }
+    get { return self.xCenterUnit_property.propval }
+    set { self.xCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenterUnit_property_selection : EBSelection <Int> {
-    return self.xCenterUnit_property.prop
-  }
+  var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yCenterUnit
@@ -401,19 +347,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var yCenterUnit : Int {
-    get {
-      return self.yCenterUnit_property.propval
-    }
-    set {
-      self.yCenterUnit_property.setProp (newValue)
-    }
+    get { return self.yCenterUnit_property.propval }
+    set { self.yCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenterUnit_property_selection : EBSelection <Int> {
-    return self.yCenterUnit_property.prop
-  }
+  var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -424,19 +364,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var widthUnit : Int {
-    get {
-      return self.widthUnit_property.propval
-    }
-    set {
-      self.widthUnit_property.setProp (newValue)
-    }
+    get { return self.widthUnit_property.propval }
+    set { self.widthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int> {
-    return self.widthUnit_property.prop
-  }
+  var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -447,19 +381,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var heightUnit : Int {
-    get {
-      return self.heightUnit_property.propval
-    }
-    set {
-      self.heightUnit_property.setProp (newValue)
-    }
+    get { return self.heightUnit_property.propval }
+    set { self.heightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int> {
-    return self.heightUnit_property.prop
-  }
+  var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: holeDiameterUnit
@@ -470,19 +398,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var holeDiameterUnit : Int {
-    get {
-      return self.holeDiameterUnit_property.propval
-    }
-    set {
-      self.holeDiameterUnit_property.setProp (newValue)
-    }
+    get { return self.holeDiameterUnit_property.propval }
+    set { self.holeDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var holeDiameterUnit_property_selection : EBSelection <Int> {
-    return self.holeDiameterUnit_property.prop
-  }
+  var holeDiameterUnit_property_selection : EBSelection <Int> { return self.holeDiameterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: annularRingUnit
@@ -493,19 +415,13 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var annularRingUnit : Int {
-    get {
-      return self.annularRingUnit_property.propval
-    }
-    set {
-      self.annularRingUnit_property.setProp (newValue)
-    }
+    get { return self.annularRingUnit_property.propval }
+    set { self.annularRingUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var annularRingUnit_property_selection : EBSelection <Int> {
-    return self.annularRingUnit_property.prop
-  }
+  var annularRingUnit_property_selection : EBSelection <Int> { return self.annularRingUnit_property.prop }
 
   //····················································································································
   //   To many property: slaves
@@ -516,7 +432,14 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var slaves_property_selection : EBSelection < [PackageSlavePad] > {
-      return self.slaves_property.prop
+    return self.slaves_property.prop
+  }
+
+  //····················································································································
+
+  var slaves : [PackageSlavePad] {
+    get { return self.slaves_property.propval }
+    set { self.slaves_property.setProp (newValue) }
   }
 
   //····················································································································

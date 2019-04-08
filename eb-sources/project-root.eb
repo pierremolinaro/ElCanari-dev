@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
-  toMany ProjectFont mFonts ;
-  toMany ProjectDevice mDevices ;
+  toMany FontInProject mFonts ;
+  toMany DeviceInProject mDevices ;
 
   property Int mSelectedPageIndex default 0 ;
 }
@@ -13,7 +13,7 @@ entity ProjectRoot {
 #   Font
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ProjectFont {
+entity FontInProject {
   property String mFontName default "" ;
   property Int mFontVersion default 0 ;
   property String mDescriptiveString default "" ;
@@ -27,14 +27,51 @@ entity ProjectFont {
 #   Device
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ProjectDevice {
+entity DeviceInProject {
   property String mDeviceName default "" ;
   property Int mDeviceVersion default 0 ;
   property Data mDeviceFileData default empty ;
 
+  toMany DevicePackageInProject mPackages ;
+
   transient String versionString dependsFrom self.mDeviceVersion ;
   transient String sizeString dependsFrom self.mDeviceFileData ;
   transient Bool canExport dependsFrom self.mDeviceFileData ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DevicePackageInProject {
+  toMany DeviceMasterPadInProject mMasterPads ;
+
+  property String mPackageName default "" ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceMasterPadInProject {
+  toMany DeviceSlavePadInProject mSlavePads ;
+
+  property Int mCenterX default 0 ;
+  property Int mCenterY default 0 ;
+  property Int mWidth default 114_300 ;
+  property Int mHeight default 228_600 ;
+  property Int mHoleDiameter default 57_150 ;
+  property PadShape mShape default octo ;
+  property PadStyle mStyle default traversing ;
+  property  String mName default "" ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSlavePadInProject {
+  property Int mCenterX default 0 ;
+  property Int mCenterY default 0 ;
+  property Int mWidth default 114_300 ;
+  property Int mHeight default 228_600 ;
+  property Int mHoleDiameter default 57_150 ;
+  property PadShape mShape default octo ;
+  property SlavePadStyle mStyle default traversing ;
 }
 
 #  transient moreThanOneNetClass : boolean observe .netClasses ;

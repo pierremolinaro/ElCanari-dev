@@ -6,188 +6,219 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceName : class {
-  var mDeviceName : String { get }
+protocol ProjectDeviceMasterPad_mCenterX : class {
+  var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceVersion : class {
-  var mDeviceVersion : Int { get }
+protocol ProjectDeviceMasterPad_mCenterY : class {
+  var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceFileData : class {
-  var mDeviceFileData : Data { get }
+protocol ProjectDeviceMasterPad_mWidth : class {
+  var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_versionString : class {
-  var versionString : String? { get }
+protocol ProjectDeviceMasterPad_mHeight : class {
+  var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_sizeString : class {
-  var sizeString : String? { get }
+protocol ProjectDeviceMasterPad_mHoleDiameter : class {
+  var mHoleDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_canExport : class {
-  var canExport : Bool? { get }
+protocol ProjectDeviceMasterPad_mShape : class {
+  var mShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectDevice
+
+protocol ProjectDeviceMasterPad_mStyle : class {
+  var mStyle : PadStyle { get }
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectDevice : EBManagedObject,
-         ProjectDevice_mDeviceName,
-         ProjectDevice_mDeviceVersion,
-         ProjectDevice_mDeviceFileData,
-         ProjectDevice_versionString,
-         ProjectDevice_sizeString,
-         ProjectDevice_canExport {
+protocol ProjectDeviceMasterPad_mName : class {
+  var mName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: ProjectDeviceMasterPad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ProjectDeviceMasterPad : EBManagedObject,
+         ProjectDeviceMasterPad_mCenterX,
+         ProjectDeviceMasterPad_mCenterY,
+         ProjectDeviceMasterPad_mWidth,
+         ProjectDeviceMasterPad_mHeight,
+         ProjectDeviceMasterPad_mHoleDiameter,
+         ProjectDeviceMasterPad_mShape,
+         ProjectDeviceMasterPad_mStyle,
+         ProjectDeviceMasterPad_mName {
 
   //····················································································································
-  //   Atomic property: mDeviceName
+  //   Atomic property: mCenterX
   //····················································································································
 
-  var mDeviceName_property = EBStoredProperty_String (defaultValue: "")
+  var mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mDeviceName : String {
-    get {
-      return self.mDeviceName_property.propval
-    }
-    set {
-      self.mDeviceName_property.setProp (newValue)
-    }
+  var mCenterX : Int {
+    get { return self.mCenterX_property.propval }
+    set { self.mCenterX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceName_property_selection : EBSelection <String> {
-    return self.mDeviceName_property.prop
-  }
+  var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
 
   //····················································································································
-  //   Atomic property: mDeviceVersion
+  //   Atomic property: mCenterY
   //····················································································································
 
-  var mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  var mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mDeviceVersion : Int {
-    get {
-      return self.mDeviceVersion_property.propval
-    }
-    set {
-      self.mDeviceVersion_property.setProp (newValue)
-    }
+  var mCenterY : Int {
+    get { return self.mCenterY_property.propval }
+    set { self.mCenterY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceVersion_property_selection : EBSelection <Int> {
-    return self.mDeviceVersion_property.prop
-  }
+  var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
 
   //····················································································································
-  //   Atomic property: mDeviceFileData
+  //   Atomic property: mWidth
   //····················································································································
 
-  var mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  var mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
 
   //····················································································································
 
-  var mDeviceFileData : Data {
-    get {
-      return self.mDeviceFileData_property.propval
-    }
-    set {
-      self.mDeviceFileData_property.setProp (newValue)
-    }
+  var mWidth : Int {
+    get { return self.mWidth_property.propval }
+    set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mDeviceFileData_property_selection : EBSelection <Data> {
-    return self.mDeviceFileData_property.prop
-  }
+  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
-  //   Transient property: versionString
+  //   Atomic property: mHeight
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  var mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.prop
-  }
-
-  //····················································································································
-
-  var versionString : String? {
-    switch self.versionString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: sizeString
-  //····················································································································
-
-  var sizeString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var sizeString_property_selection : EBSelection <String> {
-    return self.sizeString_property.prop
+  var mHeight : Int {
+    get { return self.mHeight_property.propval }
+    set { self.mHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var sizeString : String? {
-    switch self.sizeString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
-  //   Transient property: canExport
+  //   Atomic property: mHoleDiameter
   //····················································································································
 
-  var canExport_property = EBTransientProperty_Bool ()
+  var mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
-  var canExport_property_selection : EBSelection <Bool> {
-    return self.canExport_property.prop
+  var mHoleDiameter : Int {
+    get { return self.mHoleDiameter_property.propval }
+    set { self.mHoleDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var canExport : Bool? {
-    switch self.canExport_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mHoleDiameter_property_selection : EBSelection <Int> { return self.mHoleDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mShape
+  //····················································································································
+
+  var mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+
+  //····················································································································
+
+  var mShape : PadShape {
+    get { return self.mShape_property.propval }
+    set { self.mShape_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
+
+  //····················································································································
+  //   Atomic property: mStyle
+  //····················································································································
+
+  var mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing)
+
+  //····················································································································
+
+  var mStyle : PadStyle {
+    get { return self.mStyle_property.propval }
+    set { self.mStyle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mStyle_property_selection : EBSelection <PadStyle> { return self.mStyle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mName
+  //····················································································································
+
+  var mName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mName : String {
+    get { return self.mName_property.propval }
+    set { self.mName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
+
+  //····················································································································
+  //   To many property: mSlavePads
+  //····················································································································
+
+  var mSlavePads_property = StoredArrayOf_ProjectDeviceSlavePad ()
+
+  //····················································································································
+
+  var mSlavePads_property_selection : EBSelection < [ProjectDeviceSlavePad] > {
+    return self.mSlavePads_property.prop
+  }
+
+  //····················································································································
+
+  var mSlavePads : [ProjectDeviceSlavePad] {
+    get { return self.mSlavePads_property.propval }
+    set { self.mSlavePads_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -196,78 +227,24 @@ class ProjectDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: versionString
-    self.versionString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDeviceVersion_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mDeviceVersion_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDevice_versionString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDeviceVersion_property.addEBObserver (self.versionString_property)
-  //--- Atomic property: sizeString
-    self.sizeString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mDeviceFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDevice_sizeString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
-  //--- Atomic property: canExport
-    self.canExport_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mDeviceFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDevice_canExport (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDeviceFileData_property.addEBObserver (self.canExport_property)
+  //--- Atomic property: mCenterX
+    self.mCenterX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCenterY
+    self.mCenterY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mWidth
+    self.mWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHeight
+    self.mHeight_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mHoleDiameter
+    self.mHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mShape
+    self.mShape_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mStyle
+    self.mStyle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mName
+    self.mName_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mSlavePads (no option)
+    self.mSlavePads_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -277,9 +254,6 @@ class ProjectDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
-    self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
-    self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
   //--- Unregister properties for handling signature
   }
 
@@ -295,55 +269,78 @@ class ProjectDevice : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mDeviceName",
-      idx:self.mDeviceName_property.ebObjectIndex,
+      "mCenterX",
+      idx:self.mCenterX_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mDeviceName_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceName_property.mValueExplorer
+      observerExplorer:&self.mCenterX_property.mObserverExplorer,
+      valueExplorer:&self.mCenterX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mDeviceVersion",
-      idx:self.mDeviceVersion_property.ebObjectIndex,
+      "mCenterY",
+      idx:self.mCenterY_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mDeviceVersion_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceVersion_property.mValueExplorer
+      observerExplorer:&self.mCenterY_property.mObserverExplorer,
+      valueExplorer:&self.mCenterY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mDeviceFileData",
-      idx:self.mDeviceFileData_property.ebObjectIndex,
+      "mWidth",
+      idx:self.mWidth_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mDeviceFileData_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceFileData_property.mValueExplorer
+      observerExplorer:&self.mWidth_property.mObserverExplorer,
+      valueExplorer:&self.mWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mHeight",
+      idx:self.mHeight_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mHeight_property.mObserverExplorer,
+      valueExplorer:&self.mHeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mHoleDiameter",
+      idx:self.mHoleDiameter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mHoleDiameter_property.mObserverExplorer,
+      valueExplorer:&self.mHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mShape",
+      idx:self.mShape_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mShape_property.mObserverExplorer,
+      valueExplorer:&self.mShape_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mStyle",
+      idx:self.mStyle_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mStyle_property.mObserverExplorer,
+      valueExplorer:&self.mStyle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mName",
+      idx:self.mName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mName_property.mObserverExplorer,
+      valueExplorer:&self.mName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "versionString",
-      idx:self.versionString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.versionString_property.mObserverExplorer,
-      valueExplorer:&self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sizeString",
-      idx:self.sizeString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sizeString_property.mObserverExplorer,
-      valueExplorer:&self.sizeString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "canExport",
-      idx:self.canExport_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.canExport_property.mObserverExplorer,
-      valueExplorer:&self.canExport_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mSlavePads",
+      idx:mSlavePads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mSlavePads_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -353,15 +350,32 @@ class ProjectDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.mObserverExplorer = nil
-    self.mDeviceName_property.mValueExplorer = nil
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.mObserverExplorer = nil
-    self.mDeviceVersion_property.mValueExplorer = nil
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.mObserverExplorer = nil
-    self.mDeviceFileData_property.mValueExplorer = nil
+  //--- Atomic property: mCenterX
+    self.mCenterX_property.mObserverExplorer = nil
+    self.mCenterX_property.mValueExplorer = nil
+  //--- Atomic property: mCenterY
+    self.mCenterY_property.mObserverExplorer = nil
+    self.mCenterY_property.mValueExplorer = nil
+  //--- Atomic property: mWidth
+    self.mWidth_property.mObserverExplorer = nil
+    self.mWidth_property.mValueExplorer = nil
+  //--- Atomic property: mHeight
+    self.mHeight_property.mObserverExplorer = nil
+    self.mHeight_property.mValueExplorer = nil
+  //--- Atomic property: mHoleDiameter
+    self.mHoleDiameter_property.mObserverExplorer = nil
+    self.mHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mShape
+    self.mShape_property.mObserverExplorer = nil
+    self.mShape_property.mValueExplorer = nil
+  //--- Atomic property: mStyle
+    self.mStyle_property.mObserverExplorer = nil
+    self.mStyle_property.mValueExplorer = nil
+  //--- Atomic property: mName
+    self.mName_property.mObserverExplorer = nil
+    self.mName_property.mValueExplorer = nil
+  //--- To many property: mSlavePads
+    self.mSlavePads_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -371,6 +385,7 @@ class ProjectDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mSlavePads_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -390,12 +405,28 @@ class ProjectDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceName")
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceVersion")
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceFileData")
+  //--- Atomic property: mCenterX
+    self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
+  //--- Atomic property: mCenterY
+    self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey:"mCenterY")
+  //--- Atomic property: mWidth
+    self.mWidth_property.storeIn (dictionary: ioDictionary, forKey:"mWidth")
+  //--- Atomic property: mHeight
+    self.mHeight_property.storeIn (dictionary: ioDictionary, forKey:"mHeight")
+  //--- Atomic property: mHoleDiameter
+    self.mHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mShape
+    self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
+  //--- Atomic property: mStyle
+    self.mStyle_property.storeIn (dictionary: ioDictionary, forKey:"mStyle")
+  //--- Atomic property: mName
+    self.mName_property.storeIn (dictionary: ioDictionary, forKey:"mName")
+  //--- To many property: mSlavePads
+    self.store (
+      managedObjectArray: self.mSlavePads_property.propval,
+      relationshipName: "mSlavePads",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -405,6 +436,12 @@ class ProjectDevice : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mSlavePads
+    self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mSlavePads",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ProjectDeviceSlavePad])
   }
 
   //····················································································································
@@ -413,12 +450,22 @@ class ProjectDevice : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mDeviceName
-    self.mDeviceName_property.readFrom (dictionary: inDictionary, forKey:"mDeviceName")
-  //--- Atomic property: mDeviceVersion
-    self.mDeviceVersion_property.readFrom (dictionary: inDictionary, forKey:"mDeviceVersion")
-  //--- Atomic property: mDeviceFileData
-    self.mDeviceFileData_property.readFrom (dictionary: inDictionary, forKey:"mDeviceFileData")
+  //--- Atomic property: mCenterX
+    self.mCenterX_property.readFrom (dictionary: inDictionary, forKey:"mCenterX")
+  //--- Atomic property: mCenterY
+    self.mCenterY_property.readFrom (dictionary: inDictionary, forKey:"mCenterY")
+  //--- Atomic property: mWidth
+    self.mWidth_property.readFrom (dictionary: inDictionary, forKey:"mWidth")
+  //--- Atomic property: mHeight
+    self.mHeight_property.readFrom (dictionary: inDictionary, forKey:"mHeight")
+  //--- Atomic property: mHoleDiameter
+    self.mHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mHoleDiameter")
+  //--- Atomic property: mShape
+    self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
+  //--- Atomic property: mStyle
+    self.mStyle_property.readFrom (dictionary: inDictionary, forKey:"mStyle")
+  //--- Atomic property: mName
+    self.mName_property.readFrom (dictionary: inDictionary, forKey:"mName")
   }
 
   //····················································································································
@@ -427,6 +474,10 @@ class ProjectDevice : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mSlavePads
+    for managedObject in self.mSlavePads_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -435,354 +486,9 @@ class ProjectDevice : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevice> {
-
-  //····················································································································
-  //   Observers of 'mDeviceName' stored property
-  //····················································································································
-
-  private var mObserversOf_mDeviceName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
-        managedObject.mDeviceName_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceName_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'mDeviceVersion' stored property
-  //····················································································································
-
-  private var mObserversOf_mDeviceVersion = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceVersion.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceVersion_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceVersion.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceVersion_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
-        managedObject.mDeviceVersion_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceVersion_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'mDeviceFileData' stored property
-  //····················································································································
-
-  private var mObserversOf_mDeviceFileData = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDeviceFileData.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceFileData_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDeviceFileData.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDeviceFileData_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
-        managedObject.mDeviceFileData_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceFileData_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'versionString' transient property
-  //····················································································································
-
-  private var mObserversOf_versionString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_versionString.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.versionString_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_versionString.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.versionString_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
-        managedObject.versionString_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
-        managedObject.versionString_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'sizeString' transient property
-  //····················································································································
-
-  private var mObserversOf_sizeString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sizeString.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.sizeString_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sizeString.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.sizeString_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
-        managedObject.sizeString_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
-        managedObject.sizeString_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'canExport' transient property
-  //····················································································································
-
-  private var mObserversOf_canExport = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canExport.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canExport_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canExport.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canExport_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
-        managedObject.canExport_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
-        managedObject.canExport_property.removeEBObserver (observer)
-      })
+  //--- To many property: mSlavePads
+    for managedObject in self.mSlavePads_property.propval {
+      objects.append (managedObject)
     }
   }
 
@@ -791,32 +497,498 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectDevice
+//    ReadOnlyArrayOf_ProjectDeviceMasterPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
+class ReadOnlyArrayOf_ProjectDeviceMasterPad : ReadOnlyAbstractArrayProperty <ProjectDeviceMasterPad> {
+
+  //····················································································································
+  //   Observers of 'mCenterX' stored property
+  //····················································································································
+
+  private var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDevice] > > = nil
+  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCenterX.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCenterX_property.addEBObserver (inObserver)
+      }
+    }
+  }
 
   //····················································································································
 
-  override var propset : Set <ProjectDevice> {
+  final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCenterX.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCenterX_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+        managedObject.mCenterX_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCenterX_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mCenterY' stored property
+  //····················································································································
+
+  private var mObserversOf_mCenterY = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCenterY.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCenterY_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCenterY.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCenterY_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+        managedObject.mCenterY_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCenterY_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+        managedObject.mWidth_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mWidth_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_mHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+        managedObject.mHeight_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHeight_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mHoleDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mHoleDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHoleDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mHoleDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mHoleDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+        managedObject.mHoleDiameter_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mHoleDiameter_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mShape' stored property
+  //····················································································································
+
+  private var mObserversOf_mShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShape_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShape_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+        managedObject.mShape_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShape_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mStyle' stored property
+  //····················································································································
+
+  private var mObserversOf_mStyle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mStyle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mStyle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mStyle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mStyle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mStyle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mStyle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+        managedObject.mStyle_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mStyle_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mName' stored property
+  //····················································································································
+
+  private var mObserversOf_mName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mName_toElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    for managedObject in inSet {
+      self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+        managedObject.mName_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : Set<ProjectDeviceMasterPad>) {
+    self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mName_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_ProjectDeviceMasterPad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_ProjectDeviceMasterPad : ReadOnlyArrayOf_ProjectDeviceMasterPad {
+
+  //····················································································································
+
+  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDeviceMasterPad] > > = nil
+
+  //····················································································································
+
+  override var propset : Set <ProjectDeviceMasterPad> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevice] > {
+  override var prop : EBSelection < [ProjectDeviceMasterPad] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectDevice] {
+  override var propval : [ProjectDeviceMasterPad] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -838,44 +1010,48 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 
   //····················································································································
 
-  private var mSet = Set <ProjectDevice> ()
+  private var mSet = Set <ProjectDeviceMasterPad> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectDevice] >? = nil
+  private var mCachedValue : EBSelection < [ProjectDeviceMasterPad] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectDevice>
+      let newSet : Set <ProjectDeviceMasterPad>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectDevice> ()
+        newSet = Set <ProjectDeviceMasterPad> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mHeight_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mShape_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mStyle_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_sizeString_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_canExport_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mDeviceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mCenterX_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mCenterY_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mHeight_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mShape_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mStyle_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
-      self.addEBObserversOf_sizeString_toElementsOfSet (addedSet)
-      self.addEBObserversOf_canExport_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -903,28 +1079,28 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectDevice
+//    To many relationship read write: ProjectDeviceMasterPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
+class ReadWriteArrayOf_ProjectDeviceMasterPad : ReadOnlyArrayOf_ProjectDeviceMasterPad {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectDevice]) { } // Abstract method
+  func setProp (_ value :  [ProjectDeviceMasterPad]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectDevice
+//    To many relationship: ProjectDeviceMasterPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSignatureObserverProtocol {
+final class StoredArrayOf_ProjectDeviceMasterPad : ReadWriteArrayOf_ProjectDeviceMasterPad, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDeviceMasterPad?) -> Void > = nil
 
   //····················································································································
 
@@ -971,9 +1147,9 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectDevice] ()
+      var objectArray = [ProjectDeviceMasterPad] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDevice") as? ProjectDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDeviceMasterPad") as? ProjectDeviceMasterPad {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -984,8 +1160,8 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
 
  //····················································································································
 
-  private var mSet = Set <ProjectDevice> ()
-  private var mValue = [ProjectDevice] () {
+  private var mSet = Set <ProjectDeviceMasterPad> ()
+  private var mValue = [ProjectDeviceMasterPad] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -1003,33 +1179,47 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mDeviceName_property.mSetterDelegate = nil
-            managedObject.mDeviceVersion_property.mSetterDelegate = nil
-            managedObject.mDeviceFileData_property.mSetterDelegate = nil
+            managedObject.mCenterX_property.mSetterDelegate = nil
+            managedObject.mCenterY_property.mSetterDelegate = nil
+            managedObject.mWidth_property.mSetterDelegate = nil
+            managedObject.mHeight_property.mSetterDelegate = nil
+            managedObject.mHoleDiameter_property.mSetterDelegate = nil
+            managedObject.mShape_property.mSetterDelegate = nil
+            managedObject.mStyle_property.mSetterDelegate = nil
+            managedObject.mName_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectDevice in addedObjectSet {
+          for managedObject : ProjectDeviceMasterPad in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mDeviceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDeviceFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mHoleDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -1057,29 +1247,29 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevice] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ProjectDeviceMasterPad] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectDevice]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ProjectDeviceMasterPad]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectDevice] { return self.mValue }
+  override var propval : [ProjectDeviceMasterPad] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectDevice> { return self.mSet }
+  override var propset : Set <ProjectDeviceMasterPad> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectDevice]) {
+  @objc func performUndo (_ oldValue : [ProjectDeviceMasterPad]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectDevice) {
+  func remove (_ object : ProjectDeviceMasterPad) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1090,7 +1280,7 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
   
   //····················································································································
 
-  func add (_ object : ProjectDevice) {
+  func add (_ object : ProjectDeviceMasterPad) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

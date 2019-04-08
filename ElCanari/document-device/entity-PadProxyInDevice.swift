@@ -54,19 +54,13 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   var mPadName : String {
-    get {
-      return self.mPadName_property.propval
-    }
-    set {
-      self.mPadName_property.setProp (newValue)
-    }
+    get { return self.mPadName_property.propval }
+    set { self.mPadName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String> {
-    return self.mPadName_property.prop
-  }
+  var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
 
   //····················································································································
   //   Atomic property: mIsNC
@@ -77,19 +71,13 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   var mIsNC : Bool {
-    get {
-      return self.mIsNC_property.propval
-    }
-    set {
-      self.mIsNC_property.setProp (newValue)
-    }
+    get { return self.mIsNC_property.propval }
+    set { self.mIsNC_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mIsNC_property_selection : EBSelection <Bool> {
-    return self.mIsNC_property.prop
-  }
+  var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.prop }
 
   //····················································································································
   //   To one property: mPinInstance

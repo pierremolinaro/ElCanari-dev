@@ -103,19 +103,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mFileData : Data {
-    get {
-      return self.mFileData_property.propval
-    }
-    set {
-      self.mFileData_property.setProp (newValue)
-    }
+    get { return self.mFileData_property.propval }
+    set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> {
-    return self.mFileData_property.prop
-  }
+  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Atomic property: mName
@@ -126,19 +120,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mName : String {
-    get {
-      return self.mName_property.propval
-    }
-    set {
-      self.mName_property.setProp (newValue)
-    }
+    get { return self.mName_property.propval }
+    set { self.mName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mName_property_selection : EBSelection <String> {
-    return self.mName_property.prop
-  }
+  var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -149,19 +137,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mVersion : Int {
-    get {
-      return self.mVersion_property.propval
-    }
-    set {
-      self.mVersion_property.setProp (newValue)
-    }
+    get { return self.mVersion_property.propval }
+    set { self.mVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVersion_property_selection : EBSelection <Int> {
-    return self.mVersion_property.prop
-  }
+  var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -172,19 +154,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mStrokeBezierPath : NSBezierPath {
-    get {
-      return self.mStrokeBezierPath_property.propval
-    }
-    set {
-      self.mStrokeBezierPath_property.setProp (newValue)
-    }
+    get { return self.mStrokeBezierPath_property.propval }
+    set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mStrokeBezierPath_property.prop
-  }
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Atomic property: mX
@@ -195,19 +171,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mX : Int {
-    get {
-      return self.mX_property.propval
-    }
-    set {
-      self.mX_property.setProp (newValue)
-    }
+    get { return self.mX_property.propval }
+    set { self.mX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
-  }
+  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
   //   Atomic property: mY
@@ -218,19 +188,13 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mY : Int {
-    get {
-      return self.mY_property.propval
-    }
-    set {
-      self.mY_property.setProp (newValue)
-    }
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
-  }
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   To many property: mMasterPads
@@ -241,7 +205,14 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mMasterPads_property_selection : EBSelection < [MasterPadInDevice] > {
-      return self.mMasterPads_property.prop
+    return self.mMasterPads_property.prop
+  }
+
+  //····················································································································
+
+  var mMasterPads : [MasterPadInDevice] {
+    get { return self.mMasterPads_property.propval }
+    set { self.mMasterPads_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -2038,6 +2009,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         oldValue?.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
         oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
+        oldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex)
         oldValue?.mShowPackageBackPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
         oldValue?.mShowPackageFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         oldValue?.mShowPackagePadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
@@ -2047,7 +2019,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
         oldValue?.mTitle_property.removeEBObserversFrom (&self.mObserversOf_mTitle)
         oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
-        oldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex)
         oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         oldValue?.unconnectedPads_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPads)
@@ -2064,6 +2035,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         self.mValue?.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
         self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
+        self.mValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex)
         self.mValue?.mShowPackageBackPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
         self.mValue?.mShowPackageFrontPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         self.mValue?.mShowPackagePadNumbers_property.addEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
@@ -2073,7 +2045,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
         self.mValue?.mTitle_property.addEBObserversFrom (&self.mObserversOf_mTitle)
         self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
-        self.mValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex)
         self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         self.mValue?.unconnectedPads_property.addEBObserversFrom (&self.mObserversOf_unconnectedPads)
@@ -2558,6 +2529,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: mSelectedPageIndex
+  //····················································································································
+
+  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSelectedPageIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSelectedPageIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_mSelectedPageIndex.insert (inObserver)
+    if let object = self.propval {
+      object.mSelectedPageIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_mSelectedPageIndex.remove (inObserver)
+    if let object = self.propval {
+      object.mSelectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: mShowPackageBackPads
   //····················································································································
 
@@ -2923,47 +2935,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
     if let object = self.propval {
       object.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: selectedPageIndex
-  //····················································································································
-
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectedPageIndex_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.selectedPageIndex_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.mObserversOf_selectedPageIndex.insert (inObserver)
-    if let object = self.propval {
-      object.selectedPageIndex_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.mObserversOf_selectedPageIndex.remove (inObserver)
-    if let object = self.propval {
-      object.selectedPageIndex_property.removeEBObserver (inObserver)
     }
   }
 

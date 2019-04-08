@@ -659,7 +659,7 @@ import Cocoa
     self.mSymbolDisplayController.bind_ebView (self.mComposedSymbolView)
     self.mPackageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
-    self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
     self.mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
     self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)

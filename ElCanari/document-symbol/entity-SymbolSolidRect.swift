@@ -75,19 +75,13 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   var y : Int {
-    get {
-      return self.y_property.propval
-    }
-    set {
-      self.y_property.setProp (newValue)
-    }
+    get { return self.y_property.propval }
+    set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
-  }
+  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -98,19 +92,13 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   var width : Int {
-    get {
-      return self.width_property.propval
-    }
-    set {
-      self.width_property.setProp (newValue)
-    }
+    get { return self.width_property.propval }
+    set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
-  }
+  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -121,19 +109,13 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   var height : Int {
-    get {
-      return self.height_property.propval
-    }
-    set {
-      self.height_property.setProp (newValue)
-    }
+    get { return self.height_property.propval }
+    set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
-  }
+  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -144,19 +126,13 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
+    get { return self.x_property.propval }
+    set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
+  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Transient property: filledBezierPath

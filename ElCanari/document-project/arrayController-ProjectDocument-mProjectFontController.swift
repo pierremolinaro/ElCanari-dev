@@ -35,7 +35,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_ProjectFont ()
+  let sortedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
@@ -68,7 +68,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ProjectFont? = nil
+  private var mModel : ReadWriteArrayOf_FontInProject? = nil
 
   //····················································································································
 
@@ -79,7 +79,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_ProjectFont) {
+  func bind_model (_ inModel:ReadWriteArrayOf_FontInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -117,7 +117,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_ProjectFont ()
+  let selectedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
@@ -125,7 +125,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  var selectedSet : Set <ProjectFont> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <FontInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -143,7 +143,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  func setSelection (_ inObjects : [ProjectFont]) {
+  func setSelection (_ inObjects : [FontInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -158,7 +158,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [ProjectFont] ()
+          var result = [FontInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -276,7 +276,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [ProjectFont : Int] ()
+      var objectDictionary = [FontInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -319,7 +319,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <ProjectFont> ()
+      var newSelectedObjectSet = Set <FontInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -398,14 +398,14 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    select
   //····················································································································
 
-  func select (object inObject: ProjectFont) {
+  func select (object inObject: FontInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <ProjectFont> ()
+          var newSelectedObjectSet = Set <FontInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -426,11 +426,11 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = ProjectFont (self.ebUndoManager)
+        let newObject = FontInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <ProjectFont> ()
+        var newSelectedObjectSet = Set <FontInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -457,7 +457,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ProjectFont : Int] ()
+          var sortedObjectDictionary = [FontInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -479,13 +479,13 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : ProjectFont? = nil
+          var newSelectedObject : FontInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ProjectFont : Int] ()
+          var objectDictionary = [FontInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -505,7 +505,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <ProjectFont> ()
+          var newSelectionSet = Set <FontInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -528,13 +528,13 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_ProjectFont
+  private let mSortedArray : TransientArrayOf_FontInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_ProjectFont) {
+        sortedArray : TransientArrayOf_FontInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -543,7 +543,7 @@ final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractPrope
 
   //····················································································································
 
-  private var mPrivateSet = Set<ProjectFont> () {
+  private var mPrivateSet = Set<FontInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -553,7 +553,7 @@ final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractPrope
 
   //····················································································································
 
-  var mSet : Set<ProjectFont> {
+  var mSet : Set<FontInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

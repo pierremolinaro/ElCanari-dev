@@ -40,19 +40,13 @@ class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   var mFileName : String {
-    get {
-      return self.mFileName_property.propval
-    }
-    set {
-      self.mFileName_property.setProp (newValue)
-    }
+    get { return self.mFileName_property.propval }
+    set { self.mFileName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileName_property_selection : EBSelection <String> {
-    return self.mFileName_property.prop
-  }
+  var mFileName_property_selection : EBSelection <String> { return self.mFileName_property.prop }
 
   //····················································································································
   //   Atomic property: mFileData
@@ -63,19 +57,13 @@ class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   var mFileData : Data {
-    get {
-      return self.mFileData_property.propval
-    }
-    set {
-      self.mFileData_property.setProp (newValue)
-    }
+    get { return self.mFileData_property.propval }
+    set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> {
-    return self.mFileData_property.prop
-  }
+  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Transient property: fileSize

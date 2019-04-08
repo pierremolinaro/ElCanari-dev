@@ -103,19 +103,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var selectedInspector : Int {
-    get {
-      return self.selectedInspector_property.propval
-    }
-    set {
-      self.selectedInspector_property.setProp (newValue)
-    }
+    get { return self.selectedInspector_property.propval }
+    set { self.selectedInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> {
-    return self.selectedInspector_property.prop
-  }
+  var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.prop }
 
   //····················································································································
   //   Atomic property: comments
@@ -126,19 +120,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var comments : String {
-    get {
-      return self.comments_property.propval
-    }
-    set {
-      self.comments_property.setProp (newValue)
-    }
+    get { return self.comments_property.propval }
+    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
-  }
+  var comments_property_selection : EBSelection <String> { return self.comments_property.prop }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -149,19 +137,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var horizontalFlip : Bool {
-    get {
-      return self.horizontalFlip_property.propval
-    }
-    set {
-      self.horizontalFlip_property.setProp (newValue)
-    }
+    get { return self.horizontalFlip_property.propval }
+    set { self.horizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> {
-    return self.horizontalFlip_property.prop
-  }
+  var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: verticalFlip
@@ -172,19 +154,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var verticalFlip : Bool {
-    get {
-      return self.verticalFlip_property.propval
-    }
-    set {
-      self.verticalFlip_property.setProp (newValue)
-    }
+    get { return self.verticalFlip_property.propval }
+    set { self.verticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> {
-    return self.verticalFlip_property.prop
-  }
+  var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -195,19 +171,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var gridStyle : GridStyle {
-    get {
-      return self.gridStyle_property.propval
-    }
-    set {
-      self.gridStyle_property.setProp (newValue)
-    }
+    get { return self.gridStyle_property.propval }
+    set { self.gridStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle> {
-    return self.gridStyle_property.prop
-  }
+  var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.prop }
 
   //····················································································································
   //   Atomic property: gridDisplay
@@ -218,19 +188,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var gridDisplay : Int {
-    get {
-      return self.gridDisplay_property.propval
-    }
-    set {
-      self.gridDisplay_property.setProp (newValue)
-    }
+    get { return self.gridDisplay_property.propval }
+    set { self.gridDisplay_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var gridDisplay_property_selection : EBSelection <Int> {
-    return self.gridDisplay_property.prop
-  }
+  var gridDisplay_property_selection : EBSelection <Int> { return self.gridDisplay_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -241,19 +205,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var zoom : Int {
-    get {
-      return self.zoom_property.propval
-    }
-    set {
-      self.zoom_property.setProp (newValue)
-    }
+    get { return self.zoom_property.propval }
+    set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> {
-    return self.zoom_property.prop
-  }
+  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: xPlacardUnit
@@ -264,19 +222,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var xPlacardUnit : Int {
-    get {
-      return self.xPlacardUnit_property.propval
-    }
-    set {
-      self.xPlacardUnit_property.setProp (newValue)
-    }
+    get { return self.xPlacardUnit_property.propval }
+    set { self.xPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int> {
-    return self.xPlacardUnit_property.prop
-  }
+  var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -287,19 +239,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var yPlacardUnit : Int {
-    get {
-      return self.yPlacardUnit_property.propval
-    }
-    set {
-      self.yPlacardUnit_property.setProp (newValue)
-    }
+    get { return self.yPlacardUnit_property.propval }
+    set { self.yPlacardUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int> {
-    return self.yPlacardUnit_property.prop
-  }
+  var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.prop }
 
   //····················································································································
   //   To many property: symbolObjects
@@ -310,7 +256,14 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
-      return self.symbolObjects_property.prop
+    return self.symbolObjects_property.prop
+  }
+
+  //····················································································································
+
+  var symbolObjects : [SymbolObject] {
+    get { return self.symbolObjects_property.propval }
+    set { self.symbolObjects_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -322,7 +275,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var symbolPins_property_selection : EBSelection < [SymbolPin] > {
-      return self.symbolPins_property.prop
+    return self.symbolPins_property.prop
+  }
+
+  //····················································································································
+
+  var symbolPins : [SymbolPin] {
+    get { return self.symbolPins_property.propval }
   }
 
   //····················································································································
@@ -334,19 +293,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   var selectedPageIndex : Int {
-    get {
-      return self.selectedPageIndex_property.propval
-    }
-    set {
-      self.selectedPageIndex_property.setProp (newValue)
-    }
+    get { return self.selectedPageIndex_property.propval }
+    set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
-  }
+  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Transient property: issues

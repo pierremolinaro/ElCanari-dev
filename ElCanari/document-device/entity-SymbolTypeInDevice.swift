@@ -75,7 +75,14 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
-      return self.mInstances_property.prop
+    return self.mInstances_property.prop
+  }
+
+  //····················································································································
+
+  var mInstances : [SymbolInstanceInDevice] {
+    get { return self.mInstances_property.propval }
+    set { self.mInstances_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -87,19 +94,13 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mTypeName : String {
-    get {
-      return self.mTypeName_property.propval
-    }
-    set {
-      self.mTypeName_property.setProp (newValue)
-    }
+    get { return self.mTypeName_property.propval }
+    set { self.mTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTypeName_property_selection : EBSelection <String> {
-    return self.mTypeName_property.prop
-  }
+  var mTypeName_property_selection : EBSelection <String> { return self.mTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -110,19 +111,13 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mVersion : Int {
-    get {
-      return self.mVersion_property.propval
-    }
-    set {
-      self.mVersion_property.setProp (newValue)
-    }
+    get { return self.mVersion_property.propval }
+    set { self.mVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mVersion_property_selection : EBSelection <Int> {
-    return self.mVersion_property.prop
-  }
+  var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.prop }
 
   //····················································································································
   //   Atomic property: mFileData
@@ -133,19 +128,13 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mFileData : Data {
-    get {
-      return self.mFileData_property.propval
-    }
-    set {
-      self.mFileData_property.setProp (newValue)
-    }
+    get { return self.mFileData_property.propval }
+    set { self.mFileData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data> {
-    return self.mFileData_property.prop
-  }
+  var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.prop }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -156,19 +145,13 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mStrokeBezierPath : NSBezierPath {
-    get {
-      return self.mStrokeBezierPath_property.propval
-    }
-    set {
-      self.mStrokeBezierPath_property.setProp (newValue)
-    }
+    get { return self.mStrokeBezierPath_property.propval }
+    set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mStrokeBezierPath_property.prop
-  }
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.prop }
 
   //····················································································································
   //   Atomic property: mFilledBezierPath
@@ -179,19 +162,13 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mFilledBezierPath : NSBezierPath {
-    get {
-      return self.mFilledBezierPath_property.propval
-    }
-    set {
-      self.mFilledBezierPath_property.setProp (newValue)
-    }
+    get { return self.mFilledBezierPath_property.propval }
+    set { self.mFilledBezierPath_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mFilledBezierPath_property.prop
-  }
+  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
 
   //····················································································································
   //   To many property: mPinTypes
@@ -202,7 +179,14 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   var mPinTypes_property_selection : EBSelection < [SymbolPinTypeInDevice] > {
-      return self.mPinTypes_property.prop
+    return self.mPinTypes_property.prop
+  }
+
+  //····················································································································
+
+  var mPinTypes : [SymbolPinTypeInDevice] {
+    get { return self.mPinTypes_property.propval }
+    set { self.mPinTypes_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -145,19 +145,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
+    get { return self.x_property.propval }
+    set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
+  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Atomic property: y
@@ -168,19 +162,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var y : Int {
-    get {
-      return self.y_property.propval
-    }
-    set {
-      self.y_property.setProp (newValue)
-    }
+    get { return self.y_property.propval }
+    set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
-  }
+  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: width
@@ -191,19 +179,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var width : Int {
-    get {
-      return self.width_property.propval
-    }
-    set {
-      self.width_property.setProp (newValue)
-    }
+    get { return self.width_property.propval }
+    set { self.width_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
-  }
+  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
 
   //····················································································································
   //   Atomic property: height
@@ -214,19 +196,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var height : Int {
-    get {
-      return self.height_property.propval
-    }
-    set {
-      self.height_property.setProp (newValue)
-    }
+    get { return self.height_property.propval }
+    set { self.height_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
-  }
+  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
 
   //····················································································································
   //   Atomic property: xUnit
@@ -237,19 +213,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var xUnit : Int {
-    get {
-      return self.xUnit_property.propval
-    }
-    set {
-      self.xUnit_property.setProp (newValue)
-    }
+    get { return self.xUnit_property.propval }
+    set { self.xUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xUnit_property_selection : EBSelection <Int> {
-    return self.xUnit_property.prop
-  }
+  var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yUnit
@@ -260,19 +230,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var yUnit : Int {
-    get {
-      return self.yUnit_property.propval
-    }
-    set {
-      self.yUnit_property.setProp (newValue)
-    }
+    get { return self.yUnit_property.propval }
+    set { self.yUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yUnit_property_selection : EBSelection <Int> {
-    return self.yUnit_property.prop
-  }
+  var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.prop }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -283,19 +247,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var widthUnit : Int {
-    get {
-      return self.widthUnit_property.propval
-    }
-    set {
-      self.widthUnit_property.setProp (newValue)
-    }
+    get { return self.widthUnit_property.propval }
+    set { self.widthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int> {
-    return self.widthUnit_property.prop
-  }
+  var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -306,19 +264,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var heightUnit : Int {
-    get {
-      return self.heightUnit_property.propval
-    }
-    set {
-      self.heightUnit_property.setProp (newValue)
-    }
+    get { return self.heightUnit_property.propval }
+    set { self.heightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int> {
-    return self.heightUnit_property.prop
-  }
+  var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoneName
@@ -329,19 +281,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var zoneName : String {
-    get {
-      return self.zoneName_property.propval
-    }
-    set {
-      self.zoneName_property.setProp (newValue)
-    }
+    get { return self.zoneName_property.propval }
+    set { self.zoneName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoneName_property_selection : EBSelection <String> {
-    return self.zoneName_property.prop
-  }
+  var zoneName_property_selection : EBSelection <String> { return self.zoneName_property.prop }
 
   //····················································································································
   //   Atomic property: xName
@@ -352,19 +298,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var xName : Int {
-    get {
-      return self.xName_property.propval
-    }
-    set {
-      self.xName_property.setProp (newValue)
-    }
+    get { return self.xName_property.propval }
+    set { self.xName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xName_property_selection : EBSelection <Int> {
-    return self.xName_property.prop
-  }
+  var xName_property_selection : EBSelection <Int> { return self.xName_property.prop }
 
   //····················································································································
   //   Atomic property: yName
@@ -375,19 +315,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var yName : Int {
-    get {
-      return self.yName_property.propval
-    }
-    set {
-      self.yName_property.setProp (newValue)
-    }
+    get { return self.yName_property.propval }
+    set { self.yName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yName_property_selection : EBSelection <Int> {
-    return self.yName_property.prop
-  }
+  var yName_property_selection : EBSelection <Int> { return self.yName_property.prop }
 
   //····················································································································
   //   Atomic property: xNameUnit
@@ -398,19 +332,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var xNameUnit : Int {
-    get {
-      return self.xNameUnit_property.propval
-    }
-    set {
-      self.xNameUnit_property.setProp (newValue)
-    }
+    get { return self.xNameUnit_property.propval }
+    set { self.xNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xNameUnit_property_selection : EBSelection <Int> {
-    return self.xNameUnit_property.prop
-  }
+  var xNameUnit_property_selection : EBSelection <Int> { return self.xNameUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yNameUnit
@@ -421,19 +349,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var yNameUnit : Int {
-    get {
-      return self.yNameUnit_property.propval
-    }
-    set {
-      self.yNameUnit_property.setProp (newValue)
-    }
+    get { return self.yNameUnit_property.propval }
+    set { self.yNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yNameUnit_property_selection : EBSelection <Int> {
-    return self.yNameUnit_property.prop
-  }
+  var yNameUnit_property_selection : EBSelection <Int> { return self.yNameUnit_property.prop }
 
   //····················································································································
   //   Atomic property: zoneNumbering
@@ -444,19 +366,13 @@ class PackageZone : PackageObject,
   //····················································································································
 
   var zoneNumbering : PadNumbering {
-    get {
-      return self.zoneNumbering_property.propval
-    }
-    set {
-      self.zoneNumbering_property.setProp (newValue)
-    }
+    get { return self.zoneNumbering_property.propval }
+    set { self.zoneNumbering_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoneNumbering_property_selection : EBSelection <PadNumbering> {
-    return self.zoneNumbering_property.prop
-  }
+  var zoneNumbering_property_selection : EBSelection <PadNumbering> { return self.zoneNumbering_property.prop }
 
   //····················································································································
   //   Transient property: rect

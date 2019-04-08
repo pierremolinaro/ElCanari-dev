@@ -6,129 +6,52 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_y1 : class {
-  var y1 : Int { get }
+protocol ProjectDevicePackage_mPackageName : class {
+  var mPackageName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentEntity_x2 : class {
-  var x2 : Int { get }
-}
-
+//    Entity: ProjectDevicePackage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_y2 : class {
-  var y2 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentEntity_width : class {
-  var width : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentEntity_x1 : class {
-  var x1 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SegmentEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class SegmentEntity : EBManagedObject,
-         SegmentEntity_y1,
-         SegmentEntity_x2,
-         SegmentEntity_y2,
-         SegmentEntity_width,
-         SegmentEntity_x1 {
+class ProjectDevicePackage : EBManagedObject,
+         ProjectDevicePackage_mPackageName {
 
   //····················································································································
-  //   Atomic property: y1
+  //   Atomic property: mPackageName
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (defaultValue: 0)
+  var mPackageName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var y1 : Int {
-    get { return self.y1_property.propval }
-    set { self.y1_property.setProp (newValue) }
+  var mPackageName : String {
+    get { return self.mPackageName_property.propval }
+    set { self.mPackageName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int> { return self.y1_property.prop }
+  var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
 
   //····················································································································
-  //   Atomic property: x2
+  //   To many property: mMasterPads
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (defaultValue: 0)
+  var mMasterPads_property = StoredArrayOf_ProjectDeviceMasterPad ()
 
   //····················································································································
 
-  var x2 : Int {
-    get { return self.x2_property.propval }
-    set { self.x2_property.setProp (newValue) }
+  var mMasterPads_property_selection : EBSelection < [ProjectDeviceMasterPad] > {
+    return self.mMasterPads_property.prop
   }
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int> { return self.x2_property.prop }
-
-  //····················································································································
-  //   Atomic property: y2
-  //····················································································································
-
-  var y2_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var y2 : Int {
-    get { return self.y2_property.propval }
-    set { self.y2_property.setProp (newValue) }
+  var mMasterPads : [ProjectDeviceMasterPad] {
+    get { return self.mMasterPads_property.propval }
+    set { self.mMasterPads_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  var y2_property_selection : EBSelection <Int> { return self.y2_property.prop }
-
-  //····················································································································
-  //   Atomic property: width
-  //····················································································································
-
-  var width_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var width : Int {
-    get { return self.width_property.propval }
-    set { self.width_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
-
-  //····················································································································
-  //   Atomic property: x1
-  //····················································································································
-
-  var x1_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var x1 : Int {
-    get { return self.x1_property.propval }
-    set { self.x1_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var x1_property_selection : EBSelection <Int> { return self.x1_property.prop }
 
   //····················································································································
   //    init
@@ -136,16 +59,10 @@ class SegmentEntity : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: y1
-    self.y1_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x2
-    self.x2_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: y2
-    self.y2_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: width
-    self.width_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x1
-    self.x1_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mMasterPads (no option)
+    self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -170,47 +87,22 @@ class SegmentEntity : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "y1",
-      idx:self.y1_property.ebObjectIndex,
+      "mPackageName",
+      idx:self.mPackageName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1",
-      idx:self.x1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1_property.mObserverExplorer,
-      valueExplorer:&self.x1_property.mValueExplorer
+      observerExplorer:&self.mPackageName_property.mObserverExplorer,
+      valueExplorer:&self.mPackageName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mMasterPads",
+      idx:mMasterPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mMasterPads_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -220,21 +112,11 @@ class SegmentEntity : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: y1
-    self.y1_property.mObserverExplorer = nil
-    self.y1_property.mValueExplorer = nil
-  //--- Atomic property: x2
-    self.x2_property.mObserverExplorer = nil
-    self.x2_property.mValueExplorer = nil
-  //--- Atomic property: y2
-    self.y2_property.mObserverExplorer = nil
-    self.y2_property.mValueExplorer = nil
-  //--- Atomic property: width
-    self.width_property.mObserverExplorer = nil
-    self.width_property.mValueExplorer = nil
-  //--- Atomic property: x1
-    self.x1_property.mObserverExplorer = nil
-    self.x1_property.mValueExplorer = nil
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.mObserverExplorer = nil
+    self.mPackageName_property.mValueExplorer = nil
+  //--- To many property: mMasterPads
+    self.mMasterPads_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -244,6 +126,7 @@ class SegmentEntity : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mMasterPads_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -263,16 +146,14 @@ class SegmentEntity : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y1
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
-  //--- Atomic property: x2
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
-  //--- Atomic property: y2
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
-  //--- Atomic property: x1
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
+  //--- To many property: mMasterPads
+    self.store (
+      managedObjectArray: self.mMasterPads_property.propval,
+      relationshipName: "mMasterPads",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -282,6 +163,12 @@ class SegmentEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mMasterPads
+    self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mMasterPads",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ProjectDeviceMasterPad])
   }
 
   //····················································································································
@@ -290,16 +177,8 @@ class SegmentEntity : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: y1
-    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
-  //--- Atomic property: x2
-    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
-  //--- Atomic property: y2
-    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
-  //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
-  //--- Atomic property: x1
-    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.readFrom (dictionary: inDictionary, forKey:"mPackageName")
   }
 
   //····················································································································
@@ -308,6 +187,10 @@ class SegmentEntity : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mMasterPads
+    for managedObject in self.mMasterPads_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -316,6 +199,10 @@ class SegmentEntity : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mMasterPads
+    for managedObject in self.mMasterPads_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -323,292 +210,64 @@ class SegmentEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SegmentEntity
+//    ReadOnlyArrayOf_ProjectDevicePackage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
+class ReadOnlyArrayOf_ProjectDevicePackage : ReadOnlyAbstractArrayProperty <ProjectDevicePackage> {
 
   //····················································································································
-  //   Observers of 'y1' stored property
+  //   Observers of 'mPackageName' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private var mObserversOf_mPackageName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_y1.insert (inObserver)
+    self.mObserversOf_mPackageName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1_property.addEBObserver (inObserver)
+        managedObject.mPackageName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_y1.remove (inObserver)
+    self.mObserversOf_mPackageName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1_property.removeEBObserver (inObserver)
+        managedObject.mPackageName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
+  final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<ProjectDevicePackage>) {
     for managedObject in inSet {
-      self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
+      self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
+        managedObject.mPackageName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<ProjectDevicePackage>) {
+    self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y1_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'x2' stored property
-  //····················································································································
-
-  private var mObserversOf_x2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x2.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x2.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'y2' stored property
-  //····················································································································
-
-  private var mObserversOf_y2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y2.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y2.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'width' stored property
-  //····················································································································
-
-  private var mObserversOf_width = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_width.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_width.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.width_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'x1' stored property
-  //····················································································································
-
-  private var mObserversOf_x1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x1.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x1.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1_property.removeEBObserver (observer)
+        managedObject.mPackageName_property.removeEBObserver (observer)
       }
     })
   }
@@ -618,32 +277,32 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SegmentEntity
+//    TransientArrayOf_ProjectDevicePackage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
+class TransientArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePackage {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [SegmentEntity] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDevicePackage] > > = nil
 
   //····················································································································
 
-  override var propset : Set <SegmentEntity> {
+  override var propset : Set <ProjectDevicePackage> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [SegmentEntity] > {
+  override var prop : EBSelection < [ProjectDevicePackage] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [SegmentEntity] {
+  override var propval : [ProjectDevicePackage] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -665,41 +324,33 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  private var mSet = Set <SegmentEntity> ()
+  private var mSet = Set <ProjectDevicePackage> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [SegmentEntity] >? = nil
+  private var mCachedValue : EBSelection < [ProjectDevicePackage] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <SegmentEntity>
+      let newSet : Set <ProjectDevicePackage>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <SegmentEntity> ()
+        newSet = Set <ProjectDevicePackage> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_y1_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_x2_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_y2_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_y1_toElementsOfSet (addedSet)
-      self.addEBObserversOf_x2_toElementsOfSet (addedSet)
-      self.addEBObserversOf_y2_toElementsOfSet (addedSet)
-      self.addEBObserversOf_width_toElementsOfSet (addedSet)
-      self.addEBObserversOf_x1_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mPackageName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
     //--- Update object set
       self.mSet = newSet
@@ -728,28 +379,28 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SegmentEntity
+//    To many relationship read write: ProjectDevicePackage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
+class ReadWriteArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePackage {
 
   //····················································································································
  
-  func setProp (_ value :  [SegmentEntity]) { } // Abstract method
+  func setProp (_ value :  [ProjectDevicePackage]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SegmentEntity
+//    To many relationship: ProjectDevicePackage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol {
+final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDevicePackage, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDevicePackage?) -> Void > = nil
 
   //····················································································································
 
@@ -796,9 +447,9 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SegmentEntity] ()
+      var objectArray = [ProjectDevicePackage] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentEntity") as? SegmentEntity {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDevicePackage") as? ProjectDevicePackage {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -809,8 +460,8 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
 
  //····················································································································
 
-  private var mSet = Set <SegmentEntity> ()
-  private var mValue = [SegmentEntity] () {
+  private var mSet = Set <ProjectDevicePackage> ()
+  private var mValue = [ProjectDevicePackage] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -828,35 +479,19 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.y1_property.mSetterDelegate = nil
-            managedObject.x2_property.mSetterDelegate = nil
-            managedObject.y2_property.mSetterDelegate = nil
-            managedObject.width_property.mSetterDelegate = nil
-            managedObject.x1_property.mSetterDelegate = nil
+            managedObject.mPackageName_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : SegmentEntity in addedObjectSet {
+          for managedObject : ProjectDevicePackage in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mPackageName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -884,29 +519,29 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < [SegmentEntity] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ProjectDevicePackage] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SegmentEntity]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ProjectDevicePackage]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [SegmentEntity] { return self.mValue }
+  override var propval : [ProjectDevicePackage] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <SegmentEntity> { return self.mSet }
+  override var propset : Set <ProjectDevicePackage> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [SegmentEntity]) {
+  @objc func performUndo (_ oldValue : [ProjectDevicePackage]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SegmentEntity) {
+  func remove (_ object : ProjectDevicePackage) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -917,7 +552,7 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
   
   //····················································································································
 
-  func add (_ object : SegmentEntity) {
+  func add (_ object : ProjectDevicePackage) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

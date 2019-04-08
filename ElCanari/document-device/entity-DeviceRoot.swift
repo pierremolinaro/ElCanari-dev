@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_selectedPageIndex : class {
-  var selectedPageIndex : Int { get }
+protocol DeviceRoot_mSelectedPageIndex : class {
+  var mSelectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -159,7 +159,7 @@ protocol DeviceRoot_issues : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceRoot : EBGraphicManagedObject,
-         DeviceRoot_selectedPageIndex,
+         DeviceRoot_mSelectedPageIndex,
          DeviceRoot_mTitle,
          DeviceRoot_mPrefix,
          DeviceRoot_mComments,
@@ -186,27 +186,21 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_issues {
 
   //····················································································································
-  //   Atomic property: selectedPageIndex
+  //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var selectedPageIndex : Int {
-    get {
-      return self.selectedPageIndex_property.propval
-    }
-    set {
-      self.selectedPageIndex_property.setProp (newValue)
-    }
+  var mSelectedPageIndex : Int {
+    get { return self.mSelectedPageIndex_property.propval }
+    set { self.mSelectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
-  }
+  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: mTitle
@@ -217,19 +211,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mTitle : String {
-    get {
-      return self.mTitle_property.propval
-    }
-    set {
-      self.mTitle_property.setProp (newValue)
-    }
+    get { return self.mTitle_property.propval }
+    set { self.mTitle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTitle_property_selection : EBSelection <String> {
-    return self.mTitle_property.prop
-  }
+  var mTitle_property_selection : EBSelection <String> { return self.mTitle_property.prop }
 
   //····················································································································
   //   Atomic property: mPrefix
@@ -240,19 +228,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPrefix : String {
-    get {
-      return self.mPrefix_property.propval
-    }
-    set {
-      self.mPrefix_property.setProp (newValue)
-    }
+    get { return self.mPrefix_property.propval }
+    set { self.mPrefix_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPrefix_property_selection : EBSelection <String> {
-    return self.mPrefix_property.prop
-  }
+  var mPrefix_property_selection : EBSelection <String> { return self.mPrefix_property.prop }
 
   //····················································································································
   //   Atomic property: mComments
@@ -263,19 +245,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mComments : String {
-    get {
-      return self.mComments_property.propval
-    }
-    set {
-      self.mComments_property.setProp (newValue)
-    }
+    get { return self.mComments_property.propval }
+    set { self.mComments_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComments_property_selection : EBSelection <String> {
-    return self.mComments_property.prop
-  }
+  var mComments_property_selection : EBSelection <String> { return self.mComments_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayZoom
@@ -286,19 +262,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPackageDisplayZoom : Int {
-    get {
-      return self.mPackageDisplayZoom_property.propval
-    }
-    set {
-      self.mPackageDisplayZoom_property.setProp (newValue)
-    }
+    get { return self.mPackageDisplayZoom_property.propval }
+    set { self.mPackageDisplayZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayZoom_property_selection : EBSelection <Int> {
-    return self.mPackageDisplayZoom_property.prop
-  }
+  var mPackageDisplayZoom_property_selection : EBSelection <Int> { return self.mPackageDisplayZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayHorizontalFlip
@@ -309,19 +279,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPackageDisplayHorizontalFlip : Bool {
-    get {
-      return self.mPackageDisplayHorizontalFlip_property.propval
-    }
-    set {
-      self.mPackageDisplayHorizontalFlip_property.setProp (newValue)
-    }
+    get { return self.mPackageDisplayHorizontalFlip_property.propval }
+    set { self.mPackageDisplayHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool> {
-    return self.mPackageDisplayHorizontalFlip_property.prop
-  }
+  var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mPackageDisplayVerticalFlip
@@ -332,19 +296,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPackageDisplayVerticalFlip : Bool {
-    get {
-      return self.mPackageDisplayVerticalFlip_property.propval
-    }
-    set {
-      self.mPackageDisplayVerticalFlip_property.setProp (newValue)
-    }
+    get { return self.mPackageDisplayVerticalFlip_property.propval }
+    set { self.mPackageDisplayVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool> {
-    return self.mPackageDisplayVerticalFlip_property.prop
-  }
+  var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mPackageDisplayVerticalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackages
@@ -355,19 +313,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mShowPackages : Bool {
-    get {
-      return self.mShowPackages_property.propval
-    }
-    set {
-      self.mShowPackages_property.setProp (newValue)
-    }
+    get { return self.mShowPackages_property.propval }
+    set { self.mShowPackages_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackages_property_selection : EBSelection <Bool> {
-    return self.mShowPackages_property.prop
-  }
+  var mShowPackages_property_selection : EBSelection <Bool> { return self.mShowPackages_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackagePadNumbers
@@ -378,19 +330,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mShowPackagePadNumbers : Bool {
-    get {
-      return self.mShowPackagePadNumbers_property.propval
-    }
-    set {
-      self.mShowPackagePadNumbers_property.setProp (newValue)
-    }
+    get { return self.mShowPackagePadNumbers_property.propval }
+    set { self.mShowPackagePadNumbers_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackagePadNumbers_property_selection : EBSelection <Bool> {
-    return self.mShowPackagePadNumbers_property.prop
-  }
+  var mShowPackagePadNumbers_property_selection : EBSelection <Bool> { return self.mShowPackagePadNumbers_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackageFrontPads
@@ -401,19 +347,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mShowPackageFrontPads : Bool {
-    get {
-      return self.mShowPackageFrontPads_property.propval
-    }
-    set {
-      self.mShowPackageFrontPads_property.setProp (newValue)
-    }
+    get { return self.mShowPackageFrontPads_property.propval }
+    set { self.mShowPackageFrontPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackageFrontPads_property_selection : EBSelection <Bool> {
-    return self.mShowPackageFrontPads_property.prop
-  }
+  var mShowPackageFrontPads_property_selection : EBSelection <Bool> { return self.mShowPackageFrontPads_property.prop }
 
   //····················································································································
   //   Atomic property: mShowPackageBackPads
@@ -424,19 +364,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mShowPackageBackPads : Bool {
-    get {
-      return self.mShowPackageBackPads_property.propval
-    }
-    set {
-      self.mShowPackageBackPads_property.setProp (newValue)
-    }
+    get { return self.mShowPackageBackPads_property.propval }
+    set { self.mShowPackageBackPads_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShowPackageBackPads_property_selection : EBSelection <Bool> {
-    return self.mShowPackageBackPads_property.prop
-  }
+  var mShowPackageBackPads_property_selection : EBSelection <Bool> { return self.mShowPackageBackPads_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayZoom
@@ -447,19 +381,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mSymbolDisplayZoom : Int {
-    get {
-      return self.mSymbolDisplayZoom_property.propval
-    }
-    set {
-      self.mSymbolDisplayZoom_property.setProp (newValue)
-    }
+    get { return self.mSymbolDisplayZoom_property.propval }
+    set { self.mSymbolDisplayZoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayZoom_property_selection : EBSelection <Int> {
-    return self.mSymbolDisplayZoom_property.prop
-  }
+  var mSymbolDisplayZoom_property_selection : EBSelection <Int> { return self.mSymbolDisplayZoom_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayHorizontalFlip
@@ -470,19 +398,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mSymbolDisplayHorizontalFlip : Bool {
-    get {
-      return self.mSymbolDisplayHorizontalFlip_property.propval
-    }
-    set {
-      self.mSymbolDisplayHorizontalFlip_property.setProp (newValue)
-    }
+    get { return self.mSymbolDisplayHorizontalFlip_property.propval }
+    set { self.mSymbolDisplayHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool> {
-    return self.mSymbolDisplayHorizontalFlip_property.prop
-  }
+  var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayHorizontalFlip_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolDisplayVerticalFlip
@@ -493,19 +415,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mSymbolDisplayVerticalFlip : Bool {
-    get {
-      return self.mSymbolDisplayVerticalFlip_property.propval
-    }
-    set {
-      self.mSymbolDisplayVerticalFlip_property.setProp (newValue)
-    }
+    get { return self.mSymbolDisplayVerticalFlip_property.propval }
+    set { self.mSymbolDisplayVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool> {
-    return self.mSymbolDisplayVerticalFlip_property.prop
-  }
+  var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool> { return self.mSymbolDisplayVerticalFlip_property.prop }
 
   //····················································································································
   //   To many property: mDocs
@@ -516,7 +432,14 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
-      return self.mDocs_property.prop
+    return self.mDocs_property.prop
+  }
+
+  //····················································································································
+
+  var mDocs : [DeviceDocumentation] {
+    get { return self.mDocs_property.propval }
+    set { self.mDocs_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -528,7 +451,14 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mSymbolInstances_property_selection : EBSelection < [SymbolInstanceInDevice] > {
-      return self.mSymbolInstances_property.prop
+    return self.mSymbolInstances_property.prop
+  }
+
+  //····················································································································
+
+  var mSymbolInstances : [SymbolInstanceInDevice] {
+    get { return self.mSymbolInstances_property.propval }
+    set { self.mSymbolInstances_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -540,7 +470,14 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPackages_property_selection : EBSelection < [PackageInDevice] > {
-      return self.mPackages_property.prop
+    return self.mPackages_property.prop
+  }
+
+  //····················································································································
+
+  var mPackages : [PackageInDevice] {
+    get { return self.mPackages_property.propval }
+    set { self.mPackages_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -552,7 +489,14 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mSymbolTypes_property_selection : EBSelection < [SymbolTypeInDevice] > {
-      return self.mSymbolTypes_property.prop
+    return self.mSymbolTypes_property.prop
+  }
+
+  //····················································································································
+
+  var mSymbolTypes : [SymbolTypeInDevice] {
+    get { return self.mSymbolTypes_property.propval }
+    set { self.mSymbolTypes_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -564,19 +508,13 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mImageData : Data {
-    get {
-      return self.mImageData_property.propval
-    }
-    set {
-      self.mImageData_property.setProp (newValue)
-    }
+    get { return self.mImageData_property.propval }
+    set { self.mImageData_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mImageData_property_selection : EBSelection <Data> {
-    return self.mImageData_property.prop
-  }
+  var mImageData_property_selection : EBSelection <Data> { return self.mImageData_property.prop }
 
   //····················································································································
   //   To many property: mPadProxies
@@ -587,7 +525,14 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   var mPadProxies_property_selection : EBSelection < [PadProxyInDevice] > {
-      return self.mPadProxies_property.prop
+    return self.mPadProxies_property.prop
+  }
+
+  //····················································································································
+
+  var mPadProxies : [PadProxyInDevice] {
+    get { return self.mPadProxies_property.propval }
+    set { self.mPadProxies_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -826,8 +771,8 @@ class DeviceRoot : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSelectedPageIndex
+    self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mTitle
     self.mTitle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPrefix
@@ -1207,12 +1152,12 @@ class DeviceRoot : EBGraphicManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx:self.selectedPageIndex_property.ebObjectIndex,
+      "mSelectedPageIndex",
+      idx:self.mSelectedPageIndex_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.mSelectedPageIndex_property.mObserverExplorer,
+      valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mTitle",
@@ -1452,9 +1397,9 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.mObserverExplorer = nil
-    self.selectedPageIndex_property.mValueExplorer = nil
+  //--- Atomic property: mSelectedPageIndex
+    self.mSelectedPageIndex_property.mObserverExplorer = nil
+    self.mSelectedPageIndex_property.mValueExplorer = nil
   //--- Atomic property: mTitle
     self.mTitle_property.mObserverExplorer = nil
     self.mTitle_property.mValueExplorer = nil
@@ -1540,8 +1485,8 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: mSelectedPageIndex
+    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.storeIn (dictionary: ioDictionary, forKey:"mTitle")
   //--- Atomic property: mPrefix
@@ -1647,8 +1592,8 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: mSelectedPageIndex
+    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mTitle
     self.mTitle_property.readFrom (dictionary: inDictionary, forKey:"mTitle")
   //--- Atomic property: mPrefix
@@ -1774,58 +1719,58 @@ class DeviceRoot : EBGraphicManagedObject,
 class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
-  //   Observers of 'selectedPageIndex' stored property
+  //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.insert (inObserver)
+    self.mObserversOf_mSelectedPageIndex.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.remove (inObserver)
+    self.mObserversOf_mSelectedPageIndex.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.mSelectedPageIndex_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
-        managedObject.selectedPageIndex_property.addEBObserver (observer)
+      self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+        managedObject.mSelectedPageIndex_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedPageIndex_property.removeEBObserver (observer)
+        managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
       }
     })
   }
@@ -3261,7 +3206,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mTitle_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mComments_fromElementsOfSet (removedSet)
@@ -3290,7 +3235,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
       self.addEBObserversOf_mTitle_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPrefix_toElementsOfSet (addedSet)
       self.addEBObserversOf_mComments_toElementsOfSet (addedSet)
@@ -3443,7 +3388,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.selectedPageIndex_property.mSetterDelegate = nil
+            managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
             managedObject.mTitle_property.mSetterDelegate = nil
             managedObject.mPrefix_property.mSetterDelegate = nil
             managedObject.mComments_property.mSetterDelegate = nil
@@ -3459,7 +3404,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = nil
             managedObject.mImageData_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mComments_fromElementsOfSet (removedObjectSet)
@@ -3491,7 +3436,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           for managedObject : DeviceRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mComments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -3507,7 +3452,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mComments_toElementsOfSet (addedObjectSet)

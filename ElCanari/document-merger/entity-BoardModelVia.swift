@@ -40,19 +40,13 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
 
   var y : Int {
-    get {
-      return self.y_property.propval
-    }
-    set {
-      self.y_property.setProp (newValue)
-    }
+    get { return self.y_property.propval }
+    set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
-  }
+  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: padDiameter
@@ -63,19 +57,13 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
 
   var padDiameter : Int {
-    get {
-      return self.padDiameter_property.propval
-    }
-    set {
-      self.padDiameter_property.setProp (newValue)
-    }
+    get { return self.padDiameter_property.propval }
+    set { self.padDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var padDiameter_property_selection : EBSelection <Int> {
-    return self.padDiameter_property.prop
-  }
+  var padDiameter_property_selection : EBSelection <Int> { return self.padDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: x
@@ -86,19 +74,13 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
 
   var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
+    get { return self.x_property.propval }
+    set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
+  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //    init

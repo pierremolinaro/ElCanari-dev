@@ -2,8 +2,14 @@ digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mDevices>mDevices|<mFonts>mFonts|Int mSelectedPageIndex"] ;
-  ProjectFont[label="<ProjectFont>ProjectFont|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
-  ProjectDevice[label="<ProjectDevice>ProjectDevice|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion"] ;
-  ProjectRoot:mDevices -> ProjectDevice:ProjectDevice [dir=both arrowtail=none arrowhead=vee] ;
-  ProjectRoot:mFonts -> ProjectFont:ProjectFont [dir=both arrowtail=none arrowhead=vee] ;
+  FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
+  DeviceInProject[label="<DeviceInProject>DeviceInProject|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages"] ;
+  DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>mMasterPads|String mPackageName"] ;
+  DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
+  DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
+  ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
+  ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
+  DevicePackageInProject:mMasterPads -> DeviceMasterPadInProject:DeviceMasterPadInProject [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceMasterPadInProject:mSlavePads -> DeviceSlavePadInProject:DeviceSlavePadInProject [dir=both arrowtail=none arrowhead=vee] ;
 }

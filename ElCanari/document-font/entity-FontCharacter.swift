@@ -75,19 +75,13 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   var codePoint : Int {
-    get {
-      return self.codePoint_property.propval
-    }
-    set {
-      self.codePoint_property.setProp (newValue)
-    }
+    get { return self.codePoint_property.propval }
+    set { self.codePoint_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var codePoint_property_selection : EBSelection <Int> {
-    return self.codePoint_property.prop
-  }
+  var codePoint_property_selection : EBSelection <Int> { return self.codePoint_property.prop }
 
   //····················································································································
   //   Atomic property: advance
@@ -98,19 +92,13 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   var advance : Int {
-    get {
-      return self.advance_property.propval
-    }
-    set {
-      self.advance_property.setProp (newValue)
-    }
+    get { return self.advance_property.propval }
+    set { self.advance_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var advance_property_selection : EBSelection <Int> {
-    return self.advance_property.prop
-  }
+  var advance_property_selection : EBSelection <Int> { return self.advance_property.prop }
 
   //····················································································································
   //   Atomic property: mWarnsWhenNoSegment
@@ -121,19 +109,13 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   var mWarnsWhenNoSegment : Bool {
-    get {
-      return self.mWarnsWhenNoSegment_property.propval
-    }
-    set {
-      self.mWarnsWhenNoSegment_property.setProp (newValue)
-    }
+    get { return self.mWarnsWhenNoSegment_property.propval }
+    set { self.mWarnsWhenNoSegment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenNoSegment_property.prop
-  }
+  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> { return self.mWarnsWhenNoSegment_property.prop }
 
   //····················································································································
   //   Atomic property: mWarnsWhenAdvanceIsZero
@@ -144,19 +126,13 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   var mWarnsWhenAdvanceIsZero : Bool {
-    get {
-      return self.mWarnsWhenAdvanceIsZero_property.propval
-    }
-    set {
-      self.mWarnsWhenAdvanceIsZero_property.setProp (newValue)
-    }
+    get { return self.mWarnsWhenAdvanceIsZero_property.propval }
+    set { self.mWarnsWhenAdvanceIsZero_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenAdvanceIsZero_property.prop
-  }
+  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> { return self.mWarnsWhenAdvanceIsZero_property.prop }
 
   //····················································································································
   //   To many property: segments
@@ -167,7 +143,14 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
-      return self.segments_property.prop
+    return self.segments_property.prop
+  }
+
+  //····················································································································
+
+  var segments : [SegmentForFontCharacter] {
+    get { return self.segments_property.propval }
+    set { self.segments_property.setProp (newValue) }
   }
 
   //····················································································································

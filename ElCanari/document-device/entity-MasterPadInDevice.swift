@@ -96,19 +96,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mCenterX : Int {
-    get {
-      return self.mCenterX_property.propval
-    }
-    set {
-      self.mCenterX_property.setProp (newValue)
-    }
+    get { return self.mCenterX_property.propval }
+    set { self.mCenterX_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterX_property_selection : EBSelection <Int> {
-    return self.mCenterX_property.prop
-  }
+  var mCenterX_property_selection : EBSelection <Int> { return self.mCenterX_property.prop }
 
   //····················································································································
   //   Atomic property: mCenterY
@@ -119,19 +113,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mCenterY : Int {
-    get {
-      return self.mCenterY_property.propval
-    }
-    set {
-      self.mCenterY_property.setProp (newValue)
-    }
+    get { return self.mCenterY_property.propval }
+    set { self.mCenterY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mCenterY_property_selection : EBSelection <Int> {
-    return self.mCenterY_property.prop
-  }
+  var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
 
   //····················································································································
   //   Atomic property: mWidth
@@ -142,19 +130,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mWidth : Int {
-    get {
-      return self.mWidth_property.propval
-    }
-    set {
-      self.mWidth_property.setProp (newValue)
-    }
+    get { return self.mWidth_property.propval }
+    set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mWidth_property_selection : EBSelection <Int> {
-    return self.mWidth_property.prop
-  }
+  var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.prop }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -165,19 +147,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mHeight : Int {
-    get {
-      return self.mHeight_property.propval
-    }
-    set {
-      self.mHeight_property.setProp (newValue)
-    }
+    get { return self.mHeight_property.propval }
+    set { self.mHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHeight_property_selection : EBSelection <Int> {
-    return self.mHeight_property.prop
-  }
+  var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.prop }
 
   //····················································································································
   //   Atomic property: mHoleDiameter
@@ -188,19 +164,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mHoleDiameter : Int {
-    get {
-      return self.mHoleDiameter_property.propval
-    }
-    set {
-      self.mHoleDiameter_property.setProp (newValue)
-    }
+    get { return self.mHoleDiameter_property.propval }
+    set { self.mHoleDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mHoleDiameter_property_selection : EBSelection <Int> {
-    return self.mHoleDiameter_property.prop
-  }
+  var mHoleDiameter_property_selection : EBSelection <Int> { return self.mHoleDiameter_property.prop }
 
   //····················································································································
   //   Atomic property: mShape
@@ -211,19 +181,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mShape : PadShape {
-    get {
-      return self.mShape_property.propval
-    }
-    set {
-      self.mShape_property.setProp (newValue)
-    }
+    get { return self.mShape_property.propval }
+    set { self.mShape_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mShape_property_selection : EBSelection <PadShape> {
-    return self.mShape_property.prop
-  }
+  var mShape_property_selection : EBSelection <PadShape> { return self.mShape_property.prop }
 
   //····················································································································
   //   Atomic property: mStyle
@@ -234,19 +198,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mStyle : PadStyle {
-    get {
-      return self.mStyle_property.propval
-    }
-    set {
-      self.mStyle_property.setProp (newValue)
-    }
+    get { return self.mStyle_property.propval }
+    set { self.mStyle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mStyle_property_selection : EBSelection <PadStyle> {
-    return self.mStyle_property.prop
-  }
+  var mStyle_property_selection : EBSelection <PadStyle> { return self.mStyle_property.prop }
 
   //····················································································································
   //   Atomic property: mName
@@ -257,19 +215,13 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mName : String {
-    get {
-      return self.mName_property.propval
-    }
-    set {
-      self.mName_property.setProp (newValue)
-    }
+    get { return self.mName_property.propval }
+    set { self.mName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mName_property_selection : EBSelection <String> {
-    return self.mName_property.prop
-  }
+  var mName_property_selection : EBSelection <String> { return self.mName_property.prop }
 
   //····················································································································
   //   To many property: mSlavePads
@@ -280,7 +232,14 @@ class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   var mSlavePads_property_selection : EBSelection < [SlavePadInDevice] > {
-      return self.mSlavePads_property.prop
+    return self.mSlavePads_property.prop
+  }
+
+  //····················································································································
+
+  var mSlavePads : [SlavePadInDevice] {
+    get { return self.mSlavePads_property.propval }
+    set { self.mSlavePads_property.setProp (newValue) }
   }
 
   //····················································································································

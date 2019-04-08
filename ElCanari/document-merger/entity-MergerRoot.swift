@@ -201,7 +201,14 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardModels_property_selection : EBSelection < [BoardModel] > {
-      return self.boardModels_property.prop
+    return self.boardModels_property.prop
+  }
+
+  //····················································································································
+
+  var boardModels : [BoardModel] {
+    get { return self.boardModels_property.propval }
+    set { self.boardModels_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -213,7 +220,14 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardInstances_property_selection : EBSelection < [MergerBoardInstance] > {
-      return self.boardInstances_property.prop
+    return self.boardInstances_property.prop
+  }
+
+  //····················································································································
+
+  var boardInstances : [MergerBoardInstance] {
+    get { return self.boardInstances_property.propval }
+    set { self.boardInstances_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -225,19 +239,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var selectedPageIndex : Int {
-    get {
-      return self.selectedPageIndex_property.propval
-    }
-    set {
-      self.selectedPageIndex_property.setProp (newValue)
-    }
+    get { return self.selectedPageIndex_property.propval }
+    set { self.selectedPageIndex_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
-  }
+  var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.prop }
 
   //····················································································································
   //   Atomic property: zoom
@@ -248,19 +256,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var zoom : Int {
-    get {
-      return self.zoom_property.propval
-    }
-    set {
-      self.zoom_property.setProp (newValue)
-    }
+    get { return self.zoom_property.propval }
+    set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> {
-    return self.zoom_property.prop
-  }
+  var zoom_property_selection : EBSelection <Int> { return self.zoom_property.prop }
 
   //····················································································································
   //   Atomic property: automaticBoardSize
@@ -271,19 +273,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var automaticBoardSize : Bool {
-    get {
-      return self.automaticBoardSize_property.propval
-    }
-    set {
-      self.automaticBoardSize_property.setProp (newValue)
-    }
+    get { return self.automaticBoardSize_property.propval }
+    set { self.automaticBoardSize_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var automaticBoardSize_property_selection : EBSelection <Bool> {
-    return self.automaticBoardSize_property.prop
-  }
+  var automaticBoardSize_property_selection : EBSelection <Bool> { return self.automaticBoardSize_property.prop }
 
   //····················································································································
   //   Atomic property: boardManualWidth
@@ -294,19 +290,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardManualWidth : Int {
-    get {
-      return self.boardManualWidth_property.propval
-    }
-    set {
-      self.boardManualWidth_property.setProp (newValue)
-    }
+    get { return self.boardManualWidth_property.propval }
+    set { self.boardManualWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardManualWidth_property_selection : EBSelection <Int> {
-    return self.boardManualWidth_property.prop
-  }
+  var boardManualWidth_property_selection : EBSelection <Int> { return self.boardManualWidth_property.prop }
 
   //····················································································································
   //   Atomic property: boardManualHeight
@@ -317,19 +307,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardManualHeight : Int {
-    get {
-      return self.boardManualHeight_property.propval
-    }
-    set {
-      self.boardManualHeight_property.setProp (newValue)
-    }
+    get { return self.boardManualHeight_property.propval }
+    set { self.boardManualHeight_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardManualHeight_property_selection : EBSelection <Int> {
-    return self.boardManualHeight_property.prop
-  }
+  var boardManualHeight_property_selection : EBSelection <Int> { return self.boardManualHeight_property.prop }
 
   //····················································································································
   //   Atomic property: boardWidthUnit
@@ -340,19 +324,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardWidthUnit : Int {
-    get {
-      return self.boardWidthUnit_property.propval
-    }
-    set {
-      self.boardWidthUnit_property.setProp (newValue)
-    }
+    get { return self.boardWidthUnit_property.propval }
+    set { self.boardWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardWidthUnit_property_selection : EBSelection <Int> {
-    return self.boardWidthUnit_property.prop
-  }
+  var boardWidthUnit_property_selection : EBSelection <Int> { return self.boardWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: boardHeightUnit
@@ -363,19 +341,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardHeightUnit : Int {
-    get {
-      return self.boardHeightUnit_property.propval
-    }
-    set {
-      self.boardHeightUnit_property.setProp (newValue)
-    }
+    get { return self.boardHeightUnit_property.propval }
+    set { self.boardHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardHeightUnit_property_selection : EBSelection <Int> {
-    return self.boardHeightUnit_property.prop
-  }
+  var boardHeightUnit_property_selection : EBSelection <Int> { return self.boardHeightUnit_property.prop }
 
   //····················································································································
   //   Atomic property: overlapingArrangment
@@ -386,19 +358,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var overlapingArrangment : Bool {
-    get {
-      return self.overlapingArrangment_property.propval
-    }
-    set {
-      self.overlapingArrangment_property.setProp (newValue)
-    }
+    get { return self.overlapingArrangment_property.propval }
+    set { self.overlapingArrangment_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var overlapingArrangment_property_selection : EBSelection <Bool> {
-    return self.overlapingArrangment_property.prop
-  }
+  var overlapingArrangment_property_selection : EBSelection <Bool> { return self.overlapingArrangment_property.prop }
 
   //····················································································································
   //   Atomic property: selectedBoardXUnit
@@ -409,19 +375,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var selectedBoardXUnit : Int {
-    get {
-      return self.selectedBoardXUnit_property.propval
-    }
-    set {
-      self.selectedBoardXUnit_property.setProp (newValue)
-    }
+    get { return self.selectedBoardXUnit_property.propval }
+    set { self.selectedBoardXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedBoardXUnit_property_selection : EBSelection <Int> {
-    return self.selectedBoardXUnit_property.prop
-  }
+  var selectedBoardXUnit_property_selection : EBSelection <Int> { return self.selectedBoardXUnit_property.prop }
 
   //····················································································································
   //   Atomic property: selectedBoardYUnit
@@ -432,19 +392,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var selectedBoardYUnit : Int {
-    get {
-      return self.selectedBoardYUnit_property.propval
-    }
-    set {
-      self.selectedBoardYUnit_property.setProp (newValue)
-    }
+    get { return self.selectedBoardYUnit_property.propval }
+    set { self.selectedBoardYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var selectedBoardYUnit_property_selection : EBSelection <Int> {
-    return self.selectedBoardYUnit_property.prop
-  }
+  var selectedBoardYUnit_property_selection : EBSelection <Int> { return self.selectedBoardYUnit_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitWidth
@@ -455,19 +409,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardLimitWidth : Int {
-    get {
-      return self.boardLimitWidth_property.propval
-    }
-    set {
-      self.boardLimitWidth_property.setProp (newValue)
-    }
+    get { return self.boardLimitWidth_property.propval }
+    set { self.boardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardLimitWidth_property_selection : EBSelection <Int> {
-    return self.boardLimitWidth_property.prop
-  }
+  var boardLimitWidth_property_selection : EBSelection <Int> { return self.boardLimitWidth_property.prop }
 
   //····················································································································
   //   Atomic property: boardLimitWidthUnit
@@ -478,19 +426,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var boardLimitWidthUnit : Int {
-    get {
-      return self.boardLimitWidthUnit_property.propval
-    }
-    set {
-      self.boardLimitWidthUnit_property.setProp (newValue)
-    }
+    get { return self.boardLimitWidthUnit_property.propval }
+    set { self.boardLimitWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var boardLimitWidthUnit_property_selection : EBSelection <Int> {
-    return self.boardLimitWidthUnit_property.prop
-  }
+  var boardLimitWidthUnit_property_selection : EBSelection <Int> { return self.boardLimitWidthUnit_property.prop }
 
   //····················································································································
   //   Atomic property: arrowMagnitude
@@ -501,19 +443,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var arrowMagnitude : Int {
-    get {
-      return self.arrowMagnitude_property.propval
-    }
-    set {
-      self.arrowMagnitude_property.setProp (newValue)
-    }
+    get { return self.arrowMagnitude_property.propval }
+    set { self.arrowMagnitude_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arrowMagnitude_property_selection : EBSelection <Int> {
-    return self.arrowMagnitude_property.prop
-  }
+  var arrowMagnitude_property_selection : EBSelection <Int> { return self.arrowMagnitude_property.prop }
 
   //····················································································································
   //   Atomic property: arrowMagnitudeUnit
@@ -524,19 +460,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var arrowMagnitudeUnit : Int {
-    get {
-      return self.arrowMagnitudeUnit_property.propval
-    }
-    set {
-      self.arrowMagnitudeUnit_property.setProp (newValue)
-    }
+    get { return self.arrowMagnitudeUnit_property.propval }
+    set { self.arrowMagnitudeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arrowMagnitudeUnit_property_selection : EBSelection <Int> {
-    return self.arrowMagnitudeUnit_property.prop
-  }
+  var arrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.arrowMagnitudeUnit_property.prop }
 
   //····················································································································
   //   Atomic property: shiftArrowMagnitude
@@ -547,19 +477,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var shiftArrowMagnitude : Int {
-    get {
-      return self.shiftArrowMagnitude_property.propval
-    }
-    set {
-      self.shiftArrowMagnitude_property.setProp (newValue)
-    }
+    get { return self.shiftArrowMagnitude_property.propval }
+    set { self.shiftArrowMagnitude_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var shiftArrowMagnitude_property_selection : EBSelection <Int> {
-    return self.shiftArrowMagnitude_property.prop
-  }
+  var shiftArrowMagnitude_property_selection : EBSelection <Int> { return self.shiftArrowMagnitude_property.prop }
 
   //····················································································································
   //   Atomic property: shiftArrowMagnitudeUnit
@@ -570,19 +494,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var shiftArrowMagnitudeUnit : Int {
-    get {
-      return self.shiftArrowMagnitudeUnit_property.propval
-    }
-    set {
-      self.shiftArrowMagnitudeUnit_property.setProp (newValue)
-    }
+    get { return self.shiftArrowMagnitudeUnit_property.propval }
+    set { self.shiftArrowMagnitudeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> {
-    return self.shiftArrowMagnitudeUnit_property.prop
-  }
+  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.shiftArrowMagnitudeUnit_property.prop }
 
   //····················································································································
   //   Atomic property: artworkName
@@ -593,19 +511,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var artworkName : String {
-    get {
-      return self.artworkName_property.propval
-    }
-    set {
-      self.artworkName_property.setProp (newValue)
-    }
+    get { return self.artworkName_property.propval }
+    set { self.artworkName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var artworkName_property_selection : EBSelection <String> {
-    return self.artworkName_property.prop
-  }
+  var artworkName_property_selection : EBSelection <String> { return self.artworkName_property.prop }
 
   //····················································································································
   //   Atomic property: generateGerberProductFile
@@ -616,19 +528,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var generateGerberProductFile : Bool {
-    get {
-      return self.generateGerberProductFile_property.propval
-    }
-    set {
-      self.generateGerberProductFile_property.setProp (newValue)
-    }
+    get { return self.generateGerberProductFile_property.propval }
+    set { self.generateGerberProductFile_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var generateGerberProductFile_property_selection : EBSelection <Bool> {
-    return self.generateGerberProductFile_property.prop
-  }
+  var generateGerberProductFile_property_selection : EBSelection <Bool> { return self.generateGerberProductFile_property.prop }
 
   //····················································································································
   //   Atomic property: generatePDFProductFile
@@ -639,19 +545,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var generatePDFProductFile : Bool {
-    get {
-      return self.generatePDFProductFile_property.propval
-    }
-    set {
-      self.generatePDFProductFile_property.setProp (newValue)
-    }
+    get { return self.generatePDFProductFile_property.propval }
+    set { self.generatePDFProductFile_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var generatePDFProductFile_property_selection : EBSelection <Bool> {
-    return self.generatePDFProductFile_property.prop
-  }
+  var generatePDFProductFile_property_selection : EBSelection <Bool> { return self.generatePDFProductFile_property.prop }
 
   //····················································································································
   //   Atomic property: generatedBoardArchiveFormat
@@ -662,19 +562,13 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var generatedBoardArchiveFormat : BoardArchiveFormat {
-    get {
-      return self.generatedBoardArchiveFormat_property.propval
-    }
-    set {
-      self.generatedBoardArchiveFormat_property.setProp (newValue)
-    }
+    get { return self.generatedBoardArchiveFormat_property.propval }
+    set { self.generatedBoardArchiveFormat_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> {
-    return self.generatedBoardArchiveFormat_property.prop
-  }
+  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> { return self.generatedBoardArchiveFormat_property.prop }
 
   //····················································································································
   //   Transient property: modelNames

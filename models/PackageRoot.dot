@@ -2,11 +2,6 @@ digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
   PackageRoot[label="<PackageRoot>PackageRoot|String comments|Int gridDisplayFactor|Int gridStep|Int gridStepUnit|GridStyle gridStyle|Bool horizontalFlip|<packageObjects>packageObjects|<packagePads>packagePads|<packageSlavePads>packageSlavePads|<packageZones>packageZones|PadNumbering padNumbering|String program|Int selectedInspector|Int selectedPageIndex|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
-  PackageZone[label="<PackageZone>PackageZone|Int height|Int heightUnit|Int width|Int widthUnit|Int x|Int xName|Int xNameUnit|Int xUnit|Int y|Int yName|Int yNameUnit|Int yUnit|String zoneName|PadNumbering zoneNumbering"] ;
-  PackageSlavePad[label="<PackageSlavePad>PackageSlavePad|Int annularRingUnit|Int height|Int heightUnit|Int holeDiameter|Int holeDiameterUnit|<master>master|PadShape padShape|SlavePadStyle padStyle|Int width|Int widthUnit|Int xCenter|Int xCenterUnit|Int yCenter|Int yCenterUnit"] ;
-  PackagePad[label="<PackagePad>PackagePad|Int annularRingUnit|Int height|Int heightUnit|Int holeDiameter|Int holeDiameterUnit|Int padNumber|PadShape padShape|PadStyle padStyle|<slaves>slaves|Int width|Int widthUnit|Int xCenter|Int xCenterUnit|Int yCenter|Int yCenterUnit|<zone>zone"] ;
   PackageObject[label="<PackageObject>PackageObject"] ;
   PackageRoot:packageObjects -> PackageObject:PackageObject [dir=both arrowtail=none arrowhead=vee] ;
-  PackagePad:slaves -> PackageSlavePad:master [dir=both arrowtail=onormal arrowhead=vee] ;
-  PackagePad:zone -> PackageZone:PackageZone [dir=both arrowtail=none arrowhead=onormal] ;
 }

@@ -6,150 +6,135 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_y : class {
-  var y : Int { get }
+protocol ProjectFont_mFontName : class {
+  var mFontName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_width : class {
-  var width : Int { get }
+protocol ProjectFont_mFontVersion : class {
+  var mFontVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_height : class {
-  var height : Int { get }
+protocol ProjectFont_mDescriptiveString : class {
+  var mDescriptiveString : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_x : class {
-  var x : Int { get }
+protocol ProjectFont_versionString : class {
+  var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_filledBezierPath : class {
-  var filledBezierPath : NSBezierPath? { get }
+protocol ProjectFont_sizeString : class {
+  var sizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolSolidOval_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
-}
-
+//    Entity: ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolSolidOval_issues : class {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SymbolSolidOval
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class SymbolSolidOval : SymbolObject,
-         SymbolSolidOval_y,
-         SymbolSolidOval_width,
-         SymbolSolidOval_height,
-         SymbolSolidOval_x,
-         SymbolSolidOval_filledBezierPath,
-         SymbolSolidOval_objectDisplay,
-         SymbolSolidOval_selectionDisplay,
-         SymbolSolidOval_issues {
+class ProjectFont : EBManagedObject,
+         ProjectFont_mFontName,
+         ProjectFont_mFontVersion,
+         ProjectFont_mDescriptiveString,
+         ProjectFont_versionString,
+         ProjectFont_sizeString {
 
   //····················································································································
-  //   Atomic property: y
+  //   Atomic property: mFontName
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (defaultValue: 0)
+  var mFontName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var y : Int {
-    get { return self.y_property.propval }
-    set { self.y_property.setProp (newValue) }
+  var mFontName : String {
+    get { return self.mFontName_property.propval }
+    set { self.mFontName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
+  var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
 
   //····················································································································
-  //   Atomic property: width
+  //   Atomic property: mFontVersion
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 685800)
+  var mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var width : Int {
-    get { return self.width_property.propval }
-    set { self.width_property.setProp (newValue) }
+  var mFontVersion : Int {
+    get { return self.mFontVersion_property.propval }
+    set { self.mFontVersion_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> { return self.width_property.prop }
+  var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.prop }
 
   //····················································································································
-  //   Atomic property: height
+  //   Atomic property: mDescriptiveString
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 685800)
+  var mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var height : Int {
-    get { return self.height_property.propval }
-    set { self.height_property.setProp (newValue) }
+  var mDescriptiveString : String {
+    get { return self.mDescriptiveString_property.propval }
+    set { self.mDescriptiveString_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> { return self.height_property.prop }
+  var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
 
   //····················································································································
-  //   Atomic property: x
+  //   Transient property: versionString
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (defaultValue: 0)
+  var versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var x : Int {
-    get { return self.x_property.propval }
-    set { self.x_property.setProp (newValue) }
+  var versionString_property_selection : EBSelection <String> {
+    return self.versionString_property.prop
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
+  var versionString : String? {
+    switch self.versionString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
-  //   Transient property: filledBezierPath
+  //   Transient property: sizeString
   //····················································································································
 
-  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  var sizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.prop
+  var sizeString_property_selection : EBSelection <String> {
+    return self.sizeString_property.prop
   }
 
   //····················································································································
 
-  var filledBezierPath : NSBezierPath? {
-    switch self.filledBezierPath_property_selection {
+  var sizeString : String? {
+    switch self.sizeString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -163,30 +148,25 @@ class SymbolSolidOval : SymbolObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: y
-    self.y_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: width
-    self.width_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: height
-    self.height_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: x
-    self.x_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: filledBezierPath
-    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: mFontName
+    self.mFontName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: versionString
+    self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
+        let kind = unwSelf.mFontVersion_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidOval_filledBezierPath (v0, v1, v2, v3))
+          switch (unwSelf.mFontVersion_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectFont_versionString (v0))
           default :
             return .empty
           }
@@ -195,27 +175,20 @@ class SymbolSolidOval : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.filledBezierPath_property)
-    self.y_property.addEBObserver (self.filledBezierPath_property)
-    self.width_property.addEBObserver (self.filledBezierPath_property)
-    self.height_property.addEBObserver (self.filledBezierPath_property)
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+    self.mFontVersion_property.addEBObserver (self.versionString_property)
+  //--- Atomic property: sizeString
+    self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
+        let kind = unwSelf.mDescriptiveString_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, g_Preferences!.symbolColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolSolidOval_objectDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mDescriptiveString_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectFont_sizeString (v0))
           default :
             return .empty
           }
@@ -224,73 +197,9 @@ class SymbolSolidOval : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property)
-    self.y_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidOval_selectionDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-  //--- Atomic property: issues
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidOval_issues (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
+    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
-    self.height_property.setSignatureObserver (observer: self)
-    self.width_property.setSignatureObserver (observer: self)
-    self.x_property.setSignatureObserver (observer: self)
-    self.y_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -298,28 +207,9 @@ class SymbolSolidOval : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x_property.removeEBObserver (self.filledBezierPath_property)
-    self.y_property.removeEBObserver (self.filledBezierPath_property)
-    self.width_property.removeEBObserver (self.filledBezierPath_property)
-    self.height_property.removeEBObserver (self.filledBezierPath_property)
-    self.x_property.removeEBObserver (self.objectDisplay_property)
-    self.y_property.removeEBObserver (self.objectDisplay_property)
-    self.width_property.removeEBObserver (self.objectDisplay_property)
-    self.height_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.width_property.removeEBObserver (self.selectionDisplay_property)
-    self.height_property.removeEBObserver (self.selectionDisplay_property)
-    self.x_property.removeEBObserver (self.issues_property)
-    self.y_property.removeEBObserver (self.issues_property)
-    self.width_property.removeEBObserver (self.issues_property)
-    self.height_property.removeEBObserver (self.issues_property)
+    self.mFontVersion_property.removeEBObserver (self.versionString_property)
+    self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
   //--- Unregister properties for handling signature
-    self.height_property.setSignatureObserver (observer: nil)
-    self.width_property.setSignatureObserver (observer: nil)
-    self.x_property.setSignatureObserver (observer: nil)
-    self.y_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -334,69 +224,45 @@ class SymbolSolidOval : SymbolObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "y",
-      idx:self.y_property.ebObjectIndex,
+      "mFontName",
+      idx:self.mFontName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      observerExplorer:&self.mFontName_property.mObserverExplorer,
+      valueExplorer:&self.mFontName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "width",
-      idx:self.width_property.ebObjectIndex,
+      "mFontVersion",
+      idx:self.mFontVersion_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      observerExplorer:&self.mFontVersion_property.mObserverExplorer,
+      valueExplorer:&self.mFontVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "height",
-      idx:self.height_property.ebObjectIndex,
+      "mDescriptiveString",
+      idx:self.mDescriptiveString_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      observerExplorer:&self.mDescriptiveString_property.mObserverExplorer,
+      valueExplorer:&self.mDescriptiveString_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "filledBezierPath",
-      idx:self.filledBezierPath_property.ebObjectIndex,
+      "versionString",
+      idx:self.versionString_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.filledBezierPath_property.mValueExplorer
+      observerExplorer:&self.versionString_property.mObserverExplorer,
+      valueExplorer:&self.versionString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
+      "sizeString",
+      idx:self.sizeString_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      observerExplorer:&self.sizeString_property.mObserverExplorer,
+      valueExplorer:&self.sizeString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -408,18 +274,15 @@ class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: y
-    self.y_property.mObserverExplorer = nil
-    self.y_property.mValueExplorer = nil
-  //--- Atomic property: width
-    self.width_property.mObserverExplorer = nil
-    self.width_property.mValueExplorer = nil
-  //--- Atomic property: height
-    self.height_property.mObserverExplorer = nil
-    self.height_property.mValueExplorer = nil
-  //--- Atomic property: x
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
+  //--- Atomic property: mFontName
+    self.mFontName_property.mObserverExplorer = nil
+    self.mFontName_property.mValueExplorer = nil
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.mObserverExplorer = nil
+    self.mFontVersion_property.mValueExplorer = nil
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.mObserverExplorer = nil
+    self.mDescriptiveString_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -448,14 +311,12 @@ class SymbolSolidOval : SymbolObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
-  //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+  //--- Atomic property: mFontName
+    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
   }
 
   //····················································································································
@@ -473,14 +334,12 @@ class SymbolSolidOval : SymbolObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-  //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
-  //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
-  //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: mFontName
+    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
+  //--- Atomic property: mFontVersion
+    self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey:"mFontVersion")
+  //--- Atomic property: mDescriptiveString
+    self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey:"mDescriptiveString")
   }
 
   //····················································································································
@@ -500,476 +359,294 @@ class SymbolSolidOval : SymbolObject,
   }
 
   //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.height_property.signature ())
-    crc.accumulateUInt32 (self.width_property.signature ())
-    crc.accumulateUInt32 (self.x_property.signature ())
-    crc.accumulateUInt32 (self.y_property.signature ())
-    return crc
-  }
-
-  //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolSolidOval
+//    ReadOnlyArrayOf_ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSolidOval> {
+class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> {
 
   //····················································································································
-  //   Observers of 'y' stored property
+  //   Observers of 'mFontName' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private var mObserversOf_mFontName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_y.insert (inObserver)
+    self.mObserversOf_mFontName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.mFontName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_y.remove (inObserver)
+    self.mObserversOf_mFontName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.removeEBObserver (inObserver)
+        managedObject.mFontName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
+      self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
+        managedObject.mFontName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
+        managedObject.mFontName_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'width' stored property
+  //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private var mObserversOf_mFontVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_width.insert (inObserver)
+    self.mObserversOf_mFontVersion.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
+        managedObject.mFontVersion_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_width.remove (inObserver)
+    self.mObserversOf_mFontVersion.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.removeEBObserver (inObserver)
+        managedObject.mFontVersion_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
+      self.mObserversOf_mFontVersion.apply ( {(_ observer : EBEvent) in
+        managedObject.mFontVersion_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    self.mObserversOf_mFontVersion.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
+        managedObject.mFontVersion_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'height' stored property
+  //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private var mObserversOf_mDescriptiveString = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_height.insert (inObserver)
+    self.mObserversOf_mDescriptiveString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.addEBObserver (inObserver)
+        managedObject.mDescriptiveString_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_height.remove (inObserver)
+    self.mObserversOf_mDescriptiveString.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.removeEBObserver (inObserver)
+        managedObject.mDescriptiveString_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
-        managedObject.height_property.addEBObserver (observer)
+      self.mObserversOf_mDescriptiveString.apply ( {(_ observer : EBEvent) in
+        managedObject.mDescriptiveString_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    self.mObserversOf_mDescriptiveString.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.height_property.removeEBObserver (observer)
+        managedObject.mDescriptiveString_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'x' stored property
+  //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_x.insert (inObserver)
+    self.mObserversOf_versionString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.versionString_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_x.remove (inObserver)
+    self.mObserversOf_versionString.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.removeEBObserver (inObserver)
+        managedObject.versionString_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
-    })
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.removeEBObserver (observer)
+      })
+    }
   }
 
   //····················································································································
-  //   Observers of 'filledBezierPath' transient property
+  //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private var mObserversOf_sizeString = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_filledBezierPath.insert (inObserver)
+    self.mObserversOf_sizeString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.filledBezierPath_property.addEBObserver (inObserver)
+        managedObject.sizeString_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_filledBezierPath.remove (inObserver)
+    self.mObserversOf_sizeString.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.filledBezierPath_property.removeEBObserver (inObserver)
+        managedObject.sizeString_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.addEBObserver (observer)
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
     for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.removeEBObserver (observer)
       })
     }
   }
@@ -979,32 +656,32 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSolidOval
+//    TransientArrayOf_ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
+class TransientArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ProjectFont] > > = nil
 
   //····················································································································
 
-  override var propset : Set <SymbolSolidOval> {
+  override var propset : Set <ProjectFont> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolSolidOval] > {
+  override var prop : EBSelection < [ProjectFont] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [SymbolSolidOval] {
+  override var propval : [ProjectFont] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -1026,48 +703,42 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 
   //····················································································································
 
-  private var mSet = Set <SymbolSolidOval> ()
+  private var mSet = Set <ProjectFont> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [SymbolSolidOval] >? = nil
+  private var mCachedValue : EBSelection < [ProjectFont] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <SymbolSolidOval>
+      let newSet : Set <ProjectFont>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <SymbolSolidOval> ()
+        newSet = Set <ProjectFont> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mFontName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_sizeString_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_y_toElementsOfSet (addedSet)
-      self.addEBObserversOf_width_toElementsOfSet (addedSet)
-      self.addEBObserversOf_height_toElementsOfSet (addedSet)
-      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mFontName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mFontVersion_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedSet)
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_sizeString_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1095,28 +766,28 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SymbolSolidOval
+//    To many relationship read write: ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
+class ReadWriteArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
 
   //····················································································································
  
-  func setProp (_ value :  [SymbolSolidOval]) { } // Abstract method
+  func setProp (_ value :  [ProjectFont]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolSolidOval
+//    To many relationship: ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignatureObserverProtocol {
+final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidOval?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectFont?) -> Void > = nil
 
   //····················································································································
 
@@ -1163,9 +834,9 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolSolidOval] ()
+      var objectArray = [ProjectFont] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolSolidOval") as? SymbolSolidOval {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectFont") as? ProjectFont {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1176,8 +847,8 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
 
  //····················································································································
 
-  private var mSet = Set <SymbolSolidOval> ()
-  private var mValue = [SymbolSolidOval] () {
+  private var mSet = Set <ProjectFont> ()
+  private var mValue = [ProjectFont] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -1195,39 +866,31 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.y_property.mSetterDelegate = nil
-            managedObject.width_property.mSetterDelegate = nil
-            managedObject.height_property.mSetterDelegate = nil
-            managedObject.x_property.mSetterDelegate = nil
+            managedObject.mFontName_property.mSetterDelegate = nil
+            managedObject.mFontVersion_property.mSetterDelegate = nil
+            managedObject.mDescriptiveString_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mFontName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : SymbolSolidOval in addedObjectSet {
+          for managedObject : ProjectFont in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mFontName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mFontVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDescriptiveString_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mFontName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mFontVersion_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -1255,29 +918,29 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolSolidOval] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ProjectFont] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolSolidOval]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ProjectFont]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [SymbolSolidOval] { return self.mValue }
+  override var propval : [ProjectFont] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <SymbolSolidOval> { return self.mSet }
+  override var propset : Set <ProjectFont> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [SymbolSolidOval]) {
+  @objc func performUndo (_ oldValue : [ProjectFont]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SymbolSolidOval) {
+  func remove (_ object : ProjectFont) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1288,7 +951,7 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
   
   //····················································································································
 
-  func add (_ object : SymbolSolidOval) {
+  func add (_ object : ProjectFont) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

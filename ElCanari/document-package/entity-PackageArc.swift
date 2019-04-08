@@ -138,19 +138,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var yCenter : Int {
-    get {
-      return self.yCenter_property.propval
-    }
-    set {
-      self.yCenter_property.setProp (newValue)
-    }
+    get { return self.yCenter_property.propval }
+    set { self.yCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenter_property_selection : EBSelection <Int> {
-    return self.yCenter_property.prop
-  }
+  var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.prop }
 
   //····················································································································
   //   Atomic property: radius
@@ -161,19 +155,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var radius : Int {
-    get {
-      return self.radius_property.propval
-    }
-    set {
-      self.radius_property.setProp (newValue)
-    }
+    get { return self.radius_property.propval }
+    set { self.radius_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var radius_property_selection : EBSelection <Int> {
-    return self.radius_property.prop
-  }
+  var radius_property_selection : EBSelection <Int> { return self.radius_property.prop }
 
   //····················································································································
   //   Atomic property: startAngle
@@ -184,19 +172,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var startAngle : Int {
-    get {
-      return self.startAngle_property.propval
-    }
-    set {
-      self.startAngle_property.setProp (newValue)
-    }
+    get { return self.startAngle_property.propval }
+    set { self.startAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startAngle_property_selection : EBSelection <Int> {
-    return self.startAngle_property.prop
-  }
+  var startAngle_property_selection : EBSelection <Int> { return self.startAngle_property.prop }
 
   //····················································································································
   //   Atomic property: arcAngle
@@ -207,19 +189,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var arcAngle : Int {
-    get {
-      return self.arcAngle_property.propval
-    }
-    set {
-      self.arcAngle_property.setProp (newValue)
-    }
+    get { return self.arcAngle_property.propval }
+    set { self.arcAngle_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var arcAngle_property_selection : EBSelection <Int> {
-    return self.arcAngle_property.prop
-  }
+  var arcAngle_property_selection : EBSelection <Int> { return self.arcAngle_property.prop }
 
   //····················································································································
   //   Atomic property: startTangent
@@ -230,19 +206,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var startTangent : Int {
-    get {
-      return self.startTangent_property.propval
-    }
-    set {
-      self.startTangent_property.setProp (newValue)
-    }
+    get { return self.startTangent_property.propval }
+    set { self.startTangent_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startTangent_property_selection : EBSelection <Int> {
-    return self.startTangent_property.prop
-  }
+  var startTangent_property_selection : EBSelection <Int> { return self.startTangent_property.prop }
 
   //····················································································································
   //   Atomic property: endTangent
@@ -253,19 +223,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var endTangent : Int {
-    get {
-      return self.endTangent_property.propval
-    }
-    set {
-      self.endTangent_property.setProp (newValue)
-    }
+    get { return self.endTangent_property.propval }
+    set { self.endTangent_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var endTangent_property_selection : EBSelection <Int> {
-    return self.endTangent_property.prop
-  }
+  var endTangent_property_selection : EBSelection <Int> { return self.endTangent_property.prop }
 
   //····················································································································
   //   Atomic property: pathIsClosed
@@ -276,19 +240,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var pathIsClosed : Bool {
-    get {
-      return self.pathIsClosed_property.propval
-    }
-    set {
-      self.pathIsClosed_property.setProp (newValue)
-    }
+    get { return self.pathIsClosed_property.propval }
+    set { self.pathIsClosed_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var pathIsClosed_property_selection : EBSelection <Bool> {
-    return self.pathIsClosed_property.prop
-  }
+  var pathIsClosed_property_selection : EBSelection <Bool> { return self.pathIsClosed_property.prop }
 
   //····················································································································
   //   Atomic property: xCenterUnit
@@ -299,19 +257,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var xCenterUnit : Int {
-    get {
-      return self.xCenterUnit_property.propval
-    }
-    set {
-      self.xCenterUnit_property.setProp (newValue)
-    }
+    get { return self.xCenterUnit_property.propval }
+    set { self.xCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenterUnit_property_selection : EBSelection <Int> {
-    return self.xCenterUnit_property.prop
-  }
+  var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: yCenterUnit
@@ -322,19 +274,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var yCenterUnit : Int {
-    get {
-      return self.yCenterUnit_property.propval
-    }
-    set {
-      self.yCenterUnit_property.setProp (newValue)
-    }
+    get { return self.yCenterUnit_property.propval }
+    set { self.yCenterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var yCenterUnit_property_selection : EBSelection <Int> {
-    return self.yCenterUnit_property.prop
-  }
+  var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.prop }
 
   //····················································································································
   //   Atomic property: radiusUnit
@@ -345,19 +291,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var radiusUnit : Int {
-    get {
-      return self.radiusUnit_property.propval
-    }
-    set {
-      self.radiusUnit_property.setProp (newValue)
-    }
+    get { return self.radiusUnit_property.propval }
+    set { self.radiusUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var radiusUnit_property_selection : EBSelection <Int> {
-    return self.radiusUnit_property.prop
-  }
+  var radiusUnit_property_selection : EBSelection <Int> { return self.radiusUnit_property.prop }
 
   //····················································································································
   //   Atomic property: startTangentUnit
@@ -368,19 +308,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var startTangentUnit : Int {
-    get {
-      return self.startTangentUnit_property.propval
-    }
-    set {
-      self.startTangentUnit_property.setProp (newValue)
-    }
+    get { return self.startTangentUnit_property.propval }
+    set { self.startTangentUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var startTangentUnit_property_selection : EBSelection <Int> {
-    return self.startTangentUnit_property.prop
-  }
+  var startTangentUnit_property_selection : EBSelection <Int> { return self.startTangentUnit_property.prop }
 
   //····················································································································
   //   Atomic property: endTangentUnit
@@ -391,19 +325,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var endTangentUnit : Int {
-    get {
-      return self.endTangentUnit_property.propval
-    }
-    set {
-      self.endTangentUnit_property.setProp (newValue)
-    }
+    get { return self.endTangentUnit_property.propval }
+    set { self.endTangentUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var endTangentUnit_property_selection : EBSelection <Int> {
-    return self.endTangentUnit_property.prop
-  }
+  var endTangentUnit_property_selection : EBSelection <Int> { return self.endTangentUnit_property.prop }
 
   //····················································································································
   //   Atomic property: xCenter
@@ -414,19 +342,13 @@ class PackageArc : PackageObject,
   //····················································································································
 
   var xCenter : Int {
-    get {
-      return self.xCenter_property.propval
-    }
-    set {
-      self.xCenter_property.setProp (newValue)
-    }
+    get { return self.xCenter_property.propval }
+    set { self.xCenter_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.prop
-  }
+  var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.prop }
 
   //····················································································································
   //   Transient property: strokeBezierPath

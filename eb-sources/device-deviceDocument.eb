@@ -4,7 +4,7 @@
 
 document DeviceDocument root DeviceRoot {
 #--- Selected Page
-  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
+  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mDescriptionPageView ;
   outlet CanariViewWithKeyView mSymbolPageView ;

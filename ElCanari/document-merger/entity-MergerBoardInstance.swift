@@ -75,19 +75,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
+    get { return self.x_property.propval }
+    set { self.x_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
+  var x_property_selection : EBSelection <Int> { return self.x_property.prop }
 
   //····················································································································
   //   Atomic property: y
@@ -98,19 +92,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   var y : Int {
-    get {
-      return self.y_property.propval
-    }
-    set {
-      self.y_property.setProp (newValue)
-    }
+    get { return self.y_property.propval }
+    set { self.y_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
-  }
+  var y_property_selection : EBSelection <Int> { return self.y_property.prop }
 
   //····················································································································
   //   Atomic property: instanceRotation
@@ -121,19 +109,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   var instanceRotation : QuadrantRotation {
-    get {
-      return self.instanceRotation_property.propval
-    }
-    set {
-      self.instanceRotation_property.setProp (newValue)
-    }
+    get { return self.instanceRotation_property.propval }
+    set { self.instanceRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
-    return self.instanceRotation_property.prop
-  }
+  var instanceRotation_property_selection : EBSelection <QuadrantRotation> { return self.instanceRotation_property.prop }
 
   //····················································································································
   //   To one property: myModel
