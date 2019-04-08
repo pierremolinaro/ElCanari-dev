@@ -212,6 +212,13 @@ class SlavePadInDevice : EBManagedObject,
   }
 
   //····················································································································
+
+  var mMasterPad : MasterPadInDevice? {
+    get { return self.mMasterPad_property.propval }
+    set { self.mMasterPad_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Transient property: frontSideFilledBezierPath
   //····················································································································
 

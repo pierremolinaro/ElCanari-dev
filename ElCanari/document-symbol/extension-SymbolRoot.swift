@@ -18,10 +18,12 @@ extension SymbolRoot {
                    strokeBezierPathes : NSBezierPath,
                    filledBezierPathes : NSBezierPath,
                    symbolPins : inout [SymbolPinTypeInDevice]) {
-    for symbolObject in self.symbolObjects_property.propval {
+    for symbolObject in self.symbolObjects {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
         let newPin = SymbolPinTypeInDevice (inUndoManager)
+        newPin.mPinX = object.xPin
+        newPin.mPinY = object.yPin
         newPin.mXName = object.xName
         newPin.mYName = object.yName
         newPin.mName = object.name

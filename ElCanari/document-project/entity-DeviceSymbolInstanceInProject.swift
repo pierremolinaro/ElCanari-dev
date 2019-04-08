@@ -6,165 +6,51 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_mPadName : class {
-  var mPadName : String { get }
+protocol DeviceSymbolInstanceInProject_mInstanceName : class {
+  var mInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PadProxyInDevice_mIsNC : class {
-  var mIsNC : Bool { get }
-}
-
+//    Entity: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_isConnected : class {
-  var isConnected : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PadProxyInDevice_pinInstanceName : class {
-  var pinInstanceName : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PadProxyInDevice_symbolName : class {
-  var symbolName : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class PadProxyInDevice : EBManagedObject,
-         PadProxyInDevice_mPadName,
-         PadProxyInDevice_mIsNC,
-         PadProxyInDevice_isConnected,
-         PadProxyInDevice_pinInstanceName,
-         PadProxyInDevice_symbolName {
+class DeviceSymbolInstanceInProject : EBManagedObject,
+         DeviceSymbolInstanceInProject_mInstanceName {
 
   //····················································································································
-  //   Atomic property: mPadName
+  //   Atomic property: mInstanceName
   //····················································································································
 
-  var mPadName_property = EBStoredProperty_String (defaultValue: "")
+  var mInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mPadName : String {
-    get { return self.mPadName_property.propval }
-    set { self.mPadName_property.setProp (newValue) }
+  var mInstanceName : String {
+    get { return self.mInstanceName_property.propval }
+    set { self.mInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.prop }
+  var mInstanceName_property_selection : EBSelection <String> { return self.mInstanceName_property.prop }
 
   //····················································································································
-  //   Atomic property: mIsNC
+  //   To one property: mSymbolType
   //····················································································································
 
-  var mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
+  var mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
 
   //····················································································································
 
-  var mIsNC : Bool {
-    get { return self.mIsNC_property.propval }
-    set { self.mIsNC_property.setProp (newValue) }
+  var mSymbolType_property_selection : EBSelection <Bool> {
+    return .single (self.mSymbolType_property.propval == nil)
   }
 
   //····················································································································
 
-  var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.prop }
-
-  //····················································································································
-  //   To one property: mPinInstance
-  //····················································································································
-
-  var mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
-
-  //····················································································································
-
-  var mPinInstance_property_selection : EBSelection <Bool> {
-    return .single (self.mPinInstance_property.propval == nil)
-  }
-
-  //····················································································································
-
-  var mPinInstance : SymbolPinInstanceInDevice? {
-    get { return self.mPinInstance_property.propval }
-    set { self.mPinInstance_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Transient property: isConnected
-  //····················································································································
-
-  var isConnected_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.prop
-  }
-
-  //····················································································································
-
-  var isConnected : Bool? {
-    switch self.isConnected_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: pinInstanceName
-  //····················································································································
-
-  var pinInstanceName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var pinInstanceName_property_selection : EBSelection <String> {
-    return self.pinInstanceName_property.prop
-  }
-
-  //····················································································································
-
-  var pinInstanceName : String? {
-    switch self.pinInstanceName_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: symbolName
-  //····················································································································
-
-  var symbolName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var symbolName_property_selection : EBSelection <String> {
-    return self.symbolName_property.prop
-  }
-
-  //····················································································································
-
-  var symbolName : String? {
-    switch self.symbolName_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mSymbolType : DeviceSymbolTypeInProject? {
+    get { return self.mSymbolType_property.propval }
+    set { self.mSymbolType_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -173,84 +59,12 @@ class PadProxyInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mPadName
-    self.mPadName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPinInstance
-    self.mPinInstance_property.owner = self
-  //--- Atomic property: isConnected
-    self.isConnected_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mIsNC_property_selection.kind ()
-        kind &= unwSelf.mPinInstance_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PadProxyInDevice_isConnected (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mIsNC_property.addEBObserver (self.isConnected_property)
-    self.mPinInstance_property.addEBObserver (self.isConnected_property)
-  //--- Atomic property: pinInstanceName
-    self.pinInstanceName_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mPinInstance_property.pinName_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mPinInstance_property.pinName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PadProxyInDevice_pinInstanceName (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mPinInstance_property.addEBObserverOf_pinName (self.pinInstanceName_property)
-  //--- Atomic property: symbolName
-    self.symbolName_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mPinInstance_property.symbolName_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mPinInstance_property.symbolName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PadProxyInDevice_symbolName (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mSymbolType
+    self.mSymbolType_property.owner = self
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
-    self.mIsNC_property.setSignatureObserver (observer: self)
-    self.mPadName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -258,13 +72,7 @@ class PadProxyInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mIsNC_property.removeEBObserver (self.isConnected_property)
-    self.mPinInstance_property.removeEBObserver (self.isConnected_property)
-    self.mPinInstance_property.removeEBObserverOf_pinName (self.pinInstanceName_property)
-    self.mPinInstance_property.removeEBObserverOf_symbolName (self.symbolName_property)
   //--- Unregister properties for handling signature
-    self.mIsNC_property.setSignatureObserver (observer: nil)
-    self.mPadName_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -279,54 +87,22 @@ class PadProxyInDevice : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mPadName",
-      idx:self.mPadName_property.ebObjectIndex,
+      "mInstanceName",
+      idx:self.mInstanceName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mPadName_property.mObserverExplorer,
-      valueExplorer:&self.mPadName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mIsNC",
-      idx:self.mIsNC_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mIsNC_property.mObserverExplorer,
-      valueExplorer:&self.mIsNC_property.mValueExplorer
+      observerExplorer:&self.mInstanceName_property.mObserverExplorer,
+      valueExplorer:&self.mInstanceName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "isConnected",
-      idx:self.isConnected_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.isConnected_property.mObserverExplorer,
-      valueExplorer:&self.isConnected_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pinInstanceName",
-      idx:self.pinInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.pinInstanceName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "symbolName",
-      idx:self.symbolName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolName_property.mObserverExplorer,
-      valueExplorer:&self.symbolName_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
-      "mPinInstance",
-      idx:self.mPinInstance_property.ebObjectIndex,
+      "mSymbolType",
+      idx:self.mSymbolType_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mPinInstance_property.mValueExplorer
+      valueExplorer:&self.mSymbolType_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -336,15 +112,12 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mPadName
-    self.mPadName_property.mObserverExplorer = nil
-    self.mPadName_property.mValueExplorer = nil
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.mObserverExplorer = nil
-    self.mIsNC_property.mValueExplorer = nil
-  //--- To one property: mPinInstance
-    self.mPinInstance_property.mObserverExplorer = nil
-    self.mPinInstance_property.mValueExplorer = nil
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.mObserverExplorer = nil
+    self.mInstanceName_property.mValueExplorer = nil
+  //--- To one property: mSymbolType
+    self.mSymbolType_property.mObserverExplorer = nil
+    self.mSymbolType_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -363,7 +136,7 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mPinInstance_property.setProp (nil)
+    self.mSymbolType_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -374,13 +147,11 @@ class PadProxyInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mPadName
-    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey:"mIsNC")
-  //--- To one property: mPinInstance // Opposite is toOne mPadProxy
-    self.store (managedObject:self.mPinInstance_property.propval,
-      relationshipName: "mPinInstance",
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mInstanceName")
+  //--- To one property: mSymbolType
+    self.store (managedObject:self.mSymbolType_property.propval,
+      relationshipName: "mSymbolType",
       intoDictionary: ioDictionary)
   }
 
@@ -391,15 +162,15 @@ class PadProxyInDevice : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To one property: mPinInstance
+  //--- To one property: mSymbolType
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPinInstance",
+        inRelationshipName: "mSymbolType",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? SymbolPinInstanceInDevice {
-        self.mPinInstance_property.setProp (entity)
+      if let entity = possibleEntity as? DeviceSymbolTypeInProject {
+        self.mSymbolType_property.setProp (entity)
       }
     }
   }
@@ -410,10 +181,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mPadName
-    self.mPadName_property.readFrom (dictionary: inDictionary, forKey:"mPadName")
-  //--- Atomic property: mIsNC
-    self.mIsNC_property.readFrom (dictionary: inDictionary, forKey:"mIsNC")
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mInstanceName")
   }
 
   //····················································································································
@@ -422,8 +191,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To one property: mPinInstance
-    if let managedObject = self.mPinInstance_property.propval {
+  //--- To one property: mSymbolType
+    if let managedObject = self.mSymbolType_property.propval {
       objects.append (managedObject)
     }
   }
@@ -434,21 +203,77 @@ class PadProxyInDevice : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To one property: mPinInstance
-    if let managedObject = self.mPinInstance_property.propval {
+  //--- To one property: mSymbolType
+    if let managedObject = self.mSymbolType_property.propval {
       objects.append (managedObject)
     }
   }
 
   //····················································································································
-  //   computeSignature
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyArrayOf_DeviceSymbolInstanceInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
+
+  //····················································································································
+  //   Observers of 'mInstanceName' stored property
   //····················································································································
 
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mIsNC_property.signature ())
-    crc.accumulateUInt32 (self.mPadName_property.signature ())
-    return crc
+  private var mObserversOf_mInstanceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mInstanceName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mInstanceName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mInstanceName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mInstanceName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mInstanceName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
+        managedObject.mInstanceName_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mInstanceName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mInstanceName_property.removeEBObserver (observer)
+      }
+    })
   }
 
   //····················································································································
@@ -456,324 +281,32 @@ class PadProxyInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PadProxyInDevice
+//    TransientArrayOf_DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
-
-  //····················································································································
-  //   Observers of 'mPadName' stored property
-  //····················································································································
-
-  private var mObserversOf_mPadName = EBWeakEventSet ()
+class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSymbolInstanceInProject {
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPadName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPadName_property.addEBObserver (inObserver)
-      }
-    }
-  }
+  var mReadModelFunction : Optional < () -> EBSelection < [DeviceSymbolInstanceInProject] > > = nil
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPadName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPadName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
-        managedObject.mPadName_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPadName_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'mIsNC' stored property
-  //····················································································································
-
-  private var mObserversOf_mIsNC = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mIsNC.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsNC_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mIsNC (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mIsNC.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsNC_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mIsNC_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsNC.apply ( {(_ observer : EBEvent) in
-        managedObject.mIsNC_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mIsNC.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsNC_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'isConnected' transient property
-  //····················································································································
-
-  private var mObserversOf_isConnected = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_isConnected.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isConnected_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_isConnected.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isConnected_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
-        managedObject.isConnected_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
-        managedObject.isConnected_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'pinInstanceName' transient property
-  //····················································································································
-
-  private var mObserversOf_pinInstanceName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinInstanceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_pinInstanceName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinInstanceName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_pinInstanceName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_pinInstanceName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinInstanceName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_pinInstanceName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinInstanceName.apply ( {(_ observer : EBEvent) in
-        managedObject.pinInstanceName_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinInstanceName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinInstanceName.apply ( {(_ observer : EBEvent) in
-        managedObject.pinInstanceName_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'symbolName' transient property
-  //····················································································································
-
-  private var mObserversOf_symbolName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_symbolName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
-        managedObject.symbolName_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
-        managedObject.symbolName_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
-
-  //····················································································································
-
-  var mReadModelFunction : Optional < () -> EBSelection < [PadProxyInDevice] > > = nil
-
-  //····················································································································
-
-  override var propset : Set <PadProxyInDevice> {
+  override var propset : Set <DeviceSymbolInstanceInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [PadProxyInDevice] > {
+  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [PadProxyInDevice] {
+  override var propval : [DeviceSymbolInstanceInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -795,42 +328,34 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 
   //····················································································································
 
-  private var mSet = Set <PadProxyInDevice> ()
+  private var mSet = Set <DeviceSymbolInstanceInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [PadProxyInDevice] >? = nil
+  private var mCachedValue : EBSelection < [DeviceSymbolInstanceInProject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <PadProxyInDevice>
+      let newSet : Set <DeviceSymbolInstanceInProject>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <PadProxyInDevice> ()
+        newSet = Set <DeviceSymbolInstanceInProject> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mPadName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolName_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mPadName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mIsNC_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mInstanceName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
-      self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolName_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -858,28 +383,28 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: PadProxyInDevice
+//    To many relationship read write: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
+class ReadWriteArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSymbolInstanceInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [PadProxyInDevice]) { } // Abstract method
+  func setProp (_ value :  [DeviceSymbolInstanceInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PadProxyInDevice
+//    To many relationship: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSignatureObserverProtocol {
+final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -926,9 +451,9 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PadProxyInDevice] ()
+      var objectArray = [DeviceSymbolInstanceInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PadProxyInDevice") as? PadProxyInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceSymbolInstanceInProject") as? DeviceSymbolInstanceInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -939,8 +464,8 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
  //····················································································································
 
-  private var mSet = Set <PadProxyInDevice> ()
-  private var mValue = [PadProxyInDevice] () {
+  private var mSet = Set <DeviceSymbolInstanceInProject> ()
+  private var mValue = [DeviceSymbolInstanceInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -958,29 +483,19 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mPadName_property.mSetterDelegate = nil
-            managedObject.mIsNC_property.mSetterDelegate = nil
+            managedObject.mInstanceName_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : PadProxyInDevice in addedObjectSet {
+          for managedObject : DeviceSymbolInstanceInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mIsNC_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mIsNC_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -1008,29 +523,29 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
   //····················································································································
 
-  override var prop : EBSelection < [PadProxyInDevice] > { return .single (self.mValue) }
+  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PadProxyInDevice]) { self.mValue = inValue }
+  override func setProp (_ inValue : [DeviceSymbolInstanceInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [PadProxyInDevice] { return self.mValue }
+  override var propval : [DeviceSymbolInstanceInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <PadProxyInDevice> { return self.mSet }
+  override var propset : Set <DeviceSymbolInstanceInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [PadProxyInDevice]) {
+  @objc func performUndo (_ oldValue : [DeviceSymbolInstanceInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : PadProxyInDevice) {
+  func remove (_ object : DeviceSymbolInstanceInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1041,7 +556,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   
   //····················································································································
 
-  func add (_ object : PadProxyInDevice) {
+  func add (_ object : DeviceSymbolInstanceInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
@@ -1105,10 +620,10 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: mPinInstance
+//    To one relationship: mSymbolType
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty {
+final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbstractProperty {
 
   //····················································································································
   //   Value explorer
@@ -1129,7 +644,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
 
   //····················································································································
 
-  weak var owner : PadProxyInDevice? { // SOULD BE WEAK
+  weak var owner : DeviceSymbolInstanceInProject? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -1139,7 +654,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
  
   //····················································································································
 
-  private var mValue : SymbolPinInstanceInDevice? {
+  private var mValue : DeviceSymbolTypeInProject? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
@@ -1148,20 +663,14 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
-     //--- Reset old opposite relation ship
-        oldValue?.mPadProxy_property.setProp (nil)
-      //--- Set new opposite relation ship
-        self.mValue?.mPadProxy_property.setProp (unwrappedOwner)
       //--- Remove property observers of old object
-        oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
-        oldValue?.numberShape_property.removeEBObserversFrom (&self.mObserversOf_numberShape)
-        oldValue?.pinName_property.removeEBObserversFrom (&self.mObserversOf_pinName)
-        oldValue?.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName)
+        oldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        oldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
+        oldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName)
       //--- Add property observers to new object
-        self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
-        self.mValue?.numberShape_property.addEBObserversFrom (&self.mObserversOf_numberShape)
-        self.mValue?.pinName_property.addEBObserversFrom (&self.mObserversOf_pinName)
-        self.mValue?.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName)
+        self.mValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        self.mValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
+        self.mValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName)
        //--- Notify observers
         self.postEvent ()
       }
@@ -1170,37 +679,37 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
 
   //····················································································································
 
-  var propval : SymbolPinInstanceInDevice? { return self.mValue }
+  var propval : DeviceSymbolTypeInProject? { return self.mValue }
 
-  var prop : EBSelection <SymbolPinInstanceInDevice?> { return .single (self.mValue) }
+  var prop : EBSelection <DeviceSymbolTypeInProject?> { return .single (self.mValue) }
 
-  func setProp (_ value : SymbolPinInstanceInDevice?) { self.mValue = value }
+  func setProp (_ value : DeviceSymbolTypeInProject?) { self.mValue = value }
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : SymbolPinInstanceInDevice?) {
+  @objc func performUndo (_ oldValue : DeviceSymbolTypeInProject?) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SymbolPinInstanceInDevice) {
+  func remove (_ object : DeviceSymbolTypeInProject) {
     if self.mValue === object {
       self.mValue = nil
     }
   }
 
   //····················································································································
-  //   Observable property: isConnected
+  //   Observable property: mFilledBezierPath
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var isConnected_property_selection : EBSelection <Bool?> {
+  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
-      switch (model.isConnected_property_selection) {
+      switch (model.mFilledBezierPath_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1215,33 +724,33 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.mObserversOf_isConnected.insert (inObserver)
+  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mFilledBezierPath.insert (inObserver)
     if let object = self.propval {
-      object.isConnected_property.addEBObserver (inObserver)
+      object.mFilledBezierPath_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.mObserversOf_isConnected.remove (inObserver)
+  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mFilledBezierPath.remove (inObserver)
     if let object = self.propval {
-      object.isConnected_property.removeEBObserver (inObserver)
+      object.mFilledBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable property: numberShape
+  //   Observable property: mStrokeBezierPath
   //····················································································································
 
-  private var mObserversOf_numberShape = EBWeakEventSet ()
+  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var numberShape_property_selection : EBSelection <EBShape?> {
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
-      switch (model.numberShape_property_selection) {
+      switch (model.mStrokeBezierPath_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1256,33 +765,33 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
 
   //····················································································································
 
-  final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
-    self.mObserversOf_numberShape.insert (inObserver)
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     if let object = self.propval {
-      object.numberShape_property.addEBObserver (inObserver)
+      object.mStrokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_numberShape (_ inObserver : EBEvent) {
-    self.mObserversOf_numberShape.remove (inObserver)
+  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
     if let object = self.propval {
-      object.numberShape_property.removeEBObserver (inObserver)
+      object.mStrokeBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable property: pinName
+  //   Observable property: mTypeName
   //····················································································································
 
-  private var mObserversOf_pinName = EBWeakEventSet ()
+  private var mObserversOf_mTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinName_property_selection : EBSelection <String?> {
+  var mTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.pinName_property_selection) {
+      switch (model.mTypeName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1297,60 +806,19 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
 
   //····················································································································
 
-  final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
-    self.mObserversOf_pinName.insert (inObserver)
+  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mTypeName.insert (inObserver)
     if let object = self.propval {
-      object.pinName_property.addEBObserver (inObserver)
+      object.mTypeName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinName (_ inObserver : EBEvent) {
-    self.mObserversOf_pinName.remove (inObserver)
+  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mTypeName.remove (inObserver)
     if let object = self.propval {
-      object.pinName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: symbolName
-  //····················································································································
-
-  private var mObserversOf_symbolName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var symbolName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.symbolName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.mObserversOf_symbolName.insert (inObserver)
-    if let object = self.propval {
-      object.symbolName_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.mObserversOf_symbolName.remove (inObserver)
-    if let object = self.propval {
-      object.symbolName_property.removeEBObserver (inObserver)
+      object.mTypeName_property.removeEBObserver (inObserver)
     }
   }
 

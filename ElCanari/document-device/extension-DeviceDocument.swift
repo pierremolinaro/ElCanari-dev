@@ -77,7 +77,7 @@ extension DeviceDocument {
             )
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()
-            for pinType in symbolType.mPinTypes_property.propval {
+            for pinType in symbolType.mPinTypes {
               currentPinNameSet.insert (pinType.mName)
             }
             var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
@@ -93,8 +93,10 @@ extension DeviceDocument {
               symbolType.mStrokeBezierPath = strokeBezierPathes
               symbolType.mFilledBezierPath = filledBezierPathes
             //--- Update pin types
-              for pinType in symbolType.mPinTypes_property.propval {
+              for pinType : SymbolPinTypeInDevice in symbolType.mPinTypes {
                 let newPinType = newPinNameDictionary [pinType.mName]!
+                pinType.mPinX = newPinType.mPinX
+                pinType.mPinY = newPinType.mPinY
                 pinType.mXName = newPinType.mXName
                 pinType.mYName = newPinType.mYName
                 pinType.mName = newPinType.mName

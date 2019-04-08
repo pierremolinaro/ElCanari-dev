@@ -29,10 +29,12 @@ entity FontInProject {
 
 entity DeviceInProject {
   property String mDeviceName default "" ;
+  property String mPrefix default "" ;
   property Int mDeviceVersion default 0 ;
   property Data mDeviceFileData default empty ;
 
   toMany DevicePackageInProject mPackages ;
+  toMany DeviceSymbolInstanceInProject mSymbols ;
 
   transient String versionString dependsFrom self.mDeviceVersion ;
   transient String sizeString dependsFrom self.mDeviceFileData ;
@@ -72,6 +74,44 @@ entity DeviceSlavePadInProject {
   property Int mHoleDiameter default 57_150 ;
   property PadShape mShape default octo ;
   property SlavePadStyle mStyle default traversing ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSymbolInstanceInProject {
+  property String mInstanceName default "" ;
+
+  toOne DeviceSymbolTypeInProject mSymbolType ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSymbolTypeInProject {
+  property String mTypeName default "" ;
+
+  toMany DevicePinInProject mPins ;
+  
+  property NSBezierPath mStrokeBezierPath default empty ;
+  property NSBezierPath mFilledBezierPath default empty ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DevicePinInProject {
+  property String mPinName default "" ;
+
+  property Int mPinX default 0 ;
+  property Int mPinY default 0 ;
+
+  property Int mXName default 0 ;
+  property Int mYName default 0 ;
+
+  property HorizontalAlignment mNameHorizontalAlignment default center ;
+  property Bool mPinNameIsDisplayedInSchematics default yes ;
+
+  property Int mXNumber default 0 ;
+  property Int mYNumber default 0 ;
+  property HorizontalAlignment mNumberHorizontalAlignment default center ;
 }
 
 #  transient moreThanOneNetClass : boolean observe .netClasses ;

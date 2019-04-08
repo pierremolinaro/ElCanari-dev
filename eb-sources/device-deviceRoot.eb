@@ -219,11 +219,15 @@ entity SymbolTypeInDevice {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity SymbolPinTypeInDevice { # (SymbolPinInDevice) {
+entity SymbolPinTypeInDevice {
   toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
+
+  property @signature Int mPinX default 0 ;
+  property @signature Int mPinY default 0 ;
 
   property @signature Int mXName default 0 ;
   property @signature Int mYName default 0 ;
+
   property @signature String mName default "" ;
   property @signature HorizontalAlignment mNameHorizontalAlignment default center ;
   property @signature Bool mPinNameIsDisplayedInSchematics default yes ;

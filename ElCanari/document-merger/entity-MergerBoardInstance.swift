@@ -130,6 +130,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
+
+  var myModel : BoardModel? {
+    get { return self.myModel_property.propval }
+    set { self.myModel_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Transient property: instanceRect
   //····················································································································
 
@@ -208,6 +215,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   var myRoot_property_selection : EBSelection <Bool> {
     return .single (self.myRoot_property.propval == nil)
+  }
+
+  //····················································································································
+
+  var myRoot : MergerRoot? {
+    get { return self.myRoot_property.propval }
+    set { self.myRoot_property.setProp (newValue) }
   }
 
   //····················································································································

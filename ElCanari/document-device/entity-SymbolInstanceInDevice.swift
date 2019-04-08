@@ -149,6 +149,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+
+  var mType : SymbolTypeInDevice? {
+    get { return self.mType_property.propval }
+    set { self.mType_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Transient property: qualifiedName
   //····················································································································
 

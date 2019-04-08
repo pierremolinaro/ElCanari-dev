@@ -51,6 +51,13 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
+
+  var mSymbolInstance : SymbolInstanceInDevice? {
+    get { return self.mSymbolInstance_property.propval }
+    set { self.mSymbolInstance_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To one property: mType
   //····················································································································
 
@@ -63,6 +70,13 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
+
+  var mType : SymbolPinTypeInDevice? {
+    get { return self.mType_property.propval }
+    set { self.mType_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To one property: mPadProxy
   //····················································································································
 
@@ -72,6 +86,13 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   var mPadProxy_property_selection : EBSelection <Bool> {
     return .single (self.mPadProxy_property.propval == nil)
+  }
+
+  //····················································································································
+
+  var mPadProxy : PadProxyInDevice? {
+    get { return self.mPadProxy_property.propval }
+    set { self.mPadProxy_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1555,6 +1576,8 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
         oldValue?.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         oldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
         oldValue?.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics)
+        oldValue?.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX)
+        oldValue?.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY)
         oldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName)
         oldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber)
         oldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName)
@@ -1565,6 +1588,8 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
         self.mValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         self.mValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
         self.mValue?.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics)
+        self.mValue?.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX)
+        self.mValue?.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY)
         self.mValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName)
         self.mValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber)
         self.mValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName)
@@ -1759,6 +1784,88 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
     self.mObserversOf_mPinNameIsDisplayedInSchematics.remove (inObserver)
     if let object = self.propval {
       object.mPinNameIsDisplayedInSchematics_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPinX
+  //····················································································································
+
+  private var mObserversOf_mPinX = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPinX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mPinX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinX.insert (inObserver)
+    if let object = self.propval {
+      object.mPinX_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPinX (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinX.remove (inObserver)
+    if let object = self.propval {
+      object.mPinX_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPinY
+  //····················································································································
+
+  private var mObserversOf_mPinY = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPinY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mPinY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinY.insert (inObserver)
+    if let object = self.propval {
+      object.mPinY_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPinY (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinY.remove (inObserver)
+    if let object = self.propval {
+      object.mPinY_property.removeEBObserver (inObserver)
     }
   }
 

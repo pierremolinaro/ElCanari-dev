@@ -100,6 +100,7 @@ extension ProjectDocument {
                                      _ inData : Data) {
     inDeviceInProject.mDeviceVersion = inVersion
     inDeviceInProject.mDeviceFileData = inData
+    inDeviceInProject.mPrefix = inDeviceRoot.mPrefix
   //--- Remove current packages
     let currentPackages = inDeviceInProject.mPackages
     inDeviceInProject.mPackages = []
@@ -133,6 +134,39 @@ extension ProjectDocument {
           slavePadInProject.mStyle = slavePadInDevice.mStyle
           slavePadInProject.mWidth = slavePadInDevice.mWidth
         }
+      }
+    }
+  //--- Remove current symbols
+    let currentSymbols = inDeviceInProject.mSymbols
+    inDeviceInProject.mSymbols = []
+    for s in currentSymbols {
+      s.removeRecursivelyAllRelationsShips ()
+    }
+  //--- Append symbols
+    for symbolTypeInDevice in inDeviceRoot.mSymbolTypes {
+      let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
+      symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
+      symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
+      symbolTypeInProject.mTypeName = symbolTypeInDevice.mTypeName
+      for pinInDevice in symbolTypeInDevice.mPinTypes {
+        let pinInProject = DevicePinInProject (self.ebUndoManager)
+        pinInProject.mPinName = pinInDevice.mName
+        pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
+        pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
+        pinInProject.mPinNameIsDisplayedInSchematics = pinInDevice.mPinNameIsDisplayedInSchematics
+        pinInProject.mPinX = pinInDevice.mPinX
+        pinInProject.mPinY = pinInDevice.mPinY
+        pinInProject.mXName = pinInDevice.mXName
+        pinInProject.mYName = pinInDevice.mYName
+        pinInProject.mXNumber = pinInDevice.mXNumber
+        pinInProject.mYNumber = pinInDevice.mYNumber
+        symbolTypeInProject.mPins.append (pinInProject)
+      }
+      for symbolInstanceInDevice in symbolTypeInDevice.mInstances {
+        let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
+        symbolInstanceInProject.mSymbolType = symbolTypeInProject
+        symbolInstanceInProject.mInstanceName = symbolInstanceInDevice.mInstanceName
+        inDeviceInProject.mSymbols.append (symbolInstanceInProject)
       }
     }
   }
