@@ -15,7 +15,7 @@ func transient_DeviceInProject_canRemove (
        _ self_mComponents_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2
-
+        return self_mComponents_count == 0
 //--- END OF USER ZONE 2
 }
 

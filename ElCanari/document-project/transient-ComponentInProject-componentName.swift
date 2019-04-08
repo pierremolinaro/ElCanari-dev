@@ -16,7 +16,7 @@ func transient_ComponentInProject_componentName (
        _ self_mDevice_mPrefix : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return (self_mDevice_mPrefix ?? "—") + "\(self_mNameIndex)"
 //--- END OF USER ZONE 2
 }
 

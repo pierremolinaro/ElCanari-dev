@@ -15,7 +15,7 @@ func transient_ComponentInProject_selectedPackageName (
        _ self_mSelectedPackage_mPackageName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return self_mSelectedPackage_mPackageName ?? "—"
 //--- END OF USER ZONE 2
 }
 
