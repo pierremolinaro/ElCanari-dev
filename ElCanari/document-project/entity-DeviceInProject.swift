@@ -59,6 +59,12 @@ protocol DeviceInProject_packageNames : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceInProject_symbolNames : class {
+  var symbolNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -71,7 +77,8 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_sizeString,
          DeviceInProject_canExport,
          DeviceInProject_canRemove,
-         DeviceInProject_packageNames {
+         DeviceInProject_packageNames,
+         DeviceInProject_symbolNames {
 
   //····················································································································
   //   Atomic property: mDeviceName
@@ -314,6 +321,29 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: symbolNames
+  //····················································································································
+
+  var symbolNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var symbolNames_property_selection : EBSelection <StringArray> {
+    return self.symbolNames_property.prop
+  }
+
+  //····················································································································
+
+  var symbolNames : StringArray? {
+    switch self.symbolNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -446,6 +476,28 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
+  //--- Atomic property: symbolNames
+    self.symbolNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbols_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbols_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceInProject_symbolNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbols_property.addEBObserverOf_symbolInstanceName (self.symbolNames_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
       inManagedObject?.mDevice_property.setProp (self)
@@ -463,6 +515,7 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
     self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
+    self.mSymbols_property.removeEBObserverOf_symbolInstanceName (self.symbolNames_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -550,6 +603,14 @@ class DeviceInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.packageNames_property.mObserverExplorer,
       valueExplorer:&self.packageNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolNames",
+      idx:self.symbolNames_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolNames_property.mObserverExplorer,
+      valueExplorer:&self.symbolNames_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1261,6 +1322,62 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   }
 
   //····················································································································
+  //   Observers of 'symbolNames' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNames.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolNames_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNames.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolNames_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1343,6 +1460,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.removeEBObserversOf_canExport_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_packageNames_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1356,6 +1474,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.addEBObserversOf_canExport_toElementsOfSet (addedSet)
       self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
       self.addEBObserversOf_packageNames_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1497,6 +1616,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1518,6 +1638,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

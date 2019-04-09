@@ -43,6 +43,7 @@ entity DeviceInProject {
   transient Bool canExport dependsFrom self.mDeviceFileData ;
   transient Bool canRemove dependsFrom self.mComponents.count ;
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
+  transient StringArray symbolNames dependsFrom self.mSymbols.all.symbolInstanceName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,6 +87,8 @@ entity DeviceSymbolInstanceInProject {
   property String mInstanceName default "" ;
 
   toOne DeviceSymbolTypeInProject mSymbolType ;
+  
+  transient String symbolInstanceName dependsFrom self.mSymbolType.one.mTypeName, self.mInstanceName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

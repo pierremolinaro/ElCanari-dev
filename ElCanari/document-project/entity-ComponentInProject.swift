@@ -1197,6 +1197,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
         oldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames)
         oldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString)
+        oldValue?.symbolNames_property.removeEBObserversFrom (&self.mObserversOf_symbolNames)
         oldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString)
       //--- Add property observers to new object
         self.mValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport)
@@ -1207,6 +1208,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
         self.mValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames)
         self.mValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString)
+        self.mValue?.symbolNames_property.addEBObserversFrom (&self.mObserversOf_symbolNames)
         self.mValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString)
        //--- Notify observers
         self.postEvent ()
@@ -1561,6 +1563,47 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
     self.mObserversOf_sizeString.remove (inObserver)
     if let object = self.propval {
       object.sizeString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolNames
+  //····················································································································
+
+  private var mObserversOf_symbolNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.symbolNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolNames.insert (inObserver)
+    if let object = self.propval {
+      object.symbolNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolNames.remove (inObserver)
+    if let object = self.propval {
+      object.symbolNames_property.removeEBObserver (inObserver)
     }
   }
 
