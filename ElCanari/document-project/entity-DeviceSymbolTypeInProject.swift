@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolTypeInProject_mTypeName : class {
-  var mTypeName : String { get }
+protocol DeviceSymbolTypeInProject_mSymbolTypeName : class {
+  var mSymbolTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -27,26 +27,45 @@ protocol DeviceSymbolTypeInProject_mFilledBezierPath : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceSymbolTypeInProject : EBManagedObject,
-         DeviceSymbolTypeInProject_mTypeName,
+         DeviceSymbolTypeInProject_mSymbolTypeName,
          DeviceSymbolTypeInProject_mStrokeBezierPath,
          DeviceSymbolTypeInProject_mFilledBezierPath {
 
   //····················································································································
-  //   Atomic property: mTypeName
+  //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  var mTypeName_property = EBStoredProperty_String (defaultValue: "")
+  var mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mTypeName : String {
-    get { return self.mTypeName_property.propval }
-    set { self.mTypeName_property.setProp (newValue) }
+  var mSymbolTypeName : String {
+    get { return self.mSymbolTypeName_property.propval }
+    set { self.mSymbolTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mTypeName_property_selection : EBSelection <String> { return self.mTypeName_property.prop }
+  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+
+  //····················································································································
+  //   To many property: mPins
+  //····················································································································
+
+  var mPins_property = StoredArrayOf_DevicePinInProject ()
+
+  //····················································································································
+
+  var mPins_property_selection : EBSelection < [DevicePinInProject] > {
+    return self.mPins_property.prop
+  }
+
+  //····················································································································
+
+  var mPins : [DevicePinInProject] {
+    get { return self.mPins_property.propval }
+    set { self.mPins_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: mStrokeBezierPath
@@ -83,38 +102,19 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
 
   //····················································································································
-  //   To many property: mPins
-  //····················································································································
-
-  var mPins_property = StoredArrayOf_DevicePinInProject ()
-
-  //····················································································································
-
-  var mPins_property_selection : EBSelection < [DevicePinInProject] > {
-    return self.mPins_property.prop
-  }
-
-  //····················································································································
-
-  var mPins : [DevicePinInProject] {
-    get { return self.mPins_property.propval }
-    set { self.mPins_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //    init
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mPins (no option)
+    self.mPins_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mPins (no option)
-    self.mPins_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -139,12 +139,12 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mTypeName",
-      idx:self.mTypeName_property.ebObjectIndex,
+      "mSymbolTypeName",
+      idx:self.mSymbolTypeName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mTypeName_property.mObserverExplorer,
-      valueExplorer:&self.mTypeName_property.mValueExplorer
+      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mStrokeBezierPath",
@@ -180,17 +180,17 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.mObserverExplorer = nil
-    self.mTypeName_property.mValueExplorer = nil
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.mObserverExplorer = nil
+    self.mSymbolTypeName_property.mValueExplorer = nil
+  //--- To many property: mPins
+    self.mPins_property.mValueExplorer = nil
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.mObserverExplorer = nil
     self.mStrokeBezierPath_property.mValueExplorer = nil
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
-  //--- To many property: mPins
-    self.mPins_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -220,18 +220,18 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mTypeName")
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
-  //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
   //--- To many property: mPins
     self.store (
       managedObjectArray: self.mPins_property.propval,
       relationshipName: "mPins",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mStrokeBezierPath
+    self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
+  //--- Atomic property: mFilledBezierPath
+    self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
   }
 
   //····················································································································
@@ -255,8 +255,8 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mTypeName
-    self.mTypeName_property.readFrom (dictionary: inDictionary, forKey:"mTypeName")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey:"mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
@@ -298,58 +298,58 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolTypeInProject> {
 
   //····················································································································
-  //   Observers of 'mTypeName' stored property
+  //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mTypeName = EBWeakEventSet ()
+  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mTypeName.insert (inObserver)
+    self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTypeName_property.addEBObserver (inObserver)
+        managedObject.mSymbolTypeName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mTypeName.remove (inObserver)
+    self.mObserversOf_mSymbolTypeName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTypeName_property.removeEBObserver (inObserver)
+        managedObject.mSymbolTypeName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mTypeName.apply ( {(_ observer : EBEvent) in
-        managedObject.mTypeName_property.addEBObserver (observer)
+      self.mObserversOf_mSymbolTypeName.apply ( {(_ observer : EBEvent) in
+        managedObject.mSymbolTypeName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mTypeName.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
+    self.mObserversOf_mSymbolTypeName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mTypeName_property.removeEBObserver (observer)
+        managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
     })
   }
@@ -541,14 +541,14 @@ class TransientArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mTypeName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
@@ -679,11 +679,11 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mTypeName_property.mSetterDelegate = nil
+            managedObject.mSymbolTypeName_property.mSetterDelegate = nil
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
         }
@@ -693,11 +693,11 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
           for managedObject : DeviceSymbolTypeInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
         }

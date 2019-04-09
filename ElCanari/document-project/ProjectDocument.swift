@@ -99,17 +99,17 @@ import Cocoa
   //   Transient property: selectedDeviceSymbolNames
   //····················································································································
 
-  var selectedDeviceSymbolNames_property = EBTransientProperty_StringArray ()
+  var selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
 
   //····················································································································
 
-  var selectedDeviceSymbolNames_property_selection : EBSelection <StringArray> {
+  var selectedDeviceSymbolNames_property_selection : EBSelection <TwoStringArray> {
     return self.selectedDeviceSymbolNames_property.prop
   }
 
   //····················································································································
 
-  var selectedDeviceSymbolNames : StringArray? {
+  var selectedDeviceSymbolNames : TwoStringArray? {
     switch self.selectedDeviceSymbolNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -154,7 +154,7 @@ import Cocoa
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
-  @IBOutlet var mDeviceSymbolTableView : StringArrayTableView?
+  @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView?
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
@@ -264,7 +264,7 @@ import Cocoa
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
-    checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", StringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
@@ -393,8 +393,8 @@ import Cocoa
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
-    self.mDevicePackageTableView?.bind_stringArray (self.selectedDevicePackageNames_property, file: #file, line: #line)
-    self.mDeviceSymbolTableView?.bind_stringArray (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
+    self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
+    self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -541,8 +541,8 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
     self.mComponentCountTextField?.unbind_valueObserver ()
-    self.mDevicePackageTableView?.unbind_stringArray ()
-    self.mDeviceSymbolTableView?.unbind_stringArray ()
+    self.mDevicePackageTableView?.unbind_array ()
+    self.mDeviceSymbolTableView?.unbind_array ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil

@@ -1,18 +1,18 @@
 //
-//  view-StringArrayTableView.swift
+//  view-TwoStringArrayTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 08/04/2019.
+//  Created by Pierre Molinaro on 09/04/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: StringArrayTableView is view based
+// NOTE: TwoStringArrayTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -49,8 +49,10 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
       if !reuseTableViewCells () {
         result?.identifier = nil // So result cannot be reused, will be freed
       }
-      if columnIdentifier.rawValue == "value" {
-        result?.textField?.stringValue = self.mDataSource [inRowIndex]
+      if columnIdentifier.rawValue == "left" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].mLeft
+      }else if columnIdentifier.rawValue == "right" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].mRight
       }
     }
     return result
@@ -60,13 +62,13 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   //  DATA SOURCE
   //····················································································································
 
-  private var mDataSource = StringArray ()
+  private var mDataSource = TwoStringArray ()
 
   //····················································································································
 
-  func reloadDataSource (_ inDataSource : [String]) {
+  func reloadDataSource (_ inDataSource : TwoStringArray) {
   //--- Note selected rows
-    var selectedRowContents = Set <String> ()
+    var selectedRowContents = Set <TwoStrings> ()
     let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mDataSource.count {
@@ -77,8 +79,10 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
     self.mDataSource = inDataSource
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
-        if key == "value" {
-          self.mDataSource.sort ()
+        if key == "left" {
+          self.mDataSource.sort () { $0.mLeft < $1.mLeft }
+        }else if key == "right" {
+          self.mDataSource.sort () { $0.mRight < $1.mRight }
         }
       }
     }
@@ -108,7 +112,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 
   //····················································································································
 
-  func update (from inModel : EBReadOnlyProperty_StringArray) {
+  func update (from inModel : EBReadOnlyProperty_TwoStringArray) {
     switch inModel.prop {
     case .empty, .multiple :
       self.reloadDataSource ([])
@@ -121,12 +125,12 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   //  $array binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_StringArray? = nil
+  private var mController : EBReadOnlyController_TwoStringArray? = nil
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
-    self.mController = EBReadOnlyController_StringArray (
+  func bind_array (_ model : EBReadOnlyProperty_TwoStringArray, file : String, line : Int) {
+    self.mController = EBReadOnlyController_TwoStringArray (
       model: model,
       callBack: { [weak self] in self?.update (from: model) }
     )

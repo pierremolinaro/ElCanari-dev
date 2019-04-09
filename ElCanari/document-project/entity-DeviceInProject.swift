@@ -61,7 +61,7 @@ protocol DeviceInProject_packageNames : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol DeviceInProject_symbolNames : class {
-  var symbolNames : StringArray? { get }
+  var symbolNames : TwoStringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -324,17 +324,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: symbolNames
   //····················································································································
 
-  var symbolNames_property = EBTransientProperty_StringArray ()
+  var symbolNames_property = EBTransientProperty_TwoStringArray ()
 
   //····················································································································
 
-  var symbolNames_property_selection : EBSelection <StringArray> {
+  var symbolNames_property_selection : EBSelection <TwoStringArray> {
     return self.symbolNames_property.prop
   }
 
   //····················································································································
 
-  var symbolNames : StringArray? {
+  var symbolNames : TwoStringArray? {
     switch self.symbolNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -479,16 +479,17 @@ class DeviceInProject : EBManagedObject,
   //--- Atomic property: symbolNames
     self.symbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbols_property_selection.kind ()
+        var kind = unwSelf.mSymbols_property_selection.kind ()
+        kind &= unwSelf.mSymbols_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbols_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_symbolNames (v0))
+          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceInProject_symbolNames (v0, v1))
           default :
             return .empty
           }
@@ -497,7 +498,8 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolInstanceName (self.symbolNames_property)
+    self.mSymbols_property.addEBObserverOf_symbolTypeName (self.symbolNames_property)
+    self.mSymbols_property.addEBObserverOf_mInstanceName (self.symbolNames_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
       inManagedObject?.mDevice_property.setProp (self)
@@ -515,7 +517,8 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
     self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
-    self.mSymbols_property.removeEBObserverOf_symbolInstanceName (self.symbolNames_property)
+    self.mSymbols_property.removeEBObserverOf_symbolTypeName (self.symbolNames_property)
+    self.mSymbols_property.removeEBObserverOf_mInstanceName (self.symbolNames_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }

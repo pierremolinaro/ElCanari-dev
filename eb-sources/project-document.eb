@@ -191,10 +191,10 @@ document ProjectDocument root ProjectRoot {
   outlet EBTableView mDeviceLibraryTableView $tableValue mProjectDeviceController ;
   
   transient StringArray selectedDevicePackageNames dependsFrom mProjectDeviceController.selectedArray.all.packageNames ;
-  outlet StringArrayTableView mDevicePackageTableView $stringArray self.selectedDevicePackageNames ;
+  outlet StringArrayTableView mDevicePackageTableView $array self.selectedDevicePackageNames ;
   
-  transient StringArray selectedDeviceSymbolNames dependsFrom mProjectDeviceController.selectedArray.all.symbolNames ;
-  outlet StringArrayTableView mDeviceSymbolTableView $stringArray self.selectedDeviceSymbolNames ;
+  transient TwoStringArray selectedDeviceSymbolNames dependsFrom mProjectDeviceController.selectedArray.all.symbolNames ;
+  outlet TwoStringArrayTableView mDeviceSymbolTableView $array self.selectedDeviceSymbolNames ;
 
 #  outlet checkForDeviceAndFontUpdateAtOpeningCheckBox : NSButton $value root.checkForDeviceAndFontUpdateAtOpening ;
 #

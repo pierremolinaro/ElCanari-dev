@@ -11,16 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_symbolInstanceName (
-       _ self_mSymbolType_mTypeName : String?,                   
-       _ self_mInstanceName : String
+func transient_DeviceSymbolInstanceInProject_symbolTypeName (
+       _ self_mSymbolType_mSymbolTypeName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-        var result = self_mSymbolType_mTypeName ?? "—"
-        if self_mInstanceName != "" {
-          result += ":" + self_mInstanceName
-        }
-        return result
+        return self_mSymbolType_mSymbolTypeName ?? "—"
 //--- END OF USER ZONE 2
 }
 

@@ -1574,7 +1574,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
 
   //····················································································································
 
-  var symbolNames_property_selection : EBSelection <StringArray?> {
+  var symbolNames_property_selection : EBSelection <TwoStringArray?> {
     if let model = self.propval {
       switch (model.symbolNames_property_selection) {
       case .empty :

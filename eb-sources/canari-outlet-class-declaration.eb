@@ -3,7 +3,13 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 extern outlet class StringArrayTableView : EBTableView ;
-binding StringArrayTableView $stringArray : transient StringArray ;
+binding StringArrayTableView $array : transient StringArray ;
+
+extern outlet class TwoStringArrayTableView : EBTableView ;
+binding TwoStringArrayTableView $array : transient TwoStringArray ;
+
+extern outlet class ThreeStringArrayTableView : EBTableView ;
+binding ThreeStringArrayTableView $array : transient ThreeStringArray ;
 
 extern outlet class CanariToolbar ;
 

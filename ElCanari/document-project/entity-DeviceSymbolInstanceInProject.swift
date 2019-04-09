@@ -12,8 +12,8 @@ protocol DeviceSymbolInstanceInProject_mInstanceName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolInstanceInProject_symbolInstanceName : class {
-  var symbolInstanceName : String? { get }
+protocol DeviceSymbolInstanceInProject_symbolTypeName : class {
+  var symbolTypeName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -22,7 +22,7 @@ protocol DeviceSymbolInstanceInProject_symbolInstanceName : class {
 
 class DeviceSymbolInstanceInProject : EBManagedObject,
          DeviceSymbolInstanceInProject_mInstanceName,
-         DeviceSymbolInstanceInProject_symbolInstanceName {
+         DeviceSymbolInstanceInProject_symbolTypeName {
 
   //····················································································································
   //   Atomic property: mInstanceName
@@ -61,21 +61,21 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: symbolInstanceName
+  //   Transient property: symbolTypeName
   //····················································································································
 
-  var symbolInstanceName_property = EBTransientProperty_String ()
+  var symbolTypeName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var symbolInstanceName_property_selection : EBSelection <String> {
-    return self.symbolInstanceName_property.prop
+  var symbolTypeName_property_selection : EBSelection <String> {
+    return self.symbolTypeName_property.prop
   }
 
   //····················································································································
 
-  var symbolInstanceName : String? {
-    switch self.symbolInstanceName_property_selection {
+  var symbolTypeName : String? {
+    switch self.symbolTypeName_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -93,20 +93,19 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
     self.mSymbolType_property.owner = self
-  //--- Atomic property: symbolInstanceName
-    self.symbolInstanceName_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolTypeName
+    self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSymbolType_property.mTypeName_property_selection.kind ()
-        kind &= unwSelf.mInstanceName_property_selection.kind ()
+        let kind = unwSelf.mSymbolType_property.mSymbolTypeName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbolType_property.mTypeName_property_selection, unwSelf.mInstanceName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceSymbolInstanceInProject_symbolInstanceName (v0, v1))
+          switch (unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceSymbolInstanceInProject_symbolTypeName (v0))
           default :
             return .empty
           }
@@ -115,8 +114,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mTypeName (self.symbolInstanceName_property)
-    self.mInstanceName_property.addEBObserver (self.symbolInstanceName_property)
+    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -126,8 +124,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mSymbolType_property.removeEBObserverOf_mTypeName (self.symbolInstanceName_property)
-    self.mInstanceName_property.removeEBObserver (self.symbolInstanceName_property)
+    self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
   //--- Unregister properties for handling signature
   }
 
@@ -152,12 +149,12 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "symbolInstanceName",
-      idx:self.symbolInstanceName_property.ebObjectIndex,
+      "symbolTypeName",
+      idx:self.symbolTypeName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.symbolInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.symbolInstanceName_property.mValueExplorer
+      observerExplorer:&self.symbolTypeName_property.mObserverExplorer,
+      valueExplorer:&self.symbolTypeName_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -341,57 +338,57 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   }
 
   //····················································································································
-  //   Observers of 'symbolInstanceName' transient property
+  //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolInstanceName = EBWeakEventSet ()
+  private var mObserversOf_symbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_symbolInstanceName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_symbolInstanceName.insert (inObserver)
+    self.mObserversOf_symbolTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolInstanceName_property.addEBObserver (inObserver)
+        managedObject.symbolTypeName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolInstanceName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolInstanceName.remove (inObserver)
+    self.mObserversOf_symbolTypeName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolInstanceName_property.removeEBObserver (inObserver)
+        managedObject.symbolTypeName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_symbolInstanceName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolInstanceName.apply ( {(_ observer : EBEvent) in
-        managedObject.symbolInstanceName_property.addEBObserver (observer)
+      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolTypeName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolInstanceName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolInstanceName.apply ( {(_ observer : EBEvent) in
-        managedObject.symbolInstanceName_property.removeEBObserver (observer)
+      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolTypeName_property.removeEBObserver (observer)
       })
     }
   }
@@ -471,13 +468,13 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_symbolInstanceName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mInstanceName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_symbolInstanceName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -608,7 +605,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             managedObject.mInstanceName_property.mSetterDelegate = nil
           }
           self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolInstanceName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -619,7 +616,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             managedObject.mInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
           self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolInstanceName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -790,11 +787,11 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
       //--- Remove property observers of old object
         oldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
         oldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
-        oldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName)
+        oldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
       //--- Add property observers to new object
         self.mValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
         self.mValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
-        self.mValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName)
+        self.mValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
        //--- Notify observers
         self.postEvent ()
       }
@@ -906,16 +903,16 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mTypeName
+  //   Observable property: mSymbolTypeName
   //····················································································································
 
-  private var mObserversOf_mTypeName = EBWeakEventSet ()
+  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTypeName_property_selection : EBSelection <String?> {
+  var mSymbolTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mTypeName_property_selection) {
+      switch (model.mSymbolTypeName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -930,19 +927,19 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
 
   //····················································································································
 
-  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
-    self.mObserversOf_mTypeName.insert (inObserver)
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypeName.insert (inObserver)
     if let object = self.propval {
-      object.mTypeName_property.addEBObserver (inObserver)
+      object.mSymbolTypeName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
-    self.mObserversOf_mTypeName.remove (inObserver)
+  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypeName.remove (inObserver)
     if let object = self.propval {
-      object.mTypeName_property.removeEBObserver (inObserver)
+      object.mSymbolTypeName_property.removeEBObserver (inObserver)
     }
   }
 

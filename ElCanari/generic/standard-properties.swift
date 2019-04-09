@@ -1960,6 +1960,28 @@ typealias EBReadOnlyPropertyArray_StringArray  = EBReadOnlyClassProperty <[Strin
 typealias EBTransientPropertyArray_StringArray = EBTransientClassProperty <[StringArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class TwoStringArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_TwoStringArray = EBReadOnlyClassController <TwoStringArray>
+
+typealias EBReadOnlyProperty_TwoStringArray  = EBReadOnlyClassProperty <TwoStringArray>
+typealias EBTransientProperty_TwoStringArray = EBTransientClassProperty <TwoStringArray>
+typealias EBReadOnlyPropertyArray_TwoStringArray  = EBReadOnlyClassProperty <[TwoStringArray]>
+typealias EBTransientPropertyArray_TwoStringArray = EBTransientClassProperty <[TwoStringArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class ThreeStringArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_ThreeStringArray = EBReadOnlyClassController <ThreeStringArray>
+
+typealias EBReadOnlyProperty_ThreeStringArray  = EBReadOnlyClassProperty <ThreeStringArray>
+typealias EBTransientProperty_ThreeStringArray = EBTransientClassProperty <ThreeStringArray>
+typealias EBReadOnlyPropertyArray_ThreeStringArray  = EBReadOnlyClassProperty <[ThreeStringArray]>
+typealias EBTransientPropertyArray_ThreeStringArray = EBTransientClassProperty <[ThreeStringArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

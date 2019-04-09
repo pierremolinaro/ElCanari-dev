@@ -43,7 +43,7 @@ entity DeviceInProject {
   transient Bool canExport dependsFrom self.mDeviceFileData ;
   transient Bool canRemove dependsFrom self.mComponents.count ;
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
-  transient StringArray symbolNames dependsFrom self.mSymbols.all.symbolInstanceName ;
+  transient TwoStringArray symbolNames dependsFrom self.mSymbols.all.symbolTypeName, self.mSymbols.all.mInstanceName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,6 +58,7 @@ entity DevicePackageInProject {
 
 entity DeviceMasterPadInProject {
   toMany DeviceSlavePadInProject mSlavePads ;
+  toOne DevicePinInProject mPin ;
 
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
@@ -88,13 +89,13 @@ entity DeviceSymbolInstanceInProject {
 
   toOne DeviceSymbolTypeInProject mSymbolType ;
   
-  transient String symbolInstanceName dependsFrom self.mSymbolType.one.mTypeName, self.mInstanceName ;
+  transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolTypeInProject {
-  property String mTypeName default "" ;
+  property String mSymbolTypeName default "" ;
 
   toMany DevicePinInProject mPins ;
   

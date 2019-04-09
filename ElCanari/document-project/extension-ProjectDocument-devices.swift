@@ -158,7 +158,7 @@ extension ProjectDocument {
       let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
-      symbolTypeInProject.mTypeName = symbolTypeInDevice.mTypeName
+      symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
       for pinInDevice in symbolTypeInDevice.mPinTypes {
         let pinInProject = DevicePinInProject (self.ebUndoManager)
         pinInProject.mPinName = pinInDevice.mName
@@ -180,6 +180,7 @@ extension ProjectDocument {
         inDeviceInProject.mSymbols.append (symbolInstanceInProject)
       }
     }
+  //--- Append pin/pad assignments
   }
 
   //····················································································································

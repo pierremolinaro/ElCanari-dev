@@ -13,9 +13,9 @@ import Cocoa
 
 func transient_ProjectDocument_selectedDeviceSymbolNames (
        _ self_mProjectDeviceController_selectedArray_all_symbolNames : [DeviceInProject_symbolNames]
-) -> StringArray {
+) -> TwoStringArray {
 //--- START OF USER ZONE 2
-        var result = [String] ()
+        var result = [TwoStrings] ()
         if self_mProjectDeviceController_selectedArray_all_symbolNames.count == 1 {
           if let a = self_mProjectDeviceController_selectedArray_all_symbolNames [0].symbolNames {
             result = a
