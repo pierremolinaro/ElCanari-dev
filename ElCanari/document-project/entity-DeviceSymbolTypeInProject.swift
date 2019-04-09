@@ -49,25 +49,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
-  //   To many property: mPins
-  //····················································································································
-
-  var mPins_property = StoredArrayOf_DevicePinInProject ()
-
-  //····················································································································
-
-  var mPins_property_selection : EBSelection < [DevicePinInProject] > {
-    return self.mPins_property.prop
-  }
-
-  //····················································································································
-
-  var mPins : [DevicePinInProject] {
-    get { return self.mPins_property.propval }
-    set { self.mPins_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
@@ -109,8 +90,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mPins (no option)
-    self.mPins_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFilledBezierPath
@@ -164,13 +143,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mPins",
-      idx:mPins_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPins_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -183,8 +155,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.mObserverExplorer = nil
     self.mSymbolTypeName_property.mValueExplorer = nil
-  //--- To many property: mPins
-    self.mPins_property.mValueExplorer = nil
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.mObserverExplorer = nil
     self.mStrokeBezierPath_property.mValueExplorer = nil
@@ -200,7 +170,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPins_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -222,12 +191,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
-  //--- To many property: mPins
-    self.store (
-      managedObjectArray: self.mPins_property.propval,
-      relationshipName: "mPins",
-      intoDictionary: ioDictionary
-    )
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
@@ -241,12 +204,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mPins
-    self.mPins_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPins",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DevicePinInProject])
   }
 
   //····················································································································
@@ -269,10 +226,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mPins
-    for managedObject in self.mPins_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -281,10 +234,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mPins
-    for managedObject in self.mPins_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································

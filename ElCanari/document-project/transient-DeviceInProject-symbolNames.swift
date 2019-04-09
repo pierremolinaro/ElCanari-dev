@@ -12,17 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceInProject_symbolNames (
-       _ self_mSymbols_symbolTypeName : [DeviceSymbolInstanceInProject_symbolTypeName],
-       _ self_mSymbols_mInstanceName : [DeviceSymbolInstanceInProject_mInstanceName]
+       _ self_mSymbols_pinQualifiedNames : [DeviceSymbolInstanceInProject_pinQualifiedNames]
 ) -> TwoStringArray {
 //--- START OF USER ZONE 2
         var result = [TwoStrings] ()
-        var idx = 0
-        while idx < self_mSymbols_symbolTypeName.count {
-          let typeName = self_mSymbols_symbolTypeName [idx].symbolTypeName!
-          let instanceName = self_mSymbols_mInstanceName [idx].mInstanceName
-          idx += 1
-          result.append (TwoStrings (typeName, instanceName))
+        for symbol in self_mSymbols_pinQualifiedNames {
+          if let pinQualifiedNames = symbol.pinQualifiedNames {
+            result += pinQualifiedNames
+          }
         }
         return result
 //--- END OF USER ZONE 2

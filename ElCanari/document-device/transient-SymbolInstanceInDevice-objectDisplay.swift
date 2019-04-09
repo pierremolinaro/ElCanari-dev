@@ -16,7 +16,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
        _ self_mType_mFilledBezierPath : NSBezierPath?,
        _ self_mType_pinNameShape : EBShape?,         
        _ self_mPinInstances_numberShape : [SymbolPinInstanceInDevice_numberShape],
-       _ self_qualifiedName : String,                
+       _ self_symbolQualifiedName : String,          
        _ self_mX : Int,                              
        _ self_mY : Int,                              
        _ prefs_symbolDrawingWidthMultipliedByTen : Int,
@@ -44,7 +44,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
           let enlarge = -frameRadius - CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0
           r = r.insetBy (dx: enlarge, dy: enlarge)
           let nameOrigin = NSPoint (x: r.midX, y: r.maxY)
-          let s = self_qualifiedName.size (withAttributes: nameTextAttributes)
+          let s = self_symbolQualifiedName.size (withAttributes: nameTextAttributes)
           r.size.height += s.height
           let e = (r.size.width - s.width) / 2.0 - frameRadius
           if e < 0.0 {
@@ -57,7 +57,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
           bp.lineWidth = 0.5
           shape.append (EBStrokeBezierPathShape ([bp], .lightGray))
         //--- Name
-          let nameShape = EBTextShape (self_qualifiedName, nameOrigin, nameTextAttributes, .center, .above)
+          let nameShape = EBTextShape (self_symbolQualifiedName, nameOrigin, nameTextAttributes, .center, .above)
           shape.append (nameShape)
         //--- Stroke Bezier path
            strokeBezierPath.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0

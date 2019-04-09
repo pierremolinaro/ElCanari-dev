@@ -14,7 +14,7 @@ import Cocoa
 func transient_SymbolInstanceInDevice_selectionDisplay (
        _ self_mType_mStrokeBezierPath : NSBezierPath?,  
        _ self_mType_mFilledBezierPath : NSBezierPath?,  
-       _ self_qualifiedName : String,                   
+       _ self_symbolQualifiedName : String,             
        _ prefs_symbolDrawingWidthMultipliedByTen : Int, 
        _ self_mX : Int,                                 
        _ self_mY : Int
@@ -39,7 +39,7 @@ func transient_SymbolInstanceInDevice_selectionDisplay (
         let enlarge = -frameRadius - CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0
         r = r.insetBy (dx: enlarge, dy: enlarge)
         let nameOrigin = NSPoint (x: r.midX, y: r.maxY)
-        let s = self_qualifiedName.size (withAttributes: nameTextAttributes)
+        let s = self_symbolQualifiedName.size (withAttributes: nameTextAttributes)
         r.size.height += s.height
         let e = (r.size.width - s.width) / 2.0 - frameRadius
         if e < 0.0 {

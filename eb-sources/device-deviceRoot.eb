@@ -36,7 +36,7 @@ graphic entity DeviceRoot {
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;
   transient Bool packagePadNameSetsAreConsistent dependsFrom self.mPackages.all.padNameSet ;
 
-  transient String inconsistentSymbolNameSetMessage dependsFrom self.mSymbolInstances.all.qualifiedName ;
+  transient String inconsistentSymbolNameSetMessage dependsFrom self.mSymbolInstances.all.symbolQualifiedName ;
   transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
 #--- Packages
@@ -259,7 +259,7 @@ graphic entity SymbolInstanceInDevice {
      self.mType.one.mFilledBezierPath,
      self.mType.one.pinNameShape,
      self.mPinInstances.all.numberShape,
-     self.qualifiedName,
+     self.symbolQualifiedName,
      self.mX, self.mY,
      prefs.symbolDrawingWidthMultipliedByTen,
      prefs.symbolColor
@@ -267,12 +267,12 @@ graphic entity SymbolInstanceInDevice {
 
   transient String symbolTypeName dependsFrom self.mType.one.mTypeName ;
 
-  transient String qualifiedName dependsFrom self.mInstanceName, self.mType.one.mTypeName ;
+  transient String symbolQualifiedName dependsFrom self.mInstanceName, self.mType.one.mTypeName ;
 
   transient EBShape selectionDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
-     self.qualifiedName,
+     self.symbolQualifiedName,
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
@@ -300,6 +300,8 @@ entity SymbolPinInstanceInDevice {
   transient String pinName dependsFrom self.mType.one.mName ;
 
   transient String symbolName dependsFrom self.mSymbolInstance.one.mInstanceName ;
+
+  transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.symbolName, self.pinName ;
 
   transient Bool isConnected dependsFrom self.mPadProxy.none ;
 }

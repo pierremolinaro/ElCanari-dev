@@ -1,8 +1,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-transient property class StringArray ;
-transient property class TwoStringArray ;
-transient property class ThreeStringArray ;
+transient property struct StringArray ;
+transient property struct TwoStrings ;
+transient property struct TwoStringArray ;
+transient property struct ThreeStringArray ;
+
+transient property struct PinQualifiedNameStruct ;
 
 transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;

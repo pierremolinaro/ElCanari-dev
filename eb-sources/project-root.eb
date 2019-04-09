@@ -37,13 +37,14 @@ entity DeviceInProject {
   toMany DevicePackageInProject mPackages ;
   toMany DeviceSymbolInstanceInProject mSymbols ;
   toMany ComponentInProject mComponents inverse toOne mDevice ;
+  toMany DevicePadAssignmentInProject mPadAssignments ;
 
   transient String versionString dependsFrom self.mDeviceVersion ;
   transient String sizeString dependsFrom self.mDeviceFileData ;
   transient Bool canExport dependsFrom self.mDeviceFileData ;
   transient Bool canRemove dependsFrom self.mComponents.count ;
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
-  transient TwoStringArray symbolNames dependsFrom self.mSymbols.all.symbolTypeName, self.mSymbols.all.mInstanceName ;
+  transient TwoStringArray symbolNames dependsFrom self.mSymbols.all.pinQualifiedNames ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,7 +59,6 @@ entity DevicePackageInProject {
 
 entity DeviceMasterPadInProject {
   toMany DeviceSlavePadInProject mSlavePads ;
-  toOne DevicePinInProject mPin ;
 
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
@@ -85,9 +85,10 @@ entity DeviceSlavePadInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolInstanceInProject {
-  property String mInstanceName default "" ;
-
   toOne DeviceSymbolTypeInProject mSymbolType ;
+  toMany DevicePinInProject mPins ;
+
+  transient TwoStringArray pinQualifiedNames dependsFrom self.mPins.all.pinQualifiedName ;
   
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
 }
@@ -96,8 +97,6 @@ entity DeviceSymbolInstanceInProject {
 
 entity DeviceSymbolTypeInProject {
   property String mSymbolTypeName default "" ;
-
-  toMany DevicePinInProject mPins ;
   
   property NSBezierPath mStrokeBezierPath default empty ;
   property NSBezierPath mFilledBezierPath default empty ;
@@ -107,6 +106,7 @@ entity DeviceSymbolTypeInProject {
 
 entity DevicePinInProject {
   property String mPinName default "" ;
+  property String mSymbolInstanceName default "" ;
 
   property Int mPinX default 0 ;
   property Int mPinY default 0 ;
@@ -120,6 +120,8 @@ entity DevicePinInProject {
   property Int mXNumber default 0 ;
   property Int mYNumber default 0 ;
   property HorizontalAlignment mNumberHorizontalAlignment default center ;
+
+  transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;
 }
 
 
@@ -135,6 +137,13 @@ entity ComponentInProject {
   transient String componentName dependsFrom self.mNameIndex, self.mDevice.one.mPrefix ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DevicePadAssignmentInProject {
+  property String mPadName default "" ;
+  toOne DevicePinInProject mPin ; # Is nil if pad is NC
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

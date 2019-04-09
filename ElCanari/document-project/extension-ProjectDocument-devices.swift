@@ -154,33 +154,51 @@ extension ProjectDocument {
       s.removeRecursivelyAllRelationsShips ()
     }
   //--- Append symbols
+    var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
     for symbolTypeInDevice in inDeviceRoot.mSymbolTypes {
       let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
       symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
-      for pinInDevice in symbolTypeInDevice.mPinTypes {
-        let pinInProject = DevicePinInProject (self.ebUndoManager)
-        pinInProject.mPinName = pinInDevice.mName
-        pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
-        pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
-        pinInProject.mPinNameIsDisplayedInSchematics = pinInDevice.mPinNameIsDisplayedInSchematics
-        pinInProject.mPinX = pinInDevice.mPinX
-        pinInProject.mPinY = pinInDevice.mPinY
-        pinInProject.mXName = pinInDevice.mXName
-        pinInProject.mYName = pinInDevice.mYName
-        pinInProject.mXNumber = pinInDevice.mXNumber
-        pinInProject.mYNumber = pinInDevice.mYNumber
-        symbolTypeInProject.mPins.append (pinInProject)
-      }
       for symbolInstanceInDevice in symbolTypeInDevice.mInstances {
         let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
         symbolInstanceInProject.mSymbolType = symbolTypeInProject
-        symbolInstanceInProject.mInstanceName = symbolInstanceInDevice.mInstanceName
+    //    symbolInstanceInProject.mInstanceName = symbolInstanceInDevice.mInstanceName
         inDeviceInProject.mSymbols.append (symbolInstanceInProject)
+        for pinInDevice in symbolTypeInDevice.mPinTypes {
+          let pinInProject = DevicePinInProject (self.ebUndoManager)
+          pinInProject.mPinName = pinInDevice.mName
+          pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
+          pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
+          pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
+          pinInProject.mPinNameIsDisplayedInSchematics = pinInDevice.mPinNameIsDisplayedInSchematics
+          pinInProject.mPinX = pinInDevice.mPinX
+          pinInProject.mPinY = pinInDevice.mPinY
+          pinInProject.mXName = pinInDevice.mXName
+          pinInProject.mYName = pinInDevice.mYName
+          pinInProject.mXNumber = pinInDevice.mXNumber
+          pinInProject.mYNumber = pinInDevice.mYNumber
+          symbolInstanceInProject.mPins.append (pinInProject)
+          let pinQualifiedName = pinInProject.pinQualifiedName!
+          // Swift.print ("pinQualifiedName \(pinQualifiedName)")
+          devicePinDictionary [pinQualifiedName] = pinInProject
+        }
       }
     }
-  //--- Append pin/pad assignments
+  //--- Append pin/pad assignment
+    for pinPadAssignmentInDevice in inDeviceRoot.mPadProxies {
+      if let pinInstanceInDevice = pinPadAssignmentInDevice.mPinInstance { // If nil, pad is NC
+        let padName = pinPadAssignmentInDevice.mPadName
+        let qualifiedPinName = pinInstanceInDevice.pinQualifiedName!
+        // Swift.print ("padName '\(padName)' qualifiedPinName '\(qualifiedPinName)'")
+        let pinInProject = devicePinDictionary [qualifiedPinName]!
+        let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
+        assignment.mPadName = padName
+        assignment.mPin = pinInProject
+        inDeviceInProject.mPadAssignments.append (assignment)
+      }
+
+    }
   }
 
   //····················································································································

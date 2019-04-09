@@ -859,7 +859,7 @@ class DeviceRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstances_property.addEBObserverOf_qualifiedName (self.inconsistentSymbolNameSetMessage_property)
+    self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1095,7 +1095,7 @@ class DeviceRoot : EBGraphicManagedObject,
     super.removeAllObservers ()
     self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
-    self.mSymbolInstances_property.removeEBObserverOf_qualifiedName (self.inconsistentSymbolNameSetMessage_property)
+    self.mSymbolInstances_property.removeEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
     self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     self.mImageData_property.removeEBObserver (self.imageIsValid_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)

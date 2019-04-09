@@ -11,27 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
-       _ self_mSymbolInstances_symbolQualifiedName : [SymbolInstanceInDevice_symbolQualifiedName]
+func transient_SymbolPinInstanceInDevice_pinQualifiedName (
+       _ self_symbolName : String,                         
+       _ self_pinName : String
 ) -> String {
 //--- START OF USER ZONE 2
-        var message = [String] ()
-        var duplicationDictionary = [String : Int] ()
-        for qn in self_mSymbolInstances_symbolQualifiedName {
-          if let qualifiedName = qn.symbolQualifiedName {
-            if let n = duplicationDictionary [qualifiedName] {
-              duplicationDictionary [qualifiedName] = n + 1
-            }else{
-              duplicationDictionary [qualifiedName] = 1
-            }
-          }
-        }
-        for (qualifiedName, count) in duplicationDictionary {
-          if count > 1 {
-            message.append ("\(count) symbols with the same \"\(qualifiedName)\" name")
-          }
-        }
-        return message.joined (separator: "\n")
+
 //--- END OF USER ZONE 2
 }
 

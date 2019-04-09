@@ -1949,38 +1949,45 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class StringArray
+//   Scalar property StringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_StringArray = EBReadOnlyClassController <StringArray>
+typealias EBReadOnlyController_StringArray = EBReadOnlyValueController <StringArray>
 
-typealias EBReadOnlyProperty_StringArray  = EBReadOnlyClassProperty <StringArray>
-typealias EBTransientProperty_StringArray = EBTransientClassProperty <StringArray>
-typealias EBReadOnlyPropertyArray_StringArray  = EBReadOnlyClassProperty <[StringArray]>
-typealias EBTransientPropertyArray_StringArray = EBTransientClassProperty <[StringArray]>
-
+typealias EBReadOnlyProperty_StringArray  = EBReadOnlyValueProperty <StringArray>
+typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class TwoStringArray
+//   Scalar property TwoStrings
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_TwoStringArray = EBReadOnlyClassController <TwoStringArray>
+typealias EBReadOnlyController_TwoStrings = EBReadOnlyValueController <TwoStrings>
 
-typealias EBReadOnlyProperty_TwoStringArray  = EBReadOnlyClassProperty <TwoStringArray>
-typealias EBTransientProperty_TwoStringArray = EBTransientClassProperty <TwoStringArray>
-typealias EBReadOnlyPropertyArray_TwoStringArray  = EBReadOnlyClassProperty <[TwoStringArray]>
-typealias EBTransientPropertyArray_TwoStringArray = EBTransientClassProperty <[TwoStringArray]>
-
+typealias EBReadOnlyProperty_TwoStrings  = EBReadOnlyValueProperty <TwoStrings>
+typealias EBTransientProperty_TwoStrings = EBTransientValueProperty <TwoStrings>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class ThreeStringArray
+//   Scalar property TwoStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_ThreeStringArray = EBReadOnlyClassController <ThreeStringArray>
+typealias EBReadOnlyController_TwoStringArray = EBReadOnlyValueController <TwoStringArray>
 
-typealias EBReadOnlyProperty_ThreeStringArray  = EBReadOnlyClassProperty <ThreeStringArray>
-typealias EBTransientProperty_ThreeStringArray = EBTransientClassProperty <ThreeStringArray>
-typealias EBReadOnlyPropertyArray_ThreeStringArray  = EBReadOnlyClassProperty <[ThreeStringArray]>
-typealias EBTransientPropertyArray_ThreeStringArray = EBTransientClassProperty <[ThreeStringArray]>
+typealias EBReadOnlyProperty_TwoStringArray  = EBReadOnlyValueProperty <TwoStringArray>
+typealias EBTransientProperty_TwoStringArray = EBTransientValueProperty <TwoStringArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property ThreeStringArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_ThreeStringArray = EBReadOnlyValueController <ThreeStringArray>
+
+typealias EBReadOnlyProperty_ThreeStringArray  = EBReadOnlyValueProperty <ThreeStringArray>
+typealias EBTransientProperty_ThreeStringArray = EBTransientValueProperty <ThreeStringArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property PinQualifiedNameStruct
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_PinQualifiedNameStruct = EBReadOnlyValueController <PinQualifiedNameStruct>
+
+typealias EBReadOnlyProperty_PinQualifiedNameStruct  = EBReadOnlyValueProperty <PinQualifiedNameStruct>
+typealias EBTransientProperty_PinQualifiedNameStruct = EBTransientValueProperty <PinQualifiedNameStruct>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

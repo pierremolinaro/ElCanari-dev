@@ -206,6 +206,25 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: mPadAssignments
+  //····················································································································
+
+  var mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject ()
+
+  //····················································································································
+
+  var mPadAssignments_property_selection : EBSelection < [DevicePadAssignmentInProject] > {
+    return self.mPadAssignments_property.prop
+  }
+
+  //····················································································································
+
+  var mPadAssignments : [DevicePadAssignmentInProject] {
+    get { return self.mPadAssignments_property.propval }
+    set { self.mPadAssignments_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Transient property: versionString
   //····················································································································
 
@@ -366,6 +385,8 @@ class DeviceInProject : EBManagedObject,
     self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mPadAssignments (no option)
+    self.mPadAssignments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -479,17 +500,16 @@ class DeviceInProject : EBManagedObject,
   //--- Atomic property: symbolNames
     self.symbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSymbols_property_selection.kind ()
-        kind &= unwSelf.mSymbols_property_selection.kind ()
+        let kind = unwSelf.mSymbols_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceInProject_symbolNames (v0, v1))
+          switch (unwSelf.mSymbols_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceInProject_symbolNames (v0))
           default :
             return .empty
           }
@@ -498,8 +518,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolTypeName (self.symbolNames_property)
-    self.mSymbols_property.addEBObserverOf_mInstanceName (self.symbolNames_property)
+    self.mSymbols_property.addEBObserverOf_pinQualifiedNames (self.symbolNames_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
       inManagedObject?.mDevice_property.setProp (self)
@@ -517,8 +536,7 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
     self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
-    self.mSymbols_property.removeEBObserverOf_symbolTypeName (self.symbolNames_property)
-    self.mSymbols_property.removeEBObserverOf_mInstanceName (self.symbolNames_property)
+    self.mSymbols_property.removeEBObserverOf_pinQualifiedNames (self.symbolNames_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -637,6 +655,13 @@ class DeviceInProject : EBManagedObject,
       view: view,
       valueExplorer:&mSymbols_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "mPadAssignments",
+      idx:mPadAssignments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPadAssignments_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -664,6 +689,8 @@ class DeviceInProject : EBManagedObject,
     self.mPackages_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
+  //--- To many property: mPadAssignments
+    self.mPadAssignments_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -676,6 +703,7 @@ class DeviceInProject : EBManagedObject,
     self.mComponents_property.setProp ([])
     self.mPackages_property.setProp ([])
     self.mSymbols_property.setProp ([])
+    self.mPadAssignments_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -721,6 +749,12 @@ class DeviceInProject : EBManagedObject,
       relationshipName: "mSymbols",
       intoDictionary: ioDictionary
     )
+  //--- To many property: mPadAssignments
+    self.store (
+      managedObjectArray: self.mPadAssignments_property.propval,
+      relationshipName: "mPadAssignments",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -748,6 +782,12 @@ class DeviceInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DeviceSymbolInstanceInProject])
+  //--- To many property: mPadAssignments
+    self.mPadAssignments_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPadAssignments",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [DevicePadAssignmentInProject])
   }
 
   //····················································································································
@@ -784,6 +824,10 @@ class DeviceInProject : EBManagedObject,
     for managedObject in self.mSymbols_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: mPadAssignments
+    for managedObject in self.mPadAssignments_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -802,6 +846,10 @@ class DeviceInProject : EBManagedObject,
     }
   //--- To many property: mSymbols
     for managedObject in self.mSymbols_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPadAssignments
+    for managedObject in self.mPadAssignments_property.propval {
       objects.append (managedObject)
     }
   }

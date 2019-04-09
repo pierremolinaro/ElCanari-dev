@@ -24,8 +24,8 @@ protocol SymbolInstanceInDevice_mY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_qualifiedName : class {
-  var qualifiedName : String? { get }
+protocol SymbolInstanceInDevice_symbolQualifiedName : class {
+  var symbolQualifiedName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -60,7 +60,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
          SymbolInstanceInDevice_mInstanceName,
          SymbolInstanceInDevice_mX,
          SymbolInstanceInDevice_mY,
-         SymbolInstanceInDevice_qualifiedName,
+         SymbolInstanceInDevice_symbolQualifiedName,
          SymbolInstanceInDevice_symbolTypeName,
          SymbolInstanceInDevice_selectionDisplay,
          SymbolInstanceInDevice_unconnectedPins,
@@ -156,21 +156,21 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: qualifiedName
+  //   Transient property: symbolQualifiedName
   //····················································································································
 
-  var qualifiedName_property = EBTransientProperty_String ()
+  var symbolQualifiedName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var qualifiedName_property_selection : EBSelection <String> {
-    return self.qualifiedName_property.prop
+  var symbolQualifiedName_property_selection : EBSelection <String> {
+    return self.symbolQualifiedName_property.prop
   }
 
   //····················································································································
 
-  var qualifiedName : String? {
-    switch self.qualifiedName_property_selection {
+  var symbolQualifiedName : String? {
+    switch self.symbolQualifiedName_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -243,8 +243,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mType
     self.mType_property.owner = self
-  //--- Atomic property: qualifiedName
-    self.qualifiedName_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolQualifiedName
+    self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mInstanceName_property_selection.kind ()
         kind &= unwSelf.mType_property.mTypeName_property_selection.kind ()
@@ -256,7 +256,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mInstanceName_property_selection, unwSelf.mType_property.mTypeName_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_SymbolInstanceInDevice_qualifiedName (v0, v1))
+            return .single (transient_SymbolInstanceInDevice_symbolQualifiedName (v0, v1))
           default :
             return .empty
           }
@@ -265,8 +265,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mInstanceName_property.addEBObserver (self.qualifiedName_property)
-    self.mType_property.addEBObserverOf_mTypeName (self.qualifiedName_property)
+    self.mInstanceName_property.addEBObserver (self.symbolQualifiedName_property)
+    self.mType_property.addEBObserverOf_mTypeName (self.symbolQualifiedName_property)
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -294,7 +294,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
         kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
-        kind &= unwSelf.qualifiedName_property_selection.kind ()
+        kind &= unwSelf.symbolQualifiedName_property_selection.kind ()
         kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
@@ -304,7 +304,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.qualifiedName_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.symbolQualifiedName_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
@@ -317,7 +317,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     }
     self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
     self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    self.qualifiedName_property.addEBObserver (self.selectionDisplay_property)
+    self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
@@ -354,7 +354,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
         kind &= unwSelf.mType_property.pinNameShape_property_selection.kind ()
         kind &= unwSelf.mPinInstances_property_selection.kind ()
-        kind &= unwSelf.qualifiedName_property_selection.kind ()
+        kind &= unwSelf.symbolQualifiedName_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
@@ -365,7 +365,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.qualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
             return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
@@ -380,7 +380,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
     self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property)
-    self.qualifiedName_property.addEBObserver (self.objectDisplay_property)
+    self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
@@ -400,12 +400,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mInstanceName_property.removeEBObserver (self.qualifiedName_property)
-    self.mType_property.removeEBObserverOf_mTypeName (self.qualifiedName_property)
+    self.mInstanceName_property.removeEBObserver (self.symbolQualifiedName_property)
+    self.mType_property.removeEBObserverOf_mTypeName (self.symbolQualifiedName_property)
     self.mType_property.removeEBObserverOf_mTypeName (self.symbolTypeName_property)
     self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    self.qualifiedName_property.removeEBObserver (self.selectionDisplay_property)
+    self.symbolQualifiedName_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
@@ -416,7 +416,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_pinNameShape (self.objectDisplay_property)
     self.mPinInstances_property.removeEBObserverOf_numberShape (self.objectDisplay_property)
-    self.qualifiedName_property.removeEBObserver (self.objectDisplay_property)
+    self.symbolQualifiedName_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
@@ -465,12 +465,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "qualifiedName",
-      idx:self.qualifiedName_property.ebObjectIndex,
+      "symbolQualifiedName",
+      idx:self.symbolQualifiedName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.qualifiedName_property.mObserverExplorer,
-      valueExplorer:&self.qualifiedName_property.mValueExplorer
+      observerExplorer:&self.symbolQualifiedName_property.mObserverExplorer,
+      valueExplorer:&self.symbolQualifiedName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeName",
@@ -852,57 +852,57 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   }
 
   //····················································································································
-  //   Observers of 'qualifiedName' transient property
+  //   Observers of 'symbolQualifiedName' transient property
   //····················································································································
 
-  private var mObserversOf_qualifiedName = EBWeakEventSet ()
+  private var mObserversOf_symbolQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_qualifiedName.insert (inObserver)
+    self.mObserversOf_symbolQualifiedName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.qualifiedName_property.addEBObserver (inObserver)
+        managedObject.symbolQualifiedName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolQualifiedName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_qualifiedName.remove (inObserver)
+    self.mObserversOf_symbolQualifiedName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.qualifiedName_property.removeEBObserver (inObserver)
+        managedObject.symbolQualifiedName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_qualifiedName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+  final func addEBObserversOf_symbolQualifiedName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_qualifiedName.apply ( {(_ observer : EBEvent) in
-        managedObject.qualifiedName_property.addEBObserver (observer)
+      self.mObserversOf_symbolQualifiedName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolQualifiedName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_qualifiedName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+  final func removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_qualifiedName.apply ( {(_ observer : EBEvent) in
-        managedObject.qualifiedName_property.removeEBObserver (observer)
+      self.mObserversOf_symbolQualifiedName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolQualifiedName_property.removeEBObserver (observer)
       })
     }
   }
@@ -1208,7 +1208,7 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
       self.removeEBObserversOf_mX_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_qualifiedName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
@@ -1220,7 +1220,7 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
       self.addEBObserversOf_mX_toElementsOfSet (addedSet)
       self.addEBObserversOf_mY_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_qualifiedName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
@@ -1359,7 +1359,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_qualifiedName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
@@ -1378,7 +1378,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_qualifiedName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
