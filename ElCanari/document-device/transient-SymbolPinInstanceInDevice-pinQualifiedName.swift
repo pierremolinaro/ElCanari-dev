@@ -14,9 +14,9 @@ import Cocoa
 func transient_SymbolPinInstanceInDevice_pinQualifiedName (
        _ self_symbolName : String,                         
        _ self_pinName : String
-) -> String {
+) -> PinQualifiedNameStruct {
 //--- START OF USER ZONE 2
-
+  return PinQualifiedNameStruct (symbolName: self_symbolName, pinName: self_pinName)
 //--- END OF USER ZONE 2
 }
 

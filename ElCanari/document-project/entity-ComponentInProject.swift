@@ -537,21 +537,21 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func addEBObserversOf_mNameIndex_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mNameIndex.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mNameIndex.apply { (_ observer : EBEvent) in
         managedObject.mNameIndex_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mNameIndex_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    self.mObserversOf_mNameIndex.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mNameIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNameIndex_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -594,21 +594,21 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func addEBObserversOf_mValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mValue.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mValue.apply { (_ observer : EBEvent) in
         managedObject.mValue_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    self.mObserversOf_mValue.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mValue.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mValue_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -651,9 +651,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_componentName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
         managedObject.componentName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -661,9 +661,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_componentName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
         managedObject.componentName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -707,9 +707,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func addEBObserversOf_deviceName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_deviceName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
         managedObject.deviceName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -717,9 +717,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_deviceName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_deviceName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
         managedObject.deviceName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -763,9 +763,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func addEBObserversOf_selectedPackageName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedPackageName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectedPackageName.apply { (_ observer : EBEvent) in
         managedObject.selectedPackageName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -773,9 +773,9 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func removeEBObserversOf_selectedPackageName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedPackageName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectedPackageName.apply { (_ observer : EBEvent) in
         managedObject.selectedPackageName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -841,13 +841,14 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <ComponentInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <ComponentInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -997,8 +998,15 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             managedObject.mNameIndex_property.mSetterDelegate = nil
             managedObject.mValue_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
@@ -1012,8 +1020,15 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)

@@ -368,21 +368,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
         managedObject.y1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -425,21 +425,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
         managedObject.x2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -482,21 +482,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
         managedObject.y2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -539,21 +539,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_width.apply { (_ observer : EBEvent) in
         managedObject.width_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_width.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -596,21 +596,21 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
         managedObject.x1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -675,13 +675,14 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SegmentEntity>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SegmentEntity> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -834,11 +835,18 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
             managedObject.width_property.mSetterDelegate = nil
             managedObject.x1_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -852,11 +860,18 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

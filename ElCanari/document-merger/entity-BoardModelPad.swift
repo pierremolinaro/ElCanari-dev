@@ -409,21 +409,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y.apply { (_ observer : EBEvent) in
         managedObject.y_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -466,21 +466,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_width.apply { (_ observer : EBEvent) in
         managedObject.width_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_width.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -523,21 +523,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_height.apply { (_ observer : EBEvent) in
         managedObject.height_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_height.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -580,21 +580,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_shape_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_shape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
         managedObject.shape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_shape.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_shape.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.shape_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -637,21 +637,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_rotation_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_rotation.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_rotation.apply { (_ observer : EBEvent) in
         managedObject.rotation_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_rotation.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_rotation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.rotation_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -694,21 +694,21 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
     for managedObject in inSet {
-      self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x.apply { (_ observer : EBEvent) in
         managedObject.x_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -773,13 +773,14 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <BoardModelPad>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <BoardModelPad> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -935,12 +936,20 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
             managedObject.rotation_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -955,12 +964,20 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
             managedObject.rotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

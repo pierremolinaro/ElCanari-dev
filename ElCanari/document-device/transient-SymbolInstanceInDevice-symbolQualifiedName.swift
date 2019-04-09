@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_qualifiedName (
-       _ self_mInstanceName : String,                
+func transient_SymbolInstanceInDevice_symbolQualifiedName (
+       _ self_mInstanceName : String,                      
        _ self_mType_mTypeName : String?
 ) -> String {
 //--- START OF USER ZONE 2

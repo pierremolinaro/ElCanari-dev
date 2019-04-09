@@ -13,9 +13,15 @@ import Cocoa
 
 func transient_DeviceSymbolInstanceInProject_pinQualifiedNames (
        _ self_mPins_pinQualifiedName : [DevicePinInProject_pinQualifiedName]
-) -> PinQualifiedNameStruct {
+) -> TwoStringArray {
 //--- START OF USER ZONE 2
-
+        var result = [TwoStrings] ()
+        for pin in self_mPins_pinQualifiedName {
+          if let pinQualifiedName = pin.pinQualifiedName {
+            result.append (TwoStrings (pinQualifiedName.mSymbolName, pinQualifiedName.mPinName))
+          }
+        }
+        return result
 //--- END OF USER ZONE 2
 }
 

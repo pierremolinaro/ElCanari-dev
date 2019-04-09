@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DevicePinInProject_pinQualifiedName (
-       _ self_mSymbolTypeName : String,             
+       _ self_mSymbolInstanceName : String,         
        _ self_mPinName : String
 ) -> PinQualifiedNameStruct {
 //--- START OF USER ZONE 2
-
+         return PinQualifiedNameStruct (symbolName: self_mSymbolInstanceName, pinName: self_mPinName)
 //--- END OF USER ZONE 2
 }
 

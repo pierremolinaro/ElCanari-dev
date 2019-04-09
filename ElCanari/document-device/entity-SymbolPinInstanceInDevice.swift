@@ -640,9 +640,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
         managedObject.pinName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -650,9 +650,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
         managedObject.pinName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -696,9 +696,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
         managedObject.symbolName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -706,9 +706,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
         managedObject.symbolName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -752,9 +752,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinQualifiedName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
         managedObject.pinQualifiedName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -762,9 +762,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinQualifiedName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
         managedObject.pinQualifiedName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -808,9 +808,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -818,9 +818,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -864,9 +864,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_numberShape_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_numberShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
         managedObject.numberShape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -874,9 +874,9 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_numberShape_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_numberShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
         managedObject.numberShape_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -942,13 +942,14 @@ class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolPinInst
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolPinInstanceInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolPinInstanceInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Update object set
       self.mSet = newSet
@@ -1078,6 +1079,13 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
+       //   self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_numberShape_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet)
@@ -1091,6 +1099,13 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
+        // self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
+        //--- Add observers of transient properties
           self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet)

@@ -357,21 +357,21 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
         managedObject.mSelectedPageIndex_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -436,13 +436,14 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <ProjectRoot>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <ProjectRoot> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -583,7 +584,10 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             self.setOppositeRelationship? (nil)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -593,7 +597,10 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             self.setOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

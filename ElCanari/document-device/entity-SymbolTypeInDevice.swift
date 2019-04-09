@@ -690,21 +690,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_mTypeName_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mTypeName.apply { (_ observer : EBEvent) in
         managedObject.mTypeName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
-    self.mObserversOf_mTypeName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mTypeName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -747,21 +747,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
         managedObject.mVersion_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
-    self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mVersion_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -804,21 +804,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
         managedObject.mFileData_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
-    self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -861,21 +861,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.mStrokeBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
-    self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -918,21 +918,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.mFilledBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
-    self.mObserversOf_mFilledBezierPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFilledBezierPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -975,9 +975,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -985,9 +985,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1031,9 +1031,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
         managedObject.instanceCount_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1041,9 +1041,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
         managedObject.instanceCount_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1087,9 +1087,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func addEBObserversOf_pinNameShape_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinNameShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinNameShape.apply { (_ observer : EBEvent) in
         managedObject.pinNameShape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1097,9 +1097,9 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
 
   final func removeEBObserversOf_pinNameShape_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_pinNameShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinNameShape.apply { (_ observer : EBEvent) in
         managedObject.pinNameShape_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1165,13 +1165,14 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolTypeInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolTypeInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1330,11 +1331,21 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedObjectSet)
@@ -1351,11 +1362,21 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
             managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_pinNameShape_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinNameShape_toElementsOfSet (addedObjectSet)

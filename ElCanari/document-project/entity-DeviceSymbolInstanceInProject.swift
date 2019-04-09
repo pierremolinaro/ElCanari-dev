@@ -391,9 +391,9 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   final func addEBObserversOf_pinQualifiedNames_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedNames.apply { (_ observer : EBEvent) in
         managedObject.pinQualifiedNames_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -401,9 +401,9 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   final func removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_pinQualifiedNames.apply { (_ observer : EBEvent) in
         managedObject.pinQualifiedNames_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -447,9 +447,9 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -457,9 +457,9 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -525,13 +525,14 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DeviceSymbolInstanceInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DeviceSymbolInstanceInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Update object set
       self.mSet = newSet
@@ -661,6 +662,10 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
+       //   self.removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
         }
@@ -671,6 +676,10 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
+        // self.addEBObserversOf_pinQualifiedNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
+        //--- Add observers of transient properties
           self.addEBObserversOf_pinQualifiedNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
         }

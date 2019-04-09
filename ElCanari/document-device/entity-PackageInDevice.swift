@@ -921,21 +921,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
         managedObject.mFileData_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -978,21 +978,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mName_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mName.apply { (_ observer : EBEvent) in
         managedObject.mName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1035,21 +1035,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
         managedObject.mVersion_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mVersion_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1092,21 +1092,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.mStrokeBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1149,21 +1149,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
         managedObject.mX_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mX_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1206,21 +1206,21 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
         managedObject.mY_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mY_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1263,9 +1263,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1273,9 +1273,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1319,9 +1319,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSidePadFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.frontSidePadFilledBezierPathArray_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1329,9 +1329,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSidePadFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.frontSidePadFilledBezierPathArray_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1375,9 +1375,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSidePadFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.backSidePadFilledBezierPathArray_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1385,9 +1385,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSidePadFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.backSidePadFilledBezierPathArray_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1431,9 +1431,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1441,9 +1441,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1487,9 +1487,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1497,9 +1497,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1543,9 +1543,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func addEBObserversOf_padNameSet_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNameSet.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNameSet.apply { (_ observer : EBEvent) in
         managedObject.padNameSet_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1553,9 +1553,9 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
 
   final func removeEBObserversOf_padNameSet_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNameSet.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNameSet.apply { (_ observer : EBEvent) in
         managedObject.padNameSet_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1621,13 +1621,14 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <PackageInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <PackageInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1795,12 +1796,26 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_padNameSet_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
@@ -1821,12 +1836,26 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_padNameSet_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)

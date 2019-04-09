@@ -473,7 +473,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
             }
           }
         //--- Sort
-          indexArrayOfSelectedObjects.sort (by: { $0 < $1 })
+          indexArrayOfSelectedObjects.sort { $0 < $1 }
         //--- Find the first index of a non selected object
           var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
           for index in indexArrayOfSelectedObjects {
@@ -502,7 +502,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
             }
           }
         //--- Sort in reverse order
-          selectedObjectIndexArray.sort (by: { $1 < $0 })
+          selectedObjectIndexArray.sort { $1 < $0 }
         //--- Remove objects, in reverse of order of their index
           var newObjectArray = model_prop
           for index in selectedObjectIndexArray {

@@ -746,21 +746,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mPinX_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mPinX.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPinX.apply { (_ observer : EBEvent) in
         managedObject.mPinX_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPinX_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mPinX.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPinX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPinX_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -803,21 +803,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mPinY_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mPinY.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPinY.apply { (_ observer : EBEvent) in
         managedObject.mPinY_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPinY_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mPinY.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPinY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPinY_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -860,21 +860,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mXName_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mXName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
         managedObject.mXName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mXName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mXName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mXName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -917,21 +917,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mYName_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mYName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
         managedObject.mYName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mYName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mYName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mYName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -974,21 +974,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mName_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mName.apply { (_ observer : EBEvent) in
         managedObject.mName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1031,21 +1031,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mNameHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mNameHorizontalAlignment.apply { (_ observer : EBEvent) in
         managedObject.mNameHorizontalAlignment_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mNameHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mNameHorizontalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNameHorizontalAlignment_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1088,21 +1088,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mPinNameIsDisplayedInSchematics.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
         managedObject.mPinNameIsDisplayedInSchematics_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mPinNameIsDisplayedInSchematics.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1145,21 +1145,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mXNumber_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mXNumber.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mXNumber.apply { (_ observer : EBEvent) in
         managedObject.mXNumber_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mXNumber_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mXNumber.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mXNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mXNumber_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1202,21 +1202,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mYNumber_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mYNumber.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mYNumber.apply { (_ observer : EBEvent) in
         managedObject.mYNumber_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mYNumber_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mYNumber.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mYNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mYNumber_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1259,21 +1259,21 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mNumberHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mNumberHorizontalAlignment.apply { (_ observer : EBEvent) in
         managedObject.mNumberHorizontalAlignment_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
-    self.mObserversOf_mNumberHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mNumberHorizontalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNumberHorizontalAlignment_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1316,9 +1316,9 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func addEBObserversOf_nameShape_toElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_nameShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_nameShape.apply { (_ observer : EBEvent) in
         managedObject.nameShape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1326,9 +1326,9 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_nameShape_fromElementsOfSet (_ inSet : Set<SymbolPinTypeInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_nameShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_nameShape.apply { (_ observer : EBEvent) in
         managedObject.nameShape_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1394,13 +1394,14 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolPinTypeInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolPinTypeInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1570,6 +1571,18 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
             managedObject.mYNumber_property.mSetterDelegate = nil
             managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mYName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_nameShape_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet)
@@ -1580,6 +1593,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
           self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_nameShape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -1599,6 +1613,18 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
             managedObject.mYNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mYName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mXNumber_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mYNumber_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_nameShape_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet)
@@ -1609,6 +1635,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
           self.addEBObserversOf_mXNumber_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mYNumber_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_nameShape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

@@ -286,21 +286,21 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mSymbolTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.mSymbolTypeName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mSymbolTypeName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -343,21 +343,21 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.mStrokeBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mStrokeBezierPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -400,21 +400,21 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.mFilledBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    self.mObserversOf_mFilledBezierPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFilledBezierPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -479,13 +479,14 @@ class TransientArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DeviceSymbolTypeInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DeviceSymbolTypeInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -632,9 +633,14 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -646,9 +652,14 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
             managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

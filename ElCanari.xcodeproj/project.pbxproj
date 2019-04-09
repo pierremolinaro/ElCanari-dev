@@ -2414,9 +2414,6 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
-				CF3817AD225CB98100E75A96 /* transient-DeviceSymbolInstanceInProject-pinQualifiedNames.swift */,
-				CF3817A7225CB47000E75A96 /* transient-DevicePinInProject-pinQualifiedName.swift */,
-				CF38179E225CA53C00E75A96 /* entity-DevicePadAssignmentInProject.swift */,
 				CF11AB99225A1B740092A524 /* action-ProjectDocument-addComponentAction.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
 				CF11ABB1225A37350092A524 /* action-ProjectDocument-editDeviceAction.swift */,
@@ -2436,6 +2433,7 @@
 				CF11AB9F225A26120092A524 /* entity-DeviceInProject.swift */,
 				CF64ACEA225B6AAB00E40C83 /* entity-DeviceMasterPadInProject.swift */,
 				CF64AF9F225B774200E40C83 /* entity-DevicePackageInProject.swift */,
+				CF38179E225CA53C00E75A96 /* entity-DevicePadAssignmentInProject.swift */,
 				CF12E098225B8BB500C44597 /* entity-DevicePinInProject.swift */,
 				CF64ACEB225B6AAC00E40C83 /* entity-DeviceSlavePadInProject.swift */,
 				CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */,
@@ -2457,6 +2455,8 @@
 				CF11ABA5225A2DCF0092A524 /* transient-DeviceInProject-sizeString.swift */,
 				CF4D316A225C8A5100256750 /* transient-DeviceInProject-symbolNames.swift */,
 				CF11ABA8225A32650092A524 /* transient-DeviceInProject-versionString.swift */,
+				CF3817A7225CB47000E75A96 /* transient-DevicePinInProject-pinQualifiedName.swift */,
+				CF3817AD225CB98100E75A96 /* transient-DeviceSymbolInstanceInProject-pinQualifiedNames.swift */,
 				CF4D3169225C8A5100256750 /* transient-DeviceSymbolInstanceInProject-symbolTypeName.swift */,
 				CFA0D9DA22590BEE008F2448 /* transient-FontInProject-sizeString.swift */,
 				CFA0D9D522590887008F2448 /* transient-FontInProject-versionString.swift */,

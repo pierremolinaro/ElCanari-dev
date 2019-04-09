@@ -762,21 +762,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
         managedObject.mCenterX_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCenterX_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -819,21 +819,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
         managedObject.mCenterY_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCenterY_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -876,21 +876,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
         managedObject.mWidth_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mWidth_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -933,21 +933,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
         managedObject.mHeight_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mHeight_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -990,21 +990,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.mHoleDiameter_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mHoleDiameter_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1047,21 +1047,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
         managedObject.mShape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShape_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1104,21 +1104,21 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
         managedObject.mStyle_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStyle_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1161,9 +1161,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.frontSideFilledBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1171,9 +1171,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.frontSideFilledBezierPath_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1217,9 +1217,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.backSideFilledBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1227,9 +1227,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.backSideFilledBezierPath_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1273,9 +1273,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1283,9 +1283,9 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1351,13 +1351,14 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SlavePadInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SlavePadInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1522,6 +1523,17 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
             managedObject.mShape_property.mSetterDelegate = nil
             managedObject.mStyle_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
@@ -1529,6 +1541,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
           self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
@@ -1547,6 +1560,17 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
             managedObject.mShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
@@ -1554,6 +1578,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
           self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)

@@ -286,21 +286,21 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y.apply { (_ observer : EBEvent) in
         managedObject.y_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -343,21 +343,21 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      self.mObserversOf_padDiameter.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
         managedObject.padDiameter_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_padDiameter.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padDiameter_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -400,21 +400,21 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x.apply { (_ observer : EBEvent) in
         managedObject.x_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -479,13 +479,14 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <BoardModelVia>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <BoardModelVia> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -632,9 +633,14 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
             managedObject.padDiameter_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -646,9 +652,14 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
             managedObject.padDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

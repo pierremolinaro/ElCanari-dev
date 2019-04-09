@@ -1035,21 +1035,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x.apply { (_ observer : EBEvent) in
         managedObject.x_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1092,21 +1092,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y.apply { (_ observer : EBEvent) in
         managedObject.y_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1149,21 +1149,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_width.apply { (_ observer : EBEvent) in
         managedObject.width_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_width.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1206,21 +1206,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_height.apply { (_ observer : EBEvent) in
         managedObject.height_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_height.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1263,21 +1263,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_xUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_xUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_xUnit.apply { (_ observer : EBEvent) in
         managedObject.xUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_xUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_xUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1320,21 +1320,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_yUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_yUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_yUnit.apply { (_ observer : EBEvent) in
         managedObject.yUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_yUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_yUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1377,21 +1377,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_widthUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
         managedObject.widthUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_widthUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.widthUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1434,21 +1434,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_heightUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
         managedObject.heightUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_heightUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.heightUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1491,21 +1491,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_zoneName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_zoneName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_zoneName.apply { (_ observer : EBEvent) in
         managedObject.zoneName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_zoneName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_zoneName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_zoneName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoneName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1548,21 +1548,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_xName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_xName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_xName.apply { (_ observer : EBEvent) in
         managedObject.xName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_xName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_xName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1605,21 +1605,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_yName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_yName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_yName.apply { (_ observer : EBEvent) in
         managedObject.yName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_yName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_yName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1662,21 +1662,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_xNameUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_xNameUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_xNameUnit.apply { (_ observer : EBEvent) in
         managedObject.xNameUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xNameUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_xNameUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_xNameUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xNameUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1719,21 +1719,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_yNameUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_yNameUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_yNameUnit.apply { (_ observer : EBEvent) in
         managedObject.yNameUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yNameUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_yNameUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_yNameUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yNameUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1776,21 +1776,21 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_zoneNumbering_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_zoneNumbering.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_zoneNumbering.apply { (_ observer : EBEvent) in
         managedObject.zoneNumbering_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_zoneNumbering_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    self.mObserversOf_zoneNumbering.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_zoneNumbering.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoneNumbering_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1833,9 +1833,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1843,9 +1843,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1889,9 +1889,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1899,9 +1899,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1945,9 +1945,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1955,9 +1955,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2001,9 +2001,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func addEBObserversOf_rect_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_rect.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_rect.apply { (_ observer : EBEvent) in
         managedObject.rect_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2011,9 +2011,9 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   final func removeEBObserversOf_rect_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      self.mObserversOf_rect.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_rect.apply { (_ observer : EBEvent) in
         managedObject.rect_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2079,13 +2079,14 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <PackageZone>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <PackageZone> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -2273,6 +2274,25 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
             managedObject.yNameUnit_property.mSetterDelegate = nil
             managedObject.zoneNumbering_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_rect_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
@@ -2287,6 +2307,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
           self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -2313,6 +2334,25 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
             managedObject.yNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.zoneNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -2327,6 +2367,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
           self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

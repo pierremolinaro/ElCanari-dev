@@ -321,21 +321,21 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func addEBObserversOf_mFileName_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_mFileName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
         managedObject.mFileName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
-    self.mObserversOf_mFileName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFileName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFileName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -378,21 +378,21 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
         managedObject.mFileData_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
-    self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mFileData_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -435,9 +435,9 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_fileSize.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
         managedObject.fileSize_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -445,9 +445,9 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_fileSize.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
         managedObject.fileSize_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -513,13 +513,14 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DeviceDocumentation>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DeviceDocumentation> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -665,8 +666,13 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
             managedObject.mFileName_property.mSetterDelegate = nil
             managedObject.mFileData_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -678,8 +684,13 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
             managedObject.mFileName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

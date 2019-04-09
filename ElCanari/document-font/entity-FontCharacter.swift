@@ -667,21 +667,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_codePoint_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_codePoint.apply { (_ observer : EBEvent) in
         managedObject.codePoint_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_codePoint_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_codePoint.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.codePoint_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -724,21 +724,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_advance_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_advance.apply { (_ observer : EBEvent) in
         managedObject.advance_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_advance.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.advance_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -781,21 +781,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_mWarnsWhenNoSegment.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mWarnsWhenNoSegment.apply { (_ observer : EBEvent) in
         managedObject.mWarnsWhenNoSegment_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_mWarnsWhenNoSegment.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mWarnsWhenNoSegment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mWarnsWhenNoSegment_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -838,21 +838,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_mWarnsWhenAdvanceIsZero.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mWarnsWhenAdvanceIsZero.apply { (_ observer : EBEvent) in
         managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mWarnsWhenAdvanceIsZero.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mWarnsWhenAdvanceIsZero_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -895,9 +895,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
         managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -905,9 +905,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
         managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -951,9 +951,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
         managedObject.gerberCode_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -961,9 +961,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
         managedObject.gerberCode_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1007,9 +1007,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
         managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1017,9 +1017,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
         managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1063,9 +1063,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1073,9 +1073,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1141,13 +1141,14 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <FontCharacter>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <FontCharacter> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1305,10 +1306,20 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
             managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = nil
             managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
@@ -1325,10 +1336,20 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
             managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)

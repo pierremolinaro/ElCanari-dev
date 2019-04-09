@@ -259,21 +259,21 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
         managedObject.mPadName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPadName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -338,13 +338,14 @@ class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadA
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DevicePadAssignmentInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DevicePadAssignmentInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -485,7 +486,10 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
             self.setOppositeRelationship? (nil)
             managedObject.mPadName_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -495,7 +499,10 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
             self.setOppositeRelationship? (managedObject)
             managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()
@@ -670,10 +677,12 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
         oldValue?.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics)
         oldValue?.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX)
         oldValue?.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY)
+        oldValue?.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName)
         oldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName)
         oldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber)
         oldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName)
         oldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber)
+        oldValue?.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName)
       //--- Add property observers to new object
         self.mValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         self.mValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
@@ -681,10 +690,12 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
         self.mValue?.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics)
         self.mValue?.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX)
         self.mValue?.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY)
+        self.mValue?.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName)
         self.mValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName)
         self.mValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber)
         self.mValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName)
         self.mValue?.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber)
+        self.mValue?.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName)
        //--- Notify observers
         self.postEvent ()
       }
@@ -960,6 +971,47 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
+  //   Observable property: mSymbolInstanceName
+  //····················································································································
+
+  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolInstanceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSymbolInstanceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolInstanceName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolInstanceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: mXName
   //····················································································································
 
@@ -1120,6 +1172,47 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
     self.mObserversOf_mYNumber.remove (inObserver)
     if let object = self.propval {
       object.mYNumber_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: pinQualifiedName
+  //····················································································································
+
+  private var mObserversOf_pinQualifiedName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
+    if let model = self.propval {
+      switch (model.pinQualifiedName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
+    self.mObserversOf_pinQualifiedName.insert (inObserver)
+    if let object = self.propval {
+      object.pinQualifiedName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
+    self.mObserversOf_pinQualifiedName.remove (inObserver)
+    if let object = self.propval {
+      object.pinQualifiedName_property.removeEBObserver (inObserver)
     }
   }
 

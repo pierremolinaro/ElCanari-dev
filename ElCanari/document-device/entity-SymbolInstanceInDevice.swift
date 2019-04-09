@@ -720,21 +720,21 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_mInstanceName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mInstanceName.apply { (_ observer : EBEvent) in
         managedObject.mInstanceName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mInstanceName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
-    self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mInstanceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mInstanceName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -777,21 +777,21 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
         managedObject.mX_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
-    self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mX_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -834,21 +834,21 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
         managedObject.mY_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
-    self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mY_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -891,9 +891,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_symbolQualifiedName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolQualifiedName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolQualifiedName.apply { (_ observer : EBEvent) in
         managedObject.symbolQualifiedName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -901,9 +901,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolQualifiedName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolQualifiedName.apply { (_ observer : EBEvent) in
         managedObject.symbolQualifiedName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -947,9 +947,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -957,9 +957,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1003,9 +1003,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1013,9 +1013,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1059,9 +1059,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_unconnectedPins_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPins.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPins_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1069,9 +1069,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_unconnectedPins_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPins.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPins_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1115,9 +1115,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1125,9 +1125,9 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1193,13 +1193,14 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolInstanceInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolInstanceInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1356,9 +1357,19 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -1375,9 +1386,19 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

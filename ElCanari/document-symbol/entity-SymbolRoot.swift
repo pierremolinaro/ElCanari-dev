@@ -830,21 +830,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedInspector.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
         managedObject.selectedInspector_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_selectedInspector.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedInspector_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -887,21 +887,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
         managedObject.comments_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -944,21 +944,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_horizontalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
         managedObject.horizontalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_horizontalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.horizontalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1001,21 +1001,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_verticalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
         managedObject.verticalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_verticalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.verticalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1058,21 +1058,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_gridStyle.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
         managedObject.gridStyle_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_gridStyle.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridStyle_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1115,21 +1115,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_gridDisplay_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_gridDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_gridDisplay.apply { (_ observer : EBEvent) in
         managedObject.gridDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_gridDisplay.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_gridDisplay.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridDisplay_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1172,21 +1172,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
         managedObject.zoom_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1229,21 +1229,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_xPlacardUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
         managedObject.xPlacardUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_xPlacardUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xPlacardUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1286,21 +1286,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_yPlacardUnit.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
         managedObject.yPlacardUnit_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_yPlacardUnit.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1343,21 +1343,21 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
         managedObject.selectedPageIndex_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1400,9 +1400,9 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1410,9 +1410,9 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1456,9 +1456,9 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_noIssue.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
         managedObject.noIssue_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1466,9 +1466,9 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_noIssue.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
         managedObject.noIssue_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1534,13 +1534,14 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolRoot>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolRoot> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1712,6 +1713,19 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
             managedObject.yPlacardUnit_property.mSetterDelegate = nil
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
@@ -1722,6 +1736,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
         }
@@ -1742,6 +1757,19 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
             managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
@@ -1752,6 +1780,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         }

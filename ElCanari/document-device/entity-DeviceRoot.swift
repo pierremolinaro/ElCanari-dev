@@ -1758,21 +1758,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
         managedObject.mSelectedPageIndex_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1815,21 +1815,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mTitle_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mTitle.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mTitle.apply { (_ observer : EBEvent) in
         managedObject.mTitle_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mTitle_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mTitle.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mTitle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mTitle_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1872,21 +1872,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPrefix.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
         managedObject.mPrefix_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mPrefix.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPrefix_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1929,21 +1929,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mComments_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mComments.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mComments.apply { (_ observer : EBEvent) in
         managedObject.mComments_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mComments_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mComments.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mComments.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mComments_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1986,21 +1986,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPackageDisplayZoom.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPackageDisplayZoom.apply { (_ observer : EBEvent) in
         managedObject.mPackageDisplayZoom_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mPackageDisplayZoom.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPackageDisplayZoom.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageDisplayZoom_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2043,21 +2043,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPackageDisplayHorizontalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPackageDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
         managedObject.mPackageDisplayHorizontalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mPackageDisplayHorizontalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPackageDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageDisplayHorizontalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2100,21 +2100,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mPackageDisplayVerticalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPackageDisplayVerticalFlip.apply { (_ observer : EBEvent) in
         managedObject.mPackageDisplayVerticalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mPackageDisplayVerticalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPackageDisplayVerticalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageDisplayVerticalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2157,21 +2157,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mShowPackages_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mShowPackages.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShowPackages.apply { (_ observer : EBEvent) in
         managedObject.mShowPackages_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShowPackages_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mShowPackages.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShowPackages.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShowPackages_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2214,21 +2214,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mShowPackagePadNumbers.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShowPackagePadNumbers.apply { (_ observer : EBEvent) in
         managedObject.mShowPackagePadNumbers_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mShowPackagePadNumbers.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShowPackagePadNumbers.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShowPackagePadNumbers_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2271,21 +2271,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mShowPackageFrontPads.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShowPackageFrontPads.apply { (_ observer : EBEvent) in
         managedObject.mShowPackageFrontPads_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mShowPackageFrontPads.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShowPackageFrontPads.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShowPackageFrontPads_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2328,21 +2328,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mShowPackageBackPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mShowPackageBackPads.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShowPackageBackPads.apply { (_ observer : EBEvent) in
         managedObject.mShowPackageBackPads_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mShowPackageBackPads.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShowPackageBackPads.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShowPackageBackPads_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2385,21 +2385,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSymbolDisplayZoom.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSymbolDisplayZoom.apply { (_ observer : EBEvent) in
         managedObject.mSymbolDisplayZoom_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mSymbolDisplayZoom.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSymbolDisplayZoom.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolDisplayZoom_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2442,21 +2442,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSymbolDisplayHorizontalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSymbolDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
         managedObject.mSymbolDisplayHorizontalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mSymbolDisplayHorizontalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSymbolDisplayHorizontalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolDisplayHorizontalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2499,21 +2499,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSymbolDisplayVerticalFlip.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mSymbolDisplayVerticalFlip.apply { (_ observer : EBEvent) in
         managedObject.mSymbolDisplayVerticalFlip_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mSymbolDisplayVerticalFlip.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mSymbolDisplayVerticalFlip.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolDisplayVerticalFlip_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2556,21 +2556,21 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_mImageData_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mImageData.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
         managedObject.mImageData_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mImageData_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_mImageData.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mImageData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mImageData_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -2613,9 +2613,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply { (_ observer : EBEvent) in
         managedObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2623,9 +2623,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply { (_ observer : EBEvent) in
         managedObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2669,9 +2669,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_inconsistentSymbolNameSetMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_inconsistentSymbolNameSetMessage.apply { (_ observer : EBEvent) in
         managedObject.inconsistentSymbolNameSetMessage_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2679,9 +2679,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_inconsistentSymbolNameSetMessage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_inconsistentSymbolNameSetMessage.apply { (_ observer : EBEvent) in
         managedObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2725,9 +2725,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_unconnectedPins_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPins.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPins_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2735,9 +2735,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_unconnectedPins_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPins.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPins_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2781,9 +2781,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
         managedObject.imageIsValid_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2791,9 +2791,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_imageIsValid.apply { (_ observer : EBEvent) in
         managedObject.imageIsValid_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2837,9 +2837,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_packagePadNameSetsAreConsistent.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_packagePadNameSetsAreConsistent.apply { (_ observer : EBEvent) in
         managedObject.packagePadNameSetsAreConsistent_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2847,9 +2847,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_packagePadNameSetsAreConsistent.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_packagePadNameSetsAreConsistent.apply { (_ observer : EBEvent) in
         managedObject.packagePadNameSetsAreConsistent_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2893,9 +2893,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNameAreConsistent.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolNameAreConsistent.apply { (_ observer : EBEvent) in
         managedObject.symbolNameAreConsistent_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2903,9 +2903,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNameAreConsistent.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolNameAreConsistent.apply { (_ observer : EBEvent) in
         managedObject.symbolNameAreConsistent_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2949,9 +2949,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_symbolTypeNames_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeNames.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeNames_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -2959,9 +2959,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_symbolTypeNames_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolTypeNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolTypeNames.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeNames_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3005,9 +3005,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_unconnectedPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPads.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPads.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPads_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3015,9 +3015,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_unconnectedPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_unconnectedPads.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_unconnectedPads.apply { (_ observer : EBEvent) in
         managedObject.unconnectedPads_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3061,9 +3061,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_assignedPadProxies_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_assignedPadProxies.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_assignedPadProxies.apply { (_ observer : EBEvent) in
         managedObject.assignedPadProxies_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3071,9 +3071,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_assignedPadProxies_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_assignedPadProxies.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_assignedPadProxies.apply { (_ observer : EBEvent) in
         managedObject.assignedPadProxies_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3117,9 +3117,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3127,9 +3127,9 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -3195,13 +3195,14 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DeviceRoot>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DeviceRoot> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -3404,6 +3405,32 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = nil
             managedObject.mImageData_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mComments_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mImageData_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
@@ -3419,6 +3446,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mImageData_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
@@ -3452,6 +3480,32 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mComments_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mImageData_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
@@ -3467,6 +3521,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mImageData_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)

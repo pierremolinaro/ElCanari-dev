@@ -789,21 +789,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
         managedObject.y1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_y1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -846,21 +846,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
         managedObject.x2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_x2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -903,21 +903,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
         managedObject.y2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_y2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -960,21 +960,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_cpx1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
         managedObject.cpx1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpx1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1017,21 +1017,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_cpy1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
         managedObject.cpy1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpy1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1074,21 +1074,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_cpx2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
         managedObject.cpx2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpx2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1131,21 +1131,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_cpy2.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
         managedObject.cpy2_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_cpy2.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy2_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1188,21 +1188,21 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
         managedObject.x1_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    self.mObserversOf_x1.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1245,9 +1245,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1255,9 +1255,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1301,9 +1301,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1311,9 +1311,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1357,9 +1357,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1367,9 +1367,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1413,9 +1413,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1423,9 +1423,9 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1491,13 +1491,14 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolBezierCurve>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolBezierCurve> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1667,6 +1668,19 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
             managedObject.cpy2_property.mSetterDelegate = nil
             managedObject.x1_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_cpx1_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_cpy1_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
@@ -1675,6 +1689,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
           self.removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -1695,6 +1710,19 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
             managedObject.cpy2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_cpx1_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_cpy1_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
@@ -1703,6 +1731,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
           self.addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

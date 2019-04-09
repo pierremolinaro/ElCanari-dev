@@ -26,7 +26,6 @@ extension ProjectDocument {
                 remainingComponent.mNameIndex -= 1
               }
             }
-            component.removeRecursivelyAllRelationsShips ()
           }
         }
 //--- END OF USER ZONE 2

@@ -390,21 +390,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mPath.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPath.apply { (_ observer : EBEvent) in
         managedObject.mPath_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    self.mObserversOf_mPath.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPath_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -447,21 +447,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mUses.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mUses.apply { (_ observer : EBEvent) in
         managedObject.mUses_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    self.mObserversOf_mUses.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mUses.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUses_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -504,21 +504,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mLibraryRepositoryURL.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mLibraryRepositoryURL.apply { (_ observer : EBEvent) in
         managedObject.mLibraryRepositoryURL_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    self.mObserversOf_mLibraryRepositoryURL.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mLibraryRepositoryURL.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -561,21 +561,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mUserAndPasswordTag.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mUserAndPasswordTag.apply { (_ observer : EBEvent) in
         managedObject.mUserAndPasswordTag_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    self.mObserversOf_mUserAndPasswordTag.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mUserAndPasswordTag.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -618,9 +618,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mStatusImage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStatusImage.apply { (_ observer : EBEvent) in
         managedObject.mStatusImage_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -628,9 +628,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      self.mObserversOf_mStatusImage.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStatusImage.apply { (_ observer : EBEvent) in
         managedObject.mStatusImage_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -696,13 +696,14 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <CanariLibraryEntry>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <CanariLibraryEntry> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -854,10 +855,17 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
             managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -871,10 +879,17 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

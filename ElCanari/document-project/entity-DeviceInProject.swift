@@ -904,21 +904,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
         managedObject.mDeviceName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDeviceName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -961,21 +961,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mPrefix.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
         managedObject.mPrefix_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mPrefix.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPrefix_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1018,21 +1018,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
         managedObject.mDeviceVersion_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDeviceVersion_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1075,21 +1075,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
         managedObject.mDeviceFileData_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDeviceFileData_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1132,9 +1132,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1142,9 +1142,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1188,9 +1188,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
         managedObject.sizeString_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1198,9 +1198,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_sizeString.apply { (_ observer : EBEvent) in
         managedObject.sizeString_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1244,9 +1244,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_canExport.apply { (_ observer : EBEvent) in
         managedObject.canExport_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1254,9 +1254,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_canExport.apply { (_ observer : EBEvent) in
         managedObject.canExport_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1300,9 +1300,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_canRemove.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
         managedObject.canRemove_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1310,9 +1310,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_canRemove.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
         managedObject.canRemove_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1356,9 +1356,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_packageNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_packageNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1366,9 +1366,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_packageNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_packageNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_packageNames.apply { (_ observer : EBEvent) in
         managedObject.packageNames_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1412,9 +1412,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func addEBObserversOf_symbolNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolNames.apply { (_ observer : EBEvent) in
         managedObject.symbolNames_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1422,9 +1422,9 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_symbolNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNames.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_symbolNames.apply { (_ observer : EBEvent) in
         managedObject.symbolNames_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1490,13 +1490,14 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DeviceInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DeviceInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1658,10 +1659,22 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
             managedObject.mDeviceVersion_property.mSetterDelegate = nil
             managedObject.mDeviceFileData_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
@@ -1680,10 +1693,22 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
             managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDeviceFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolNames_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)

@@ -231,9 +231,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -241,9 +241,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -287,9 +287,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -297,9 +297,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -343,9 +343,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -353,9 +353,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -421,13 +421,14 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <SymbolObject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <SymbolObject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Update object set
       self.mSet = newSet
@@ -557,6 +558,11 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -568,6 +574,11 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
+        //--- Add observers of transient properties
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

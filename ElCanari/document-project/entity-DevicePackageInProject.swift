@@ -255,21 +255,21 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
         managedObject.mPackageName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPackageName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -334,13 +334,14 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <DevicePackageInProject>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <DevicePackageInProject> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -481,7 +482,10 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
             self.setOppositeRelationship? (nil)
             managedObject.mPackageName_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -491,7 +495,10 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
             self.setOppositeRelationship? (managedObject)
             managedObject.mPackageName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
         }
       //--- Notify observers
         self.postEvent ()

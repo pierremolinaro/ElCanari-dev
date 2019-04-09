@@ -822,21 +822,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
         managedObject.mCenterX_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCenterX_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -879,21 +879,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
         managedObject.mCenterY_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCenterY_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -936,21 +936,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
         managedObject.mWidth_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mWidth_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -993,21 +993,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
         managedObject.mHeight_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mHeight_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1050,21 +1050,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.mHoleDiameter_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mHoleDiameter.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mHoleDiameter_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1107,21 +1107,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
         managedObject.mShape_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mShape_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1164,21 +1164,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
         managedObject.mStyle_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mStyle_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1221,21 +1221,21 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_mName_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_mName.apply { (_ observer : EBEvent) in
         managedObject.mName_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
-    self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+    self.mObserversOf_mName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mName_property.removeEBObserver (observer)
       }
-    })
+    }
   }
 
   //····················································································································
@@ -1278,9 +1278,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1288,9 +1288,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1334,9 +1334,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSideFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.frontSideFilledBezierPathArray_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1344,9 +1344,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_frontSideFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_frontSideFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.frontSideFilledBezierPathArray_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1390,9 +1390,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSideFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.backSideFilledBezierPathArray_property.addEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1400,9 +1400,9 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_backSideFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<MasterPadInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPathArray.apply ( {(_ observer : EBEvent) in
+      self.mObserversOf_backSideFilledBezierPathArray.apply { (_ observer : EBEvent) in
         managedObject.backSideFilledBezierPathArray_property.removeEBObserver (observer)
-      })
+      }
     }
   }
 
@@ -1468,13 +1468,14 @@ class TransientArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unwrappedComputeFunction ()
+      let cachedValue = unwrappedComputeFunction ()
+      self.mCachedValue = cachedValue
       let newSet : Set <MasterPadInDevice>
-      switch self.mCachedValue! {
+      switch cachedValue {
       case .multiple, .empty :
         newSet = Set <MasterPadInDevice> ()
       case .single (let array) :
-       newSet = Set (array)
+        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
@@ -1642,6 +1643,18 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
             managedObject.mStyle_property.mSetterDelegate = nil
             managedObject.mName_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_frontSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_backSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
@@ -1650,6 +1663,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
           self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
+        //--- Remove observers of transient properties
           self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_frontSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_backSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
@@ -1669,6 +1683,18 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
             managedObject.mStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (addedObjectSet)
+        //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
@@ -1677,6 +1703,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
           self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
+        //--- Add observers of transient properties
           self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (addedObjectSet)
