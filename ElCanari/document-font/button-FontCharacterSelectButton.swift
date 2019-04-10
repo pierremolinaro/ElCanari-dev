@@ -129,10 +129,10 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mCharactersController : EBReadOnlyController_DefinedCharactersInDevice?
+  private var mCharactersController : EBSimpleController? = nil
 
   func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice, file : String, line : Int) {
-    self.mCharactersController = EBReadOnlyController_DefinedCharactersInDevice (
+    self.mCharactersController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in
         switch model.prop {

@@ -82,7 +82,7 @@ enum PadSide : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_PadSide = EBReadOnlyEnumController <PadSide>
+//typealias EBReadOnlyController_PadSide = EBReadOnlyEnumController <PadSide>
 
 typealias EBReadOnlyProperty_PadSide = EBReadOnlyEnumProperty <PadSide>
 typealias EBTransientProperty_PadSide = EBTransientEnumProperty <PadSide>

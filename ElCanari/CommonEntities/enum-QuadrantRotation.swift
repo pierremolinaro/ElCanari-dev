@@ -85,7 +85,7 @@ enum QuadrantRotation : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_QuadrantRotation = EBReadOnlyEnumController <QuadrantRotation>
+//typealias EBReadOnlyController_QuadrantRotation = EBReadOnlyEnumController <QuadrantRotation>
 
 typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyEnumProperty <QuadrantRotation>
 typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <QuadrantRotation>

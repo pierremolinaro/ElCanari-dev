@@ -82,7 +82,7 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_HorizontalAlignment = EBReadOnlyEnumController <HorizontalAlignment>
+//typealias EBReadOnlyController_HorizontalAlignment = EBReadOnlyEnumController <HorizontalAlignment>
 
 typealias EBReadOnlyProperty_HorizontalAlignment = EBReadOnlyEnumProperty <HorizontalAlignment>
 typealias EBTransientProperty_HorizontalAlignment = EBTransientEnumProperty <HorizontalAlignment>

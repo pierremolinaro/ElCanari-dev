@@ -85,7 +85,7 @@ enum MetadataStatus : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_MetadataStatus = EBReadOnlyEnumController <MetadataStatus>
+//typealias EBReadOnlyController_MetadataStatus = EBReadOnlyEnumController <MetadataStatus>
 
 typealias EBReadOnlyProperty_MetadataStatus = EBReadOnlyEnumProperty <MetadataStatus>
 typealias EBTransientProperty_MetadataStatus = EBTransientEnumProperty <MetadataStatus>

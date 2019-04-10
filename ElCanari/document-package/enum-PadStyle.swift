@@ -79,7 +79,7 @@ enum PadStyle : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_PadStyle = EBReadOnlyEnumController <PadStyle>
+//typealias EBReadOnlyController_PadStyle = EBReadOnlyEnumController <PadStyle>
 
 typealias EBReadOnlyProperty_PadStyle = EBReadOnlyEnumProperty <PadStyle>
 typealias EBTransientProperty_PadStyle = EBTransientEnumProperty <PadStyle>

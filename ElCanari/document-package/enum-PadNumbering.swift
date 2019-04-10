@@ -103,7 +103,7 @@ enum PadNumbering : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_PadNumbering = EBReadOnlyEnumController <PadNumbering>
+// typealias EBReadOnlyController_PadNumbering = EBReadOnlyEnumController <PadNumbering>
 
 typealias EBReadOnlyProperty_PadNumbering = EBReadOnlyEnumProperty <PadNumbering>
 typealias EBTransientProperty_PadNumbering = EBTransientEnumProperty <PadNumbering>

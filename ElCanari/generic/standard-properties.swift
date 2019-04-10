@@ -763,23 +763,6 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadOnlyEnumController <T>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBReadOnlyEnumController <T : EBEnumProtocol> : EBSimpleController { // §
-
-  //····················································································································
-
-//  init (model : EBReadOnlyEnumProperty <T>, callBack: @escaping () -> Void) {
-//    super.init (observedObjects:[model], callBack: callBack)
-////    self.mEventCallBack = callBack
-//  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    extension String : ValuePropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1556,7 +1539,7 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 //   Scalar property Int
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_Int = EBReadOnlyValueController <Int>
+//typealias EBReadOnlyController_Int = EBReadOnlyValueController <Int>
 
 typealias EBReadOnlyProperty_Int  = EBReadOnlyValueProperty <Int>
 typealias EBTransientProperty_Int = EBTransientValueProperty <Int>
@@ -1604,7 +1587,7 @@ func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int)
 //   Scalar property Bool
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_Bool = EBReadOnlyValueController <Bool>
+//typealias EBReadOnlyController_Bool = EBReadOnlyValueController <Bool>
 
 typealias EBReadOnlyProperty_Bool  = EBReadOnlyValueProperty <Bool>
 typealias EBTransientProperty_Bool = EBTransientValueProperty <Bool>
@@ -1652,7 +1635,7 @@ func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bo
 //   Scalar property Double
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_Double = EBReadOnlyValueController <Double>
+//typealias EBReadOnlyController_Double = EBReadOnlyValueController <Double>
 
 typealias EBReadOnlyProperty_Double  = EBReadOnlyValueProperty <Double>
 typealias EBTransientProperty_Double = EBTransientValueProperty <Double>
@@ -1700,7 +1683,7 @@ func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyPropert
 //   Scalar property String
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_String = EBReadOnlyValueController <String>
+//typealias EBReadOnlyController_String = EBReadOnlyValueController <String>
 
 typealias EBReadOnlyProperty_String  = EBReadOnlyValueProperty <String>
 typealias EBTransientProperty_String = EBTransientValueProperty <String>
@@ -1748,7 +1731,7 @@ func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyPropert
 //   Scalar property Data
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_Data = EBReadOnlyValueController <Data>
+//typealias EBReadOnlyController_Data = EBReadOnlyValueController <Data>
 
 typealias EBReadOnlyProperty_Data  = EBReadOnlyValueProperty <Data>
 typealias EBTransientProperty_Data = EBTransientValueProperty <Data>
@@ -1796,7 +1779,7 @@ func compare_Data (left : EBReadOnlyProperty_Data, right : EBReadOnlyProperty_Da
 //   Scalar property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_Date = EBReadOnlyValueController <Date>
+//typealias EBReadOnlyController_Date = EBReadOnlyValueController <Date>
 
 typealias EBReadOnlyProperty_Date  = EBReadOnlyValueProperty <Date>
 typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
@@ -1844,7 +1827,7 @@ func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Da
 //   Scalar property BezierPathArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_BezierPathArray = EBReadOnlyValueController <BezierPathArray>
+//typealias EBReadOnlyController_BezierPathArray = EBReadOnlyValueController <BezierPathArray>
 
 typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyValueProperty <BezierPathArray>
 typealias EBTransientProperty_BezierPathArray = EBTransientValueProperty <BezierPathArray>
@@ -1892,7 +1875,7 @@ func compare_BezierPathArray (left : EBReadOnlyProperty_BezierPathArray, right :
 //   Scalar property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CGFloat = EBReadOnlyValueController <CGFloat>
+//typealias EBReadOnlyController_CGFloat = EBReadOnlyValueController <CGFloat>
 
 typealias EBReadOnlyProperty_CGFloat  = EBReadOnlyValueProperty <CGFloat>
 typealias EBTransientProperty_CGFloat = EBTransientValueProperty <CGFloat>
@@ -1922,7 +1905,7 @@ typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]
 //   Scalar property StringSet
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_StringSet = EBReadOnlyValueController <StringSet>
+//typealias EBReadOnlyController_StringSet = EBReadOnlyValueController <StringSet>
 
 typealias EBReadOnlyProperty_StringSet  = EBReadOnlyValueProperty <StringSet>
 typealias EBTransientProperty_StringSet = EBTransientValueProperty <StringSet>
@@ -1952,7 +1935,7 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 //   Scalar property StringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_StringArray = EBReadOnlyValueController <StringArray>
+//typealias EBReadOnlyController_StringArray = EBReadOnlyValueController <StringArray>
 
 typealias EBReadOnlyProperty_StringArray  = EBReadOnlyValueProperty <StringArray>
 typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArray>
@@ -1960,7 +1943,7 @@ typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArra
 //   Scalar property TwoStrings
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_TwoStrings = EBReadOnlyValueController <TwoStrings>
+//typealias EBReadOnlyController_TwoStrings = EBReadOnlyValueController <TwoStrings>
 
 typealias EBReadOnlyProperty_TwoStrings  = EBReadOnlyValueProperty <TwoStrings>
 typealias EBTransientProperty_TwoStrings = EBTransientValueProperty <TwoStrings>
@@ -1968,7 +1951,7 @@ typealias EBTransientProperty_TwoStrings = EBTransientValueProperty <TwoStrings>
 //   Scalar property TwoStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_TwoStringArray = EBReadOnlyValueController <TwoStringArray>
+//typealias EBReadOnlyController_TwoStringArray = EBReadOnlyValueController <TwoStringArray>
 
 typealias EBReadOnlyProperty_TwoStringArray  = EBReadOnlyValueProperty <TwoStringArray>
 typealias EBTransientProperty_TwoStringArray = EBTransientValueProperty <TwoStringArray>
@@ -1976,7 +1959,7 @@ typealias EBTransientProperty_TwoStringArray = EBTransientValueProperty <TwoStri
 //   Scalar property ThreeStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_ThreeStringArray = EBReadOnlyValueController <ThreeStringArray>
+//typealias EBReadOnlyController_ThreeStringArray = EBReadOnlyValueController <ThreeStringArray>
 
 typealias EBReadOnlyProperty_ThreeStringArray  = EBReadOnlyValueProperty <ThreeStringArray>
 typealias EBTransientProperty_ThreeStringArray = EBTransientValueProperty <ThreeStringArray>
@@ -1984,7 +1967,7 @@ typealias EBTransientProperty_ThreeStringArray = EBTransientValueProperty <Three
 //   Scalar property PinQualifiedNameStruct
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_PinQualifiedNameStruct = EBReadOnlyValueController <PinQualifiedNameStruct>
+//typealias EBReadOnlyController_PinQualifiedNameStruct = EBReadOnlyValueController <PinQualifiedNameStruct>
 
 typealias EBReadOnlyProperty_PinQualifiedNameStruct  = EBReadOnlyValueProperty <PinQualifiedNameStruct>
 typealias EBTransientProperty_PinQualifiedNameStruct = EBTransientValueProperty <PinQualifiedNameStruct>
@@ -2036,7 +2019,7 @@ typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[M
 //   Scalar property CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <CanariIssueArray>
+//typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <CanariIssueArray>
 
 typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
 typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
@@ -2044,7 +2027,7 @@ typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <Canar
 //   Scalar property SymbolPinNameAndErrorLocationArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyValueController <SymbolPinNameAndErrorLocationArray>
+//typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyValueController <SymbolPinNameAndErrorLocationArray>
 
 typealias EBReadOnlyProperty_SymbolPinNameAndErrorLocationArray  = EBReadOnlyValueProperty <SymbolPinNameAndErrorLocationArray>
 typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientValueProperty <SymbolPinNameAndErrorLocationArray>
@@ -2052,7 +2035,7 @@ typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientVa
 //   Scalar property NSRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_NSRect = EBReadOnlyValueController <NSRect>
+//typealias EBReadOnlyController_NSRect = EBReadOnlyValueController <NSRect>
 
 typealias EBReadOnlyProperty_NSRect  = EBReadOnlyValueProperty <NSRect>
 typealias EBTransientProperty_NSRect = EBTransientValueProperty <NSRect>
@@ -2060,7 +2043,7 @@ typealias EBTransientProperty_NSRect = EBTransientValueProperty <NSRect>
 //   Scalar property UnconnectedSymbolPinsInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_UnconnectedSymbolPinsInDevice = EBReadOnlyValueController <UnconnectedSymbolPinsInDevice>
+//typealias EBReadOnlyController_UnconnectedSymbolPinsInDevice = EBReadOnlyValueController <UnconnectedSymbolPinsInDevice>
 
 typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice  = EBReadOnlyValueProperty <UnconnectedSymbolPinsInDevice>
 typealias EBTransientProperty_UnconnectedSymbolPinsInDevice = EBTransientValueProperty <UnconnectedSymbolPinsInDevice>
@@ -2068,7 +2051,7 @@ typealias EBTransientProperty_UnconnectedSymbolPinsInDevice = EBTransientValuePr
 //   Scalar property AssignedPadProxiesInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_AssignedPadProxiesInDevice = EBReadOnlyValueController <AssignedPadProxiesInDevice>
+//typealias EBReadOnlyController_AssignedPadProxiesInDevice = EBReadOnlyValueController <AssignedPadProxiesInDevice>
 
 typealias EBReadOnlyProperty_AssignedPadProxiesInDevice  = EBReadOnlyValueProperty <AssignedPadProxiesInDevice>
 typealias EBTransientProperty_AssignedPadProxiesInDevice = EBTransientValueProperty <AssignedPadProxiesInDevice>
@@ -2076,7 +2059,7 @@ typealias EBTransientProperty_AssignedPadProxiesInDevice = EBTransientValuePrope
 //   Scalar property DefinedCharactersInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_DefinedCharactersInDevice = EBReadOnlyValueController <DefinedCharactersInDevice>
+//typealias EBReadOnlyController_DefinedCharactersInDevice = EBReadOnlyValueController <DefinedCharactersInDevice>
 
 typealias EBReadOnlyProperty_DefinedCharactersInDevice  = EBReadOnlyValueProperty <DefinedCharactersInDevice>
 typealias EBTransientProperty_DefinedCharactersInDevice = EBTransientValueProperty <DefinedCharactersInDevice>
