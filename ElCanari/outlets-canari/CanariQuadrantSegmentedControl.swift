@@ -43,12 +43,28 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
   //    binding
   //····················································································································
 
-  private var mController : Controller_CanariQuadrantSegmentedControl_quadrant?
+  fileprivate func updateSelectedSegment (_ object : EBReadOnlyProperty_QuadrantRotation) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.selectedSegment = -1
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.selectedSegment = v.rawValue
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.selectedSegment = -1
+    }
+  }
+
+  //····················································································································
+
+  private var mController : Controller_CanariQuadrantSegmentedControl_quadrant? = nil
 
   //····················································································································
 
   func bind_quadrant (_ object : EBReadWriteProperty_QuadrantRotation, file : String, line : Int) {
-    self.mController = Controller_CanariQuadrantSegmentedControl_quadrant (object:object, outlet:self)
+    self.mController = Controller_CanariQuadrantSegmentedControl_quadrant (object: object, outlet: self)
   }
 
   //····················································································································
@@ -76,24 +92,8 @@ final class Controller_CanariQuadrantSegmentedControl_quadrant : EBSimpleControl
   init (object : EBReadWriteProperty_QuadrantRotation, outlet : CanariQuadrantSegmentedControl) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.selectedSegment = -1
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.selectedSegment = v.rawValue
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.selectedSegment = -1
-    }
+    super.init (observedObjects: [object], callBack: { outlet.updateSelectedSegment (object) })
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

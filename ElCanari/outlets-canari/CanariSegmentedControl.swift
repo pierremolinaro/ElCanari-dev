@@ -105,6 +105,20 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //    binding
   //····················································································································
 
+  fileprivate func updateSelectedSegment (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.selectedSegment = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+    }
+  }
+
+  //····················································································································
+
   private var mController : Controller_CanariSegmentedControl_selectedPage? = nil
 
   //····················································································································
@@ -138,22 +152,7 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.selectedSegment = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-    }
+    super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })
   }
 
   //····················································································································

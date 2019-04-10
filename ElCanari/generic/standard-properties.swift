@@ -766,14 +766,14 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 //   EBReadOnlyEnumController <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyEnumController <T : EBEnumProtocol> : EBSimpleController {
+class EBReadOnlyEnumController <T : EBEnumProtocol> : EBSimpleController { // §
 
   //····················································································································
 
-  init (model : EBReadOnlyEnumProperty <T>, callBack: @escaping () -> Void) {
-    super.init (observedObjects:[model])
-    self.mEventCallBack = callBack
-  }
+//  init (model : EBReadOnlyEnumProperty <T>, callBack: @escaping () -> Void) {
+//    super.init (observedObjects:[model], callBack: callBack)
+////    self.mEventCallBack = callBack
+//  }
 
   //····················································································································
 
@@ -1900,7 +1900,7 @@ typealias EBTransientProperty_CGFloat = EBTransientValueProperty <CGFloat>
 //   Transient property class NSImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_NSImage = EBReadOnlyClassController <NSImage>
+//typealias EBReadOnlyController_NSImage = EBReadOnlyClassController <NSImage>
 
 typealias EBReadOnlyProperty_NSImage  = EBReadOnlyClassProperty <NSImage>
 typealias EBTransientProperty_NSImage = EBTransientClassProperty <NSImage>
@@ -1911,7 +1911,7 @@ typealias EBTransientPropertyArray_NSImage = EBTransientClassProperty <[NSImage]
 //   Transient property class EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_EBShape = EBReadOnlyClassController <EBShape>
+//typealias EBReadOnlyController_EBShape = EBReadOnlyClassController <EBShape>
 
 typealias EBReadOnlyProperty_EBShape  = EBReadOnlyClassProperty <EBShape>
 typealias EBTransientProperty_EBShape = EBTransientClassProperty <EBShape>
@@ -1930,7 +1930,7 @@ typealias EBTransientProperty_StringSet = EBTransientValueProperty <StringSet>
 //   Transient property class CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CanariRect = EBReadOnlyClassController <CanariRect>
+//typealias EBReadOnlyController_CanariRect = EBReadOnlyClassController <CanariRect>
 
 typealias EBReadOnlyProperty_CanariRect  = EBReadOnlyClassProperty <CanariRect>
 typealias EBTransientProperty_CanariRect = EBTransientClassProperty <CanariRect>
@@ -1941,7 +1941,7 @@ typealias EBTransientPropertyArray_CanariRect = EBTransientClassProperty <[Canar
 //   Transient property class CanariMenuItemListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CanariMenuItemListClass = EBReadOnlyClassController <CanariMenuItemListClass>
+//typealias EBReadOnlyController_CanariMenuItemListClass = EBReadOnlyClassController <CanariMenuItemListClass>
 
 typealias EBReadOnlyProperty_CanariMenuItemListClass  = EBReadOnlyClassProperty <CanariMenuItemListClass>
 typealias EBTransientProperty_CanariMenuItemListClass = EBTransientClassProperty <CanariMenuItemListClass>
@@ -1992,7 +1992,7 @@ typealias EBTransientProperty_PinQualifiedNameStruct = EBTransientValueProperty 
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_MergerViaShapeArray = EBReadOnlyClassController <MergerViaShapeArray>
+//typealias EBReadOnlyController_MergerViaShapeArray = EBReadOnlyClassController <MergerViaShapeArray>
 
 typealias EBReadOnlyProperty_MergerViaShapeArray  = EBReadOnlyClassProperty <MergerViaShapeArray>
 typealias EBTransientProperty_MergerViaShapeArray = EBTransientClassProperty <MergerViaShapeArray>
@@ -2003,7 +2003,7 @@ typealias EBTransientPropertyArray_MergerViaShapeArray = EBTransientClassPropert
 //   Transient property class MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_MergerSegmentArray = EBReadOnlyClassController <MergerSegmentArray>
+//typealias EBReadOnlyController_MergerSegmentArray = EBReadOnlyClassController <MergerSegmentArray>
 
 typealias EBReadOnlyProperty_MergerSegmentArray  = EBReadOnlyClassProperty <MergerSegmentArray>
 typealias EBTransientProperty_MergerSegmentArray = EBTransientClassProperty <MergerSegmentArray>
@@ -2014,7 +2014,7 @@ typealias EBTransientPropertyArray_MergerSegmentArray = EBTransientClassProperty
 //   Transient property class MergerBoardLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_MergerBoardLimits = EBReadOnlyClassController <MergerBoardLimits>
+//typealias EBReadOnlyController_MergerBoardLimits = EBReadOnlyClassController <MergerBoardLimits>
 
 typealias EBReadOnlyProperty_MergerBoardLimits  = EBReadOnlyClassProperty <MergerBoardLimits>
 typealias EBTransientProperty_MergerBoardLimits = EBTransientClassProperty <MergerBoardLimits>
@@ -2025,7 +2025,7 @@ typealias EBTransientPropertyArray_MergerBoardLimits = EBTransientClassProperty 
 //   Transient property class MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_MergerPadArray = EBReadOnlyClassController <MergerPadArray>
+//typealias EBReadOnlyController_MergerPadArray = EBReadOnlyClassController <MergerPadArray>
 
 typealias EBReadOnlyProperty_MergerPadArray  = EBReadOnlyClassProperty <MergerPadArray>
 typealias EBTransientProperty_MergerPadArray = EBTransientClassProperty <MergerPadArray>
@@ -2084,7 +2084,7 @@ typealias EBTransientProperty_DefinedCharactersInDevice = EBTransientValueProper
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CharacterSegmentListClass = EBReadOnlyClassController <CharacterSegmentListClass>
+//typealias EBReadOnlyController_CharacterSegmentListClass = EBReadOnlyClassController <CharacterSegmentListClass>
 
 typealias EBReadOnlyProperty_CharacterSegmentListClass  = EBReadOnlyClassProperty <CharacterSegmentListClass>
 typealias EBTransientProperty_CharacterSegmentListClass = EBTransientClassProperty <CharacterSegmentListClass>
@@ -2095,7 +2095,7 @@ typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassP
 //   Transient property class CharacterGerberCodeClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_CharacterGerberCodeClass = EBReadOnlyClassController <CharacterGerberCodeClass>
+//typealias EBReadOnlyController_CharacterGerberCodeClass = EBReadOnlyClassController <CharacterGerberCodeClass>
 
 typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
 typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
@@ -2106,7 +2106,7 @@ typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassPr
 //   Property class NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_NSBezierPath = EBReadOnlyClassController <NSBezierPath>
+//typealias EBReadOnlyController_NSBezierPath = EBReadOnlyClassController <NSBezierPath>
 
 typealias EBReadOnlyProperty_NSBezierPath  = EBReadOnlyClassProperty <NSBezierPath>
 typealias EBTransientProperty_NSBezierPath = EBTransientClassProperty <NSBezierPath>
@@ -2118,7 +2118,7 @@ typealias EBStoredProperty_NSBezierPath    = EBStoredClassProperty <NSBezierPath
 //   Property class NSFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_NSFont = EBReadOnlyClassController <NSFont>
+//typealias EBReadOnlyController_NSFont = EBReadOnlyClassController <NSFont>
 
 typealias EBReadOnlyProperty_NSFont  = EBReadOnlyClassProperty <NSFont>
 typealias EBTransientProperty_NSFont = EBTransientClassProperty <NSFont>
@@ -2130,7 +2130,7 @@ typealias EBStoredProperty_NSFont    = EBStoredClassProperty <NSFont>
 //   Property class NSColor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_NSColor = EBReadOnlyClassController <NSColor>
+//typealias EBReadOnlyController_NSColor = EBReadOnlyClassController <NSColor>
 
 typealias EBReadOnlyProperty_NSColor  = EBReadOnlyClassProperty <NSColor>
 typealias EBTransientProperty_NSColor = EBTransientClassProperty <NSColor>

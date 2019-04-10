@@ -50,14 +50,14 @@ class CanariSlavePadAssignmentPopUpButton : NSPopUpButton, EBUserClassNameProtoc
   // MARK: -
   //····················································································································
 
-  private var mCurrentZoneController : EBReadOnlyController_String? = nil
+  private var mCurrentZoneController : EBSimpleController? = nil
   private var mCurrentSlavePad : PackageSlavePad? = nil
 
   //····················································································································
 
   func bind_masterPadName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mCurrentZoneController = EBReadOnlyController_String (
-      model: model,
+    self.mCurrentZoneController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (fromMasterPadName: model) }
     )
   }

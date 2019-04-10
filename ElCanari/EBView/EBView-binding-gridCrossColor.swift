@@ -13,8 +13,8 @@ extension  EBView {
   //····················································································································
 
   func bind_gridCrossColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridCrossColorController = EBReadOnlyController_NSColor (
-      model: model,
+    self.mGridCrossColorController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateGridColor (from: model) }
     )
   }

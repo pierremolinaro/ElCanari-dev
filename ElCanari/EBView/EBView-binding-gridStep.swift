@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_gridStep (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mGridStepController = EBReadOnlyController_Int (
-      model: model,
+    self.mGridStepController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStep (from: model) }
     )
   }

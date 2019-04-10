@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mArrowKeyMagnitudeController = EBReadOnlyController_Int (
-      model: model,
+    self.mArrowKeyMagnitudeController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateArrowKeyMagnitude (from: model) }
     )
   }

@@ -93,7 +93,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mUnderObjectsDisplayController : EBReadOnlyController_EBShape?
+  final internal var mUnderObjectsDisplayController : EBSimpleController?
 
   //····················································································································
   // MARK: -
@@ -110,7 +110,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mOverObjectsDisplayController : EBReadOnlyController_EBShape?
+  internal var mOverObjectsDisplayController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -143,7 +143,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mArrowKeyMagnitudeController : EBReadOnlyController_Int? = nil
+  internal var mArrowKeyMagnitudeController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -163,7 +163,7 @@ import Cocoa
 
  //····················································································································
 
-  internal var mShiftArrowKeyMagnitudeController : EBReadOnlyController_Int? = nil
+  internal var mShiftArrowKeyMagnitudeController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -177,7 +177,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mBackColorController : EBReadOnlyController_NSColor? = nil
+  internal var mBackColorController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -230,7 +230,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mMouseGridController : EBReadOnlyController_Int? = nil
+  internal var mMouseGridController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -346,7 +346,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mXPlacardUnitController : EBReadOnlyController_Int? = nil
+  internal var mXPlacardUnitController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -362,7 +362,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mYPlacardUnitController : EBReadOnlyController_Int? = nil
+  internal var mYPlacardUnitController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -463,11 +463,11 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
+  final internal var mHorizontalFlipController : EBSimpleController? = nil
 
   //····················································································································
 
-  final internal var mVerticalFlipController : EBReadOnlyController_Bool? = nil
+  final internal var mVerticalFlipController : EBSimpleController? = nil
 
   //····················································································································
   // Grid Style
@@ -484,7 +484,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mGridStyleController : EBReadOnlyController_GridStyle? = nil
+  final internal var mGridStyleController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -500,7 +500,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mGridStepController : EBReadOnlyController_Int? = nil
+  final internal var mGridStepController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -516,7 +516,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mGridDisplayFactorController : EBReadOnlyController_Int? = nil
+  final internal var mGridDisplayFactorController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -532,7 +532,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mGridLineColorController : EBReadOnlyController_NSColor? = nil
+  final internal var mGridLineColorController : EBSimpleController? = nil
 
   //····················································································································
   // MARK: -
@@ -548,7 +548,7 @@ import Cocoa
 
   //····················································································································
 
-  internal var mGridCrossColorController : EBReadOnlyController_NSColor? = nil
+  internal var mGridCrossColorController : EBSimpleController? = nil
 
   //····················································································································
 }

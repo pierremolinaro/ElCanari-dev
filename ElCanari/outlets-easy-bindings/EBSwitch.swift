@@ -39,7 +39,23 @@ import Cocoa
 
   //···················································································································· 
   //  value binding
-  //···················································································································· 
+  //····················································································································
+
+  fileprivate func updateValue (_ object : EBReadOnlyProperty_Bool) {
+    switch object.prop {
+    case .empty :
+      self.state = NSControl.StateValue.off
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.state = NSControl.StateValue.mixed
+      self.enableFromValueBinding (false)
+    case .single (let v) :
+      self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
 
   fileprivate var mValueController : Controller_EBSwitch_value? = nil
 
@@ -73,27 +89,10 @@ final class Controller_EBSwitch_value : EBSimpleController {
   init (object : EBReadWriteProperty_Bool, outlet : EBSwitch) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+    super.init (observedObjects: [object], callBack: { outlet.updateValue(object) })
   }
 
   //····················································································································
-
-  fileprivate func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      self.mOutlet.state = NSControl.StateValue.off
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.state = NSControl.StateValue.mixed
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let v) :
-      self.mOutlet.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
-      self.mOutlet.enableFromValueBinding (true)
-    }
-  }
-
-  //···················································································································· 
 
   func updateModel () {
     self.mObject.setProp (self.mOutlet.state == NSControl.StateValue.on)
@@ -120,7 +119,7 @@ final class Controller_EBSwitch_value : EBSimpleController {
   //····················································································································
 
   func update () {
-    self.mCellOutlet?.mValueController?.updateOutlet ()
+    self.mCellOutlet?.mValueController?.mEventCallBack? ()
   }
 
   //····················································································································

@@ -82,6 +82,22 @@ import Cocoa
   //  value binding
   //····················································································································
 
+  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.doubleValue = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+
   private var mValueController : Controller_EBDoubleField_value?
   private var mSendContinously : Bool = false
 
@@ -123,7 +139,7 @@ final class Controller_EBDoubleField_value : EBSimpleController {
         autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object], callBack: { outlet.updateDoubleValue (object) } )
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
     if autoFormatter {
@@ -134,7 +150,7 @@ final class Controller_EBDoubleField_value : EBSimpleController {
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    se>lf.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -143,22 +159,6 @@ final class Controller_EBDoubleField_value : EBSimpleController {
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.doubleValue = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    }
   }
 
   //····················································································································

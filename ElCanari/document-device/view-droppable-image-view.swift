@@ -123,6 +123,17 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   //  $imageData binding
   //····················································································································
 
+  func updateImageData (_ object : EBReadOnlyProperty_Data) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.image = nil
+    case .single (let data) :
+      self.image = NSImage (data: data)
+    }
+  }
+
+  //····················································································································
+
   private var mImageDataController : Controller_DeviceDroppableImageView_imageData? = nil
 
   //····················································································································
@@ -160,19 +171,7 @@ final class Controller_DeviceDroppableImageView_imageData : EBSimpleController {
   init (object : EBStoredProperty_Data, outlet : DeviceDroppableImageView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty, .multiple :
-      mOutlet.image = nil
-    case .single (let data) :
-      mOutlet.image = NSImage (data: data)
-    }
+    super.init (observedObjects: [object], callBack: { outlet.updateImageData (object) })
   }
 
   //····················································································································

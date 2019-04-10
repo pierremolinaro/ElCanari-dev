@@ -12,8 +12,19 @@ extension EBView {
 
   //····················································································································
 
+  fileprivate func updateOutlet (_ zoom : EBReadOnlyProperty_Int) {
+    switch zoom.prop {
+    case .empty, .multiple :
+      self.applyZoom (100)
+    case .single (let v) :
+      self.applyZoom (v)
+    }
+  }
+
+  //····················································································································
+
   func bind_zoom (_ zoom : EBReadWriteProperty_Int, file : String, line : Int) {
-    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom:zoom, outlet:self)
+    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom: zoom, outlet: self)
   }
 
   //····················································································································
@@ -42,19 +53,8 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   init (zoom : EBReadWriteProperty_Int, outlet : EBView) {
     mZoomProperty = zoom
     mOutlet = outlet
-    super.init (observedObjects:[zoom])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mZoomProperty.prop {
-    case .empty, .multiple :
-      mOutlet.applyZoom (100)
-    case .single (let v) :
-      mOutlet.applyZoom (v)
-    }
+    super.init (observedObjects:[zoom], callBack: { outlet.updateOutlet (zoom) })
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

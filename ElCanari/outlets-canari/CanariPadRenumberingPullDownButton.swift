@@ -50,14 +50,14 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   // MARK: -
   //····················································································································
 
-  private var mCurrentNumberController : EBReadOnlyController_Int? = nil
+  private var mCurrentNumberController : EBSimpleController? = nil
   private var mCurrentPadNumber = 0
 
   //····················································································································
 
   func bind_currentNumber (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mCurrentNumberController = EBReadOnlyController_Int (
-      model: model,
+    self.mCurrentNumberController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (fromPadNumber: model) }
      )
   }
@@ -131,14 +131,14 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   // MARK: -
   //····················································································································
 
-  private var mCurrentZoneController : EBReadOnlyController_String? = nil
+  private var mCurrentZoneController : EBSimpleController? = nil
   private var mCurrentZoneName = ""
 
   //····················································································································
 
   func bind_currentZoneName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mCurrentZoneController = EBReadOnlyController_String (
-      model: model,
+    self.mCurrentZoneController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (fromZoneName: model) }
      )
   }

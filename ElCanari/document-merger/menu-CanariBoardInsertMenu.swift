@@ -51,19 +51,35 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
   //    BINDING names
   //····················································································································
 
-  private var mNamesController : Controller_CanariBoardInsertMenu_names?
+  fileprivate func updateOutlet (_ names : EBReadOnlyProperty_StringArray) {
+    switch names.prop {
+    case .empty :
+      self.setNames ([])
+    case .single (let v) :
+      self.setNames (v)
+    case .multiple :
+      self.setNames ([])
+    }
+  }
+
+  //····················································································································
+
+  private var mNamesController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_names (_ names:EBReadOnlyProperty_StringArray, file:String, line:Int) {
-    mNamesController = Controller_CanariBoardInsertMenu_names (names:names, outlet:self)
+    self.mNamesController = EBSimpleController (
+      observedObjects: [names],
+      callBack: { [weak self] in self?.updateOutlet (names) }
+    )
   }
 
   //····················································································································
 
   func unbind_names () {
-    mNamesController?.unregister ()
-    mNamesController = nil
+    self.mNamesController?.unregister ()
+    self.mNamesController = nil
   }
 
   //····················································································································
@@ -84,41 +100,6 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
       self.addItem (withTitle: "Insert an array of boards…", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
       self.items.last?.target = mDocument
       self.items.last?.isEnabled = true
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardInsertMenu_names
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
-
-  private let mNames : EBReadOnlyProperty_StringArray
-  private let mOutlet : CanariBoardInsertMenu
-
-  //····················································································································
-
-  init (names : EBReadOnlyProperty_StringArray, outlet : CanariBoardInsertMenu) {
-    mNames = names
-    mOutlet = outlet
-    super.init (observedObjects:[names])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mNames.prop {
-    case .empty :
-      mOutlet.setNames ([])
-    case .single (let v) :
-      mOutlet.setNames (v)
-    case .multiple :
-      mOutlet.setNames ([])
     }
   }
 

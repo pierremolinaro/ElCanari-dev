@@ -51,13 +51,13 @@ class AddSymbolInstancePullDownButton : EBPopUpButton {
   //  $symbolTypeNames binding
   //····················································································································
 
-  private var mSymbolTypeNamesController : EBReadOnlyController_StringArray? = nil
+  private var mSymbolTypeNamesController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_symbolTypeNames (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
-    self.mSymbolTypeNamesController = EBReadOnlyController_StringArray (
-      model: model,
+    self.mSymbolTypeNamesController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateItemList (from: model) }
     )
   }

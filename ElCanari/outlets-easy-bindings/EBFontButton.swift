@@ -66,7 +66,20 @@ import Cocoa
   }
 
   //····················································································································
-  //  color binding
+  //  $fontValue binding
+  //····················································································································
+
+  fileprivate func updateFont (_ object : EBReadOnlyProperty_NSFont) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.enableFromValueBinding (false)
+      self.title = ""
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.mySetFont (font: v)
+    }
+  }
+
   //····················································································································
 
   private var mValueController : Controller_EBFontButton_fontValue? = nil
@@ -98,8 +111,7 @@ class Controller_EBFontButton_fontValue : EBSimpleController {
   init (object : EBReadWriteProperty_NSFont, outlet : EBFontButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+    super.init (observedObjects: [object], callBack: { outlet.updateFont (object) })
   }
 
   //····················································································································
@@ -108,19 +120,6 @@ class Controller_EBFontButton_fontValue : EBSimpleController {
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty, .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.title = ""
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.mySetFont (font: v)
-    }
   }
 
   //····················································································································

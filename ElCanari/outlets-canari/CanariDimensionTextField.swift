@@ -32,6 +32,22 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //  value binding
   //····················································································································
 
+  fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
+    switch combine (dimension.prop, unit: unit.prop) {
+    case .empty :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.stringValue = "multiple"
+      self.enableFromValueBinding (true)
+    case .single (let propertyValue) :
+      self.doubleValue = propertyValue
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
   private var mController : Controller_CanariDimensionTextField_dimensionAndUnit?
 
   //····················································································································
@@ -74,7 +90,10 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mUnit = unit
     mOutlet = outlet
     mNumberFormatter = NumberFormatter ()
-    super.init (observedObjects:[dimension, unit])
+    super.init (
+      observedObjects:[dimension, unit],
+      callBack: { outlet.updateOutlet (dimension: dimension, unit: unit) }
+    )
   //--- Target
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
@@ -87,7 +106,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     self.mNumberFormatter.isLenient = true
     self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -96,22 +115,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch combine (self.mDimension.prop, unit: self.mUnit.prop) {
-    case .empty :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.stringValue = "multiple"
-      self.mOutlet.enableFromValueBinding (true)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = propertyValue
-      self.mOutlet.enableFromValueBinding (true)
-    }
   }
 
   //····················································································································

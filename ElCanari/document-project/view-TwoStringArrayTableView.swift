@@ -125,13 +125,13 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
   //  $array binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_TwoStringArray? = nil
+  private var mController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_array (_ model : EBReadOnlyProperty_TwoStringArray, file : String, line : Int) {
-    self.mController = EBReadOnlyController_TwoStringArray (
-      model: model,
+    self.mController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
   }

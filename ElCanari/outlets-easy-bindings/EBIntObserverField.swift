@@ -40,6 +40,22 @@ import Cocoa
   //  $valueObserver binding
   //····················································································································
 
+  fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.integerValue = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+
   fileprivate var mValueController : Controller_EBIntObserverField_readOnlyValue? = nil
 
   //····················································································································
@@ -80,7 +96,7 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
   init (object : EBReadOnlyProperty_Int, outlet : EBIntObserverField, file : String, line : Int, autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object])
+    super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
     if autoFormatter {
       self.mOutlet.formatter = NumberFormatter ()
     }else if self.mOutlet.formatter == nil {
@@ -88,23 +104,7 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
     }else if !(self.mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  fileprivate func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.integerValue = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    }
+  //  self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -129,7 +129,7 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
   //····················································································································
 
   func update () {
-    self.mCellOutlet?.mValueController?.updateOutlet ()
+    self.mCellOutlet?.mValueController?.mEventCallBack? ()
   }
 
   //····················································································································

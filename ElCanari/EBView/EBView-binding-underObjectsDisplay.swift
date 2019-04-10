@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_underObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file : String, line : Int) {
-    self.mUnderObjectsDisplayController = EBReadOnlyController_EBShape (
-      model: model,
+    self.mUnderObjectsDisplayController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateUnderObjectsDisplay (from: model) }
     )
   }

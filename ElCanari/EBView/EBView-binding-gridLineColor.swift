@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
-      model: model,
+    self.mGridLineColorController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateLineColor (from: model) }
     )
   }

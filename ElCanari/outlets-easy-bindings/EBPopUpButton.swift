@@ -59,6 +59,34 @@ import Cocoa
   //  selectedIndex binding
   //····················································································································
 
+  fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      let result = self.selectItem (withTag: v)
+      if !result {
+        presentErrorWindow (#file, #line, "no item with tag: " + String (v))
+      }
+    case .multiple :
+      self.enableFromValueBinding (false)
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func updateIndex (_ object : EBAbstractEnumProperty) {
+    if let v = object.rawValue () {
+      self.enableFromValueBinding (true)
+      self.selectItem (at: v)
+    }else{
+      self.enableFromValueBinding (false)
+    }
+  }
+
+  //····················································································································
+
   private var mSelectedIndexController : Controller_EBPopUpButton_Index? = nil
 
   //····················································································································
@@ -94,25 +122,8 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
   init (object : EBReadWriteProperty_Int, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      let result = self.mOutlet.selectItem (withTag: v)
-      if !result {
-        presentErrorWindow (#file, #line, "no item with tag: " + String (v))
-      }
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-    }
+    super.init (observedObjects: [object], callBack: { outlet.updateOutlet (object) })
+  //  self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -140,19 +151,8 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   init (object : EBAbstractEnumProperty, outlet : EBPopUpButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    if let v = mObject.rawValue () {
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.selectItem (at: v)
-    }else{
-      self.mOutlet.enableFromValueBinding (false)
-    }
+    super.init (observedObjects:[object], callBack: { outlet.updateIndex (object) } )
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

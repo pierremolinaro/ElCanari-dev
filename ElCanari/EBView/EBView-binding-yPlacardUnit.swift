@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_yPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mYPlacardUnitController = EBReadOnlyController_Int (
-      model: model,
+    self.mYPlacardUnitController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
     )
   }

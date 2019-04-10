@@ -36,13 +36,13 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   //  version binding
   //····················································································································
 
-  private var mVersionController : EBReadOnlyController_Int? = nil
+  private var mVersionController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_version (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mVersionController = EBReadOnlyController_Int (
-      model: model,
+    self.mVersionController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
   }
@@ -74,13 +74,13 @@ class CanariVersionField : NSTextField, EBUserClassNameProtocol {
   //  versionShouldChange binding
   //····················································································································
 
-  private var mVersionShouldChangeController : EBReadOnlyController_Bool? = nil
+  private var mVersionShouldChangeController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    self.mVersionShouldChangeController = EBReadOnlyController_Bool (
-      model: model,
+    self.mVersionShouldChangeController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
      )
   }

@@ -113,11 +113,27 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   //  $characters binding                                                                                                *
   //····················································································································
 
+  fileprivate func updateCodePoint (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.title = ""
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.mSelectedCharacterCode = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.title = ""
+    }
+  }
+
+  //····················································································································
+
   private var mCharactersController : EBReadOnlyController_DefinedCharactersInDevice?
 
   func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice, file : String, line : Int) {
     self.mCharactersController = EBReadOnlyController_DefinedCharactersInDevice (
-      model: model,
+      observedObjects: [model],
       callBack: { [weak self] in
         switch model.prop {
         case .empty, .multiple :
@@ -152,24 +168,7 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
   init (object : EBReadWriteProperty_Int, outlet : FontCharacterSelectButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.title = ""
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.mSelectedCharacterCode = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.title = ""
-    }
+    super.init (observedObjects: [object], callBack: { outlet.updateCodePoint (object) })
   }
 
   //····················································································································

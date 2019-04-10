@@ -12,9 +12,9 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file:String, line:Int) {
-    self.mGridStyleController = EBReadOnlyController_GridStyle (
-      model: model,
+  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file : String, line : Int) {
+    self.mGridStyleController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStyle (from: model) }
     )
   }

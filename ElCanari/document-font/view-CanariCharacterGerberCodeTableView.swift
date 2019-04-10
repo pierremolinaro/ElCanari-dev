@@ -69,10 +69,10 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
   init (object:EBReadOnlyProperty_CharacterGerberCodeClass, tableView:CanariCharacterGerberCodeTableView) {
     mTableView = tableView
     mObject = object
-    super.init (observedObjects:[object])
+    super.init (observedObjects:[object], callBack: { tableView.reloadData () })
     tableView.delegate = self
     tableView.dataSource = self
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    self.mEventCallBack = { tableView.reloadData () }
   }
 
   //····················································································································
@@ -85,13 +85,13 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
 
 
   //····················································································································
-  
-  private func updateOutlet () {
-    if DEBUG_EVENT {
-      print ("Controller_CanariCharacterGerberCodeTableView_characterGerberCode::\(#function)")
-    }
-    mTableView.reloadData ()
-  }
+//  
+//  private func updateOutlet () {
+//    if DEBUG_EVENT {
+//      print ("Controller_CanariCharacterGerberCodeTableView_characterGerberCode::\(#function)")
+//    }
+//    mTableView.reloadData ()
+//  }
 
   //····················································································································
   //    T A B L E V I E W    D A T A S O U R C E : numberOfRowsInTableView

@@ -23,19 +23,52 @@ class CanariMenu : NSMenu, EBUserClassNameProtocol {
   //  $populateSubmenus binding
   //····················································································································
 
-  private var mValueController : Controller_CanariMenu_CanariMenuItemListClass?
+  @objc func revealInFinder (_ sender : NSMenuItem) {
+    let ws = NSWorkspace.shared
+    let title = sender.title
+    let ok = ws.openFile (title)
+    if !ok {
+      __NSBeep ()
+      let alert = NSAlert ()
+      alert.messageText = "Cannot open the \(title) directory"
+      alert.informativeText = "This directory does not exist."
+      _ = alert.runModal ()
+    }
+  }
 
   //····················································································································
 
-  func bind_populateSubmenus (_ object:EBReadOnlyProperty_CanariMenuItemListClass, file:String, line:Int) {
-    mValueController = Controller_CanariMenu_CanariMenuItemListClass (object:object, outlet:self)
+  private func updateOutlet (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.removeAllItems ()
+    case .single (let itemList) :
+      self.removeAllItems ()
+      for title in itemList.items {
+        let item = self.addItem (withTitle: title, action: #selector (CanariMenu.revealInFinder(_:)), keyEquivalent: "")
+        item.target = self
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mValueController : EBSimpleController? = nil
+
+  //····················································································································
+
+  func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass, file:String, line:Int) {
+    self.mValueController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateOutlet (object) }
+    )
   }
 
   //····················································································································
 
   func unbind_populateSubmenus () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································

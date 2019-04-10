@@ -253,17 +253,28 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  advance binding
   //····················································································································
 
-  private var mAdvanceController : Controller_CanariCharacterView_advance? = nil
+  final private func updateAdvance (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty, .multiple :
+      break ;
+    case .single (let value) :
+      self.setAdvance (value)
+    }
+  }
+
+  //····················································································································
+
+  private var mAdvanceController : EBSimpleController? = nil
 
   final func bind_advance (_ object : EBReadOnlyProperty_Int, file : String, line : Int) {
-    mAdvanceController = Controller_CanariCharacterView_advance (object:object, outlet:self)
+    self.mAdvanceController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateAdvance (object) })
   }
 
   //····················································································································
 
   final func unbind_advance () {
-    mAdvanceController?.unregister ()
-    mAdvanceController = nil
+    self.mAdvanceController?.unregister ()
+    self.mAdvanceController = nil
   }
 
   //····················································································································
@@ -281,45 +292,66 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  characterSegmentList binding
   //····················································································································
 
-  private var mCharacterSegmentListController : Controller_CanariCharacterView_characterGerberCode?
+  private var mCharacterSegmentListController : EBSimpleController? = nil
 
-  final func bind_characterSegmentList (_ object:EBReadOnlyProperty_CharacterSegmentListClass, file:String, line:Int) {
-    mCharacterSegmentListController = Controller_CanariCharacterView_characterGerberCode (object:object, outlet:self)
+  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentListClass, file:String, line:Int) {
+    self.mCharacterSegmentListController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
+    )
   }
 
   //····················································································································
 
   final func unbind_characterSegmentList () {
-    mCharacterSegmentListController?.unregister ()
-    mCharacterSegmentListController = nil
+    self.mCharacterSegmentListController?.unregister ()
+    self.mCharacterSegmentListController = nil
   }
 
   //····················································································································
 
-  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : CharacterSegmentListClass) {
-    self.mSegmentList = inSegments.code
-    let oldSelection = self.mSelection
-    self.mSelection = Set ()
-    for oldSegment in oldSelection {
-      for newSegment in self.mSegmentList {
-        if (oldSegment.x1 == newSegment.x1) && (oldSegment.y1 == newSegment.y1)
-        && (oldSegment.x2 == newSegment.x2) && (oldSegment.y2 == newSegment.y2) {
-          self.mSelection.insert (newSegment)
-          break
+  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentListClass) {
+    switch inSegments.prop {
+    case .empty, .multiple :
+      ()
+    case .single (let segments) :
+      self.mSegmentList = segments.code
+      let oldSelection = self.mSelection
+      self.mSelection = Set ()
+      for oldSegment in oldSelection {
+        for newSegment in self.mSegmentList {
+          if (oldSegment.x1 == newSegment.x1) && (oldSegment.y1 == newSegment.y1)
+          && (oldSegment.x2 == newSegment.x2) && (oldSegment.y2 == newSegment.y2) {
+            self.mSelection.insert (newSegment)
+            break
+          }
         }
       }
+      self.needsDisplay = true
     }
-    self.needsDisplay = true
   }
 
   //····················································································································
   //  transparency binding
   //····················································································································
 
-  private var mTransparencyController : Controller_CanariCharacterView_transparency?
+  final private func updateTransparency (_ object : EBReadOnlyProperty_Double) {
+    switch object.prop {
+    case .empty, .multiple :
+      break
+    case .single(let t) :
+      self.updateSegmentDrawingsFromTransparencyController (CGFloat (t))
+    }
+  }
 
-  final func bind_transparency (_ object:EBReadOnlyProperty_Double, file:String, line:Int) {
-    mTransparencyController = Controller_CanariCharacterView_transparency (object:object, outlet:self)
+  //····················································································································
+
+  private var mTransparencyController : EBSimpleController? = nil
+
+  final func bind_transparency (_ object : EBReadOnlyProperty_Double, file : String, line : Int) {
+    mTransparencyController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateTransparency (object) })
   }
 
   //····················································································································
@@ -344,10 +376,24 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  display flow binding
   //····················································································································
 
-  private var mDisplayFlowController : Controller_CanariCharacterView_displayFlow?
+  final private func updateDisplayFlow (_ object : EBReadOnlyProperty_Bool) {
+    switch object.prop {
+    case .empty, .multiple :
+      break
+    case .single (let b) :
+      self.updateSegmentDrawingsFromDisplayFlowController (b)
+    }
+  }
 
-  final func bind_displayFlow (_ object:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayFlowController = Controller_CanariCharacterView_displayFlow (object:object, outlet:self)
+  //····················································································································
+
+  private var mDisplayFlowController : EBSimpleController? = nil
+
+  final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    mDisplayFlowController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateDisplayFlow (object) }
+    )
   }
 
   //····················································································································
@@ -369,20 +415,34 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   }
   
   //····················································································································
-  //  display flow binding
+  //  index drawing binding
   //····················································································································
 
-  private var mDisplayDrawingIndexesController : Controller_CanariCharacterView_displayDrawingIndexes?
+  final private func updateIndexDrawing (_ object : EBReadOnlyProperty_Bool) {
+    switch object.prop {
+    case .empty, .multiple :
+      break
+    case .single (let b) :
+      self.updateSegmentDrawingsFromDisplayDrawingIndexesController (b)
+    }
+  }
 
-  final func bind_displayDrawingIndexes (_ object:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayDrawingIndexesController = Controller_CanariCharacterView_displayDrawingIndexes (object:object, outlet:self)
+  //····················································································································
+
+  private var mDisplayDrawingIndexesController : EBSimpleController? = nil
+
+  final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    self.mDisplayDrawingIndexesController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateIndexDrawing (object) }
+    )
   }
 
   //····················································································································
 
   final func unbind_displayDrawingIndexes () {
-    mDisplayDrawingIndexesController?.unregister ()
-    mDisplayDrawingIndexesController = nil
+    self.mDisplayDrawingIndexesController?.unregister ()
+    self.mDisplayDrawingIndexesController = nil
   }
 
   //····················································································································

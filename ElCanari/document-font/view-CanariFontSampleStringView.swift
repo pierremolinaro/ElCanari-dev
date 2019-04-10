@@ -80,17 +80,31 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   //  $bezierPath binding
   //····················································································································
 
-  private var mBezierPathBindingController : Controller_CanariFontSampleStringView_bezierPath?
+  final private func updateBezierPath (_ object : EBReadOnlyProperty_NSBezierPath) {
+    switch object.prop {
+    case .empty, .multiple :
+      break ;
+    case .single (let bezierPath) :
+      self.updateDisplayFromBezierPathController (bezierPath)
+    }
+  }
 
-  final func bind_bezierPath (_ object:EBReadOnlyProperty_NSBezierPath, file:String, line:Int) {
-    mBezierPathBindingController = Controller_CanariFontSampleStringView_bezierPath (object:object, outlet:self)
+  //····················································································································
+
+  private var mBezierPathBindingController : EBSimpleController?
+
+  final func bind_bezierPath (_ object : EBReadOnlyProperty_NSBezierPath, file : String, line : Int) {
+    self.mBezierPathBindingController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateBezierPath (object) }
+    )
   }
 
   //····················································································································
 
   final func unbind_bezierPath () {
-    mBezierPathBindingController?.unregister ()
-    mBezierPathBindingController = nil
+    self.mBezierPathBindingController?.unregister ()
+    self.mBezierPathBindingController = nil
   }
 
   //····················································································································

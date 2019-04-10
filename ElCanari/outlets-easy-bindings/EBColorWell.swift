@@ -32,6 +32,22 @@ import Cocoa
   //  color binding
   //····················································································································
 
+  fileprivate func updateColor (_ object : EBReadOnlyProperty_NSColor) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.color = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+
   private var mValueController : Controller_EBColorWell_color? = nil
   var mSendContinously = false
 
@@ -63,11 +79,11 @@ final class Controller_EBColorWell_color : EBSimpleController {
     mObject = object
     mOutlet = outlet
     mSendContinously = sendContinously
-    super.init (observedObjects:[object])
+    super.init (observedObjects:[object], callBack: { outlet.updateColor (object) } )
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
     self.mOutlet.isContinuous = true
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -76,22 +92,6 @@ final class Controller_EBColorWell_color : EBSimpleController {
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.color = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    }
   }
 
   //····················································································································

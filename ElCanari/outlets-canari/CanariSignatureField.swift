@@ -36,15 +36,15 @@ class CanariSignatureField : NSTextField, EBUserClassNameProtocol {
   //  signatureObserver binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_Int?
+  private var mController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_signature (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mController = EBReadOnlyController_Int (
-      model: model,
+    self.mController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
-     )
+    )
   }
 
   //····················································································································

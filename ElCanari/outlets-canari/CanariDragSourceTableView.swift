@@ -123,7 +123,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   func bind_models (_ model:EBReadOnlyProperty_StringArray, file:String, line:Int) {
     self.mModelsController = EBReadOnlyController_StringArray (
-      model: model,
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
   }

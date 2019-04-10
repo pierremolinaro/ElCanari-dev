@@ -40,12 +40,31 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
   //  valueObserver binding
   //····················································································································
 
-  private var mValueController : Controller_CanariDateObserverField_dateObserver?
+  private func updateOutlet (_ object : EBReadOnlyProperty_Date) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v):
+      self.enableFromValueBinding (true)
+      self.objectValue = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
 
   //····················································································································
 
-  func bind_dateObserver (_ object:EBReadOnlyProperty_Date, file:String, line:Int) {
-    mValueController = Controller_CanariDateObserverField_dateObserver (object:object, outlet:self, file:file, line:line)
+  private var mValueController : EBSimpleController? = nil
+
+  //····················································································································
+
+  func bind_dateObserver (_ object : EBReadOnlyProperty_Date, file : String, line : Int) {
+    mValueController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateOutlet (object) }
+    )
   }
 
   //····················································································································
@@ -53,43 +72,6 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
   func unbind_dateObserver () {
     mValueController?.unregister ()
     mValueController = nil
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_CanariDateObserverField_dateObserver
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariDateObserverField_dateObserver : EBSimpleController {
-
-  private var mOutlet : CanariDateObserverField
-  private var mObject : EBReadOnlyProperty_Date
-
-  //····················································································································
-
-  init (object:EBReadOnlyProperty_Date, outlet : CanariDateObserverField, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    case .single (let v):
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.objectValue = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    }
   }
 
   //····················································································································

@@ -34,12 +34,28 @@ import Cocoa
   //  image binding
   //····················································································································
 
-  fileprivate var mImageController : Controller_EBImageView_image? = nil
+  fileprivate func updateImage (_ object : EBReadOnlyProperty_NSImage) {
+    switch object.prop {
+    case .empty :
+      self.image = nil
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.image = nil
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.image = propertyValue
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
+  fileprivate var mImageController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_image (_ object : EBReadOnlyProperty_NSImage, file : String, line : Int) {
-    self.mImageController = Controller_EBImageView_image (object: object, outlet: self)
+    self.mImageController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateImage (object) } )
   }
 
   //····················································································································
@@ -53,12 +69,28 @@ import Cocoa
   //  tooltip binding
   //····················································································································
 
-  private var mTooltipController : Controller_EBImageView_tooltip? = nil
+  fileprivate func updateTooltip (_ object : EBReadOnlyProperty_String) {
+    switch object.prop {
+    case .empty :
+      self.toolTip = nil
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.toolTip = nil
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.toolTip = propertyValue
+      self.enableFromValueBinding (true)
+    }
+  }
 
   //····················································································································
 
-  func bind_tooltip (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    self.mTooltipController = Controller_EBImageView_tooltip (object:object, outlet:self)
+  private var mTooltipController : EBSimpleController? = nil
+
+  //····················································································································
+
+  func bind_tooltip (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+    self.mTooltipController = EBSimpleController (observedObjects: [object], callBack : { [weak self] in self?.updateTooltip (object) })
   }
 
   //····················································································································
@@ -66,82 +98,6 @@ import Cocoa
   func unbind_tooltip () {
     self.mTooltipController?.unregister ()
     self.mTooltipController = nil
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_EBImageView_image
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBImageView_image : EBSimpleController {
-
-  private let mOutlet : EBImageObserverView
-  private let mObject : EBReadOnlyProperty_NSImage
-
-  //····················································································································
-
-  init (object : EBReadOnlyProperty_NSImage, outlet : EBImageObserverView) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  fileprivate func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.image = nil
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.image = nil
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.image = propertyValue
-      self.mOutlet.enableFromValueBinding (true)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_EBImageView_tooltip
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(Controller_EBImageView_tooltip) final class Controller_EBImageView_tooltip : EBSimpleController {
-
-  private let mOutlet : EBImageObserverView
-  private let mObject : EBReadOnlyProperty_String
-
-  //····················································································································
-
-  init (object : EBReadOnlyProperty_String, outlet : EBImageObserverView) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.toolTip = nil
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.toolTip = nil
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.toolTip = propertyValue
-      self.mOutlet.enableFromValueBinding (true)
-    }
   }
 
   //····················································································································
@@ -167,7 +123,7 @@ final class Controller_EBImageView_image : EBSimpleController {
   //····················································································································
 
   func update () {
-    self.mCellOutlet?.mImageController?.updateOutlet ()
+    self.mCellOutlet?.mImageController?.mEventCallBack? ()
   }
 
   //····················································································································

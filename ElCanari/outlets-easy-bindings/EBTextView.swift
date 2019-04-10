@@ -27,6 +27,19 @@ import Cocoa
   //  value binding
   //····················································································································
 
+  fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.string = ""
+      self.isEditable = false
+    case .single (let propertyValue) :
+      self.string = propertyValue
+      self.isEditable = true
+    }
+  }
+
+  //····················································································································
+
   private var mValueController : Controller_EBTextView_value? = nil
 
   //····················································································································
@@ -60,9 +73,8 @@ final class Controller_EBTextView_value : EBSimpleController, NSTextViewDelegate
   init (object : EBReadWriteProperty_String, outlet : EBTextView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects: [object])
+    super.init (observedObjects: [object], callBack: { outlet.updateValue (object) })
     outlet.delegate = self
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -76,19 +88,6 @@ final class Controller_EBTextView_value : EBSimpleController, NSTextViewDelegate
 
   func textDidChange (_ notification: Notification) {
     _ = self.mObject.validateAndSetProp (self.mOutlet.string, windowForSheet: self.mOutlet.window)
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty, .multiple :
-      self.mOutlet.string = ""
-      self.mOutlet.isEditable = false
-    case .single (let propertyValue) :
-      self.mOutlet.string = propertyValue
-      self.mOutlet.isEditable = true
-    }
   }
 
   //····················································································································

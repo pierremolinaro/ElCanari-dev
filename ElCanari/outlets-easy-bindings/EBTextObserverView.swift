@@ -28,50 +28,31 @@ import Cocoa
   //  valueObserver binding
   //····················································································································
 
-  private var mValueController : Controller_EBTextObserverView_value?
+  private func updateTextValue (_ object : EBReadOnlyProperty_String) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.string = ""
+    case .single (let propertyValue) :
+      self.string = propertyValue
+    }
+  }
 
-  func bind_valueObserver (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    mValueController = Controller_EBTextObserverView_value (object:object, outlet:self, file:file, line:line)
+  //····················································································································
+
+  private var mValueController : EBSimpleController? = nil
+
+  func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+    self.mValueController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateTextValue (object) }
+    )
   }
 
   //····················································································································
 
   func unbind_valueObserver () {
-    mValueController?.unregister ()
-    mValueController = nil
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_EBTextObserverView_value
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBTextObserverView_value : EBSimpleController {
-
-  private let mOutlet: EBTextObserverView
-  private let mObject : EBReadOnlyProperty_String
-
-  //····················································································································
-
-  init (object:EBReadOnlyProperty_String, outlet : EBTextObserverView, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty, .multiple :
-      mOutlet.string = ""
-    case .single (let propertyValue) :
-      mOutlet.string = propertyValue
-    }
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································

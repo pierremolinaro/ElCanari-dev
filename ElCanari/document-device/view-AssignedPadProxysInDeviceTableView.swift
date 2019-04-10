@@ -169,13 +169,13 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
   //  $imageData binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_AssignedPadProxiesInDevice? = nil
+  private var mController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_assignedPadProxies (_ model : EBReadOnlyProperty_AssignedPadProxiesInDevice, file : String, line : Int) {
-    self.mController = EBReadOnlyController_AssignedPadProxiesInDevice (
-      model: model,
+    self.mController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
     )
   }

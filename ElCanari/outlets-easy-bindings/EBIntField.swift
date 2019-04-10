@@ -81,6 +81,22 @@ import Cocoa
   //  value binding
   //····················································································································
 
+  fileprivate func updateValue (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.integerValue = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+
   private var mValueController : Controller_EBIntField_value?
   private var mSendContinously : Bool = false
 
@@ -129,7 +145,7 @@ final class Controller_EBIntField_value : EBSimpleController {
   {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object], callBack: { outlet.updateValue (object) } )
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBIntField_value.action(_:))
     if autoFormatter {
@@ -140,7 +156,7 @@ final class Controller_EBIntField_value : EBSimpleController {
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -149,22 +165,6 @@ final class Controller_EBIntField_value : EBSimpleController {
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    case .single (let v) :
-      self.mOutlet.enableFromValueBinding (true)
-      self.mOutlet.integerValue = v
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-      self.mOutlet.stringValue = "—"
-    }
   }
 
   //····················································································································

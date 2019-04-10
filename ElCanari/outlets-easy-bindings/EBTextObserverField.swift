@@ -40,6 +40,22 @@ import Cocoa
   //  valueObserver binding
   //····················································································································
 
+  fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
+    switch object.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v):
+      self.enableFromValueBinding (true)
+      self.stringValue = v
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
+
   fileprivate var mValueController : Controller_EBTextObserverField_value? = nil
 
   //····················································································································
@@ -65,35 +81,14 @@ import Cocoa
 
 final class Controller_EBTextObserverField_value : EBSimpleController {
 
-  private var mOutlet : EBTextObserverField
-  private var mObject : EBReadOnlyProperty_String
-
   //····················································································································
 
   init (object : EBReadOnlyProperty_String, outlet : EBTextObserverField, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects: [object])
-    if mOutlet.formatter != nil {
+    super.init (observedObjects: [object], callBack: { outlet.updateValue( object) } )
+    if outlet.formatter != nil {
       presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
     }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  fileprivate func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
-    case .single (let v):
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.stringValue = v
-    case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
-    }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -118,7 +113,7 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
   //····················································································································
 
   func update () {
-    self.mCellOutlet?.mValueController?.updateOutlet ()
+    self.mCellOutlet?.mValueController?.mEventCallBack? ()
   }
 
   //····················································································································

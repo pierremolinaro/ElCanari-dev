@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    self.mVerticalFlipController = EBReadOnlyController_Bool (
-      model: model,
+    self.mVerticalFlipController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
     )
   }

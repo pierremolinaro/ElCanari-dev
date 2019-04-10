@@ -40,6 +40,22 @@ class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NST
   //  value binding
   //····················································································································
 
+  fileprivate func updateOutlet (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.stringValue = "multiple"
+      self.enableFromValueBinding (true)
+    case .single (let propertyValue) :
+      self.doubleValue = Double (propertyValue) / 1000.0
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
   private var mController : Controller_CanariPackageArcAngleTextField_angle?
 
   //····················································································································
@@ -72,12 +88,12 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
 
   //····················································································································
 
-  init (angle: EBReadWriteProperty_Int,
-        outlet: CanariPackageArcAngleTextField) {
+  init (angle : EBReadWriteProperty_Int,
+        outlet : CanariPackageArcAngleTextField) {
     mAngle = angle
     mOutlet = outlet
     mNumberFormatter = NumberFormatter ()
-    super.init (observedObjects: [angle])
+    super.init (observedObjects: [angle], callBack: { outlet.updateOutlet (angle) } )
   //--- Target
     mOutlet.target = self
     mOutlet.action = #selector (Controller_CanariPackageArcAngleTextField_angle.action(_:))
@@ -90,7 +106,7 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
     self.mNumberFormatter.isLenient = true
     self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -99,22 +115,6 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mAngle.prop {
-    case .empty :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.stringValue = "multiple"
-      self.mOutlet.enableFromValueBinding (true)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = Double (propertyValue) / 1000.0
-      self.mOutlet.enableFromValueBinding (true)
-    }
   }
 
   //····················································································································

@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mBackColorController = EBReadOnlyController_NSColor (
-      model: model,
+    self.mBackColorController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateBackColor (from: model) }
     )
   }

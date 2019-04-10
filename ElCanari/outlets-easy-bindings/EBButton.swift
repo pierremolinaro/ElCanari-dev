@@ -32,52 +32,32 @@ import Cocoa
   //  title binding
   //····················································································································
 
-  private var mTitleController : Controller_EBButton_title? = nil
+  fileprivate func updateTitle (_ object : EBReadOnlyProperty_String) {
+    switch object.prop {
+    case .empty :
+      self.title = "—"
+    case .multiple :
+      self.title = "—"
+    case .single (let v) :
+      self.title = v
+    }
+  }
+
+  //····················································································································
+
+  private var mTitleController : EBSimpleController? = nil
 
   func bind_title (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mTitleController = Controller_EBButton_title (object: object, outlet: self)
+    self.mTitleController = EBSimpleController (
+      observedObjects: [object],
+      callBack: { [weak self] in self?.updateTitle (object) }
+    )
   }
 
   func unbind_title () {
     self.mTitleController?.unregister ()
     self.mTitleController = nil
   }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_EBButton_title
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBButton_title : EBSimpleController {
-
-  private let mOutlet : EBButton
-  private let mObject : EBReadOnlyProperty_String
-
-  //····················································································································
-
-  init (object:EBReadOnlyProperty_String, outlet : EBButton) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mObject.prop {
-    case .empty :
-      self.mOutlet.title = "—"
-    case .multiple :
-      self.mOutlet.title = "—"
-    case .single (let v) :
-      self.mOutlet.title = v
-    }
-  }
-
 
   //····················································································································
 

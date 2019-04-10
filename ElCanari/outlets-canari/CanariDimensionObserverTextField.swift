@@ -39,17 +39,37 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
   //  value binding
   //····················································································································
 
-  private var mController : Controller_CanariDimensionObserverTextField_dimensionAndUnit?
-
-  func bind_dimensionAndUnit (_ object:EBReadOnlyProperty_Int,
-                              _ unit:EBReadOnlyProperty_Int,
-                              file:String, line:Int) {
-    mController = Controller_CanariDimensionObserverTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
+  fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
+    switch combine (dimension: dimension.prop, unit: unit.prop) {
+    case .empty :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.doubleValue = propertyValue
+      self.enableFromValueBinding (true)
+    }
   }
 
+  //····················································································································
+
+  private var mController : Controller_CanariDimensionObserverTextField_dimensionAndUnit?
+
+  //····················································································································
+
+  func bind_dimensionAndUnit (_ object : EBReadOnlyProperty_Int,
+                              _ unit : EBReadOnlyProperty_Int,
+                              file : String, line:Int) {
+    self.mController = Controller_CanariDimensionObserverTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
+  }
+
+  //····················································································································
+
   func unbind_dimensionAndUnit () {
-    mController?.unregister ()
-    mController = nil
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
   //····················································································································
@@ -62,39 +82,15 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 
 final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSimpleController {
 
-  private var mOutlet: CanariDimensionObserverTextField
-  private var mDimension : EBReadOnlyProperty_Int
-  private var mUnit : EBReadOnlyProperty_Int
-
   //····················································································································
 
   init (dimension:EBReadOnlyProperty_Int,
         unit:EBReadOnlyProperty_Int,
         outlet : CanariDimensionObserverTextField,
         file : String, line : Int) {
-    mDimension = dimension
-    mUnit = unit
-    mOutlet = outlet
-    super.init (observedObjects:[dimension, unit])
-    if self.mOutlet.formatter == nil {
+    super.init (observedObjects: [dimension, unit], callBack: { outlet.updateOutlet(dimension: dimension, unit: unit) })
+    if outlet.formatter == nil {
       presentErrorWindow (file, line, "the CanariDimensionObserverTextField outlet has no formatter")
-    }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch combine (self.mDimension.prop, unit: self.mUnit.prop) {
-    case .empty :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = propertyValue
-      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
@@ -104,7 +100,7 @@ final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSim
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func combine (_ dimension : EBSelection <Int>, unit : EBSelection <Int>) -> EBSelection <Double> {
+private func combine (dimension : EBSelection <Int>, unit : EBSelection <Int>) -> EBSelection <Double> {
   switch dimension {
   case .empty :
     return .empty

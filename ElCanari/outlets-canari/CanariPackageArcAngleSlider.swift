@@ -38,12 +38,31 @@ class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
   //  value binding
   //····················································································································
 
+  fileprivate func update (_ angle : EBReadOnlyProperty_Int) {
+    switch angle.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      var value = 90.0 - Double (propertyValue) / 1000.0
+      if value < 0.0 {
+        value += 360.0
+      }
+      self.doubleValue = value
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
   private var mController : Controller_CanariPackageArcAngleSlider_angle?
 
   //····················································································································
 
-  func bind_angle (_ object:EBReadWriteProperty_Int,
-                   file:String, line:Int) {
+  func bind_angle (_ object : EBReadWriteProperty_Int,
+                   file : String,
+                   line : Int) {
     self.mController = Controller_CanariPackageArcAngleSlider_angle (angle: object, outlet: self)
   }
 
@@ -64,21 +83,21 @@ class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
 
 final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
 
-  private var mOutlet: CanariPackageArcAngleSlider
-  private var mAngle : EBReadWriteProperty_Int
+  private var mOutlet : CanariPackageArcAngleSlider
+  private var mAngle  : EBReadWriteProperty_Int
 
   //····················································································································
 
-  init (angle: EBReadWriteProperty_Int,
-        outlet: CanariPackageArcAngleSlider) {
+  init (angle : EBReadWriteProperty_Int,
+        outlet : CanariPackageArcAngleSlider) {
     mAngle = angle
     mOutlet = outlet
-    super.init (observedObjects: [angle])
+    super.init (observedObjects: [angle], callBack: { outlet.update (angle) } )
   //--- Target
     mOutlet.target = self
     mOutlet.action = #selector (Controller_CanariPackageArcAngleSlider_angle.action(_:))
   //--- Call back
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+ //   self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -87,24 +106,6 @@ final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
     super.unregister ()
     self.mOutlet.target = nil
     self.mOutlet.action = nil
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch self.mAngle.prop {
-    case .empty :
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      var value = 90.0 - Double (propertyValue) / 1000.0
-      if value < 0.0 {
-        value += 360.0
-      }
-      self.mOutlet.doubleValue = value
-      self.mOutlet.enableFromValueBinding (true)
-    }
   }
 
   //····················································································································

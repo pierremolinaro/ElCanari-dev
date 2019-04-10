@@ -44,6 +44,19 @@ import Cocoa
   //  doubleValue binding
   //····················································································································
 
+  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.doubleValue = propertyValue
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
   private var mDoubleValueController : Controller_EBSlider_doubleValue? = nil
 
   //····················································································································
@@ -62,6 +75,19 @@ import Cocoa
 
   //····················································································································
   //  intValue binding
+  //····················································································································
+
+  fileprivate func updateIntValue (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.doubleValue = Double (propertyValue)
+      self.enableFromValueBinding (true)
+    }
+  }
+
   //····················································································································
 
   private var mIntValueController : Controller_EBSlider_intValue? = nil
@@ -97,21 +123,8 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
   init (object : EBReadWriteProperty_Double, outlet : EBSlider) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty, .multiple :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = propertyValue
-      self.mOutlet.enableFromValueBinding (true)
-    }
+    super.init (observedObjects:[object], callBack: { outlet.updateDoubleValue (object) })
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -130,7 +143,7 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
 
 final class Controller_EBSlider_intValue : EBSimpleController {
 
-  private let mOutlet: EBSlider
+  private let mOutlet : EBSlider
   private let mObject : EBReadWriteProperty_Int
 
   //····················································································································
@@ -138,21 +151,8 @@ final class Controller_EBSlider_intValue : EBSimpleController {
   init (object : EBReadWriteProperty_Int, outlet : EBSlider) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty, .multiple :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = Double (propertyValue)
-      self.mOutlet.enableFromValueBinding (true)
-    }
+    super.init (observedObjects: [object], callBack: { outlet.updateIntValue (object) })
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

@@ -121,13 +121,13 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
   //  $array binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_StringArray? = nil
+  private var mController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_array (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
-    self.mController = EBReadOnlyController_StringArray (
-      model: model,
+    self.mController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
     )
   }

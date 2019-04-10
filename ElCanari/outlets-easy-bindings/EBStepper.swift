@@ -41,10 +41,26 @@ import Cocoa
   //  value binding
   //····················································································································
 
+  fileprivate func updateValue (_ object : EBReadOnlyProperty_Int) {
+    switch object.prop {
+    case .empty :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .multiple :
+      self.stringValue = "—"
+      self.enableFromValueBinding (false)
+    case .single (let propertyValue) :
+      self.doubleValue = Double (propertyValue)
+      self.enableFromValueBinding (true)
+    }
+  }
+
+  //····················································································································
+
   private var mIntValueController : Controller_EBStepper_value?
 
   func bind_value (_ object:EBReadWriteProperty_Int, file:String, line:Int, sendContinously:Bool) {
-    self.mIntValueController = Controller_EBStepper_value (object:object, outlet:self, file:file, line:line)
+    self.mIntValueController = Controller_EBStepper_value (object: object, outlet: self)
     self.isContinuous = sendContinously
   }
 
@@ -62,32 +78,16 @@ import Cocoa
 
 final class Controller_EBStepper_value : EBSimpleController {
 
-  private let mOutlet: EBStepper
+  private let mOutlet : EBStepper
   private let mObject : EBReadWriteProperty_Int
 
   //····················································································································
 
-  init (object:EBReadWriteProperty_Int, outlet : EBStepper, file : String, line : Int) {
+  init (object : EBReadWriteProperty_Int, outlet : EBStepper) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
-    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .multiple :
-      self.mOutlet.stringValue = "—"
-      self.mOutlet.enableFromValueBinding (false)
-    case .single (let propertyValue) :
-      self.mOutlet.doubleValue = Double (propertyValue)
-      self.mOutlet.enableFromValueBinding (true)
-    }
+    super.init (observedObjects:[object], callBack: { outlet.updateValue (object) })
+ //   self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

@@ -13,8 +13,8 @@ extension EBView {
   //····················································································································
 
   func bind_gridDisplayFactor (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mGridDisplayFactorController = EBReadOnlyController_Int (
-      model: model,
+    self.mGridDisplayFactorController = EBSimpleController (
+      observedObjects: [model],
       callBack: { [weak self] in self?.updateGridDisplayFactor (from: model) }
     )
   }
