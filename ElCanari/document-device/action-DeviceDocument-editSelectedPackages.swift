@@ -23,7 +23,7 @@ extension DeviceDocument {
         messages.append ("No file for package \(package.mName) in Library")
       }else if pathes.count == 1 {
         let url = URL (fileURLWithPath: pathes [0])
-        dc.openDocument (withContentsOf: url, display: true, completionHandler: {(document : NSDocument?, alreadyOpen : Bool, error : Error?) in })
+        dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
       }else{ // pathes.count > 1
         messages.append ("Several files for package \(package.mName) in Library:")
         for path in pathes {

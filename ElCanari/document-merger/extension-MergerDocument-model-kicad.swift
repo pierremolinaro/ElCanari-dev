@@ -101,7 +101,7 @@ extension MergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
       alert.informativeText = "The file \(inFilePath) cannot be read."
-      alert.beginSheetModal (for: inWindow, completionHandler: {(NSModalResponse) in})
+      alert.beginSheetModal (for: inWindow) { (NSModalResponse) in }
     }
   }
 
@@ -137,13 +137,13 @@ extension MergerDocument {
           let alert = NSAlert ()
           alert.messageText = "Cannot Analyse file contents"
           alert.informativeText = s
-          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
+          alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
         }
       }else{
         let alert = NSAlert ()
         alert.messageText = "Invalid file contents"
         alert.informativeText = "No 'kicad_pcb' key"
-        alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
+        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
       }
     }
   //--- Return
@@ -165,7 +165,7 @@ extension MergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot extract board bounding box"
       alert.informativeText = ""
-      alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
+      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
     }else{
       let leftMM = canariUnitToMillimeter (left)
       let rightMM = canariUnitToMillimeter (right)

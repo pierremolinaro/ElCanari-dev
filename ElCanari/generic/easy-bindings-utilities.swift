@@ -108,10 +108,10 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func addEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply ( {(_ observer : EBEvent) in
+    inObserverSet.apply { (_ observer : EBEvent) in
       self.mObservers.insert (observer)
       observer.postEvent ()
-    })
+    }
     self.updateObserverExplorer ()
   }
 
@@ -126,10 +126,10 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func removeEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply ( {(_ observer : EBEvent) in
+    inObserverSet.apply {(_ observer : EBEvent) in
       self.mObservers.remove (observer)
       observer.postEvent ()
-    })
+    }
     self.updateObserverExplorer ()
   }
 
@@ -354,36 +354,6 @@ class EBObject : NSObject, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBSimpleClass class
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBSimpleClass : EBObject {
-
-  //····················································································································
-
-  func populateExplorerWindow ( _ y : inout CGFloat, view : NSView) {
-  }
-
-  //····················································································································
-
-  func clearObjectExplorer () {
-  }
-
-  //····················································································································
-
-  func saveInto (dictionary : NSMutableDictionary) {
-  }
-
-  //····················································································································
-
-  func setUp (withDictionary dictionary : NSDictionary) {
   }
 
   //····················································································································
@@ -670,7 +640,7 @@ enum EBPropertyKind {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func &= ( left:inout EBPropertyKind, right:EBPropertyKind) {
+func &= (left : inout EBPropertyKind, right : EBPropertyKind) {
   switch left {
   case .noSelectionKind : break
   case .multipleSelectionKind :
@@ -691,9 +661,9 @@ func &= ( left:inout EBPropertyKind, right:EBPropertyKind) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func compareIntProperties (_ left:EBSelection <Int>,
-                                   right:EBSelection <Int>,
-                                   function : (Int, Int) -> Bool) -> EBSelection <Bool> {
+fileprivate func compareIntProperties (left : EBSelection <Int>,
+                                       right : EBSelection <Int>,
+                                       function : (Int, Int) -> Bool) -> EBSelection <Bool> {
   switch left {
   case .empty :
     return .empty
@@ -718,45 +688,45 @@ private func compareIntProperties (_ left:EBSelection <Int>,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func > (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 > $1})
+func > (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+  return compareIntProperties (left: left, right: right) {$0 > $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func >= (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 >= $1})
+func >= (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+  return compareIntProperties (left: left, right: right) {$0 >= $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func < (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 < $1})
+func < (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+  return compareIntProperties (left: left, right: right) {$0 < $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func <= (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 <= $1})
+func <= (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+  return compareIntProperties (left: left, right: right) {$0 <= $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func == (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 == $1})
+  return compareIntProperties (left: left, right: right) {$0 == $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func != (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
-  return compareIntProperties (left, right: right, function: {$0 != $1})
+func != (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+  return compareIntProperties (left: left, right: right) {$0 != $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func combineBoolProperties (_ left:EBSelection<Bool>,
-                                     right:EBSelection<Bool>,
-                                     function : (Bool, Bool) -> Bool) -> EBSelection<Bool> {
+fileprivate func combineBoolProperties (left : EBSelection<Bool>,
+                                        right : EBSelection<Bool>,
+                                        function : (Bool, Bool) -> Bool) -> EBSelection<Bool> {
   switch left {
   case .empty :
     return .empty
@@ -781,25 +751,25 @@ private func combineBoolProperties (_ left:EBSelection<Bool>,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func && (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
-  return combineBoolProperties (left, right: right, function: {$0 && $1})
+func && (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+  return combineBoolProperties (left: left, right: right, function: {$0 && $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func || (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
-  return combineBoolProperties (left, right: right, function: {$0 || $1})
+func || (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+  return combineBoolProperties (left: left, right: right, function: {$0 || $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func ^ (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
-  return combineBoolProperties (left, right: right, function: {$0 != $1})
+func ^ (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+  return combineBoolProperties (left: left, right: right, function: {$0 != $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-prefix func ! (operand:EBSelection<Bool>) -> EBSelection<Bool> {
+prefix func ! (operand : EBSelection<Bool>) -> EBSelection<Bool> {
   switch operand {
   case .empty :
     return .empty

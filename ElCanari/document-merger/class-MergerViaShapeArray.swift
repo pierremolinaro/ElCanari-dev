@@ -13,7 +13,7 @@ import Cocoa
 //   MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerViaShapeArray : EBSimpleClass {
+final class MergerViaShapeArray : EBObject {
 
   //····················································································································
 
@@ -170,7 +170,7 @@ final class MergerViaShapeArray : EBSimpleClass {
 //   MergerViaShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerViaShape : EBSimpleClass {
+final class MergerViaShape : EBObject {
 
   //····················································································································
 

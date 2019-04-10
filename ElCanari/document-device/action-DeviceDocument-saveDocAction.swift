@@ -21,11 +21,11 @@ extension DeviceDocument {
       savePanel.allowedFileTypes = ["pdf"]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = selectedDoc.mFileName + ".pdf"
-      savePanel.beginSheetModal (for: self.windowForSheet!, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+      savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
         if inResponse == .OK, let url = savePanel.url {
           try? selectedDoc.mFileData.write (to: url)
         }
-      })
+      }
     }
 //--- END OF USER ZONE 2
   }

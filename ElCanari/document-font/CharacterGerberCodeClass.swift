@@ -32,7 +32,7 @@ enum CharacterGerberCodeElement {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CharacterGerberCodeClass : EBSimpleClass {
+final class CharacterGerberCodeClass : EBObject {
   let code : [CharacterGerberCodeElement]
   
   init (elements : [CharacterGerberCodeElement]) {

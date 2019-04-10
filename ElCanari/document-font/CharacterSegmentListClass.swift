@@ -11,7 +11,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CharacterSegmentListClass : EBSimpleClass {
+final class CharacterSegmentListClass : EBObject {
   let code : [SegmentForFontCharacterClass]
   
   //····················································································································

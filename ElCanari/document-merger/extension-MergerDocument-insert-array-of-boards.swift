@@ -43,7 +43,7 @@ extension MergerDocument {
         mInsertArrayOfBoardsYCountField?.stringValue = "1"
       }
     //--- Display panel
-      self.windowForSheet?.beginSheet (panel, completionHandler: { (inResponse : NSApplication.ModalResponse) in
+      self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == NSApplication.ModalResponse.stop {
           if let xCount = Int (self.mInsertArrayOfBoardsXCountField?.stringValue ?? ""),
              let yCount = Int (self.mInsertArrayOfBoardsYCountField?.stringValue ?? "") {
@@ -81,7 +81,7 @@ extension MergerDocument {
             self.mBoardInstanceController.setSelection (newBoardArray)
           }
         }
-      })
+      }
     }
   }
 

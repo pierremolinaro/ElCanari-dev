@@ -20,11 +20,11 @@ extension DeviceDocument {
       savePanel.allowedFileTypes = ["ElCanariSymbol"]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = symbolType.mTypeName + ".ElCanariSymbol"
-      savePanel.beginSheetModal (for: self.windowForSheet!, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+      savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
         if inResponse == .OK, let url = savePanel.url {
           try? symbolType.mFileData.write (to: url)
         }
-      })
+      }
     }
 //--- END OF USER ZONE 2
   }

@@ -32,7 +32,7 @@ extension MergerDocument {
         // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           gPanel = OpenPanelDelegateForUpdatingBoardModels (boardModelName) // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           openPanel.delegate = gPanel
-          openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : NSApplication.ModalResponse) in
+          openPanel.beginSheetModal (for: window) { (returnCode : NSApplication.ModalResponse) in
             gPanel = nil
             if returnCode == .OK {
               if let url = openPanel.url, url.isFileURL {
@@ -133,13 +133,13 @@ extension MergerDocument {
                   let alert = NSAlert ()
                   alert.messageText = "Cannot read file"
                   alert.informativeText = "The file \(filePath) cannot be read."
-                  alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in})
+                  alert.beginSheetModal (for: window) { (NSModalResponse) in }
                 }
               }else{
                 NSLog ("Not a file URL!")
               }
             }
-          })
+          }
         }
       }
     default :
@@ -157,7 +157,7 @@ fileprivate var gPanel : OpenPanelDelegateForUpdatingBoardModels?
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBSimpleClass, NSOpenSavePanelDelegate {
+fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES

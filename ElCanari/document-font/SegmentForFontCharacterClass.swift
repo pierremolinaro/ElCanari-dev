@@ -3,7 +3,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SegmentForFontCharacterClass : EBSimpleClass {
+final class SegmentForFontCharacterClass : EBObject {
 
   let x1 : Int
   let y1 : Int

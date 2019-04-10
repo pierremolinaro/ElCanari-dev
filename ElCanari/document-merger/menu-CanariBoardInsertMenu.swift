@@ -128,7 +128,7 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InsertBoardMenuRepresentedObject : EBSimpleClass {
+class InsertBoardMenuRepresentedObject : EBObject {
   let boardModelName : String
 
   init (boardModelName inName : String) {

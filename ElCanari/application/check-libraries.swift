@@ -66,11 +66,11 @@ func checkLibrary (_ window : NSWindow,
       alert.addButton (withTitle: "Ok")
       alert.addButton (withTitle: "Show Log Window")
       alert.informativeText = "Select the 'Show Log Window' button for details."
-      alert.beginSheetModal (for: window, completionHandler: {(inReturnCode : NSApplication.ModalResponse) in
-        if (NSApplication.ModalResponse.alertSecondButtonReturn == inReturnCode) {
+      alert.beginSheetModal (for: window) { inReturnCode in
+        if inReturnCode == .alertSecondButtonReturn {
           logView?.window?.makeKeyAndOrderFront (nil)
         }
-      })
+      }
     }else{
       presentAlertWithLocalizedMessage ("Librairies are consistent.", window:window)
     }
@@ -84,7 +84,7 @@ func checkLibrary (_ window : NSWindow,
 private func presentAlertWithLocalizedMessage (_ inLocalizedMessage : String, window:NSWindow) {
   let alert = NSAlert ()
   alert.messageText = inLocalizedMessage
-  alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in })
+  alert.beginSheetModal (for: window) { (NSModalResponse) in }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

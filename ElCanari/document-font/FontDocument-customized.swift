@@ -156,7 +156,7 @@ let PMFontComment = "PMFontComment"
       let newCharacter = FontCharacter (self.ebUndoManager)
       newCharacter.codePoint = codePoint
       characterSet.append (newCharacter)
-      characterSet = characterSet.sorted (by: { $0.codePoint < $1.codePoint })
+      characterSet = characterSet.sorted { $0.codePoint < $1.codePoint }
       self.rootObject.characters_property.setProp (characterSet)
       self.mSelectedCharacterController.select (object: newCharacter)
     }

@@ -39,7 +39,7 @@ class OpenSymbolInLibrary : OpenInLibrary {
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
+    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
       if let symbolRoot = inRootObject as? SymbolRoot {
         for object in symbolRoot.symbolObjects_property.propval {
@@ -51,7 +51,7 @@ class OpenSymbolInLibrary : OpenInLibrary {
       inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
-    })
+    }
   }
 
   //····················································································································

@@ -52,7 +52,7 @@ extension MergerDocument {
         openPanel.isAccessoryViewDisclosed = true
       }
     //--- Dialog
-      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : NSApplication.ModalResponse) in
+      openPanel.beginSheetModal (for: window) { (returnCode : NSApplication.ModalResponse) in
         gPanelDelegate?.restoreSavedURLAndReleasePanel ()
         gPanelDelegate = nil
         if returnCode == .OK {
@@ -74,13 +74,13 @@ extension MergerDocument {
               let alert = NSAlert ()
               alert.messageText = "Cannot read file"
               alert.informativeText = "The file \(filePath) cannot be read."
-              alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in})
+              alert.beginSheetModal (for: window) { (NSModalResponse) in }
             }
           }else{
             NSLog ("Not a file URL!")
           }
         }
-      })
+      }
     }
   }
 
@@ -94,7 +94,7 @@ fileprivate var gPanelDelegate : OpenPanelDelegateForImportingArtwork?
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OpenPanelDelegateForImportingArtwork : EBSimpleClass, NSOpenSavePanelDelegate {
+fileprivate class OpenPanelDelegateForImportingArtwork : EBObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES

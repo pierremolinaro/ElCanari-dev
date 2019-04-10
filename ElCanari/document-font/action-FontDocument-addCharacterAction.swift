@@ -22,17 +22,17 @@ extension FontDocument {
       }
       self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)
     //--- Display sheet
-      window.beginSheet (panel, completionHandler: { (response : NSApplication.ModalResponse) in
+      window.beginSheet (panel) { (response : NSApplication.ModalResponse) in
         if response == NSApplication.ModalResponse.stop, let codePoint = self.mNewCharacterView?.selectedCharacter {
           var characterSet = self.rootObject.characters_property.propval
           let newCharacter = FontCharacter (self.ebUndoManager)
           newCharacter.codePoint = codePoint
           characterSet.append (newCharacter)
-          characterSet = characterSet.sorted (by : {$0.codePoint < $1.codePoint})
+          characterSet = characterSet.sorted {$0.codePoint < $1.codePoint}
           self.rootObject.characters_property.setProp (characterSet)
           self.rootObject.currentCharacterCodePoint = codePoint
         }
-      })
+      }
     }
 //--- END OF USER ZONE 2
   }

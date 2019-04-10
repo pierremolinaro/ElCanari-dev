@@ -20,11 +20,11 @@ extension DeviceDocument {
       savePanel.allowedFileTypes = ["ElCanariPackage"]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = package.mName + ".ElCanariPackage"
-      savePanel.beginSheetModal (for: self.windowForSheet!, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+      savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
         if inResponse == .OK, let url = savePanel.url {
           try? package.mFileData.write (to: url)
         }
-      })
+      }
     }
 //--- END OF USER ZONE 2
   }

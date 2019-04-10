@@ -78,7 +78,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NST
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "pad" {
-          self.mDataSource.sort (by: { s.ascending ? numericCompare ($0, $1) :  numericCompare ($1, $0) })
+          self.mDataSource.sort { s.ascending ? numericCompare ($0, $1) :  numericCompare ($1, $0) }
         }
       }
     }

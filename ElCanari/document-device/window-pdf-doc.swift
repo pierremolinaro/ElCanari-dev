@@ -133,11 +133,11 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
     savePanel.allowedFileTypes = ["pdf"]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.title
-    savePanel.beginSheetModal (for: self, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+    savePanel.beginSheetModal (for: self) { inResponse in
       if inResponse == .OK, let url = savePanel.url {
         try? self.mData.write (to: url)
       }
-    })
+    }
   }
 
   //····················································································································

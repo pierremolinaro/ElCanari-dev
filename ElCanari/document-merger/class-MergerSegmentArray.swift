@@ -28,7 +28,7 @@ func transient_segmentsToBezierPaths (_ segments : MergerSegmentArray) -> Bezier
 //   MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerSegmentArray : EBSimpleClass {
+final class MergerSegmentArray : EBObject {
 
   //····················································································································
 

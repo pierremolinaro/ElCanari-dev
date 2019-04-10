@@ -47,7 +47,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     self.mOutlineView?.reloadData ()
   //--- Dialog
     if let dialog = self.mDialog {
-      inWindow.beginSheet (dialog, completionHandler: { (_ inModalResponse : NSApplication.ModalResponse) in
+      inWindow.beginSheet (dialog) { (_ inModalResponse : NSApplication.ModalResponse) in
         if inModalResponse == .stop,
              let selectedRow = self.mOutlineView?.selectedRow,
              let selectedItem = self.mOutlineView?.item (atRow: selectedRow) as? LibraryDialogItem,
@@ -60,7 +60,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
         }
         self.mOutlineViewDataSource = []
         self.mOutlineView?.reloadData ()
-      })
+      }
     }
   }
 
@@ -125,7 +125,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
        selectedItem.mFullPath != "" {
       let dc = NSDocumentController.shared
       let url = URL (fileURLWithPath: selectedItem.mFullPath)
-      dc.openDocument (withContentsOf: url, display: true, completionHandler: {(document : NSDocument?, alreadyOpen : Bool, error : Error?) in })
+      dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
     }
     self.mOutlineViewDataSource = []
     self.mOutlineView?.reloadData ()
@@ -304,7 +304,7 @@ extension Array where Element == LibraryDialogItem {
   //····················································································································
 
   mutating func recursiveSortUsingPartName () {
-    self.sort (by: {$0.mPartName < $1.mPartName})
+    self.sort { $0.mPartName < $1.mPartName }
     for entry in self {
       entry.mChildren.recursiveSortUsingPartName ()
     }

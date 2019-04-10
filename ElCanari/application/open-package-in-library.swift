@@ -38,7 +38,7 @@ class OpenPackageInLibrary : OpenInLibrary {
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    super.buildOutlineViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
+    super.buildOutlineViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
       if let packageRoot = inRootObject as? PackageRoot {
         for object in packageRoot.packageObjects_property.propval {
@@ -50,7 +50,7 @@ class OpenPackageInLibrary : OpenInLibrary {
       inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.packageBackgroundColor)
-    })
+    }
   }
 
   //····················································································································
