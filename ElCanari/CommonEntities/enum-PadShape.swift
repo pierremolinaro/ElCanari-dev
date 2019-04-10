@@ -82,8 +82,6 @@ enum PadShape : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//typealias EBReadOnlyController_PadShape = EBReadOnlyEnumController <PadShape>
-
 typealias EBReadOnlyProperty_PadShape = EBReadOnlyEnumProperty <PadShape>
 typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
 typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>

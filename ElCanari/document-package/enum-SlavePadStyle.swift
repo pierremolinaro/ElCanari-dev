@@ -82,8 +82,6 @@ enum SlavePadStyle : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// typealias EBReadOnlyController_SlavePadStyle = EBReadOnlyEnumController <SlavePadStyle>
-
 typealias EBReadOnlyProperty_SlavePadStyle = EBReadOnlyEnumProperty <SlavePadStyle>
 typealias EBTransientProperty_SlavePadStyle = EBTransientEnumProperty <SlavePadStyle>
 typealias EBReadWriteProperty_SlavePadStyle = EBReadWriteEnumProperty <SlavePadStyle>
