@@ -2,6 +2,7 @@
 
 transient property struct StringArray ;
 transient property struct TwoStrings ;
+transient property struct ThreeStrings ;
 transient property struct TwoStringArray ;
 transient property struct ThreeStringArray ;
 

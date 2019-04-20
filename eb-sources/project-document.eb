@@ -196,6 +196,10 @@ document ProjectDocument root ProjectRoot {
   transient TwoStringArray selectedDeviceSymbolNames dependsFrom mProjectDeviceController.selectedArray.all.symbolNames ;
   outlet TwoStringArrayTableView mDeviceSymbolTableView $array self.selectedDeviceSymbolNames ;
 
+  transient ThreeStringArray pinPadAssignments dependsFrom mProjectDeviceController.selectedArray.all.pinPadAssignments ;
+  outlet ThreeStringArrayTableView mPinPadAssignmentTableView $array self.pinPadAssignments ;
+
+
 #  outlet checkForDeviceAndFontUpdateAtOpeningCheckBox : NSButton $value root.checkForDeviceAndFontUpdateAtOpening ;
 #
 #  action resetDeviceAndFontsVersionNumbersAction ;

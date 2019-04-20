@@ -45,6 +45,7 @@ entity DeviceInProject {
   transient Bool canRemove dependsFrom self.mComponents.count ;
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
   transient TwoStringArray symbolNames dependsFrom self.mSymbols.all.pinQualifiedNames ;
+  transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,6 +145,8 @@ entity ComponentInProject {
 entity DevicePadAssignmentInProject {
   property String mPadName default "" ;
   toOne DevicePinInProject mPin ; # Is nil if pad is NC
+
+  transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

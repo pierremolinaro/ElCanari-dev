@@ -1922,6 +1922,12 @@ typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArra
 typealias EBReadOnlyProperty_TwoStrings  = EBReadOnlyValueProperty <TwoStrings>
 typealias EBTransientProperty_TwoStrings = EBTransientValueProperty <TwoStrings>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property ThreeStrings
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_ThreeStrings  = EBReadOnlyValueProperty <ThreeStrings>
+typealias EBTransientProperty_ThreeStrings = EBTransientValueProperty <ThreeStrings>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property TwoStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

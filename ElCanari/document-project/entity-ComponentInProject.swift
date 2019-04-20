@@ -1211,6 +1211,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         oldValue?.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion)
         oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
         oldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames)
+        oldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         oldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString)
         oldValue?.symbolNames_property.removeEBObserversFrom (&self.mObserversOf_symbolNames)
         oldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString)
@@ -1222,6 +1223,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         self.mValue?.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion)
         self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
         self.mValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames)
+        self.mValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         self.mValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString)
         self.mValue?.symbolNames_property.addEBObserversFrom (&self.mObserversOf_symbolNames)
         self.mValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString)
@@ -1537,6 +1539,47 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
     self.mObserversOf_packageNames.remove (inObserver)
     if let object = self.propval {
       object.packageNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: pinPadAssignments
+  //····················································································································
+
+  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
+    if let model = self.propval {
+      switch (model.pinPadAssignments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.mObserversOf_pinPadAssignments.insert (inObserver)
+    if let object = self.propval {
+      object.pinPadAssignments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
+    self.mObserversOf_pinPadAssignments.remove (inObserver)
+    if let object = self.propval {
+      object.pinPadAssignments_property.removeEBObserver (inObserver)
     }
   }
 
