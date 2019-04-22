@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_mNamePrefix : class {
+  var mNamePrefix : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_mNameIndex : class {
   var mNameIndex : Int { get }
 }
@@ -39,11 +45,29 @@ protocol ComponentInProject_selectedPackageName : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ComponentInProject : EBManagedObject,
+         ComponentInProject_mNamePrefix,
          ComponentInProject_mNameIndex,
          ComponentInProject_mValue,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName {
+
+  //····················································································································
+  //   Atomic property: mNamePrefix
+  //····················································································································
+
+  var mNamePrefix_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mNamePrefix : String {
+    get { return self.mNamePrefix_property.propval }
+    set { self.mNamePrefix_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mNamePrefix_property_selection : EBSelection <String> { return self.mNamePrefix_property.prop }
 
   //····················································································································
   //   Atomic property: mNameIndex
@@ -192,6 +216,8 @@ class ComponentInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mNamePrefix
+    self.mNamePrefix_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mValue
@@ -203,15 +229,15 @@ class ComponentInProject : EBManagedObject,
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mNameIndex_property_selection.kind ()
-        kind &= unwSelf.mDevice_property.mPrefix_property_selection.kind ()
+        var kind = unwSelf.mNamePrefix_property_selection.kind ()
+        kind &= unwSelf.mNameIndex_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mNameIndex_property_selection, unwSelf.mDevice_property.mPrefix_property_selection) {
+          switch (unwSelf.mNamePrefix_property_selection, unwSelf.mNameIndex_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_ComponentInProject_componentName (v0, v1))
           default :
@@ -222,8 +248,8 @@ class ComponentInProject : EBManagedObject,
         return .empty
       }
     }
+    self.mNamePrefix_property.addEBObserver (self.componentName_property)
     self.mNameIndex_property.addEBObserver (self.componentName_property)
-    self.mDevice_property.addEBObserverOf_mPrefix (self.componentName_property)
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -277,8 +303,8 @@ class ComponentInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mNamePrefix_property.removeEBObserver (self.componentName_property)
     self.mNameIndex_property.removeEBObserver (self.componentName_property)
-    self.mDevice_property.removeEBObserverOf_mPrefix (self.componentName_property)
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
   //--- Unregister properties for handling signature
@@ -295,6 +321,14 @@ class ComponentInProject : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mNamePrefix",
+      idx:self.mNamePrefix_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mNamePrefix_property.mObserverExplorer,
+      valueExplorer:&self.mNamePrefix_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mNameIndex",
       idx:self.mNameIndex_property.ebObjectIndex,
@@ -360,6 +394,9 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mNamePrefix
+    self.mNamePrefix_property.mObserverExplorer = nil
+    self.mNamePrefix_property.mValueExplorer = nil
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.mObserverExplorer = nil
     self.mNameIndex_property.mValueExplorer = nil
@@ -402,6 +439,8 @@ class ComponentInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mNamePrefix
+    self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
   //--- Atomic property: mValue
@@ -449,6 +488,8 @@ class ComponentInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mNamePrefix
+    self.mNamePrefix_property.readFrom (dictionary: inDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey:"mNameIndex")
   //--- Atomic property: mValue
@@ -496,6 +537,63 @@ class ComponentInProject : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <ComponentInProject> {
+
+  //····················································································································
+  //   Observers of 'mNamePrefix' stored property
+  //····················································································································
+
+  private var mObserversOf_mNamePrefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNamePrefix.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNamePrefix_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNamePrefix.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNamePrefix_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNamePrefix_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNamePrefix.apply { (_ observer : EBEvent) in
+        managedObject.mNamePrefix_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNamePrefix_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNamePrefix.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNamePrefix_property.removeEBObserver (observer)
+      }
+    }
+  }
 
   //····················································································································
   //   Observers of 'mNameIndex' stored property
@@ -853,6 +951,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
+      self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mValue_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
@@ -862,6 +961,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
+      self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedSet)
       self.addEBObserversOf_mNameIndex_toElementsOfSet (addedSet)
       self.addEBObserversOf_mValue_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
@@ -995,15 +1095,18 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
+            managedObject.mNamePrefix_property.mSetterDelegate = nil
             managedObject.mNameIndex_property.mSetterDelegate = nil
             managedObject.mValue_property.mSetterDelegate = nil
           }
+       //   self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
+          self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -1017,15 +1120,18 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           for managedObject : ComponentInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
+            managedObject.mNamePrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+        // self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
+          self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties

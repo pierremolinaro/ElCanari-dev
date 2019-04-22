@@ -11,7 +11,7 @@ digraph G {
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>mMasterPads|String mPackageName"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
-  ComponentInProject[label="<ComponentInProject>ComponentInProject|<mDevice>mDevice|Int mNameIndex|<mSelectedPackage>mSelectedPackage|String mValue"] ;
+  ComponentInProject[label="<ComponentInProject>ComponentInProject|<mDevice>mDevice|Int mNameIndex|String mNamePrefix|<mSelectedPackage>mSelectedPackage|String mValue"] ;
   ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;

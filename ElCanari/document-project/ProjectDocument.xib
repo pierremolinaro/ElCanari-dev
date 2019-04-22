@@ -14,6 +14,7 @@
                 <outlet property="mComponentCountTextField" destination="2928" id="x07-iM-BS2"/>
                 <outlet property="mComponentTableView" destination="2919" id="nfb-oR-9Fm"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
+                <outlet property="mCurrentComponentNameTextField" destination="8pc-vo-3GG" id="vQY-lv-cXZ"/>
                 <outlet property="mDeviceLibraryTableView" destination="2957" id="Yl8-h9-pJb"/>
                 <outlet property="mDevicePackageTableView" destination="2946" id="TsV-YH-hdM"/>
                 <outlet property="mDeviceSymbolTableView" destination="2949" id="bC7-Qn-ZHb"/>
@@ -31,6 +32,12 @@
                 <outlet property="mRemoveDeviceButton" destination="2941" id="YNQ-og-Qzd"/>
                 <outlet property="mRemoveFontButton" destination="2975" id="qwb-qI-3HY"/>
                 <outlet property="mRemoveSelectedComponentsActionButton" destination="2926" id="hbm-WI-0ZS"/>
+                <outlet property="mRenameComponentButton" destination="2927" id="Gls-FU-98f"/>
+                <outlet property="mRenameComponentErrorMessageTextField" destination="RzG-dE-rAX" id="DX4-0S-Uce"/>
+                <outlet property="mRenameComponentIndexesPopUpButton" destination="gNl-iJ-sso" id="myr-t9-O5r"/>
+                <outlet property="mRenameComponentPanel" destination="rVN-fO-vLG" id="c1y-Oc-teF"/>
+                <outlet property="mRenameComponentPrefixComboxBox" destination="yYX-Mm-eDj" id="vWY-jc-A5i"/>
+                <outlet property="mRenameComponentValidationButton" destination="OaP-cj-Yxx" id="pKr-4w-Nkm"/>
                 <outlet property="mResetDeviceVersionButton" destination="2955" id="eDB-4i-GY5"/>
                 <outlet property="mResetFontVersionButton" destination="2977" id="Ef5-X5-MYW"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
@@ -40,6 +47,124 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="rVN-fO-vLG" userLabel="Dialog : Rename Component" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="132" y="425" width="476" height="239"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="Iqr-Zz-O7m">
+                <rect key="frame" x="0.0" y="0.0" width="476" height="239"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" id="afh-tC-9N7">
+                        <rect key="frame" x="146" y="202" width="313" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Renaming Component" id="fuB-fa-ShD">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="IUi-ab-Thu">
+                        <rect key="frame" x="146" y="171" width="209" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Actual Component Name:" id="R2h-TS-EIt">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="8pc-vo-3GG">
+                        <rect key="frame" x="364" y="171" width="95" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="…name…" id="eSx-D0-wR9">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="zk7-wL-x8u">
+                        <rect key="frame" x="146" y="126" width="173" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="New Prefix (letters only):" id="LMj-Cr-qqB">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="Kr6-TW-wKR">
+                        <rect key="frame" x="146" y="61" width="141" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="New Index:" id="hRk-4u-rE9">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="gNl-iJ-sso">
+                        <rect key="frame" x="324" y="63" width="132" height="19"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="center" lineBreakMode="clipping" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="Nwy-yR-6LC" id="MFi-cf-t2q">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                            <menu key="menu" title="OtherViews" id="Ziv-CU-qCE">
+                                <items>
+                                    <menuItem title="Item1" state="on" id="Nwy-yR-6LC"/>
+                                    <menuItem title="Item2" id="ebY-Ju-fYC"/>
+                                    <menuItem title="Item3" id="Nya-Xw-T6x"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="0PH-0o-2aB" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="143" y="12" width="105" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="5mQ-Oh-dwt">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="OaP-cj-Yxx" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="284" y="12" width="178" height="32"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Rename" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="dOc-Yw-Mrq">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                    </button>
+                    <comboBox verticalHuggingPriority="750" textCompletion="NO" id="yYX-Mm-eDj" customClass="CanariComboBox" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="324" y="124" width="135" height="26"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="pTW-uh-BCn">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </comboBoxCell>
+                    </comboBox>
+                    <imageView id="elk-tE-YAM">
+                        <rect key="frame" x="20" y="77" width="83" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="Lof-OT-8VK"/>
+                    </imageView>
+                    <textField verticalHuggingPriority="750" id="RzG-dE-rAX">
+                        <rect key="frame" x="146" y="103" width="313" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Error message…" id="qUV-a2-BAh">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-2737" y="2504"/>
+        </window>
         <customObject id="-3" userLabel="Application" customClass="EBApplication"/>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15612" userLabel="ProgressPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -100,15 +225,18 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="16288" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="16288" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="317" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="16291">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="16289" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="16289" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="443" y="12" width="79" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="16290">
@@ -171,11 +299,11 @@
                 </subviews>
             </view>
         </window>
-        <customView id="15751" userLabel="Printing Schematics View" customClass="PMSchematicsView">
+        <customView id="15751" userLabel="Printing Schematics View" customClass="EBView">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Document Window">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Document : Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -215,46 +343,36 @@
                                     <segment label="Artwork"/>
                                 </segments>
                             </segmentedCell>
-                            <connections>
-                                <outlet property="masterView" destination="3296" id="14947"/>
-                                <outlet property="view0" destination="2917" id="14948"/>
-                                <outlet property="view1" destination="2935" id="14949"/>
-                                <outlet property="view2" destination="3003" id="14950"/>
-                                <outlet property="view3" destination="3048" id="14951"/>
-                                <outlet property="view4" destination="3066" id="14952"/>
-                                <outlet property="view5" destination="3080" id="14953"/>
-                                <outlet property="view6" destination="3140" id="15944"/>
-                            </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="97F8C713-0780-4F52-B224-B5F5204E89CE" label="Schematic" paletteLabel="Schematic" image="red20" id="14958">
+                    <toolbarItem implicitItemIdentifier="97F8C713-0780-4F52-B224-B5F5204E89CE" label="Schematic" paletteLabel="Schematic" image="NSStatusUnavailable" id="14958">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="14956" customClass="PMStatusImage">
+                        <imageView key="view" id="14956" customClass="EBImageObserverView">
                             <rect key="frame" x="20" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="14957"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="14957"/>
                         </imageView>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="AD97C4FF-7440-4792-967E-BCF1194977F5" label="Board" paletteLabel="Board" image="red20" id="14961">
+                    <toolbarItem implicitItemIdentifier="AD97C4FF-7440-4792-967E-BCF1194977F5" label="Board" paletteLabel="Board" image="NSStatusUnavailable" id="14961">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="14959" customClass="PMStatusImage">
+                        <imageView key="view" id="14959" customClass="EBImageObserverView">
                             <rect key="frame" x="7" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="14960"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="14960"/>
                         </imageView>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="5F7D9CF1-ACF6-4D6F-9B4F-B753C7414900" label="DRC" paletteLabel="DRC" image="red20" id="16503" userLabel="Toolbar Item - DRC">
+                    <toolbarItem implicitItemIdentifier="5F7D9CF1-ACF6-4D6F-9B4F-B753C7414900" label="DRC" paletteLabel="DRC" image="NSStatusUnavailable" id="16503" userLabel="Toolbar Item - DRC">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="16504" customClass="PMStatusImage">
+                        <imageView key="view" id="16504" customClass="EBImageObserverView">
                             <rect key="frame" x="4" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="16505"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="16505"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="14928"/>
@@ -303,7 +421,7 @@
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
-                    <button verticalHuggingPriority="750" id="582" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="582" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="394" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14444">
@@ -365,7 +483,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="828" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="828" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="148" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14492">
@@ -373,7 +491,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="826" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="826" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="240" y="12" width="253" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Rename as…" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14491">
@@ -435,7 +553,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="842" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="842" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="140" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14500">
@@ -443,7 +561,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="836" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="836" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="284" y="12" width="165" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Merge And Connect" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14497">
@@ -493,7 +611,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="1062" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="1062" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="479" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14529">
@@ -501,7 +619,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="1057" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="1057" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="561" y="12" width="86" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Merge" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14527">
@@ -551,7 +669,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="495" height="407"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="2877" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="2877" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="256" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14685">
@@ -559,7 +677,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="2878" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="2878" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="338" y="12" width="143" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Add Component" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14686">
@@ -653,7 +771,7 @@
                                         </menu>
                                     </popUpButtonCell>
                                 </popUpButton>
-                                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2895" customClass="PMSlider">
+                                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2895">
                                     <rect key="frame" x="309" y="43" width="18" height="20"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="14693">
@@ -1426,7 +1544,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="1969" customClass="PMSlider">
+                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="1969">
                     <rect key="frame" x="77" y="386" width="28" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="14591">
@@ -1538,7 +1656,7 @@
             <rect key="frame" x="0.0" y="0.0" width="248" height="694"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <slider verticalHuggingPriority="750" id="2494" customClass="PMSlider">
+                <slider verticalHuggingPriority="750" id="2494">
                     <rect key="frame" x="20" y="256" width="211" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" minValue="10" maxValue="250" doubleValue="110" tickMarkPosition="above" numberOfTickMarks="13" allowsTickMarkValuesOnly="YES" sliderType="linear" id="14622">
@@ -1813,14 +1931,14 @@
                     <rect key="frame" x="20" y="185" width="209" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <slider verticalHuggingPriority="750" id="12134" customClass="PMSlider">
+                <slider verticalHuggingPriority="750" id="12134">
                     <rect key="frame" x="20" y="140" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="1" doubleValue="0.5" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="14790">
                         <font key="font" metaFont="smallSystem"/>
                     </sliderCell>
                 </slider>
-                <slider verticalHuggingPriority="750" id="11659" customClass="PMSlider">
+                <slider verticalHuggingPriority="750" id="11659">
                     <rect key="frame" x="20" y="196" width="212" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="1" doubleValue="0.5" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="14789">
@@ -2002,7 +2120,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="15448" customClass="PMSlider">
+                            <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="15448">
                                 <rect key="frame" x="77" y="82" width="28" height="30"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="15462">
@@ -2246,7 +2364,7 @@ Locking</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView toolTip="Green : endpoint can be moved; orange : , cannot be moved: connected to a terminal; red: manual lock: cannot be moved." id="2751" customClass="PMTrackLockView">
+                <customView toolTip="Green : endpoint can be moved; orange : , cannot be moved: connected to a terminal; red: manual lock: cannot be moved." id="2751">
                     <rect key="frame" x="89" y="227" width="141" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
@@ -2411,7 +2529,7 @@ Locking</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2215" customClass="PMSlider">
+                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="2215">
                     <rect key="frame" x="123" y="158" width="28" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" allowsTickMarkValuesOnly="YES" sliderType="circular" id="14643">
@@ -2874,7 +2992,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Om5-j3-6v0">
                         <rect key="frame" x="1" y="0.0" width="801" height="458"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="PMComponentsTableView" rowSizeStyle="automatic" headerView="14829" viewBased="YES" id="2919" customClass="EBTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="801" height="435"/>
@@ -2966,11 +3084,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="vdd-1K-n7V" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="208" y="1" width="122.5" height="17"/>
+                                                <rect key="frame" x="208" y="1" width="123" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="ZKd-QP-8ak" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="xv4-d0-E2x">
                                                             <font key="font" metaFont="system"/>
@@ -2986,7 +3104,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="symbolsplaced" editable="NO" width="132" minWidth="10" maxWidth="3.4028234663852886e+38" id="16064">
+                                    <tableColumn editable="NO" width="132" minWidth="10" maxWidth="3.4028234663852886e+38" id="16064">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Schematics">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3000,7 +3118,7 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="qUB-uE-oeC">
-                                                <rect key="frame" x="333.5" y="1" width="132" height="17"/>
+                                                <rect key="frame" x="334" y="1" width="132" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Oiu-eT-q5N">
@@ -3019,7 +3137,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="inboard" editable="NO" width="66.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="68.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3033,11 +3151,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="66.5" height="17"/>
+                                                <rect key="frame" x="469" y="1" width="68" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="68" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3052,7 +3170,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="261" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="259" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3066,11 +3184,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="538" y="1" width="261" height="17"/>
+                                                <rect key="frame" x="540" y="1" width="259" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="261" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -3118,7 +3236,7 @@ Diameter</string>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" id="16068" customClass="PMPullDownButtonWithItems">
+                            <popUpButton verticalHuggingPriority="750" id="16068">
                                 <rect key="frame" x="15" y="10" width="149" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Project Library" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="16071" id="16069">
@@ -3149,13 +3267,16 @@ Diameter</string>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button id="2927">
-                                <rect key="frame" x="18" y="142" width="143" height="22"/>
+                            <button verticalHuggingPriority="750" id="2927" customClass="EBButton">
+                                <rect key="frame" x="18" y="142" width="143" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Rename…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14704">
+                                <buttonCell key="cell" type="roundRect" title="Rename…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14704">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="renameComponentAction:" target="-2" id="aFu-TS-WUC"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="2926" customClass="EBButton">
                                 <rect key="frame" x="18" y="110" width="143" height="17"/>
@@ -3240,7 +3361,7 @@ Diameter</string>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                 <clipView key="contentView" id="vld-sU-Ut5">
                                                     <rect key="frame" x="1" y="0.0" width="432" height="506"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="" rowHeight="20" headerView="14838" viewBased="YES" id="2957" customClass="EBTableView">
                                                             <rect key="frame" x="0.0" y="0.0" width="432" height="483"/>
@@ -3402,36 +3523,36 @@ Diameter</string>
                                                 </tableHeaderView>
                                             </scrollView>
                                             <box title="Selected Device" id="2942">
-                                                <rect key="frame" x="456" y="0.0" width="465" height="526"/>
+                                                <rect key="frame" x="459" y="0.0" width="459" height="522"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <view key="contentView" id="hcx-QL-NY3">
-                                                    <rect key="frame" x="2" y="2" width="461" height="509"/>
+                                                    <rect key="frame" x="2" y="2" width="455" height="505"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <splitView dividerStyle="paneSplitter" vertical="YES" id="16494">
-                                                            <rect key="frame" x="15" y="13" width="429" height="486"/>
+                                                            <rect key="frame" x="15" y="13" width="423" height="482"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <splitView dividerStyle="paneSplitter" id="16493">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="486"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="482"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2945">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="229"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="227"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <clipView key="contentView" id="A2c-4Y-BiP">
-                                                                                <rect key="frame" x="1" y="0.0" width="193" height="213"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <rect key="frame" x="1" y="0.0" width="190" height="211"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="" rowSizeStyle="automatic" headerView="sZg-hc-py0" viewBased="YES" floatsGroupRows="NO" id="2946" customClass="StringArrayTableView" customModule="ElCanari" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="193" height="190"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="188"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                                         <tableColumns>
-                                                                                            <tableColumn identifier="value" editable="NO" width="189.88699999999994" minWidth="56.887" maxWidth="1000" id="2947">
+                                                                                            <tableColumn identifier="value" editable="NO" width="186.88699999999994" minWidth="56.887" maxWidth="1000" id="2947">
                                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Packages">
                                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3445,11 +3566,11 @@ Diameter</string>
                                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                                 <prototypeCellViews>
                                                                                                     <tableCellView id="wJ3-UN-PEM">
-                                                                                                        <rect key="frame" x="1" y="1" width="190" height="17"/>
+                                                                                                        <rect key="frame" x="1" y="1" width="187" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                         <subviews>
                                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" id="jsx-uU-6dO">
-                                                                                                                <rect key="frame" x="1" y="-1" width="190" height="17"/>
+                                                                                                                <rect key="frame" x="1" y="-1" width="187" height="17"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" usesSingleLineMode="YES" id="LFw-nc-BN4">
                                                                                                                     <font key="font" metaFont="system"/>
@@ -3469,34 +3590,34 @@ Diameter</string>
                                                                                 </subviews>
                                                                             </clipView>
                                                                             <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="14831">
-                                                                                <rect key="frame" x="1" y="213" width="193" height="15"/>
+                                                                                <rect key="frame" x="1" y="211" width="190" height="15"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
                                                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="14830">
-                                                                                <rect key="frame" x="194" y="23" width="15" height="190"/>
+                                                                                <rect key="frame" x="191" y="23" width="15" height="188"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
                                                                             <tableHeaderView key="headerView" id="sZg-hc-py0">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="193" height="23"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="190" height="23"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </tableHeaderView>
                                                                         </scrollView>
                                                                         <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2948">
-                                                                            <rect key="frame" x="0.0" y="239" width="210" height="247"/>
+                                                                            <rect key="frame" x="0.0" y="237" width="207" height="245"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                             <clipView key="contentView" id="2hI-aV-FP5">
-                                                                                <rect key="frame" x="1" y="0.0" width="193" height="231"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <rect key="frame" x="1" y="0.0" width="190" height="229"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveName="PMSymbolsInProjectTableView" rowSizeStyle="automatic" headerView="14835" viewBased="YES" id="2949" customClass="TwoStringArrayTableView" customModule="ElCanari" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="193" height="208"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="206"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                                         <tableColumns>
-                                                                                            <tableColumn identifier="left" editable="NO" width="106" minWidth="35.361820000000002" maxWidth="1000" id="2951">
+                                                                                            <tableColumn identifier="left" editable="NO" width="104.5" minWidth="35.361820000000002" maxWidth="1000" id="2951">
                                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Symbol Type">
                                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3510,11 +3631,11 @@ Diameter</string>
                                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                                 <prototypeCellViews>
                                                                                                     <tableCellView id="NzO-pZ-URF">
-                                                                                                        <rect key="frame" x="1" y="1" width="106" height="17"/>
+                                                                                                        <rect key="frame" x="1" y="1" width="104.5" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                         <subviews>
                                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Ge3-ph-CS0">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="106" height="17"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="104.5" height="17"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="fdt-Ve-i8T">
                                                                                                                     <font key="font" metaFont="system"/>
@@ -3529,7 +3650,7 @@ Diameter</string>
                                                                                                     </tableCellView>
                                                                                                 </prototypeCellViews>
                                                                                             </tableColumn>
-                                                                                            <tableColumn identifier="right" width="81" minWidth="10" maxWidth="3.4028234663852886e+38" id="BVE-gA-DF3">
+                                                                                            <tableColumn identifier="right" width="79.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="BVE-gA-DF3">
                                                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Symbol Name">
                                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3543,11 +3664,11 @@ Diameter</string>
                                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                                 <prototypeCellViews>
                                                                                                     <tableCellView id="p6j-Wa-Ko3">
-                                                                                                        <rect key="frame" x="110" y="1" width="81" height="17"/>
+                                                                                                        <rect key="frame" x="108.5" y="1" width="79.5" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                         <subviews>
                                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Uda-A8-FEi">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="81" height="17"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="17"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="cSl-E7-YgO">
                                                                                                                     <font key="font" metaFont="system"/>
@@ -3567,15 +3688,15 @@ Diameter</string>
                                                                                 </subviews>
                                                                             </clipView>
                                                                             <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="14834">
-                                                                                <rect key="frame" x="1" y="231" width="193" height="15"/>
+                                                                                <rect key="frame" x="1" y="229" width="190" height="15"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
                                                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="14833">
-                                                                                <rect key="frame" x="194" y="23" width="15" height="208"/>
+                                                                                <rect key="frame" x="191" y="23" width="15" height="206"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
                                                                             <tableHeaderView key="headerView" id="14835">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="193" height="23"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="190" height="23"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </tableHeaderView>
                                                                         </scrollView>
@@ -3586,21 +3707,21 @@ Diameter</string>
                                                                     </holdingPriorities>
                                                                 </splitView>
                                                                 <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="16482">
-                                                                    <rect key="frame" x="220" y="0.0" width="209" height="486"/>
+                                                                    <rect key="frame" x="217" y="0.0" width="206" height="482"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" id="cGq-AK-IRh">
-                                                                        <rect key="frame" x="1" y="0.0" width="192" height="470"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <rect key="frame" x="1" y="0.0" width="189" height="466"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="PMAssignmentsInLibAutosave" rowSizeStyle="automatic" headerView="16483" viewBased="YES" id="16486" customClass="ThreeStringArrayTableView" customModule="ElCanari" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="192" height="447"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="189" height="443"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                                 <tableColumns>
-                                                                                    <tableColumn identifier="left" editable="NO" width="87.838899999999995" minWidth="69.83887" maxWidth="1000" id="16488">
+                                                                                    <tableColumn identifier="left" editable="NO" width="86.338899999999995" minWidth="69.83887" maxWidth="1000" id="16488">
                                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Pad">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3614,11 +3735,11 @@ Diameter</string>
                                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                         <prototypeCellViews>
                                                                                             <tableCellView id="4WN-Mg-2Lb">
-                                                                                                <rect key="frame" x="1" y="1" width="88" height="17"/>
+                                                                                                <rect key="frame" x="1" y="1" width="86.5" height="17"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="gI2-vf-TH0">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="17"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4A1-t5-Zde">
                                                                                                             <font key="font" metaFont="system"/>
@@ -3633,7 +3754,7 @@ Diameter</string>
                                                                                             </tableCellView>
                                                                                         </prototypeCellViews>
                                                                                     </tableColumn>
-                                                                                    <tableColumn identifier="center" editable="NO" width="40" minWidth="8" maxWidth="1000" id="16489">
+                                                                                    <tableColumn identifier="center" editable="NO" width="38.5" minWidth="8" maxWidth="1000" id="16489">
                                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Symbol">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3647,11 +3768,11 @@ Diameter</string>
                                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                         <prototypeCellViews>
                                                                                             <tableCellView id="p0d-68-wnc">
-                                                                                                <rect key="frame" x="92" y="1" width="40" height="17"/>
+                                                                                                <rect key="frame" x="90.5" y="1" width="38.5" height="17"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="QaC-ez-9ka">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="17"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="omA-Q8-H23">
                                                                                                             <font key="font" metaFont="system"/>
@@ -3666,7 +3787,7 @@ Diameter</string>
                                                                                             </tableCellView>
                                                                                         </prototypeCellViews>
                                                                                     </tableColumn>
-                                                                                    <tableColumn identifier="right" editable="NO" width="55.086430000000007" minWidth="20.08643" maxWidth="1000" id="16487">
+                                                                                    <tableColumn identifier="right" editable="NO" width="54.586430000000007" minWidth="20.08643" maxWidth="1000" id="16487">
                                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Pin">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3680,11 +3801,11 @@ Diameter</string>
                                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                         <prototypeCellViews>
                                                                                             <tableCellView id="8go-ap-5KO">
-                                                                                                <rect key="frame" x="135" y="1" width="55" height="17"/>
+                                                                                                <rect key="frame" x="132" y="1" width="54.5" height="17"/>
                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 <subviews>
                                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="4NI-m4-u1k">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="17"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="54.5" height="17"/>
                                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="6sL-pR-A3c">
                                                                                                             <font key="font" metaFont="system"/>
@@ -3704,15 +3825,15 @@ Diameter</string>
                                                                         </subviews>
                                                                     </clipView>
                                                                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="16484">
-                                                                        <rect key="frame" x="1" y="470" width="192" height="15"/>
+                                                                        <rect key="frame" x="1" y="466" width="189" height="15"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
                                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="16485">
-                                                                        <rect key="frame" x="193" y="23" width="15" height="447"/>
+                                                                        <rect key="frame" x="190" y="23" width="15" height="443"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
                                                                     <tableHeaderView key="headerView" id="16483">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="23"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="189" height="23"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </tableHeaderView>
                                                                 </scrollView>
@@ -4096,7 +4217,7 @@ Diameter</string>
             <rect key="frame" x="0.0" y="0.0" width="840" height="612"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField toolTip="Schematics Error Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3015" customClass="PMSchematicsErrorStatusTextField">
+                <textField toolTip="Schematics Error Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3015" customClass="EBTextObserverField">
                     <rect key="frame" x="168" y="591" width="76" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999 (999)" id="14720">
@@ -4105,7 +4226,7 @@ Diameter</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField toolTip="Schematics Warning Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3014" customClass="PMSchematicsWarningStatusTextField">
+                <textField toolTip="Schematics Warning Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3014" customClass="EBTextObserverField">
                     <rect key="frame" x="168" y="574" width="76" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999 (999)" id="14719">
@@ -4114,14 +4235,14 @@ Diameter</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3012" customClass="PM_scroll_view_with_placards">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3012">
                     <rect key="frame" x="251" y="-1" width="590" height="613"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView id="3013" customClass="PMSchematicsView">
+                            <customView id="3013" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -4146,10 +4267,10 @@ Diameter</string>
                         <menu key="menu" title="OtherViews" id="15129">
                             <items>
                                 <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="15131"/>
-                                <menuItem title="Select all Connected Elements" onStateImage="D77A6125-5190-4DCE-99D0-40F29540659D" mixedStateImage="F866825A-3938-47BA-BFC3-AA4522B59C95" keyEquivalent="a" id="15130">
+                                <menuItem title="Select all Connected Elements" keyEquivalent="a" id="15130">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Move Selected Elements to Sheet…" onStateImage="B0DBCE78-F0C8-4AE9-B315-FA9A1D571B08" mixedStateImage="B5D357C9-C27A-444D-91A4-EBEF7038B761" keyEquivalent="m" id="15134">
+                                <menuItem title="Move Selected Elements to Sheet…" keyEquivalent="m" id="15134">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
                             </items>
@@ -4177,7 +4298,7 @@ Diameter</string>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Wire; Hint:   - alt + click starts a new wire." id="15596" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Wire; Hint:   - alt + click starts a new wire." id="15596" customClass="EBButton">
                     <rect key="frame" x="137" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
@@ -4194,9 +4315,6 @@ Diameter</string>
                     </buttonCell>
                 </button>
             </subviews>
-            <connections>
-                <outlet property="mSavedKeyView" destination="3013" id="3309"/>
-            </connections>
         </customView>
         <customView id="3048" userLabel="Page : Net Classes" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="775" height="445"/>
@@ -4223,7 +4341,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="uWS-bc-PPt">
                         <rect key="frame" x="1" y="0.0" width="758" height="390"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" headerView="14846" id="3050">
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="367"/>
@@ -4252,7 +4370,7 @@ Diameter</string>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="left" borderStyle="border" inset="2" id="15126" customClass="PMColorWellCell">
+                                        <buttonCell key="dataCell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="left" borderStyle="border" inset="2" id="15126" customClass="NSMenuItemCell">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -4527,11 +4645,11 @@ Diameter</string>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="7048">
                             <items>
-                                <menuItem image="NSSmartBadgeTemplate" onStateImage="E806AF39-AFBA-49B2-B5F8-9253AED7B4EA" mixedStateImage="2AF2DF57-9354-461C-87D7-08AED2E737F7" hidden="YES" id="7895"/>
-                                <menuItem title="Select all Components" onStateImage="8CF63086-6282-4728-A843-FB90254EDDF9" mixedStateImage="AF1FF933-F447-40A4-93E3-F0B53DB5E225" keyEquivalent="a" id="15137">
+                                <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="7895"/>
+                                <menuItem title="Select all Components" keyEquivalent="a" id="15137">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Components…" onStateImage="6157AEC1-BD14-4A29-8014-C74784B6BE18" mixedStateImage="8454F22A-FBEC-4F02-82A5-200C7441D672" id="16625">
+                                <menuItem title="Select Components…" id="16625">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                                 <menuItem title="Select Component" id="15856">
@@ -4544,13 +4662,13 @@ Diameter</string>
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Passing Points" onStateImage="5A5DA96A-18DA-406E-92F3-D97CAA6A78DA" mixedStateImage="ECEC050F-6A84-483A-B333-9846411AD1B0" id="16105">
+                                <menuItem title="Select all Passing Points" id="16105">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select all Tracks" onStateImage="D58E7C25-0103-482E-A85A-C2FE554C2635" mixedStateImage="BDBF200E-4080-4B52-9726-64E04971A9D7" id="16204">
+                                <menuItem title="Select all Tracks" id="16204">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select Tracks from Selected Track Net" onStateImage="EB2E3AF7-F67B-4721-8841-7A64035C75C2" mixedStateImage="68968FDE-4E57-44E9-BDDC-F078DDFBDFA2" keyEquivalent="t" id="16605">
+                                <menuItem title="Select Tracks from Selected Track Net" keyEquivalent="t" id="16605">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
                                 <menuItem title="Select Track of Net" id="16268">
@@ -4563,10 +4681,10 @@ Diameter</string>
                                         </items>
                                     </menu>
                                 </menuItem>
-                                <menuItem title="Select all Vias" onStateImage="5CDE241E-F126-4F7A-9E9D-823245F92431" mixedStateImage="3EF20540-41DB-4A86-9D46-C12AE470C5FA" id="16207">
+                                <menuItem title="Select all Vias" id="16207">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
-                                <menuItem title="Select all Restrict Rectangles" onStateImage="73AF52B9-DA16-4BC2-95BC-EADC0411DE4D" mixedStateImage="A92E7318-F3DC-440C-B77C-4D8D739C7749" id="16210">
+                                <menuItem title="Select all Restrict Rectangles" id="16210">
                                     <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15539"/>
@@ -4581,7 +4699,7 @@ Diameter</string>
                                     </menu>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="16050"/>
-                                <menuItem title="Remove all Tracks and Vias" onStateImage="93894F66-8550-4905-8FD0-F6EC48479BAA" mixedStateImage="F1DC55DC-7DB2-40EA-BE5F-597AD71DCE31" keyEquivalent="r" id="15065">
+                                <menuItem title="Remove all Tracks and Vias" keyEquivalent="r" id="15065">
                                     <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="15852"/>
@@ -4610,14 +4728,14 @@ Diameter</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3081" customClass="PM_scroll_view_with_placards">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3081">
                     <rect key="frame" x="251" y="-1" width="597" height="614"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="vjz-46-hdV">
                         <rect key="frame" x="1" y="1" width="580" height="597"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView id="3082" customClass="PMBoardView">
+                            <customView id="3082" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="593"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
@@ -4663,7 +4781,7 @@ Diameter</string>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Text" id="15547" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Text" id="15547" customClass="EBButton">
                     <rect key="frame" x="149" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="15548">
@@ -4671,7 +4789,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Restrict Rectangle" id="15550" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Restrict Rectangle" id="15550" customClass="EBButton">
                     <rect key="frame" x="95" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="restrict-rect-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15551">
@@ -4679,7 +4797,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Line in Legend" id="15553" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Line in Legend" id="15553" customClass="EBButton">
                     <rect key="frame" x="122" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="15554">
@@ -4687,7 +4805,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button id="15556" customClass="PMDraggingSourceButton">
+                <button id="15556" customClass="EBButton">
                     <rect key="frame" x="68" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <string key="toolTip">Add Track; hints:
@@ -4698,7 +4816,7 @@ Diameter</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Passing Point" id="15975" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Passing Point" id="15975" customClass="EBButton">
                     <rect key="frame" x="176" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="passing-point" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15976">
@@ -4707,9 +4825,6 @@ Diameter</string>
                     </buttonCell>
                 </button>
             </subviews>
-            <connections>
-                <outlet property="mSavedKeyView" destination="3082" id="3310"/>
-            </connections>
         </customView>
         <customView id="3140" userLabel="Page : Product" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="812" height="656"/>
@@ -4900,7 +5015,7 @@ TW: Track Width</string>
                         <tabViewItem label="Format" identifier="" id="3387">
                             <view key="view" id="3388">
                                 <rect key="frame" x="10" y="25" width="786" height="481"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <popUpButton id="3394">
                                         <rect key="frame" x="164" y="346" width="296" height="22"/>
@@ -4947,13 +5062,9 @@ TW: Track Width</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView id="3398" customClass="PMDrillDataView">
+                                    <customView id="3398">
                                         <rect key="frame" x="46" y="196" width="472" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <connections>
-                                            <outlet property="excellonDataView" destination="2668" id="3450"/>
-                                            <outlet property="excellonWithSeparateDrillToolListDataView" destination="2661" id="3451"/>
-                                        </connections>
                                     </customView>
                                 </subviews>
                             </view>
@@ -5450,7 +5561,7 @@ TW: Track Width</string>
                         <imageView id="16793">
                             <rect key="frame" x="20" y="19" width="54" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="panneau-danger" id="16794"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusPartiallyAvailable" id="16794"/>
                         </imageView>
                         <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="16795">
                             <rect key="frame" x="85" y="67" width="517" height="17"/>
@@ -5872,7 +5983,7 @@ TW: Track Width</string>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="14904" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="14904" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="267" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14911">
@@ -5880,7 +5991,7 @@ TW: Track Width</string>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="14903" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="14903" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="402" y="12" width="78" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="14912">
@@ -6177,7 +6288,7 @@ TW: Track Width</string>
                 <rect key="frame" x="0.0" y="0.0" width="420" height="208"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="15147" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="15147" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="108" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15148">
@@ -6185,7 +6296,7 @@ TW: Track Width</string>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="15146" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="15146" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="215" y="12" width="191" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Move Selected Elements" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15149">
@@ -6517,9 +6628,9 @@ TW: Track Width</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="MAC-7F-Rnp">
                         <rect key="frame" x="1" y="0.0" width="208" height="454"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15585" id="15584" customClass="PMDraggingSourceTableViewForPackageInBoard">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15585" id="15584">
                                 <rect key="frame" x="0.0" y="0.0" width="208" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -6578,9 +6689,9 @@ TW: Track Width</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="3aO-4z-c55">
                         <rect key="frame" x="1" y="0.0" width="208" height="454"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15603" id="15604" customClass="PMDraggingSourceTableViewForSymbolInSchematics">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15603" id="15604">
                                 <rect key="frame" x="0.0" y="0.0" width="208" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -6636,7 +6747,7 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="15640"/>
                     </imageView>
-                    <button verticalHuggingPriority="750" id="15634" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="15634" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="479" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15637">
@@ -6644,7 +6755,7 @@ TW: Track Width</string>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="15635" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="15635" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="573" y="12" width="78" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15636">
@@ -6657,7 +6768,7 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="sX8-pN-Mnv">
                             <rect key="frame" x="1" y="0.0" width="514" height="478"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="15648" id="15647">
                                     <rect key="frame" x="0.0" y="0.0" width="514" height="455"/>
@@ -6783,7 +6894,7 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="15669"/>
                     </imageView>
-                    <button verticalHuggingPriority="750" id="15667" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="15667" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="956" y="12" width="78" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15668">
@@ -6796,7 +6907,7 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="yIC-8j-Xvs">
                             <rect key="frame" x="1" y="0.0" width="897" height="176"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="51" headerView="15671" id="15672">
                                     <rect key="frame" x="0.0" y="0.0" width="897" height="153"/>
@@ -7171,7 +7282,7 @@ TW: Track Width</string>
                 <rect key="frame" x="0.0" y="0.0" width="658" height="558"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="16254" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="16254" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="554" y="12" width="78" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="16255">
@@ -7207,7 +7318,7 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="Mb4-9m-RUV">
                             <rect key="frame" x="1" y="1" width="475" height="392"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" spellingCorrection="YES" id="16263">
                                     <rect key="frame" x="0.0" y="0.0" width="475" height="392"/>
@@ -7320,14 +7431,14 @@ TW: Track Width</string>
                 </textField>
             </subviews>
         </customView>
-        <toolbarItem implicitItemIdentifier="AD97C4FF-7440-4792-967E-BCF1194977F5" label="Board" paletteLabel="Board" image="red20" id="16500">
+        <toolbarItem implicitItemIdentifier="AD97C4FF-7440-4792-967E-BCF1194977F5" label="Board" paletteLabel="Board" image="NSStatusUnavailable" id="16500">
             <nil key="toolTip"/>
             <size key="minSize" width="24" height="24"/>
             <size key="maxSize" width="24" height="24"/>
-            <imageView key="view" id="16501" customClass="PMStatusImage">
+            <imageView key="view" id="16501" customClass="EBImageObserverView">
                 <rect key="frame" x="7" y="14" width="24" height="24"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="16502"/>
+                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="16502"/>
             </imageView>
         </toolbarItem>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="16616" customClass="NSPanel">
@@ -7339,7 +7450,7 @@ TW: Track Width</string>
                 <rect key="frame" x="0.0" y="0.0" width="615" height="375"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="16618" customClass="PMOkButtonForPanel">
+                    <button verticalHuggingPriority="750" id="16618" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="519" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="16619">
@@ -7347,7 +7458,7 @@ TW: Track Width</string>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="16620" customClass="PMCancelButtonForPanel">
+                    <button verticalHuggingPriority="750" id="16620" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="419" y="12" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="16621">
@@ -7540,32 +7651,12 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="2AF2DF57-9354-461C-87D7-08AED2E737F7" width="128" height="128"/>
-        <image name="3EF20540-41DB-4A86-9D46-C12AE470C5FA" width="128" height="128"/>
-        <image name="5A5DA96A-18DA-406E-92F3-D97CAA6A78DA" width="128" height="128"/>
-        <image name="5CDE241E-F126-4F7A-9E9D-823245F92431" width="128" height="128"/>
-        <image name="6157AEC1-BD14-4A29-8014-C74784B6BE18" width="128" height="128"/>
-        <image name="68968FDE-4E57-44E9-BDDC-F078DDFBDFA2" width="128" height="128"/>
-        <image name="73AF52B9-DA16-4BC2-95BC-EADC0411DE4D" width="128" height="128"/>
-        <image name="8454F22A-FBEC-4F02-82A5-200C7441D672" width="128" height="128"/>
-        <image name="8CF63086-6282-4728-A843-FB90254EDDF9" width="128" height="128"/>
-        <image name="93894F66-8550-4905-8FD0-F6EC48479BAA" width="128" height="128"/>
         <image name="A4horizontal" width="64" height="64"/>
         <image name="A4vertical" width="64" height="64"/>
-        <image name="A92E7318-F3DC-440C-B77C-4D8D739C7749" width="128" height="128"/>
-        <image name="AF1FF933-F447-40A4-93E3-F0B53DB5E225" width="128" height="128"/>
-        <image name="B0DBCE78-F0C8-4AE9-B315-FA9A1D571B08" width="128" height="128"/>
-        <image name="B5D357C9-C27A-444D-91A4-EBEF7038B761" width="128" height="128"/>
-        <image name="BDBF200E-4080-4B52-9726-64E04971A9D7" width="128" height="128"/>
-        <image name="D58E7C25-0103-482E-A85A-C2FE554C2635" width="128" height="128"/>
-        <image name="D77A6125-5190-4DCE-99D0-40F29540659D" width="128" height="128"/>
-        <image name="E806AF39-AFBA-49B2-B5F8-9253AED7B4EA" width="128" height="128"/>
-        <image name="EB2E3AF7-F67B-4721-8841-7A64035C75C2" width="128" height="128"/>
-        <image name="ECEC050F-6A84-483A-B333-9846411AD1B0" width="128" height="128"/>
-        <image name="F1DC55DC-7DB2-40EA-BE5F-597AD71DCE31" width="128" height="128"/>
-        <image name="F866825A-3938-47BA-BFC3-AA4522B59C95" width="128" height="128"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
+        <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
+        <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="artwork" width="278" height="146"/>
         <image name="autorouter" width="283" height="282"/>
         <image name="circuit-imprime" width="30.239999771118164" height="29.760000228881836"/>
@@ -7573,9 +7664,7 @@ Gw
         <image name="freeRoutingLogo" width="365" height="115"/>
         <image name="line-in-symbol" width="64" height="64"/>
         <image name="loupe" width="64" height="64"/>
-        <image name="panneau-danger" width="325" height="325"/>
         <image name="passing-point" width="64" height="64"/>
-        <image name="red20" width="20" height="20"/>
         <image name="restrict-rect-in-board" width="18" height="18"/>
         <image name="selected-object" width="64" height="64"/>
         <image name="sheet" width="34" height="17"/>

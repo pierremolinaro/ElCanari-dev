@@ -175,6 +175,7 @@ import Cocoa
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
+  @IBOutlet var mCurrentComponentNameTextField : NSTextField?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView?
@@ -192,6 +193,12 @@ import Cocoa
   @IBOutlet var mRemoveDeviceButton : EBButton?
   @IBOutlet var mRemoveFontButton : EBButton?
   @IBOutlet var mRemoveSelectedComponentsActionButton : EBButton?
+  @IBOutlet var mRenameComponentButton : EBButton?
+  @IBOutlet var mRenameComponentErrorMessageTextField : NSTextField?
+  @IBOutlet var mRenameComponentIndexesPopUpButton : NSPopUpButton?
+  @IBOutlet var mRenameComponentPanel : NSPanel?
+  @IBOutlet var mRenameComponentPrefixComboxBox : CanariComboBox?
+  @IBOutlet var mRenameComponentValidationButton : NSButton?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
@@ -203,6 +210,7 @@ import Cocoa
   //····················································································································
 
   var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -286,6 +294,7 @@ import Cocoa
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
@@ -303,6 +312,12 @@ import Cocoa
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentIndexesPopUpButton, "mRenameComponentIndexesPopUpButton", NSPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentPanel, "mRenameComponentPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentPrefixComboxBox, "mRenameComponentPrefixComboxBox", CanariComboBox.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -457,6 +472,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.mComponentController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mRenameComponentButton
+      )
+      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRenameComponentButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditFontButton
@@ -595,6 +620,8 @@ import Cocoa
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
+    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
+    self.mController_mRenameComponentButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
@@ -648,6 +675,7 @@ import Cocoa
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
+    self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
@@ -665,6 +693,12 @@ import Cocoa
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
     self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
+    self.mRenameComponentButton?.ebCleanUp ()
+    self.mRenameComponentErrorMessageTextField?.ebCleanUp ()
+    self.mRenameComponentIndexesPopUpButton?.ebCleanUp ()
+    self.mRenameComponentPanel?.ebCleanUp ()
+    self.mRenameComponentPrefixComboxBox?.ebCleanUp ()
+    self.mRenameComponentValidationButton?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()

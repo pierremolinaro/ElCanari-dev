@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentInProject_componentName (
-       _ self_mNameIndex : Int,                  
-       _ self_mDevice_mPrefix : String?
+       _ self_mNamePrefix : String,              
+       _ self_mNameIndex : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        return (self_mDevice_mPrefix ?? "—") + "\(self_mNameIndex)"
+        return "\(self_mNamePrefix)\(self_mNameIndex)"
 //--- END OF USER ZONE 2
 }
 

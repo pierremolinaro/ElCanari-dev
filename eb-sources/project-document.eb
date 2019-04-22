@@ -36,6 +36,15 @@ document ProjectDocument root ProjectRoot {
     $enabled mComponentController.selectedArray.count > 0
   ;
 
+
+  outlet EBButton mRenameComponentButton $enabled mComponentController.selectedArray.count == 1 ; # Action targeted in IB
+  outlet NSPanel mRenameComponentPanel ;
+  outlet NSTextField mCurrentComponentNameTextField ;
+  outlet NSTextField mRenameComponentErrorMessageTextField ;
+  outlet CanariComboBox mRenameComponentPrefixComboxBox ;
+  outlet NSPopUpButton mRenameComponentIndexesPopUpButton ;
+  outlet NSButton mRenameComponentValidationButton ;
+  
   tableViewController mComponentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
      column "name" EBTextObserverField $valueObserver self.componentName
      column "device" EBTextObserverField $valueObserver self.deviceName

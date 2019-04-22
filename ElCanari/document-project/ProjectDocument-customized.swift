@@ -7,6 +7,16 @@ import Cocoa
 @objc(CustomizedProjectDocument) class CustomizedProjectDocument : ProjectDocument {
 
   //····················································································································
+  //  Properties needed for renamoing a component
+  //····················································································································
+
+  internal var mComponentCurrentPrefix = ""
+  internal var mComponentCurrentIndex = 0
+  internal var mComponentNewPrefix = ""
+  internal var mComponentNewIndex = 0
+  internal weak var mSelectedComponentForRenaming : ComponentInProject? = nil
+
+  //····················································································································
 
 //  override func metadataStatusForSaving () -> UInt8 {
 //    return UInt8 (self.mMetadataStatus!.rawValue)

@@ -595,7 +595,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="Ia8-1D-Xh1">
                         <rect key="frame" x="1" y="1" width="874" height="541"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rki-OK-VtG">
                                 <rect key="frame" x="0.0" y="0.0" width="874" height="541"/>
@@ -1689,7 +1689,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="bte-fr-Xrs">
                         <rect key="frame" x="1" y="1" width="189" height="355"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="E87-Xh-jB6" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="355"/>

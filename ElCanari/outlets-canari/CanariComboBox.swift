@@ -1,0 +1,61 @@
+//
+//  CanariComboBox.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 21/04/2019.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
+
+  //····················································································································
+
+  var textDidChangeCallBack : Optional < () -> Void > = nil
+
+  //····················································································································
+
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
+    noteObjectAllocation (self)
+    self.delegate = self
+  }
+
+  //····················································································································
+
+  override init (frame : NSRect) {
+    super.init (frame: frame)
+    noteObjectAllocation (self)
+    self.delegate = self
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  // NSComboBoxDelegate functions
+  //····················································································································
+
+  @objc func controlTextDidChange (_ inNotification : Notification) {
+    // Swift.print ("CanariComboBox, controlTextDidChange '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
+    self.textDidChangeCallBack? ()
+  }
+
+  //····················································································································
+
+  func controlTextDidEndEditing (_ notification : Notification) {
+    // Swift.print ("CanariComboBox, controlTextDidEndEditing '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
+    self.textDidChangeCallBack? ()
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

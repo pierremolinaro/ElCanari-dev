@@ -116,7 +116,7 @@ fileprivate func buildDebugObject () {
 //   EBAllocationItemDisplay class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBAllocationItemDisplay) class EBAllocationItemDisplay : NSObject {
+class EBAllocationItemDisplay : NSObject {
   @objc dynamic var mClassname : String
   @objc dynamic var mAllCount : Int
   @objc dynamic var mLive : Int
@@ -127,6 +127,7 @@ fileprivate func buildDebugObject () {
     mAllCount = allCount
     mLive = live
     mSnapshot = snapshot
+    super.init ()
   }
 }
 
@@ -206,7 +207,6 @@ private var gDebugObject : EBAllocationDebug? = nil
       object: nil
     )
     gDebugObject = self
-//    pmInstallDebugMenu ()
   }
 
   //····················································································································
@@ -241,14 +241,14 @@ private var gDebugObject : EBAllocationDebug? = nil
   //--- Enable / disable object allocation debug
     self.mEnableObjectAllocationDebug?.bind (
       NSBindingName.value,
-      to: NSUserDefaultsController.shared ,
+      to: NSUserDefaultsController.shared,
       withKeyPath: "values." + prefsEnableObjectAllocationDebugString,
       options: nil
     )
     if gEnableObjectAllocationDebug {
       self.mReuseTableViewCellsButton?.bind (
         NSBindingName.value,
-        to: NSUserDefaultsController.shared ,
+        to: NSUserDefaultsController.shared,
         withKeyPath: "values." + prefsReuseTableViewCells,
         options: nil
       )
@@ -270,7 +270,7 @@ private var gDebugObject : EBAllocationDebug? = nil
     if self.mAllocationStatsWindowVisibleAtLaunch {
       self.mAllocationStatsWindow?.makeKeyAndOrderFront (nil)
     }
-    self.mDisplayFilterPopUpButton?.selectItem (at: mDisplayFilter)
+    self.mDisplayFilterPopUpButton?.selectItem (at: self.mDisplayFilter)
     self.mDisplayFilterPopUpButton?.target = self
     self.mDisplayFilterPopUpButton?.action = #selector(EBAllocationDebug.setDisplayFilerAction(_:))
     let columns = self.mStatsTableView!.tableColumns as NSArray
@@ -278,6 +278,7 @@ private var gDebugObject : EBAllocationDebug? = nil
       let firstColumn = columns [0] as! NSTableColumn
       self.mStatsTableView!.sortDescriptors = NSArray (object:firstColumn.sortDescriptorPrototype!) as! [NSSortDescriptor]
     }
+    self.mStatsTableView?.dataSource = self
     self.installTimer ()
   }
 
@@ -286,6 +287,9 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   private func installTimer () {
+    if !Thread.isMainThread {
+      presentErrorWindow (#file, #line, "not in main thread")
+    }
     if self.mRefreshTimer == nil {
       let timer = Timer (
         timeInterval: 1.0,
@@ -361,7 +365,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   @IBAction func performSnapShotAction (_: AnyObject) {
-    gSnapShotDictionary = gLiveObjectCountByClass // [:]
+    gSnapShotDictionary = gLiveObjectCountByClass
     gRefreshDisplay = true
   }
 
@@ -370,14 +374,16 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   private func displayAllocation () {
-    // NSLog ("displayAllocation \(self.mRefreshDisplay)")
+    if !Thread.isMainThread {
+      presentErrorWindow (#file, #line, "not in main thread")
+    }
     if gRefreshDisplay {
       gRefreshDisplay = false
     //---
       var liveObjectCount = 0
       var totalObjectCount = 0
     //---
-      self.mAllocationStatsDataSource = NSMutableArray ()
+      let array = NSMutableArray ()
       for (className, totalByClass) in gTotalAllocatedObjectCountByClass {
         let liveByClass = gLiveObjectCountByClass [className] ?? 0
         let snapShotByClass = gSnapShotDictionary [className] ?? 0
@@ -390,7 +396,7 @@ private var gDebugObject : EBAllocationDebug? = nil
           display = liveByClass != snapShotByClass ;
         }
         if display {
-          self.mAllocationStatsDataSource.add (EBAllocationItemDisplay (
+          array.add (EBAllocationItemDisplay (
             classname : className,
             allCount : totalByClass,
             live : liveByClass,
@@ -402,8 +408,8 @@ private var gDebugObject : EBAllocationDebug? = nil
       self.mTotalAllocatedObjectCount = totalObjectCount
     //---
       let sortDescriptors : [NSSortDescriptor] = self.mStatsTableView?.sortDescriptors ?? []
-      self.mAllocationStatsDataSource.sort (using: sortDescriptors)
-      self.mStatsTableView?.dataSource = self
+      array.sort (using: sortDescriptors)
+      self.mAllocationStatsDataSource = array
       self.mStatsTableView?.reloadData ()
     }
   }
@@ -415,6 +421,9 @@ private var gDebugObject : EBAllocationDebug? = nil
   func tableView (_ aTableView : NSTableView,
                   objectValueFor objectValueForTableColumn: NSTableColumn?,
                   row:Int) -> Any? {
+    if !Thread.isMainThread {
+      presentErrorWindow (#file, #line, "not in main thread")
+    }
     let theRecord = self.mAllocationStatsDataSource [row] as! EBAllocationItemDisplay
     return theRecord.value (forKey: objectValueForTableColumn!.identifier.rawValue)
   }
@@ -422,6 +431,9 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   func numberOfRows (in _: NSTableView) -> Int {
+    if !Thread.isMainThread {
+      presentErrorWindow (#file, #line, "not in main thread")
+    }
     return self.mAllocationStatsDataSource.count
   }
 
@@ -431,6 +443,9 @@ private var gDebugObject : EBAllocationDebug? = nil
 
   func tableView (_ tableView : NSTableView,
                   sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+    if !Thread.isMainThread {
+      presentErrorWindow (#file, #line, "not in main thread")
+    }
     let sortDescriptors = self.mStatsTableView?.sortDescriptors
     self.mAllocationStatsDataSource.sort (using: sortDescriptors!)
     self.mStatsTableView?.reloadData ()

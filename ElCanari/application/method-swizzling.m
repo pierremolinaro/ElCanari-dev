@@ -1,40 +1,56 @@
 //
-//  CanariCancelButtonForSheet.swift
+//  method-swizzling.m
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 14/07/2018.
+//  Created by Pierre Molinaro on 22/04/2019.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
+#import <Cocoa/Cocoa.h>
+#import <objc/runtime.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariCancelButtonForSheet
-// The style of the button should be "Push" (set it in interface builder)
-// Key equivalent should be "escape" (set it in interface builder)
+
+@interface NSView (MySwizzlingNSView)
+
+@end
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariCancelButtonForSheet : EBButton {
+@implementation NSView (MySwizzlingNSView)
 
   //····················································································································
 
-  override func awakeFromNib () {
-    super.awakeFromNib ()
-    self.target = self
-    self.action = #selector (CanariCancelButtonForSheet.dismissSheetAction (_:))
-  }
-
-  //····················································································································
-
-  @objc func dismissSheetAction (_ sender : Any?) {
-    if let myPanel = self.window, let parent = myPanel.sheetParent {
-      parent.endSheet (myPanel, returnCode: .abort)
+  - (void) setNeedsDisplay_swizzling: (BOOL) needsDisplay {
+    if (![[NSThread currentThread] isMainThread]) {
+      NSLog (@"setNeedsDisplay NOT in main thread for %@", self) ;
     }
+    [self setNeedsDisplay_swizzling: needsDisplay] ;
   }
 
   //····················································································································
 
-}
+  - (void) setNeedsDisplayInRect_swizzling: (NSRect) rect {
+    if (![[NSThread currentThread] isMainThread]) {
+      NSLog (@"setNeedsDisplayInRect NOT in main thread for %@", self) ;
+    }
+    [self setNeedsDisplayInRect_swizzling: rect] ;
+  }
+
+  //····················································································································
+
+  + (void) load {
+    NSLog (@"MySwizzlingNSView load") ;
+    Method original = class_getInstanceMethod (self, @selector (setNeedsDisplay:));
+    Method swizzled = class_getInstanceMethod (self, @selector (setNeedsDisplay_swizzling:));
+    method_exchangeImplementations (original, swizzled) ;
+    original = class_getInstanceMethod (self, @selector (setNeedsDisplayInRect:));
+    swizzled = class_getInstanceMethod (self, @selector (setNeedsDisplayInRect_swizzling:));
+    method_exchangeImplementations (original, swizzled) ;
+  }
+
+  //····················································································································
+
+@end
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

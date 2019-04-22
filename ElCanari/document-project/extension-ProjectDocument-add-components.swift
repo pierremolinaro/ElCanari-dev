@@ -35,9 +35,10 @@ extension ProjectDocument {
       newComponent.mDevice = newDeviceInProject
       newComponent.mSelectedPackage = newDeviceInProject.mPackages [0]
     //--- Fix index for component name
+      newComponent.mNamePrefix = newDeviceInProject.mPrefix
       var idx = 1
       for component in self.rootObject.mComponents {
-        if newComponent.mDevice!.mPrefix == component.mDevice!.mPrefix {
+        if newComponent.mNamePrefix == component.mNamePrefix {
           idx = component.mNameIndex + 1
         }
       }

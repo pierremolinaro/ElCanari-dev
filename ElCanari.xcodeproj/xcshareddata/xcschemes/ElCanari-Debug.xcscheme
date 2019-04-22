@@ -46,12 +46,12 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       enableASanStackUseAfterReturn = "YES"
-      disableMainThreadChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "NO"
       debugXPCServices = "NO"
+      stopOnEveryMainThreadCheckerIssue = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "NO"
       queueDebuggingEnabled = "No">
@@ -79,12 +79,12 @@
          <EnvironmentVariable
             key = "CA_ASSERT_MAIN_THREAD_TRANSACTIONS"
             value = "1"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "CA_DEBUG_TRANSACTIONS"
             value = "1"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

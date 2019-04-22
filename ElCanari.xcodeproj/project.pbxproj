@@ -150,6 +150,10 @@
 		CF1A10FF2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */; };
 		CF1A11012108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */; };
 		CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */; };
+		CF1B6ED0226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */; };
+		CF1B6ED1226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */; };
+		CF1B6ED3226CEE9800BE4C75 /* CanariComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */; };
+		CF1B6ED4226CEE9800BE4C75 /* CanariComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */; };
 		CF1D582721AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D582621AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift */; };
 		CF1D582821AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D582621AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift */; };
 		CF1D9C7821BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C7721BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift */; };
@@ -813,8 +817,8 @@
 		CF64AFA5225B78C100E40C83 /* extension-ProjectDocument-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */; };
 		CF64AFA6225B78C100E40C83 /* extension-ProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */; };
 		CF64AFA7225B78C100E40C83 /* extension-ProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */; };
-		CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-components.swift */; };
-		CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-components.swift */; };
+		CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
+		CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */; };
 		CF64AFB3225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */; };
 		CF64AFB4225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */; };
 		CF64AFB5225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */; };
@@ -1408,6 +1412,7 @@
 		CFEF3D2D20FA002700DA6106 /* CanariCancelButtonForSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */; };
 		CFF0416D20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0416C20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift */; };
 		CFF0417720DD568700FB1C5B /* EBIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */; };
+		CFF0F3EA226E2F3F002A1D1C /* method-swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF0F3E7226E05AD002A1D1C /* method-swizzling.m */; };
 		CFF2620A20EF824700E8F453 /* extension-MergerDocument-insert-array-of-boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2620920EF824700E8F453 /* extension-MergerDocument-insert-array-of-boards.swift */; };
 		CFF2651C20E66F2A00525C0F /* action-MergerDocument-showPrefsForSettingMergerDisplayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2651B20E66F2A00525C0F /* action-MergerDocument-showPrefsForSettingMergerDisplayAction.swift */; };
 		CFF2651E20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2651D20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift */; };
@@ -1551,6 +1556,8 @@
 		CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-boardDisplayRect.swift"; sourceTree = "<group>"; };
+		CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-rename-component.swift"; sourceTree = "<group>"; };
+		CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariComboBox.swift; sourceTree = "<group>"; };
 		CF1D582621AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-SymbolDocument-mSymbolTextSelectionController.swift"; sourceTree = "<group>"; };
 		CF1D9C7721BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-binding-underObjectsDisplay.swift"; sourceTree = "<group>"; };
 		CF1D9C7A21BBEB2200FFF459 /* EBView-binding-overObjectsDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-binding-overObjectsDisplay.swift"; sourceTree = "<group>"; };
@@ -1810,7 +1817,7 @@
 		CF64AF9F225B774200E40C83 /* entity-DevicePackageInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DevicePackageInProject.swift"; sourceTree = "<group>"; };
 		CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-devices.swift"; sourceTree = "<group>"; };
 		CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-fonts.swift"; sourceTree = "<group>"; };
-		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-components.swift"; sourceTree = "<group>"; };
+		CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument-add-components.swift"; sourceTree = "<group>"; };
 		CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceSymbolInstanceInProject.swift"; sourceTree = "<group>"; };
 		CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceSymbolTypeInProject.swift"; sourceTree = "<group>"; };
 		CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-generateProductFilesAction.swift"; sourceTree = "<group>"; };
@@ -2173,6 +2180,7 @@
 		CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariCancelButtonForSheet.swift; sourceTree = "<group>"; };
 		CFF0416C20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-MergerDocument-mBoardModelSelection.swift"; sourceTree = "<group>"; };
 		CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBIntObserverField.swift; sourceTree = "<group>"; };
+		CFF0F3E7226E05AD002A1D1C /* method-swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "method-swizzling.m"; sourceTree = "<group>"; };
 		CFF2620920EF824700E8F453 /* extension-MergerDocument-insert-array-of-boards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-insert-array-of-boards.swift"; sourceTree = "<group>"; };
 		CFF2651B20E66F2A00525C0F /* action-MergerDocument-showPrefsForSettingMergerDisplayAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-showPrefsForSettingMergerDisplayAction.swift"; sourceTree = "<group>"; };
 		CFF2651D20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Preferences+showMergerDisplaySettings.swift"; sourceTree = "<group>"; };
@@ -2431,9 +2439,10 @@
 				CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */,
 				CFD733812258B784009B2614 /* entity-FontInProject.swift */,
 				CFD733802258B784009B2614 /* entity-ProjectRoot.swift */,
-				CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-components.swift */,
+				CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */,
 				CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */,
 				CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */,
+				CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */,
 				CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */,
 				CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */,
 				CF4A66252257EFF2003A7A7A /* ProjectDocument.xib */,
@@ -2618,6 +2627,7 @@
 				CFBAFCE11DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift */,
 				CFBAFCE21DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift */,
 				CFBAFCE31DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift */,
+				CFF0F3E7226E05AD002A1D1C /* method-swizzling.m */,
 			);
 			name = Application;
 			path = ElCanari/application;
@@ -2760,6 +2770,7 @@
 			children = (
 				CF87A96720F11B940011B9EC /* CanariBoardBoardArchivePopUpButton.swift */,
 				CFEF3D2C20FA002700DA6106 /* CanariCancelButtonForSheet.swift */,
+				CF1B6ED2226CEE9800BE4C75 /* CanariComboBox.swift */,
 				CFB63F96211B7B25000A09F1 /* CanariDateObserverField.swift */,
 				CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */,
 				CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */,
@@ -3491,6 +3502,7 @@
 				CF64ACEC225B6AAC00E40C83 /* entity-DeviceMasterPadInProject.swift in Sources */,
 				CF85859021C5124300082CE3 /* transient-PackageArc-selectionDisplay.swift in Sources */,
 				CF3FD6862104F83D0009B269 /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
+				CFF0F3EA226E2F3F002A1D1C /* method-swizzling.m in Sources */,
 				CFCD1F6221A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
 				CF05C9B921A809AC0021652C /* transient-SymbolBezierCurve-issues.swift in Sources */,
 				CF5124E7222AA52300FA4364 /* arrayController-DeviceDocument-mPackageDisplayController.swift in Sources */,
@@ -3684,7 +3696,7 @@
 				CFDDD4E521BB1529007D2F14 /* EBView.swift in Sources */,
 				CF6B32EB21C8F7F700E3B985 /* extension-PackageGuide.swift in Sources */,
 				CF0E9D102229B85B00124F04 /* action-DeviceDocument-updateSelectedPackages.swift in Sources */,
-				CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-components.swift in Sources */,
+				CF64AFA9225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */,
 				CF5123F4222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CFA0D9E122591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF001F6D21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
@@ -3803,6 +3815,7 @@
 				CF58A3B71DD7887000146883 /* action-ArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
 				CF0AE89321E0F58200BE7EE2 /* transient-PackageDocument-mMetadataStatus.swift in Sources */,
 				CF5A55CD21C597F000C7014E /* transient-PackagePad-padIsTraversing.swift in Sources */,
+				CF1B6ED3226CEE9800BE4C75 /* CanariComboBox.swift in Sources */,
 				CFA0DF5221C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */,
 				CFDD886E22342800008D3781 /* transient-SymbolPinInstanceInDevice-isConnected.swift in Sources */,
 				CFD7E80520EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift in Sources */,
@@ -4077,6 +4090,7 @@
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */,
+				CF1B6ED0226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */,
 				CFF5EF0622269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
 				CFA0D9D622590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */,
@@ -4268,6 +4282,7 @@
 				CF5A55D121C599EA00C7014E /* transient-PackagePad-annularRing.swift in Sources */,
 				CF5C4CF2219F04D600EAC52A /* class-MergerViaShapeArray.swift in Sources */,
 				CF5C4CF3219F04D600EAC52A /* transient-FontCharacter-segmentArrayForDrawing.swift in Sources */,
+				CF1B6ED1226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift in Sources */,
 				CF5C4CF4219F04D600EAC52A /* CanariDimensionObserverTextField.swift in Sources */,
 				CF5C4CF5219F04D600EAC52A /* extension-MergerDocument-importArtworkAction.swift in Sources */,
 				CF5C4CF6219F04D600EAC52A /* transient-BoardModel-backPadsBezierPaths.swift in Sources */,
@@ -4320,8 +4335,9 @@
 				CF5C4D05219F04D600EAC52A /* EBStepper.swift in Sources */,
 				CF5C4D06219F04D600EAC52A /* action-FontDocument-addCharacterAction.swift in Sources */,
 				CFDDD4E621BB1529007D2F14 /* EBView.swift in Sources */,
+				CF1B6ED4226CEE9800BE4C75 /* CanariComboBox.swift in Sources */,
 				CF6B32EC21C8F7F700E3B985 /* extension-PackageGuide.swift in Sources */,
-				CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-components.swift in Sources */,
+				CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */,
 				CF0E9D112229B85B00124F04 /* action-DeviceDocument-updateSelectedPackages.swift in Sources */,
 				CFA0D9E222591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF5123F5222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
@@ -4980,6 +4996,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -5011,6 +5028,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";

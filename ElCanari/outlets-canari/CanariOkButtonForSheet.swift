@@ -23,19 +23,15 @@ class CanariOkButtonForSheet : EBButton {
 
   override func awakeFromNib () {
     super.awakeFromNib ()
-//    if let mySheet = self.window, let okCell = self.cell as? NSButtonCell {
-//      mySheet.defaultButtonCell = okCell
-//      mySheet.enableKeyEquivalentForDefaultButtonCell ()
-//      self.keyEquivalent = "\r"
-      self.target = self
-      self.action = #selector (CanariOkButtonForSheet.dismissSheetAction (_:))
-//    }
+    self.target = self
+    self.action = #selector (CanariOkButtonForSheet.dismissSheetAction (_:))
   }
 
   //····················································································································
 
   @objc func dismissSheetAction (_ sender : Any?) {
     if let mySheet = self.window, let parent = mySheet.sheetParent {
+      parent.endEditing (for: nil)
       parent.endSheet (mySheet, returnCode: NSApplication.ModalResponse.stop)
     }
   }

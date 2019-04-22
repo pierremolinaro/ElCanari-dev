@@ -132,10 +132,11 @@ entity ComponentInProject {
   toOne DeviceInProject mDevice inverse toMany mComponents ;
   toOne DevicePackageInProject mSelectedPackage ;
   
+  property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
   property String mValue default "" ;
   
-  transient String componentName dependsFrom self.mNameIndex, self.mDevice.one.mPrefix ;
+  transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
 }

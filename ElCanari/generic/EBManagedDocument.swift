@@ -379,6 +379,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override final func removeWindowController (_ inWindowController : NSWindowController) {
   //--- Remove user interface
     self.removeUserInterface ()
+//    NSLog ("self.windowForSheet?.contentView \(String(describing: self.windowForSheet?.contentView))")
+//    self.windowForSheet?.contentView = nil
   //--- Remove all entities
     let allEntities = self.reachableObjectsFromRootObject ()
     for entity in allEntities {

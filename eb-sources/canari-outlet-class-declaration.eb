@@ -19,6 +19,8 @@ extern outlet class NSTableView ;
 
 extern outlet class NSClipView ;
 
+extern outlet class CanariComboBox ;
+
 extern outlet class NSPanel ;
 
 extern outlet class NSImageView ;
