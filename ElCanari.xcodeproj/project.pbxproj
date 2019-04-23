@@ -2431,11 +2431,9 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
-				CF2A69B1226F5D0A00261C47 /* transient-ProjectDocument-canChangePackage.swift */,
-				CF2A69AE226F5C9200261C47 /* action-ProjectDocument-changePackageOfSelectedComponentsAction.swift */,
-				CF2A69AB226F5C0A00261C47 /* transient-ComponentInProject-availablePackages.swift */,
 				CF11AB99225A1B740092A524 /* action-ProjectDocument-addComponentAction.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
+				CF2A69AE226F5C9200261C47 /* action-ProjectDocument-changePackageOfSelectedComponentsAction.swift */,
 				CF2A69A8226F545100261C47 /* action-ProjectDocument-duplicateSelectedComponentsAction.swift */,
 				CF11ABB1225A37350092A524 /* action-ProjectDocument-editDeviceAction.swift */,
 				CFA0DAC722592606008F2448 /* action-ProjectDocument-editFontAction.swift */,
@@ -2468,6 +2466,7 @@
 				CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */,
 				CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */,
 				CF4A66252257EFF2003A7A7A /* ProjectDocument.xib */,
+				CF2A69AB226F5C0A00261C47 /* transient-ComponentInProject-availablePackages.swift */,
 				CFD3F8E9225BA13700387FF1 /* transient-ComponentInProject-componentName.swift */,
 				CFD3F8EF225BA3E400387FF1 /* transient-ComponentInProject-deviceName.swift */,
 				CFD3F8F0225BA3E400387FF1 /* transient-ComponentInProject-selectedPackageName.swift */,
@@ -2484,6 +2483,7 @@
 				CF4D3169225C8A5100256750 /* transient-DeviceSymbolInstanceInProject-symbolTypeName.swift */,
 				CFA0D9DA22590BEE008F2448 /* transient-FontInProject-sizeString.swift */,
 				CFA0D9D522590887008F2448 /* transient-FontInProject-versionString.swift */,
+				CF2A69B1226F5D0A00261C47 /* transient-ProjectDocument-canChangePackage.swift */,
 				CF403462225BAF16001A2BF7 /* transient-ProjectDocument-canRemoveSelectedDevices.swift */,
 				CFD3F8F8225BA67100387FF1 /* transient-ProjectDocument-componentCount.swift */,
 				CF207FF7226B4572007D64B1 /* transient-ProjectDocument-pinPadAssignments.swift */,
