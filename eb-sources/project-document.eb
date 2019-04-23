@@ -45,6 +45,16 @@ document ProjectDocument root ProjectRoot {
     $enabled mComponentController.selectedArray.count > 0
   ;
 
+  action changePackageOfSelectedComponentsAction ;
+  transient Bool canChangePackage dependsFrom mComponentController.selectedArray.all.availablePackages ;
+  outlet EBButton mChangePackageOfSelectedComponentsActionButton
+    $run self.changePackageOfSelectedComponentsAction
+    $enabled self.canChangePackage
+  ;
+  outlet NSPanel mChangePackagePanel ;
+  outlet EBPopUpButton mChangePackagePopUpButton ;
+  outlet NSTextField mChangePackageComponentListTextField ;
+
 
   outlet EBButton mRenameComponentButton $enabled mComponentController.selectedArray.count == 1 ; # Action targeted in IB
   outlet NSPanel mRenameComponentPanel ;

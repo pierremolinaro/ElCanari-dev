@@ -36,9 +36,6 @@ extension CustomizedProjectDocument {
       self.populateIndexesPopupButton (self.mComponentCurrentIndex)
       self.mRenameComponentIndexesPopUpButton?.target = self
       self.mRenameComponentIndexesPopUpButton?.action = #selector (CustomizedProjectDocument.renameComponentIndexPopUpButtonAction (_:))
-    //--- Rename component button
-//      self.mRenameComponentValidationButton?.target = self
-//      self.mRenameComponentValidationButton?.action = #selector (CustomizedProjectDocument.performRenameComponentAction (_:))
     //--- Sheet
       self.mRenameComponentValidationButton?.isEnabled = true
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in

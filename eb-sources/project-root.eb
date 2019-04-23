@@ -141,6 +141,8 @@ entity ComponentInProject {
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
+  
+  transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

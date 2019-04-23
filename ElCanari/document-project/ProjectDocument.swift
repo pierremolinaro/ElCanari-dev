@@ -142,6 +142,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canChangePackage
+  //····················································································································
+
+  var canChangePackage_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canChangePackage_property_selection : EBSelection <Bool> {
+    return self.canChangePackage_property.prop
+  }
+
+  //····················································································································
+
+  var canChangePackage : Bool? {
+    switch self.canChangePackage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -172,6 +195,10 @@ import Cocoa
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
+  @IBOutlet var mChangePackageComponentListTextField : NSTextField?
+  @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
+  @IBOutlet var mChangePackagePanel : NSPanel?
+  @IBOutlet var mChangePackagePopUpButton : EBPopUpButton?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
@@ -213,6 +240,7 @@ import Cocoa
 
   var mController_mDuplicateSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mChangePackageOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -294,6 +322,10 @@ import Cocoa
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mChangePackagePanel, "mChangePackagePanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mChangePackagePopUpButton, "mChangePackagePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -432,6 +464,28 @@ import Cocoa
       }
     }
     self.mProjectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- Atomic property: canChangePackage
+    self.canChangePackage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponentController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mComponentController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_canChangePackage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -484,6 +538,16 @@ import Cocoa
       )
       self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSelectedComponentsActionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.canChangePackage_property_selection
+        },
+        outlet: self.mChangePackageOfSelectedComponentsActionButton
+      )
+      self.canChangePackage_property.addEBObserver (controller)
+      self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -592,6 +656,8 @@ import Cocoa
     self.mDuplicateSelectedComponentsActionButton?.action = #selector (ProjectDocument.duplicateSelectedComponentsAction (_:))
     self.mRemoveSelectedComponentsActionButton?.target = self
     self.mRemoveSelectedComponentsActionButton?.action = #selector (ProjectDocument.removeSelectedComponentsAction (_:))
+    self.mChangePackageOfSelectedComponentsActionButton?.target = self
+    self.mChangePackageOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changePackageOfSelectedComponentsAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -641,6 +707,8 @@ import Cocoa
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
+    self.canChangePackage_property.removeEBObserver (self.mController_mChangePackageOfSelectedComponentsActionButton_enabled!)
+    self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
@@ -675,11 +743,13 @@ import Cocoa
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolNames (self.selectedDeviceSymbolNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.mComponentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil
     self.mRemoveSelectedComponentsActionButton?.target = nil
+    self.mChangePackageOfSelectedComponentsActionButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -694,6 +764,10 @@ import Cocoa
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
+    self.mChangePackageComponentListTextField?.ebCleanUp ()
+    self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
+    self.mChangePackagePanel?.ebCleanUp ()
+    self.mChangePackagePopUpButton?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()

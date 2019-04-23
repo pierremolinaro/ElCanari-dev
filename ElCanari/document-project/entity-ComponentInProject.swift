@@ -41,6 +41,12 @@ protocol ComponentInProject_selectedPackageName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_availablePackages : class {
+  var availablePackages : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -50,7 +56,8 @@ class ComponentInProject : EBManagedObject,
          ComponentInProject_mValue,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
-         ComponentInProject_selectedPackageName {
+         ComponentInProject_selectedPackageName,
+         ComponentInProject_availablePackages {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -211,6 +218,29 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: availablePackages
+  //····················································································································
+
+  var availablePackages_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var availablePackages_property_selection : EBSelection <StringArray> {
+    return self.availablePackages_property.prop
+  }
+
+  //····················································································································
+
+  var availablePackages : StringArray? {
+    switch self.availablePackages_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -294,6 +324,28 @@ class ComponentInProject : EBManagedObject,
       }
     }
     self.mSelectedPackage_property.addEBObserverOf_mPackageName (self.selectedPackageName_property)
+  //--- Atomic property: availablePackages
+    self.availablePackages_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDevice_property.packageNames_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDevice_property.packageNames_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_availablePackages (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -307,6 +359,7 @@ class ComponentInProject : EBManagedObject,
     self.mNameIndex_property.removeEBObserver (self.componentName_property)
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
+    self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
   //--- Unregister properties for handling signature
   }
 
@@ -369,6 +422,14 @@ class ComponentInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.selectedPackageName_property.mObserverExplorer,
       valueExplorer:&self.selectedPackageName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "availablePackages",
+      idx:self.availablePackages_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.availablePackages_property.mObserverExplorer,
+      valueExplorer:&self.availablePackages_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -878,6 +939,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'availablePackages' transient property
+  //····················································································································
+
+  private var mObserversOf_availablePackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_availablePackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.availablePackages_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_availablePackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.availablePackages_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_availablePackages_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_availablePackages.apply { (_ observer : EBEvent) in
+        managedObject.availablePackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_availablePackages_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_availablePackages.apply { (_ observer : EBEvent) in
+        managedObject.availablePackages_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -958,6 +1075,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.removeEBObserversOf_componentName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -968,6 +1086,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.addEBObserversOf_componentName_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceName_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_availablePackages_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1105,6 +1224,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
        //   self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
@@ -1113,6 +1233,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1130,6 +1251,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         // self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
@@ -1138,6 +1260,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
