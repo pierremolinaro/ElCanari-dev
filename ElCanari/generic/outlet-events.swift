@@ -64,9 +64,6 @@ class EBOutletEvent : EBEvent {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func flushOutletEvents () {
-    if !Thread.isMainThread {
-      presentErrorWindow (#file, #line, "not in main thread")
-    }
   if gPendingOutletEvents.count > 0 {
     if logEvents () {
       appendMessageString ("Flush outlet events\n", color: NSColor.blue)
@@ -92,7 +89,6 @@ func flushOutletEvents () {
     if logEvents () {
       appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
     }
-    // CATransaction.flush ()
   }
 }
 
