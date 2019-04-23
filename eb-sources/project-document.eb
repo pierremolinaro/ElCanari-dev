@@ -33,6 +33,12 @@ document ProjectDocument root ProjectRoot {
   outlet CanariNewComponentFromDevicePullDownButton mNewComponentFromDevicePullDownButton
     $deviceNames root.deviceNames ;
 
+  action duplicateSelectedComponentsAction ;
+  outlet EBButton mDuplicateSelectedComponentsActionButton
+    $run self.duplicateSelectedComponentsAction
+    $enabled mComponentController.selectedArray.count > 0
+  ;
+
   action removeSelectedComponentsAction ;
   outlet EBButton mRemoveSelectedComponentsActionButton
     $run self.removeSelectedComponentsAction

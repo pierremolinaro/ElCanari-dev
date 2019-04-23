@@ -179,6 +179,7 @@ import Cocoa
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView?
+  @IBOutlet var mDuplicateSelectedComponentsActionButton : EBButton?
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
@@ -210,6 +211,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mDuplicateSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -299,6 +301,7 @@ import Cocoa
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
@@ -467,6 +470,16 @@ import Cocoa
         computeFunction: {
           return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
+        outlet: self.mDuplicateSelectedComponentsActionButton
+      )
+      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mDuplicateSelectedComponentsActionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
         outlet: self.mRemoveSelectedComponentsActionButton
       )
       self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -575,6 +588,8 @@ import Cocoa
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
+    self.mDuplicateSelectedComponentsActionButton?.target = self
+    self.mDuplicateSelectedComponentsActionButton?.action = #selector (ProjectDocument.duplicateSelectedComponentsAction (_:))
     self.mRemoveSelectedComponentsActionButton?.target = self
     self.mRemoveSelectedComponentsActionButton?.action = #selector (ProjectDocument.removeSelectedComponentsAction (_:))
     self.mAddFontButton?.target = self
@@ -622,6 +637,8 @@ import Cocoa
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
   //--------------------------- Unbind multiple bindings
+    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
+    self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
@@ -661,6 +678,7 @@ import Cocoa
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
+    self.mDuplicateSelectedComponentsActionButton?.target = nil
     self.mRemoveSelectedComponentsActionButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
@@ -683,6 +701,7 @@ import Cocoa
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
+    self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
