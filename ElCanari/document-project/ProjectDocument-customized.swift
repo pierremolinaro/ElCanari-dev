@@ -74,6 +74,9 @@ import Cocoa
       self.mProductPageView
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //---
+    self.mNewComponentFromDevicePullDownButton?.register (document: self)
+
 //  //--- Set inspector segmented control
 //    let inspectors = [
 //      self.mSelectedObjectsInspectorView,

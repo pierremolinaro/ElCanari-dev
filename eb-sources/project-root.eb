@@ -8,6 +8,8 @@ entity ProjectRoot {
   toMany ComponentInProject mComponents ;
 
   property Int mSelectedPageIndex default 0 ;
+  
+  transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 }
   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

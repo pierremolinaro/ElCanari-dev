@@ -30,6 +30,9 @@ document ProjectDocument root ProjectRoot {
   action addComponentAction ;
   outlet EBButton mAddComponentButton $run self.addComponentAction ;
 
+  outlet CanariNewComponentFromDevicePullDownButton mNewComponentFromDevicePullDownButton
+    $deviceNames root.deviceNames ;
+
   action removeSelectedComponentsAction ;
   outlet EBButton mRemoveSelectedComponentsActionButton
     $run self.removeSelectedComponentsAction

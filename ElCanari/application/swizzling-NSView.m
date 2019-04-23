@@ -1,5 +1,5 @@
 //
-//  method-swizzling.m
+//  NSView-swizzling.m
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 22/04/2019.

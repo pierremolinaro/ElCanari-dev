@@ -187,6 +187,7 @@ import Cocoa
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
+  @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
@@ -306,6 +307,7 @@ import Cocoa
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
@@ -454,6 +456,7 @@ import Cocoa
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
+    self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
@@ -613,6 +616,7 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
+    self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
     self.mComponentCountTextField?.unbind_valueObserver ()
     self.mDevicePackageTableView?.unbind_array ()
     self.mDeviceSymbolTableView?.unbind_array ()
@@ -687,6 +691,7 @@ import Cocoa
     self.mMasterView?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
+    self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()

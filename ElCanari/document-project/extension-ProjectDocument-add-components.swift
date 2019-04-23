@@ -29,8 +29,14 @@ extension ProjectDocument {
   internal func addComponent (_ inData : Data, _ inName : String) {
   //--- Append device
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
+    self.addComponent (fromPossibleDevice: possibleNewDeviceInProject)
+  }
+
+  //····················································································································
+
+  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) {
   //--- Append component
-    if let newDeviceInProject = possibleNewDeviceInProject {
+    if let newDeviceInProject = inPossibleDevice {
       let newComponent = ComponentInProject (self.ebUndoManager)
       newComponent.mDevice = newDeviceInProject
       newComponent.mSelectedPackage = newDeviceInProject.mPackages [0]
@@ -39,12 +45,26 @@ extension ProjectDocument {
       var idx = 1
       for component in self.rootObject.mComponents {
         if newComponent.mNamePrefix == component.mNamePrefix {
-          idx = component.mNameIndex + 1
+          idx = max (idx, component.mNameIndex + 1)
         }
       }
       newComponent.mNameIndex = idx
       self.rootObject.mComponents.append (newComponent)
     }
+  }
+
+  //····················································································································
+
+  func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) {
+  //--- find device
+    var possibleDevice : DeviceInProject? = nil
+    for device in self.rootObject.mDevices {
+      if device.mDeviceName == inDeviceName {
+        possibleDevice = device
+      }
+    }
+  //--- Add Component
+    self.addComponent (fromPossibleDevice: possibleDevice)
   }
 
   //····················································································································

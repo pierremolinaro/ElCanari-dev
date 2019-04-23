@@ -11,11 +11,18 @@ protocol ProjectRoot_mSelectedPageIndex : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_deviceNames : class {
+  var deviceNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectRoot : EBManagedObject,
-         ProjectRoot_mSelectedPageIndex {
+         ProjectRoot_mSelectedPageIndex,
+         ProjectRoot_deviceNames {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -92,6 +99,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: deviceNames
+  //····················································································································
+
+  var deviceNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var deviceNames_property_selection : EBSelection <StringArray> {
+    return self.deviceNames_property.prop
+  }
+
+  //····················································································································
+
+  var deviceNames : StringArray? {
+    switch self.deviceNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -105,6 +135,28 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: deviceNames
+    self.deviceNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDevices_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDevices_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_deviceNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -114,6 +166,7 @@ class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Unregister properties for handling signature
   }
 
@@ -137,6 +190,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "deviceNames",
+      idx:self.deviceNames_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.deviceNames_property.mObserverExplorer,
+      valueExplorer:&self.deviceNames_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "mComponents",
@@ -375,6 +436,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'deviceNames' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
+        managedObject.deviceNames_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
+        managedObject.deviceNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -450,11 +567,13 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -585,9 +704,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
           }
        //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -598,9 +719,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
