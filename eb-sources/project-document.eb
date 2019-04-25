@@ -56,6 +56,16 @@ document ProjectDocument root ProjectRoot {
   outlet NSTextField mChangePackageComponentListTextField ;
 
 
+  action changeValueOfSelectedComponentsAction ;
+  outlet EBButton mChangeValueOfSelectedComponentsActionButton
+    $run self.changeValueOfSelectedComponentsAction
+    $enabled mComponentController.selectedArray.count > 0
+  ;
+  outlet NSPanel mChangeValuePanel ;
+  outlet CanariComboBox mChangeComponentValueComboxBox ;
+  outlet NSTextField mChangeValueComponentListTextField ;
+
+
   outlet EBButton mRenameComponentButton $enabled mComponentController.selectedArray.count == 1 ; # Action targeted in IB
   outlet NSPanel mRenameComponentPanel ;
   outlet NSTextField mCurrentComponentNameTextField ;

@@ -37,7 +37,6 @@ extension ProjectDocument {
            var itemToSelect : NSMenuItem? = nil
            let stringAttributes : [NSAttributedString.Key : Any] = [
              NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
-             // NSAttributedString.Key.foregroundColor : NSColor.brown
            ]
            for packageName in possiblePackages.sorted () {
              self.mChangePackagePopUpButton?.addItem (withTitle: packageName)

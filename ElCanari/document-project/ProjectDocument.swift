@@ -195,10 +195,14 @@ import Cocoa
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
+  @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
   @IBOutlet var mChangePackagePanel : NSPanel?
   @IBOutlet var mChangePackagePopUpButton : EBPopUpButton?
+  @IBOutlet var mChangeValueComponentListTextField : NSTextField?
+  @IBOutlet var mChangeValueOfSelectedComponentsActionButton : EBButton?
+  @IBOutlet var mChangeValuePanel : NSPanel?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
@@ -241,6 +245,7 @@ import Cocoa
   var mController_mDuplicateSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mChangePackageOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mChangeValueOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -322,10 +327,14 @@ import Cocoa
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangePackagePanel, "mChangePackagePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangePackagePopUpButton, "mChangePackagePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mChangeValueComponentListTextField, "mChangeValueComponentListTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -552,6 +561,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mChangeValueOfSelectedComponentsActionButton
+      )
+      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mComponentController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentButton
@@ -658,6 +677,8 @@ import Cocoa
     self.mRemoveSelectedComponentsActionButton?.action = #selector (ProjectDocument.removeSelectedComponentsAction (_:))
     self.mChangePackageOfSelectedComponentsActionButton?.target = self
     self.mChangePackageOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changePackageOfSelectedComponentsAction (_:))
+    self.mChangeValueOfSelectedComponentsActionButton?.target = self
+    self.mChangeValueOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changeValueOfSelectedComponentsAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -709,6 +730,8 @@ import Cocoa
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
     self.canChangePackage_property.removeEBObserver (self.mController_mChangePackageOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = nil
+    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mChangeValueOfSelectedComponentsActionButton_enabled!)
+    self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
@@ -750,6 +773,7 @@ import Cocoa
     self.mDuplicateSelectedComponentsActionButton?.target = nil
     self.mRemoveSelectedComponentsActionButton?.target = nil
     self.mChangePackageOfSelectedComponentsActionButton?.target = nil
+    self.mChangeValueOfSelectedComponentsActionButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -764,10 +788,14 @@ import Cocoa
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
+    self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangePackagePanel?.ebCleanUp ()
     self.mChangePackagePopUpButton?.ebCleanUp ()
+    self.mChangeValueComponentListTextField?.ebCleanUp ()
+    self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
+    self.mChangeValuePanel?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
