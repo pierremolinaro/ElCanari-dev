@@ -74,7 +74,7 @@ extension ProjectDocument {
     let newComponent = ComponentInProject (self.ebUndoManager)
     newComponent.mDevice = inComponent.mDevice
     newComponent.mSelectedPackage = inComponent.mSelectedPackage
-    newComponent.mValue = inComponent.mValue
+    newComponent.mComponentValue = inComponent.mComponentValue
   //--- Fix index for component name
     newComponent.mNamePrefix = inComponent.mNamePrefix
     var idx = 1

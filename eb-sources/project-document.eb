@@ -64,6 +64,7 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mChangeValuePanel ;
   outlet CanariComboBox mChangeComponentValueComboxBox ;
   outlet NSTextField mChangeValueComponentListTextField ;
+  outlet NSButton mChangeValueValidationButton ;
 
 
   outlet EBButton mRenameComponentButton $enabled mComponentController.selectedArray.count == 1 ; # Action targeted in IB
@@ -78,7 +79,7 @@ document ProjectDocument root ProjectRoot {
      column "name" EBTextObserverField $valueObserver self.componentName
      column "device" EBTextObserverField $valueObserver self.deviceName
      column "package" EBTextObserverField $valueObserver self.selectedPackageName
-     column "value" EBTextField $value self.mValue { sendContinously : no }
+     column "value" EBTextField $value self.mComponentValue { sendContinously : no }
   }
   outlet EBTableView mComponentTableView $tableValue mComponentController ;
 

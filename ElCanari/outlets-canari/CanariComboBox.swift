@@ -14,7 +14,11 @@ class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
 
   //····················································································································
 
-  var textDidChangeCallBack : Optional < () -> Void > = nil
+  var textDidChangeCallBack : Optional < (_ outlet : CanariComboBox) -> Void > = nil {
+    didSet {
+      self.textDidChangeCallBack? (self)
+    }
+  }
 
   //····················································································································
 
@@ -44,14 +48,14 @@ class CanariComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
 
   @objc func controlTextDidChange (_ inNotification : Notification) {
     // Swift.print ("CanariComboBox, controlTextDidChange '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
-    self.textDidChangeCallBack? ()
+    self.textDidChangeCallBack? (self)
   }
 
   //····················································································································
 
   func controlTextDidEndEditing (_ notification : Notification) {
     // Swift.print ("CanariComboBox, controlTextDidEndEditing '\(self.stringValue)' '\(String(describing: self.objectValueOfSelectedItem))'")
-    self.textDidChangeCallBack? ()
+    self.textDidChangeCallBack? (self)
   }
 
   //····················································································································

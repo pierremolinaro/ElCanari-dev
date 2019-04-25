@@ -203,6 +203,7 @@ import Cocoa
   @IBOutlet var mChangeValueComponentListTextField : NSTextField?
   @IBOutlet var mChangeValueOfSelectedComponentsActionButton : EBButton?
   @IBOutlet var mChangeValuePanel : NSPanel?
+  @IBOutlet var mChangeValueValidationButton : NSButton?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
@@ -335,6 +336,7 @@ import Cocoa
     checkOutletConnection (self.mChangeValueComponentListTextField, "mChangeValueComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -796,6 +798,7 @@ import Cocoa
     self.mChangeValueComponentListTextField?.ebCleanUp ()
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangeValuePanel?.ebCleanUp ()
+    self.mChangeValueValidationButton?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()

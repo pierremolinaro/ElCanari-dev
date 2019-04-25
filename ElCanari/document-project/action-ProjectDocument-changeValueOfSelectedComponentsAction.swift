@@ -14,7 +14,32 @@ import Cocoa
 extension ProjectDocument {
   @objc func changeValueOfSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+         var possibleValues = Set <String> ()
+         var componentNames = [String] ()
+         let selectedComponents = self.mComponentController.selectedArray_property.propval
+         for component in selectedComponents {
+           componentNames.append (component.componentName!)
+           possibleValues.insert (component.mComponentValue)
+         }
+         let componentValues = Array (possibleValues).sorted ()
+         componentNames.sort ()
+      //---
+         if componentValues.count > 0, let window = self.windowForSheet, let panel = self.mChangeValuePanel {
+           self.mChangeValueComponentListTextField?.stringValue = componentNames.joined (separator: ", ")
+           self.mChangeComponentValueComboxBox?.removeAllItems ()
+           self.mChangeComponentValueComboxBox?.addItems (withObjectValues: componentValues)
+           self.mChangeComponentValueComboxBox?.selectItem (at: 0)
+           self.mChangeComponentValueComboxBox?.textDidChangeCallBack = { [weak self] (_ outlet : CanariComboBox) in
+             self?.mChangeValueValidationButton?.title = "Change to " + outlet.stringValue
+           }
+           window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
+             if inResponse == .stop, let newValue = self.mChangeComponentValueComboxBox?.stringValue {
+               for component in selectedComponents {
+                 component.mComponentValue = newValue
+               }
+             }
+           }
+         }
 //--- END OF USER ZONE 2
   }
 }

@@ -30,7 +30,7 @@ extension CustomizedProjectDocument {
     //--- Prefix Combo box
       let currentPrefixSet = self.getComponentNamePrefixes ()
       self.populatePrefixComboBox (currentPrefixSet, self.mComponentCurrentPrefix)
-      self.mRenameComponentPrefixComboxBox?.textDidChangeCallBack = { [weak self] in self?.renameComponentComboBoxAction () }
+      self.mRenameComponentPrefixComboxBox?.textDidChangeCallBack = { [weak self] (_ : CanariComboBox) in self?.renameComponentComboBoxAction () }
       self.mRenameComponentPrefixComboxBox?.isContinuous = true
     //--- Name index pop up
       self.populateIndexesPopupButton (self.mComponentCurrentIndex)

@@ -136,7 +136,7 @@ entity ComponentInProject {
   
   property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
-  property String mValue default "" ;
+  property String mComponentValue default "" ;
   
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;

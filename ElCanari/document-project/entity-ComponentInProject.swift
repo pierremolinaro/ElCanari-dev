@@ -18,8 +18,8 @@ protocol ComponentInProject_mNameIndex : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mValue : class {
-  var mValue : String { get }
+protocol ComponentInProject_mComponentValue : class {
+  var mComponentValue : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -53,7 +53,7 @@ protocol ComponentInProject_availablePackages : class {
 class ComponentInProject : EBManagedObject,
          ComponentInProject_mNamePrefix,
          ComponentInProject_mNameIndex,
-         ComponentInProject_mValue,
+         ComponentInProject_mComponentValue,
          ComponentInProject_componentName,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
@@ -94,21 +94,21 @@ class ComponentInProject : EBManagedObject,
   var mNameIndex_property_selection : EBSelection <Int> { return self.mNameIndex_property.prop }
 
   //····················································································································
-  //   Atomic property: mValue
+  //   Atomic property: mComponentValue
   //····················································································································
 
-  var mValue_property = EBStoredProperty_String (defaultValue: "")
+  var mComponentValue_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mValue : String {
-    get { return self.mValue_property.propval }
-    set { self.mValue_property.setProp (newValue) }
+  var mComponentValue : String {
+    get { return self.mComponentValue_property.propval }
+    set { self.mComponentValue_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mValue_property_selection : EBSelection <String> { return self.mValue_property.prop }
+  var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
 
   //····················································································································
   //   To one property: mDevice
@@ -250,8 +250,8 @@ class ComponentInProject : EBManagedObject,
     self.mNamePrefix_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mValue
-    self.mValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mDevice
     self.mDevice_property.owner = self
   //--- To one property: mSelectedPackage
@@ -391,12 +391,12 @@ class ComponentInProject : EBManagedObject,
       valueExplorer:&self.mNameIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mValue",
-      idx:self.mValue_property.ebObjectIndex,
+      "mComponentValue",
+      idx:self.mComponentValue_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mValue_property.mObserverExplorer,
-      valueExplorer:&self.mValue_property.mValueExplorer
+      observerExplorer:&self.mComponentValue_property.mObserverExplorer,
+      valueExplorer:&self.mComponentValue_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -461,9 +461,9 @@ class ComponentInProject : EBManagedObject,
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.mObserverExplorer = nil
     self.mNameIndex_property.mValueExplorer = nil
-  //--- Atomic property: mValue
-    self.mValue_property.mObserverExplorer = nil
-    self.mValue_property.mValueExplorer = nil
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.mObserverExplorer = nil
+    self.mComponentValue_property.mValueExplorer = nil
   //--- To one property: mDevice
     self.mDevice_property.mObserverExplorer = nil
     self.mDevice_property.mValueExplorer = nil
@@ -504,8 +504,8 @@ class ComponentInProject : EBManagedObject,
     self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
-  //--- Atomic property: mValue
-    self.mValue_property.storeIn (dictionary: ioDictionary, forKey:"mValue")
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
@@ -553,8 +553,8 @@ class ComponentInProject : EBManagedObject,
     self.mNamePrefix_property.readFrom (dictionary: inDictionary, forKey:"mNamePrefix")
   //--- Atomic property: mNameIndex
     self.mNameIndex_property.readFrom (dictionary: inDictionary, forKey:"mNameIndex")
-  //--- Atomic property: mValue
-    self.mValue_property.readFrom (dictionary: inDictionary, forKey:"mValue")
+  //--- Atomic property: mComponentValue
+    self.mComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mComponentValue")
   }
 
   //····················································································································
@@ -714,58 +714,58 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
-  //   Observers of 'mValue' stored property
+  //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  private var mObserversOf_mValue = EBWeakEventSet ()
+  private var mObserversOf_mComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mValue (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mValue.insert (inObserver)
+    self.mObserversOf_mComponentValue.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mValue_property.addEBObserver (inObserver)
+        managedObject.mComponentValue_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mValue (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mValue.remove (inObserver)
+    self.mObserversOf_mComponentValue.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mValue_property.removeEBObserver (inObserver)
+        managedObject.mComponentValue_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+  final func addEBObserversOf_mComponentValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mValue.apply { (_ observer : EBEvent) in
-        managedObject.mValue_property.addEBObserver (observer)
+      self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
+        managedObject.mComponentValue_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
-    self.mObserversOf_mValue.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mValue_property.removeEBObserver (observer)
+        managedObject.mComponentValue_property.removeEBObserver (observer)
       }
     }
   }
@@ -1070,7 +1070,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mValue_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_componentName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceName_fromElementsOfSet (removedSet)
@@ -1081,7 +1081,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
      //--- Add observers of stored properties
       self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedSet)
       self.addEBObserversOf_mNameIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mValue_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mComponentValue_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_componentName_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceName_toElementsOfSet (addedSet)
@@ -1216,11 +1216,11 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             self.setOppositeRelationship? (nil)
             managedObject.mNamePrefix_property.mSetterDelegate = nil
             managedObject.mNameIndex_property.mSetterDelegate = nil
-            managedObject.mValue_property.mSetterDelegate = nil
+            managedObject.mComponentValue_property.mSetterDelegate = nil
           }
        //   self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
@@ -1228,7 +1228,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mValue_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
@@ -1243,11 +1243,11 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             self.setOppositeRelationship? (managedObject)
             managedObject.mNamePrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         // self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mComponentValue_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
@@ -1255,7 +1255,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         //--- Add observers of stored properties
           self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mValue_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mComponentValue_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)

@@ -19,6 +19,7 @@
                 <outlet property="mChangeValueComponentListTextField" destination="q3b-rm-caQ" id="NR5-1P-Vzr"/>
                 <outlet property="mChangeValueOfSelectedComponentsActionButton" destination="14896" id="Lew-KT-D4L"/>
                 <outlet property="mChangeValuePanel" destination="ee1-9Y-9Mj" id="dWw-rC-1dm"/>
+                <outlet property="mChangeValueValidationButton" destination="8bg-gm-Ulo" id="saP-Lv-6iz"/>
                 <outlet property="mComponentCountTextField" destination="2928" id="x07-iM-BS2"/>
                 <outlet property="mComponentTableView" destination="2919" id="nfb-oR-9Fm"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
@@ -3026,7 +3027,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Om5-j3-6v0">
                         <rect key="frame" x="1" y="0.0" width="801" height="458"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="PMComponentsTableView" rowSizeStyle="automatic" headerView="14829" viewBased="YES" id="2919" customClass="EBTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="801" height="435"/>
@@ -3118,11 +3119,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="vdd-1K-n7V" customClass="EBTextObserverField_TableViewCell">
-                                                <rect key="frame" x="208" y="1" width="123" height="17"/>
+                                                <rect key="frame" x="208" y="1" width="122.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="ZKd-QP-8ak" customClass="EBTextObserverField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="xv4-d0-E2x">
                                                             <font key="font" metaFont="system"/>
@@ -3152,7 +3153,7 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="qUB-uE-oeC">
-                                                <rect key="frame" x="334" y="1" width="132" height="17"/>
+                                                <rect key="frame" x="333.5" y="1" width="132" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Oiu-eT-q5N">
@@ -3171,7 +3172,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="70" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="70.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3185,11 +3186,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="469" y="1" width="70" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="70.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3204,7 +3205,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="257.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="257" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -7702,7 +7703,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" id="8bg-gm-Ulo" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="394" y="12" width="82" height="32"/>
+                        <rect key="frame" x="271" y="12" width="205" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Pf5-bV-0rf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -7771,7 +7772,7 @@ Gw
                     </comboBox>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-223" y="51"/>
+            <point key="canvasLocation" x="-223" y="50.5"/>
         </window>
     </objects>
     <resources>

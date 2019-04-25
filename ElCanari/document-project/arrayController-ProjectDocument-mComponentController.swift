@@ -399,7 +399,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mValue_property, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_value (object.mComponentValue_property, file: #file, line: #line, sendContinously:false)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
