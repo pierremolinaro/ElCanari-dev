@@ -103,8 +103,8 @@ func enableItemsAfterCompletion () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
-                                     _ ioPossibleAlert : inout NSAlert?,
-                                     _ inProxy : [String]) -> Int? {
+                             _ ioPossibleAlert : inout NSAlert?,
+                             _ inProxy : [String]) -> Int? {
   if let data = getRemoteFileData ("lastCommit.txt", &ioPossibleAlert, inLogTextView, inProxy) {
     if let s = String (data: data, encoding: .ascii), let commit = Int (s) {
       return commit
@@ -116,113 +116,6 @@ func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
     }
   }else{
     return nil
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func queryServerLastCommitUsingEtag (_ etag : String,
-                                             _ inLogTextView : NSTextView,
-                                             _ inProxy : [String],
-//                                             _ outNeedsToDownloadRepositoryFileList : inout Bool,
-                                             _ ioPossibleAlert : inout NSAlert?) {
-  let arguments = [
-    "-s", // Silent mode, do not show download progress
-    "-i", // Add response header in output
-    "-L", // Follow
-    "-H", "If-None-Match:\"\(etag)\"",
-    "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches"
-  ] + inProxy
-  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
-  switch responseCode {
-  case .error (let errorCode) :
-    inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
-    ioPossibleAlert = NSAlert ()
-    ioPossibleAlert?.messageText = "Cannot connect to the server"
-    ioPossibleAlert?.informativeText = (errorCode == 6)
-      ? "No network connection"
-      : "Server connection error"
-  case .ok (let responseData) :
-    inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
-    if let response = String (data: responseData, encoding: .utf8) {
-      // Swift.print ("\(response)")
-      let c0 = response.components (separatedBy: "Status: ")
-      let c1 = c0 [1].components (separatedBy: " ")
-      //print ("C1 \(c1 [0])")
-      if let status = Int (c1 [0]) {
-        inLogTextView.appendMessageString ("  HTTP Status: \(status)\n", color: NSColor.black)
-        if status == 304 { // Status 304 --> not modified, use current repository description file
-          inLogTextView.appendMessageString ("  HTTP Status means 'no repository change, use current description file'\n", color: NSColor.black)
-//          outNeedsToDownloadRepositoryFileList = false
-        }else if status == 200 { // Status 200 --> Ok, modified
-          inLogTextView.appendMessageString ("  HTTP Status means 'repository did change'\n", color: NSColor.black)
-          storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
-//          outNeedsToDownloadRepositoryFileList = true
-        }
-      }else{
-        inLogTextView.appendErrorString ("  Cannot extract HTTP status from downloaded data\n")
-      }
-    }
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func queryServerLastCommitWithNoEtag (_ inLogTextView : NSTextView,
-                                              _ inProxy : [String],
-                                              _ ioPossibleAlert : inout NSAlert?) {
-  let arguments = [
-    "-s", // Silent mode, do not show download progress
-    "-i", // Add response header in output
-    "-L", // Follow
-    "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches"
-  ] + inProxy
-  let response = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
-  switch response {
-  case .error (let errorCode) :
-    inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
-    let alert = NSAlert ()
-    alert.messageText = "Cannot connect to the server"
-    alert.informativeText = (errorCode == 6)
-      ? "No network connection"
-      : "Server connection error"
-  case .ok (let responseData) :
-    inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
-    if let response = String (data: responseData, encoding: .utf8) {
-      storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
-    }
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : String,
-                                                  _ inLogTextView : NSTextView,
-                                                  _ ioPossibleAlert : inout NSAlert?) {
-  let components = inResponse.components (separatedBy:"\r\n\r\n")
-  if components.count >= 2 {
-    let jsonData = components [components.count - 1].data (using: .utf8)!
-    do{
-      inLogTextView.appendErrorString ("  HTTP result, has \(components.count) lines\n")
-    //--- Get commit sha
-      let jsonArray = try JSONSerialization.jsonObject (with: jsonData) as! NSArray
-      let jsonDictionary = jsonArray [0] as! NSDictionary
-      let commitDict = jsonDictionary ["commit"] as! NSDictionary
-      let commitSHA = commitDict ["sha"] as! String
-      inLogTextView.appendSuccessString ("  Commit SHA: \(commitSHA) has been stored in preferences\n")
-      storeRepositoryCommitSHA (commitSHA)
-    //--- Get ETag
-      let c1 = components [components.count - 2].components (separatedBy:"ETag: \"")
-      let c2 = c1 [1].components (separatedBy:"\"")
-      let etag = c2 [0]
-   //   storeRepositoryCurrentETag (etag)
-      inLogTextView.appendSuccessString ("  Etag: \(etag) has been stored in preferences\n")
-    }catch let error {
-      inLogTextView.appendErrorString ("  Error parsing JSON: \(error)\n")
-      ioPossibleAlert = NSAlert (error: error)
-    }
-  }else{
-    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line (should be ≥ 2)\n")
   }
 }
 
