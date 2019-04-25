@@ -58,6 +58,10 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
 
   //····················································································································
 
+  var selectedArray : [PackageObject] { return self.selectedArray_property.propval }
+
+  //····················································································································
+
   var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.prop }
  
   //····················································································································

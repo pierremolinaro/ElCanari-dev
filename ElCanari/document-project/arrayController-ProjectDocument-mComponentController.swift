@@ -20,9 +20,9 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   override init () {
     mSelectedSet = SelectedSet_ProjectDocument_mComponentController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var sortedArray : [ComponentInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_ComponentInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var selectedArray : [ComponentInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 

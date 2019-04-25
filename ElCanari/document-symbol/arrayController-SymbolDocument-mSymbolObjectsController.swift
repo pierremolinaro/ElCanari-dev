@@ -58,6 +58,10 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
+  var selectedArray : [SymbolObject] { return self.selectedArray_property.propval }
+
+  //····················································································································
+
   var selectedArray_property_selection : EBSelection <[SymbolObject]> { return self.selectedArray_property.prop }
  
   //····················································································································

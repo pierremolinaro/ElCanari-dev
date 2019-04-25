@@ -15,6 +15,12 @@ import Cocoa
   var mComponentController = ArrayController_ProjectDocument_mComponentController ()
 
   //····················································································································
+  //   Array controller: mNetClassController
+  //····················································································································
+
+  var mNetClassController = ArrayController_ProjectDocument_mNetClassController ()
+
+  //····················································································································
   //   Array controller: mProjectFontController
   //····················································································································
 
@@ -194,6 +200,11 @@ import Cocoa
 
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
+  @IBOutlet var mAddNetClassButton : EBButton?
+  @IBOutlet var mAddNetClassErrorMessageTextField : NSTextField?
+  @IBOutlet var mAddNetClassPanel : NSPanel?
+  @IBOutlet var mAddNetClassTextField : EBTextField?
+  @IBOutlet var mAddNetClassValidationButton : NSButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
@@ -218,6 +229,7 @@ import Cocoa
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mNetClassTableView : EBTableView?
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
@@ -226,6 +238,7 @@ import Cocoa
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
   @IBOutlet var mRemoveDeviceButton : EBButton?
   @IBOutlet var mRemoveFontButton : EBButton?
+  @IBOutlet var mRemoveNetClassButton : EBButton?
   @IBOutlet var mRemoveSelectedComponentsActionButton : EBButton?
   @IBOutlet var mRenameComponentButton : EBButton?
   @IBOutlet var mRenameComponentErrorMessageTextField : NSTextField?
@@ -248,6 +261,7 @@ import Cocoa
   var mController_mChangePackageOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mChangeValueOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -290,6 +304,8 @@ import Cocoa
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
   //--- Array controller property: mComponentController
     self.mComponentController.addExplorer (name: "mComponentController", y:&y, view:view)
+  //--- Array controller property: mNetClassController
+    self.mNetClassController.addExplorer (name: "mNetClassController", y:&y, view:view)
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //--- Array controller property: mProjectDeviceController
@@ -327,6 +343,11 @@ import Cocoa
   private func checkOutletConnections () {
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddNetClassButton, "mAddNetClassButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddNetClassErrorMessageTextField, "mAddNetClassErrorMessageTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
@@ -351,6 +372,7 @@ import Cocoa
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNetClassTableView, "mNetClassTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
@@ -359,6 +381,7 @@ import Cocoa
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveNetClassButton, "mRemoveNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
@@ -383,6 +406,8 @@ import Cocoa
     self.checkOutletConnections ()
   //--- Array controller property: mComponentController
     self.mComponentController.bind_model (self.rootObject.mComponents_property)
+  //--- Array controller property: mNetClassController
+    self.mNetClassController.bind_model (self.rootObject.mNetClasses_property)
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
   //--- Array controller property: mProjectDeviceController
@@ -520,6 +545,7 @@ import Cocoa
     }
     self.mProjectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.mComponentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
+    self.mNetClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
@@ -579,6 +605,17 @@ import Cocoa
       )
       self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.mNetClassController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mNetClasses_property.count_property_selection > EBSelection.single (1)))
+        },
+        outlet: self.mRemoveNetClassButton
+      )
+      self.mNetClassController.selectedArray_property.count_property.addEBObserver (controller)
+      self.rootObject.mNetClasses_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveNetClassButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -681,6 +718,10 @@ import Cocoa
     self.mChangePackageOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changePackageOfSelectedComponentsAction (_:))
     self.mChangeValueOfSelectedComponentsActionButton?.target = self
     self.mChangeValueOfSelectedComponentsActionButton?.action = #selector (ProjectDocument.changeValueOfSelectedComponentsAction (_:))
+    self.mAddNetClassButton?.target = self
+    self.mAddNetClassButton?.action = #selector (ProjectDocument.addNetClassAction (_:))
+    self.mRemoveNetClassButton?.target = self
+    self.mRemoveNetClassButton?.action = #selector (ProjectDocument.removeNetClassAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -736,6 +777,9 @@ import Cocoa
     self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
+    self.mNetClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
+    self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
+    self.mController_mRemoveNetClassButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
@@ -756,10 +800,13 @@ import Cocoa
     self.mController_mUpdateDeviceButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mComponentController.unbind_tableView (self.mComponentTableView)
+    self.mNetClassController.unbind_tableView (self.mNetClassTableView)
     self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.mProjectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
   //--- Array controller property: mComponentController
     self.mComponentController.unbind_model ()
+  //--- Array controller property: mNetClassController
+    self.mNetClassController.unbind_model ()
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.unbind_model ()
   //--- Array controller property: mProjectDeviceController
@@ -776,6 +823,8 @@ import Cocoa
     self.mRemoveSelectedComponentsActionButton?.target = nil
     self.mChangePackageOfSelectedComponentsActionButton?.target = nil
     self.mChangeValueOfSelectedComponentsActionButton?.target = nil
+    self.mAddNetClassButton?.target = nil
+    self.mRemoveNetClassButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -789,6 +838,11 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
+    self.mAddNetClassButton?.ebCleanUp ()
+    self.mAddNetClassErrorMessageTextField?.ebCleanUp ()
+    self.mAddNetClassPanel?.ebCleanUp ()
+    self.mAddNetClassTextField?.ebCleanUp ()
+    self.mAddNetClassValidationButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
@@ -813,6 +867,7 @@ import Cocoa
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mNetClassTableView?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
@@ -821,6 +876,7 @@ import Cocoa
     self.mProductPageView?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
+    self.mRemoveNetClassButton?.ebCleanUp ()
     self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
     self.mRenameComponentErrorMessageTextField?.ebCleanUp ()

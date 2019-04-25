@@ -58,6 +58,10 @@ final class ArrayController_DeviceDocument_mSymbolDisplayController : EBObject, 
 
   //····················································································································
 
+  var selectedArray : [SymbolInstanceInDevice] { return self.selectedArray_property.propval }
+
+  //····················································································································
+
   var selectedArray_property_selection : EBSelection <[SymbolInstanceInDevice]> { return self.selectedArray_property.prop }
  
   //····················································································································

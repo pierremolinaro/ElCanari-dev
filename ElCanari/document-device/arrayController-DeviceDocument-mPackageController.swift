@@ -20,9 +20,9 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 
   override init () {
     mSelectedSet = SelectedSet_DeviceDocument_mPackageController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_PackageInDevice ()
+
+  //····················································································································
+
+  var sortedArray : [PackageInDevice] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_PackageInDevice) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_PackageInDevice ()
+
+  //····················································································································
+
+  var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
 
   //····················································································································
 

@@ -49,6 +49,13 @@ import Cocoa
       self.enableFromValueBinding (true)
     }
   }
+
+  //····················································································································
+
+  func setSendContinously (_ inFlag : Bool) {
+    self.mSendContinously = inFlag
+  }
+
   //····················································································································
 
   fileprivate var mValueController : Controller_EBTextField_value? = nil

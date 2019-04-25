@@ -14,7 +14,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func editSelectedSymbols (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedSymbols = self.mSymbolController.selectedArray_property.propval
+    let selectedSymbols = self.mSymbolController.selectedArray
     let dc = NSDocumentController.shared
     var messages = [String] ()
     for symbolType in selectedSymbols {

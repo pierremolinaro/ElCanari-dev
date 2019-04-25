@@ -20,9 +20,9 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 
   override init () {
     mSelectedSet = SelectedSet_DeviceDocument_mDocumentationController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_DeviceDocumentation ()
+
+  //····················································································································
+
+  var sortedArray : [DeviceDocumentation] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_DeviceDocumentation) {
+  func bind_model (_ inModel : ReadWriteArrayOf_DeviceDocumentation) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_DeviceDocumentation ()
+
+  //····················································································································
+
+  var selectedArray : [DeviceDocumentation] { return self.selectedArray_property.propval }
 
   //····················································································································
 

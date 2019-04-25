@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_DeviceDocument_mSymbolController
+//    ArrayController_ProjectDocument_mNetClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_ProjectDocument_mNetClassController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_DeviceDocument_mSymbolController (
+    mSelectedSet = SelectedSet_ProjectDocument_mNetClassController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_SymbolTypeInDevice ()
+  let sortedArray_property = TransientArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var sortedArray : [SymbolTypeInDevice] { return self.sortedArray_property.propval }
+  var sortedArray : [NetClassInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -72,7 +72,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SymbolTypeInDevice? = nil
+  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice) {
+  func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_SymbolTypeInDevice ()
+  let selectedArray_property = TransientArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var selectedArray : [SymbolTypeInDevice] { return self.selectedArray_property.propval }
+  var selectedArray : [NetClassInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[SymbolTypeInDevice]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[NetClassInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_DeviceDocument_mSymbolController
+  private let mSelectedSet : SelectedSet_ProjectDocument_mNetClassController
 
   //····················································································································
 
-  var selectedSet : Set <SymbolTypeInDevice> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <NetClassInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
 
   //····················································································································
 
-  func setSelection (_ inObjects : [SymbolTypeInDevice]) {
+  func setSelection (_ inObjects : [NetClassInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [SymbolTypeInDevice] ()
+          var result = [NetClassInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -237,23 +237,11 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'symbol' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "symbol")) {
+    //--- Check 'name' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"symbol\" column view unknown")
-      }
-    //--- Check 'version' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
-      }
-    //--- Check 'count' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "count")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"count\" column view unknown")
+        presentErrorWindow (file, line, "\"name\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -288,7 +276,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [SymbolTypeInDevice : Int] ()
+      var objectDictionary = [NetClassInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -331,7 +319,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
+      var newSelectedObjectSet = Set <NetClassInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -375,26 +363,12 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "symbol", let cell = result as? EBTextObserverField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mTypeName_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "count", let cell = result as? EBIntObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.instanceCount_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -410,14 +384,14 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
   //    select
   //····················································································································
 
-  func select (object inObject: SymbolTypeInDevice) {
+  func select (object inObject: NetClassInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
+          var newSelectedObjectSet = Set <NetClassInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -438,11 +412,11 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SymbolTypeInDevice (self.ebUndoManager)
+        let newObject = NetClassInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
+        var newSelectedObjectSet = Set <NetClassInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -469,7 +443,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [SymbolTypeInDevice : Int] ()
+          var sortedObjectDictionary = [NetClassInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -491,13 +465,13 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : SymbolTypeInDevice? = nil
+          var newSelectedObject : NetClassInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [SymbolTypeInDevice : Int] ()
+          var objectDictionary = [NetClassInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -517,7 +491,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <SymbolTypeInDevice> ()
+          var newSelectionSet = Set <NetClassInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -534,19 +508,19 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_DeviceDocument_mSymbolController
+//    SelectedSet_ProjectDocument_mNetClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_DeviceDocument_mSymbolController : EBAbstractProperty {
+final class SelectedSet_ProjectDocument_mNetClassController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_SymbolTypeInDevice
+  private let mSortedArray : TransientArrayOf_NetClassInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_SymbolTypeInDevice) {
+        sortedArray : TransientArrayOf_NetClassInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -555,7 +529,7 @@ final class SelectedSet_DeviceDocument_mSymbolController : EBAbstractProperty {
 
   //····················································································································
 
-  private var mPrivateSet = Set<SymbolTypeInDevice> () {
+  private var mPrivateSet = Set<NetClassInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -565,7 +539,7 @@ final class SelectedSet_DeviceDocument_mSymbolController : EBAbstractProperty {
 
   //····················································································································
 
-  var mSet : Set<SymbolTypeInDevice> {
+  var mSet : Set<NetClassInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

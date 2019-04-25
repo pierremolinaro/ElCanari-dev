@@ -20,9 +20,9 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   override init () {
     mSelectedSet = SelectedSet_MergerDocument_mBoardModelController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_BoardModel ()
+
+  //····················································································································
+
+  var sortedArray : [BoardModel] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_BoardModel) {
+  func bind_model (_ inModel : ReadWriteArrayOf_BoardModel) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -120,6 +124,10 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_BoardModel ()
+
+  //····················································································································
+
+  var selectedArray : [BoardModel] { return self.selectedArray_property.propval }
 
   //····················································································································
 

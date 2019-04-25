@@ -11,32 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
-  @objc func editSelectedPackages (_ sender : NSObject?) {
+extension ProjectDocument {
+  @objc func removeNetClassAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let selectedPackages = self.mPackageController.selectedArray
-    let dc = NSDocumentController.shared
-    var messages = [String] ()
-    for package in selectedPackages {
-      let pathes = packageFilePathInLibraries (package.mName)
-      if pathes.count == 0 {
-        messages.append ("No file for package \(package.mName) in Library")
-      }else if pathes.count == 1 {
-        let url = URL (fileURLWithPath: pathes [0])
-        dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
-      }else{ // pathes.count > 1
-        messages.append ("Several files for package \(package.mName) in Library:")
-        for path in pathes {
-          messages.append ("  - \(path)")
+        for netClass in self.mNetClassController.selectedArray {
+          if let idx = self.rootObject.mNetClasses.firstIndex (of: netClass) {
+            self.rootObject.mNetClasses.remove (at: idx)
+          }
         }
-      }
-    }
-    if messages.count > 0 {
-      let alert = NSAlert ()
-      alert.messageText = "Error opening Package"
-      alert.informativeText = messages.joined (separator: "\n")
-      alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-    }
 //--- END OF USER ZONE 2
   }
 }

@@ -20,9 +20,9 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   override init () {
     mSelectedSet = SelectedSet_ArtworkDocument_mDataController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
+
+  //····················································································································
+
+  var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_ArtworkFileGenerationParameters) {
+  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -120,6 +124,10 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
+
+  //····················································································································
+
+  var selectedArray : [ArtworkFileGenerationParameters] { return self.selectedArray_property.propval }
 
   //····················································································································
 

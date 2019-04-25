@@ -6,139 +6,57 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedPageIndex : class {
-  var mSelectedPageIndex : Int { get }
+protocol NetClassInProject_mNetClassName : class {
+  var mNetClassName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_deviceNames : class {
-  var deviceNames : StringArray? { get }
+protocol NetClassInProject_mNetClassColor : class {
+  var mNetClassColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectRoot
+//    Entity: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectRoot : EBManagedObject,
-         ProjectRoot_mSelectedPageIndex,
-         ProjectRoot_deviceNames {
+class NetClassInProject : EBManagedObject,
+         NetClassInProject_mNetClassName,
+         NetClassInProject_mNetClassColor {
 
   //····················································································································
-  //   Atomic property: mSelectedPageIndex
+  //   Atomic property: mNetClassName
   //····················································································································
 
-  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  var mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
 
   //····················································································································
 
-  var mSelectedPageIndex : Int {
-    get { return self.mSelectedPageIndex_property.propval }
-    set { self.mSelectedPageIndex_property.setProp (newValue) }
+  var mNetClassName : String {
+    get { return self.mNetClassName_property.propval }
+    set { self.mNetClassName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
+  var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.prop }
 
   //····················································································································
-  //   To many property: mComponents
+  //   Atomic property: mNetClassColor
   //····················································································································
 
-  var mComponents_property = StoredArrayOf_ComponentInProject ()
+  var mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
 
   //····················································································································
 
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
+  var mNetClassColor : NSColor {
+    get { return self.mNetClassColor_property.propval }
+    set { self.mNetClassColor_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mComponents : [ComponentInProject] {
-    get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mNetClasses
-  //····················································································································
-
-  var mNetClasses_property = StoredArrayOf_NetClassInProject ()
-
-  //····················································································································
-
-  var mNetClasses_property_selection : EBSelection < [NetClassInProject] > {
-    return self.mNetClasses_property.prop
-  }
-
-  //····················································································································
-
-  var mNetClasses : [NetClassInProject] {
-    get { return self.mNetClasses_property.propval }
-    set { self.mNetClasses_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mFonts
-  //····················································································································
-
-  var mFonts_property = StoredArrayOf_FontInProject ()
-
-  //····················································································································
-
-  var mFonts_property_selection : EBSelection < [FontInProject] > {
-    return self.mFonts_property.prop
-  }
-
-  //····················································································································
-
-  var mFonts : [FontInProject] {
-    get { return self.mFonts_property.propval }
-    set { self.mFonts_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mDevices
-  //····················································································································
-
-  var mDevices_property = StoredArrayOf_DeviceInProject ()
-
-  //····················································································································
-
-  var mDevices_property_selection : EBSelection < [DeviceInProject] > {
-    return self.mDevices_property.prop
-  }
-
-  //····················································································································
-
-  var mDevices : [DeviceInProject] {
-    get { return self.mDevices_property.propval }
-    set { self.mDevices_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Transient property: deviceNames
-  //····················································································································
-
-  var deviceNames_property = EBTransientProperty_StringArray ()
-
-  //····················································································································
-
-  var deviceNames_property_selection : EBSelection <StringArray> {
-    return self.deviceNames_property.prop
-  }
-
-  //····················································································································
-
-  var deviceNames : StringArray? {
-    switch self.deviceNames_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
 
   //····················································································································
   //    init
@@ -146,38 +64,10 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mComponents (no option)
-    self.mComponents_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mNetClasses (no option)
-    self.mNetClasses_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mFonts (no option)
-    self.mFonts_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mDevices (no option)
-    self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: deviceNames
-    self.deviceNames_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDevices_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mDevices_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_deviceNames (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
+  //--- Atomic property: mNetClassName
+    self.mNetClassName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mNetClassColor
+    self.mNetClassColor_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -187,7 +77,6 @@ class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Unregister properties for handling signature
   }
 
@@ -203,51 +92,23 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mSelectedPageIndex",
-      idx:self.mSelectedPageIndex_property.ebObjectIndex,
+      "mNetClassName",
+      idx:self.mNetClassName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mSelectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.mNetClassName_property.mObserverExplorer,
+      valueExplorer:&self.mNetClassName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNetClassColor",
+      idx:self.mNetClassColor_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mNetClassColor_property.mObserverExplorer,
+      valueExplorer:&self.mNetClassColor_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "deviceNames",
-      idx:self.deviceNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceNames_property.mObserverExplorer,
-      valueExplorer:&self.deviceNames_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mNetClasses",
-      idx:mNetClasses_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mNetClasses_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mFonts",
-      idx:mFonts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mFonts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mDevices",
-      idx:mDevices_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mDevices_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -257,17 +118,12 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.mObserverExplorer = nil
-    self.mSelectedPageIndex_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
-  //--- To many property: mNetClasses
-    self.mNetClasses_property.mValueExplorer = nil
-  //--- To many property: mFonts
-    self.mFonts_property.mValueExplorer = nil
-  //--- To many property: mDevices
-    self.mDevices_property.mValueExplorer = nil
+  //--- Atomic property: mNetClassName
+    self.mNetClassName_property.mObserverExplorer = nil
+    self.mNetClassName_property.mValueExplorer = nil
+  //--- Atomic property: mNetClassColor
+    self.mNetClassColor_property.mObserverExplorer = nil
+    self.mNetClassColor_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -277,10 +133,6 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mComponents_property.setProp ([])
-    self.mNetClasses_property.setProp ([])
-    self.mFonts_property.setProp ([])
-    self.mDevices_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -300,32 +152,10 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
-  //--- To many property: mComponents
-    self.store (
-      managedObjectArray: self.mComponents_property.propval,
-      relationshipName: "mComponents",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mNetClasses
-    self.store (
-      managedObjectArray: self.mNetClasses_property.propval,
-      relationshipName: "mNetClasses",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mFonts
-    self.store (
-      managedObjectArray: self.mFonts_property.propval,
-      relationshipName: "mFonts",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mDevices
-    self.store (
-      managedObjectArray: self.mDevices_property.propval,
-      relationshipName: "mDevices",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mNetClassName
+    self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassName")
+  //--- Atomic property: mNetClassColor
+    self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassColor")
   }
 
   //····················································································································
@@ -335,30 +165,6 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
-  //--- To many property: mNetClasses
-    self.mNetClasses_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mNetClasses",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [NetClassInProject])
-  //--- To many property: mFonts
-    self.mFonts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mFonts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [FontInProject])
-  //--- To many property: mDevices
-    self.mDevices_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDevices",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceInProject])
   }
 
   //····················································································································
@@ -367,8 +173,10 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
+  //--- Atomic property: mNetClassName
+    self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mNetClassName")
+  //--- Atomic property: mNetClassColor
+    self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey:"mNetClassColor")
   }
 
   //····················································································································
@@ -377,22 +185,6 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -401,22 +193,6 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -424,120 +200,121 @@ class ProjectRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectRoot
+//    ReadOnlyArrayOf_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
+class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClassInProject> {
 
   //····················································································································
-  //   Observers of 'mSelectedPageIndex' stored property
+  //   Observers of 'mNetClassName' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_mNetClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.insert (inObserver)
+    self.mObserversOf_mNetClassName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mNetClassName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.remove (inObserver)
+    self.mObserversOf_mNetClassName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.mNetClassName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mNetClassName_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedPageIndex_property.addEBObserver (observer)
+      self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
+        managedObject.mNetClassName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mNetClassName_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
+        managedObject.mNetClassName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'deviceNames' transient property
+  //   Observers of 'mNetClassColor' stored property
   //····················································································································
 
-  private var mObserversOf_deviceNames = EBWeakEventSet ()
+  private var mObserversOf_mNetClassColor = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_deviceNames.insert (inObserver)
+    self.mObserversOf_mNetClassColor.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.deviceNames_property.addEBObserver (inObserver)
+        managedObject.mNetClassColor_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_deviceNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_deviceNames.remove (inObserver)
+    self.mObserversOf_mNetClassColor.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.deviceNames_property.removeEBObserver (inObserver)
+        managedObject.mNetClassColor_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_deviceNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mNetClassColor_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.addEBObserver (observer)
+      self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
+        managedObject.mNetClassColor_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_deviceNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.removeEBObserver (observer)
+  final func removeEBObserversOf_mNetClassColor_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNetClassColor_property.removeEBObserver (observer)
       }
     }
   }
@@ -547,32 +324,32 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectRoot
+//    TransientArrayOf_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [NetClassInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> {
+  override var propset : Set <NetClassInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > {
+  override var prop : EBSelection < [NetClassInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectRoot] {
+  override var propval : [NetClassInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -594,11 +371,11 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
+  private var mSet = Set <NetClassInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectRoot] >? = nil
+  private var mCachedValue : EBSelection < [NetClassInProject] >? = nil
 
   //····················································································································
 
@@ -606,25 +383,25 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       let cachedValue = unwrappedComputeFunction ()
       self.mCachedValue = cachedValue
-      let newSet : Set <ProjectRoot>
+      let newSet : Set <NetClassInProject>
       switch cachedValue {
       case .multiple, .empty :
-        newSet = Set <ProjectRoot> ()
+        newSet = Set <NetClassInProject> ()
       case .single (let array) :
         newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNetClassName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -652,28 +429,28 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectRoot
+//    To many relationship read write: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectRoot]) { } // Abstract method
+  func setProp (_ value :  [NetClassInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectRoot
+//    To many relationship: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -720,9 +497,9 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectRoot] ()
+      var objectArray = [NetClassInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetClassInProject") as? NetClassInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -733,8 +510,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
  //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
-  private var mValue = [ProjectRoot] () {
+  private var mSet = Set <NetClassInProject> ()
+  private var mValue = [NetClassInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -752,29 +529,31 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
+            managedObject.mNetClassName_property.mSetterDelegate = nil
+            managedObject.mNetClassColor_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectRoot in addedObjectSet {
+          for managedObject : NetClassInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNetClassName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNetClassColor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
-          self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -802,29 +581,29 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mValue) }
+  override var prop : EBSelection < [NetClassInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectRoot]) { self.mValue = inValue }
+  override func setProp (_ inValue : [NetClassInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectRoot] { return self.mValue }
+  override var propval : [NetClassInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> { return self.mSet }
+  override var propset : Set <NetClassInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectRoot]) {
+  @objc func performUndo (_ oldValue : [NetClassInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectRoot) {
+  func remove (_ object : NetClassInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -835,7 +614,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   
   //····················································································································
 
-  func add (_ object : ProjectRoot) {
+  func add (_ object : NetClassInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

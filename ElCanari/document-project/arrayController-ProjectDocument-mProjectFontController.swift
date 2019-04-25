@@ -20,9 +20,9 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   override init () {
     mSelectedSet = SelectedSet_ProjectDocument_mProjectFontController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_FontInProject ()
+
+  //····················································································································
+
+  var sortedArray : [FontInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_FontInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_FontInProject ()
+
+  //····················································································································
+
+  var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 

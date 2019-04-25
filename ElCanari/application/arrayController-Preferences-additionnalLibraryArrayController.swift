@@ -20,9 +20,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   override init () {
     mSelectedSet = SelectedSet_Preferences_additionnalLibraryArrayController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_CanariLibraryEntry ()
+
+  //····················································································································
+
+  var sortedArray : [CanariLibraryEntry] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_CanariLibraryEntry) {
+  func bind_model (_ inModel : ReadWriteArrayOf_CanariLibraryEntry) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
+
+  //····················································································································
+
+  var selectedArray : [CanariLibraryEntry] { return self.selectedArray_property.propval }
 
   //····················································································································
 

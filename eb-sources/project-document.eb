@@ -85,7 +85,26 @@ document ProjectDocument root ProjectRoot {
 
   transient String componentCount dependsFrom root.mComponents.count ;
   outlet EBTextObserverField mComponentCountTextField $valueObserver self.componentCount ;
-  
+
+#---------------------- Net Class Tab
+  tableViewController mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
+     column "name" EBTextObserverField $valueObserver self.mNetClassName
+  }
+  outlet EBTableView mNetClassTableView $tableValue mNetClassController ;
+
+  action addNetClassAction ;
+  outlet EBButton mAddNetClassButton $run self.addNetClassAction ;
+  outlet NSPanel mAddNetClassPanel ;
+  outlet EBTextField mAddNetClassTextField ;
+  outlet NSTextField mAddNetClassErrorMessageTextField ;
+  outlet NSButton mAddNetClassValidationButton ;
+
+  action removeNetClassAction ;
+  outlet EBButton mRemoveNetClassButton
+    $run self.removeNetClassAction
+    $enabled (mNetClassController.selectedArray.count > 0) & (root.mNetClasses.count > 1)
+  ;
+
 #  controller componentController : NSArrayController ComponentInProjectEntity
 #    $contentSet root.components { NSDeletesObjectsOnRemove:yes} ;
 
@@ -164,7 +183,7 @@ document ProjectDocument root ProjectRoot {
 #  outlet availablePackagesPopUpMenu : NSPopUpButton PackageTypeInProjectEntity
 #    $contentValuesAndContent .availablePackagesForCurrentComponentController.arrangedObjects.packageTypeName
 #  ;
-#
+
 #---------------------- Library Tab
 #--- Fonts
   action addFontAction ;

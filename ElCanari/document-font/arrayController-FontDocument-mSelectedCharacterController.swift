@@ -20,9 +20,9 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   override init () {
     mSelectedSet = SelectedSet_FontDocument_mSelectedCharacterController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      sortedArray: self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -36,6 +36,10 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_FontCharacter ()
+
+  //····················································································································
+
+  var sortedArray : [FontCharacter] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -79,7 +83,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_FontCharacter) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -118,6 +122,10 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //····················································································································
 
   let selectedArray_property = TransientArrayOf_FontCharacter ()
+
+  //····················································································································
+
+  var selectedArray : [FontCharacter] { return self.selectedArray_property.propval }
 
   //····················································································································
 

@@ -6,6 +6,7 @@ entity ProjectRoot {
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;
   toMany ComponentInProject mComponents ;
+  toMany NetClassInProject mNetClasses ;
 
   property Int mSelectedPageIndex default 0 ;
   
@@ -152,6 +153,16 @@ entity DevicePadAssignmentInProject {
   toOne DevicePinInProject mPin ; # Is nil if pad is NC
 
   transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
+}
+
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   Net class
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity NetClassInProject {
+  property String mNetClassName default "Default" ;
+  property NSColor mNetClassColor default brown ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
