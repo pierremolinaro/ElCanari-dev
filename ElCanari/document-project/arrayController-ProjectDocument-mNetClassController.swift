@@ -243,6 +243,12 @@ final class ArrayController_ProjectDocument_mNetClassController : EBObject, EBTa
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
+    //--- Check 'netcolor' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "netcolor")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"netcolor\" column view unknown")
+      }
     //--- Check 'width' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "width")) {
         column.sortDescriptorPrototype = nil
@@ -393,6 +399,13 @@ final class ArrayController_ProjectDocument_mNetClassController : EBObject, EBTa
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_backColor ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property, file: #file, line: #line)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in

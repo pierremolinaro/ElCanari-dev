@@ -253,6 +253,7 @@ import Cocoa
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mNetClassColorWell : EBColorWell?
   @IBOutlet var mNetClassHoleDiameterDimensionTextField : CanariDimensionTextField?
   @IBOutlet var mNetClassHoleDiameterUnitPopUpButton : EBPopUpButton?
   @IBOutlet var mNetClassPadDiameterDimensionTextField : CanariDimensionTextField?
@@ -404,6 +405,7 @@ import Cocoa
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mNetClassHoleDiameterDimensionTextField, "mNetClassHoleDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mNetClassHoleDiameterUnitPopUpButton, "mNetClassHoleDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassPadDiameterDimensionTextField, "mNetClassPadDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
@@ -945,6 +947,7 @@ import Cocoa
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mNetClassColorWell?.ebCleanUp ()
     self.mNetClassHoleDiameterDimensionTextField?.ebCleanUp ()
     self.mNetClassHoleDiameterUnitPopUpButton?.ebCleanUp ()
     self.mNetClassPadDiameterDimensionTextField?.ebCleanUp ()

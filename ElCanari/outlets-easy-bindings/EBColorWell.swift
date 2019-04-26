@@ -53,7 +53,7 @@ import Cocoa
 
   func bind_color (_ object : EBReadWriteProperty_NSColor, file : String, line : Int, sendContinously : Bool) {
     self.mSendContinously = sendContinously
-    self.mValueController = Controller_EBColorWell_color (object:object, outlet:self, sendContinously:sendContinously)
+    self.mValueController = Controller_EBColorWell_color (object:object, outlet:self)
   }
 
   func unbind_color () {
@@ -71,19 +71,15 @@ final class Controller_EBColorWell_color : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_NSColor
   private let mOutlet : EBColorWell
-  private let mSendContinously : Bool
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_NSColor, outlet : EBColorWell, sendContinously : Bool) {
+  init (object : EBReadWriteProperty_NSColor, outlet : EBColorWell) {
     mObject = object
     mOutlet = outlet
-    mSendContinously = sendContinously
     super.init (observedObjects:[object], callBack: { outlet.updateColor (object) } )
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
-    self.mOutlet.isContinuous = true
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

@@ -14,7 +14,6 @@ import Cocoa
     super.init (coder: coder)
     self.delegate = self
     self.isEditable = false
-    self.drawsBackground = false
     self.isBordered = false
     noteObjectAllocation (self)
   }
@@ -25,7 +24,6 @@ import Cocoa
     super.init (frame: frame)
     self.delegate = self
     self.isEditable = false
-    self.drawsBackground = false
     self.isBordered = false
     noteObjectAllocation (self)
   }
@@ -37,7 +35,7 @@ import Cocoa
   }
 
   //····················································································································
-  //  valueObserver binding
+  //  $valueObserver binding
   //····················································································································
 
   fileprivate func updateValue (_ object : EBReadOnlyProperty_String) {
@@ -56,12 +54,15 @@ import Cocoa
 
   //····················································································································
 
-  fileprivate var mValueController : Controller_EBTextObserverField_value? = nil
+  fileprivate var mValueController : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
-    self.mValueController = Controller_EBTextObserverField_value (object: object, outlet: self, file: file, line: line)
+    if self.formatter != nil {
+      presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
+    }
+    self.mValueController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateValue (object) } )
   }
 
   //····················································································································
@@ -73,22 +74,34 @@ import Cocoa
   }
 
   //····················································································································
-}
+  //  $backColor binding
+  //····················································································································
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_EBTextObserverField_value
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBTextObserverField_value : EBSimpleController {
+  fileprivate func updateBackColor (_ object : EBReadOnlyProperty_NSColor) {
+    switch object.prop {
+    case .empty, .multiple :
+      self.backgroundColor = .white
+    case .single (let v):
+      self.backgroundColor = v
+    }
+  }
 
   //····················································································································
 
-  init (object : EBReadOnlyProperty_String, outlet : EBTextObserverField, file : String, line : Int) {
-    super.init (observedObjects: [object], callBack: { outlet.updateValue( object) } )
-    if outlet.formatter != nil {
-      presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
-    }
-//    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
+  fileprivate var mBackColorController : EBSimpleController? = nil
+
+  //····················································································································
+
+  func bind_backColor (_ object : EBReadOnlyProperty_NSColor, file : String, line : Int) {
+    self.mBackColorController = EBSimpleController (observedObjects: [object], callBack: { [weak self] in self?.updateBackColor (object) } )
+  }
+
+  //····················································································································
+
+  func unbind_backColor () {
+    self.mBackColorController?.unregister ()
+    self.mBackColorController = nil
+    self.ebCleanUp ()
   }
 
   //····················································································································
@@ -114,6 +127,7 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
 
   func update () {
     self.mCellOutlet?.mValueController?.mEventCallBack? ()
+    self.mCellOutlet?.mBackColorController?.mEventCallBack? ()
   }
 
   //····················································································································

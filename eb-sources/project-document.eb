@@ -89,6 +89,7 @@ document ProjectDocument root ProjectRoot {
 #---------------------- Net Class Tab
   tableViewController mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
     column "name" EBTextObserverField $valueObserver self.mNetClassName
+    column "netcolor" EBTextObserverField $backColor self.mNetClassColor
     column "width" EBTextObserverField $valueObserver self.netWidth
     column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
     column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
@@ -107,6 +108,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mNetClassHoleDiameterUnitPopUpButton ;
   outlet CanariDimensionTextField mNetClassPadDiameterDimensionTextField ;
   outlet EBPopUpButton mNetClassPadDiameterUnitPopUpButton ;
+  outlet EBColorWell mNetClassColorWell ;
   outlet NSButton mAddNetClassValidationButton ;
 
   action removeNetClassAction ;

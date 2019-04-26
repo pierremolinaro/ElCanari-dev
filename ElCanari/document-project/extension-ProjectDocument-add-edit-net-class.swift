@@ -53,11 +53,15 @@ extension ProjectDocument {
         line: #line
       )
       self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property, file: #file, line: #line)
+    //--- Color
+      let netColor_property = EBStoredProperty_NSColor (defaultValue: .brown)
+      self.mNetClassColorWell?.bind_color (netColor_property, file: #file, line: #line, sendContinously: true)
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
           let netClass = NetClassInProject (self.ebUndoManager)
           netClass.mNetClassName = newNetClassName
+          netClass.mNetClassColor = netColor_property.propval
           netClass.mNetWidth = width_property.propval
           netClass.mNetWidthUnit = widthUnit_property.propval
           netClass.mViaHoleDiameter = viaHoleDiameter_property.propval
@@ -73,6 +77,7 @@ extension ProjectDocument {
         self.mNetClassHoleDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
+        self.mNetClassColorWell?.unbind_color ()
       }
     }
   }
@@ -141,10 +146,14 @@ extension ProjectDocument {
         line: #line
       )
       self.mNetClassPadDiameterUnitPopUpButton?.bind_selectedTag (viaPadDiameterUnit_property, file: #file, line: #line)
+    //--- Color
+      let netColor_property = EBStoredProperty_NSColor (defaultValue: editedNetClass.mNetClassColor)
+      self.mNetClassColorWell?.bind_color (netColor_property, file: #file, line: #line, sendContinously: true)
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
           editedNetClass.mNetClassName = newNetClassName
+          editedNetClass.mNetClassColor = netColor_property.propval
           editedNetClass.mNetWidth = width_property.propval
           editedNetClass.mNetWidthUnit = widthUnit_property.propval
           editedNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
@@ -158,6 +167,7 @@ extension ProjectDocument {
         self.mNetClassHoleDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassPadDiameterDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
+        self.mNetClassColorWell?.unbind_color ()
       }
     }
   }
