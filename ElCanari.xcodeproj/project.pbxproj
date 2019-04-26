@@ -840,6 +840,14 @@
 		CF64AFB5225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */; };
 		CF64AFB6225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */; };
 		CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */; };
+		CF682267227327F600FBA679 /* entity-NetInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682264227327F500FBA679 /* entity-NetInProject.swift */; };
+		CF682268227327F600FBA679 /* entity-NetInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682264227327F500FBA679 /* entity-NetInProject.swift */; };
+		CF682269227327F600FBA679 /* transient-NetClassInProject-canRemove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682265227327F600FBA679 /* transient-NetClassInProject-canRemove.swift */; };
+		CF68226A227327F600FBA679 /* transient-NetClassInProject-canRemove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682265227327F600FBA679 /* transient-NetClassInProject-canRemove.swift */; };
+		CF68226B227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682266227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift */; };
+		CF68226C227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF682266227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift */; };
+		CF68226E2273296400FBA679 /* transient-NetClassInProject-netUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68226D2273296400FBA679 /* transient-NetClassInProject-netUsage.swift */; };
+		CF68226F2273296400FBA679 /* transient-NetClassInProject-netUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68226D2273296400FBA679 /* transient-NetClassInProject-netUsage.swift */; };
 		CF69ABC721A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
 		CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
 		CF69ABCF21A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */; };
@@ -1851,6 +1859,10 @@
 		CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceSymbolInstanceInProject.swift"; sourceTree = "<group>"; };
 		CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceSymbolTypeInProject.swift"; sourceTree = "<group>"; };
 		CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-generateProductFilesAction.swift"; sourceTree = "<group>"; };
+		CF682264227327F500FBA679 /* entity-NetInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-NetInProject.swift"; sourceTree = "<group>"; };
+		CF682265227327F600FBA679 /* transient-NetClassInProject-canRemove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-NetClassInProject-canRemove.swift"; sourceTree = "<group>"; };
+		CF682266227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectDocument-canRemoveNetClasses.swift"; sourceTree = "<group>"; };
+		CF68226D2273296400FBA679 /* transient-NetClassInProject-netUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-NetClassInProject-netUsage.swift"; sourceTree = "<group>"; };
 		CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-SymbolDocument-resetVersionAction.swift"; sourceTree = "<group>"; };
 		CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF69ABCB21A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-objectDisplay.swift"; sourceTree = "<group>"; };
@@ -2478,6 +2490,7 @@
 				CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */,
 				CFD733812258B784009B2614 /* entity-FontInProject.swift */,
 				CF1356F622722C15005FD84C /* entity-NetClassInProject.swift */,
+				CF682264227327F500FBA679 /* entity-NetInProject.swift */,
 				CFD733802258B784009B2614 /* entity-ProjectRoot.swift */,
 				CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */,
 				CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */,
@@ -2503,7 +2516,10 @@
 				CF4D3169225C8A5100256750 /* transient-DeviceSymbolInstanceInProject-symbolTypeName.swift */,
 				CFA0D9DA22590BEE008F2448 /* transient-FontInProject-sizeString.swift */,
 				CFA0D9D522590887008F2448 /* transient-FontInProject-versionString.swift */,
+				CF682265227327F600FBA679 /* transient-NetClassInProject-canRemove.swift */,
+				CF68226D2273296400FBA679 /* transient-NetClassInProject-netUsage.swift */,
 				CF2A69B1226F5D0A00261C47 /* transient-ProjectDocument-canChangePackage.swift */,
+				CF682266227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift */,
 				CF403462225BAF16001A2BF7 /* transient-ProjectDocument-canRemoveSelectedDevices.swift */,
 				CFD3F8F8225BA67100387FF1 /* transient-ProjectDocument-componentCount.swift */,
 				CF207FF7226B4572007D64B1 /* transient-ProjectDocument-pinPadAssignments.swift */,
@@ -3731,6 +3747,7 @@
 				CFDD8859223400FE008D3781 /* view-AssignedPadProxysInDeviceTableView.swift in Sources */,
 				CF46301121EBC4EC00FF9A15 /* multiple-binding-controllers.swift in Sources */,
 				CFE85A8F21A5C2EB00991A66 /* CanariRect.swift in Sources */,
+				CF682269227327F600FBA679 /* transient-NetClassInProject-canRemove.swift in Sources */,
 				CFE85AAD21A5D76600991A66 /* entity-SymbolText.swift in Sources */,
 				CFCC4BE620EAB3E6006A9CC5 /* transient-MergerRoot-boardHeight.swift in Sources */,
 				CF6F6F0C22479B5700F89C77 /* button-FontCharacterSelectButton.swift in Sources */,
@@ -3905,6 +3922,7 @@
 				CF619DFD20ECF8AD0024F387 /* transient-MergerBoardInstance-boardLimitWidth.swift in Sources */,
 				CFD5664121CA6E9200EC62C6 /* action-PackageDocument-setDimensionTextOriginAtMidXAction.swift in Sources */,
 				CFE85A8221A5BBE600991A66 /* entity-SymbolOval.swift in Sources */,
+				CF68226E2273296400FBA679 /* transient-NetClassInProject-netUsage.swift in Sources */,
 				CF1FB92E20E56D290050391E /* transient-BoardModel-boardLimits.swift in Sources */,
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
 				CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */,
@@ -4148,6 +4166,7 @@
 				CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
 				CFA0D9D622590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */,
 				CF2A69AF226F5C9200261C47 /* action-ProjectDocument-changePackageOfSelectedComponentsAction.swift in Sources */,
+				CF68226B227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */,
 				CFDA579D1BFA524A00EEF3CB /* entity-FontRoot.swift in Sources */,
 				CFE85A9921A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,
 				CF4B3AC621D50FD3001217C6 /* extension-PackageObject.swift in Sources */,
@@ -4173,6 +4192,7 @@
 				CF00844121C41B8D003627E9 /* transient-PackageBezier-objectDisplay.swift in Sources */,
 				CFE979F121ABFC3A002E5716 /* CanariDragSourceTableView.swift in Sources */,
 				CF4D083421C2F10E00380ACA /* entity-PackageObject.swift in Sources */,
+				CF682267227327F600FBA679 /* entity-NetInProject.swift in Sources */,
 				CFC8548121E91C77006ADB6C /* action-DeviceDocument-resetVersionAction.swift in Sources */,
 				CF1D582721AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift in Sources */,
 				CF00844421C41E64003627E9 /* extension-PackageBezier.swift in Sources */,
@@ -4350,6 +4370,7 @@
 				CFDDD4E021BB1529007D2F14 /* EBView-binding-gridDisplayFactor.swift in Sources */,
 				CFC5BB572232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift in Sources */,
 				CF5C4CF7219F04D600EAC52A /* CanariToolbar.swift in Sources */,
+				CF68226A227327F600FBA679 /* transient-NetClassInProject-canRemove.swift in Sources */,
 				CFC8547B21E91817006ADB6C /* transient-DeviceRoot-issues.swift in Sources */,
 				CF3CF2092232A39800B6D0AC /* action-DeviceDocument-updateSymbolsAndPackagesAction.swift in Sources */,
 				CF0DC22E222586F100DD2076 /* action-DeviceDocument-copyImageAction.swift in Sources */,
@@ -4395,6 +4416,7 @@
 				CF5C4D05219F04D600EAC52A /* EBStepper.swift in Sources */,
 				CF5C4D06219F04D600EAC52A /* action-FontDocument-addCharacterAction.swift in Sources */,
 				CFDDD4E621BB1529007D2F14 /* EBView.swift in Sources */,
+				CF68226C227327F600FBA679 /* transient-ProjectDocument-canRemoveNetClasses.swift in Sources */,
 				CF1B6ED4226CEE9800BE4C75 /* CanariComboBox.swift in Sources */,
 				CF6B32EC21C8F7F700E3B985 /* extension-PackageGuide.swift in Sources */,
 				CF64AFAA225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift in Sources */,
@@ -4642,6 +4664,7 @@
 				CF5C4D61219F04D600EAC52A /* transient-BoardModel-imageForModel.swift in Sources */,
 				CF5C4D62219F04D600EAC52A /* extension-MergerDocument-insert-array-of-boards.swift in Sources */,
 				CF4D084421C2F30300380ACA /* extension-PackageSegment.swift in Sources */,
+				CF682268227327F600FBA679 /* entity-NetInProject.swift in Sources */,
 				CF4D084121C2F18000380ACA /* entity-PackageSegment.swift in Sources */,
 				CF5C4D63219F04D600EAC52A /* action-MergerDocument-moveRightAction.swift in Sources */,
 				CF207FFC226B4611007D64B1 /* view-ThreeStringArrayTableView.swift in Sources */,
@@ -4776,6 +4799,7 @@
 				CF512401222A8FD800FA4364 /* transient-PackageInDevice-selectionDisplay.swift in Sources */,
 				CF5C4D99219F04D600EAC52A /* entity-MergerRoot.swift in Sources */,
 				CF6F6F172247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift in Sources */,
+				CF68226F2273296400FBA679 /* transient-NetClassInProject-netUsage.swift in Sources */,
 				CF85625321E7CB570032F52D /* DeviceDocument.swift in Sources */,
 				CF5C4D9B219F04D600EAC52A /* transient-MergerBoardInstance-modelName.swift in Sources */,
 				CF5C4D9D219F04D600EAC52A /* EBColorWell.swift in Sources */,

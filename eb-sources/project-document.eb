@@ -88,7 +88,8 @@ document ProjectDocument root ProjectRoot {
 
 #---------------------- Net Class Tab
   tableViewController mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
-     column "name" EBTextObserverField $valueObserver self.mNetClassName
+    column "name" EBTextObserverField $valueObserver self.mNetClassName
+    column "used" EBTextObserverField $valueObserver self.netUsage
   }
   outlet EBTableView mNetClassTableView $tableValue mNetClassController ;
 
@@ -100,9 +101,10 @@ document ProjectDocument root ProjectRoot {
   outlet NSButton mAddNetClassValidationButton ;
 
   action removeNetClassAction ;
+  transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, mNetClassController.selectedArray.all.canRemove ;
   outlet EBButton mRemoveNetClassButton
     $run self.removeNetClassAction
-    $enabled (mNetClassController.selectedArray.count > 0) & (root.mNetClasses.count > 1)
+    $enabled self.canRemoveNetClasses
   ;
 
 #  controller componentController : NSArrayController ComponentInProjectEntity

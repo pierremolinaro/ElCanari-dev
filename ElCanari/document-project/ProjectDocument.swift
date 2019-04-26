@@ -79,6 +79,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: canRemoveNetClasses
+  //····················································································································
+
+  var canRemoveNetClasses_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemoveNetClasses_property_selection : EBSelection <Bool> {
+    return self.canRemoveNetClasses_property.prop
+  }
+
+  //····················································································································
+
+  var canRemoveNetClasses : Bool? {
+    switch self.canRemoveNetClasses_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: selectedDevicePackageNames
   //····················································································································
 
@@ -434,6 +457,30 @@ import Cocoa
       }
     }
     self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+  //--- Atomic property: canRemoveNetClasses
+    self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
+        kind &= unwSelf.mNetClassController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.mNetClassController.selectedArray_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
+    self.mNetClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -609,12 +656,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return ((self.mNetClassController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mNetClasses_property.count_property_selection > EBSelection.single (1)))
+          return self.canRemoveNetClasses_property_selection
         },
         outlet: self.mRemoveNetClassButton
       )
-      self.mNetClassController.selectedArray_property.count_property.addEBObserver (controller)
-      self.rootObject.mNetClasses_property.count_property.addEBObserver (controller)
+      self.canRemoveNetClasses_property.addEBObserver (controller)
       self.mController_mRemoveNetClassButton_enabled = controller
     }
     do{
@@ -777,8 +823,7 @@ import Cocoa
     self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
-    self.mNetClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
-    self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
+    self.canRemoveNetClasses_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
     self.mController_mRemoveNetClassButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
@@ -812,6 +857,8 @@ import Cocoa
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
+    self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolNames (self.selectedDeviceSymbolNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)

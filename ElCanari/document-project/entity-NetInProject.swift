@@ -6,135 +6,51 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mNetClassName : class {
-  var mNetClassName : String { get }
+protocol NetInProject_mNetName : class {
+  var mNetName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol NetClassInProject_mNetClassColor : class {
-  var mNetClassColor : NSColor { get }
-}
-
+//    Entity: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_canRemove : class {
-  var canRemove : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol NetClassInProject_netUsage : class {
-  var netUsage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: NetClassInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class NetClassInProject : EBManagedObject,
-         NetClassInProject_mNetClassName,
-         NetClassInProject_mNetClassColor,
-         NetClassInProject_canRemove,
-         NetClassInProject_netUsage {
+class NetInProject : EBManagedObject,
+         NetInProject_mNetName {
 
   //····················································································································
-  //   Atomic property: mNetClassName
+  //   Atomic property: mNetName
   //····················································································································
 
-  var mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
+  var mNetName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mNetClassName : String {
-    get { return self.mNetClassName_property.propval }
-    set { self.mNetClassName_property.setProp (newValue) }
+  var mNetName : String {
+    get { return self.mNetName_property.propval }
+    set { self.mNetName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetClassName_property_selection : EBSelection <String> { return self.mNetClassName_property.prop }
+  var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
 
   //····················································································································
-  //   Atomic property: mNetClassColor
+  //   To one property: mNetClass
   //····················································································································
 
-  var mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
+  var mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
 
   //····················································································································
 
-  var mNetClassColor : NSColor {
-    get { return self.mNetClassColor_property.propval }
-    set { self.mNetClassColor_property.setProp (newValue) }
+  var mNetClass_property_selection : EBSelection <Bool> {
+    return .single (self.mNetClass_property.propval == nil)
   }
 
   //····················································································································
 
-  var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
-
-  //····················································································································
-  //   To many property: mNets
-  //····················································································································
-
-  var mNets_property = StoredArrayOf_NetInProject ()
-
-  //····················································································································
-
-  var mNets_property_selection : EBSelection < [NetInProject] > {
-    return self.mNets_property.prop
-  }
-
-  //····················································································································
-
-  var mNets : [NetInProject] {
-    get { return self.mNets_property.propval }
-    set { self.mNets_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Transient property: canRemove
-  //····················································································································
-
-  var canRemove_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var canRemove_property_selection : EBSelection <Bool> {
-    return self.canRemove_property.prop
-  }
-
-  //····················································································································
-
-  var canRemove : Bool? {
-    switch self.canRemove_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: netUsage
-  //····················································································································
-
-  var netUsage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var netUsage_property_selection : EBSelection <String> {
-    return self.netUsage_property.prop
-  }
-
-  //····················································································································
-
-  var netUsage : String? {
-    switch self.netUsage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mNetClass : NetClassInProject? {
+    get { return self.mNetClass_property.propval }
+    set { self.mNetClass_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -143,63 +59,11 @@ class NetClassInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mNets (has opposite relationship)
-    self.mNets_property.ebUndoManager = self.ebUndoManager
-    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject :NetInProject?) in
-      inManagedObject?.mNetClass_property.setProp (self)
-    }
-  //--- Atomic property: canRemove
-    self.canRemove_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mNets_property.count_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mNets_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_canRemove (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mNets_property.addEBObserver (self.canRemove_property)
-  //--- Atomic property: netUsage
-    self.netUsage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mNets_property.count_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mNets_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_netUsage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mNets_property.addEBObserver (self.netUsage_property)
+  //--- Atomic property: mNetName
+    self.mNetName_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mNetClass
+    self.mNetClass_property.owner = self
   //--- Install undoers and opposite setter for relationships
-    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject : NetInProject?) in
-      inManagedObject?.mNetClass_property.setProp (self)
-    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -208,9 +72,6 @@ class NetClassInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mNets_property.removeEBObserver (self.canRemove_property)
-    self.mNets_property.removeEBObserver (self.netUsage_property)
- //   self.mNets_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -226,47 +87,23 @@ class NetClassInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mNetClassName",
-      idx:self.mNetClassName_property.ebObjectIndex,
+      "mNetName",
+      idx:self.mNetName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mNetClassName_property.mObserverExplorer,
-      valueExplorer:&self.mNetClassName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mNetClassColor",
-      idx:self.mNetClassColor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetClassColor_property.mObserverExplorer,
-      valueExplorer:&self.mNetClassColor_property.mValueExplorer
+      observerExplorer:&self.mNetName_property.mObserverExplorer,
+      valueExplorer:&self.mNetName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "canRemove",
-      idx:self.canRemove_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.canRemove_property.mObserverExplorer,
-      valueExplorer:&self.canRemove_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "netUsage",
-      idx:self.netUsage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netUsage_property.mObserverExplorer,
-      valueExplorer:&self.netUsage_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mNets",
-      idx:mNets_property.ebObjectIndex,
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mNetClass",
+      idx:self.mNetClass_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&mNets_property.mValueExplorer
+      valueExplorer:&self.mNetClass_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -275,14 +112,12 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.mObserverExplorer = nil
-    self.mNetClassName_property.mValueExplorer = nil
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.mObserverExplorer = nil
-    self.mNetClassColor_property.mValueExplorer = nil
-  //--- To many property: mNets
-    self.mNets_property.mValueExplorer = nil
+  //--- Atomic property: mNetName
+    self.mNetName_property.mObserverExplorer = nil
+    self.mNetName_property.mValueExplorer = nil
+  //--- To one property: mNetClass
+    self.mNetClass_property.mObserverExplorer = nil
+    self.mNetClass_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -292,7 +127,6 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mNets_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -302,6 +136,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mNetClass_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -312,16 +147,8 @@ class NetClassInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassName")
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassColor")
-  //--- To many property: mNets
-    self.store (
-      managedObjectArray: self.mNets_property.propval,
-      relationshipName: "mNets",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mNetName
+    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
   }
 
   //····················································································································
@@ -331,12 +158,17 @@ class NetClassInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mNets
-    self.mNets_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mNets",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [NetInProject])
+  //--- To one property: mNetClass
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mNetClass",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? NetClassInProject {
+        self.mNetClass_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -345,10 +177,8 @@ class NetClassInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mNetClassName
-    self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mNetClassName")
-  //--- Atomic property: mNetClassColor
-    self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey:"mNetClassColor")
+  //--- Atomic property: mNetName
+    self.mNetName_property.readFrom (dictionary: inDictionary, forKey:"mNetName")
   }
 
   //····················································································································
@@ -357,8 +187,8 @@ class NetClassInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mNets
-    for managedObject in self.mNets_property.propval {
+  //--- To one property: mNetClass
+    if let managedObject = self.mNetClass_property.propval {
       objects.append (managedObject)
     }
   }
@@ -369,8 +199,8 @@ class NetClassInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mNets
-    for managedObject in self.mNets_property.propval {
+  //--- To one property: mNetClass
+    if let managedObject = self.mNetClass_property.propval {
       objects.append (managedObject)
     }
   }
@@ -380,233 +210,64 @@ class NetClassInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_NetClassInProject
+//    ReadOnlyArrayOf_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClassInProject> {
+class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject> {
 
   //····················································································································
-  //   Observers of 'mNetClassName' stored property
+  //   Observers of 'mNetName' stored property
   //····················································································································
 
-  private var mObserversOf_mNetClassName = EBWeakEventSet ()
+  private var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mNetClassName.insert (inObserver)
+    self.mObserversOf_mNetName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassName_property.addEBObserver (inObserver)
+        managedObject.mNetName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetClassName.remove (inObserver)
+    self.mObserversOf_mNetName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassName_property.removeEBObserver (inObserver)
+        managedObject.mNetName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNetClassName_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
-        managedObject.mNetClassName_property.addEBObserver (observer)
+      self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
+        managedObject.mNetName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetClassName_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    self.mObserversOf_mNetClassName.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mNetClassName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mNetClassColor' stored property
-  //····················································································································
-
-  private var mObserversOf_mNetClassColor = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mNetClassColor.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNetClassColor_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetClassColor.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNetClassColor_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mNetClassColor_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
-        managedObject.mNetClassColor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mNetClassColor_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    self.mObserversOf_mNetClassColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mNetClassColor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'canRemove' transient property
-  //····················································································································
-
-  private var mObserversOf_canRemove = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canRemove.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canRemove_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canRemove.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.canRemove_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'netUsage' transient property
-  //····················································································································
-
-  private var mObserversOf_netUsage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_netUsage.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.netUsage_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_netUsage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_netUsage.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.netUsage_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netUsage_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
-        managedObject.netUsage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netUsage_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
-        managedObject.netUsage_property.removeEBObserver (observer)
+        managedObject.mNetName_property.removeEBObserver (observer)
       }
     }
   }
@@ -616,32 +277,32 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_NetClassInProject
+//    TransientArrayOf_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
+class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [NetClassInProject] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [NetInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <NetClassInProject> {
+  override var propset : Set <NetInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [NetClassInProject] > {
+  override var prop : EBSelection < [NetInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [NetClassInProject] {
+  override var propval : [NetInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -663,11 +324,11 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
   //····················································································································
 
-  private var mSet = Set <NetClassInProject> ()
+  private var mSet = Set <NetInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [NetClassInProject] >? = nil
+  private var mCachedValue : EBSelection < [NetInProject] >? = nil
 
   //····················································································································
 
@@ -675,29 +336,23 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       let cachedValue = unwrappedComputeFunction ()
       self.mCachedValue = cachedValue
-      let newSet : Set <NetClassInProject>
+      let newSet : Set <NetInProject>
       switch cachedValue {
       case .multiple, .empty :
-        newSet = Set <NetClassInProject> ()
+        newSet = Set <NetInProject> ()
       case .single (let array) :
         newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNetName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_netUsage_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mNetClassName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNetName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
-      self.addEBObserversOf_netUsage_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -725,28 +380,28 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: NetClassInProject
+//    To many relationship read write: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
+class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [NetClassInProject]) { } // Abstract method
+  func setProp (_ value :  [NetInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: NetClassInProject
+//    To many relationship: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSignatureObserverProtocol {
+final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : NetInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -793,9 +448,9 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetClassInProject] ()
+      var objectArray = [NetInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetClassInProject") as? NetClassInProject {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetInProject") as? NetInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -806,8 +461,8 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
  //····················································································································
 
-  private var mSet = Set <NetClassInProject> ()
-  private var mValue = [NetClassInProject] () {
+  private var mSet = Set <NetInProject> ()
+  private var mValue = [NetInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -825,39 +480,25 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mNetClassName_property.mSetterDelegate = nil
-            managedObject.mNetClassColor_property.mSetterDelegate = nil
+            managedObject.mNetName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : NetClassInProject in addedObjectSet {
+          for managedObject : NetInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mNetClassName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mNetClassColor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNetName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
-          self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -885,29 +526,29 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   //····················································································································
 
-  override var prop : EBSelection < [NetClassInProject] > { return .single (self.mValue) }
+  override var prop : EBSelection < [NetInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [NetClassInProject]) { self.mValue = inValue }
+  override func setProp (_ inValue : [NetInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [NetClassInProject] { return self.mValue }
+  override var propval : [NetInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <NetClassInProject> { return self.mSet }
+  override var propset : Set <NetInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [NetClassInProject]) {
+  @objc func performUndo (_ oldValue : [NetInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : NetClassInProject) {
+  func remove (_ object : NetInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -918,7 +559,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   
   //····················································································································
 
-  func add (_ object : NetClassInProject) {
+  func add (_ object : NetInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
@@ -979,6 +620,260 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mNetClass
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : NetInProject? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : NetClassInProject? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mNets_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mNets_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove)
+        oldValue?.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor)
+        oldValue?.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName)
+        oldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage)
+      //--- Add property observers to new object
+        self.mValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove)
+        self.mValue?.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor)
+        self.mValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName)
+        self.mValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : NetClassInProject? { return self.mValue }
+
+  var prop : EBSelection <NetClassInProject?> { return .single (self.mValue) }
+
+  func setProp (_ value : NetClassInProject?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : NetClassInProject?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : NetClassInProject) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: canRemove
+  //····················································································································
+
+  private var mObserversOf_canRemove = EBWeakEventSet ()
+
+  //····················································································································
+
+  var canRemove_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.canRemove_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.mObserversOf_canRemove.insert (inObserver)
+    if let object = self.propval {
+      object.canRemove_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.mObserversOf_canRemove.remove (inObserver)
+    if let object = self.propval {
+      object.canRemove_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mNetClassColor
+  //····················································································································
+
+  private var mObserversOf_mNetClassColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNetClassColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.mNetClassColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetClassColor.insert (inObserver)
+    if let object = self.propval {
+      object.mNetClassColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetClassColor.remove (inObserver)
+    if let object = self.propval {
+      object.mNetClassColor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mNetClassName
+  //····················································································································
+
+  private var mObserversOf_mNetClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNetClassName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mNetClassName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetClassName.insert (inObserver)
+    if let object = self.propval {
+      object.mNetClassName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetClassName.remove (inObserver)
+    if let object = self.propval {
+      object.mNetClassName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: netUsage
+  //····················································································································
+
+  private var mObserversOf_netUsage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netUsage_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netUsage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
+    self.mObserversOf_netUsage.insert (inObserver)
+    if let object = self.propval {
+      object.netUsage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netUsage (_ inObserver : EBEvent) {
+    self.mObserversOf_netUsage.remove (inObserver)
+    if let object = self.propval {
+      object.netUsage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

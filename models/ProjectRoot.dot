@@ -2,7 +2,8 @@ digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Int mSelectedPageIndex"] ;
-  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName"] ;
+  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|<mNets>mNets"] ;
+  NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages|<mPadAssignments>mPadAssignments|String mPrefix|<mSymbols>mSymbols"] ;
   DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|<mPins>mPins|<mSymbolType>mSymbolType"] ;
@@ -17,6 +18,7 @@ digraph G {
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mNetClasses -> NetClassInProject:NetClassInProject [dir=both arrowtail=none arrowhead=vee] ;
+  NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceInProject:mPadAssignments -> DevicePadAssignmentInProject:DevicePadAssignmentInProject [dir=both arrowtail=none arrowhead=vee] ;

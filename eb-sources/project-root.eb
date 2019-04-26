@@ -161,8 +161,22 @@ entity DevicePadAssignmentInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity NetClassInProject {
+  toMany NetInProject mNets inverse toOne mNetClass ;
   property String mNetClassName default "Default" ;
   property NSColor mNetClassColor default brown ;
+
+  transient Bool canRemove dependsFrom self.mNets.count ;
+  transient String netUsage dependsFrom self.mNets.count ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   Net
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity NetInProject {
+  property String mNetName default "" ;
+  toOne NetClassInProject mNetClass inverse toMany mNets ;
+  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
