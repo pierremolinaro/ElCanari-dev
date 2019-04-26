@@ -674,12 +674,30 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         oldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove)
         oldValue?.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor)
         oldValue?.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName)
+        oldValue?.mNetWidth_property.removeEBObserversFrom (&self.mObserversOf_mNetWidth)
+        oldValue?.mNetWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
+        oldValue?.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
+        oldValue?.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
+        oldValue?.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
+        oldValue?.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
         oldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage)
+        oldValue?.netWidth_property.removeEBObserversFrom (&self.mObserversOf_netWidth)
+        oldValue?.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
+        oldValue?.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter)
       //--- Add property observers to new object
         self.mValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove)
         self.mValue?.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor)
         self.mValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName)
+        self.mValue?.mNetWidth_property.addEBObserversFrom (&self.mObserversOf_mNetWidth)
+        self.mValue?.mNetWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
+        self.mValue?.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
+        self.mValue?.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
+        self.mValue?.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
+        self.mValue?.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
         self.mValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage)
+        self.mValue?.netWidth_property.addEBObserversFrom (&self.mObserversOf_netWidth)
+        self.mValue?.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
+        self.mValue?.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter)
        //--- Notify observers
         self.postEvent ()
       }
@@ -832,6 +850,252 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: mNetWidth
+  //····················································································································
+
+  private var mObserversOf_mNetWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNetWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNetWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetWidth.insert (inObserver)
+    if let object = self.propval {
+      object.mNetWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetWidth.remove (inObserver)
+    if let object = self.propval {
+      object.mNetWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mNetWidthUnit
+  //····················································································································
+
+  private var mObserversOf_mNetWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNetWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNetWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetWidthUnit.insert (inObserver)
+    if let object = self.propval {
+      object.mNetWidthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mNetWidthUnit.remove (inObserver)
+    if let object = self.propval {
+      object.mNetWidthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mViaHoleDiameter
+  //····················································································································
+
+  private var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mViaHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaHoleDiameter.insert (inObserver)
+    if let object = self.propval {
+      object.mViaHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaHoleDiameter.remove (inObserver)
+    if let object = self.propval {
+      object.mViaHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mViaHoleDiameterUnit
+  //····················································································································
+
+  private var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mViaHoleDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaHoleDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
+    if let object = self.propval {
+      object.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
+    if let object = self.propval {
+      object.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mViaPadDiameter
+  //····················································································································
+
+  private var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mViaPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaPadDiameter.insert (inObserver)
+    if let object = self.propval {
+      object.mViaPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaPadDiameter.remove (inObserver)
+    if let object = self.propval {
+      object.mViaPadDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mViaPadDiameterUnit
+  //····················································································································
+
+  private var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mViaPadDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaPadDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
+    if let object = self.propval {
+      object.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
+    if let object = self.propval {
+      object.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: netUsage
   //····················································································································
 
@@ -869,6 +1133,129 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
     self.mObserversOf_netUsage.remove (inObserver)
     if let object = self.propval {
       object.netUsage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: netWidth
+  //····················································································································
+
+  private var mObserversOf_netWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netWidth_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netWidth (_ inObserver : EBEvent) {
+    self.mObserversOf_netWidth.insert (inObserver)
+    if let object = self.propval {
+      object.netWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netWidth (_ inObserver : EBEvent) {
+    self.mObserversOf_netWidth.remove (inObserver)
+    if let object = self.propval {
+      object.netWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: viaHoleDiameter
+  //····················································································································
+
+  private var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaHoleDiameter_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.viaHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_viaHoleDiameter.insert (inObserver)
+    if let object = self.propval {
+      object.viaHoleDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_viaHoleDiameter.remove (inObserver)
+    if let object = self.propval {
+      object.viaHoleDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: viaPadDiameter
+  //····················································································································
+
+  private var mObserversOf_viaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaPadDiameter_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.viaPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_viaPadDiameter.insert (inObserver)
+    if let object = self.propval {
+      object.viaPadDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_viaPadDiameter.remove (inObserver)
+    if let object = self.propval {
+      object.viaPadDiameter_property.removeEBObserver (inObserver)
     }
   }
 

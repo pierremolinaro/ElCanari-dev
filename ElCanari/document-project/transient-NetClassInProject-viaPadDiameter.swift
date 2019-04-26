@@ -11,12 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension ProjectDocument {
-  @objc func addNetClassAction (_ sender : NSObject?) {
+func transient_NetClassInProject_viaPadDiameter (
+       _ self_mViaPadDiameter : Int,             
+       _ self_mViaPadDiameterUnit : Int
+) -> String {
 //--- START OF USER ZONE 2
-    self.performAddNetClass ()
+       return stringFrom (valueInCanariUnit: self_mViaPadDiameter, displayUnit: self_mViaPadDiameterUnit)
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,12 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension ProjectDocument {
-  @objc func addNetClassAction (_ sender : NSObject?) {
+func transient_NetClassInProject_netWidth (
+       _ self_mNetWidth : Int,             
+       _ self_mNetWidthUnit : Int
+) -> String {
 //--- START OF USER ZONE 2
-    self.performAddNetClass ()
+       return stringFrom (valueInCanariUnit: self_mNetWidth, displayUnit: self_mNetWidthUnit)
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

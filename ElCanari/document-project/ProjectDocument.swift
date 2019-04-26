@@ -248,11 +248,18 @@ import Cocoa
   @IBOutlet var mDuplicateSelectedComponentsActionButton : EBButton?
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
+  @IBOutlet var mEditNetClassButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mNetClassHoleDiameterDimensionTextField : CanariDimensionTextField?
+  @IBOutlet var mNetClassHoleDiameterUnitPopUpButton : EBPopUpButton?
+  @IBOutlet var mNetClassPadDiameterDimensionTextField : CanariDimensionTextField?
+  @IBOutlet var mNetClassPadDiameterUnitPopUpButton : EBPopUpButton?
   @IBOutlet var mNetClassTableView : EBTableView?
+  @IBOutlet var mNetClassWidthDimensionTextField : CanariDimensionTextField?
+  @IBOutlet var mNetClassWidthUnitPopUpButton : EBPopUpButton?
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
@@ -285,6 +292,7 @@ import Cocoa
   var mController_mChangeValueOfSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveNetClassButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mEditNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -391,11 +399,18 @@ import Cocoa
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNetClassHoleDiameterDimensionTextField, "mNetClassHoleDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mNetClassHoleDiameterUnitPopUpButton, "mNetClassHoleDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mNetClassPadDiameterDimensionTextField, "mNetClassPadDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mNetClassPadDiameterUnitPopUpButton, "mNetClassPadDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassTableView, "mNetClassTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mNetClassWidthDimensionTextField, "mNetClassWidthDimensionTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mNetClassWidthUnitPopUpButton, "mNetClassWidthUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
@@ -666,6 +681,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.mNetClassController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mEditNetClassButton
+      )
+      self.mNetClassController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mEditNetClassButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditFontButton
@@ -768,6 +793,8 @@ import Cocoa
     self.mAddNetClassButton?.action = #selector (ProjectDocument.addNetClassAction (_:))
     self.mRemoveNetClassButton?.target = self
     self.mRemoveNetClassButton?.action = #selector (ProjectDocument.removeNetClassAction (_:))
+    self.mEditNetClassButton?.target = self
+    self.mEditNetClassButton?.action = #selector (ProjectDocument.editNetClassAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -825,6 +852,8 @@ import Cocoa
     self.mController_mRenameComponentButton_enabled = nil
     self.canRemoveNetClasses_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
     self.mController_mRemoveNetClassButton_enabled = nil
+    self.mNetClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditNetClassButton_enabled!)
+    self.mController_mEditNetClassButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
@@ -872,6 +901,7 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton?.target = nil
     self.mAddNetClassButton?.target = nil
     self.mRemoveNetClassButton?.target = nil
+    self.mEditNetClassButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -910,11 +940,18 @@ import Cocoa
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
+    self.mEditNetClassButton?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mNetClassHoleDiameterDimensionTextField?.ebCleanUp ()
+    self.mNetClassHoleDiameterUnitPopUpButton?.ebCleanUp ()
+    self.mNetClassPadDiameterDimensionTextField?.ebCleanUp ()
+    self.mNetClassPadDiameterUnitPopUpButton?.ebCleanUp ()
     self.mNetClassTableView?.ebCleanUp ()
+    self.mNetClassWidthDimensionTextField?.ebCleanUp ()
+    self.mNetClassWidthUnitPopUpButton?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()

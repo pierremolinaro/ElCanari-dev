@@ -89,6 +89,9 @@ document ProjectDocument root ProjectRoot {
 #---------------------- Net Class Tab
   tableViewController mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
     column "name" EBTextObserverField $valueObserver self.mNetClassName
+    column "width" EBTextObserverField $valueObserver self.netWidth
+    column "hole" EBTextObserverField $valueObserver self.viaHoleDiameter
+    column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
     column "used" EBTextObserverField $valueObserver self.netUsage
   }
   outlet EBTableView mNetClassTableView $tableValue mNetClassController ;
@@ -98,6 +101,12 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mAddNetClassPanel ;
   outlet EBTextField mAddNetClassTextField ;
   outlet NSTextField mAddNetClassErrorMessageTextField ;
+  outlet CanariDimensionTextField mNetClassWidthDimensionTextField ;
+  outlet EBPopUpButton mNetClassWidthUnitPopUpButton ;
+  outlet CanariDimensionTextField mNetClassHoleDiameterDimensionTextField ;
+  outlet EBPopUpButton mNetClassHoleDiameterUnitPopUpButton ;
+  outlet CanariDimensionTextField mNetClassPadDiameterDimensionTextField ;
+  outlet EBPopUpButton mNetClassPadDiameterUnitPopUpButton ;
   outlet NSButton mAddNetClassValidationButton ;
 
   action removeNetClassAction ;
@@ -107,87 +116,10 @@ document ProjectDocument root ProjectRoot {
     $enabled self.canRemoveNetClasses
   ;
 
-#  controller componentController : NSArrayController ComponentInProjectEntity
-#    $contentSet root.components { NSDeletesObjectsOnRemove:yes} ;
-
-#  outlet componentsTableView : NSTableView $tableValue .componentController {
-#    NSTableColumn "name" NSTextFieldCell $value *.componentName ;
-#    NSTableColumn "device" NSTextFieldCell $value *.deviceName ;
-#    NSTableColumn "package" NSTextFieldCell $value *.selectedPackageName ;
-#    NSTableColumn "inboard" NSTextFieldCell $value *.isInBoardString ;
-#    NSTableColumn "symbolsplaced" NSTextFieldCell $value *.symbolsInSchematicsString ;
-#    NSTableColumn "value" NSTextFieldCell $value *.componentValue ;
-#  } ;
-#
-#  outlet componentCountTextField : NSTextField $value root.componentCountString ;
-#
-#  action updateAddComponentButtonMenu observe root.devicesInLibrary ;
-#
-#  action addComponentAction ;
-#  outlet addComponentButton : NSButton $run .addComponentAction ;
-#
-#  action addComponentFromEmbeddedLibraryAction ;
-#  outlet addComponentFromEmbeddedLibraryButton : NSPopUpButton ;
-#
-#  action duplicateComponentAction ;
-#  outlet duplicationComponentButton : NSButton $run .duplicateComponentAction $enabled .componentController.canRemove ;
-#
-#  action removeComponentAction ;
-#  outlet removeComponentButton : NSButton $run .removeComponentAction $enabled .componentController.canRemove ;
-#
-#  action renameComponentFromDeviceTabAction ;
-#  outlet renameComponentFromDeviceTabButton : NSButton
-#    $run .renameComponentFromDeviceTabAction
-#    $enabled .componentController.canRemove
-#  ;
-#
-#  action changeComponentValueAction ;
-#  outlet changeComponentValueButton : NSButton $run .changeComponentValueAction $enabled .componentController.canRemove ;
-#  outlet changeComponentValuePanel : NSPanel ;
-#  outlet changeComponentValueComponentNameTextField : NSTextField 
-#    $value . componentController.selection.componentName
-#  ;
-#  outlet changeComponentValueTextField : NSTextField ; # Bound in Source Text
-#
-#  action revealComponentInBoardAction ;
-#  outlet revealComponentInBoardButton : NSButton
-#    $run .revealComponentInBoardAction
-#    $enabled ! .componentController.selection.isNotPlacedOnBoard
-#  ;
-#
-##--- Add Component Panel
-#  outlet addComponentPanel : NSPanel ;
-#  controller deviceForAddedComponentController : NSObjectController DeviceInProjectEntity ;
-#  outlet addedComponentDeviceNameTextField : NSTextField $value .deviceForAddedComponentController.selection.deviceName ;
-#  outlet addedComponentValueTextField : NSTextField $value .deviceForAddedComponentController.selection.defaultValueForComponent {NSContinuouslyUpdatesValue:yes} ;
-#  outlet addedComponentValueVisibilityInBoardCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForValueInBoard ;
-#  outlet addedComponentNameVisibilityInBoardCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForNameInBoard ;
-#  outlet addedComponentValueVisibilityInSchematicsCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForValueInSchematics ;
-#
-#  #--- Package rotation
-#  outlet addedComponentPackageRotationTextField : NSTextField $value .deviceForAddedComponentController.selection.defaultRotationForPackageInBoard {NSContinuouslyUpdatesValue:yes} ;
-#  controller defaultPackageInBoardRotationController : AngleForSliderController $angle .deviceForAddedComponentController.selection.defaultRotationForPackageInBoard ;
-#  outlet defaultPackageRotationSlider : PMSlider $value .defaultPackageInBoardRotationController.angleForSlider ;
-#  #--- Package Selection PopUp
-#  controller availableDefaultPackagesController : NSArrayController PackageTypeInProjectEntity $contentSet .deviceForAddedComponentController.selection.availablePackages ;
-#  outlet availableDefaultPackagesPopup : NSPopUpButton PackageTypeInProjectEntity
-#    $contentValuesAndContent .availableDefaultPackagesController.arrangedObjects.packageTypeName
-#    $selectedObject .deviceForAddedComponentController.selection.defaultPackage ;
-#
-##--- Change Package
-#  action changeComponentPackageAction ;
-#  outlet changeComponentPackageButton : NSButton $run .changeComponentPackageAction $enabled .componentController.canRemove ;
-#  outlet changeComponentPackagePanel : NSPanel ;
-#  outlet actualComponentNameForChangePackagePanel : NSTextField ;
-#  controller currentComponentDeviceController : NSObjectController DeviceInProjectEntity $contentObject .componentController.selection.device ;
-#  controller availablePackagesForCurrentComponentController : NSArrayController PackageTypeInProjectEntity
-#    $contentSet .currentComponentDeviceController.selection.availablePackages ;
-#  outlet availablePackagesPopUpMenu : NSPopUpButton PackageTypeInProjectEntity
-#    $contentValuesAndContent .availablePackagesForCurrentComponentController.arrangedObjects.packageTypeName
-#  ;
+  action editNetClassAction ;
+  outlet EBButton mEditNetClassButton $run self.editNetClassAction $enabled mNetClassController.selectedArray.count == 1 ;
 
 #---------------------- Library Tab
-#--- Fonts
   action addFontAction ;
   outlet EBButton mAddFontButton $run self.addFontAction ;
 

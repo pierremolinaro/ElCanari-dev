@@ -12,9 +12,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func addNetClassAction (_ sender : NSObject?) {
+  @objc func editNetClassAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    self.performAddNetClass ()
+    self.performEditNetClass ()
 //--- END OF USER ZONE 2
   }
 }

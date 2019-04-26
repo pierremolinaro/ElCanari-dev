@@ -2,7 +2,7 @@ digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Int mSelectedPageIndex"] ;
-  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|<mNets>mNets"] ;
+  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages|<mPadAssignments>mPadAssignments|String mPrefix|<mSymbols>mSymbols"] ;

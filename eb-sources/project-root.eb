@@ -165,8 +165,20 @@ entity NetClassInProject {
   property String mNetClassName default "Default" ;
   property NSColor mNetClassColor default brown ;
 
+  property Int mNetWidth default 45_720 ; # 20 mils
+  property Int mNetWidthUnit default 2_286 ; # mil
+
+  property Int mViaHoleDiameter default 45_720 ; # 20 mils
+  property Int mViaHoleDiameterUnit default 2_286 ; # mil
+
+  property Int mViaPadDiameter default 91_440 ; # 40 mils
+  property Int mViaPadDiameterUnit default 2_286 ; # mil
+
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;
+  transient String netWidth dependsFrom self.mNetWidth, self.mNetWidthUnit ;
+  transient String viaHoleDiameter dependsFrom self.mViaHoleDiameter, self.mViaHoleDiameterUnit ;
+  transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

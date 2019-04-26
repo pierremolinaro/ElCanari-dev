@@ -18,6 +18,60 @@ protocol NetClassInProject_mNetClassColor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetClassInProject_mNetWidth : class {
+  var mNetWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mNetWidthUnit : class {
+  var mNetWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mViaHoleDiameter : class {
+  var mViaHoleDiameter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mViaHoleDiameterUnit : class {
+  var mViaHoleDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mViaPadDiameter : class {
+  var mViaPadDiameter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mViaPadDiameterUnit : class {
+  var mViaPadDiameterUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_netWidth : class {
+  var netWidth : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_viaHoleDiameter : class {
+  var viaHoleDiameter : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_viaPadDiameter : class {
+  var viaPadDiameter : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetClassInProject_canRemove : class {
   var canRemove : Bool? { get }
 }
@@ -35,6 +89,15 @@ protocol NetClassInProject_netUsage : class {
 class NetClassInProject : EBManagedObject,
          NetClassInProject_mNetClassName,
          NetClassInProject_mNetClassColor,
+         NetClassInProject_mNetWidth,
+         NetClassInProject_mNetWidthUnit,
+         NetClassInProject_mViaHoleDiameter,
+         NetClassInProject_mViaHoleDiameterUnit,
+         NetClassInProject_mViaPadDiameter,
+         NetClassInProject_mViaPadDiameterUnit,
+         NetClassInProject_netWidth,
+         NetClassInProject_viaHoleDiameter,
+         NetClassInProject_viaPadDiameter,
          NetClassInProject_canRemove,
          NetClassInProject_netUsage {
 
@@ -73,6 +136,108 @@ class NetClassInProject : EBManagedObject,
   var mNetClassColor_property_selection : EBSelection <NSColor> { return self.mNetClassColor_property.prop }
 
   //····················································································································
+  //   Atomic property: mNetWidth
+  //····················································································································
+
+  var mNetWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  //····················································································································
+
+  var mNetWidth : Int {
+    get { return self.mNetWidth_property.propval }
+    set { self.mNetWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mNetWidth_property_selection : EBSelection <Int> { return self.mNetWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mNetWidthUnit
+  //····················································································································
+
+  var mNetWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mNetWidthUnit : Int {
+    get { return self.mNetWidthUnit_property.propval }
+    set { self.mNetWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mNetWidthUnit_property_selection : EBSelection <Int> { return self.mNetWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mViaHoleDiameter
+  //····················································································································
+
+  var mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+
+  //····················································································································
+
+  var mViaHoleDiameter : Int {
+    get { return self.mViaHoleDiameter_property.propval }
+    set { self.mViaHoleDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mViaHoleDiameter_property_selection : EBSelection <Int> { return self.mViaHoleDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mViaHoleDiameterUnit
+  //····················································································································
+
+  var mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mViaHoleDiameterUnit : Int {
+    get { return self.mViaHoleDiameterUnit_property.propval }
+    set { self.mViaHoleDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mViaHoleDiameterUnit_property_selection : EBSelection <Int> { return self.mViaHoleDiameterUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mViaPadDiameter
+  //····················································································································
+
+  var mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+
+  //····················································································································
+
+  var mViaPadDiameter : Int {
+    get { return self.mViaPadDiameter_property.propval }
+    set { self.mViaPadDiameter_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mViaPadDiameter_property_selection : EBSelection <Int> { return self.mViaPadDiameter_property.prop }
+
+  //····················································································································
+  //   Atomic property: mViaPadDiameterUnit
+  //····················································································································
+
+  var mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mViaPadDiameterUnit : Int {
+    get { return self.mViaPadDiameterUnit_property.propval }
+    set { self.mViaPadDiameterUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mViaPadDiameterUnit_property_selection : EBSelection <Int> { return self.mViaPadDiameterUnit_property.prop }
+
+  //····················································································································
   //   To many property: mNets
   //····················································································································
 
@@ -89,6 +254,75 @@ class NetClassInProject : EBManagedObject,
   var mNets : [NetInProject] {
     get { return self.mNets_property.propval }
     set { self.mNets_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: netWidth
+  //····················································································································
+
+  var netWidth_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netWidth_property_selection : EBSelection <String> {
+    return self.netWidth_property.prop
+  }
+
+  //····················································································································
+
+  var netWidth : String? {
+    switch self.netWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: viaHoleDiameter
+  //····················································································································
+
+  var viaHoleDiameter_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var viaHoleDiameter_property_selection : EBSelection <String> {
+    return self.viaHoleDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var viaHoleDiameter : String? {
+    switch self.viaHoleDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: viaPadDiameter
+  //····················································································································
+
+  var viaPadDiameter_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var viaPadDiameter_property_selection : EBSelection <String> {
+    return self.viaPadDiameter_property.prop
+  }
+
+  //····················································································································
+
+  var viaPadDiameter : String? {
+    switch self.viaPadDiameter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -147,11 +381,95 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mNetWidth
+    self.mNetWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mNetWidthUnit
+    self.mNetWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mViaHoleDiameter
+    self.mViaHoleDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mViaHoleDiameterUnit
+    self.mViaHoleDiameterUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mViaPadDiameter
+    self.mViaPadDiameter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mViaPadDiameterUnit
+    self.mViaPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
     self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject :NetInProject?) in
       inManagedObject?.mNetClass_property.setProp (self)
     }
+  //--- Atomic property: netWidth
+    self.netWidth_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mNetWidth_property_selection.kind ()
+        kind &= unwSelf.mNetWidthUnit_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mNetWidth_property_selection, unwSelf.mNetWidthUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_NetClassInProject_netWidth (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetWidth_property.addEBObserver (self.netWidth_property)
+    self.mNetWidthUnit_property.addEBObserver (self.netWidth_property)
+  //--- Atomic property: viaHoleDiameter
+    self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mViaHoleDiameter_property_selection.kind ()
+        kind &= unwSelf.mViaHoleDiameterUnit_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mViaHoleDiameter_property_selection, unwSelf.mViaHoleDiameterUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mViaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property)
+    self.mViaHoleDiameterUnit_property.addEBObserver (self.viaHoleDiameter_property)
+  //--- Atomic property: viaPadDiameter
+    self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mViaPadDiameter_property_selection.kind ()
+        kind &= unwSelf.mViaPadDiameterUnit_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mViaPadDiameter_property_selection, unwSelf.mViaPadDiameterUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mViaPadDiameter_property.addEBObserver (self.viaPadDiameter_property)
+    self.mViaPadDiameterUnit_property.addEBObserver (self.viaPadDiameter_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -208,6 +526,12 @@ class NetClassInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mNetWidth_property.removeEBObserver (self.netWidth_property)
+    self.mNetWidthUnit_property.removeEBObserver (self.netWidth_property)
+    self.mViaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property)
+    self.mViaHoleDiameterUnit_property.removeEBObserver (self.viaHoleDiameter_property)
+    self.mViaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property)
+    self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
     self.mNets_property.removeEBObserver (self.canRemove_property)
     self.mNets_property.removeEBObserver (self.netUsage_property)
  //   self.mNets_property.setOppositeRelationship = nil
@@ -241,7 +565,79 @@ class NetClassInProject : EBManagedObject,
       observerExplorer:&self.mNetClassColor_property.mObserverExplorer,
       valueExplorer:&self.mNetClassColor_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mNetWidth",
+      idx:self.mNetWidth_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mNetWidth_property.mObserverExplorer,
+      valueExplorer:&self.mNetWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNetWidthUnit",
+      idx:self.mNetWidthUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mNetWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.mNetWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mViaHoleDiameter",
+      idx:self.mViaHoleDiameter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mViaHoleDiameter_property.mObserverExplorer,
+      valueExplorer:&self.mViaHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mViaHoleDiameterUnit",
+      idx:self.mViaHoleDiameterUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mViaHoleDiameterUnit_property.mObserverExplorer,
+      valueExplorer:&self.mViaHoleDiameterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mViaPadDiameter",
+      idx:self.mViaPadDiameter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mViaPadDiameter_property.mObserverExplorer,
+      valueExplorer:&self.mViaPadDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mViaPadDiameterUnit",
+      idx:self.mViaPadDiameterUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mViaPadDiameterUnit_property.mObserverExplorer,
+      valueExplorer:&self.mViaPadDiameterUnit_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "netWidth",
+      idx:self.netWidth_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netWidth_property.mObserverExplorer,
+      valueExplorer:&self.netWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viaHoleDiameter",
+      idx:self.viaHoleDiameter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viaHoleDiameter_property.mObserverExplorer,
+      valueExplorer:&self.viaHoleDiameter_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viaPadDiameter",
+      idx:self.viaPadDiameter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viaPadDiameter_property.mObserverExplorer,
+      valueExplorer:&self.viaPadDiameter_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "canRemove",
       idx:self.canRemove_property.ebObjectIndex,
@@ -281,6 +677,24 @@ class NetClassInProject : EBManagedObject,
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.mObserverExplorer = nil
     self.mNetClassColor_property.mValueExplorer = nil
+  //--- Atomic property: mNetWidth
+    self.mNetWidth_property.mObserverExplorer = nil
+    self.mNetWidth_property.mValueExplorer = nil
+  //--- Atomic property: mNetWidthUnit
+    self.mNetWidthUnit_property.mObserverExplorer = nil
+    self.mNetWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mViaHoleDiameter
+    self.mViaHoleDiameter_property.mObserverExplorer = nil
+    self.mViaHoleDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mViaHoleDiameterUnit
+    self.mViaHoleDiameterUnit_property.mObserverExplorer = nil
+    self.mViaHoleDiameterUnit_property.mValueExplorer = nil
+  //--- Atomic property: mViaPadDiameter
+    self.mViaPadDiameter_property.mObserverExplorer = nil
+    self.mViaPadDiameter_property.mValueExplorer = nil
+  //--- Atomic property: mViaPadDiameterUnit
+    self.mViaPadDiameterUnit_property.mObserverExplorer = nil
+    self.mViaPadDiameterUnit_property.mValueExplorer = nil
   //--- To many property: mNets
     self.mNets_property.mValueExplorer = nil
   //---
@@ -316,6 +730,18 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassName")
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey:"mNetClassColor")
+  //--- Atomic property: mNetWidth
+    self.mNetWidth_property.storeIn (dictionary: ioDictionary, forKey:"mNetWidth")
+  //--- Atomic property: mNetWidthUnit
+    self.mNetWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mNetWidthUnit")
+  //--- Atomic property: mViaHoleDiameter
+    self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaHoleDiameter")
+  //--- Atomic property: mViaHoleDiameterUnit
+    self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mViaHoleDiameterUnit")
+  //--- Atomic property: mViaPadDiameter
+    self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameter")
+  //--- Atomic property: mViaPadDiameterUnit
+    self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"mViaPadDiameterUnit")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval,
@@ -349,6 +775,18 @@ class NetClassInProject : EBManagedObject,
     self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey:"mNetClassName")
   //--- Atomic property: mNetClassColor
     self.mNetClassColor_property.readFrom (dictionary: inDictionary, forKey:"mNetClassColor")
+  //--- Atomic property: mNetWidth
+    self.mNetWidth_property.readFrom (dictionary: inDictionary, forKey:"mNetWidth")
+  //--- Atomic property: mNetWidthUnit
+    self.mNetWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mNetWidthUnit")
+  //--- Atomic property: mViaHoleDiameter
+    self.mViaHoleDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaHoleDiameter")
+  //--- Atomic property: mViaHoleDiameterUnit
+    self.mViaHoleDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mViaHoleDiameterUnit")
+  //--- Atomic property: mViaPadDiameter
+    self.mViaPadDiameter_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameter")
+  //--- Atomic property: mViaPadDiameterUnit
+    self.mViaPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"mViaPadDiameterUnit")
   }
 
   //····················································································································
@@ -495,6 +933,516 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNetClassColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNetWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_mNetWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNetWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNetWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNetWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNetWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNetWidth_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNetWidth.apply { (_ observer : EBEvent) in
+        managedObject.mNetWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNetWidth_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mNetWidth.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNetWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNetWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mNetWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNetWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNetWidthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNetWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNetWidthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNetWidthUnit_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNetWidthUnit.apply { (_ observer : EBEvent) in
+        managedObject.mNetWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mNetWidthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNetWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mViaHoleDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mViaHoleDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaHoleDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mViaHoleDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaHoleDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mViaHoleDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mViaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mViaHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mViaHoleDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mViaHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mViaHoleDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mViaHoleDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mViaHoleDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mViaHoleDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mViaHoleDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mViaPadDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mViaPadDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaPadDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mViaPadDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaPadDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mViaPadDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mViaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.mViaPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mViaPadDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mViaPadDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mViaPadDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mViaPadDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.mViaPadDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    self.mObserversOf_mViaPadDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mViaPadDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netWidth' transient property
+  //····················································································································
+
+  private var mObserversOf_netWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netWidth_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netWidth.apply { (_ observer : EBEvent) in
+        managedObject.netWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netWidth_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netWidth.apply { (_ observer : EBEvent) in
+        managedObject.netWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viaHoleDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_viaHoleDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaHoleDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_viaHoleDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaHoleDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaHoleDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaHoleDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaHoleDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viaPadDiameter' transient property
+  //····················································································································
+
+  private var mObserversOf_viaPadDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_viaPadDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaPadDiameter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_viaPadDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaPadDiameter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaPadDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaPadDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaPadDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
+        managedObject.viaPadDiameter_property.removeEBObserver (observer)
       }
     }
   }
@@ -687,7 +1635,16 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_netWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_netUsage_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -695,7 +1652,16 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
      //--- Add observers of stored properties
       self.addEBObserversOf_mNetClassName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNetWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_netWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedSet)
       self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
       self.addEBObserversOf_netUsage_toElementsOfSet (addedSet)
     //--- Update object set
@@ -827,15 +1793,39 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
             self.setOppositeRelationship? (nil)
             managedObject.mNetClassName_property.mSetterDelegate = nil
             managedObject.mNetClassColor_property.mSetterDelegate = nil
+            managedObject.mNetWidth_property.mSetterDelegate = nil
+            managedObject.mNetWidthUnit_property.mSetterDelegate = nil
+            managedObject.mViaHoleDiameter_property.mSetterDelegate = nil
+            managedObject.mViaHoleDiameterUnit_property.mSetterDelegate = nil
+            managedObject.mViaPadDiameter_property.mSetterDelegate = nil
+            managedObject.mViaPadDiameterUnit_property.mSetterDelegate = nil
           }
        //   self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_netWidth_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_netWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
         }
@@ -847,15 +1837,39 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
             self.setOppositeRelationship? (managedObject)
             managedObject.mNetClassName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNetClassColor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNetWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNetWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mViaHoleDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mViaHoleDiameterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mViaPadDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mViaPadDiameterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         // self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNetWidth_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_netWidth_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNetWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_netWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
         }
