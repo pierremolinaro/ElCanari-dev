@@ -6,8 +6,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolInstanceInProject_pinQualifiedNames : class {
-  var pinQualifiedNames : TwoStringArray? { get }
+protocol DeviceSymbolInstanceInProject_mSymbolInstanceName : class {
+  var mSymbolInstanceName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceSymbolInstanceInProject_symbolAndTypeName : class {
+  var symbolAndTypeName : TwoStrings? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -21,8 +27,26 @@ protocol DeviceSymbolInstanceInProject_symbolTypeName : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceSymbolInstanceInProject : EBManagedObject,
-         DeviceSymbolInstanceInProject_pinQualifiedNames,
+         DeviceSymbolInstanceInProject_mSymbolInstanceName,
+         DeviceSymbolInstanceInProject_symbolAndTypeName,
          DeviceSymbolInstanceInProject_symbolTypeName {
+
+  //····················································································································
+  //   Atomic property: mSymbolInstanceName
+  //····················································································································
+
+  var mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mSymbolInstanceName : String {
+    get { return self.mSymbolInstanceName_property.propval }
+    set { self.mSymbolInstanceName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
 
   //····················································································································
   //   To many property: mPins
@@ -63,21 +87,21 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: pinQualifiedNames
+  //   Transient property: symbolAndTypeName
   //····················································································································
 
-  var pinQualifiedNames_property = EBTransientProperty_TwoStringArray ()
+  var symbolAndTypeName_property = EBTransientProperty_TwoStrings ()
 
   //····················································································································
 
-  var pinQualifiedNames_property_selection : EBSelection <TwoStringArray> {
-    return self.pinQualifiedNames_property.prop
+  var symbolAndTypeName_property_selection : EBSelection <TwoStrings> {
+    return self.symbolAndTypeName_property.prop
   }
 
   //····················································································································
 
-  var pinQualifiedNames : TwoStringArray? {
-    switch self.pinQualifiedNames_property_selection {
+  var symbolAndTypeName : TwoStrings? {
+    switch self.symbolAndTypeName_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -114,23 +138,26 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPins (no option)
     self.mPins_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
     self.mSymbolType_property.owner = self
-  //--- Atomic property: pinQualifiedNames
-    self.pinQualifiedNames_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolAndTypeName
+    self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPins_property_selection.kind ()
+        var kind = unwSelf.mSymbolInstanceName_property_selection.kind ()
+        kind &= unwSelf.mSymbolType_property.mSymbolTypeName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPins_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceSymbolInstanceInProject_pinQualifiedNames (v0))
+          switch (unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceSymbolInstanceInProject_symbolAndTypeName (v0, v1))
           default :
             return .empty
           }
@@ -139,7 +166,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPins_property.addEBObserverOf_pinQualifiedName (self.pinQualifiedNames_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.symbolAndTypeName_property)
+    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -171,7 +199,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mPins_property.removeEBObserverOf_pinQualifiedName (self.pinQualifiedNames_property)
+    self.mSymbolInstanceName_property.removeEBObserver (self.symbolAndTypeName_property)
+    self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
     self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
   //--- Unregister properties for handling signature
   }
@@ -187,14 +216,22 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "pinQualifiedNames",
-      idx:self.pinQualifiedNames_property.ebObjectIndex,
+      "mSymbolInstanceName",
+      idx:self.mSymbolInstanceName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.pinQualifiedNames_property.mObserverExplorer,
-      valueExplorer:&self.pinQualifiedNames_property.mValueExplorer
+      observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
+      valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "symbolAndTypeName",
+      idx:self.symbolAndTypeName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolAndTypeName_property.mObserverExplorer,
+      valueExplorer:&self.symbolAndTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeName",
@@ -228,6 +265,9 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.mObserverExplorer = nil
+    self.mSymbolInstanceName_property.mValueExplorer = nil
   //--- To many property: mPins
     self.mPins_property.mValueExplorer = nil
   //--- To one property: mSymbolType
@@ -263,6 +303,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
   //--- To many property: mPins
     self.store (
       managedObjectArray: self.mPins_property.propval,
@@ -307,6 +349,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   }
 
   //····················································································································
@@ -352,57 +396,114 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
 
   //····················································································································
-  //   Observers of 'pinQualifiedNames' transient property
+  //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_pinQualifiedNames = EBWeakEventSet ()
+  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_pinQualifiedNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_pinQualifiedNames.insert (inObserver)
+    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinQualifiedNames_property.addEBObserver (inObserver)
+        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinQualifiedNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_pinQualifiedNames.remove (inObserver)
+    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinQualifiedNames_property.removeEBObserver (inObserver)
+        managedObject.mSymbolInstanceName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_pinQualifiedNames_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedNames.apply { (_ observer : EBEvent) in
-        managedObject.pinQualifiedNames_property.addEBObserver (observer)
+      self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
+        managedObject.mSymbolInstanceName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'symbolAndTypeName' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolAndTypeName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolAndTypeName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolAndTypeName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolAndTypeName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_pinQualifiedNames.apply { (_ observer : EBEvent) in
-        managedObject.pinQualifiedNames_property.removeEBObserver (observer)
+      self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
+        managedObject.symbolAndTypeName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
+        managedObject.symbolAndTypeName_property.removeEBObserver (observer)
       }
     }
   }
@@ -534,6 +635,20 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
       case .single (let array) :
         newSet = Set (array)
       }
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -661,12 +776,15 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
+            managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
+          self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_pinQualifiedNames_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -675,12 +793,15 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           for managedObject : DeviceSymbolInstanceInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
+            managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_pinQualifiedNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
+          self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_pinQualifiedNames_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

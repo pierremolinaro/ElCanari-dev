@@ -44,6 +44,14 @@ import Cocoa
       self.mProductPageView
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //--- Set schematics inspector segmented control
+    let schematicsInspectors = [
+      self.mSelectedObjectsSchematicsInspectorView,
+      self.mUnplacedSymbolsSchematicsInspectorView,
+      self.mGridZoomSchematicsInspectorView,
+      self.mSchematicsSheetsInspectorView
+    ]
+    self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   }

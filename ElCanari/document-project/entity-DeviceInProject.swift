@@ -60,8 +60,8 @@ protocol DeviceInProject_packageNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_symbolNames : class {
-  var symbolNames : TwoStringArray? { get }
+protocol DeviceInProject_symbolAndTypesNames : class {
+  var symbolAndTypesNames : TwoStringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -84,7 +84,7 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_canExport,
          DeviceInProject_canRemove,
          DeviceInProject_packageNames,
-         DeviceInProject_symbolNames,
+         DeviceInProject_symbolAndTypesNames,
          DeviceInProject_pinPadAssignments {
 
   //····················································································································
@@ -347,21 +347,21 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: symbolNames
+  //   Transient property: symbolAndTypesNames
   //····················································································································
 
-  var symbolNames_property = EBTransientProperty_TwoStringArray ()
+  var symbolAndTypesNames_property = EBTransientProperty_TwoStringArray ()
 
   //····················································································································
 
-  var symbolNames_property_selection : EBSelection <TwoStringArray> {
-    return self.symbolNames_property.prop
+  var symbolAndTypesNames_property_selection : EBSelection <TwoStringArray> {
+    return self.symbolAndTypesNames_property.prop
   }
 
   //····················································································································
 
-  var symbolNames : TwoStringArray? {
-    switch self.symbolNames_property_selection {
+  var symbolAndTypesNames : TwoStringArray? {
+    switch self.symbolAndTypesNames_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -527,8 +527,8 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
-  //--- Atomic property: symbolNames
-    self.symbolNames_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolAndTypesNames
+    self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
         switch kind {
@@ -539,7 +539,7 @@ class DeviceInProject : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mSymbols_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_DeviceInProject_symbolNames (v0))
+            return .single (transient_DeviceInProject_symbolAndTypesNames (v0))
           default :
             return .empty
           }
@@ -548,7 +548,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_pinQualifiedNames (self.symbolNames_property)
+    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -588,7 +588,7 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
     self.mComponents_property.removeEBObserver (self.canRemove_property)
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
-    self.mSymbols_property.removeEBObserverOf_pinQualifiedNames (self.symbolNames_property)
+    self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
@@ -679,12 +679,12 @@ class DeviceInProject : EBManagedObject,
       valueExplorer:&self.packageNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "symbolNames",
-      idx:self.symbolNames_property.ebObjectIndex,
+      "symbolAndTypesNames",
+      idx:self.symbolAndTypesNames_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.symbolNames_property.mObserverExplorer,
-      valueExplorer:&self.symbolNames_property.mValueExplorer
+      observerExplorer:&self.symbolAndTypesNames_property.mObserverExplorer,
+      valueExplorer:&self.symbolAndTypesNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinPadAssignments",
@@ -1434,57 +1434,57 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   }
 
   //····················································································································
-  //   Observers of 'symbolNames' transient property
+  //   Observers of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  private var mObserversOf_symbolNames = EBWeakEventSet ()
+  private var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_symbolNames.insert (inObserver)
+    self.mObserversOf_symbolAndTypesNames.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolNames_property.addEBObserver (inObserver)
+        managedObject.symbolAndTypesNames_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolNames (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolNames.remove (inObserver)
+    self.mObserversOf_symbolAndTypesNames.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolNames_property.removeEBObserver (inObserver)
+        managedObject.symbolAndTypesNames_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_symbolNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+  final func addEBObserversOf_symbolAndTypesNames_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNames.apply { (_ observer : EBEvent) in
-        managedObject.symbolNames_property.addEBObserver (observer)
+      self.mObserversOf_symbolAndTypesNames.apply { (_ observer : EBEvent) in
+        managedObject.symbolAndTypesNames_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+  final func removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_symbolNames.apply { (_ observer : EBEvent) in
-        managedObject.symbolNames_property.removeEBObserver (observer)
+      self.mObserversOf_symbolAndTypesNames.apply { (_ observer : EBEvent) in
+        managedObject.symbolAndTypesNames_property.removeEBObserver (observer)
       }
     }
   }
@@ -1629,7 +1629,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.removeEBObserversOf_canExport_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_packageNames_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -1644,7 +1644,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.addEBObserversOf_canExport_toElementsOfSet (addedSet)
       self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
       self.addEBObserversOf_packageNames_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolNames_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -1787,7 +1787,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
        //   self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
@@ -1800,7 +1800,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolNames_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -1823,7 +1823,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
         // self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
@@ -1836,7 +1836,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolNames_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

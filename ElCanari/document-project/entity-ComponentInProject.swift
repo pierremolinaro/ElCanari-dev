@@ -111,6 +111,25 @@ class ComponentInProject : EBManagedObject,
   var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.prop }
 
   //····················································································································
+  //   To many property: mSymbols
+  //····················································································································
+
+  var mSymbols_property = StoredArrayOf_ComponentSymbolInProject ()
+
+  //····················································································································
+
+  var mSymbols_property_selection : EBSelection < [ComponentSymbolInProject] > {
+    return self.mSymbols_property.prop
+  }
+
+  //····················································································································
+
+  var mSymbols : [ComponentSymbolInProject] {
+    get { return self.mSymbols_property.propval }
+    set { self.mSymbols_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To one property: mDevice
   //····················································································································
 
@@ -252,6 +271,11 @@ class ComponentInProject : EBManagedObject,
     self.mNameIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mSymbols (has opposite relationship)
+    self.mSymbols_property.ebUndoManager = self.ebUndoManager
+    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject :ComponentSymbolInProject?) in
+      inManagedObject?.mComponent_property.setProp (self)
+    }
   //--- To one property: mDevice
     self.mDevice_property.owner = self
   //--- To one property: mSelectedPackage
@@ -347,6 +371,9 @@ class ComponentInProject : EBManagedObject,
     }
     self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
   //--- Install undoers and opposite setter for relationships
+    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentSymbolInProject?) in
+      inManagedObject?.mComponent_property.setProp (self)
+    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -360,6 +387,7 @@ class ComponentInProject : EBManagedObject,
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
     self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
+ //   self.mSymbols_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -432,6 +460,13 @@ class ComponentInProject : EBManagedObject,
       valueExplorer:&self.availablePackages_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mSymbols",
+      idx:mSymbols_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mSymbols_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "mDevice",
@@ -464,6 +499,8 @@ class ComponentInProject : EBManagedObject,
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.mObserverExplorer = nil
     self.mComponentValue_property.mValueExplorer = nil
+  //--- To many property: mSymbols
+    self.mSymbols_property.mValueExplorer = nil
   //--- To one property: mDevice
     self.mDevice_property.mObserverExplorer = nil
     self.mDevice_property.mValueExplorer = nil
@@ -479,6 +516,7 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mSymbols_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -506,6 +544,12 @@ class ComponentInProject : EBManagedObject,
     self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey:"mNameIndex")
   //--- Atomic property: mComponentValue
     self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mComponentValue")
+  //--- To many property: mSymbols
+    self.store (
+      managedObjectArray: self.mSymbols_property.propval,
+      relationshipName: "mSymbols",
+      intoDictionary: ioDictionary
+    )
   //--- To one property: mSelectedPackage
     self.store (managedObject:self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
@@ -519,6 +563,12 @@ class ComponentInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mSymbols
+    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mSymbols",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentSymbolInProject])
   //--- To one property: mDevice
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -563,6 +613,10 @@ class ComponentInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mSymbols
+    for managedObject in self.mSymbols_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mDevice
     if let managedObject = self.mDevice_property.propval {
       objects.append (managedObject)
@@ -579,6 +633,10 @@ class ComponentInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mSymbols
+    for managedObject in self.mSymbols_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mDevice
     if let managedObject = self.mDevice_property.propval {
       objects.append (managedObject)
@@ -1442,7 +1500,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         oldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames)
         oldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         oldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString)
-        oldValue?.symbolNames_property.removeEBObserversFrom (&self.mObserversOf_symbolNames)
+        oldValue?.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames)
         oldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString)
       //--- Add property observers to new object
         self.mValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport)
@@ -1454,7 +1512,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         self.mValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames)
         self.mValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         self.mValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString)
-        self.mValue?.symbolNames_property.addEBObserversFrom (&self.mObserversOf_symbolNames)
+        self.mValue?.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames)
         self.mValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString)
        //--- Notify observers
         self.postEvent ()
@@ -1854,16 +1912,16 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: symbolNames
+  //   Observable property: symbolAndTypesNames
   //····················································································································
 
-  private var mObserversOf_symbolNames = EBWeakEventSet ()
+  private var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolNames_property_selection : EBSelection <TwoStringArray?> {
+  var symbolAndTypesNames_property_selection : EBSelection <TwoStringArray?> {
     if let model = self.propval {
-      switch (model.symbolNames_property_selection) {
+      switch (model.symbolAndTypesNames_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1878,19 +1936,19 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_symbolNames (_ inObserver : EBEvent) {
-    self.mObserversOf_symbolNames.insert (inObserver)
+  final func addEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolAndTypesNames.insert (inObserver)
     if let object = self.propval {
-      object.symbolNames_property.addEBObserver (inObserver)
+      object.symbolAndTypesNames_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolNames (_ inObserver : EBEvent) {
-    self.mObserversOf_symbolNames.remove (inObserver)
+  final func removeEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolAndTypesNames.remove (inObserver)
     if let object = self.propval {
-      object.symbolNames_property.removeEBObserver (inObserver)
+      object.symbolAndTypesNames_property.removeEBObserver (inObserver)
     }
   }
 

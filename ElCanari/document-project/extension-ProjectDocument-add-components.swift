@@ -34,28 +34,6 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) {
-  //--- Append component
-    if let newDeviceInProject = inPossibleDevice {
-      let newComponent = ComponentInProject (self.ebUndoManager)
-      newComponent.mDevice = newDeviceInProject
-      newComponent.mSelectedPackage = newDeviceInProject.mPackages [0]
-    //--- Fix index for component name
-      newComponent.mNamePrefix = newDeviceInProject.mPrefix
-      var idx = 1
-      for component in self.rootObject.mComponents {
-        if newComponent.mNamePrefix == component.mNamePrefix {
-          idx = max (idx, component.mNameIndex + 1)
-        }
-      }
-      newComponent.mNameIndex = idx
-      self.rootObject.mComponents.append (newComponent)
-      self.mComponentController.setSelection ([newComponent])
-    }
-  }
-
-  //····················································································································
-
   func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) {
   //--- find device
     var possibleDevice : DeviceInProject? = nil
@@ -86,6 +64,39 @@ extension ProjectDocument {
     newComponent.mNameIndex = idx
     self.rootObject.mComponents.append (newComponent)
     return newComponent
+  }
+
+  //····················································································································
+
+  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) {
+  //--- Append component
+    if let deviceInProject = inPossibleDevice {
+      let newComponent = ComponentInProject (self.ebUndoManager)
+    //--- Set device
+      newComponent.mDevice = deviceInProject
+    //--- Set package
+      newComponent.mSelectedPackage = deviceInProject.mPackages [0]
+    //--- Set symbols
+      var componentSymbols = [ComponentSymbolInProject] ()
+      for symbolInDevice in deviceInProject.mSymbols {
+        let newSymbolInProject = ComponentSymbolInProject (self.ebUndoManager)
+        newSymbolInProject.mSymbolTypeName = symbolInDevice.mSymbolType!.mSymbolTypeName
+        newSymbolInProject.mSymbolInstanceName = symbolInDevice.mSymbolInstanceName
+        componentSymbols.append (newSymbolInProject)
+      }
+      newComponent.mSymbols = componentSymbols
+    //--- Fix index for component name
+      newComponent.mNamePrefix = deviceInProject.mPrefix
+      var idx = 1
+      for component in self.rootObject.mComponents {
+        if newComponent.mNamePrefix == component.mNamePrefix {
+          idx = max (idx, component.mNameIndex + 1)
+        }
+      }
+      newComponent.mNameIndex = idx
+      self.rootObject.mComponents.append (newComponent)
+      self.mComponentController.setSelection ([newComponent])
+    }
   }
 
   //····················································································································

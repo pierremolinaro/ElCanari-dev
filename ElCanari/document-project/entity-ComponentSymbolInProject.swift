@@ -6,162 +6,75 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedPageIndex : class {
-  var mSelectedPageIndex : Int { get }
+protocol ComponentSymbolInProject_mSymbolInstanceName : class {
+  var mSymbolInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedSchematicsInspector : class {
-  var mSelectedSchematicsInspector : Int { get }
+protocol ComponentSymbolInProject_mSymbolTypeName : class {
+  var mSymbolTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_deviceNames : class {
-  var deviceNames : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectRoot
+//    Entity: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectRoot : EBManagedObject,
-         ProjectRoot_mSelectedPageIndex,
-         ProjectRoot_mSelectedSchematicsInspector,
-         ProjectRoot_deviceNames {
+class ComponentSymbolInProject : EBManagedObject,
+         ComponentSymbolInProject_mSymbolInstanceName,
+         ComponentSymbolInProject_mSymbolTypeName {
 
   //····················································································································
-  //   Atomic property: mSelectedPageIndex
+  //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  var mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mSelectedPageIndex : Int {
-    get { return self.mSelectedPageIndex_property.propval }
-    set { self.mSelectedPageIndex_property.setProp (newValue) }
+  var mSymbolInstanceName : String {
+    get { return self.mSymbolInstanceName_property.propval }
+    set { self.mSymbolInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
+  var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
 
   //····················································································································
-  //   Atomic property: mSelectedSchematicsInspector
+  //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  var mSelectedSchematicsInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  var mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mSelectedSchematicsInspector : Int {
-    get { return self.mSelectedSchematicsInspector_property.propval }
-    set { self.mSelectedSchematicsInspector_property.setProp (newValue) }
+  var mSymbolTypeName : String {
+    get { return self.mSymbolTypeName_property.propval }
+    set { self.mSymbolTypeName_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedSchematicsInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicsInspector_property.prop }
+  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
-  //   To many property: mComponents
+  //   To one property: mComponent
   //····················································································································
 
-  var mComponents_property = StoredArrayOf_ComponentInProject ()
+  var mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
 
   //····················································································································
 
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
+  var mComponent_property_selection : EBSelection <Bool> {
+    return .single (self.mComponent_property.propval == nil)
   }
 
   //····················································································································
 
-  var mComponents : [ComponentInProject] {
-    get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mNetClasses
-  //····················································································································
-
-  var mNetClasses_property = StoredArrayOf_NetClassInProject ()
-
-  //····················································································································
-
-  var mNetClasses_property_selection : EBSelection < [NetClassInProject] > {
-    return self.mNetClasses_property.prop
-  }
-
-  //····················································································································
-
-  var mNetClasses : [NetClassInProject] {
-    get { return self.mNetClasses_property.propval }
-    set { self.mNetClasses_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mFonts
-  //····················································································································
-
-  var mFonts_property = StoredArrayOf_FontInProject ()
-
-  //····················································································································
-
-  var mFonts_property_selection : EBSelection < [FontInProject] > {
-    return self.mFonts_property.prop
-  }
-
-  //····················································································································
-
-  var mFonts : [FontInProject] {
-    get { return self.mFonts_property.propval }
-    set { self.mFonts_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mDevices
-  //····················································································································
-
-  var mDevices_property = StoredArrayOf_DeviceInProject ()
-
-  //····················································································································
-
-  var mDevices_property_selection : EBSelection < [DeviceInProject] > {
-    return self.mDevices_property.prop
-  }
-
-  //····················································································································
-
-  var mDevices : [DeviceInProject] {
-    get { return self.mDevices_property.propval }
-    set { self.mDevices_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Transient property: deviceNames
-  //····················································································································
-
-  var deviceNames_property = EBTransientProperty_StringArray ()
-
-  //····················································································································
-
-  var deviceNames_property_selection : EBSelection <StringArray> {
-    return self.deviceNames_property.prop
-  }
-
-  //····················································································································
-
-  var deviceNames : StringArray? {
-    switch self.deviceNames_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mComponent : ComponentInProject? {
+    get { return self.mComponent_property.propval }
+    set { self.mComponent_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -170,40 +83,12 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mComponents (no option)
-    self.mComponents_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mNetClasses (no option)
-    self.mNetClasses_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mFonts (no option)
-    self.mFonts_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mDevices (no option)
-    self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: deviceNames
-    self.deviceNames_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDevices_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mDevices_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_deviceNames (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mComponent
+    self.mComponent_property.owner = self
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -213,7 +98,6 @@ class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Unregister properties for handling signature
   }
 
@@ -229,60 +113,31 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mSelectedPageIndex",
-      idx:self.mSelectedPageIndex_property.ebObjectIndex,
+      "mSymbolInstanceName",
+      idx:self.mSymbolInstanceName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mSelectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
+      valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mSelectedSchematicsInspector",
-      idx:self.mSelectedSchematicsInspector_property.ebObjectIndex,
+      "mSymbolTypeName",
+      idx:self.mSymbolTypeName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mSelectedSchematicsInspector_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedSchematicsInspector_property.mValueExplorer
+      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "deviceNames",
-      idx:self.deviceNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceNames_property.mObserverExplorer,
-      valueExplorer:&self.deviceNames_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mNetClasses",
-      idx:mNetClasses_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mNetClasses_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mFonts",
-      idx:mFonts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mFonts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mDevices",
-      idx:mDevices_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mDevices_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mComponent",
+      idx:self.mComponent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mComponent_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -291,20 +146,15 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.mObserverExplorer = nil
-    self.mSelectedPageIndex_property.mValueExplorer = nil
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.mObserverExplorer = nil
-    self.mSelectedSchematicsInspector_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
-  //--- To many property: mNetClasses
-    self.mNetClasses_property.mValueExplorer = nil
-  //--- To many property: mFonts
-    self.mFonts_property.mValueExplorer = nil
-  //--- To many property: mDevices
-    self.mDevices_property.mValueExplorer = nil
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.mObserverExplorer = nil
+    self.mSymbolInstanceName_property.mValueExplorer = nil
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.mObserverExplorer = nil
+    self.mSymbolTypeName_property.mValueExplorer = nil
+  //--- To one property: mComponent
+    self.mComponent_property.mObserverExplorer = nil
+    self.mComponent_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -314,10 +164,6 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mComponents_property.setProp ([])
-    self.mNetClasses_property.setProp ([])
-    self.mFonts_property.setProp ([])
-    self.mDevices_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -327,6 +173,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mComponent_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -337,34 +184,10 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedSchematicsInspector")
-  //--- To many property: mComponents
-    self.store (
-      managedObjectArray: self.mComponents_property.propval,
-      relationshipName: "mComponents",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mNetClasses
-    self.store (
-      managedObjectArray: self.mNetClasses_property.propval,
-      relationshipName: "mNetClasses",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mFonts
-    self.store (
-      managedObjectArray: self.mFonts_property.propval,
-      relationshipName: "mFonts",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mDevices
-    self.store (
-      managedObjectArray: self.mDevices_property.propval,
-      relationshipName: "mDevices",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
   }
 
   //····················································································································
@@ -374,30 +197,17 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
-  //--- To many property: mNetClasses
-    self.mNetClasses_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mNetClasses",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [NetClassInProject])
-  //--- To many property: mFonts
-    self.mFonts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mFonts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [FontInProject])
-  //--- To many property: mDevices
-    self.mDevices_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDevices",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceInProject])
+  //--- To one property: mComponent
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mComponent",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ComponentInProject {
+        self.mComponent_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -406,10 +216,10 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.readFrom (dictionary: inDictionary, forKey:"mSelectedSchematicsInspector")
+  //--- Atomic property: mSymbolInstanceName
+    self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
   }
 
   //····················································································································
@@ -418,20 +228,8 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
+  //--- To one property: mComponent
+    if let managedObject = self.mComponent_property.propval {
       objects.append (managedObject)
     }
   }
@@ -442,20 +240,8 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
+  //--- To one property: mComponent
+    if let managedObject = self.mComponent_property.propval {
       objects.append (managedObject)
     }
   }
@@ -465,177 +251,121 @@ class ProjectRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectRoot
+//    ReadOnlyArrayOf_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
+class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <ComponentSymbolInProject> {
 
   //····················································································································
-  //   Observers of 'mSelectedPageIndex' stored property
+  //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.insert (inObserver)
+    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mSymbolInstanceName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.remove (inObserver)
+    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.mSymbolInstanceName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedPageIndex_property.addEBObserver (observer)
+      self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
+        managedObject.mSymbolInstanceName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
+        managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mSelectedSchematicsInspector' stored property
+  //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedSchematicsInspector = EBWeakEventSet ()
+  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedSchematicsInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSelectedSchematicsInspector.insert (inObserver)
+    self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedSchematicsInspector_property.addEBObserver (inObserver)
+        managedObject.mSymbolTypeName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSelectedSchematicsInspector (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSelectedSchematicsInspector.remove (inObserver)
+    self.mObserversOf_mSymbolTypeName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedSchematicsInspector_property.removeEBObserver (inObserver)
+        managedObject.mSymbolTypeName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedSchematicsInspector.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedSchematicsInspector_property.addEBObserver (observer)
+      self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
+        managedObject.mSymbolTypeName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedSchematicsInspector.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mSelectedSchematicsInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'deviceNames' transient property
-  //····················································································································
-
-  private var mObserversOf_deviceNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_deviceNames.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceNames_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_deviceNames (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_deviceNames.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceNames_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_deviceNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_deviceNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.removeEBObserver (observer)
+        managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
     }
   }
@@ -645,32 +375,32 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectRoot
+//    TransientArrayOf_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ComponentSymbolInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> {
+  override var propset : Set <ComponentSymbolInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > {
+  override var prop : EBSelection < [ComponentSymbolInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectRoot] {
+  override var propval : [ComponentSymbolInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -692,11 +422,11 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
+  private var mSet = Set <ComponentSymbolInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectRoot] >? = nil
+  private var mCachedValue : EBSelection < [ComponentSymbolInProject] >? = nil
 
   //····················································································································
 
@@ -704,27 +434,25 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       let cachedValue = unwrappedComputeFunction ()
       self.mCachedValue = cachedValue
-      let newSet : Set <ProjectRoot>
+      let newSet : Set <ComponentSymbolInProject>
       switch cachedValue {
       case .multiple, .empty :
-        newSet = Set <ProjectRoot> ()
+        newSet = Set <ComponentSymbolInProject> ()
       case .single (let array) :
         newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -752,28 +480,28 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectRoot
+//    To many relationship read write: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectRoot]) { } // Abstract method
+  func setProp (_ value :  [ComponentSymbolInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectRoot
+//    To many relationship: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -820,9 +548,9 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectRoot] ()
+      var objectArray = [ComponentSymbolInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentSymbolInProject") as? ComponentSymbolInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -833,8 +561,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
  //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
-  private var mValue = [ProjectRoot] () {
+  private var mSet = Set <ComponentSymbolInProject> ()
+  private var mValue = [ComponentSymbolInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -852,35 +580,31 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
-            managedObject.mSelectedSchematicsInspector_property.mSetterDelegate = nil
+            managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
+            managedObject.mSymbolTypeName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectRoot in addedObjectSet {
+          for managedObject : ComponentSymbolInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSelectedSchematicsInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
-          self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -908,29 +632,29 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ComponentSymbolInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectRoot]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ComponentSymbolInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectRoot] { return self.mValue }
+  override var propval : [ComponentSymbolInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> { return self.mSet }
+  override var propset : Set <ComponentSymbolInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectRoot]) {
+  @objc func performUndo (_ oldValue : [ComponentSymbolInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectRoot) {
+  func remove (_ object : ComponentSymbolInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -941,7 +665,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   
   //····················································································································
 
-  func add (_ object : ProjectRoot) {
+  func add (_ object : ComponentSymbolInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
@@ -1002,6 +726,389 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mComponent
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : ComponentSymbolInProject? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : ComponentInProject? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mSymbols_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mSymbols_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages)
+        oldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName)
+        oldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName)
+        oldValue?.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue)
+        oldValue?.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex)
+        oldValue?.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix)
+        oldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName)
+      //--- Add property observers to new object
+        self.mValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages)
+        self.mValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName)
+        self.mValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName)
+        self.mValue?.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue)
+        self.mValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex)
+        self.mValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix)
+        self.mValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : ComponentInProject? { return self.mValue }
+
+  var prop : EBSelection <ComponentInProject?> { return .single (self.mValue) }
+
+  func setProp (_ value : ComponentInProject?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : ComponentInProject?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : ComponentInProject) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: availablePackages
+  //····················································································································
+
+  private var mObserversOf_availablePackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  var availablePackages_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.availablePackages_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.mObserversOf_availablePackages.insert (inObserver)
+    if let object = self.propval {
+      object.availablePackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.mObserversOf_availablePackages.remove (inObserver)
+    if let object = self.propval {
+      object.availablePackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: componentName
+  //····················································································································
+
+  private var mObserversOf_componentName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var componentName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.componentName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.mObserversOf_componentName.insert (inObserver)
+    if let object = self.propval {
+      object.componentName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.mObserversOf_componentName.remove (inObserver)
+    if let object = self.propval {
+      object.componentName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: deviceName
+  //····················································································································
+
+  private var mObserversOf_deviceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var deviceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.deviceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
+    self.mObserversOf_deviceName.insert (inObserver)
+    if let object = self.propval {
+      object.deviceName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceName (_ inObserver : EBEvent) {
+    self.mObserversOf_deviceName.remove (inObserver)
+    if let object = self.propval {
+      object.deviceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mComponentValue
+  //····················································································································
+
+  private var mObserversOf_mComponentValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponentValue_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mComponentValue_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentValue.insert (inObserver)
+    if let object = self.propval {
+      object.mComponentValue_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponentValue.remove (inObserver)
+    if let object = self.propval {
+      object.mComponentValue_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mNameIndex
+  //····················································································································
+
+  private var mObserversOf_mNameIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNameIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNameIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_mNameIndex.insert (inObserver)
+    if let object = self.propval {
+      object.mNameIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_mNameIndex.remove (inObserver)
+    if let object = self.propval {
+      object.mNameIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mNamePrefix
+  //····················································································································
+
+  private var mObserversOf_mNamePrefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNamePrefix_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mNamePrefix_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.mObserversOf_mNamePrefix.insert (inObserver)
+    if let object = self.propval {
+      object.mNamePrefix_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.mObserversOf_mNamePrefix.remove (inObserver)
+    if let object = self.propval {
+      object.mNamePrefix_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedPackageName
+  //····················································································································
+
+  private var mObserversOf_selectedPackageName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedPackageName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.selectedPackageName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
+    self.mObserversOf_selectedPackageName.insert (inObserver)
+    if let object = self.propval {
+      object.selectedPackageName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
+    self.mObserversOf_selectedPackageName.remove (inObserver)
+    if let object = self.propval {
+      object.selectedPackageName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

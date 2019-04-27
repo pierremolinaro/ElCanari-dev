@@ -12,12 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectDocument_selectedDeviceSymbolNames (
-       _ self_mProjectDeviceController_selectedArray_all_symbolNames : [DeviceInProject_symbolNames]
+       _ self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames : [DeviceInProject_symbolAndTypesNames]
 ) -> TwoStringArray {
 //--- START OF USER ZONE 2
         var result = [TwoStrings] ()
-        if self_mProjectDeviceController_selectedArray_all_symbolNames.count == 1 {
-          if let a = self_mProjectDeviceController_selectedArray_all_symbolNames [0].symbolNames {
+        if self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames.count == 1 {
+          if let a = self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames [0].symbolAndTypesNames {
             result = a
           }
         }

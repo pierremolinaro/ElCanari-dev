@@ -21,6 +21,7 @@ extension ProjectDocument {
             let index = component.mNameIndex
             component.mDevice = nil
             component.mSelectedPackage = nil
+            component.mSymbols = []
             for remainingComponent in self.rootObject.mComponents {
               if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
                 remainingComponent.mNameIndex -= 1

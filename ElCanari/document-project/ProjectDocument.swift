@@ -228,6 +228,7 @@ import Cocoa
   @IBOutlet var mAddNetClassPanel : NSPanel?
   @IBOutlet var mAddNetClassTextField : EBTextField?
   @IBOutlet var mAddNetClassValidationButton : NSButton?
+  @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
@@ -251,6 +252,7 @@ import Cocoa
   @IBOutlet var mEditNetClassButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
+  @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNetClassColorWell : EBColorWell?
@@ -279,7 +281,11 @@ import Cocoa
   @IBOutlet var mRenameComponentValidationButton : NSButton?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
+  @IBOutlet var mSchematicsInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
+  @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUpdateDeviceButton : EBButton?
   @IBOutlet var mUpdateFontButton : EBButton?
 
@@ -380,6 +386,7 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
@@ -403,6 +410,7 @@ import Cocoa
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
@@ -431,7 +439,11 @@ import Cocoa
     checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicsInspectorSegmentedControl, "mSchematicsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
    }
@@ -541,7 +553,7 @@ import Cocoa
         return .empty
       }
     }
-    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_symbolNames (self.selectedDeviceSymbolNames_property)
+    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -619,6 +631,7 @@ import Cocoa
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
     self.mPinPadAssignmentTableView?.bind_array (self.pinPadAssignments_property, file: #file, line: #line)
+    self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -841,6 +854,7 @@ import Cocoa
     self.mDevicePackageTableView?.unbind_array ()
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
+    self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -891,7 +905,7 @@ import Cocoa
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
-    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolNames (self.selectedDeviceSymbolNames_property)
+    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.mComponentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
@@ -922,6 +936,7 @@ import Cocoa
     self.mAddNetClassPanel?.ebCleanUp ()
     self.mAddNetClassTextField?.ebCleanUp ()
     self.mAddNetClassValidationButton?.ebCleanUp ()
+    self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
@@ -945,6 +960,7 @@ import Cocoa
     self.mEditNetClassButton?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
+    self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mNetClassColorWell?.ebCleanUp ()
@@ -973,7 +989,11 @@ import Cocoa
     self.mRenameComponentValidationButton?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
+    self.mSchematicsInspectorSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
+    self.mSchematicsSheetsInspectorView?.ebCleanUp ()
+    self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
+    self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
   }

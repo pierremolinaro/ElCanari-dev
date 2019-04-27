@@ -162,8 +162,8 @@ extension ProjectDocument {
       symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
       for symbolInstanceInDevice in symbolTypeInDevice.mInstances {
         let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
+        symbolInstanceInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
         symbolInstanceInProject.mSymbolType = symbolTypeInProject
-    //    symbolInstanceInProject.mInstanceName = symbolInstanceInDevice.mInstanceName
         inDeviceInProject.mSymbols.append (symbolInstanceInProject)
         for pinInDevice in symbolTypeInDevice.mPinTypes {
           let pinInProject = DevicePinInProject (self.ebUndoManager)

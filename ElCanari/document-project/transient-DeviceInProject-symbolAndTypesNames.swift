@@ -11,14 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_pinQualifiedNames (
-       _ self_mPins_pinQualifiedName : [DevicePinInProject_pinQualifiedName]
+func transient_DeviceInProject_symbolAndTypesNames (
+       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
 ) -> TwoStringArray {
 //--- START OF USER ZONE 2
         var result = [TwoStrings] ()
-        for pin in self_mPins_pinQualifiedName {
-          if let pinQualifiedName = pin.pinQualifiedName {
-            result.append (TwoStrings (pinQualifiedName.mSymbolName, pinQualifiedName.mPinName))
+        for symbol in self_mSymbols_symbolAndTypeName {
+          if let pinQualifiedNames = symbol.symbolAndTypeName {
+            result.append (pinQualifiedNames)
           }
         }
         return result
