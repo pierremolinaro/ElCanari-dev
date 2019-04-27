@@ -12,6 +12,8 @@ entity ProjectRoot {
   property Int mSelectedSchematicsInspector default 0 ;
   
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
+
+  transient StringArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
 }
   
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -22,8 +24,7 @@ entity FontInProject {
   property String mFontName default "" ;
   property Int mFontVersion default 0 ;
   property String mDescriptiveString default "" ;
-  
-  
+
   transient String versionString dependsFrom self.mFontVersion ;
   transient String sizeString dependsFrom self.mDescriptiveString ;
 }
@@ -148,6 +149,9 @@ entity ComponentInProject {
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
   
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
+  transient StringArray unplacedSymbols dependsFrom
+    self.componentName, self.mSymbols.all.mSymbolInstanceName, self.mSymbols.all.mSymbolTypeName
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,15 +11,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_symbolAndTypesNames (
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
-) -> TwoStringArray {
+func transient_ComponentInProject_unplacedSymbols (
+       _ self_componentName : String,              
+       _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
+       _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName]
+) -> StringArray {
 //--- START OF USER ZONE 2
-        var result = [TwoStrings] ()
-        for symbol in self_mSymbols_symbolAndTypeName {
-          if let name = symbol.symbolAndTypeName {
-            result.append (name)
+        var result = StringArray ()
+        var idx = 0
+        while idx < self_mSymbols_mSymbolInstanceName.count {
+          let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
+          let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
+          idx += 1
+          var name = self_componentName
+          if symbolInstanceName != "" {
+            name += ":" + symbolInstanceName
           }
+          name += " (" + symbolTypeName + ")"
+          result.append (name)
         }
         return result
 //--- END OF USER ZONE 2

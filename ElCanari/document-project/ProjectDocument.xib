@@ -73,6 +73,8 @@
                 <outlet property="mSchematicsSheetsInspectorView" destination="15297" id="RL7-7Y-t38"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mUnplacedSymbolsSchematicsInspectorView" destination="15599" id="Duz-PX-nA9"/>
+                <outlet property="mUnplacedSymbolsTableView" destination="15604" id="A8d-TO-jxG"/>
+                <outlet property="mUnplacedSymbolsTextField" destination="15601" id="eUO-n5-Svc"/>
                 <outlet property="mUpdateDeviceButton" destination="2952" id="OwT-m6-V6F"/>
                 <outlet property="mUpdateFontButton" destination="2976" id="YXq-m9-y5B"/>
                 <outlet property="window" destination="5" id="14924"/>
@@ -6751,7 +6753,7 @@ TW: Track Width</string>
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15601">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15601" customClass="EBTextObserverField">
                     <rect key="frame" x="59" y="481" width="126" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="# Symbols to Insert" id="15602">
@@ -6765,9 +6767,9 @@ TW: Track Width</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="3aO-4z-c55">
                         <rect key="frame" x="1" y="0.0" width="208" height="454"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15603" id="15604">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="15603" id="15604" customClass="CanariDragSourceTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="208" height="431"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -6807,6 +6809,7 @@ TW: Track Width</string>
                     </tableHeaderView>
                 </scrollView>
             </subviews>
+            <point key="canvasLocation" x="-282" y="-747"/>
         </customView>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15626" userLabel="devicesAndFontsCandidateForUpdate" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>

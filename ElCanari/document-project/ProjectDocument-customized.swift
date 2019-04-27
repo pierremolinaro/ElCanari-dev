@@ -20,7 +20,13 @@ import Cocoa
   }
 
   //····················································································································
-  //  Properties needed for renamoing a component
+  //  Property needed for handling "symbol count" to insert in segmented cointrol title
+  //····················································································································
+
+  fileprivate var mSymbolCountToInsertController : EBSimpleController? = nil
+  
+  //····················································································································
+  //  Properties needed for renaming a component
   //····················································································································
 
   internal var mComponentCurrentPrefix = ""
@@ -54,15 +60,31 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
+  //---
+    self.mSymbolCountToInsertController = EBSimpleController (
+      observedObjects: [self.unplacedSymbolsCount_property],
+      callBack: {
+        let title : String
+        switch self.unplacedSymbolsCount_property_selection {
+        case .empty, .multiple :
+          title = "—"
+        case .single (let v) :
+          title = "+ \(v)"
+        }
+        self.mSchematicsInspectorSegmentedControl?.setLabel (title, forSegment: 1)
+      }
+    )
   }
 
   //····················································································································
   //   removeUserInterface
   //····················································································································
 
-//  override func removeUserInterface () {
-//    super.removeUserInterface ()
-//  }
+  override func removeUserInterface () {
+    super.removeUserInterface ()
+    self.mSymbolCountToInsertController?.unregister ()
+    self.mSymbolCountToInsertController = nil
+  }
 
   //····················································································································
   //    Drag and drop destination

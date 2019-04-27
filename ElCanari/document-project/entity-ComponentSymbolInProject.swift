@@ -784,6 +784,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
         oldValue?.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex)
         oldValue?.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix)
         oldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName)
+        oldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols)
       //--- Add property observers to new object
         self.mValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages)
         self.mValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName)
@@ -792,6 +793,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
         self.mValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex)
         self.mValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix)
         self.mValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName)
+        self.mValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols)
        //--- Notify observers
         self.postEvent ()
       }
@@ -1104,6 +1106,47 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
     self.mObserversOf_selectedPackageName.remove (inObserver)
     if let object = self.propval {
       object.selectedPackageName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: unplacedSymbols
+  //····················································································································
+
+  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+
+  //····················································································································
+
+  var unplacedSymbols_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.unplacedSymbols_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_unplacedSymbols.insert (inObserver)
+    if let object = self.propval {
+      object.unplacedSymbols_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_unplacedSymbols.remove (inObserver)
+    if let object = self.propval {
+      object.unplacedSymbols_property.removeEBObserver (inObserver)
     }
   }
 

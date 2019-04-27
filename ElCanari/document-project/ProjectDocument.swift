@@ -171,6 +171,52 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: unplacedSymbolsCount
+  //····················································································································
+
+  var unplacedSymbolsCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var unplacedSymbolsCount_property_selection : EBSelection <Int> {
+    return self.unplacedSymbolsCount_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedSymbolsCount : Int? {
+    switch self.unplacedSymbolsCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: unplacedSymbolsCountString
+  //····················································································································
+
+  var unplacedSymbolsCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var unplacedSymbolsCountString_property_selection : EBSelection <String> {
+    return self.unplacedSymbolsCountString_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedSymbolsCountString : String? {
+    switch self.unplacedSymbolsCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canChangePackage
   //····················································································································
 
@@ -286,6 +332,8 @@ import Cocoa
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
+  @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
   @IBOutlet var mUpdateDeviceButton : EBButton?
   @IBOutlet var mUpdateFontButton : EBButton?
 
@@ -444,6 +492,8 @@ import Cocoa
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
+    checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
    }
@@ -576,6 +626,50 @@ import Cocoa
       }
     }
     self.mProjectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+  //--- Atomic property: unplacedSymbolsCount
+    self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.unplacedSymbols_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.unplacedSymbols_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
+  //--- Atomic property: unplacedSymbolsCountString
+    self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.unplacedSymbolsCount_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.unplacedSymbolsCount_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -632,6 +726,8 @@ import Cocoa
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
     self.mPinPadAssignmentTableView?.bind_array (self.pinPadAssignments_property, file: #file, line: #line)
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
+    self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
+    self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -855,6 +951,8 @@ import Cocoa
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mUnplacedSymbolsTableView?.unbind_models ()
+    self.mUnplacedSymbolsTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -907,6 +1005,8 @@ import Cocoa
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
+    self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     self.mComponentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
@@ -994,6 +1094,8 @@ import Cocoa
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
+    self.mUnplacedSymbolsTableView?.ebCleanUp ()
+    self.mUnplacedSymbolsTextField?.ebCleanUp ()
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
   }

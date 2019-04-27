@@ -188,6 +188,13 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mGridZoomSchematicsInspectorView ;
   outlet CanariViewWithKeyView mUnplacedSymbolsSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
+
+#--- Unplaced symbols inspector
+  outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
+  transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
+  transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
+  outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
+
 }
 
 #----------------------------------------------------------------------------*

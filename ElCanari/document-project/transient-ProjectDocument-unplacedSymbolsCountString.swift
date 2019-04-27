@@ -11,17 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_symbolAndTypesNames (
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
-) -> TwoStringArray {
+func transient_ProjectDocument_unplacedSymbolsCountString (
+       _ self_unplacedSymbolsCount : Int
+) -> String {
 //--- START OF USER ZONE 2
-        var result = [TwoStrings] ()
-        for symbol in self_mSymbols_symbolAndTypeName {
-          if let name = symbol.symbolAndTypeName {
-            result.append (name)
-          }
+        if self_unplacedSymbolsCount == 0 {
+          return "No symbol to insert"
+        }else if self_unplacedSymbolsCount == 1 {
+          return "1 symbol to insert"
+        }else{
+          return "\(self_unplacedSymbolsCount) symbols to insert"
         }
-        return result
 //--- END OF USER ZONE 2
 }
 

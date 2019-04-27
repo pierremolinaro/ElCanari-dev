@@ -18,6 +18,12 @@ protocol ProjectRoot_mSelectedSchematicsInspector : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_unplacedSymbols : class {
+  var unplacedSymbols : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_deviceNames : class {
   var deviceNames : StringArray? { get }
 }
@@ -29,6 +35,7 @@ protocol ProjectRoot_deviceNames : class {
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicsInspector,
+         ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames {
 
   //····················································································································
@@ -142,6 +149,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unplacedSymbols
+  //····················································································································
+
+  var unplacedSymbols_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var unplacedSymbols_property_selection : EBSelection <StringArray> {
+    return self.unplacedSymbols_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedSymbols : StringArray? {
+    switch self.unplacedSymbols_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceNames
   //····················································································································
 
@@ -182,6 +212,28 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: unplacedSymbols
+    self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponents_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mComponents_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_unplacedSymbols (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -213,6 +265,7 @@ class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
   //--- Unregister properties for handling signature
   }
@@ -245,6 +298,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer:&self.mSelectedSchematicsInspector_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "unplacedSymbols",
+      idx:self.unplacedSymbols_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.unplacedSymbols_property.mObserverExplorer,
+      valueExplorer:&self.unplacedSymbols_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "deviceNames",
       idx:self.deviceNames_property.ebObjectIndex,
@@ -585,6 +646,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'unplacedSymbols' transient property
+  //····················································································································
+
+  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedSymbols.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedSymbols_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedSymbols.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unplacedSymbols_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'deviceNames' transient property
   //····················································································································
 
@@ -717,6 +834,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -724,6 +842,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -857,11 +976,13 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           }
        //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -875,11 +996,13 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           }
         // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
