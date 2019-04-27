@@ -5,21 +5,21 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_SymbolDocument_mSymbolObjectsController
+//    Array controller DeviceDocument mSymbolDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, EBViewControllerProtocol {
+final class Controller_DeviceDocument_mSymbolDisplayController : EBObject, EBViewControllerProtocol {
  
   //····················································································································
   // MARK: -
   // Models
   //····················································································································
  
-   private var mModel : ReadWriteArrayOf_SymbolObject? = nil
+   private var mModel : ReadWriteArrayOf_SymbolInstanceInDevice? = nil
 
    //····················································································································
 
-  var selectedSet : Set <SymbolObject> {
+  var selectedSet : Set <SymbolInstanceInDevice> {
     set (newValue) {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet) {
@@ -39,7 +39,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <SymbolObject> () {
+  private var mPrivateSelectedSet = Set <SymbolInstanceInDevice> () {
     didSet {
       self.selectedArray_property.postEvent ()
     }
@@ -50,19 +50,19 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   // Observable properties
   //····················································································································
 
-  let objectArray_property = TransientArrayOf_SymbolObject ()
+  let objectArray_property = TransientArrayOf_SymbolInstanceInDevice ()
 
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_SymbolObject ()
+  let selectedArray_property = TransientArrayOf_SymbolInstanceInDevice ()
 
   //····················································································································
 
-  var selectedArray : [SymbolObject] { return self.selectedArray_property.propval }
+  var selectedArray : [SymbolInstanceInDevice] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[SymbolObject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[SymbolInstanceInDevice]> { return self.selectedArray_property.prop }
  
   //····················································································································
   // MARK: -
@@ -167,7 +167,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
           return .multiple
         case .single (let modelArray) :
           let selectedObjects = self?.mPrivateSelectedSet ?? Set ()
-          var selectedArray = [SymbolObject] ()
+          var selectedArray = [SymbolInstanceInDevice] ()
           for object in modelArray {
             if selectedObjects.contains (object) {
               selectedArray.append (object)
@@ -190,7 +190,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_SymbolObject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_SymbolInstanceInDevice) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
     self.startObservingObjectShape ()
@@ -235,7 +235,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  func setSelection (_ inObjects : [SymbolObject]) {
+  func setSelection (_ inObjects : [SymbolInstanceInDevice]) {
     self.selectedSet = Set (inObjects)
   }
 
@@ -383,7 +383,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [SymbolObject : Int] ()
+      var objectDictionary = [SymbolInstanceInDevice : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -401,7 +401,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //    select
   //····················································································································
 
-  func select (object inObject : SymbolObject) {
+  func select (object inObject : SymbolInstanceInDevice) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -424,7 +424,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SymbolObject (self.ebUndoManager)
+        let newObject = SymbolInstanceInDevice (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -450,7 +450,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [SymbolObject : Int] ()
+          var sortedObjectDictionary = [SymbolInstanceInDevice : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -472,13 +472,13 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : SymbolObject? = nil
+          var newSelectedObject : SymbolInstanceInDevice? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [SymbolObject : Int] ()
+          var objectDictionary = [SymbolInstanceInDevice : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -498,7 +498,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <SymbolObject> ()
+          var newSelectionSet = Set <SymbolInstanceInDevice> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -619,9 +619,9 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
-      var newObjects = [SymbolObject] ()
+      var newObjects = [SymbolInstanceInDevice] ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolInstanceInDevice {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
@@ -982,7 +982,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = self.mModel?.propval ?? []
-    var selectedObjects = [SymbolObject] ()
+    var selectedObjects = [SymbolInstanceInDevice] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)

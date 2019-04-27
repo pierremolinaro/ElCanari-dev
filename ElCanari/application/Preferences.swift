@@ -2667,7 +2667,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //   Array controller: additionnalLibraryArrayController
   //····················································································································
 
-  var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
+  var additionnalLibraryArrayController = Controller_Preferences_additionnalLibraryArrayController ()
 
   //····················································································································
   //   Transient property: mValueRevealInFinder_packages
@@ -3628,7 +3628,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.mAddLibraryEntryButton?.target = self
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
     self.mRemoveLibraryEntryButton?.target = additionnalLibraryArrayController
-    self.mRemoveLibraryEntryButton?.action = #selector (ArrayController_Preferences_additionnalLibraryArrayController.remove (_:))
+    self.mRemoveLibraryEntryButton?.action = #selector (Controller_Preferences_additionnalLibraryArrayController.remove (_:))
     self.mCheckLibraryAction?.target = self
     self.mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
   //--------------------------- Extern functions

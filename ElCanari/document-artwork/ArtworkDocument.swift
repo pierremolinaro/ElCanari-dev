@@ -12,7 +12,7 @@ import Cocoa
   //   Array controller: mDataController
   //····················································································································
 
-  var mDataController = ArrayController_ArtworkDocument_mDataController ()
+  var mDataController = Controller_ArtworkDocument_mDataController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
@@ -439,9 +439,9 @@ import Cocoa
     }
   //--------------------------- Set targets / actions
     self.mAddGenerationFileButton?.target = mDataController
-    self.mAddGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.add (_:))
+    self.mAddGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.add (_:))
     self.mRemoveGenerationFileButton?.target = mDataController
-    self.mRemoveGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.remove (_:))
+    self.mRemoveGenerationFileButton?.action = #selector (Controller_ArtworkDocument_mDataController.remove (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Read documentFilePath model 

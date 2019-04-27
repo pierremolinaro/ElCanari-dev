@@ -195,6 +195,12 @@ document ProjectDocument root ProjectRoot {
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
   outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
 
+#--- Sheet inspector
+  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicsTitle {sendContinously : yes} ;
+  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicsVersion {sendContinously : yes} ;
+  outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl $selectedSegment root.mSchematicsSheetOrientation ;
+  objectController mSelectedSheetController : root.mSelectedSheet ;
+  outlet EBTextField mSelectedSheetTitleTextField $value mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
 }
 
 #----------------------------------------------------------------------------*

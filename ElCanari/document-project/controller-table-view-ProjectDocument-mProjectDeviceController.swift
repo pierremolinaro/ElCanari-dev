@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_DeviceDocument_mDocumentationController
+//    Table View Controller ProjectDocument mProjectDeviceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_DeviceDocument_mDocumentationController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ProjectDocument_mProjectDeviceController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_DeviceDocument_mDocumentationController (
+    mSelectedSet = SelectedSet_ProjectDocument_mProjectDeviceController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_DeviceDocumentation ()
+  let sortedArray_property = TransientArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var sortedArray : [DeviceDocumentation] { return self.sortedArray_property.propval }
+  var sortedArray : [DeviceInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -65,14 +65,14 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
   
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil
+  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_DeviceDocumentation) {
+  func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_DeviceDocumentation ()
+  let selectedArray_property = TransientArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var selectedArray : [DeviceDocumentation] { return self.selectedArray_property.propval }
+  var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[DeviceDocumentation]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_DeviceDocument_mDocumentationController
+  private let mSelectedSet : SelectedSet_ProjectDocument_mProjectDeviceController
 
   //····················································································································
 
-  var selectedSet : Set <DeviceDocumentation> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <DeviceInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 
   //····················································································································
 
-  func setSelection (_ inObjects : [DeviceDocumentation]) {
+  func setSelection (_ inObjects : [DeviceInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [DeviceDocumentation] ()
+          var result = [DeviceInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -243,11 +243,23 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
+    //--- Check 'version' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"version\" column view unknown")
+      }
     //--- Check 'size' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
         column.sortDescriptorPrototype = nil
       }else{
         presentErrorWindow (file, line, "\"size\" column view unknown")
+      }
+    //--- Check 'componentCount' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "componentCount")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"componentCount\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -282,7 +294,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [DeviceDocumentation : Int] ()
+      var objectDictionary = [DeviceInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -325,7 +337,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <DeviceDocumentation> ()
+      var newSelectedObjectSet = Set <DeviceInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -374,14 +386,28 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mFileName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mDeviceName_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBIntObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.fileSize_property, file: #file, line: #line, autoFormatter:true)
+          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBIntObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.mComponents_property.count_property, file: #file, line: #line, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -397,14 +423,14 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //    select
   //····················································································································
 
-  func select (object inObject: DeviceDocumentation) {
+  func select (object inObject: DeviceInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <DeviceDocumentation> ()
+          var newSelectedObjectSet = Set <DeviceInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -425,11 +451,11 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DeviceDocumentation (self.ebUndoManager)
+        let newObject = DeviceInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <DeviceDocumentation> ()
+        var newSelectedObjectSet = Set <DeviceInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -456,7 +482,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [DeviceDocumentation : Int] ()
+          var sortedObjectDictionary = [DeviceInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -478,13 +504,13 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : DeviceDocumentation? = nil
+          var newSelectedObject : DeviceInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [DeviceDocumentation : Int] ()
+          var objectDictionary = [DeviceInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -504,7 +530,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <DeviceDocumentation> ()
+          var newSelectionSet = Set <DeviceInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -521,19 +547,19 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_DeviceDocument_mDocumentationController
+//    SelectedSet_ProjectDocument_mProjectDeviceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_DeviceDocument_mDocumentationController : EBAbstractProperty {
+final class SelectedSet_ProjectDocument_mProjectDeviceController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_DeviceDocumentation
+  private let mSortedArray : TransientArrayOf_DeviceInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_DeviceDocumentation) {
+        sortedArray : TransientArrayOf_DeviceInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -542,7 +568,7 @@ final class SelectedSet_DeviceDocument_mDocumentationController : EBAbstractProp
 
   //····················································································································
 
-  private var mPrivateSet = Set<DeviceDocumentation> () {
+  private var mPrivateSet = Set<DeviceInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -552,7 +578,7 @@ final class SelectedSet_DeviceDocument_mDocumentationController : EBAbstractProp
 
   //····················································································································
 
-  var mSet : Set<DeviceDocumentation> {
+  var mSet : Set<DeviceInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

@@ -12,19 +12,19 @@ import Cocoa
   //   Array controller: mPackageController
   //····················································································································
 
-  var mPackageController = ArrayController_DeviceDocument_mPackageController ()
+  var mPackageController = Controller_DeviceDocument_mPackageController ()
 
   //····················································································································
   //   Array controller: mDocumentationController
   //····················································································································
 
-  var mDocumentationController = ArrayController_DeviceDocument_mDocumentationController ()
+  var mDocumentationController = Controller_DeviceDocument_mDocumentationController ()
 
   //····················································································································
   //   Array controller: mSymbolDisplayController
   //····················································································································
 
-  var mSymbolDisplayController = ArrayController_DeviceDocument_mSymbolDisplayController ()
+  var mSymbolDisplayController = Controller_DeviceDocument_mSymbolDisplayController ()
 
   //····················································································································
   //   Selection controller: mSymbolInstanceSelection
@@ -36,13 +36,13 @@ import Cocoa
   //   Array controller: mPackageDisplayController
   //····················································································································
 
-  var mPackageDisplayController = ArrayController_DeviceDocument_mPackageDisplayController ()
+  var mPackageDisplayController = Controller_DeviceDocument_mPackageDisplayController ()
 
   //····················································································································
   //   Array controller: mSymbolController
   //····················································································································
 
-  var mSymbolController = ArrayController_DeviceDocument_mSymbolController ()
+  var mSymbolController = Controller_DeviceDocument_mSymbolController ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -961,7 +961,7 @@ import Cocoa
     self.mRemoveImageButton?.target = self
     self.mRemoveImageButton?.action = #selector (DeviceDocument.removeImageAction (_:))
     self.mRemoveSelectedDocButton?.target = mDocumentationController
-    self.mRemoveSelectedDocButton?.action = #selector (ArrayController_DeviceDocument_mDocumentationController.remove (_:))
+    self.mRemoveSelectedDocButton?.action = #selector (Controller_DeviceDocument_mDocumentationController.remove (_:))
     self.mShowDocButton?.target = self
     self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self

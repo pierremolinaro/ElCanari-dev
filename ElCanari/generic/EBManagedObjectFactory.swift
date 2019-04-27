@@ -58,6 +58,7 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "DeviceInProject" : DeviceInProject.self,
   "ComponentInProject" : ComponentInProject.self,
   "NetClassInProject" : NetClassInProject.self,
+  "SheetInProject" : SheetInProject.self,
   "DevicePackageInProject" : DevicePackageInProject.self,
   "DeviceSymbolInstanceInProject" : DeviceSymbolInstanceInProject.self,
   "DevicePadAssignmentInProject" : DevicePadAssignmentInProject.self,

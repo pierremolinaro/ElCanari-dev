@@ -12,7 +12,7 @@ import Cocoa
   //   Array controller: mPackageObjectsController
   //····················································································································
 
-  var mPackageObjectsController = ArrayController_PackageDocument_mPackageObjectsController ()
+  var mPackageObjectsController = Controller_PackageDocument_mPackageObjectsController ()
 
   //····················································································································
   //   Selection controller: mPackageBezierCurveSelectionController

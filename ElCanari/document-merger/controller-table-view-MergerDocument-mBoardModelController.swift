@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_ProjectDocument_mComponentController
+//    Table View Controller MergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_ProjectDocument_mComponentController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_MergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_ProjectDocument_mComponentController (
+    mSelectedSet = SelectedSet_MergerDocument_mBoardModelController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_ComponentInProject ()
+  let sortedArray_property = TransientArrayOf_BoardModel ()
 
   //····················································································································
 
-  var sortedArray : [ComponentInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [BoardModel] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -65,14 +65,14 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
+  private let allowsEmptySelection = false
+  private let allowsMultipleSelection = false
   
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ComponentInProject? = nil
+  private var mModel : ReadWriteArrayOf_BoardModel? = nil
 
   //····················································································································
 
@@ -83,12 +83,13 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_BoardModel) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     self.mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
+    inModel.addEBObserverOf_name (self.sortedArray_property)
   }
 
   //····················································································································
@@ -98,6 +99,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
+//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -121,23 +123,23 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_ComponentInProject ()
+  let selectedArray_property = TransientArrayOf_BoardModel ()
 
   //····················································································································
 
-  var selectedArray : [ComponentInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [BoardModel] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[ComponentInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[BoardModel]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_ProjectDocument_mComponentController
+  private let mSelectedSet : SelectedSet_MergerDocument_mBoardModelController
 
   //····················································································································
 
-  var selectedSet : Set <ComponentInProject> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <BoardModel> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +157,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   //····················································································································
 
-  func setSelection (_ inObjects : [ComponentInProject]) {
+  func setSelection (_ inObjects : [BoardModel]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +172,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [ComponentInProject] ()
+          var result = [BoardModel] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -186,6 +188,28 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   //····················································································································
 
+  func isOrderedBefore (left : BoardModel, right : BoardModel) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for (column, ascending) in self.mSortDescriptorArray {
+      if column == "name" {
+        order = compare_String (left: left.name_property, right:right.name_property)
+      }
+      if !ascending {
+        switch order {
+        case .orderedAscending : order = .orderedDescending
+        case .orderedDescending : order = .orderedAscending
+        case .orderedSame : break // Exit from switch
+        }
+      }
+      if order != .orderedSame {
+        break // Exit from for
+      }
+    }
+    return order == .orderedAscending
+  }
+
+  //····················································································································
+
   private final func setFilterAndSortFunction () {
     self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
@@ -195,7 +219,8 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          return .single (modelArray)
+          let sortedArray = modelArray.sorted { me.isOrderedBefore (left: $0, right: $1) }
+          return .single (sortedArray)
         }
       }else{
         return .empty
@@ -243,24 +268,6 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
-    //--- Check 'device' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "device")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"device\" column view unknown")
-      }
-    //--- Check 'package' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "package")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"package\" column view unknown")
-      }
-    //--- Check 'value' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "value")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"value\" column view unknown")
-      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -294,7 +301,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [ComponentInProject : Int] ()
+      var objectDictionary = [BoardModel : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -337,7 +344,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <ComponentInProject> ()
+      var newSelectedObjectSet = Set <BoardModel> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -381,33 +388,12 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.componentName_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "device", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.deviceName_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "package", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.selectedPackageName_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "value", let cell = result as? EBTextField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mComponentValue_property, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -423,14 +409,14 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //    select
   //····················································································································
 
-  func select (object inObject: ComponentInProject) {
+  func select (object inObject: BoardModel) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <ComponentInProject> ()
+          var newSelectedObjectSet = Set <BoardModel> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -451,11 +437,11 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = ComponentInProject (self.ebUndoManager)
+        let newObject = BoardModel (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <ComponentInProject> ()
+        var newSelectedObjectSet = Set <BoardModel> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -482,7 +468,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ComponentInProject : Int] ()
+          var sortedObjectDictionary = [BoardModel : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -504,13 +490,13 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : ComponentInProject? = nil
+          var newSelectedObject : BoardModel? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ComponentInProject : Int] ()
+          var objectDictionary = [BoardModel : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -530,7 +516,7 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <ComponentInProject> ()
+          var newSelectionSet = Set <BoardModel> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -547,19 +533,19 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_ProjectDocument_mComponentController
+//    SelectedSet_MergerDocument_mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_ProjectDocument_mComponentController : EBAbstractProperty {
+final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_ComponentInProject
+  private let mSortedArray : TransientArrayOf_BoardModel
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_ComponentInProject) {
+        sortedArray : TransientArrayOf_BoardModel) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -568,7 +554,7 @@ final class SelectedSet_ProjectDocument_mComponentController : EBAbstractPropert
 
   //····················································································································
 
-  private var mPrivateSet = Set<ComponentInProject> () {
+  private var mPrivateSet = Set<BoardModel> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -578,7 +564,7 @@ final class SelectedSet_ProjectDocument_mComponentController : EBAbstractPropert
 
   //····················································································································
 
-  var mSet : Set<ComponentInProject> {
+  var mSet : Set<BoardModel> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_PackageDocument_mPackageObjectsController
+//    Array controller PackageDocument mPackageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_PackageDocument_mPackageObjectsController : EBObject, EBViewControllerProtocol {
+final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBViewControllerProtocol {
  
   //····················································································································
   // MARK: -

@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_FontDocument_mSelectedCharacterController
+//    Table View Controller ArtworkDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_FontDocument_mSelectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ArtworkDocument_mDataController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_FontDocument_mSelectedCharacterController (
+    mSelectedSet = SelectedSet_ArtworkDocument_mDataController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontCharacter ()
+  let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
 
-  var sortedArray : [FontCharacter] { return self.sortedArray_property.propval }
+  var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -72,7 +72,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontCharacter? = nil
+  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
 
   //····················································································································
 
@@ -83,12 +83,13 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter) {
+  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     self.mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
+    inModel.addEBObserverOf_name (self.sortedArray_property)
   }
 
   //····················································································································
@@ -98,6 +99,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
+//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -121,23 +123,23 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_FontCharacter ()
+  let selectedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
 
-  var selectedArray : [FontCharacter] { return self.selectedArray_property.propval }
+  var selectedArray : [ArtworkFileGenerationParameters] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[FontCharacter]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_FontDocument_mSelectedCharacterController
+  private let mSelectedSet : SelectedSet_ArtworkDocument_mDataController
 
   //····················································································································
 
-  var selectedSet : Set <FontCharacter> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <ArtworkFileGenerationParameters> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +157,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   //····················································································································
 
-  func setSelection (_ inObjects : [FontCharacter]) {
+  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +172,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [FontCharacter] ()
+          var result = [ArtworkFileGenerationParameters] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -186,6 +188,28 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   //····················································································································
 
+  func isOrderedBefore (left : ArtworkFileGenerationParameters, right : ArtworkFileGenerationParameters) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for (column, ascending) in self.mSortDescriptorArray {
+      if column == "name" {
+        order = compare_String (left: left.name_property, right:right.name_property)
+      }
+      if !ascending {
+        switch order {
+        case .orderedAscending : order = .orderedDescending
+        case .orderedDescending : order = .orderedAscending
+        case .orderedSame : break // Exit from switch
+        }
+      }
+      if order != .orderedSame {
+        break // Exit from for
+      }
+    }
+    return order == .orderedAscending
+  }
+
+  //····················································································································
+
   private final func setFilterAndSortFunction () {
     self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
@@ -195,7 +219,8 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          return .single (modelArray)
+          let sortedArray = modelArray.sorted { me.isOrderedBefore (left: $0, right: $1) }
+          return .single (sortedArray)
         }
       }else{
         return .empty
@@ -237,6 +262,12 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
+    //--- Check 'name' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"name\" column view unknown")
+      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -270,7 +301,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [FontCharacter : Int] ()
+      var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -313,7 +344,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <FontCharacter> ()
+      var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -347,21 +378,45 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    return nil 
+    switch self.sortedArray_property.prop {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      if let tableColumnIdentifier = inTableColumn?.identifier,
+         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
+        }
+        let object = v [inRowIndex]
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_value ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+          cell.update ()
+        }else{
+          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
+        }
+        return result
+      }else{
+        return nil
+      } 
+    } 
   }
  
   //····················································································································
   //    select
   //····················································································································
 
-  func select (object inObject: FontCharacter) {
+  func select (object inObject: ArtworkFileGenerationParameters) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <FontCharacter> ()
+          var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -382,11 +437,11 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = FontCharacter (self.ebUndoManager)
+        let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <FontCharacter> ()
+        var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -413,7 +468,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [FontCharacter : Int] ()
+          var sortedObjectDictionary = [ArtworkFileGenerationParameters : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -435,13 +490,13 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : FontCharacter? = nil
+          var newSelectedObject : ArtworkFileGenerationParameters? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [FontCharacter : Int] ()
+          var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -461,7 +516,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <FontCharacter> ()
+          var newSelectionSet = Set <ArtworkFileGenerationParameters> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -478,19 +533,19 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_FontDocument_mSelectedCharacterController
+//    SelectedSet_ArtworkDocument_mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_FontDocument_mSelectedCharacterController : EBAbstractProperty {
+final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_FontCharacter
+  private let mSortedArray : TransientArrayOf_ArtworkFileGenerationParameters
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_FontCharacter) {
+        sortedArray : TransientArrayOf_ArtworkFileGenerationParameters) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -499,7 +554,7 @@ final class SelectedSet_FontDocument_mSelectedCharacterController : EBAbstractPr
 
   //····················································································································
 
-  private var mPrivateSet = Set<FontCharacter> () {
+  private var mPrivateSet = Set<ArtworkFileGenerationParameters> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -509,7 +564,7 @@ final class SelectedSet_FontDocument_mSelectedCharacterController : EBAbstractPr
 
   //····················································································································
 
-  var mSet : Set<FontCharacter> {
+  var mSet : Set<ArtworkFileGenerationParameters> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

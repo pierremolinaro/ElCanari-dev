@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_ProjectDocument_mProjectDeviceController
+//    Table View Controller FontDocument mSelectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_FontDocument_mSelectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_ProjectDocument_mProjectDeviceController (
+    mSelectedSet = SelectedSet_FontDocument_mSelectedCharacterController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_DeviceInProject ()
+  let sortedArray_property = TransientArrayOf_FontCharacter ()
 
   //····················································································································
 
-  var sortedArray : [DeviceInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [FontCharacter] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -65,14 +65,14 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
+  private let allowsEmptySelection = false
+  private let allowsMultipleSelection = false
   
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
+  private var mModel : ReadWriteArrayOf_FontCharacter? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_DeviceInProject ()
+  let selectedArray_property = TransientArrayOf_FontCharacter ()
 
   //····················································································································
 
-  var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [FontCharacter] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[FontCharacter]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_ProjectDocument_mProjectDeviceController
+  private let mSelectedSet : SelectedSet_FontDocument_mSelectedCharacterController
 
   //····················································································································
 
-  var selectedSet : Set <DeviceInProject> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <FontCharacter> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
 
   //····················································································································
 
-  func setSelection (_ inObjects : [DeviceInProject]) {
+  func setSelection (_ inObjects : [FontCharacter]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [DeviceInProject] ()
+          var result = [FontCharacter] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -237,30 +237,6 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'name' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
-      }
-    //--- Check 'version' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
-      }
-    //--- Check 'size' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"size\" column view unknown")
-      }
-    //--- Check 'componentCount' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "componentCount")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"componentCount\" column view unknown")
-      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -294,7 +270,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [DeviceInProject : Int] ()
+      var objectDictionary = [FontCharacter : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -337,7 +313,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <DeviceInProject> ()
+      var newSelectedObjectSet = Set <FontCharacter> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -371,66 +347,21 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch self.sortedArray_property.prop {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      if let tableColumnIdentifier = inTableColumn?.identifier,
-         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-        if !reuseTableViewCells () {
-          result.identifier = nil // So result cannot be reused, will be freed
-        }
-        let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mDeviceName_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBIntObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mComponents_property.count_property, file: #file, line: #line, autoFormatter:true)
-          cell.update ()
-        }else{
-          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-        }
-        return result
-      }else{
-        return nil
-      } 
-    } 
+    return nil 
   }
  
   //····················································································································
   //    select
   //····················································································································
 
-  func select (object inObject: DeviceInProject) {
+  func select (object inObject: FontCharacter) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <DeviceInProject> ()
+          var newSelectedObjectSet = Set <FontCharacter> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -451,11 +382,11 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DeviceInProject (self.ebUndoManager)
+        let newObject = FontCharacter (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <DeviceInProject> ()
+        var newSelectedObjectSet = Set <FontCharacter> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -482,7 +413,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [DeviceInProject : Int] ()
+          var sortedObjectDictionary = [FontCharacter : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -504,13 +435,13 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : DeviceInProject? = nil
+          var newSelectedObject : FontCharacter? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [DeviceInProject : Int] ()
+          var objectDictionary = [FontCharacter : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -530,7 +461,7 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <DeviceInProject> ()
+          var newSelectionSet = Set <FontCharacter> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -547,19 +478,19 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_ProjectDocument_mProjectDeviceController
+//    SelectedSet_FontDocument_mSelectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_ProjectDocument_mProjectDeviceController : EBAbstractProperty {
+final class SelectedSet_FontDocument_mSelectedCharacterController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_DeviceInProject
+  private let mSortedArray : TransientArrayOf_FontCharacter
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_DeviceInProject) {
+        sortedArray : TransientArrayOf_FontCharacter) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -568,7 +499,7 @@ final class SelectedSet_ProjectDocument_mProjectDeviceController : EBAbstractPro
 
   //····················································································································
 
-  private var mPrivateSet = Set<DeviceInProject> () {
+  private var mPrivateSet = Set<FontCharacter> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -578,7 +509,7 @@ final class SelectedSet_ProjectDocument_mProjectDeviceController : EBAbstractPro
 
   //····················································································································
 
-  var mSet : Set<DeviceInProject> {
+  var mSet : Set<FontCharacter> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

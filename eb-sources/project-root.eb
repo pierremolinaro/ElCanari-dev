@@ -7,15 +7,25 @@ entity ProjectRoot {
   toMany DeviceInProject mDevices ;
   toMany ComponentInProject mComponents ;
   toMany NetClassInProject mNetClasses ;
+  toMany SheetInProject mSheets ;
+  toOne SheetInProject mSelectedSheet ;
 
   property Int mSelectedPageIndex default 0 ;
+
   property Int mSelectedSchematicsInspector default 0 ;
+  property String mSchematicsTitle default "" ;
+  property String mSchematicsVersion default "" ;
+  property SchematicsSheetOrientation mSchematicsSheetOrientation default horizontal ;
   
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
   transient StringArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
 }
-  
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum SchematicsSheetOrientation { horizontal, vertical }
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   Font
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -200,7 +210,7 @@ entity NetInProject {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Symbol
+#   Component Symbol
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ComponentSymbolInProject {
@@ -208,6 +218,15 @@ entity ComponentSymbolInProject {
   
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   Sheet
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SheetInProject {
+
+  property String mSheetTitle default "" ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

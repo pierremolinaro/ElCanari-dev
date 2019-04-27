@@ -12,7 +12,7 @@ import Cocoa
   //   Array controller: mBoardModelController
   //····················································································································
 
-  var mBoardModelController = ArrayController_MergerDocument_mBoardModelController ()
+  var mBoardModelController = Controller_MergerDocument_mBoardModelController ()
 
   //····················································································································
   //   Selection controller: mBoardModelSelection
@@ -24,7 +24,7 @@ import Cocoa
   //   Array controller: mBoardInstanceController
   //····················································································································
 
-  var mBoardInstanceController = ArrayController_MergerDocument_mBoardInstanceController ()
+  var mBoardInstanceController = Controller_MergerDocument_mBoardInstanceController ()
 
   //····················································································································
   //   Selection controller: mBoardInstanceSelection
@@ -1090,7 +1090,7 @@ import Cocoa
     self.addBoardModelButton?.target = self
     self.addBoardModelButton?.action = #selector (MergerDocument.addBoardModelAction (_:))
     self.removeBoardModelButton?.target = mBoardModelController
-    self.removeBoardModelButton?.action = #selector (ArrayController_MergerDocument_mBoardModelController.remove (_:))
+    self.removeBoardModelButton?.action = #selector (Controller_MergerDocument_mBoardModelController.remove (_:))
     self.updateBoardModelButton?.target = self
     self.updateBoardModelButton?.action = #selector (MergerDocument.updateBoardModelAction (_:))
     self.showBoardHelpButton?.target = self

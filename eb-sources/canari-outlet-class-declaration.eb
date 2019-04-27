@@ -78,6 +78,9 @@ binding FontCharacterSelectButton $characters : transient DefinedCharactersInDev
 extern outlet class CanariSegmentedControl ;
 binding CanariSegmentedControl $selectedPage : property Int ;
 
+extern outlet class CanariEnumSegmentedControl ;
+binding CanariEnumSegmentedControl $selectedSegment : property enum ;
+
 extern outlet class CanariPackageArcAngleTextField ;
 binding CanariPackageArcAngleTextField $angle : property Int ;
 

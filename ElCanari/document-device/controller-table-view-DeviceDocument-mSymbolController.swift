@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_ArtworkDocument_mDataController
+//    Table View Controller DeviceDocument mSymbolController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_DeviceDocument_mSymbolController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_ArtworkDocument_mDataController (
+    mSelectedSet = SelectedSet_DeviceDocument_mSymbolController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
+  let sortedArray_property = TransientArrayOf_SymbolTypeInDevice ()
 
   //····················································································································
 
-  var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
+  var sortedArray : [SymbolTypeInDevice] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -65,14 +65,14 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
   
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
+  private var mModel : ReadWriteArrayOf_SymbolTypeInDevice? = nil
 
   //····················································································································
 
@@ -83,13 +83,12 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters) {
+  func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     self.mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
-    inModel.addEBObserverOf_name (self.sortedArray_property)
   }
 
   //····················································································································
@@ -99,7 +98,6 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
-//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -123,23 +121,23 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
+  let selectedArray_property = TransientArrayOf_SymbolTypeInDevice ()
 
   //····················································································································
 
-  var selectedArray : [ArtworkFileGenerationParameters] { return self.selectedArray_property.propval }
+  var selectedArray : [SymbolTypeInDevice] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[SymbolTypeInDevice]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_ArtworkDocument_mDataController
+  private let mSelectedSet : SelectedSet_DeviceDocument_mSymbolController
 
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <SymbolTypeInDevice> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -157,7 +155,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
-  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
+  func setSelection (_ inObjects : [SymbolTypeInDevice]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -172,7 +170,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [ArtworkFileGenerationParameters] ()
+          var result = [SymbolTypeInDevice] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -188,28 +186,6 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
-  func isOrderedBefore (left : ArtworkFileGenerationParameters, right : ArtworkFileGenerationParameters) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for (column, ascending) in self.mSortDescriptorArray {
-      if column == "name" {
-        order = compare_String (left: left.name_property, right:right.name_property)
-      }
-      if !ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedDescending : order = .orderedAscending
-        case .orderedSame : break // Exit from switch
-        }
-      }
-      if order != .orderedSame {
-        break // Exit from for
-      }
-    }
-    return order == .orderedAscending
-  }
-
-  //····················································································································
-
   private final func setFilterAndSortFunction () {
     self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
@@ -219,8 +195,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          let sortedArray = modelArray.sorted { me.isOrderedBefore (left: $0, right: $1) }
-          return .single (sortedArray)
+          return .single (modelArray)
         }
       }else{
         return .empty
@@ -262,11 +237,23 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'name' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
+    //--- Check 'symbol' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "symbol")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (file, line, "\"symbol\" column view unknown")
+      }
+    //--- Check 'version' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"version\" column view unknown")
+      }
+    //--- Check 'count' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "count")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"count\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -301,7 +288,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+      var objectDictionary = [SymbolTypeInDevice : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -344,7 +331,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
+      var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -388,12 +375,26 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "symbol", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_value ()
+            cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_valueObserver (object.mTypeName_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "count", let cell = result as? EBIntObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.instanceCount_property, file: #file, line: #line, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -409,14 +410,14 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //    select
   //····················································································································
 
-  func select (object inObject: ArtworkFileGenerationParameters) {
+  func select (object inObject: SymbolTypeInDevice) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
+          var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -437,11 +438,11 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
+        let newObject = SymbolTypeInDevice (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
+        var newSelectedObjectSet = Set <SymbolTypeInDevice> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -468,7 +469,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var sortedObjectDictionary = [SymbolTypeInDevice : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -490,13 +491,13 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : ArtworkFileGenerationParameters? = nil
+          var newSelectedObject : SymbolTypeInDevice? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var objectDictionary = [SymbolTypeInDevice : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -516,7 +517,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <ArtworkFileGenerationParameters> ()
+          var newSelectionSet = Set <SymbolTypeInDevice> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -533,19 +534,19 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_ArtworkDocument_mDataController
+//    SelectedSet_DeviceDocument_mSymbolController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
+final class SelectedSet_DeviceDocument_mSymbolController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_ArtworkFileGenerationParameters
+  private let mSortedArray : TransientArrayOf_SymbolTypeInDevice
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_ArtworkFileGenerationParameters) {
+        sortedArray : TransientArrayOf_SymbolTypeInDevice) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -554,7 +555,7 @@ final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
 
   //····················································································································
 
-  private var mPrivateSet = Set<ArtworkFileGenerationParameters> () {
+  private var mPrivateSet = Set<SymbolTypeInDevice> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -564,7 +565,7 @@ final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
 
   //····················································································································
 
-  var mSet : Set<ArtworkFileGenerationParameters> {
+  var mSet : Set<SymbolTypeInDevice> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

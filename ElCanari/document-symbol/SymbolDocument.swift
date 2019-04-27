@@ -12,7 +12,7 @@ import Cocoa
   //   Array controller: mSymbolObjectsController
   //····················································································································
 
-  var mSymbolObjectsController = ArrayController_SymbolDocument_mSymbolObjectsController ()
+  var mSymbolObjectsController = Controller_SymbolDocument_mSymbolObjectsController ()
 
   //····················································································································
   //   Selection controller: mSymbolTextSelectionController

@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_Preferences_additionnalLibraryArrayController
+//    Table View Controller ProjectDocument mComponentController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_Preferences_additionnalLibraryArrayController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ProjectDocument_mComponentController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_Preferences_additionnalLibraryArrayController (
+    mSelectedSet = SelectedSet_ProjectDocument_mComponentController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_CanariLibraryEntry ()
+  let sortedArray_property = TransientArrayOf_ComponentInProject ()
 
   //····················································································································
 
-  var sortedArray : [CanariLibraryEntry] { return self.sortedArray_property.propval }
+  var sortedArray : [ComponentInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -65,14 +65,14 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
   
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
+  private var mModel : ReadWriteArrayOf_ComponentInProject? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_CanariLibraryEntry) {
+  func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
+  let selectedArray_property = TransientArrayOf_ComponentInProject ()
 
   //····················································································································
 
-  var selectedArray : [CanariLibraryEntry] { return self.selectedArray_property.propval }
+  var selectedArray : [ComponentInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[CanariLibraryEntry]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[ComponentInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
+  private let mSelectedSet : SelectedSet_ProjectDocument_mComponentController
 
   //····················································································································
 
-  var selectedSet : Set <CanariLibraryEntry> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <ComponentInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   //····················································································································
 
-  func setSelection (_ inObjects : [CanariLibraryEntry]) {
+  func setSelection (_ inObjects : [ComponentInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [CanariLibraryEntry] ()
+          var result = [ComponentInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -237,29 +237,29 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'path' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "path")) {
+    //--- Check 'name' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"path\" column view unknown")
+        presentErrorWindow (file, line, "\"name\" column view unknown")
       }
-    //--- Check 'uses' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "uses")) {
+    //--- Check 'device' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "device")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"uses\" column view unknown")
+        presentErrorWindow (file, line, "\"device\" column view unknown")
       }
-    //--- Check 'status' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "status")) {
+    //--- Check 'package' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "package")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"status\" column view unknown")
+        presentErrorWindow (file, line, "\"package\" column view unknown")
       }
-    //--- Check 'reveal' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "reveal")) {
+    //--- Check 'value' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "value")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"reveal\" column view unknown")
+        presentErrorWindow (file, line, "\"value\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -294,7 +294,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [CanariLibraryEntry : Int] ()
+      var objectDictionary = [ComponentInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -337,7 +337,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <CanariLibraryEntry> ()
+      var newSelectedObjectSet = Set <ComponentInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -381,35 +381,34 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "path", let cell = result as? EBTextObserverField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.componentName_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "uses", let cell = result as? EBSwitch_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "device", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.deviceName_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "package", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.selectedPackageName_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "value", let cell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_value (object.mComponentValue_property, file: #file, line: #line, sendContinously:false)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "status", let cell = result as? EBImageObserverView_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_image ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "reveal", let cell = result as? EBButton_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.target = nil
-            cell?.mCellOutlet?.action = nil
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.target = object
-          cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
@@ -424,14 +423,14 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    select
   //····················································································································
 
-  func select (object inObject: CanariLibraryEntry) {
+  func select (object inObject: ComponentInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <CanariLibraryEntry> ()
+          var newSelectedObjectSet = Set <ComponentInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -452,11 +451,11 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = CanariLibraryEntry (self.ebUndoManager)
+        let newObject = ComponentInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <CanariLibraryEntry> ()
+        var newSelectedObjectSet = Set <ComponentInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -483,7 +482,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [CanariLibraryEntry : Int] ()
+          var sortedObjectDictionary = [ComponentInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -505,13 +504,13 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : CanariLibraryEntry? = nil
+          var newSelectedObject : ComponentInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [CanariLibraryEntry : Int] ()
+          var objectDictionary = [ComponentInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -531,7 +530,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <CanariLibraryEntry> ()
+          var newSelectionSet = Set <ComponentInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -548,19 +547,19 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_Preferences_additionnalLibraryArrayController
+//    SelectedSet_ProjectDocument_mComponentController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstractProperty {
+final class SelectedSet_ProjectDocument_mComponentController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_CanariLibraryEntry
+  private let mSortedArray : TransientArrayOf_ComponentInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_CanariLibraryEntry) {
+        sortedArray : TransientArrayOf_ComponentInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -569,7 +568,7 @@ final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstra
 
   //····················································································································
 
-  private var mPrivateSet = Set<CanariLibraryEntry> () {
+  private var mPrivateSet = Set<ComponentInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -579,7 +578,7 @@ final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstra
 
   //····················································································································
 
-  var mSet : Set<CanariLibraryEntry> {
+  var mSet : Set<ComponentInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

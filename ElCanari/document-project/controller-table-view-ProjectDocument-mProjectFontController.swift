@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_MergerDocument_mBoardModelController
+//    Table View Controller ProjectDocument mProjectFontController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ProjectDocument_mProjectFontController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_MergerDocument_mBoardModelController (
+    mSelectedSet = SelectedSet_ProjectDocument_mProjectFontController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_BoardModel ()
+  let sortedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
-  var sortedArray : [BoardModel] { return self.sortedArray_property.propval }
+  var sortedArray : [FontInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -72,7 +72,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardModel? = nil
+  private var mModel : ReadWriteArrayOf_FontInProject? = nil
 
   //····················································································································
 
@@ -83,13 +83,12 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_BoardModel) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     self.mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
-    inModel.addEBObserverOf_name (self.sortedArray_property)
   }
 
   //····················································································································
@@ -99,7 +98,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
-//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -123,23 +121,23 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_BoardModel ()
+  let selectedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
-  var selectedArray : [BoardModel] { return self.selectedArray_property.propval }
+  var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[BoardModel]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_MergerDocument_mBoardModelController
+  private let mSelectedSet : SelectedSet_ProjectDocument_mProjectFontController
 
   //····················································································································
 
-  var selectedSet : Set <BoardModel> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <FontInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -157,7 +155,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
-  func setSelection (_ inObjects : [BoardModel]) {
+  func setSelection (_ inObjects : [FontInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -172,7 +170,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [BoardModel] ()
+          var result = [FontInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -188,28 +186,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
-  func isOrderedBefore (left : BoardModel, right : BoardModel) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for (column, ascending) in self.mSortDescriptorArray {
-      if column == "name" {
-        order = compare_String (left: left.name_property, right:right.name_property)
-      }
-      if !ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedDescending : order = .orderedAscending
-        case .orderedSame : break // Exit from switch
-        }
-      }
-      if order != .orderedSame {
-        break // Exit from for
-      }
-    }
-    return order == .orderedAscending
-  }
-
-  //····················································································································
-
   private final func setFilterAndSortFunction () {
     self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
@@ -219,8 +195,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          let sortedArray = modelArray.sorted { me.isOrderedBefore (left: $0, right: $1) }
-          return .single (sortedArray)
+          return .single (modelArray)
         }
       }else{
         return .empty
@@ -268,6 +243,18 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
+    //--- Check 'version' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"version\" column view unknown")
+      }
+    //--- Check 'size' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"size\" column view unknown")
+      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -301,7 +288,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [BoardModel : Int] ()
+      var objectDictionary = [FontInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -344,7 +331,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <BoardModel> ()
+      var newSelectedObjectSet = Set <FontInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -388,12 +375,26 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_value ()
+            cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -409,14 +410,14 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    select
   //····················································································································
 
-  func select (object inObject: BoardModel) {
+  func select (object inObject: FontInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <BoardModel> ()
+          var newSelectedObjectSet = Set <FontInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -437,11 +438,11 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = BoardModel (self.ebUndoManager)
+        let newObject = FontInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <BoardModel> ()
+        var newSelectedObjectSet = Set <FontInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -468,7 +469,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [BoardModel : Int] ()
+          var sortedObjectDictionary = [FontInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -490,13 +491,13 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : BoardModel? = nil
+          var newSelectedObject : FontInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [BoardModel : Int] ()
+          var objectDictionary = [FontInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -516,7 +517,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <BoardModel> ()
+          var newSelectionSet = Set <FontInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -533,19 +534,19 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_MergerDocument_mBoardModelController
+//    SelectedSet_ProjectDocument_mProjectFontController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractProperty {
+final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_BoardModel
+  private let mSortedArray : TransientArrayOf_FontInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_BoardModel) {
+        sortedArray : TransientArrayOf_FontInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -554,7 +555,7 @@ final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractPropert
 
   //····················································································································
 
-  private var mPrivateSet = Set<BoardModel> () {
+  private var mPrivateSet = Set<FontInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -564,7 +565,7 @@ final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractPropert
 
   //····················································································································
 
-  var mSet : Set<BoardModel> {
+  var mSet : Set<FontInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

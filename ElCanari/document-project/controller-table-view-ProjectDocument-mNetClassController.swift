@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_DeviceDocument_mPackageController
+//    Table View Controller ProjectDocument mNetClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_DeviceDocument_mPackageController (
+    mSelectedSet = SelectedSet_ProjectDocument_mNetClassController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_PackageInDevice ()
+  let sortedArray_property = TransientArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var sortedArray : [PackageInDevice] { return self.sortedArray_property.propval }
+  var sortedArray : [NetClassInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -72,7 +72,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageInDevice? = nil
+  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice) {
+  func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_PackageInDevice ()
+  let selectedArray_property = TransientArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
+  var selectedArray : [NetClassInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[NetClassInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_DeviceDocument_mPackageController
+  private let mSelectedSet : SelectedSet_ProjectDocument_mNetClassController
 
   //····················································································································
 
-  var selectedSet : Set <PackageInDevice> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <NetClassInProject> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 
   //····················································································································
 
-  func setSelection (_ inObjects : [PackageInDevice]) {
+  func setSelection (_ inObjects : [NetClassInProject]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [PackageInDevice] ()
+          var result = [NetClassInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -237,17 +237,41 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'package' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "package")) {
+    //--- Check 'name' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"package\" column view unknown")
+        presentErrorWindow (file, line, "\"name\" column view unknown")
       }
-    //--- Check 'version' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+    //--- Check 'netcolor' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "netcolor")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
+        presentErrorWindow (file, line, "\"netcolor\" column view unknown")
+      }
+    //--- Check 'width' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "width")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"width\" column view unknown")
+      }
+    //--- Check 'hole' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "hole")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"hole\" column view unknown")
+      }
+    //--- Check 'pad' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "pad")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"pad\" column view unknown")
+      }
+    //--- Check 'used' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "used")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"used\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -282,7 +306,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [PackageInDevice : Int] ()
+      var objectDictionary = [NetClassInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -325,7 +349,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <PackageInDevice> ()
+      var newSelectedObjectSet = Set <NetClassInProject> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -369,19 +393,47 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "package", let cell = result as? EBTextObserverField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_backColor ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.netWidth_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -397,14 +449,14 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
   //    select
   //····················································································································
 
-  func select (object inObject: PackageInDevice) {
+  func select (object inObject: NetClassInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <PackageInDevice> ()
+          var newSelectedObjectSet = Set <NetClassInProject> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -425,11 +477,11 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = PackageInDevice (self.ebUndoManager)
+        let newObject = NetClassInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <PackageInDevice> ()
+        var newSelectedObjectSet = Set <NetClassInProject> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -456,7 +508,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [PackageInDevice : Int] ()
+          var sortedObjectDictionary = [NetClassInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -478,13 +530,13 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : PackageInDevice? = nil
+          var newSelectedObject : NetClassInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [PackageInDevice : Int] ()
+          var objectDictionary = [NetClassInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -504,7 +556,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <PackageInDevice> ()
+          var newSelectionSet = Set <NetClassInProject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -521,19 +573,19 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_DeviceDocument_mPackageController
+//    SelectedSet_ProjectDocument_mNetClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_DeviceDocument_mPackageController : EBAbstractProperty {
+final class SelectedSet_ProjectDocument_mNetClassController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_PackageInDevice
+  private let mSortedArray : TransientArrayOf_NetClassInProject
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_PackageInDevice) {
+        sortedArray : TransientArrayOf_NetClassInProject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -542,7 +594,7 @@ final class SelectedSet_DeviceDocument_mPackageController : EBAbstractProperty {
 
   //····················································································································
 
-  private var mPrivateSet = Set<PackageInDevice> () {
+  private var mPrivateSet = Set<NetClassInProject> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -552,7 +604,7 @@ final class SelectedSet_DeviceDocument_mPackageController : EBAbstractProperty {
 
   //····················································································································
 
-  var mSet : Set<PackageInDevice> {
+  var mSet : Set<NetClassInProject> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {

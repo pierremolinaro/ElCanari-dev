@@ -12,25 +12,31 @@ import Cocoa
   //   Array controller: mComponentController
   //····················································································································
 
-  var mComponentController = ArrayController_ProjectDocument_mComponentController ()
+  var mComponentController = Controller_ProjectDocument_mComponentController ()
 
   //····················································································································
   //   Array controller: mNetClassController
   //····················································································································
 
-  var mNetClassController = ArrayController_ProjectDocument_mNetClassController ()
+  var mNetClassController = Controller_ProjectDocument_mNetClassController ()
 
   //····················································································································
   //   Array controller: mProjectFontController
   //····················································································································
 
-  var mProjectFontController = ArrayController_ProjectDocument_mProjectFontController ()
+  var mProjectFontController = Controller_ProjectDocument_mProjectFontController ()
 
   //····················································································································
   //   Array controller: mProjectDeviceController
   //····················································································································
 
-  var mProjectDeviceController = ArrayController_ProjectDocument_mProjectDeviceController ()
+  var mProjectDeviceController = Controller_ProjectDocument_mProjectDeviceController ()
+
+  //····················································································································
+  //   Object controller: mSelectedSheetController
+  //····················································································································
+
+  var mSelectedSheetController = Controller_ProjectDocument_mSelectedSheetController ()
 
   //····················································································································
   //   Transient property: componentCount
@@ -329,8 +335,12 @@ import Cocoa
   @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
+  @IBOutlet var mSchematicsSheetOrientationSegmentedControl : CanariEnumSegmentedControl?
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSchematicsTitleTextField : EBTextField?
+  @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
   @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
@@ -396,6 +406,8 @@ import Cocoa
     self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
+  //--- Object controller property: mSelectedSheetController
+    self.mSelectedSheetController.addExplorer (name: "mSelectedSheetController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -489,8 +501,12 @@ import Cocoa
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsInspectorSegmentedControl, "mSchematicsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsSheetOrientationSegmentedControl, "mSchematicsSheetOrientationSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
@@ -514,6 +530,8 @@ import Cocoa
     self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
+  //--- Object controller property: mSelectedSheetController
+    self.mSelectedSheetController.bind_model (self.rootObject.mSelectedSheet_property)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -728,6 +746,10 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
     self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
     self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
+    self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicsTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicsVersion_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicsSheetOrientation_property, file: #file, line: #line)
+    self.mSelectedSheetTitleTextField?.bind_value (self.mSelectedSheetController.mSheetTitle_property, file: #file, line: #line, sendContinously:true)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -953,6 +975,10 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
     self.mUnplacedSymbolsTableView?.unbind_models ()
     self.mUnplacedSymbolsTextField?.unbind_valueObserver ()
+    self.mSchematicsTitleTextField?.unbind_value ()
+    self.mSchematicsVersionTextField?.unbind_value ()
+    self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
+    self.mSelectedSheetTitleTextField?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -999,6 +1025,8 @@ import Cocoa
     self.mProjectFontController.unbind_model ()
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
+  //--- Object controller property: mSelectedSheetController
+    self.mSelectedSheetController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
@@ -1091,8 +1119,12 @@ import Cocoa
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsInspectorSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
+    self.mSchematicsSheetOrientationSegmentedControl?.ebCleanUp ()
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
+    self.mSchematicsTitleTextField?.ebCleanUp ()
+    self.mSchematicsVersionTextField?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
+    self.mSelectedSheetTitleTextField?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
     self.mUnplacedSymbolsTextField?.ebCleanUp ()

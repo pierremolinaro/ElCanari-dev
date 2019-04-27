@@ -12,7 +12,7 @@ import Cocoa
   //   Array controller: mSelectedCharacterController
   //····················································································································
 
-  var mSelectedCharacterController = ArrayController_FontDocument_mSelectedCharacterController ()
+  var mSelectedCharacterController = Controller_FontDocument_mSelectedCharacterController ()
 
   //····················································································································
   //   Selection controller: mCharacterSelection

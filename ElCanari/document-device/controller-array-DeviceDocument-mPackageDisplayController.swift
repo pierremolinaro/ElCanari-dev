@@ -5,21 +5,21 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_MergerDocument_mBoardInstanceController
+//    Array controller DeviceDocument mPackageDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBViewControllerProtocol {
+final class Controller_DeviceDocument_mPackageDisplayController : EBObject, EBViewControllerProtocol {
  
   //····················································································································
   // MARK: -
   // Models
   //····················································································································
  
-   private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
+   private var mModel : ReadWriteArrayOf_PackageInDevice? = nil
 
    //····················································································································
 
-  var selectedSet : Set <MergerBoardInstance> {
+  var selectedSet : Set <PackageInDevice> {
     set (newValue) {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet) {
@@ -39,7 +39,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <MergerBoardInstance> () {
+  private var mPrivateSelectedSet = Set <PackageInDevice> () {
     didSet {
       self.selectedArray_property.postEvent ()
     }
@@ -50,19 +50,19 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   // Observable properties
   //····················································································································
 
-  let objectArray_property = TransientArrayOf_MergerBoardInstance ()
+  let objectArray_property = TransientArrayOf_PackageInDevice ()
 
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
+  let selectedArray_property = TransientArrayOf_PackageInDevice ()
 
   //····················································································································
 
-  var selectedArray : [MergerBoardInstance] { return self.selectedArray_property.propval }
+  var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[MergerBoardInstance]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.prop }
  
   //····················································································································
   // MARK: -
@@ -167,7 +167,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
           return .multiple
         case .single (let modelArray) :
           let selectedObjects = self?.mPrivateSelectedSet ?? Set ()
-          var selectedArray = [MergerBoardInstance] ()
+          var selectedArray = [PackageInDevice] ()
           for object in modelArray {
             if selectedObjects.contains (object) {
               selectedArray.append (object)
@@ -190,7 +190,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_MergerBoardInstance) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
     self.startObservingObjectShape ()
@@ -235,7 +235,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func setSelection (_ inObjects : [MergerBoardInstance]) {
+  func setSelection (_ inObjects : [PackageInDevice]) {
     self.selectedSet = Set (inObjects)
   }
 
@@ -383,7 +383,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [MergerBoardInstance : Int] ()
+      var objectDictionary = [PackageInDevice : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -401,7 +401,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    select
   //····················································································································
 
-  func select (object inObject : MergerBoardInstance) {
+  func select (object inObject : PackageInDevice) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -424,7 +424,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = MergerBoardInstance (self.ebUndoManager)
+        let newObject = PackageInDevice (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -450,7 +450,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [MergerBoardInstance : Int] ()
+          var sortedObjectDictionary = [PackageInDevice : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -472,13 +472,13 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : MergerBoardInstance? = nil
+          var newSelectedObject : PackageInDevice? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [MergerBoardInstance : Int] ()
+          var objectDictionary = [PackageInDevice : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -498,7 +498,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <MergerBoardInstance> ()
+          var newSelectionSet = Set <PackageInDevice> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -619,9 +619,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
-      var newObjects = [MergerBoardInstance] ()
+      var newObjects = [PackageInDevice] ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? MergerBoardInstance {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageInDevice {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
@@ -982,7 +982,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = self.mModel?.propval ?? []
-    var selectedObjects = [MergerBoardInstance] ()
+    var selectedObjects = [PackageInDevice] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)

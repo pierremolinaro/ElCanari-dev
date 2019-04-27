@@ -9,17 +9,17 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_ProjectDocument_mProjectFontController
+//    Table View Controller Preferences additionnalLibraryArrayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_ProjectDocument_mProjectFontController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_Preferences_additionnalLibraryArrayController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
  
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_ProjectDocument_mProjectFontController (
+    mSelectedSet = SelectedSet_Preferences_additionnalLibraryArrayController (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       sortedArray: self.sortedArray_property
@@ -35,11 +35,11 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    Sort Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontInProject ()
+  let sortedArray_property = TransientArrayOf_CanariLibraryEntry ()
 
   //····················································································································
 
-  var sortedArray : [FontInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [CanariLibraryEntry] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -72,7 +72,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontInProject? = nil
+  private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
 
   //····················································································································
 
@@ -83,7 +83,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_FontInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_CanariLibraryEntry) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
@@ -121,23 +121,23 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_FontInProject ()
+  let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
 
   //····················································································································
 
-  var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [CanariLibraryEntry] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[CanariLibraryEntry]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_ProjectDocument_mProjectFontController
+  private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
 
   //····················································································································
 
-  var selectedSet : Set <FontInProject> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <CanariLibraryEntry> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
-  func setSelection (_ inObjects : [FontInProject]) {
+  func setSelection (_ inObjects : [CanariLibraryEntry]) {
     self.mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -170,7 +170,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [FontInProject] ()
+          var result = [CanariLibraryEntry] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -237,23 +237,29 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
       self.mSelectedSet.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'name' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
+    //--- Check 'path' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "path")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"name\" column view unknown")
+        presentErrorWindow (file, line, "\"path\" column view unknown")
       }
-    //--- Check 'version' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+    //--- Check 'uses' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "uses")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
+        presentErrorWindow (file, line, "\"uses\" column view unknown")
       }
-    //--- Check 'size' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
+    //--- Check 'status' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "status")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"size\" column view unknown")
+        presentErrorWindow (file, line, "\"status\" column view unknown")
+      }
+    //--- Check 'reveal' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "reveal")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"reveal\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -288,7 +294,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [FontInProject : Int] ()
+      var objectDictionary = [CanariLibraryEntry : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -331,7 +337,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <FontInProject> ()
+      var newSelectedObjectSet = Set <CanariLibraryEntry> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v [index])
       }
@@ -375,27 +381,35 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
           result.identifier = nil // So result cannot be reused, will be freed
         }
         let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
+        if tableColumnIdentifier.rawValue == "path", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "uses", let cell = result as? EBSwitch_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
+            cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "status", let cell = result as? EBImageObserverView_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
+            cell?.mCellOutlet?.unbind_image ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
           cell.update ()
+        }else if tableColumnIdentifier.rawValue == "reveal", let cell = result as? EBButton_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.target = nil
+            cell?.mCellOutlet?.action = nil
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.target = object
+          cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
@@ -410,14 +424,14 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
   //    select
   //····················································································································
 
-  func select (object inObject: FontInProject) {
+  func select (object inObject: CanariLibraryEntry) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <FontInProject> ()
+          var newSelectedObjectSet = Set <CanariLibraryEntry> ()
           newSelectedObjectSet.insert (inObject)
           self.mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -438,11 +452,11 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = FontInProject (self.ebUndoManager)
+        let newObject = CanariLibraryEntry (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <FontInProject> ()
+        var newSelectedObjectSet = Set <CanariLibraryEntry> ()
         newSelectedObjectSet.insert (newObject)
         self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -469,7 +483,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [FontInProject : Int] ()
+          var sortedObjectDictionary = [CanariLibraryEntry : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -491,13 +505,13 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : FontInProject? = nil
+          var newSelectedObject : CanariLibraryEntry? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [FontInProject : Int] ()
+          var objectDictionary = [CanariLibraryEntry : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -517,7 +531,7 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <FontInProject> ()
+          var newSelectionSet = Set <CanariLibraryEntry> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -534,19 +548,19 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_ProjectDocument_mProjectFontController
+//    SelectedSet_Preferences_additionnalLibraryArrayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractProperty {
+final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_FontInProject
+  private let mSortedArray : TransientArrayOf_CanariLibraryEntry
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_FontInProject) {
+        sortedArray : TransientArrayOf_CanariLibraryEntry) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -555,7 +569,7 @@ final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractPrope
 
   //····················································································································
 
-  private var mPrivateSet = Set<FontInProject> () {
+  private var mPrivateSet = Set<CanariLibraryEntry> () {
     didSet {
       if self.mPrivateSet != oldValue {
         self.postEvent ()
@@ -565,7 +579,7 @@ final class SelectedSet_ProjectDocument_mProjectFontController : EBAbstractPrope
 
   //····················································································································
 
-  var mSet : Set<FontInProject> {
+  var mSet : Set<CanariLibraryEntry> {
     set {
       var newSelectedSet = newValue
       switch self.mSortedArray.prop {
