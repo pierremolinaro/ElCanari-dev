@@ -15,11 +15,23 @@ entity ProjectRoot {
   property Int mSelectedSchematicsInspector default 0 ;
   property String mSchematicsTitle default "" ;
   property String mSchematicsVersion default "" ;
+  property Date mSchematicsDate default date ;
+
   property SchematicsSheetOrientation mSchematicsSheetOrientation default horizontal ;
   
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
   transient StringArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
+  
+  transient EBShape schematicsBackgroundDisplay dependsFrom
+    self.mSchematicsTitle,
+    self.mSchematicsVersion,
+    self.mSchematicsSheetOrientation,
+    self.mSelectedSheet.one.mSheetTitle,
+  #  self.mSheets,
+  #  self.mSelectedSheet,
+    self.mSchematicsDate
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

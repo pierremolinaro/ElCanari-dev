@@ -54,6 +54,7 @@
                 <outlet property="mNetListPageView" destination="3066" id="TAv-lP-lyG"/>
                 <outlet property="mNewComponentFromDevicePullDownButton" destination="16068" id="O6b-vO-Jgo"/>
                 <outlet property="mNewSheetButton" destination="15305" id="avd-uu-pSJ"/>
+                <outlet property="mOpenSetDateDialogButton" destination="57m-MU-Yg3" id="A3d-Ww-meV"/>
                 <outlet property="mPageSegmentedControl" destination="14936" id="5Ju-ZZ-zRf"/>
                 <outlet property="mPinPadAssignmentTableView" destination="16486" id="eqm-rc-qV0"/>
                 <outlet property="mProductPageView" destination="3140" id="bk0-vm-fc6"/>
@@ -70,14 +71,19 @@
                 <outlet property="mRenameComponentValidationButton" destination="OaP-cj-Yxx" id="pKr-4w-Nkm"/>
                 <outlet property="mResetDeviceVersionButton" destination="2955" id="eDB-4i-GY5"/>
                 <outlet property="mResetFontVersionButton" destination="2977" id="Ef5-X5-MYW"/>
+                <outlet property="mSchematicsDatePicker" destination="mFL-GZ-n6M" id="bu1-3Q-9r3"/>
                 <outlet property="mSchematicsInspectorSegmentedControl" destination="15593" id="cpz-Ru-nMg"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
+                <outlet property="mSchematicsScrollView" destination="3012" id="jfW-DZ-Cam"/>
                 <outlet property="mSchematicsSheetOrientationSegmentedControl" destination="7wK-un-j2g" id="l66-IA-39r"/>
                 <outlet property="mSchematicsSheetsInspectorView" destination="15297" id="RL7-7Y-t38"/>
                 <outlet property="mSchematicsTitleTextField" destination="15314" id="lHz-Cw-7y5"/>
                 <outlet property="mSchematicsVersionTextField" destination="15313" id="pnO-CQ-g0E"/>
+                <outlet property="mSchematicsView" destination="3013" id="JHC-ji-qbQ"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mSelectedSheetTitleTextField" destination="15310" id="EIV-hz-EDO"/>
+                <outlet property="mSetDatePanel" destination="9r6-bV-Bde" id="Mpv-wB-AtM"/>
+                <outlet property="mSetDateToNowButton" destination="16247" id="FhR-Kz-ks7"/>
                 <outlet property="mSheetDownButton" destination="15838" id="BkT-QN-SP0"/>
                 <outlet property="mSheetPopUpButton" destination="15301" id="kz2-tC-wbH"/>
                 <outlet property="mSheetUpButton" destination="15836" id="N7V-Uz-FY8"/>
@@ -4301,12 +4307,12 @@ Diameter</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3012">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3012" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="590" height="613"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="3013" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -6468,27 +6474,6 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <datePicker verticalHuggingPriority="750" id="15312">
-                    <rect key="frame" x="90" y="105" width="139" height="148"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <datePickerCell key="cell" controlSize="small" borderStyle="bezel" alignment="left" datePickerStyle="clockAndCalendar" id="15319">
-                        <font key="font" metaFont="smallSystem"/>
-                        <date key="date" timeIntervalSinceReferenceDate="0.0">
-                            <!--2001-01-01 00:00:00 +0000-->
-                        </date>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                    </datePickerCell>
-                </datePicker>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15309">
-                    <rect key="frame" x="17" y="267" width="56" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Date:" id="15321">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15313" customClass="EBTextField">
                     <rect key="frame" x="78" y="304" width="152" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -6501,7 +6486,7 @@ TW: Track Width</string>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15308">
                     <rect key="frame" x="17" y="306" width="56" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Version:" id="15322">
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Version" id="15322">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -6519,7 +6504,7 @@ TW: Track Width</string>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15307">
                     <rect key="frame" x="17" y="351" width="38" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Title:" id="15323">
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Title" id="15323">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -6557,10 +6542,10 @@ TW: Track Width</string>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" id="16247">
-                    <rect key="frame" x="85" y="257" width="149" height="28"/>
+                <button verticalHuggingPriority="750" id="16247" customClass="EBButton">
+                    <rect key="frame" x="149" y="265" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Set to Today" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="16248">
+                    <buttonCell key="cell" type="roundRect" title="Set to Now" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="16248">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -6606,6 +6591,23 @@ TW: Track Width</string>
                     <rect key="frame" x="16" y="511" width="39" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sheet" id="15327">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="57m-MU-Yg3" customClass="EBButton">
+                    <rect key="frame" x="61" y="264" width="80" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Set…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyY-dU-n51">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15309">
+                    <rect key="frame" x="17" y="267" width="29" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Date" id="15321">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -7937,6 +7939,69 @@ Gw
                 </subviews>
             </view>
             <point key="canvasLocation" x="-240" y="-62"/>
+        </window>
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="9r6-bV-Bde" userLabel="Dialog : Set Date" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="378" y="579" width="454" height="254"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="213" height="107"/>
+            <view key="contentView" id="iux-B1-WlD">
+                <rect key="frame" x="0.0" y="0.0" width="454" height="254"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" id="QbQ-al-TO8" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="377" y="13" width="63" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="s2k-Pa-MXb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                    </button>
+                    <imageView id="61N-b7-Rx2">
+                        <rect key="frame" x="20" y="84" width="83" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1zs-SY-Kdr"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" id="4Xc-aS-Kqn" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="152" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="zm3-wW-fJw">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="woh-mG-of2">
+                        <rect key="frame" x="156" y="217" width="280" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Set Date and Time" id="aTL-Le-KhP">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <datePicker verticalHuggingPriority="750" id="mFL-GZ-n6M">
+                        <rect key="frame" x="158" y="61" width="277" height="148"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <datePickerCell key="cell" controlSize="small" borderStyle="bezel" alignment="left" datePickerStyle="clockAndCalendar" id="jRJ-PF-8MR">
+                            <font key="font" metaFont="smallSystem"/>
+                            <date key="date" timeIntervalSinceReferenceDate="43200">
+                                <!--2001-01-01 12:00:00 +0000-->
+                            </date>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
+                        </datePickerCell>
+                    </datePicker>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-270" y="-183"/>
         </window>
     </objects>
     <resources>

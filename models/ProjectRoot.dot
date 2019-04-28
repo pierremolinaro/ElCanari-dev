@@ -1,7 +1,7 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|String mSheetTitle"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;

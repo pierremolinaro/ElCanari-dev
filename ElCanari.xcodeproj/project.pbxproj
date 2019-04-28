@@ -57,6 +57,12 @@
 		CF01070E21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */; };
 		CF04AC682275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */; };
 		CF04AC692275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */; };
+		CF04AC6B2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC6A2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift */; };
+		CF04AC6C2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC6A2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift */; };
+		CF04AC6E2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC6D2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift */; };
+		CF04AC6F2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC6D2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift */; };
+		CF04AC712275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */; };
+		CF04AC722275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */; };
 		CF05C9B321A809AC0021652C /* transient-SymbolText-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */; };
 		CF05C9B421A809AC0021652C /* transient-SymbolText-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */; };
 		CF05C9B521A809AC0021652C /* transient-SymbolSegment-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AE21A809AC0021652C /* transient-SymbolSegment-issues.swift */; };
@@ -1565,6 +1571,9 @@
 		CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-noIssue.swift"; sourceTree = "<group>"; };
 		CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageSegmentSelectionController.swift"; sourceTree = "<group>"; };
 		CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-ProjectSheetController.swift"; sourceTree = "<group>"; };
+		CF04AC6A2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-schematicsBackgroundDisplay.swift"; sourceTree = "<group>"; };
+		CF04AC6D2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-setDateToNowAction.swift"; sourceTree = "<group>"; };
+		CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-openSetDateDialogAction.swift"; sourceTree = "<group>"; };
 		CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolText-issues.swift"; sourceTree = "<group>"; };
 		CF05C9AE21A809AC0021652C /* transient-SymbolSegment-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSegment-issues.swift"; sourceTree = "<group>"; };
 		CF05C9AF21A809AC0021652C /* transient-SymbolOval-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolOval-issues.swift"; sourceTree = "<group>"; };
@@ -2510,6 +2519,7 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
+				CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */,
 				CF11AB99225A1B740092A524 /* action-ProjectDocument-addComponentAction.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
 				CFCBE0012272426A00D72511 /* action-ProjectDocument-addNetClassAction.swift */,
@@ -2528,6 +2538,7 @@
 				CF4EB3962275B4D9000201E0 /* action-ProjectDocument-removeSheetAction.swift */,
 				CF11ABAB225A33B40092A524 /* action-ProjectDocument-resetDeviceVersionAction.swift */,
 				CFA0D9E022591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift */,
+				CF04AC6D2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift */,
 				CF11ABBA225A3C4D0092A524 /* action-ProjectDocument-updateDeviceAction.swift */,
 				CFA0DACA22592AFF008F2448 /* action-ProjectDocument-updateFontAction.swift */,
 				CFB473112274E31500694FCC /* controller-object-ProjectDocument-mSelectedSheetController.swift */,
@@ -2593,6 +2604,7 @@
 				CFFA7B432274726900E2D69A /* transient-ProjectDocument-unplacedSymbolsCount.swift */,
 				CFFA7B4022746E9D00E2D69A /* transient-ProjectDocument-unplacedSymbolsCountString.swift */,
 				CF2A69A2226F4A2600261C47 /* transient-ProjectRoot-deviceNames.swift */,
+				CF04AC6A2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift */,
 				CFFA7B3D22746B0800E2D69A /* transient-ProjectRoot-unplacedSymbols.swift */,
 			);
 			name = "document — project";
@@ -3927,6 +3939,7 @@
 				CFE85A8021A5BBE600991A66 /* transient-SymbolOval-selectionDisplay.swift in Sources */,
 				CF6B32EE21C8F99B00E3B985 /* selectionController-PackageDocument-mPackageGuideSelectionController.swift in Sources */,
 				CF38179F225CA53C00E75A96 /* entity-DevicePadAssignmentInProject.swift in Sources */,
+				CF04AC6E2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift in Sources */,
 				CFDD886B22342612008D3781 /* transient-DeviceDocument-hasUnconnectedPin.swift in Sources */,
 				CF11AB9D225A211F0092A524 /* open-device-in-library.swift.swift in Sources */,
 				CFE85A8C21A5C1C100991A66 /* CanariPoint.swift in Sources */,
@@ -4012,6 +4025,7 @@
 				CF1FB92E20E56D290050391E /* transient-BoardModel-boardLimits.swift in Sources */,
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
 				CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */,
+				CF04AC6B2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift in Sources */,
 				CFA655D121060672001E5067 /* action-MergerDocument-moveUpAction.swift in Sources */,
 				CFA655CE21060672001E5067 /* action-MergerDocument-moveDownAction.swift in Sources */,
 				CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */,
@@ -4250,6 +4264,7 @@
 				CFD7EA2720E7DA8100D53B87 /* action-MergerDocument-insertBoardAction.swift in Sources */,
 				CF6B32F621C91FA100E3B985 /* transient-PackageDimension-objectDisplay.swift in Sources */,
 				CF1D9C8121BBF13900FFF459 /* EBView-tracking-areas.swift in Sources */,
+				CF04AC712275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift in Sources */,
 				CF6172641B3C4BA900F3CA82 /* easy-bindings-utilities.swift in Sources */,
 				CFEAAD6D2231827C00F69A12 /* action-DeviceDocument-resetSelectedSymbolVersion.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
@@ -4375,6 +4390,7 @@
 				CF35A54921A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */,
 				CFDCA18621AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
 				CFF5EF04222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */,
+				CF04AC722275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift in Sources */,
 				CF11ABA1225A26120092A524 /* entity-DeviceInProject.swift in Sources */,
 				CF00843E21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
 				CF5B98A9227341F30068FB85 /* action-ProjectDocument-editNetClassAction.swift in Sources */,
@@ -4399,6 +4415,7 @@
 				CFDBA0EC22491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift in Sources */,
 				CF2A69A7226F4B8900261C47 /* CanariNewComponentFromDevicePullDownButton.swift in Sources */,
 				CF4B39DA21D4F1C6001217C6 /* CanariSlavePadAssignmentPopUpButton.swift in Sources */,
+				CF04AC6C2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift in Sources */,
 				CFCEE4792233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift in Sources */,
 				CFEAAD5C22317CAB00F69A12 /* transient-SymbolSolidOval-filledBezierPath.swift in Sources */,
 				CF78DE94222D65CA00E89DCA /* entity-SlavePadInDevice.swift in Sources */,
@@ -4957,6 +4974,7 @@
 				CF4B39CC21D40F8F001217C6 /* transient-PackagePad-padName.swift in Sources */,
 				CF00844221C41B8D003627E9 /* transient-PackageBezier-objectDisplay.swift in Sources */,
 				CFE979F221ABFC3A002E5716 /* CanariDragSourceTableView.swift in Sources */,
+				CF04AC6F2275DC0A00C70E99 /* action-ProjectDocument-setDateToNowAction.swift in Sources */,
 				CF4D083521C2F10E00380ACA /* entity-PackageObject.swift in Sources */,
 				CFC8548221E91C77006ADB6C /* action-DeviceDocument-resetVersionAction.swift in Sources */,
 				CF1D582821AD486900C2EF88 /* selectionController-SymbolDocument-mSymbolTextSelectionController.swift in Sources */,

@@ -319,6 +319,7 @@ import Cocoa
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
   @IBOutlet var mNewSheetButton : EBButton?
+  @IBOutlet var mOpenSetDateDialogButton : EBButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
@@ -335,14 +336,19 @@ import Cocoa
   @IBOutlet var mRenameComponentValidationButton : NSButton?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
+  @IBOutlet var mSchematicsDatePicker : NSDatePicker?
   @IBOutlet var mSchematicsInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
+  @IBOutlet var mSchematicsScrollView : EBScrollView?
   @IBOutlet var mSchematicsSheetOrientationSegmentedControl : CanariEnumSegmentedControl?
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSchematicsTitleTextField : EBTextField?
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
+  @IBOutlet var mSchematicsView : EBView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
+  @IBOutlet var mSetDatePanel : NSPanel?
+  @IBOutlet var mSetDateToNowButton : EBButton?
   @IBOutlet var mSheetDownButton : EBButton?
   @IBOutlet var mSheetPopUpButton : EBPopUpButton?
   @IBOutlet var mSheetUpButton : EBButton?
@@ -491,6 +497,7 @@ import Cocoa
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
@@ -507,14 +514,19 @@ import Cocoa
     checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
     checkOutletConnection (self.mSchematicsInspectorSegmentedControl, "mSchematicsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetOrientationSegmentedControl, "mSchematicsSheetOrientationSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSetDatePanel, "mSetDatePanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mSetDateToNowButton, "mSetDateToNowButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
@@ -761,6 +773,7 @@ import Cocoa
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicsVersion_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicsSheetOrientation_property, file: #file, line: #line)
     self.mSelectedSheetTitleTextField?.bind_value (self.mSelectedSheetController.mSheetTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsView?.bind_underObjectsDisplay (self.rootObject.schematicsBackgroundDisplay_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -973,6 +986,10 @@ import Cocoa
     self.mNewSheetButton?.action = #selector (ProjectDocument.newSheetAction (_:))
     self.mRemoveSheetButton?.target = self
     self.mRemoveSheetButton?.action = #selector (ProjectDocument.removeSheetAction (_:))
+    self.mSetDateToNowButton?.target = self
+    self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
+    self.mOpenSetDateDialogButton?.target = self
+    self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -1004,6 +1021,7 @@ import Cocoa
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
     self.mSelectedSheetTitleTextField?.unbind_value ()
+    self.mSchematicsView?.unbind_underObjectsDisplay ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1085,6 +1103,8 @@ import Cocoa
     self.mUpdateDeviceButton?.target = nil
     self.mNewSheetButton?.target = nil
     self.mRemoveSheetButton?.target = nil
+    self.mSetDateToNowButton?.target = nil
+    self.mOpenSetDateDialogButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
@@ -1132,6 +1152,7 @@ import Cocoa
     self.mNetListPageView?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mNewSheetButton?.ebCleanUp ()
+    self.mOpenSetDateDialogButton?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
@@ -1148,14 +1169,19 @@ import Cocoa
     self.mRenameComponentValidationButton?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
+    self.mSchematicsDatePicker?.ebCleanUp ()
     self.mSchematicsInspectorSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
+    self.mSchematicsScrollView?.ebCleanUp ()
     self.mSchematicsSheetOrientationSegmentedControl?.ebCleanUp ()
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
     self.mSchematicsTitleTextField?.ebCleanUp ()
     self.mSchematicsVersionTextField?.ebCleanUp ()
+    self.mSchematicsView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
+    self.mSetDatePanel?.ebCleanUp ()
+    self.mSetDateToNowButton?.ebCleanUp ()
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()

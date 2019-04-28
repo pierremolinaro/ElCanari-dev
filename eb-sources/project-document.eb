@@ -211,6 +211,35 @@ document ProjectDocument root ProjectRoot {
   
   action removeSheetAction ;
   outlet EBButton mRemoveSheetButton $run self.removeSheetAction $enabled root.mSheets.count > 1 ;
+
+    
+  action setDateToNowAction ;
+  outlet EBButton mSetDateToNowButton $run self.setDateToNowAction ;
+    
+  action openSetDateDialogAction ;
+  outlet EBButton mOpenSetDateDialogButton $run self.openSetDateDialogAction ;
+  outlet NSPanel mSetDatePanel ;
+  outlet NSDatePicker mSchematicsDatePicker ;
+
+#--- Schamativcs view
+#  arrayController mSymbolObjectsController : root.symbolObjects ;
+
+  outlet EBView mSchematicsView
+    $underObjectsDisplay root.schematicsBackgroundDisplay
+#    $horizontalFlip root.horizontalFlip
+#    $verticalFlip root.verticalFlip
+#    $graphicController self.mSymbolObjectsController
+#    $gridStyle root.gridStyle
+#    $gridDisplayFactor root.gridDisplay
+#    $gridLineColor prefs.lineColorOfSymbolGrid
+#    $gridCrossColor prefs.crossColorOfSymbolGrid
+#    $zoom root.zoom
+#    $backColor prefs.symbolBackgroundColor
+#    $xPlacardUnit root.xPlacardUnit
+#    $yPlacardUnit root.yPlacardUnit
+  ;
+
+  outlet EBScrollView mSchematicsScrollView ;
   
 }
 
