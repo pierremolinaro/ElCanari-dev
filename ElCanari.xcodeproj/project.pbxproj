@@ -55,6 +55,8 @@
 		CF00846921C4363E003627E9 /* transient-PackageRoot-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */; };
 		CF01070D21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */; };
 		CF01070E21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */; };
+		CF04AC682275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */; };
+		CF04AC692275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */; };
 		CF05C9B321A809AC0021652C /* transient-SymbolText-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */; };
 		CF05C9B421A809AC0021652C /* transient-SymbolText-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */; };
 		CF05C9B521A809AC0021652C /* transient-SymbolSegment-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05C9AE21A809AC0021652C /* transient-SymbolSegment-issues.swift */; };
@@ -403,8 +405,6 @@
 		CF4D3171225C8B8700256750 /* transient-ProjectDocument-selectedDeviceSymbolNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D316F225C8B8700256750 /* transient-ProjectDocument-selectedDeviceSymbolNames.swift */; };
 		CF4D54C02254B93600DBCB62 /* model-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D54BF2254B93600DBCB62 /* model-events.swift */; };
 		CF4D54C12254B93600DBCB62 /* model-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D54BF2254B93600DBCB62 /* model-events.swift */; };
-		CF4EB3912275A8CF000201E0 /* CanariSheetPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EB3902275A8CE000201E0 /* CanariSheetPopUpButton.swift */; };
-		CF4EB3922275A8CF000201E0 /* CanariSheetPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EB3902275A8CE000201E0 /* CanariSheetPopUpButton.swift */; };
 		CF4EB3942275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EB3932275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift */; };
 		CF4EB3952275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EB3932275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift */; };
 		CF4EB3972275B4DA000201E0 /* action-ProjectDocument-removeSheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EB3962275B4D9000201E0 /* action-ProjectDocument-removeSheetAction.swift */; };
@@ -1564,6 +1564,7 @@
 		CF00846021C4363E003627E9 /* transient-PackageDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-noIssue.swift"; sourceTree = "<group>"; };
 		CF01070C21C40D0600A27519 /* selectionController-PackageDocument-mPackageSegmentSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageSegmentSelectionController.swift"; sourceTree = "<group>"; };
+		CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-ProjectSheetController.swift"; sourceTree = "<group>"; };
 		CF05C9AD21A809AC0021652C /* transient-SymbolText-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolText-issues.swift"; sourceTree = "<group>"; };
 		CF05C9AE21A809AC0021652C /* transient-SymbolSegment-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSegment-issues.swift"; sourceTree = "<group>"; };
 		CF05C9AF21A809AC0021652C /* transient-SymbolOval-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolOval-issues.swift"; sourceTree = "<group>"; };
@@ -1765,7 +1766,6 @@
 		CF4D316A225C8A5100256750 /* transient-DeviceInProject-symbolAndTypesNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceInProject-symbolAndTypesNames.swift"; sourceTree = "<group>"; };
 		CF4D316F225C8B8700256750 /* transient-ProjectDocument-selectedDeviceSymbolNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectDocument-selectedDeviceSymbolNames.swift"; sourceTree = "<group>"; };
 		CF4D54BF2254B93600DBCB62 /* model-events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "model-events.swift"; sourceTree = "<group>"; };
-		CF4EB3902275A8CE000201E0 /* CanariSheetPopUpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSheetPopUpButton.swift; sourceTree = "<group>"; };
 		CF4EB3932275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-newSheetAction.swift"; sourceTree = "<group>"; };
 		CF4EB3962275B4D9000201E0 /* action-ProjectDocument-removeSheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-removeSheetAction.swift"; sourceTree = "<group>"; };
 		CF5123ED222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageSegment-strokeBezierPath.swift"; sourceTree = "<group>"; };
@@ -2531,6 +2531,7 @@
 				CF11ABBA225A3C4D0092A524 /* action-ProjectDocument-updateDeviceAction.swift */,
 				CFA0DACA22592AFF008F2448 /* action-ProjectDocument-updateFontAction.swift */,
 				CFB473112274E31500694FCC /* controller-object-ProjectDocument-mSelectedSheetController.swift */,
+				CF04AC672275BE4B00C70E99 /* controller-ProjectSheetController.swift */,
 				CFD3F8F5225BA4FC00387FF1 /* controller-table-view-ProjectDocument-mComponentController.swift */,
 				CF1356F922722D92005FD84C /* controller-table-view-ProjectDocument-mNetClassController.swift */,
 				CF11ABA2225A2BF80092A524 /* controller-table-view-ProjectDocument-mProjectDeviceController.swift */,
@@ -2909,7 +2910,6 @@
 				CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
-				CF4EB3902275A8CE000201E0 /* CanariSheetPopUpButton.swift */,
 				CF3395591B4AC885009C561B /* CanariSignatureField.swift */,
 				CF4B39D821D4F1C6001217C6 /* CanariSlavePadAssignmentPopUpButton.swift */,
 				CF51EEAF1B4C61C8006D1A45 /* CanariVersionField.swift */,
@@ -4056,7 +4056,6 @@
 				CFCEE4722233BE6F00C397CE /* entity-PadProxyInDevice.swift in Sources */,
 				CFA1AA2322327D250023928C /* transient-SymbolPinInstanceInDevice-numberShape.swift in Sources */,
 				CF99E37721AE920F002AB233 /* CanariIssueArray.swift in Sources */,
-				CF4EB3912275A8CF000201E0 /* CanariSheetPopUpButton.swift in Sources */,
 				CFB63F97211B7B25000A09F1 /* CanariDateObserverField.swift in Sources */,
 				CFFA7B512274821A00E2D69A /* view-TwoStringArrayTableView.swift in Sources */,
 				CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */,
@@ -4070,6 +4069,7 @@
 				CF968AEE21BBD2C10010175E /* EBView-binding-arrowKeyMagnitude.swift in Sources */,
 				CFEAAD672231807B00F69A12 /* controller-table-view-DeviceDocument-mSymbolController.swift in Sources */,
 				CF7C5A5D1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */,
+				CF04AC682275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */,
 				CF8A09A922319A2100A17B92 /* extension-SymbolInstanceInDevice.swift in Sources */,
 				CF11ABB5225A38B50092A524 /* transient-DeviceInProject-canExport.swift in Sources */,
 				CFF83D4521ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */,
@@ -4492,6 +4492,7 @@
 				CF5C4CFD219F04D600EAC52A /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CF2B9CE321C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
 				CFFA7B3F22746B0800E2D69A /* transient-ProjectRoot-unplacedSymbols.swift in Sources */,
+				CF04AC692275BE4B00C70E99 /* controller-ProjectSheetController.swift in Sources */,
 				CF968B0721BBDA320010175E /* EBView-binding-gridStyle.swift in Sources */,
 				CF64AFB4225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF968AF521BBD40B0010175E /* EBView-binding-backColor.swift in Sources */,
@@ -4879,7 +4880,6 @@
 				CF001F7121F8AE730091518E /* run-shell-command.swift in Sources */,
 				CF116B83224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */,
 				CF30CDE621C5709800CFE9CC /* transient-PackagePad-objectDisplay.swift in Sources */,
-				CF4EB3922275A8CF000201E0 /* CanariSheetPopUpButton.swift in Sources */,
 				CFDEC6DE21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,
 				CF4A6C0B21C6B80200997A19 /* EBView-binding-gridStep.swift in Sources */,
 				CF0DC231222587A000DD2076 /* action-DeviceDocument-removeImageAction.swift in Sources */,

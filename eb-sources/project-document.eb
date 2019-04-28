@@ -202,8 +202,10 @@ document ProjectDocument root ProjectRoot {
   objectController mSelectedSheetController : root.mSelectedSheet ;
   outlet EBTextField mSelectedSheetTitleTextField $value mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
 
-  outlet CanariSheetPopUpButton mCanariSheetPopUpButton ; # All bindings done programmatically, handles sheet up and sheet down
-  
+  outlet EBPopUpButton mSheetPopUpButton ; # All bindings done programmatically
+  outlet EBButton mSheetUpButton ; # All bindings done programmatically
+  outlet EBButton mSheetDownButton ; # All bindings done programmatically
+    
   action newSheetAction ;
   outlet EBButton mNewSheetButton $run self.newSheetAction ;
   

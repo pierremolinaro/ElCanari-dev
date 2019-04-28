@@ -27,6 +27,7 @@ import Cocoa
   //····················································································································
 
   fileprivate var mSymbolCountToInsertController : EBSimpleController? = nil
+  private var mSheetController = ProjectSheetController ()
   
   //····················································································································
   //  Properties needed for renaming a component
@@ -78,7 +79,12 @@ import Cocoa
       }
     )
   //---
-    self.mCanariSheetPopUpButton?.register (document: self)
+    self.mSheetController.register (
+      document: self,
+      popup: self.mSheetPopUpButton,
+      sheetUp: self.mSheetUpButton,
+      sheetDown: self.mSheetDownButton
+    )
   }
 
   //····················································································································
@@ -89,7 +95,7 @@ import Cocoa
     super.removeUserInterface ()
     self.mSymbolCountToInsertController?.unregister ()
     self.mSymbolCountToInsertController = nil
-    self.mCanariSheetPopUpButton?.unregister ()
+    self.mSheetController.unregister ()
   }
 
   //····················································································································

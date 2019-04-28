@@ -17,7 +17,6 @@
                 <outlet property="mAddNetClassValidationButton" destination="S52-wH-h5H" id="0kI-yP-xf6"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
                 <outlet property="mBoardPageView" destination="3080" id="Gwf-Pt-3pr"/>
-                <outlet property="mCanariSheetPopUpButton" destination="15301" id="uzv-Qy-xyM"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
                 <outlet property="mChangePackageComponentListTextField" destination="592" id="CST-gg-8YF"/>
                 <outlet property="mChangePackageOfSelectedComponentsActionButton" destination="2925" id="9S2-El-evR"/>
@@ -79,6 +78,9 @@
                 <outlet property="mSchematicsVersionTextField" destination="15313" id="pnO-CQ-g0E"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mSelectedSheetTitleTextField" destination="15310" id="EIV-hz-EDO"/>
+                <outlet property="mSheetDownButton" destination="15838" id="BkT-QN-SP0"/>
+                <outlet property="mSheetPopUpButton" destination="15301" id="kz2-tC-wbH"/>
+                <outlet property="mSheetUpButton" destination="15836" id="N7V-Uz-FY8"/>
                 <outlet property="mUnplacedSymbolsSchematicsInspectorView" destination="15599" id="Duz-PX-nA9"/>
                 <outlet property="mUnplacedSymbolsTableView" destination="15604" id="A8d-TO-jxG"/>
                 <outlet property="mUnplacedSymbolsTextField" destination="15601" id="eUO-n5-Svc"/>
@@ -3202,7 +3204,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="77.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="78" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3216,11 +3218,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="77.5" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="78" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3235,7 +3237,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="250" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="249.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3249,11 +3251,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="549" y="1" width="250" height="17"/>
+                                                <rect key="frame" x="549.5" y="1" width="249.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="249.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -6442,7 +6444,7 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton toolTip="Sheet Selection, Insertion, Deletion" id="15301" customClass="CanariSheetPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                <popUpButton toolTip="Sheet Selection, Insertion, Deletion" id="15301" customClass="EBPopUpButton">
                     <rect key="frame" x="67" y="507" width="127" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="clipping" borderStyle="border" inset="2" preferredEdge="maxY" id="15328">
@@ -6450,16 +6452,12 @@ TW: Track Width</string>
                         <font key="font" metaFont="cellTitle"/>
                         <menu key="menu" title="OtherViews" id="15329">
                             <items>
-                                <menuItem title="Sheet 99/99" state="on" id="15331"/>
+                                <menuItem title="Sheet 99/99" id="15331"/>
                                 <menuItem title="Add Sheet…" id="15330"/>
                                 <menuItem title="Remove Sheet…" id="15332"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
-                    <connections>
-                        <outlet property="mSheetDownButton" destination="15838" id="DFq-Y7-PJ7"/>
-                        <outlet property="mSheetUpButton" destination="15836" id="tp4-JZ-exa"/>
-                    </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15304">
                     <rect key="frame" x="17" y="444" width="122" height="14"/>

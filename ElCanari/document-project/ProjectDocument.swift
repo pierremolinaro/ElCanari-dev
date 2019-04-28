@@ -282,7 +282,6 @@ import Cocoa
   @IBOutlet var mAddNetClassValidationButton : NSButton?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
-  @IBOutlet var mCanariSheetPopUpButton : CanariSheetPopUpButton?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
@@ -344,6 +343,9 @@ import Cocoa
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
+  @IBOutlet var mSheetDownButton : EBButton?
+  @IBOutlet var mSheetPopUpButton : EBPopUpButton?
+  @IBOutlet var mSheetUpButton : EBButton?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
   @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
@@ -452,7 +454,6 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mCanariSheetPopUpButton, "mCanariSheetPopUpButton", CanariSheetPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -514,6 +515,9 @@ import Cocoa
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
@@ -1091,7 +1095,6 @@ import Cocoa
     self.mAddNetClassValidationButton?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
-    self.mCanariSheetPopUpButton?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -1153,6 +1156,9 @@ import Cocoa
     self.mSchematicsVersionTextField?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
+    self.mSheetDownButton?.ebCleanUp ()
+    self.mSheetPopUpButton?.ebCleanUp ()
+    self.mSheetUpButton?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
     self.mUnplacedSymbolsTextField?.ebCleanUp ()

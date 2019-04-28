@@ -1,5 +1,5 @@
 //
-//  CanariSheetPopUpButton.swift
+//  ProjectSheetController.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 28/04/2019.
@@ -9,73 +9,51 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariSheetPopUpButton
+//   ProjectSheetController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariSheetPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+class ProjectSheetController : EBOutletEvent {
 
   //····················································································································
-  // Outlet
+  // Properties
   //····················································································································
 
-  @IBOutlet var mSheetUpButton : EBButton? = nil
-  @IBOutlet var mSheetDownButton : EBButton? = nil
-
-  //····················································································································
-
-  private var mSheetController : EBOutletEvent? = nil
-
-  //····················································································································
-
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  override init (frame:NSRect) {
-    super.init (frame:frame)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
+  private var mSheetPopUpButton : EBPopUpButton? = nil
+  private var mSheetUpButton : EBButton? = nil
+  private var mSheetDownButton : EBButton? = nil
   private var mDocument : CustomizedProjectDocument? = nil
 
   //····················································································································
 
-  func register (document inDocument : CustomizedProjectDocument) {
+  func register (document inDocument : CustomizedProjectDocument,
+                 popup inPopUpButton : EBPopUpButton?,
+                 sheetUp inSheetUpButton : EBButton?,
+                 sheetDown inSheetDownButton : EBButton?) {
     self.mDocument = inDocument
+    self.mSheetPopUpButton = inPopUpButton
+    self.mSheetUpButton = inSheetUpButton
+    self.mSheetDownButton = inSheetDownButton
   //--- Add sheet titles observer
-    let sheetController = EBOutletEvent ()
-    self.mSheetController = sheetController
-    sheetController.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
-    inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (sheetController)
-    inDocument.rootObject.mSelectedSheet_property.addEBObserver (sheetController)
+    self.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
+    inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self)
+    inDocument.rootObject.mSelectedSheet_property.addEBObserver (self)
     self.mSheetUpButton?.target = self
-    self.mSheetUpButton?.action = #selector (CanariSheetPopUpButton.sheetUpAction (_:))
+    self.mSheetUpButton?.action = #selector (ProjectSheetController.sheetUpAction (_:))
     self.mSheetDownButton?.target = self
-    self.mSheetDownButton?.action = #selector (CanariSheetPopUpButton.sheetDownAction (_:))
+    self.mSheetDownButton?.action = #selector (ProjectSheetController.sheetDownAction (_:))
   }
 
   //····················································································································
 
   func unregister () {
-    if let document = self.mDocument, let sheetController = self.mSheetController {
-      document.rootObject.mSheets_property.removeEBObserverOf_mSheetTitle (sheetController)
-      document.rootObject.mSelectedSheet_property.removeEBObserver (sheetController)
+    if let document = self.mDocument {
+      document.rootObject.mSheets_property.removeEBObserverOf_mSheetTitle (self)
+      document.rootObject.mSelectedSheet_property.removeEBObserver (self)
     }
     self.mDocument = nil
-    self.mSheetController = nil
+    self.mSheetPopUpButton = nil
+    self.mSheetUpButton = nil
+    self.mSheetDownButton = nil
   }
 
   //····················································································································
@@ -83,20 +61,20 @@ class CanariSheetPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   private func updatePopUpButton () {
-    self.removeAllItems ()
+    self.mSheetPopUpButton?.removeAllItems ()
     self.mSheetUpButton?.isEnabled = false
     self.mSheetDownButton?.isEnabled = false
     let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
     let sheets = self.mDocument?.rootObject.mSheets ?? []
     var idx = 0
     for sheet in sheets {
-      self.addItem (withTitle: "\(sheet.mSheetTitle) (\(idx + 1)/\(sheets.count))")
-      self.lastItem?.tag = idx
-      self.lastItem?.target = self
-      self.lastItem?.action = #selector (CanariSheetPopUpButton.selectionDidChangeAction (_:))
-      self.lastItem?.isEnabled = true
+      self.mSheetPopUpButton?.addItem (withTitle: "\(sheet.mSheetTitle) (\(idx + 1)/\(sheets.count))")
+      self.mSheetPopUpButton?.lastItem?.tag = idx
+      self.mSheetPopUpButton?.lastItem?.target = self
+      self.mSheetPopUpButton?.lastItem?.action = #selector (ProjectSheetController.selectionDidChangeAction (_:))
+      self.mSheetPopUpButton?.lastItem?.isEnabled = true
       if sheet === selectedSheet {
-        self.selectItem (at: idx)
+        self.mSheetPopUpButton?.selectItem (at: idx)
         self.mSheetUpButton?.isEnabled = idx > 0
         self.mSheetDownButton?.isEnabled = idx < (sheets.count - 1)
       }
