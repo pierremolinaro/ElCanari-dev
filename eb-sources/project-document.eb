@@ -195,6 +195,12 @@ document ProjectDocument root ProjectRoot {
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
   outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
 
+#--- Grid and Flip inspector
+  outlet EBSwitch mSchematicsHorizontalFlipSwitch $value root.mSchematicsHorizontalFlip ;
+  outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicsVerticalFlip ;
+  outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicsGridStyle ;
+  outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicsGridDisplayFactor ;
+
 #--- Sheet inspector
   outlet EBTextField mSchematicsTitleTextField $value root.mSchematicsTitle {sendContinously : yes} ;
   outlet EBTextField mSchematicsVersionTextField $value root.mSchematicsVersion {sendContinously : yes} ;
@@ -226,14 +232,14 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
-#    $horizontalFlip root.horizontalFlip
-#    $verticalFlip root.verticalFlip
+    $horizontalFlip root.mSchematicsHorizontalFlip
+    $verticalFlip root.mSchematicsVerticalFlip
 #    $graphicController self.mSymbolObjectsController
-#    $gridStyle root.gridStyle
-#    $gridDisplayFactor root.gridDisplay
-#    $gridLineColor prefs.lineColorOfSymbolGrid
-#    $gridCrossColor prefs.crossColorOfSymbolGrid
-#    $zoom root.zoom
+    $gridStyle root.mSchematicsGridStyle
+    $gridDisplayFactor root.mSchematicsGridDisplayFactor
+    $gridLineColor prefs.lineColorOfSymbolGrid
+    $gridCrossColor prefs.crossColorOfSymbolGrid
+    $zoom root.mSchematicsZoom
 #    $backColor prefs.symbolBackgroundColor
 #    $xPlacardUnit root.xPlacardUnit
 #    $yPlacardUnit root.yPlacardUnit

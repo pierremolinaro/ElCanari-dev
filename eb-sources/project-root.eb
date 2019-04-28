@@ -16,6 +16,11 @@ entity ProjectRoot {
   property String mSchematicsTitle default "" ;
   property String mSchematicsVersion default "" ;
   property Date mSchematicsDate default date ;
+  property Bool mSchematicsHorizontalFlip default no ;
+  property Bool mSchematicsVerticalFlip default no ;
+  property Int mSchematicsZoom default 100 ;
+  property GridStyle mSchematicsGridStyle default line ;
+  property Int mSchematicsGridDisplayFactor default 4 ;
 
   property SchematicsSheetOrientation mSchematicsSheetOrientation default horizontal ;
   

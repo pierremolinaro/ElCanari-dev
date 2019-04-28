@@ -36,6 +36,36 @@ protocol ProjectRoot_mSchematicsDate : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mSchematicsHorizontalFlip : class {
+  var mSchematicsHorizontalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsVerticalFlip : class {
+  var mSchematicsVerticalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsZoom : class {
+  var mSchematicsZoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsGridStyle : class {
+  var mSchematicsGridStyle : GridStyle { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsGridDisplayFactor : class {
+  var mSchematicsGridDisplayFactor : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSchematicsSheetOrientation : class {
   var mSchematicsSheetOrientation : SchematicsSheetOrientation { get }
 }
@@ -68,6 +98,11 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicsTitle,
          ProjectRoot_mSchematicsVersion,
          ProjectRoot_mSchematicsDate,
+         ProjectRoot_mSchematicsHorizontalFlip,
+         ProjectRoot_mSchematicsVerticalFlip,
+         ProjectRoot_mSchematicsZoom,
+         ProjectRoot_mSchematicsGridStyle,
+         ProjectRoot_mSchematicsGridDisplayFactor,
          ProjectRoot_mSchematicsSheetOrientation,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames,
@@ -157,6 +192,91 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mSchematicsDate_property_selection : EBSelection <Date> { return self.mSchematicsDate_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicsHorizontalFlip
+  //····················································································································
+
+  var mSchematicsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mSchematicsHorizontalFlip : Bool {
+    get { return self.mSchematicsHorizontalFlip_property.propval }
+    set { self.mSchematicsHorizontalFlip_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mSchematicsHorizontalFlip_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicsVerticalFlip
+  //····················································································································
+
+  var mSchematicsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mSchematicsVerticalFlip : Bool {
+    get { return self.mSchematicsVerticalFlip_property.propval }
+    set { self.mSchematicsVerticalFlip_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicsVerticalFlip_property_selection : EBSelection <Bool> { return self.mSchematicsVerticalFlip_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicsZoom
+  //····················································································································
+
+  var mSchematicsZoom_property = EBStoredProperty_Int (defaultValue: 100)
+
+  //····················································································································
+
+  var mSchematicsZoom : Int {
+    get { return self.mSchematicsZoom_property.propval }
+    set { self.mSchematicsZoom_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicsZoom_property_selection : EBSelection <Int> { return self.mSchematicsZoom_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicsGridStyle
+  //····················································································································
+
+  var mSchematicsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  //····················································································································
+
+  var mSchematicsGridStyle : GridStyle {
+    get { return self.mSchematicsGridStyle_property.propval }
+    set { self.mSchematicsGridStyle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicsGridStyle_property_selection : EBSelection <GridStyle> { return self.mSchematicsGridStyle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSchematicsGridDisplayFactor
+  //····················································································································
+
+  var mSchematicsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+
+  //····················································································································
+
+  var mSchematicsGridDisplayFactor : Int {
+    get { return self.mSchematicsGridDisplayFactor_property.propval }
+    set { self.mSchematicsGridDisplayFactor_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSchematicsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mSchematicsGridDisplayFactor_property.prop }
 
   //····················································································································
   //   To many property: mComponents
@@ -384,6 +504,16 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicsVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicsDate
     self.mSchematicsDate_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicsHorizontalFlip
+    self.mSchematicsHorizontalFlip_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicsVerticalFlip
+    self.mSchematicsVerticalFlip_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicsZoom
+    self.mSchematicsZoom_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicsGridStyle
+    self.mSchematicsGridStyle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSchematicsGridDisplayFactor
+    self.mSchematicsGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (no option)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNetClasses (no option)
@@ -549,6 +679,46 @@ class ProjectRoot : EBManagedObject,
       valueExplorer:&self.mSchematicsDate_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mSchematicsHorizontalFlip",
+      idx:self.mSchematicsHorizontalFlip_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsHorizontalFlip_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsHorizontalFlip_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsVerticalFlip",
+      idx:self.mSchematicsVerticalFlip_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsVerticalFlip_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsVerticalFlip_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsZoom",
+      idx:self.mSchematicsZoom_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsZoom_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsZoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsGridStyle",
+      idx:self.mSchematicsGridStyle_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsGridStyle_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsGridStyle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsGridDisplayFactor",
+      idx:self.mSchematicsGridDisplayFactor_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsGridDisplayFactor_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsGridDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mSchematicsSheetOrientation",
       idx:self.mSchematicsSheetOrientation_property.ebObjectIndex,
       y:&y,
@@ -648,6 +818,21 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicsDate
     self.mSchematicsDate_property.mObserverExplorer = nil
     self.mSchematicsDate_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicsHorizontalFlip
+    self.mSchematicsHorizontalFlip_property.mObserverExplorer = nil
+    self.mSchematicsHorizontalFlip_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicsVerticalFlip
+    self.mSchematicsVerticalFlip_property.mObserverExplorer = nil
+    self.mSchematicsVerticalFlip_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicsZoom
+    self.mSchematicsZoom_property.mObserverExplorer = nil
+    self.mSchematicsZoom_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicsGridStyle
+    self.mSchematicsGridStyle_property.mObserverExplorer = nil
+    self.mSchematicsGridStyle_property.mValueExplorer = nil
+  //--- Atomic property: mSchematicsGridDisplayFactor
+    self.mSchematicsGridDisplayFactor_property.mObserverExplorer = nil
+    self.mSchematicsGridDisplayFactor_property.mValueExplorer = nil
   //--- To many property: mComponents
     self.mComponents_property.mValueExplorer = nil
   //--- To many property: mNetClasses
@@ -708,6 +893,16 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicsVersion_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsVersion")
   //--- Atomic property: mSchematicsDate
     self.mSchematicsDate_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsDate")
+  //--- Atomic property: mSchematicsHorizontalFlip
+    self.mSchematicsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsHorizontalFlip")
+  //--- Atomic property: mSchematicsVerticalFlip
+    self.mSchematicsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsVerticalFlip")
+  //--- Atomic property: mSchematicsZoom
+    self.mSchematicsZoom_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsZoom")
+  //--- Atomic property: mSchematicsGridStyle
+    self.mSchematicsGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsGridStyle")
+  //--- Atomic property: mSchematicsGridDisplayFactor
+    self.mSchematicsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicsGridDisplayFactor")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval,
@@ -812,6 +1007,16 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicsVersion_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsVersion")
   //--- Atomic property: mSchematicsDate
     self.mSchematicsDate_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsDate")
+  //--- Atomic property: mSchematicsHorizontalFlip
+    self.mSchematicsHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsHorizontalFlip")
+  //--- Atomic property: mSchematicsVerticalFlip
+    self.mSchematicsVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsVerticalFlip")
+  //--- Atomic property: mSchematicsZoom
+    self.mSchematicsZoom_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsZoom")
+  //--- Atomic property: mSchematicsGridStyle
+    self.mSchematicsGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsGridStyle")
+  //--- Atomic property: mSchematicsGridDisplayFactor
+    self.mSchematicsGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsGridDisplayFactor")
   //--- Atomic property: mSchematicsSheetOrientation
     self.mSchematicsSheetOrientation_property.readFrom (dictionary: inDictionary, forKey:"mSchematicsSheetOrientation")
   }
@@ -1176,6 +1381,291 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mSchematicsHorizontalFlip' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsHorizontalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsHorizontalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsHorizontalFlip.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsHorizontalFlip_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsHorizontalFlip (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsHorizontalFlip.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsHorizontalFlip_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsHorizontalFlip.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsHorizontalFlip_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicsHorizontalFlip.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicsHorizontalFlip_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicsVerticalFlip' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsVerticalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsVerticalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsVerticalFlip.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsVerticalFlip_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsVerticalFlip (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsVerticalFlip.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsVerticalFlip_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsVerticalFlip.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsVerticalFlip_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicsVerticalFlip.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicsVerticalFlip_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicsZoom' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsZoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsZoom (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsZoom.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsZoom_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsZoom (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsZoom.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsZoom_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsZoom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsZoom.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsZoom_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicsZoom.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicsZoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicsGridStyle' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsGridStyle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsGridStyle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsGridStyle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsGridStyle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsGridStyle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsGridStyle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsGridStyle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsGridStyle.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsGridStyle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicsGridStyle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicsGridStyle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicsGridDisplayFactor' stored property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsGridDisplayFactor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsGridDisplayFactor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsGridDisplayFactor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsGridDisplayFactor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsGridDisplayFactor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsGridDisplayFactor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsGridDisplayFactor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsGridDisplayFactor.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsGridDisplayFactor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSchematicsGridDisplayFactor.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSchematicsGridDisplayFactor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'mSchematicsSheetOrientation' stored property
   //····················································································································
 
@@ -1479,6 +1969,11 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
@@ -1492,6 +1987,11 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
@@ -1629,6 +2129,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSchematicsTitle_property.mSetterDelegate = nil
             managedObject.mSchematicsVersion_property.mSetterDelegate = nil
             managedObject.mSchematicsDate_property.mSetterDelegate = nil
+            managedObject.mSchematicsHorizontalFlip_property.mSetterDelegate = nil
+            managedObject.mSchematicsVerticalFlip_property.mSetterDelegate = nil
+            managedObject.mSchematicsZoom_property.mSetterDelegate = nil
+            managedObject.mSchematicsGridStyle_property.mSetterDelegate = nil
+            managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = nil
             managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = nil
           }
        //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
@@ -1636,6 +2141,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
        //   self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
@@ -1646,6 +2156,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
@@ -1663,6 +2178,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSchematicsTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSchematicsVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSchematicsDate_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSchematicsHorizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSchematicsVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSchematicsZoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSchematicsGridStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
@@ -1670,6 +2190,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
         // self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
@@ -1680,6 +2205,11 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)

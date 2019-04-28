@@ -21,52 +21,117 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
        _ self_mSchematicsDate : Date
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        let lineAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+        ]
         let LEFT_COLUMN  : CGFloat = 250.0
         let RIGHT_COLUMN : CGFloat =  40.0
         let LINE_HEIGHT  : CGFloat =  30.0
+        let MARGIN       : CGFloat =  14
         let shape = EBShape ()
         let A4Height : CGFloat
         let A4Width  : CGFloat
+        let hMarks : Int
+        let vMarks : Int
         switch self_mSchematicsSheetOrientation {
         case .horizontal :
            A4Height = 595.0
-           A4Width  = 850.0
+           A4Width  = 842.0
+           hMarks = 8
+           vMarks = 6
         case .vertical :
-           A4Height = 850.0
+           A4Height = 842.0
            A4Width  = 595.0
+           hMarks = 6
+           vMarks = 8
         }
+      //---
+        let filledBP = NSBezierPath (rect: NSRect (x: 0.0, y: 0.0, width: MARGIN, height: A4Height))
+        filledBP.appendRect (NSRect (x: 0.0, y: A4Height - MARGIN, width: A4Width, height: MARGIN))
+        filledBP.appendRect (NSRect (x: A4Width - MARGIN, y: 0.0, width: MARGIN, height: A4Height))
+        filledBP.appendRect (NSRect (x: 0.0, y: 0.0, width: A4Width, height: MARGIN))
+        filledBP.appendRect (NSRect (x: A4Width - MARGIN - LEFT_COLUMN - RIGHT_COLUMN, y: MARGIN, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
+        shape.append (EBFilledBezierPathShape ([filledBP], .white))
+      //---
         let bp = NSBezierPath (rect: NSRect (x: 0.0, y: 0.0, width: A4Width, height: A4Height))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN, y: 0.0))
+        bp.appendRect (NSRect (x: MARGIN, y: MARGIN, width: A4Width - MARGIN * 2.0, height: A4Height - MARGIN * 2.0))
+        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - MARGIN, y: MARGIN))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 3.0))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN, y: LINE_HEIGHT))
+        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - MARGIN, y: LINE_HEIGHT + MARGIN))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN, y: LINE_HEIGHT * 2.0))
+        bp.move (to: NSPoint (x: A4Width - LEFT_COLUMN - RIGHT_COLUMN - MARGIN, y: LINE_HEIGHT * 2.0 + MARGIN))
         bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: A4Width - RIGHT_COLUMN, y: LINE_HEIGHT))
+        bp.move (to: NSPoint (x: A4Width - RIGHT_COLUMN - MARGIN, y: LINE_HEIGHT + MARGIN))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 2.0))
-        bp.lineWidth = 2.0
-        shape.append (EBStrokeBezierPathShape ([bp], .black))
+     //--- Draw vertical marks
+       let vIncrement = (A4Height - MARGIN * 2.0) / CGFloat (vMarks)
+       var p = NSPoint (x: MARGIN * 0.5, y: MARGIN + vIncrement * 0.5)
+       for mark in 0 ..< vMarks {
+         shape.append (EBTextShape ("\(mark)", p, lineAttributes, .center, .center))
+         p.y += vIncrement
+       }
+       p = NSPoint (x: A4Width - MARGIN * 0.5, y: MARGIN + vIncrement * 0.5)
+       for mark in 0 ..< vMarks {
+         shape.append (EBTextShape ("\(mark)", p, lineAttributes, .center, .center))
+         p.y += vIncrement
+       }
+     //--- Draw horizontal marks
+       let hIncrement = (A4Width - MARGIN * 2.0) / CGFloat (hMarks)
+       p = NSPoint (x: MARGIN + hIncrement / 2.0, y: MARGIN * 0.5)
+       for mark in 0 ..< hMarks {
+         let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
+         shape.append (EBTextShape ("\(pointCode)", p, lineAttributes, .center, .center))
+         p.x += hIncrement
+       }
+       p = NSPoint (x: MARGIN + hIncrement / 2.0, y: A4Height - MARGIN * 0.5)
+       for mark in 0 ..< hMarks {
+         let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
+         shape.append (EBTextShape ("\(pointCode)", p, lineAttributes, .center, .center))
+         p.x += hIncrement
+       }
+    //--- Draw vertical separators
+      p = NSPoint (x: 0.0, y: MARGIN)
+      for _ in 0 ... vMarks {
+        bp.move (to: p)
+        bp.relativeLine (to: NSPoint (x: MARGIN, y: 0.0))
+        bp.relativeMove (to: NSPoint (x: A4Width - 2.0 * MARGIN, y:0.0))
+        bp.relativeLine (to: NSPoint (x: MARGIN, y: 0.0))
+        p.y += vIncrement
+      }
+    //--- Draw horizontal separators
+      p = NSPoint (x: MARGIN, y: 0.0)
+      for _ in 0 ... hMarks {
+        bp.move (to: p)
+        bp.relativeLine (to: NSPoint (x: 0.0, y: MARGIN))
+        bp.relativeMove (to: NSPoint (x: 0.0, y: A4Height - 2.0 * MARGIN))
+        bp.relativeLine (to: NSPoint (x: 0.0, y: MARGIN))
+        p.x += hIncrement
+      }
+    //---
+      bp.lineWidth = 1.0
+      bp.lineCapStyle = .round
+      bp.lineJoinStyle = .round
+      shape.append (EBStrokeBezierPathShape ([bp], .black))
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
         ]
      //--- Schematics Title
-        var p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0, y: LINE_HEIGHT * 2.5)
+        p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - MARGIN , y: LINE_HEIGHT * 2.5 + MARGIN)
         shape.append (EBTextShape (self_mSchematicsTitle, p, textAttributes, .center, .center))
      //--- Version
-        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0, y: LINE_HEIGHT * 2.5)
+        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - MARGIN, y: LINE_HEIGHT * 2.5 + MARGIN)
         shape.append (EBTextShape (self_mSchematicsVersion, p, textAttributes, .center, .center))
      //--- Sheet Title
-        p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0, y: LINE_HEIGHT * 1.5)
+        p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - MARGIN, y: LINE_HEIGHT * 1.5 + MARGIN)
         shape.append (EBTextShape (self_mSelectedSheet_mSheetTitle ?? "—", p, textAttributes, .center, .center))
      //--- Date
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
-        p = NSPoint (x: A4Width - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0, y: LINE_HEIGHT * 0.5)
+        p = NSPoint (x: A4Width - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - MARGIN, y: LINE_HEIGHT * 0.5 + MARGIN)
         shape.append (EBTextShape (dateFormatter.string (from: self_mSchematicsDate), p, textAttributes, .center, .center))
      //--- Sheet index
-        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0, y: LINE_HEIGHT * 1.5)
         var s = "?"
         if let selectedSheetIndex = self_mSelectedSheet?.ebObjectIndex {
           var idx = 1
@@ -77,9 +142,9 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
             idx += 1
           }
         }
+        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - MARGIN, y: LINE_HEIGHT * 1.5 + MARGIN)
         shape.append (EBTextShape (s + "/\(self_mSheets.count)", p, textAttributes, .center, .center))
-     //---
-        return shape
+      return shape
 //--- END OF USER ZONE 2
 }
 

@@ -85,6 +85,8 @@ import Cocoa
       sheetUp: self.mSheetUpButton,
       sheetDown: self.mSheetDownButton
     )
+  //---
+    self.mSchematicsView?.mGridStepInCanariUnit = milsToCanariUnit (100)
   }
 
   //····················································································································

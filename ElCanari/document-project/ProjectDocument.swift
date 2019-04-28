@@ -337,6 +337,9 @@ import Cocoa
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsDatePicker : NSDatePicker?
+  @IBOutlet var mSchematicsGridDisplayFactorPopUpButton : EBPopUpButton?
+  @IBOutlet var mSchematicsGridStylePopUpButton : EBPopUpButton?
+  @IBOutlet var mSchematicsHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mSchematicsInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
   @IBOutlet var mSchematicsScrollView : EBScrollView?
@@ -344,6 +347,7 @@ import Cocoa
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSchematicsTitleTextField : EBTextField?
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
+  @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mSchematicsView : EBView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
@@ -515,6 +519,9 @@ import Cocoa
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
+    checkOutletConnection (self.mSchematicsGridDisplayFactorPopUpButton, "mSchematicsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicsGridStylePopUpButton, "mSchematicsGridStylePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicsHorizontalFlipSwitch, "mSchematicsHorizontalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSchematicsInspectorSegmentedControl, "mSchematicsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
@@ -522,6 +529,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
@@ -769,11 +777,22 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
     self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
     self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
+    self.mSchematicsHorizontalFlipSwitch?.bind_value (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
+    self.mSchematicsVerticalFlipSwitch?.bind_value (self.rootObject.mSchematicsVerticalFlip_property, file: #file, line: #line)
+    self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicsGridStyle_property, file: #file, line: #line)
+    self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicsGridDisplayFactor_property, file: #file, line: #line)
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicsTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicsVersion_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicsSheetOrientation_property, file: #file, line: #line)
     self.mSelectedSheetTitleTextField?.bind_value (self.mSelectedSheetController.mSheetTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsView?.bind_underObjectsDisplay (self.rootObject.schematicsBackgroundDisplay_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_horizontalFlip (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_verticalFlip (self.rootObject.mSchematicsVerticalFlip_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridStyle (self.rootObject.mSchematicsGridStyle_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridDisplayFactor (self.rootObject.mSchematicsGridDisplayFactor_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1017,11 +1036,22 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
     self.mUnplacedSymbolsTableView?.unbind_models ()
     self.mUnplacedSymbolsTextField?.unbind_valueObserver ()
+    self.mSchematicsHorizontalFlipSwitch?.unbind_value ()
+    self.mSchematicsVerticalFlipSwitch?.unbind_value ()
+    self.mSchematicsGridStylePopUpButton?.unbind_selectedIndex ()
+    self.mSchematicsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mSchematicsTitleTextField?.unbind_value ()
     self.mSchematicsVersionTextField?.unbind_value ()
     self.mSchematicsSheetOrientationSegmentedControl?.unbind_selectedSegment ()
     self.mSelectedSheetTitleTextField?.unbind_value ()
     self.mSchematicsView?.unbind_underObjectsDisplay ()
+    self.mSchematicsView?.unbind_horizontalFlip ()
+    self.mSchematicsView?.unbind_verticalFlip ()
+    self.mSchematicsView?.unbind_gridStyle ()
+    self.mSchematicsView?.unbind_gridDisplayFactor ()
+    self.mSchematicsView?.unbind_gridLineColor ()
+    self.mSchematicsView?.unbind_gridCrossColor ()
+    self.mSchematicsView?.unbind_zoom ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1170,6 +1200,9 @@ import Cocoa
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsDatePicker?.ebCleanUp ()
+    self.mSchematicsGridDisplayFactorPopUpButton?.ebCleanUp ()
+    self.mSchematicsGridStylePopUpButton?.ebCleanUp ()
+    self.mSchematicsHorizontalFlipSwitch?.ebCleanUp ()
     self.mSchematicsInspectorSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
     self.mSchematicsScrollView?.ebCleanUp ()
@@ -1177,6 +1210,7 @@ import Cocoa
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
     self.mSchematicsTitleTextField?.ebCleanUp ()
     self.mSchematicsVersionTextField?.ebCleanUp ()
+    self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()
     self.mSchematicsView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
