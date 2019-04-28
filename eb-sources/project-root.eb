@@ -173,7 +173,6 @@ entity DevicePadAssignmentInProject {
   transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
 }
 
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   Net class
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

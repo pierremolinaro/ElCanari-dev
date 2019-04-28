@@ -201,6 +201,15 @@ document ProjectDocument root ProjectRoot {
   outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl $selectedSegment root.mSchematicsSheetOrientation ;
   objectController mSelectedSheetController : root.mSelectedSheet ;
   outlet EBTextField mSelectedSheetTitleTextField $value mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
+
+  outlet CanariSheetPopUpButton mCanariSheetPopUpButton ; # All bindings done programmatically, handles sheet up and sheet down
+  
+  action newSheetAction ;
+  outlet EBButton mNewSheetButton $run self.newSheetAction ;
+  
+  action removeSheetAction ;
+  outlet EBButton mRemoveSheetButton $run self.removeSheetAction $enabled root.mSheets.count > 1 ;
+  
 }
 
 #----------------------------------------------------------------------------*

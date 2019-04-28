@@ -60,6 +60,7 @@ extern outlet class EBScrollView ;
 extern outlet class CanariDimensionTextField ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
 
+extern outlet class CanariSheetPopUpButton ;
 
 extern outlet class CanariDimensionObserverTextField ;
 binding CanariDimensionObserverTextField $dimensionAndUnit : transient Int, property Int ;

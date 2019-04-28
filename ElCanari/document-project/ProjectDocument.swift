@@ -282,6 +282,7 @@ import Cocoa
   @IBOutlet var mAddNetClassValidationButton : NSButton?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
+  @IBOutlet var mCanariSheetPopUpButton : CanariSheetPopUpButton?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
@@ -318,6 +319,7 @@ import Cocoa
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
+  @IBOutlet var mNewSheetButton : EBButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
@@ -325,6 +327,7 @@ import Cocoa
   @IBOutlet var mRemoveFontButton : EBButton?
   @IBOutlet var mRemoveNetClassButton : EBButton?
   @IBOutlet var mRemoveSelectedComponentsActionButton : EBButton?
+  @IBOutlet var mRemoveSheetButton : EBButton?
   @IBOutlet var mRenameComponentButton : EBButton?
   @IBOutlet var mRenameComponentErrorMessageTextField : NSTextField?
   @IBOutlet var mRenameComponentIndexesPopUpButton : NSPopUpButton?
@@ -367,6 +370,7 @@ import Cocoa
   var mController_mEditDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -448,6 +452,7 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mCanariSheetPopUpButton, "mCanariSheetPopUpButton", CanariSheetPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -484,6 +489,7 @@ import Cocoa
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
+    checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
@@ -491,6 +497,7 @@ import Cocoa
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveNetClassButton, "mRemoveNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveSheetButton, "mRemoveSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentIndexesPopUpButton, "mRenameComponentIndexesPopUpButton", NSPopUpButton.self, #file, #line)
@@ -911,6 +918,16 @@ import Cocoa
       self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateDeviceButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.rootObject.mSheets_property.count_property_selection > EBSelection.single (1))
+        },
+        outlet: self.mRemoveSheetButton
+      )
+      self.rootObject.mSheets_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveSheetButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -948,6 +965,10 @@ import Cocoa
     self.mExportDeviceButton?.action = #selector (ProjectDocument.exportDeviceAction (_:))
     self.mUpdateDeviceButton?.target = self
     self.mUpdateDeviceButton?.action = #selector (ProjectDocument.updateDeviceAction (_:))
+    self.mNewSheetButton?.target = self
+    self.mNewSheetButton?.action = #selector (ProjectDocument.newSheetAction (_:))
+    self.mRemoveSheetButton?.target = self
+    self.mRemoveSheetButton?.action = #selector (ProjectDocument.removeSheetAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -1012,6 +1033,8 @@ import Cocoa
     self.mController_mExportDeviceButton_enabled = nil
     self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
     self.mController_mUpdateDeviceButton_enabled = nil
+    self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
+    self.mController_mRemoveSheetButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mComponentController.unbind_tableView (self.mComponentTableView)
     self.mNetClassController.unbind_tableView (self.mNetClassTableView)
@@ -1056,6 +1079,8 @@ import Cocoa
     self.mEditDeviceButton?.target = nil
     self.mExportDeviceButton?.target = nil
     self.mUpdateDeviceButton?.target = nil
+    self.mNewSheetButton?.target = nil
+    self.mRemoveSheetButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
@@ -1066,6 +1091,7 @@ import Cocoa
     self.mAddNetClassValidationButton?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
+    self.mCanariSheetPopUpButton?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -1102,6 +1128,7 @@ import Cocoa
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
+    self.mNewSheetButton?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
@@ -1109,6 +1136,7 @@ import Cocoa
     self.mRemoveFontButton?.ebCleanUp ()
     self.mRemoveNetClassButton?.ebCleanUp ()
     self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
+    self.mRemoveSheetButton?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
     self.mRenameComponentErrorMessageTextField?.ebCleanUp ()
     self.mRenameComponentIndexesPopUpButton?.ebCleanUp ()

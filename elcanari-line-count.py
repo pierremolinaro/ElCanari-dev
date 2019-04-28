@@ -20,15 +20,20 @@ def compterLignesFichier (nomFichier) :
 def compterLignes (repertoire, extension) :
   totalLineCount = 0
   for root, dirnames, filenames in os.walk (repertoire):
+    total = 0
     for filename in fnmatch.filter (filenames, '*.' + extension):
-      totalLineCount += compterLignesFichier (os.path.join (root, filename))
+      total += compterLignesFichier (os.path.join (root, filename))
+    totalLineCount += total
+    if total > 0 :
+      print ("Sources, " + root + ": " + str (total) + " lines")
   return totalLineCount
 
 #----------------------------------------------------------------- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 os.chdir (scriptDir)
 #----------------------------------------------------------------- Get goal as first argument
-print ("Swift Sources: " + str (compterLignes (scriptDir + "/ElCanari", "swift")) + " lines")
+totalLineCount = compterLignes (scriptDir + "/ElCanari", "swift")
+print ("Swift Sources, total: " + str (totalLineCount) + " lines")
 print ("Easy-bindings Sources: " + str (compterLignes (scriptDir, "eb")) + " lines")
 
 #----------------------------------------------------------------------------------------------------------------------*

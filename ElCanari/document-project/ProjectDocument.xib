@@ -17,6 +17,7 @@
                 <outlet property="mAddNetClassValidationButton" destination="S52-wH-h5H" id="0kI-yP-xf6"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
                 <outlet property="mBoardPageView" destination="3080" id="Gwf-Pt-3pr"/>
+                <outlet property="mCanariSheetPopUpButton" destination="15301" id="uzv-Qy-xyM"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
                 <outlet property="mChangePackageComponentListTextField" destination="592" id="CST-gg-8YF"/>
                 <outlet property="mChangePackageOfSelectedComponentsActionButton" destination="2925" id="9S2-El-evR"/>
@@ -53,6 +54,7 @@
                 <outlet property="mNetClassesPageView" destination="3048" id="Udq-Jl-RWl"/>
                 <outlet property="mNetListPageView" destination="3066" id="TAv-lP-lyG"/>
                 <outlet property="mNewComponentFromDevicePullDownButton" destination="16068" id="O6b-vO-Jgo"/>
+                <outlet property="mNewSheetButton" destination="15305" id="avd-uu-pSJ"/>
                 <outlet property="mPageSegmentedControl" destination="14936" id="5Ju-ZZ-zRf"/>
                 <outlet property="mPinPadAssignmentTableView" destination="16486" id="eqm-rc-qV0"/>
                 <outlet property="mProductPageView" destination="3140" id="bk0-vm-fc6"/>
@@ -60,6 +62,7 @@
                 <outlet property="mRemoveFontButton" destination="2975" id="qwb-qI-3HY"/>
                 <outlet property="mRemoveNetClassButton" destination="3062" id="ffW-PK-Dey"/>
                 <outlet property="mRemoveSelectedComponentsActionButton" destination="2926" id="hbm-WI-0ZS"/>
+                <outlet property="mRemoveSheetButton" destination="15306" id="1gw-jO-Z6Z"/>
                 <outlet property="mRenameComponentButton" destination="2927" id="Gls-FU-98f"/>
                 <outlet property="mRenameComponentErrorMessageTextField" destination="RzG-dE-rAX" id="DX4-0S-Uce"/>
                 <outlet property="mRenameComponentIndexesPopUpButton" destination="gNl-iJ-sso" id="myr-t9-O5r"/>
@@ -3199,7 +3202,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="77" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="77.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3213,11 +3216,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="77" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="77.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3232,7 +3235,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="250.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="250" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3246,11 +3249,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="548.5" y="1" width="250.5" height="17"/>
+                                                <rect key="frame" x="549" y="1" width="250" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="250.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -6439,12 +6442,12 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton toolTip="Sheet Selection, Insertion, Deletion" id="15301">
-                    <rect key="frame" x="90" y="505" width="139" height="22"/>
+                <popUpButton toolTip="Sheet Selection, Insertion, Deletion" id="15301" customClass="CanariSheetPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="67" y="507" width="127" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Sheet 99/99" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="15331" id="15328">
+                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="clipping" borderStyle="border" inset="2" preferredEdge="maxY" id="15328">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="cellTitle"/>
                         <menu key="menu" title="OtherViews" id="15329">
                             <items>
                                 <menuItem title="Sheet 99/99" state="on" id="15331"/>
@@ -6453,20 +6456,15 @@ TW: Track Width</string>
                             </items>
                         </menu>
                     </popUpButtonCell>
+                    <connections>
+                        <outlet property="mSheetDownButton" destination="15838" id="DFq-Y7-PJ7"/>
+                        <outlet property="mSheetUpButton" destination="15836" id="tp4-JZ-exa"/>
+                    </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15303">
-                    <rect key="frame" x="16" y="509" width="47" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sheet" id="15327">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15304">
                     <rect key="frame" x="17" y="444" width="122" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Selected Sheet Name :" id="15326">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Selected Sheet Name" id="15326">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -6529,18 +6527,18 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="15305">
-                    <rect key="frame" x="20" y="467" width="71" height="22"/>
+                <button verticalHuggingPriority="750" id="15305" customClass="EBButton">
+                    <rect key="frame" x="20" y="467" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="New Sheet" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15325">
+                    <buttonCell key="cell" type="roundRect" title="New Sheet" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15325">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button id="15306">
-                    <rect key="frame" x="100" y="467" width="101" height="22"/>
+                <button verticalHuggingPriority="750" id="15306" customClass="EBButton">
+                    <rect key="frame" x="128" y="467" width="101" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Delete Sheet" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15324">
+                    <buttonCell key="cell" type="roundRect" title="Delete Sheet" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15324">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -6553,10 +6551,10 @@ TW: Track Width</string>
                     <rect key="frame" x="19" y="538" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <button id="15836">
-                    <rect key="frame" x="211" y="477" width="18" height="18"/>
+                <button verticalHuggingPriority="750" id="15836" customClass="EBButton">
+                    <rect key="frame" x="206" y="516" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="⬆" bezelStyle="shadowlessSquare" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15837">
+                    <buttonCell key="cell" type="roundRect" title="⬆" bezelStyle="roundedRect" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15837">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -6589,10 +6587,10 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="15838">
-                    <rect key="frame" x="211" y="460" width="18" height="18"/>
+                <button verticalHuggingPriority="750" id="15838" customClass="EBButton">
+                    <rect key="frame" x="206" y="503" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="⬇" bezelStyle="shadowlessSquare" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15839">
+                    <buttonCell key="cell" type="roundRect" title="⬇" bezelStyle="roundedRect" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="15839">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -6601,6 +6599,15 @@ TW: Track Width</string>
                     <rect key="frame" x="20" y="417" width="209" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="15320">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15303">
+                    <rect key="frame" x="16" y="511" width="39" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sheet" id="15327">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -77,6 +77,8 @@ import Cocoa
         self.mSchematicsInspectorSegmentedControl?.setLabel (title, forSegment: 1)
       }
     )
+  //---
+    self.mCanariSheetPopUpButton?.register (document: self)
   }
 
   //····················································································································
@@ -87,6 +89,7 @@ import Cocoa
     super.removeUserInterface ()
     self.mSymbolCountToInsertController?.unregister ()
     self.mSymbolCountToInsertController = nil
+    self.mCanariSheetPopUpButton?.unregister ()
   }
 
   //····················································································································
