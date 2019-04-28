@@ -49,12 +49,12 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-  var mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
+  let mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
 
   //····················································································································
 
-  var mSymbolInstance_property_selection : EBSelection <Bool> {
-    return .single (self.mSymbolInstance_property.propval == nil)
+  var mSymbolInstance_property_selection : EBSelection <SymbolInstanceInDevice?> {
+    return .single (self.mSymbolInstance_property.propval)
   }
 
   //····················································································································
@@ -65,15 +65,25 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
+
+  var mSymbolInstance_none : ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance { return self.mSymbolInstance_property }
+
+  //····················································································································
+
+  var mSymbolInstance_none_selection : EBSelection <Bool> {
+    return .single (self.mSymbolInstance_property.propval == nil)
+  }
+
+  //····················································································································
   //   To one property: mType
   //····················································································································
 
-  var mType_property = ToOneRelationship_SymbolPinInstanceInDevice_mType ()
+  let mType_property = ToOneRelationship_SymbolPinInstanceInDevice_mType ()
 
   //····················································································································
 
-  var mType_property_selection : EBSelection <Bool> {
-    return .single (self.mType_property.propval == nil)
+  var mType_property_selection : EBSelection <SymbolPinTypeInDevice?> {
+    return .single (self.mType_property.propval)
   }
 
   //····················································································································
@@ -84,15 +94,25 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
+
+  var mType_none : ToOneRelationship_SymbolPinInstanceInDevice_mType { return self.mType_property }
+
+  //····················································································································
+
+  var mType_none_selection : EBSelection <Bool> {
+    return .single (self.mType_property.propval == nil)
+  }
+
+  //····················································································································
   //   To one property: mPadProxy
   //····················································································································
 
-  var mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
+  let mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
 
   //····················································································································
 
-  var mPadProxy_property_selection : EBSelection <Bool> {
-    return .single (self.mPadProxy_property.propval == nil)
+  var mPadProxy_property_selection : EBSelection <PadProxyInDevice?> {
+    return .single (self.mPadProxy_property.propval)
   }
 
   //····················································································································
@@ -100,6 +120,16 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   var mPadProxy : PadProxyInDevice? {
     get { return self.mPadProxy_property.propval }
     set { self.mPadProxy_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPadProxy_none : ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy { return self.mPadProxy_property }
+
+  //····················································································································
+
+  var mPadProxy_none_selection : EBSelection <Bool> {
+    return .single (self.mPadProxy_property.propval == nil)
   }
 
   //····················································································································
@@ -300,14 +330,14 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPadProxy_property_selection.kind ()
+        let kind = unwSelf.mPadProxy_none_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPadProxy_property_selection) {
+          switch (unwSelf.mPadProxy_none_selection) {
           case (.single (let v0)) :
             return .single (transient_SymbolPinInstanceInDevice_isConnected (v0))
           default :

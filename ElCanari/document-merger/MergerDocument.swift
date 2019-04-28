@@ -1043,11 +1043,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !self.rootObject.artwork_property_selection
+          return !self.rootObject.artwork_none_selection
         },
         outlet: self.mNoArtworkMessage
       )
-      self.rootObject.artwork_property.addEBObserver (controller)
+      self.rootObject.artwork_none.addEBObserver (controller)
       self.mController_mNoArtworkMessage_hidden = controller
     }
     do{
@@ -1063,23 +1063,23 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return ((!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
+          return ((!self.rootObject.artwork_none_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
         },
         outlet: self.mGenerateProductFilesActionButton
       )
       self.documentIsUnnamed_property.addEBObserver (controller)
-      self.rootObject.artwork_property.addEBObserver (controller)
+      self.rootObject.artwork_none.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return self.rootObject.artwork_property_selection
+          return self.rootObject.artwork_none_selection
         },
         outlet: self.mLogTextView
       )
-      self.rootObject.artwork_property.addEBObserver (controller)
+      self.rootObject.artwork_none.addEBObserver (controller)
       self.mController_mLogTextView_hidden = controller
     }
   //--------------------------- Set targets / actions
@@ -1271,15 +1271,15 @@ import Cocoa
     self.mController_mMoveUpButton_enabled = nil
     self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveDownButton_enabled!)
     self.mController_mMoveDownButton_enabled = nil
-    self.rootObject.artwork_property.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
+    self.rootObject.artwork_none.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
     self.mController_mNoArtworkMessage_hidden = nil
     self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
     self.mController_mDangerView_hidden = nil
     self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.rootObject.artwork_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.rootObject.artwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.rootObject.artwork_property.removeEBObserver (self.mController_mLogTextView_hidden!)
+    self.rootObject.artwork_none.removeEBObserver (self.mController_mLogTextView_hidden!)
     self.mController_mLogTextView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)

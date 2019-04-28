@@ -70,7 +70,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To many property: mPinInstances
   //····················································································································
 
-  var mPinInstances_property = StoredArrayOf_SymbolPinInstanceInDevice ()
+  let mPinInstances_property = StoredArrayOf_SymbolPinInstanceInDevice ()
 
   //····················································································································
 
@@ -140,12 +140,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mType
   //····················································································································
 
-  var mType_property = ToOneRelationship_SymbolInstanceInDevice_mType ()
+  let mType_property = ToOneRelationship_SymbolInstanceInDevice_mType ()
 
   //····················································································································
 
-  var mType_property_selection : EBSelection <Bool> {
-    return .single (self.mType_property.propval == nil)
+  var mType_property_selection : EBSelection <SymbolTypeInDevice?> {
+    return .single (self.mType_property.propval)
   }
 
   //····················································································································
@@ -153,6 +153,16 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   var mType : SymbolTypeInDevice? {
     get { return self.mType_property.propval }
     set { self.mType_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mType_none : ToOneRelationship_SymbolInstanceInDevice_mType { return self.mType_property }
+
+  //····················································································································
+
+  var mType_none_selection : EBSelection <Bool> {
+    return .single (self.mType_property.propval == nil)
   }
 
   //····················································································································

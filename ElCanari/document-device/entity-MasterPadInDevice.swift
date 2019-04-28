@@ -227,7 +227,7 @@ class MasterPadInDevice : EBManagedObject,
   //   To many property: mSlavePads
   //····················································································································
 
-  var mSlavePads_property = StoredArrayOf_SlavePadInDevice ()
+  let mSlavePads_property = StoredArrayOf_SlavePadInDevice ()
 
   //····················································································································
 

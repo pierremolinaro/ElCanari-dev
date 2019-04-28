@@ -200,7 +200,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  var mMasterPads_property = StoredArrayOf_MasterPadInDevice ()
+  let mMasterPads_property = StoredArrayOf_MasterPadInDevice ()
 
   //····················································································································
 
@@ -219,12 +219,12 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  var mRoot_property = ToOneRelationship_PackageInDevice_mRoot ()
+  let mRoot_property = ToOneRelationship_PackageInDevice_mRoot ()
 
   //····················································································································
 
-  var mRoot_property_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+  var mRoot_property_selection : EBSelection <DeviceRoot?> {
+    return .single (self.mRoot_property.propval)
   }
 
   //····················································································································
@@ -232,6 +232,16 @@ class PackageInDevice : EBGraphicManagedObject,
   var mRoot : DeviceRoot? {
     get { return self.mRoot_property.propval }
     set { self.mRoot_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRoot_none : ToOneRelationship_PackageInDevice_mRoot { return self.mRoot_property }
+
+  //····················································································································
+
+  var mRoot_none_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
   }
 
   //····················································································································

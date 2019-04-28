@@ -385,7 +385,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: packageObjects
   //····················································································································
 
-  var packageObjects_property = StoredArrayOf_PackageObject ()
+  let packageObjects_property = StoredArrayOf_PackageObject ()
 
   //····················································································································
 
@@ -404,7 +404,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: packagePads
   //····················································································································
 
-  var packagePads_property = TransientArrayOf_PackagePad ()
+  let packagePads_property = TransientArrayOf_PackagePad ()
 
   //····················································································································
 
@@ -422,7 +422,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: packageSlavePads
   //····················································································································
 
-  var packageSlavePads_property = TransientArrayOf_PackageSlavePad ()
+  let packageSlavePads_property = TransientArrayOf_PackageSlavePad ()
 
   //····················································································································
 
@@ -440,7 +440,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   To many property: packageZones
   //····················································································································
 
-  var packageZones_property = TransientArrayOf_PackageZone ()
+  let packageZones_property = TransientArrayOf_PackageZone ()
 
   //····················································································································
 

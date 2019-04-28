@@ -196,7 +196,7 @@ class MergerRoot : EBManagedObject,
   //   To many property: boardModels
   //····················································································································
 
-  var boardModels_property = StoredArrayOf_BoardModel ()
+  let boardModels_property = StoredArrayOf_BoardModel ()
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class MergerRoot : EBManagedObject,
   //   To many property: boardInstances
   //····················································································································
 
-  var boardInstances_property = StoredArrayOf_MergerBoardInstance ()
+  let boardInstances_property = StoredArrayOf_MergerBoardInstance ()
 
   //····················································································································
 
@@ -689,12 +689,12 @@ class MergerRoot : EBManagedObject,
   //   To one property: artwork
   //····················································································································
 
-  var artwork_property = ToOneRelationship_MergerRoot_artwork ()
+  let artwork_property = ToOneRelationship_MergerRoot_artwork ()
 
   //····················································································································
 
-  var artwork_property_selection : EBSelection <Bool> {
-    return .single (self.artwork_property.propval == nil)
+  var artwork_property_selection : EBSelection <ArtworkRoot?> {
+    return .single (self.artwork_property.propval)
   }
 
   //····················································································································
@@ -702,6 +702,16 @@ class MergerRoot : EBManagedObject,
   var artwork : ArtworkRoot? {
     get { return self.artwork_property.propval }
     set { self.artwork_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var artwork_none : ToOneRelationship_MergerRoot_artwork { return self.artwork_property }
+
+  //····················································································································
+
+  var artwork_none_selection : EBSelection <Bool> {
+    return .single (self.artwork_property.propval == nil)
   }
 
   //····················································································································

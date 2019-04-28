@@ -375,12 +375,12 @@ class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-  var master_property = ToOneRelationship_PackageSlavePad_master ()
+  let master_property = ToOneRelationship_PackageSlavePad_master ()
 
   //····················································································································
 
-  var master_property_selection : EBSelection <Bool> {
-    return .single (self.master_property.propval == nil)
+  var master_property_selection : EBSelection <PackagePad?> {
+    return .single (self.master_property.propval)
   }
 
   //····················································································································
@@ -388,6 +388,16 @@ class PackageSlavePad : PackageObject,
   var master : PackagePad? {
     get { return self.master_property.propval }
     set { self.master_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var master_none : ToOneRelationship_PackageSlavePad_master { return self.master_property }
+
+  //····················································································································
+
+  var master_none_selection : EBSelection <Bool> {
+    return .single (self.master_property.propval == nil)
   }
 
   //····················································································································

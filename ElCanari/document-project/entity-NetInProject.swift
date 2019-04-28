@@ -38,12 +38,12 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  var mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
+  let mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
 
   //····················································································································
 
-  var mNetClass_property_selection : EBSelection <Bool> {
-    return .single (self.mNetClass_property.propval == nil)
+  var mNetClass_property_selection : EBSelection <NetClassInProject?> {
+    return .single (self.mNetClass_property.propval)
   }
 
   //····················································································································
@@ -51,6 +51,16 @@ class NetInProject : EBManagedObject,
   var mNetClass : NetClassInProject? {
     get { return self.mNetClass_property.propval }
     set { self.mNetClass_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mNetClass_none : ToOneRelationship_NetInProject_mNetClass { return self.mNetClass_property }
+
+  //····················································································································
+
+  var mNetClass_none_selection : EBSelection <Bool> {
+    return .single (self.mNetClass_property.propval == nil)
   }
 
   //····················································································································

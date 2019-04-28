@@ -159,7 +159,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  var mComponents_property = StoredArrayOf_ComponentInProject ()
+  let mComponents_property = StoredArrayOf_ComponentInProject ()
 
   //····················································································································
 
@@ -178,7 +178,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  var mPackages_property = StoredArrayOf_DevicePackageInProject ()
+  let mPackages_property = StoredArrayOf_DevicePackageInProject ()
 
   //····················································································································
 
@@ -197,7 +197,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mSymbols
   //····················································································································
 
-  var mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject ()
+  let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject ()
 
   //····················································································································
 
@@ -216,7 +216,7 @@ class DeviceInProject : EBManagedObject,
   //   To many property: mPadAssignments
   //····················································································································
 
-  var mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject ()
+  let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject ()
 
   //····················································································································
 

@@ -162,7 +162,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  var mComponents_property = StoredArrayOf_ComponentInProject ()
+  let mComponents_property = StoredArrayOf_ComponentInProject ()
 
   //····················································································································
 
@@ -181,7 +181,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mNetClasses
   //····················································································································
 
-  var mNetClasses_property = StoredArrayOf_NetClassInProject ()
+  let mNetClasses_property = StoredArrayOf_NetClassInProject ()
 
   //····················································································································
 
@@ -200,7 +200,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mFonts
   //····················································································································
 
-  var mFonts_property = StoredArrayOf_FontInProject ()
+  let mFonts_property = StoredArrayOf_FontInProject ()
 
   //····················································································································
 
@@ -219,7 +219,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mDevices
   //····················································································································
 
-  var mDevices_property = StoredArrayOf_DeviceInProject ()
+  let mDevices_property = StoredArrayOf_DeviceInProject ()
 
   //····················································································································
 
@@ -238,7 +238,7 @@ class ProjectRoot : EBManagedObject,
   //   To many property: mSheets
   //····················································································································
 
-  var mSheets_property = StoredArrayOf_SheetInProject ()
+  let mSheets_property = StoredArrayOf_SheetInProject ()
 
   //····················································································································
 
@@ -297,12 +297,12 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-  var mSelectedSheet_property = ToOneRelationship_ProjectRoot_mSelectedSheet ()
+  let mSelectedSheet_property = ToOneRelationship_ProjectRoot_mSelectedSheet ()
 
   //····················································································································
 
-  var mSelectedSheet_property_selection : EBSelection <Bool> {
-    return .single (self.mSelectedSheet_property.propval == nil)
+  var mSelectedSheet_property_selection : EBSelection <SheetInProject?> {
+    return .single (self.mSelectedSheet_property.propval)
   }
 
   //····················································································································
@@ -310,6 +310,16 @@ class ProjectRoot : EBManagedObject,
   var mSelectedSheet : SheetInProject? {
     get { return self.mSelectedSheet_property.propval }
     set { self.mSelectedSheet_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSelectedSheet_none : ToOneRelationship_ProjectRoot_mSelectedSheet { return self.mSelectedSheet_property }
+
+  //····················································································································
+
+  var mSelectedSheet_none_selection : EBSelection <Bool> {
+    return .single (self.mSelectedSheet_property.propval == nil)
   }
 
   //····················································································································
@@ -439,6 +449,8 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSchematicsVersion_property_selection.kind ()
         kind &= unwSelf.mSchematicsSheetOrientation_property_selection.kind ()
         kind &= unwSelf.mSelectedSheet_property.mSheetTitle_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSelectedSheet_property_selection.kind ()
         kind &= unwSelf.mSchematicsDate_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -446,9 +458,9 @@ class ProjectRoot : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSchematicsTitle_property_selection, unwSelf.mSchematicsVersion_property_selection, unwSelf.mSchematicsSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSchematicsDate_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mSchematicsTitle_property_selection, unwSelf.mSchematicsVersion_property_selection, unwSelf.mSchematicsSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicsDate_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -461,6 +473,8 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicsVersion_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsSheetOrientation_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicsBackgroundDisplay_property)
+    self.mSheets_property.addEBObserver (self.schematicsBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.addEBObserver (self.schematicsBackgroundDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
@@ -477,6 +491,8 @@ class ProjectRoot : EBManagedObject,
     self.mSchematicsVersion_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsSheetOrientation_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.schematicsBackgroundDisplay_property)
+    self.mSheets_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
+    self.mSelectedSheet_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
   //--- Unregister properties for handling signature
   }

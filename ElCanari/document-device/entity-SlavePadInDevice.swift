@@ -203,12 +203,12 @@ class SlavePadInDevice : EBManagedObject,
   //   To one property: mMasterPad
   //····················································································································
 
-  var mMasterPad_property = ToOneRelationship_SlavePadInDevice_mMasterPad ()
+  let mMasterPad_property = ToOneRelationship_SlavePadInDevice_mMasterPad ()
 
   //····················································································································
 
-  var mMasterPad_property_selection : EBSelection <Bool> {
-    return .single (self.mMasterPad_property.propval == nil)
+  var mMasterPad_property_selection : EBSelection <MasterPadInDevice?> {
+    return .single (self.mMasterPad_property.propval)
   }
 
   //····················································································································
@@ -216,6 +216,16 @@ class SlavePadInDevice : EBManagedObject,
   var mMasterPad : MasterPadInDevice? {
     get { return self.mMasterPad_property.propval }
     set { self.mMasterPad_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mMasterPad_none : ToOneRelationship_SlavePadInDevice_mMasterPad { return self.mMasterPad_property }
+
+  //····················································································································
+
+  var mMasterPad_none_selection : EBSelection <Bool> {
+    return .single (self.mMasterPad_property.propval == nil)
   }
 
   //····················································································································

@@ -241,7 +241,7 @@ class NetClassInProject : EBManagedObject,
   //   To many property: mNets
   //····················································································································
 
-  var mNets_property = StoredArrayOf_NetInProject ()
+  let mNets_property = StoredArrayOf_NetInProject ()
 
   //····················································································································
 

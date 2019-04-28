@@ -251,7 +251,7 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolObjects
   //····················································································································
 
-  var symbolObjects_property = StoredArrayOf_SymbolObject ()
+  let symbolObjects_property = StoredArrayOf_SymbolObject ()
 
   //····················································································································
 
@@ -270,7 +270,7 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolPins
   //····················································································································
 
-  var symbolPins_property = TransientArrayOf_SymbolPin ()
+  let symbolPins_property = TransientArrayOf_SymbolPin ()
 
   //····················································································································
 

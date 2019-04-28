@@ -70,7 +70,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  var mInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
+  let mInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
 
   //····················································································································
 
@@ -174,7 +174,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mPinTypes
   //····················································································································
 
-  var mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice ()
+  let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice ()
 
   //····················································································································
 

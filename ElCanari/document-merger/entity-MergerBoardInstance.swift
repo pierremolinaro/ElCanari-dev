@@ -121,12 +121,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-  var myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
+  let myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
 
   //····················································································································
 
-  var myModel_property_selection : EBSelection <Bool> {
-    return .single (self.myModel_property.propval == nil)
+  var myModel_property_selection : EBSelection <BoardModel?> {
+    return .single (self.myModel_property.propval)
   }
 
   //····················································································································
@@ -134,6 +134,16 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var myModel : BoardModel? {
     get { return self.myModel_property.propval }
     set { self.myModel_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var myModel_none : ToOneRelationship_MergerBoardInstance_myModel { return self.myModel_property }
+
+  //····················································································································
+
+  var myModel_none_selection : EBSelection <Bool> {
+    return .single (self.myModel_property.propval == nil)
   }
 
   //····················································································································
@@ -209,12 +219,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-  var myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
+  let myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
 
   //····················································································································
 
-  var myRoot_property_selection : EBSelection <Bool> {
-    return .single (self.myRoot_property.propval == nil)
+  var myRoot_property_selection : EBSelection <MergerRoot?> {
+    return .single (self.myRoot_property.propval)
   }
 
   //····················································································································
@@ -222,6 +232,16 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var myRoot : MergerRoot? {
     get { return self.myRoot_property.propval }
     set { self.myRoot_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var myRoot_none : ToOneRelationship_MergerBoardInstance_myRoot { return self.myRoot_property }
+
+  //····················································································································
+
+  var myRoot_none_selection : EBSelection <Bool> {
+    return .single (self.myRoot_property.propval == nil)
   }
 
   //····················································································································

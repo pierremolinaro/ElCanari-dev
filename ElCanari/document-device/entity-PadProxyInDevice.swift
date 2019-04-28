@@ -83,12 +83,12 @@ class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  var mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
+  let mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
 
   //····················································································································
 
-  var mPinInstance_property_selection : EBSelection <Bool> {
-    return .single (self.mPinInstance_property.propval == nil)
+  var mPinInstance_property_selection : EBSelection <SymbolPinInstanceInDevice?> {
+    return .single (self.mPinInstance_property.propval)
   }
 
   //····················································································································
@@ -96,6 +96,16 @@ class PadProxyInDevice : EBManagedObject,
   var mPinInstance : SymbolPinInstanceInDevice? {
     get { return self.mPinInstance_property.propval }
     set { self.mPinInstance_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPinInstance_none : ToOneRelationship_PadProxyInDevice_mPinInstance { return self.mPinInstance_property }
+
+  //····················································································································
+
+  var mPinInstance_none_selection : EBSelection <Bool> {
+    return .single (self.mPinInstance_property.propval == nil)
   }
 
   //····················································································································
@@ -183,14 +193,14 @@ class PadProxyInDevice : EBManagedObject,
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mIsNC_property_selection.kind ()
-        kind &= unwSelf.mPinInstance_property_selection.kind ()
+        kind &= unwSelf.mPinInstance_none_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_property_selection) {
+          switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_none_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_PadProxyInDevice_isConnected (v0, v1))
           default :

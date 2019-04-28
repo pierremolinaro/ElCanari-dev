@@ -5,10 +5,16 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol EBManagedObject_alloc_index_protocol : class {
+  var ebObjectIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBManagedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBObject, EBSignatureObserverProtocol {
+class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
   private weak var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   var savingIndex = 0
 

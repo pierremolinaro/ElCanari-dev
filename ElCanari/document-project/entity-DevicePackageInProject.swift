@@ -38,7 +38,7 @@ class DevicePackageInProject : EBManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  var mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject ()
+  let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject ()
 
   //····················································································································
 

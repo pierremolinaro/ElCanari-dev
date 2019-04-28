@@ -427,7 +427,7 @@ class PackagePad : PackageObject,
   //   To many property: slaves
   //····················································································································
 
-  var slaves_property = StoredArrayOf_PackageSlavePad ()
+  let slaves_property = StoredArrayOf_PackageSlavePad ()
 
   //····················································································································
 
@@ -446,12 +446,12 @@ class PackagePad : PackageObject,
   //   To one property: zone
   //····················································································································
 
-  var zone_property = ToOneRelationship_PackagePad_zone ()
+  let zone_property = ToOneRelationship_PackagePad_zone ()
 
   //····················································································································
 
-  var zone_property_selection : EBSelection <Bool> {
-    return .single (self.zone_property.propval == nil)
+  var zone_property_selection : EBSelection <PackageZone?> {
+    return .single (self.zone_property.propval)
   }
 
   //····················································································································
@@ -459,6 +459,16 @@ class PackagePad : PackageObject,
   var zone : PackageZone? {
     get { return self.zone_property.propval }
     set { self.zone_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var zone_none : ToOneRelationship_PackagePad_zone { return self.zone_property }
+
+  //····················································································································
+
+  var zone_none_selection : EBSelection <Bool> {
+    return .single (self.zone_property.propval == nil)
   }
 
   //····················································································································
@@ -843,14 +853,14 @@ class PackagePad : PackageObject,
   //--- Atomic property: noZone
     self.noZone_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.zone_property_selection.kind ()
+        let kind = unwSelf.zone_none_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.zone_property_selection) {
+          switch (unwSelf.zone_none_selection) {
           case (.single (let v0)) :
             return .single (transient_PackagePad_noZone (v0))
           default :

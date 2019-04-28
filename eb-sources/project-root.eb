@@ -28,8 +28,8 @@ entity ProjectRoot {
     self.mSchematicsVersion,
     self.mSchematicsSheetOrientation,
     self.mSelectedSheet.one.mSheetTitle,
-  #  self.mSheets,
-  #  self.mSelectedSheet,
+    self.mSheets,
+    self.mSelectedSheet,
     self.mSchematicsDate
   ;
 }

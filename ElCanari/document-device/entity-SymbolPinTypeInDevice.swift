@@ -261,7 +261,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  var mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice ()
+  let mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice ()
 
   //····················································································································
 

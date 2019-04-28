@@ -121,7 +121,7 @@ class ComponentInProject : EBManagedObject,
   //   To many property: mSymbols
   //····················································································································
 
-  var mSymbols_property = StoredArrayOf_ComponentSymbolInProject ()
+  let mSymbols_property = StoredArrayOf_ComponentSymbolInProject ()
 
   //····················································································································
 
@@ -140,12 +140,12 @@ class ComponentInProject : EBManagedObject,
   //   To one property: mDevice
   //····················································································································
 
-  var mDevice_property = ToOneRelationship_ComponentInProject_mDevice ()
+  let mDevice_property = ToOneRelationship_ComponentInProject_mDevice ()
 
   //····················································································································
 
-  var mDevice_property_selection : EBSelection <Bool> {
-    return .single (self.mDevice_property.propval == nil)
+  var mDevice_property_selection : EBSelection <DeviceInProject?> {
+    return .single (self.mDevice_property.propval)
   }
 
   //····················································································································
@@ -156,15 +156,25 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
+
+  var mDevice_none : ToOneRelationship_ComponentInProject_mDevice { return self.mDevice_property }
+
+  //····················································································································
+
+  var mDevice_none_selection : EBSelection <Bool> {
+    return .single (self.mDevice_property.propval == nil)
+  }
+
+  //····················································································································
   //   To one property: mSelectedPackage
   //····················································································································
 
-  var mSelectedPackage_property = ToOneRelationship_ComponentInProject_mSelectedPackage ()
+  let mSelectedPackage_property = ToOneRelationship_ComponentInProject_mSelectedPackage ()
 
   //····················································································································
 
-  var mSelectedPackage_property_selection : EBSelection <Bool> {
-    return .single (self.mSelectedPackage_property.propval == nil)
+  var mSelectedPackage_property_selection : EBSelection <DevicePackageInProject?> {
+    return .single (self.mSelectedPackage_property.propval)
   }
 
   //····················································································································
@@ -172,6 +182,16 @@ class ComponentInProject : EBManagedObject,
   var mSelectedPackage : DevicePackageInProject? {
     get { return self.mSelectedPackage_property.propval }
     set { self.mSelectedPackage_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSelectedPackage_none : ToOneRelationship_ComponentInProject_mSelectedPackage { return self.mSelectedPackage_property }
+
+  //····················································································································
+
+  var mSelectedPackage_none_selection : EBSelection <Bool> {
+    return .single (self.mSelectedPackage_property.propval == nil)
   }
 
   //····················································································································

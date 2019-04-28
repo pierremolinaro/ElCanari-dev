@@ -16,6 +16,8 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
        _ self_mSchematicsVersion : String,              
        _ self_mSchematicsSheetOrientation : SchematicsSheetOrientation,
        _ self_mSelectedSheet_mSheetTitle : String?,     
+       _ self_mSheets : [EBManagedObject_alloc_index_protocol],
+       _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
        _ self_mSchematicsDate : Date
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -61,9 +63,21 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
-        let s = dateFormatter.string (from: self_mSchematicsDate)
         p = NSPoint (x: A4Width - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0, y: LINE_HEIGHT * 0.5)
-        shape.append (EBTextShape (s, p, textAttributes, .center, .center))
+        shape.append (EBTextShape (dateFormatter.string (from: self_mSchematicsDate), p, textAttributes, .center, .center))
+     //--- Sheet index
+        p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0, y: LINE_HEIGHT * 1.5)
+        var s = "?"
+        if let selectedSheetIndex = self_mSelectedSheet?.ebObjectIndex {
+          var idx = 1
+          for sheet in self_mSheets {
+            if sheet.ebObjectIndex == selectedSheetIndex {
+              s = "\(idx)"
+            }
+            idx += 1
+          }
+        }
+        shape.append (EBTextShape (s + "/\(self_mSheets.count)", p, textAttributes, .center, .center))
      //---
         return shape
 //--- END OF USER ZONE 2

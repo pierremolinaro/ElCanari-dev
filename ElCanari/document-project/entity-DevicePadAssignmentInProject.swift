@@ -45,12 +45,12 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  var mPin_property = ToOneRelationship_DevicePadAssignmentInProject_mPin ()
+  let mPin_property = ToOneRelationship_DevicePadAssignmentInProject_mPin ()
 
   //····················································································································
 
-  var mPin_property_selection : EBSelection <Bool> {
-    return .single (self.mPin_property.propval == nil)
+  var mPin_property_selection : EBSelection <DevicePinInProject?> {
+    return .single (self.mPin_property.propval)
   }
 
   //····················································································································
@@ -58,6 +58,16 @@ class DevicePadAssignmentInProject : EBManagedObject,
   var mPin : DevicePinInProject? {
     get { return self.mPin_property.propval }
     set { self.mPin_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPin_none : ToOneRelationship_DevicePadAssignmentInProject_mPin { return self.mPin_property }
+
+  //····················································································································
+
+  var mPin_none_selection : EBSelection <Bool> {
+    return .single (self.mPin_property.propval == nil)
   }
 
   //····················································································································

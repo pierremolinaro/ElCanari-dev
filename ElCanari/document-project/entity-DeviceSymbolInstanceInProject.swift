@@ -52,7 +52,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To many property: mPins
   //····················································································································
 
-  var mPins_property = StoredArrayOf_DevicePinInProject ()
+  let mPins_property = StoredArrayOf_DevicePinInProject ()
 
   //····················································································································
 
@@ -71,12 +71,12 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-  var mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
+  let mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
 
   //····················································································································
 
-  var mSymbolType_property_selection : EBSelection <Bool> {
-    return .single (self.mSymbolType_property.propval == nil)
+  var mSymbolType_property_selection : EBSelection <DeviceSymbolTypeInProject?> {
+    return .single (self.mSymbolType_property.propval)
   }
 
   //····················································································································
@@ -84,6 +84,16 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   var mSymbolType : DeviceSymbolTypeInProject? {
     get { return self.mSymbolType_property.propval }
     set { self.mSymbolType_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSymbolType_none : ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType { return self.mSymbolType_property }
+
+  //····················································································································
+
+  var mSymbolType_none_selection : EBSelection <Bool> {
+    return .single (self.mSymbolType_property.propval == nil)
   }
 
   //····················································································································

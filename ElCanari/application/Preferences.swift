@@ -2563,7 +2563,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //   To many property: additionnalLibraryArray
   //····················································································································
 
-  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
+  let additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
 
   //····················································································································
 

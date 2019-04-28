@@ -138,7 +138,7 @@ class FontCharacter : EBManagedObject,
   //   To many property: segments
   //····················································································································
 
-  var segments_property = StoredArrayOf_SegmentForFontCharacter ()
+  let segments_property = StoredArrayOf_SegmentForFontCharacter ()
 
   //····················································································································
 

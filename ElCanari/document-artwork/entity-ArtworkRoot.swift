@@ -278,7 +278,7 @@ class ArtworkRoot : EBManagedObject,
   //   To many property: fileGenerationParameterArray
   //····················································································································
 
-  var fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
+  let fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
 

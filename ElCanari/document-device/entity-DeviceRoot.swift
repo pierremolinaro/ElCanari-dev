@@ -427,7 +427,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mDocs
   //····················································································································
 
-  var mDocs_property = StoredArrayOf_DeviceDocumentation ()
+  let mDocs_property = StoredArrayOf_DeviceDocumentation ()
 
   //····················································································································
 
@@ -446,7 +446,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolInstances
   //····················································································································
 
-  var mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
+  let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice ()
 
   //····················································································································
 
@@ -465,7 +465,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  var mPackages_property = StoredArrayOf_PackageInDevice ()
+  let mPackages_property = StoredArrayOf_PackageInDevice ()
 
   //····················································································································
 
@@ -484,7 +484,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mSymbolTypes
   //····················································································································
 
-  var mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice ()
+  let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice ()
 
   //····················································································································
 
@@ -520,7 +520,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   To many property: mPadProxies
   //····················································································································
 
-  var mPadProxies_property = StoredArrayOf_PadProxyInDevice ()
+  let mPadProxies_property = StoredArrayOf_PadProxyInDevice ()
 
   //····················································································································
 

@@ -189,7 +189,7 @@ class FontRoot : EBManagedObject,
   //   To many property: characters
   //····················································································································
 
-  var characters_property = StoredArrayOf_FontCharacter ()
+  let characters_property = StoredArrayOf_FontCharacter ()
 
   //····················································································································
 

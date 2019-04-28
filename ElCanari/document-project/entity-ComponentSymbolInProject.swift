@@ -62,12 +62,12 @@ class ComponentSymbolInProject : EBManagedObject,
   //   To one property: mComponent
   //····················································································································
 
-  var mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
+  let mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
 
   //····················································································································
 
-  var mComponent_property_selection : EBSelection <Bool> {
-    return .single (self.mComponent_property.propval == nil)
+  var mComponent_property_selection : EBSelection <ComponentInProject?> {
+    return .single (self.mComponent_property.propval)
   }
 
   //····················································································································
@@ -75,6 +75,16 @@ class ComponentSymbolInProject : EBManagedObject,
   var mComponent : ComponentInProject? {
     get { return self.mComponent_property.propval }
     set { self.mComponent_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mComponent_none : ToOneRelationship_ComponentSymbolInProject_mComponent { return self.mComponent_property }
+
+  //····················································································································
+
+  var mComponent_none_selection : EBSelection <Bool> {
+    return .single (self.mComponent_property.propval == nil)
   }
 
   //····················································································································
