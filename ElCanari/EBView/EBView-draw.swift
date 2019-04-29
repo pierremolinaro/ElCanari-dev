@@ -67,7 +67,7 @@ extension EBView {
       ()
     case .cross :
       let bp = NSBezierPath ()
-      bp.lineWidth = 0.0
+      bp.lineWidth = 0.1
       bp.lineCapStyle = .round
       var x = startX
       while x <= endX {
@@ -85,7 +85,7 @@ extension EBView {
       bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
-      bp.lineWidth = 0.0
+      bp.lineWidth = 0.1
       bp.lineCapStyle = .round
       var x = startX
       while x <= r.maxX {

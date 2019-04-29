@@ -76,6 +76,7 @@ extension CustomizedProjectDocument {
         width: printWidth,
         height: printHeight
       )
+    //--- Draw sheets
       var yOffset : CGFloat = printHeight * CGFloat (sheets.count - 1)
       self.ebUndoManager.disableUndoRegistration ()
       let currentSelectedSheet = self.rootObject.mSelectedSheet
@@ -92,7 +93,7 @@ extension CustomizedProjectDocument {
       self.rootObject.mSelectedSheet = currentSelectedSheet
       self.ebUndoManager.enableUndoRegistration ()
     //---
-      let printInfo = self.mPrintInfo // NSPrintInfo () // .shared
+      let printInfo = NSPrintInfo.shared
  //     Swift.print ("\(printInfo.imageablePageBounds)")
  //     Swift.print ("\(printInfo.leftMargin) \(printInfo.topMargin) \(printInfo.rightMargin) \(printInfo.bottomMargin)")
       printInfo.orientation = orientation
@@ -110,7 +111,6 @@ extension CustomizedProjectDocument {
       self.mPrintOperation = printOperation // It seems that printOperation should be retained
       printOperation.showsPrintPanel = true
       let printPanel = printOperation.printPanel
-      // https://stackoverflow.com/questions/44580419/stopping-nsprintoperation-from-crashing-application
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling, .showsCopies]
     //---
 //      self.runModalPrintOperation (printOperation, delegate: nil, didRun: nil, contextInfo: nil)

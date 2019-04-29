@@ -2522,7 +2522,6 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
-				CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */,
 				CF11AB99225A1B740092A524 /* action-ProjectDocument-addComponentAction.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
 				CFCBE0012272426A00D72511 /* action-ProjectDocument-addNetClassAction.swift */,
@@ -2534,6 +2533,7 @@
 				CF5B98A7227341F30068FB85 /* action-ProjectDocument-editNetClassAction.swift */,
 				CF11ABB7225A39490092A524 /* action-ProjectDocument-exportDeviceAction.swift */,
 				CF4EB3932275B1F5000201E0 /* action-ProjectDocument-newSheetAction.swift */,
+				CF04AC702275DF5B00C70E99 /* action-ProjectDocument-openSetDateDialogAction.swift */,
 				CF11ABAE225A35AA0092A524 /* action-ProjectDocument-removeDeviceAction.swift */,
 				CFA0D9DD22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift */,
 				CF9F3989227250B4001A7451 /* action-ProjectDocument-removeNetClassAction.swift */,
@@ -2570,6 +2570,7 @@
 				CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */,
 				CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */,
 				CF64AFA3225B78C100E40C83 /* extension-ProjectDocument-fonts.swift */,
+				CF04AF1F22761B7E00C70E99 /* extension-ProjectDocument-print.swift */,
 				CF1B6ECF226CC82D00BE4C75 /* extension-ProjectDocument-rename-component.swift */,
 				CFB79D9E22589C78003D530F /* ProjectDocument-customized.swift */,
 				CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */,
@@ -2609,7 +2610,6 @@
 				CF2A69A2226F4A2600261C47 /* transient-ProjectRoot-deviceNames.swift */,
 				CF04AC6A2275CC2500C70E99 /* transient-ProjectRoot-schematicsBackgroundDisplay.swift */,
 				CFFA7B3D22746B0800E2D69A /* transient-ProjectRoot-unplacedSymbols.swift */,
-				CF04AF1F22761B7E00C70E99 /* extension-ProjectDocument-print.swift */,
 			);
 			name = "document — project";
 			path = "ElCanari/document-project";
