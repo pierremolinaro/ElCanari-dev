@@ -28,7 +28,10 @@ import Cocoa
 
   fileprivate var mSymbolCountToInsertController : EBSimpleController? = nil
   private var mSheetController = ProjectSheetController ()
-  
+  //internal var mSchematicsPrintView = NSView (frame: NSZeroRect)
+  internal var mPrintInfo = NSPrintInfo ()
+  internal var mPrintOperation : NSPrintOperation? = nil
+
   //····················································································································
   //  Properties needed for renaming a component
   //····················································································································

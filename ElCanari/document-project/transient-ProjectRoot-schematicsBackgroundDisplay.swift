@@ -21,12 +21,15 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
        _ self_mSchematicsDate : Date
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+        ]
         let lineAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
         ]
-        let LEFT_COLUMN  : CGFloat = 250.0
-        let RIGHT_COLUMN : CGFloat =  40.0
-        let LINE_HEIGHT  : CGFloat =  30.0
+        let LEFT_COLUMN  : CGFloat = 224.0
+        let RIGHT_COLUMN : CGFloat =  36.0
+        let LINE_HEIGHT  : CGFloat =  20.0
         let MARGIN       : CGFloat =  14
         let shape = EBShape ()
         let A4Height : CGFloat
@@ -35,13 +38,13 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         let vMarks : Int
         switch self_mSchematicsSheetOrientation {
         case .horizontal :
-           A4Height = 595.0
-           A4Width  = 842.0
+           A4Height = A4MinSize - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
+           A4Width  = A4MaxSize - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
            hMarks = 8
            vMarks = 6
         case .vertical :
-           A4Height = 842.0
-           A4Width  = 595.0
+           A4Height = A4MaxSize - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
+           A4Width  = A4MinSize - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
            hMarks = 6
            vMarks = 8
         }
@@ -113,9 +116,6 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       shape.append (EBStrokeBezierPathShape ([bp], .black))
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 0.0)
-        ]
      //--- Schematics Title
         p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - MARGIN , y: LINE_HEIGHT * 2.5 + MARGIN)
         shape.append (EBTextShape (self_mSchematicsTitle, p, textAttributes, .center, .center))
