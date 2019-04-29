@@ -127,7 +127,7 @@ protocol MergerRoot_generatedBoardArchiveFormat : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_modelNames : class {
-  var modelNames : StringArray? { get }
+  var modelNames : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -574,17 +574,17 @@ class MergerRoot : EBManagedObject,
   //   Transient property: modelNames
   //····················································································································
 
-  var modelNames_property = EBTransientProperty_StringArray ()
+  var modelNames_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var modelNames_property_selection : EBSelection <StringArray> {
+  var modelNames_property_selection : EBSelection <StringTagArray> {
     return self.modelNames_property.prop
   }
 
   //····················································································································
 
-  var modelNames : StringArray? {
+  var modelNames : StringTagArray? {
     switch self.modelNames_property_selection {
     case .empty, .multiple :
       return nil

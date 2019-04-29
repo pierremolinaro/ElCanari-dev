@@ -1127,7 +1127,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
 
   //····················································································································
 
-  var unplacedSymbols_property_selection : EBSelection <StringArray?> {
+  var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.unplacedSymbols_property_selection) {
       case .empty :

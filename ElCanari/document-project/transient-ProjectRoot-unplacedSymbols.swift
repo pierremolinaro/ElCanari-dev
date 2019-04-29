@@ -13,15 +13,15 @@ import Cocoa
 
 func transient_ProjectRoot_unplacedSymbols (
        _ self_mComponents_unplacedSymbols : [ComponentInProject_unplacedSymbols]
-) -> StringArray {
+) -> StringTagArray {
 //--- START OF USER ZONE 2
-        var result = StringArray ()
+        var result = StringTagArray ()
         for component in self_mComponents_unplacedSymbols {
           if let us = component.unplacedSymbols {
             result += us
           }
         }
-        return result.sorted ()
+        return result.sorted (by: { $0.mString < $1.mString} )
 //--- END OF USER ZONE 2
 }
 

@@ -11,17 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_modelNames (
-       _ self_boardModels_name : [BoardModel_name]
-) -> StringTagArray {
+func transient_DeviceSymbolTypeInProject_shape (
+       _ self_mStrokeBezierPath : NSBezierPath, 
+       _ self_mFilledBezierPath : NSBezierPath, 
+       _ prefs_symbolColorForSchematic : NSColor
+) -> EBShape {
 //--- START OF USER ZONE 2
-  var array = StringTagArray ()
-  var idx = 0
-  while idx < self_boardModels_name.count {
-    array.append (StringTag (self_boardModels_name [idx].name, 0))
-    idx += 1
-  }
-  return array
+         let shape = EBShape ()
+         shape.append (EBStrokeBezierPathShape ([self_mStrokeBezierPath], prefs_symbolColorForSchematic))
+         shape.append (EBFilledBezierPathShape ([self_mFilledBezierPath], prefs_symbolColorForSchematic))
+         return shape
 //--- END OF USER ZONE 2
 }
 

@@ -51,7 +51,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
   //    BINDING names
   //····················································································································
 
-  fileprivate func updateOutlet (_ names : EBReadOnlyProperty_StringArray) {
+  fileprivate func updateOutlet (_ names : EBReadOnlyProperty_StringTagArray) {
     switch names.prop {
     case .empty :
       self.setNames ([])
@@ -68,7 +68,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_names (_ names:EBReadOnlyProperty_StringArray, file:String, line:Int) {
+  func bind_names (_ names : EBReadOnlyProperty_StringTagArray, file : String, line : Int) {
     self.mNamesController = EBSimpleController (
       observedObjects: [names],
       callBack: { [weak self] in self?.updateOutlet (names) }
@@ -84,15 +84,15 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setNames (_ inArray : [String]) {
+  func setNames (_ inArray : [StringTag]) {
     // NSLog ("\(inArray)")
     self.removeAllItems ()
     if inArray.count == 0 {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
       for modelName in inArray {
-        self.addItem (withTitle: "Insert \"\(modelName)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
-        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:modelName)
+        self.addItem (withTitle: "Insert \"\(modelName.mString)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName: modelName.mString)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }

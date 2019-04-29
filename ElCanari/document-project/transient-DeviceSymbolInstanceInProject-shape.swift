@@ -11,17 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_modelNames (
-       _ self_boardModels_name : [BoardModel_name]
-) -> StringTagArray {
+func transient_DeviceSymbolInstanceInProject_shape (
+       _ self_mSymbolType_shape : EBShape?
+) -> EBShape {
 //--- START OF USER ZONE 2
-  var array = StringTagArray ()
-  var idx = 0
-  while idx < self_boardModels_name.count {
-    array.append (StringTag (self_boardModels_name [idx].name, 0))
-    idx += 1
-  }
-  return array
+        return self_mSymbolType_shape ?? EBShape ()
 //--- END OF USER ZONE 2
 }
 

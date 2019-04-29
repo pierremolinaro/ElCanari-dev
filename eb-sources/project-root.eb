@@ -26,7 +26,7 @@ entity ProjectRoot {
   
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
-  transient StringArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
+  transient StringTagArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
   
   transient EBShape schematicsBackgroundDisplay dependsFrom
     self.mSchematicsTitle,
@@ -126,6 +126,8 @@ entity DeviceSymbolInstanceInProject {
   transient TwoStrings symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
   
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
+  
+  transient EBShape shape dependsFrom self.mSymbolType.one.shape ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -135,6 +137,8 @@ entity DeviceSymbolTypeInProject {
   
   property NSBezierPath mStrokeBezierPath default empty ;
   property NSBezierPath mFilledBezierPath default empty ;
+  
+  transient EBShape shape dependsFrom self.mStrokeBezierPath, self.mFilledBezierPath, prefs.symbolColorForSchematic ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -176,8 +180,8 @@ entity ComponentInProject {
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
   
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
-  transient StringArray unplacedSymbols dependsFrom
-    self.componentName, self.mSymbols.all.mSymbolInstanceName, self.mSymbols.all.mSymbolTypeName
+  transient StringTagArray unplacedSymbols dependsFrom
+    self.componentName, self.mSymbols, self.mSymbols.all.mSymbolInstanceName, self.mSymbols.all.mSymbolTypeName
   ;
 }
 

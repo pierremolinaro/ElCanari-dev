@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectDocument_unplacedSymbolsCount (
-       _ root_unplacedSymbols : StringArray
+       _ root_unplacedSymbols : StringTagArray
 ) -> Int {
 //--- START OF USER ZONE 2
         return root_unplacedSymbols.count

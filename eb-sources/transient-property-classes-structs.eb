@@ -1,6 +1,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 transient property struct StringArray ;
+transient property struct StringTagArray ;
 transient property struct TwoStrings ;
 transient property struct ThreeStrings ;
 transient property struct TwoStringArray ;

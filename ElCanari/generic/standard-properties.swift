@@ -1916,6 +1916,12 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 typealias EBReadOnlyProperty_StringArray  = EBReadOnlyValueProperty <StringArray>
 typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property StringTagArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_StringTagArray  = EBReadOnlyValueProperty <StringTagArray>
+typealias EBTransientProperty_StringTagArray = EBTransientValueProperty <StringTagArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property TwoStrings
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

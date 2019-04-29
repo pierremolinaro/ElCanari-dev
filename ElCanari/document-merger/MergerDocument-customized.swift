@@ -138,6 +138,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
       return NSImage (named: NSImage.Name ("exclamation"))!
     }
   }
+
   //····················································································································
 
 }

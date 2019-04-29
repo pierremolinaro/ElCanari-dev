@@ -73,7 +73,7 @@ protocol ProjectRoot_mSchematicsSheetOrientation : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ProjectRoot_unplacedSymbols : class {
-  var unplacedSymbols : StringArray? { get }
+  var unplacedSymbols : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -394,17 +394,17 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  var unplacedSymbols_property = EBTransientProperty_StringArray ()
+  var unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
-  var unplacedSymbols_property_selection : EBSelection <StringArray> {
+  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
     return self.unplacedSymbols_property.prop
   }
 
   //····················································································································
 
-  var unplacedSymbols : StringArray? {
+  var unplacedSymbols : StringTagArray? {
     switch self.unplacedSymbols_property_selection {
     case .empty, .multiple :
       return nil

@@ -13,13 +13,15 @@ import Cocoa
 
 func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,              
+       _ self_mSymbols : [EBManagedObject_alloc_index_protocol],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
        _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName]
-) -> StringArray {
+) -> StringTagArray {
 //--- START OF USER ZONE 2
-        var result = StringArray ()
+        var result = StringTagArray ()
         var idx = 0
         while idx < self_mSymbols_mSymbolInstanceName.count {
+          let ebObjectIndex = self_mSymbols [idx].ebObjectIndex
           let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
           let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
           idx += 1
@@ -28,7 +30,7 @@ func transient_ComponentInProject_unplacedSymbols (
             name += ":" + symbolInstanceName
           }
           name += " (" + symbolTypeName + ")"
-          result.append (name)
+          result.append (StringTag (name, ebObjectIndex))
         }
         return result
 //--- END OF USER ZONE 2

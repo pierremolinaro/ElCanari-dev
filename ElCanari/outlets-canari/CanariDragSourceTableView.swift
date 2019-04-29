@@ -58,10 +58,22 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //    Table view data source protocol
   //····················································································································
 
-  private var mModelArray = [String] () {
+  private var mModelArray = [StringTag] () {
     didSet {
       self.reloadData ()
     }
+  }
+
+  //····················································································································
+
+  func title (atIndex inIndex : Int) -> String {
+    return self.mModelArray [inIndex].mString
+  }
+
+  //····················································································································
+
+  func tag (atIndex inIndex : Int) -> Int {
+    return self.mModelArray [inIndex].mTag
   }
 
   //····················································································································
@@ -73,7 +85,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-    return self.mModelArray [row]
+    return self.mModelArray [row].mString
   }
 
   //····················································································································
@@ -84,7 +96,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      let cellName : String = self.mModelArray [rowIndexes.first!]
+      let cellName : String = self.mModelArray [rowIndexes.first!].mString
       pboard.declareTypes ([draggedType], owner:self)
     //--- Associated data is cell name
       let data = cellName.data (using: .ascii)
@@ -121,7 +133,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   private var mModelsController : EBSimpleController? = nil
 
-  func bind_models (_ model:EBReadOnlyProperty_StringArray, file:String, line:Int) {
+  func bind_models (_ model : EBReadOnlyProperty_StringTagArray, file : String, line : Int) {
     self.mModelsController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -137,7 +149,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   //····················································································································
 
-  func update (from model : EBReadOnlyProperty_StringArray) {
+  func update (from model : EBReadOnlyProperty_StringTagArray) {
     switch model.prop {
     case .empty :
       self.mModelArray = []
@@ -151,5 +163,25 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StringTag
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct StringTag : Hashable {
+  let mString : String
+  let mTag : Int
+
+  init (_ inString : String, _ inTag : Int) {
+    mString = inString
+    mTag = inTag
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StringTagArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias StringTagArray = [StringTag]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -227,7 +227,7 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mSetDatePanel ;
   outlet NSDatePicker mSchematicsDatePicker ;
 
-#--- Schamativcs view
+#--- Schamatics view
 #  arrayController mSymbolObjectsController : root.symbolObjects ;
 
   outlet EBView mSchematicsView

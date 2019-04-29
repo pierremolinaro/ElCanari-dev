@@ -30,7 +30,7 @@ entity MergerRoot {
   property Int shiftArrowMagnitudeUnit default 90_000 ; # 1mm
   
 #--- Board model name array
-  transient StringArray modelNames dependsFrom self.boardModels.all.name ;
+  transient StringTagArray modelNames dependsFrom self.boardModels.all.name ;
 
 #--- Instance display
   transient EBShape boardOutlineRectDisplay  dependsFrom

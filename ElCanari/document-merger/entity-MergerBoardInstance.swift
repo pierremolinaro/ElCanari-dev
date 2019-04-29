@@ -4695,7 +4695,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  var modelNames_property_selection : EBSelection <StringArray?> {
+  var modelNames_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.modelNames_property_selection) {
       case .empty :
