@@ -24,6 +24,7 @@ extension EBView {
     NSBezierPath.fill (inDirtyRect)
     self.drawGrid (inDirtyRect)
     self.mUnderObjectsDisplay.draw (self, inDirtyRect)
+    NSLog ("self.objectDisplayArray \(self.objectDisplayArray.count)")
     for object in self.objectDisplayArray {
       object.draw (self, inDirtyRect)
     }

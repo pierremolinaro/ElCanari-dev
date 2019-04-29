@@ -23,7 +23,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+  @objc override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (ProjectDocument.printDocument(_:)) {
@@ -36,7 +36,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  override func printDocument (_ inSender : Any?) {
+  @objc override func printDocument (_ inSender : Any?) {
     if self.rootObject.mSelectedPageIndex == 2 {
       self.printSchematics ()
     }
@@ -107,7 +107,7 @@ extension CustomizedProjectDocument {
       printInfo.topMargin = SCHEMATICS_TOP_MARGIN
       printInfo.rightMargin = SCHEMATICS_RIGHT_MARGIN
       printInfo.bottomMargin = SCHEMATICS_BOTTOM_MARGIN
-      let printOperation = NSPrintOperation (view: printView, printInfo: printInfo)
+      let printOperation = NSPrintOperation (view: printView) //, printInfo: printInfo)
       self.mPrintOperation = printOperation // It seems that printOperation should be retained
       printOperation.showsPrintPanel = true
       let printPanel = printOperation.printPanel
@@ -129,7 +129,7 @@ extension CustomizedProjectDocument {
                                                 success inSuccess : Bool,
                                                 contextInfo inUnusedContextInfo : Any?) {
      //    self.mPrintOperation = nil // Crash !
-     DispatchQueue.main.async { self.mPrintOperation = nil }
+    // DispatchQueue.main.async { self.mPrintOperation = nil }
   }
 
   //····················································································································

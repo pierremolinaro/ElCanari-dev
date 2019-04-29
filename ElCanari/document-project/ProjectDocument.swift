@@ -39,6 +39,12 @@ import Cocoa
   var mSelectedSheetController = Controller_ProjectDocument_mSelectedSheetController ()
 
   //····················································································································
+  //   Array controller: mSchematicsObjectsController
+  //····················································································································
+
+  var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -424,6 +430,8 @@ import Cocoa
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
   //--- Object controller property: mSelectedSheetController
     self.mSelectedSheetController.addExplorer (name: "mSelectedSheetController", y:&y, view:view)
+  //--- Array controller property: mSchematicsObjectsController
+    self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -563,6 +571,8 @@ import Cocoa
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
   //--- Object controller property: mSelectedSheetController
     self.mSelectedSheetController.bind_model (self.rootObject.mSelectedSheet_property)
+  //--- Array controller property: mSchematicsObjectsController
+    self.mSchematicsObjectsController.bind_model (self.mSelectedSheetController.mObjects_property)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -767,6 +777,7 @@ import Cocoa
     self.mNetClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
+    self.mSchematicsObjectsController.bind_ebView (self.mSchematicsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
@@ -1092,6 +1103,7 @@ import Cocoa
     self.mNetClassController.unbind_tableView (self.mNetClassTableView)
     self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.mProjectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
+    self.mSchematicsObjectsController.unbind_ebView (self.mSchematicsView)
   //--- Array controller property: mComponentController
     self.mComponentController.unbind_model ()
   //--- Array controller property: mNetClassController
@@ -1102,6 +1114,8 @@ import Cocoa
     self.mProjectDeviceController.unbind_model ()
   //--- Object controller property: mSelectedSheetController
     self.mSelectedSheetController.unbind_model ()
+  //--- Array controller property: mSchematicsObjectsController
+    self.mSchematicsObjectsController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)

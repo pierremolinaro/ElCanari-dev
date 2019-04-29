@@ -227,14 +227,14 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mSetDatePanel ;
   outlet NSDatePicker mSchematicsDatePicker ;
 
-#--- Schamatics view
-#  arrayController mSymbolObjectsController : root.symbolObjects ;
+#--- Schematics view
+  arrayController mSchematicsObjectsController : mSelectedSheetController.mObjects ;
 
   outlet EBView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
     $horizontalFlip root.mSchematicsHorizontalFlip
     $verticalFlip root.mSchematicsVerticalFlip
-#    $graphicController self.mSymbolObjectsController
+    $graphicController self.mSchematicsObjectsController
     $gridStyle root.mSchematicsGridStyle
     $gridDisplayFactor root.mSchematicsGridDisplayFactor
     $gridLineColor prefs.lineColorOfSymbolGrid

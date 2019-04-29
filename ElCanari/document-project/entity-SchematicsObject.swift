@@ -5,10 +5,24 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SchematicsObject_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SchematicsObject_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SchematicsObject : EBGraphicManagedObject {
+class SchematicsObject : EBGraphicManagedObject,
+         SchematicsObject_selectionDisplay,
+         SchematicsObject_objectDisplay {
 
   //····················································································································
   //    init
@@ -40,6 +54,22 @@ class SchematicsObject : EBGraphicManagedObject {
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -124,6 +154,118 @@ class SchematicsObject : EBGraphicManagedObject {
 class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <SchematicsObject> {
 
   //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -169,9 +311,9 @@ class TransientArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
@@ -322,8 +464,12 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
+       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -332,8 +478,12 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
+        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
         //--- Add observers of transient properties
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

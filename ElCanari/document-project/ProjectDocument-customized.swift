@@ -45,6 +45,12 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
   internal weak var mSelectedComponentForRenaming : ComponentInProject? = nil
 
   //····················································································································
+  //  Property for dragging symbol in schematics
+  //····················································································································
+
+  internal var mPossibleDraggedSymbol : ComponentSymbolInProject? = nil
+
+  //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
@@ -134,15 +140,15 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
     if let schematicsView = self.mSchematicsView, dragRows.count == 1, let idx = dragRows.first {
     //--- Find symbol to insert in schematics
       let symbolTag = self.mUnplacedSymbolsTableView?.tag (atIndex: idx) ?? 0
-      var possibleSymbol : ComponentSymbolInProject? = nil
+      self.mPossibleDraggedSymbol = nil
       for component in self.rootObject.mComponents {
         for s in component.mSymbols {
            if s.ebObjectIndex == symbolTag {
-             possibleSymbol = s
+             self.mPossibleDraggedSymbol = s
            }
         }
       }
-      if let symbol = possibleSymbol, let symbolShape = symbol.shape {
+      if let symbol = self.mPossibleDraggedSymbol, let symbolShape = symbol.shape {
         let scale : CGFloat = schematicsView.actualScale
         let horizontalFlip : CGFloat = schematicsView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale
@@ -158,7 +164,39 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
   //····················································································································
 
   override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
-    let ok = false
+    var ok = false
+    if let documentView = destinationScrollView.documentView {
+      let draggingLocationInWindow = sender.draggingLocation
+      let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
+      // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
+      let pasteboard = sender.draggingPasteboard
+      if let data = pasteboard.data (forType: kDragAndDropSymbolType), let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
+       // NSLog ("\(symbolInstanceName)")
+        self.rootObject.mSelectedSheet?.mObjects.append (symbol)
+        ok = true
+//        var possibleBoardModel : BoardModel? = nilm
+//        for boardModel in self.rootObject.boardModels_property.propval {
+//          if boardModel.name == boardModelName {
+//            possibleBoardModel = boardModel
+//            break
+//          }
+//        }
+//        if  let boardModel = possibleBoardModel {
+//         // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
+//          let rotation = QuadrantRotation (rawValue: self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
+//          let newBoard = MergerBoardInstance (self.ebUndoManager)
+//          newBoard.myModel_property.setProp (boardModel)
+//          newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
+//          newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
+//          newBoard.instanceRotation = rotation
+//          self.rootObject.boardInstances_property.add (newBoard)
+//          self.mBoardInstanceController.setSelection ([newBoard])
+//          ok = true
+//        }else{
+//          NSLog ("Cannot find '\(boardModelName)' board model")
+//        }
+      }
+    }
     return ok
   }
 

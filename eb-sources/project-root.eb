@@ -9,6 +9,7 @@ entity ProjectRoot {
   toMany NetClassInProject mNetClasses ;
   toMany SheetInProject mSheets ;
   toOne SheetInProject mSelectedSheet ;
+#  toMany SchematicsObject mSchematicsObjects dependsFrom self.mSelectedSheet ;
 
   property Int mSelectedPageIndex default 0 ;
 
@@ -248,6 +249,10 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property String mSymbolTypeName default "" ;
   
   transient EBShape shape dependsFrom self.mComponent.one.deviceSymbolDictionary, self.mSymbolInstanceName, self.mSymbolTypeName ;
+  
+  transient EBShape objectDisplay dependsFrom self.shape ;
+  
+  transient EBShape selectionDisplay dependsFrom self.shape ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -264,8 +269,7 @@ entity SheetInProject {
 #   SchematicsObject
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity SchematicsObject {
-
+abstract graphic entity SchematicsObject {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
