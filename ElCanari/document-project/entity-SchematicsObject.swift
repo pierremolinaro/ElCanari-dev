@@ -5,53 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SheetInProject_mSheetTitle : class {
-  var mSheetTitle : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SheetInProject
+//    Entity: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SheetInProject : EBManagedObject,
-         SheetInProject_mSheetTitle {
-
-  //····················································································································
-  //   To many property: mObjects
-  //····················································································································
-
-  let mObjects_property = StoredArrayOf_SchematicsObject ()
-
-  //····················································································································
-
-  var mObjects_property_selection : EBSelection < [SchematicsObject] > {
-    return self.mObjects_property.prop
-  }
-
-  //····················································································································
-
-  var mObjects : [SchematicsObject] {
-    get { return self.mObjects_property.propval }
-    set { self.mObjects_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mSheetTitle
-  //····················································································································
-
-  var mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mSheetTitle : String {
-    get { return self.mSheetTitle_property.propval }
-    set { self.mSheetTitle_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
+class SchematicsObject : EBGraphicManagedObject {
 
   //····················································································································
   //    init
@@ -59,10 +16,6 @@ class SheetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To many property: mObjects (no option)
-    self.mObjects_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -86,23 +39,8 @@ class SheetInProject : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mSheetTitle",
-      idx:self.mSheetTitle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSheetTitle_property.mObserverExplorer,
-      valueExplorer:&self.mSheetTitle_property.mValueExplorer
-    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mObjects",
-      idx:mObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mObjects_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -112,11 +50,6 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To many property: mObjects
-    self.mObjects_property.mValueExplorer = nil
-  //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.mObserverExplorer = nil
-    self.mSheetTitle_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -126,7 +59,6 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mObjects_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -146,14 +78,6 @@ class SheetInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- To many property: mObjects
-    self.store (
-      managedObjectArray: self.mObjects_property.propval,
-      relationshipName: "mObjects",
-      intoDictionary: ioDictionary
-    )
-  //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey:"mSheetTitle")
   }
 
   //····················································································································
@@ -163,12 +87,6 @@ class SheetInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mObjects
-    self.mObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SchematicsObject])
   }
 
   //····················································································································
@@ -177,8 +95,6 @@ class SheetInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mSheetTitle
-    self.mSheetTitle_property.readFrom (dictionary: inDictionary, forKey:"mSheetTitle")
   }
 
   //····················································································································
@@ -187,10 +103,6 @@ class SheetInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mObjects
-    for managedObject in self.mObjects_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -199,10 +111,6 @@ class SheetInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mObjects
-    for managedObject in self.mObjects_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -210,99 +118,42 @@ class SheetInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SheetInProject
+//    ReadOnlyArrayOf_SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInProject> {
-
-  //····················································································································
-  //   Observers of 'mSheetTitle' stored property
-  //····················································································································
-
-  private var mObserversOf_mSheetTitle = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSheetTitle.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSheetTitle_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSheetTitle.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSheetTitle_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-        managedObject.mSheetTitle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSheetTitle_property.removeEBObserver (observer)
-      }
-    }
-  }
+class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <SchematicsObject> {
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SheetInProject
+//    TransientArrayOf_SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
+class TransientArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [SheetInProject] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SchematicsObject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <SheetInProject> {
+  override var propset : Set <SchematicsObject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > {
+  override var prop : EBSelection < [SchematicsObject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [SheetInProject] {
+  override var propval : [SchematicsObject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -324,11 +175,11 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
 
-  private var mSet = Set <SheetInProject> ()
+  private var mSet = Set <SchematicsObject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [SheetInProject] >? = nil
+  private var mCachedValue : EBSelection < [SchematicsObject] >? = nil
 
   //····················································································································
 
@@ -336,23 +187,13 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       let cachedValue = unwrappedComputeFunction ()
       self.mCachedValue = cachedValue
-      let newSet : Set <SheetInProject>
+      let newSet : Set <SchematicsObject>
       switch cachedValue {
       case .multiple, .empty :
-        newSet = Set <SheetInProject> ()
+        newSet = Set <SchematicsObject> ()
       case .single (let array) :
         newSet = Set (array)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
     //--- Update object set
       self.mSet = newSet
     }
@@ -380,28 +221,28 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SheetInProject
+//    To many relationship read write: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
+class ReadWriteArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 
   //····················································································································
  
-  func setProp (_ value :  [SheetInProject]) { } // Abstract method
+  func setProp (_ value :  [SchematicsObject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SheetInProject
+//    To many relationship: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol {
+final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SheetInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject?) -> Void > = nil
 
   //····················································································································
 
@@ -448,9 +289,9 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SheetInProject] ()
+      var objectArray = [SchematicsObject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SheetInProject") as? SheetInProject {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SchematicsObject") as? SchematicsObject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -461,8 +302,8 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
 
  //····················································································································
 
-  private var mSet = Set <SheetInProject> ()
-  private var mValue = [SheetInProject] () {
+  private var mSet = Set <SchematicsObject> ()
+  private var mValue = [SchematicsObject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -480,24 +321,18 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mSheetTitle_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : SheetInProject in addedObjectSet {
+          for managedObject : SchematicsObject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mSheetTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
-          self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
         }
       //--- Notify observers
@@ -526,29 +361,29 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
 
   //····················································································································
 
-  override var prop : EBSelection < [SheetInProject] > { return .single (self.mValue) }
+  override var prop : EBSelection < [SchematicsObject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SheetInProject]) { self.mValue = inValue }
+  override func setProp (_ inValue : [SchematicsObject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [SheetInProject] { return self.mValue }
+  override var propval : [SchematicsObject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <SheetInProject> { return self.mSet }
+  override var propset : Set <SchematicsObject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [SheetInProject]) {
+  @objc func performUndo (_ oldValue : [SchematicsObject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SheetInProject) {
+  func remove (_ object : SchematicsObject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -559,7 +394,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
   
   //····················································································································
 
-  func add (_ object : SheetInProject) {
+  func add (_ object : SchematicsObject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

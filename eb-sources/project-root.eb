@@ -78,6 +78,8 @@ entity DeviceInProject {
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
   transient TwoStringArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
   transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
+  
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mSymbols.all.symbolAndTypeName, self.mSymbols.all.shape ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -118,6 +120,7 @@ entity DeviceSlavePadInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolInstanceInProject {
+
   toOne DeviceSymbolTypeInProject mSymbolType ;
   toMany DevicePinInProject mPins ;
 
@@ -183,6 +186,8 @@ entity ComponentInProject {
   transient StringTagArray unplacedSymbols dependsFrom
     self.componentName, self.mSymbols, self.mSymbols.all.mSymbolInstanceName, self.mSymbols.all.mSymbolTypeName
   ;
+
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -233,11 +238,16 @@ entity NetInProject {
 #   Component Symbol
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ComponentSymbolInProject {
+graphic entity ComponentSymbolInProject : SchematicsObject {
   toOne ComponentInProject mComponent inverse toMany mSymbols ;
   
+  property Int mCenterX default 0 ;
+  property Int mCenterY default 0 ;
+
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
+  
+  transient EBShape shape dependsFrom self.mComponent.one.deviceSymbolDictionary, self.mSymbolInstanceName, self.mSymbolTypeName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -245,8 +255,17 @@ entity ComponentSymbolInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SheetInProject {
+  toMany SchematicsObject mObjects ;
 
   property String mSheetTitle default "" ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   SchematicsObject
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity SchematicsObject {
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

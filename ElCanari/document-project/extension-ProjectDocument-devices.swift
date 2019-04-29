@@ -197,7 +197,6 @@ extension ProjectDocument {
         assignment.mPin = pinInProject
         inDeviceInProject.mPadAssignments.append (assignment)
       }
-
     }
   }
 

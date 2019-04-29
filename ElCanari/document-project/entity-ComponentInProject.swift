@@ -48,6 +48,12 @@ protocol ComponentInProject_availablePackages : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentInProject_deviceSymbolDictionary : class {
+  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentInProject_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -64,6 +70,7 @@ class ComponentInProject : EBManagedObject,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
+         ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_unplacedSymbols {
 
   //····················································································································
@@ -287,6 +294,29 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: deviceSymbolDictionary
+  //····················································································································
+
+  var deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+
+  //····················································································································
+
+  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
+    return self.deviceSymbolDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var deviceSymbolDictionary : DeviceSymbolDictionary? {
+    switch self.deviceSymbolDictionary_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -420,6 +450,28 @@ class ComponentInProject : EBManagedObject,
       }
     }
     self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
+  //--- Atomic property: deviceSymbolDictionary
+    self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDevice_property.deviceSymbolDictionary_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDevice_property.deviceSymbolDictionary_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_deviceSymbolDictionary (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -465,6 +517,7 @@ class ComponentInProject : EBManagedObject,
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
     self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
+    self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.componentName_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
@@ -540,6 +593,14 @@ class ComponentInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.availablePackages_property.mObserverExplorer,
       valueExplorer:&self.availablePackages_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "deviceSymbolDictionary",
+      idx:self.deviceSymbolDictionary_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.deviceSymbolDictionary_property.mObserverExplorer,
+      valueExplorer:&self.deviceSymbolDictionary_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",
@@ -1143,6 +1204,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'deviceSymbolDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceSymbolDictionary_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceSymbolDictionary_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -1280,6 +1397,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.removeEBObserversOf_deviceName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -1292,6 +1410,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.addEBObserversOf_deviceName_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedSet)
       self.addEBObserversOf_availablePackages_toElementsOfSet (addedSet)
+      self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedSet)
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -1431,6 +1550,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
        //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
@@ -1441,6 +1561,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -1460,6 +1581,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
@@ -1470,6 +1592,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
@@ -1645,6 +1768,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport)
         oldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove)
+        oldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary)
         oldValue?.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData)
         oldValue?.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName)
         oldValue?.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion)
@@ -1657,6 +1781,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
       //--- Add property observers to new object
         self.mValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport)
         self.mValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove)
+        self.mValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary)
         self.mValue?.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData)
         self.mValue?.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName)
         self.mValue?.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion)
@@ -1773,6 +1898,47 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
     self.mObserversOf_canRemove.remove (inObserver)
     if let object = self.propval {
       object.canRemove_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: deviceSymbolDictionary
+  //····················································································································
+
+  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
+    if let model = self.propval {
+      switch (model.deviceSymbolDictionary_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
+    if let object = self.propval {
+      object.deviceSymbolDictionary_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
+    if let object = self.propval {
+      object.deviceSymbolDictionary_property.removeEBObserver (inObserver)
     }
   }
 

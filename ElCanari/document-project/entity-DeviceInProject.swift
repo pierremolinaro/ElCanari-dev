@@ -71,6 +71,12 @@ protocol DeviceInProject_pinPadAssignments : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceInProject_deviceSymbolDictionary : class {
+  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -85,7 +91,8 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_canRemove,
          DeviceInProject_packageNames,
          DeviceInProject_symbolAndTypesNames,
-         DeviceInProject_pinPadAssignments {
+         DeviceInProject_pinPadAssignments,
+         DeviceInProject_deviceSymbolDictionary {
 
   //····················································································································
   //   Atomic property: mDeviceName
@@ -393,6 +400,29 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: deviceSymbolDictionary
+  //····················································································································
+
+  var deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+
+  //····················································································································
+
+  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
+    return self.deviceSymbolDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var deviceSymbolDictionary : DeviceSymbolDictionary? {
+    switch self.deviceSymbolDictionary_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -571,6 +601,30 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
+  //--- Atomic property: deviceSymbolDictionary
+    self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mSymbols_property_selection.kind ()
+        kind &= unwSelf.mSymbols_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.addEBObserverOf_shape (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
       inManagedObject?.mDevice_property.setProp (self)
@@ -590,6 +644,8 @@ class DeviceInProject : EBManagedObject,
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
+    self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.removeEBObserverOf_shape (self.deviceSymbolDictionary_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -693,6 +749,14 @@ class DeviceInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.pinPadAssignments_property.mObserverExplorer,
       valueExplorer:&self.pinPadAssignments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "deviceSymbolDictionary",
+      idx:self.deviceSymbolDictionary_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.deviceSymbolDictionary_property.mObserverExplorer,
+      valueExplorer:&self.deviceSymbolDictionary_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1546,6 +1610,62 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   }
 
   //····················································································································
+  //   Observers of 'deviceSymbolDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceSymbolDictionary_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.deviceSymbolDictionary_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1631,6 +1751,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.removeEBObserversOf_packageNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1646,6 +1767,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.addEBObserversOf_packageNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedSet)
+      self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1789,6 +1911,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
        //   self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
        //   self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
+       //   self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
@@ -1802,6 +1925,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1825,6 +1949,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
         // self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
         // self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
+        // self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
@@ -1838,6 +1963,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
