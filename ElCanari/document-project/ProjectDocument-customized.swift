@@ -148,7 +148,7 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
            }
         }
       }
-      if let symbol = self.mPossibleDraggedSymbol, let symbolShape = symbol.shape {
+      if let symbol = self.mPossibleDraggedSymbol, let symbolShape = symbol.symbolInfo?.shape {
         let scale : CGFloat = schematicsView.actualScale
         let horizontalFlip : CGFloat = schematicsView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale

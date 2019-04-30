@@ -606,15 +606,16 @@ class DeviceInProject : EBManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
+        kind &= unwSelf.mSymbols_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1))
+          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2))
           default :
             return .empty
           }
@@ -625,6 +626,7 @@ class DeviceInProject : EBManagedObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_shape (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.addEBObserverOf_center (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
       inManagedObject?.mDevice_property.setProp (self)
@@ -646,6 +648,7 @@ class DeviceInProject : EBManagedObject,
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_shape (self.deviceSymbolDictionary_property)
+    self.mSymbols_property.removeEBObserverOf_center (self.deviceSymbolDictionary_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }

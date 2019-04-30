@@ -12,10 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_selectionDisplay (
-       _ self_shape : EBShape
+       _ self_symbolInfo : ComponentSymbolInfo
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        return self_shape
+        let shape = EBShape ()
+        let p = self_symbolInfo.center.cocoaPoint ()
+        shape.append (EBKnobShape (at: p, index: 0, .circ))
+        return shape
 //--- END OF USER ZONE 2
 }
 

@@ -38,6 +38,8 @@ extension DeviceDocument {
               filledBezierPathes: filledBezierPathes,
               symbolPins: &newSymbolPinTypes
             )
+            strokeBezierPathes.lineCapStyle = .round
+            strokeBezierPathes.lineJoinStyle = .round
             symbolRoot.removeRecursivelyAllRelationsShips ()
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()

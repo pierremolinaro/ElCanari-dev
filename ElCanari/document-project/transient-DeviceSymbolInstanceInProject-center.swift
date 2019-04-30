@@ -11,11 +11,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_objectDisplay (
-       _ self_symbolInfo : ComponentSymbolInfo
-) -> EBShape {
+func transient_DeviceSymbolInstanceInProject_center (
+       _ self_mPins_mPinX : [DevicePinInProject_mPinX],
+       _ self_mPins_mPinY : [DevicePinInProject_mPinY]
+) -> CanariPoint {
 //--- START OF USER ZONE 2
-        return self_symbolInfo.shape
+        var minY = Int.max
+        var maxY = Int.min
+        for y in self_mPins_mPinY {
+          minY = min (minY, y.mPinY)
+          maxY = max (maxY, y.mPinY)
+        }
+        var minX = Int.max
+        var maxX = Int.min
+        for x in self_mPins_mPinX {
+          minX = min (minX, x.mPinX)
+          maxX = max (maxX, x.mPinX)
+        }
+        return CanariPoint (x: (minX + maxX) / 2, y: (minY + maxY) / 2)
 //--- END OF USER ZONE 2
 }
 

@@ -29,6 +29,12 @@ protocol DeviceSymbolInstanceInProject_shape : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceSymbolInstanceInProject_center : class {
+  var center : CanariPoint? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -36,7 +42,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
          DeviceSymbolInstanceInProject_mSymbolInstanceName,
          DeviceSymbolInstanceInProject_symbolAndTypeName,
          DeviceSymbolInstanceInProject_symbolTypeName,
-         DeviceSymbolInstanceInProject_shape {
+         DeviceSymbolInstanceInProject_shape,
+         DeviceSymbolInstanceInProject_center {
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -173,6 +180,29 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: center
+  //····················································································································
+
+  var center_property = EBTransientProperty_CanariPoint ()
+
+  //····················································································································
+
+  var center_property_selection : EBSelection <CanariPoint> {
+    return self.center_property.prop
+  }
+
+  //····················································································································
+
+  var center : CanariPoint? {
+    switch self.center_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -252,6 +282,30 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserverOf_shape (self.shape_property)
+  //--- Atomic property: center
+    self.center_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPins_property_selection.kind ()
+        kind &= unwSelf.mPins_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPins_property_selection, unwSelf.mPins_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceSymbolInstanceInProject_center (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPins_property.addEBObserverOf_mPinX (self.center_property)
+    self.mPins_property.addEBObserverOf_mPinY (self.center_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -265,6 +319,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
     self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
     self.mSymbolType_property.removeEBObserverOf_shape (self.shape_property)
+    self.mPins_property.removeEBObserverOf_mPinX (self.center_property)
+    self.mPins_property.removeEBObserverOf_mPinY (self.center_property)
   //--- Unregister properties for handling signature
   }
 
@@ -311,6 +367,14 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.shape_property.mObserverExplorer,
       valueExplorer:&self.shape_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "center",
+      idx:self.center_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.center_property.mObserverExplorer,
+      valueExplorer:&self.center_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -692,6 +756,62 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   }
 
   //····················································································································
+  //   Observers of 'center' transient property
+  //····················································································································
+
+  private var mObserversOf_center = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_center (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_center.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.center_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_center (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_center.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.center_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_center_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_center.apply { (_ observer : EBEvent) in
+        managedObject.center_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_center_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_center.apply { (_ observer : EBEvent) in
+        managedObject.center_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -764,6 +884,7 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
       self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_shape_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_center_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -772,6 +893,7 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
       self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_shape_toElementsOfSet (addedSet)
+      self.addEBObserversOf_center_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -906,6 +1028,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_center_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -921,6 +1044,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_center_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

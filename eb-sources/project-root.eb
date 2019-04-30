@@ -9,7 +9,6 @@ entity ProjectRoot {
   toMany NetClassInProject mNetClasses ;
   toMany SheetInProject mSheets ;
   toOne SheetInProject mSelectedSheet ;
-#  toMany SchematicsObject mSchematicsObjects dependsFrom self.mSelectedSheet ;
 
   property Int mSelectedPageIndex default 0 ;
 
@@ -80,7 +79,8 @@ entity DeviceInProject {
   transient TwoStringArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
   transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
   
-  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mSymbols.all.symbolAndTypeName, self.mSymbols.all.shape ;
+  transient DeviceSymbolDictionary deviceSymbolDictionary
+    dependsFrom self.mSymbols.all.symbolAndTypeName, self.mSymbols.all.shape, self.mSymbols.all.center ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -126,12 +126,14 @@ entity DeviceSymbolInstanceInProject {
   toMany DevicePinInProject mPins ;
 
   property String mSymbolInstanceName default "" ;
-  
+
   transient TwoStrings symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
   
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
   
   transient EBShape shape dependsFrom self.mSymbolType.one.shape ;
+  
+  transient CanariPoint center dependsFrom self.mPins.all.mPinX, self.mPins.all.mPinY ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -248,11 +250,12 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
   
-  transient EBShape shape dependsFrom self.mComponent.one.deviceSymbolDictionary, self.mSymbolInstanceName, self.mSymbolTypeName ;
+  transient ComponentSymbolInfo symbolInfo dependsFrom
+     self.mComponent.one.deviceSymbolDictionary, self.mSymbolInstanceName, self.mSymbolTypeName, self.mCenterX, self.mCenterY ;
   
-  transient EBShape objectDisplay dependsFrom self.shape ;
+  transient EBShape objectDisplay dependsFrom self.symbolInfo ;
   
-  transient EBShape selectionDisplay dependsFrom self.shape ;
+  transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

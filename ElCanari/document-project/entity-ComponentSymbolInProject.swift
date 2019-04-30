@@ -30,8 +30,8 @@ protocol ComponentSymbolInProject_mSymbolTypeName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_shape : class {
-  var shape : EBShape? { get }
+protocol ComponentSymbolInProject_symbolInfo : class {
+  var symbolInfo : ComponentSymbolInfo? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mCenterY,
          ComponentSymbolInProject_mSymbolInstanceName,
          ComponentSymbolInProject_mSymbolTypeName,
-         ComponentSymbolInProject_shape,
+         ComponentSymbolInProject_symbolInfo,
          ComponentSymbolInProject_objectDisplay,
          ComponentSymbolInProject_selectionDisplay {
 
@@ -157,21 +157,21 @@ class ComponentSymbolInProject : SchematicsObject,
   }
 
   //····················································································································
-  //   Transient property: shape
+  //   Transient property: symbolInfo
   //····················································································································
 
-  var shape_property = EBTransientProperty_EBShape ()
+  var symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
 
   //····················································································································
 
-  var shape_property_selection : EBSelection <EBShape> {
-    return self.shape_property.prop
+  var symbolInfo_property_selection : EBSelection <ComponentSymbolInfo> {
+    return self.symbolInfo_property.prop
   }
 
   //····················································································································
 
-  var shape : EBShape? {
-    switch self.shape_property_selection {
+  var symbolInfo : ComponentSymbolInfo? {
+    switch self.symbolInfo_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -195,21 +195,23 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mComponent
     self.mComponent_property.owner = self
-  //--- Atomic property: shape
-    self.shape_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolInfo
+    self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
         kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
+        kind &= unwSelf.mCenterX_property_selection.kind ()
+        kind &= unwSelf.mCenterY_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ComponentSymbolInProject_shape (v0, v1, v2))
+          switch (unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -218,20 +220,22 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
-    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.shape_property)
-    self.mSymbolInstanceName_property.addEBObserver (self.shape_property)
-    self.mSymbolTypeName_property.addEBObserver (self.shape_property)
+    self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property)
+    self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
+    self.mCenterX_property.addEBObserver (self.symbolInfo_property)
+    self.mCenterY_property.addEBObserver (self.symbolInfo_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.shape_property_selection.kind ()
+        let kind = unwSelf.symbolInfo_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.shape_property_selection) {
+          switch (unwSelf.symbolInfo_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ComponentSymbolInProject_objectDisplay (v0))
           default :
@@ -242,18 +246,18 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
-    self.shape_property.addEBObserver (self.objectDisplay_property)
+    self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.shape_property_selection.kind ()
+        let kind = unwSelf.symbolInfo_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.shape_property_selection) {
+          switch (unwSelf.symbolInfo_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ComponentSymbolInProject_selectionDisplay (v0))
           default :
@@ -264,7 +268,7 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
-    self.shape_property.addEBObserver (self.selectionDisplay_property)
+    self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -274,11 +278,13 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.shape_property)
-    self.mSymbolInstanceName_property.removeEBObserver (self.shape_property)
-    self.mSymbolTypeName_property.removeEBObserver (self.shape_property)
-    self.shape_property.removeEBObserver (self.objectDisplay_property)
-    self.shape_property.removeEBObserver (self.selectionDisplay_property)
+    self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
+    self.mSymbolInstanceName_property.removeEBObserver (self.symbolInfo_property)
+    self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
+    self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
+    self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
+    self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
+    self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -327,12 +333,12 @@ class ComponentSymbolInProject : SchematicsObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "shape",
-      idx:self.shape_property.ebObjectIndex,
+      "symbolInfo",
+      idx:self.symbolInfo_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.shape_property.mObserverExplorer,
-      valueExplorer:&self.shape_property.mValueExplorer
+      observerExplorer:&self.symbolInfo_property.mObserverExplorer,
+      valueExplorer:&self.symbolInfo_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -720,57 +726,57 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   }
 
   //····················································································································
-  //   Observers of 'shape' transient property
+  //   Observers of 'symbolInfo' transient property
   //····················································································································
 
-  private var mObserversOf_shape = EBWeakEventSet ()
+  private var mObserversOf_symbolInfo = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_shape.insert (inObserver)
+    self.mObserversOf_symbolInfo.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.shape_property.addEBObserver (inObserver)
+        managedObject.symbolInfo_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_shape.remove (inObserver)
+    self.mObserversOf_symbolInfo.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.shape_property.removeEBObserver (inObserver)
+        managedObject.symbolInfo_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_shape_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+  final func addEBObserversOf_symbolInfo_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-        managedObject.shape_property.addEBObserver (observer)
+      self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
+        managedObject.symbolInfo_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+  final func removeEBObserversOf_symbolInfo_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-        managedObject.shape_property.removeEBObserver (observer)
+      self.mObserversOf_symbolInfo.apply { (_ observer : EBEvent) in
+        managedObject.symbolInfo_property.removeEBObserver (observer)
       }
     }
   }
@@ -960,7 +966,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_shape_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -971,7 +977,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_shape_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolInfo_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
     //--- Update object set
@@ -1111,7 +1117,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         }
@@ -1132,7 +1138,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }

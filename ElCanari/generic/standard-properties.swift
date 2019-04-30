@@ -1910,6 +1910,18 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property CanariPoint
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariPoint  = EBReadOnlyValueProperty <CanariPoint>
+typealias EBTransientProperty_CanariPoint = EBTransientValueProperty <CanariPoint>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property ComponentSymbolInfo
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_ComponentSymbolInfo  = EBReadOnlyValueProperty <ComponentSymbolInfo>
+typealias EBTransientProperty_ComponentSymbolInfo = EBTransientValueProperty <ComponentSymbolInfo>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property DeviceSymbolDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

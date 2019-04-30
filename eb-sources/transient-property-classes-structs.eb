@@ -1,5 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+transient property struct CanariPoint ;
+transient property struct ComponentSymbolInfo ;
+
 transient property struct DeviceSymbolDictionary ;
 transient property struct StringArray ;
 transient property struct StringTagArray ;

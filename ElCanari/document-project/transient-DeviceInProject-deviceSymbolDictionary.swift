@@ -13,14 +13,16 @@ import Cocoa
 
 func transient_DeviceInProject_deviceSymbolDictionary (
        _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName],
-       _ self_mSymbols_shape : [DeviceSymbolInstanceInProject_shape]
+       _ self_mSymbols_shape : [DeviceSymbolInstanceInProject_shape],
+       _ self_mSymbols_center : [DeviceSymbolInstanceInProject_center]
 ) -> DeviceSymbolDictionary {
 //--- START OF USER ZONE 2
         var result = DeviceSymbolDictionary ()
         for idx in 0 ..< self_mSymbols_symbolAndTypeName.count {
           let symbolTypeAndName = self_mSymbols_symbolAndTypeName [idx].symbolAndTypeName!
           let shape = self_mSymbols_shape [idx].shape!
-          result [symbolTypeAndName] = shape
+          let center = self_mSymbols_center [idx].center!
+          result [symbolTypeAndName] = DeviceSymbolInfo (shape: shape, center: center)
         }
         return result
 //--- END OF USER ZONE 2

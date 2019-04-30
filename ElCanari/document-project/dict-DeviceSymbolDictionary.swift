@@ -10,6 +10,20 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias DeviceSymbolDictionary = [TwoStrings : EBShape]
+struct ComponentSymbolInfo {
+  let shape : EBShape
+  let center : CanariPoint
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct DeviceSymbolInfo {
+  let shape : EBShape
+  let center : CanariPoint
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias DeviceSymbolDictionary = [TwoStrings : DeviceSymbolInfo]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
