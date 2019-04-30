@@ -441,8 +441,13 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
   //--- Install undoers and opposite setter for relationships
-    self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SlavePadInDevice?) in
-      inManagedObject?.mMasterPad_property.setProp (self)
+    self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SlavePadInDevice) in
+      if let me = self {
+        inManagedObject.mMasterPad_property.setProp (me)
+      }
+    }
+    self.mSlavePads_property.resetOppositeRelationship = { (_ inManagedObject : SlavePadInDevice) in
+      inManagedObject.mMasterPad_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
@@ -1549,7 +1554,8 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1626,7 +1632,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mWidth_property.mSetterDelegate = nil

@@ -1617,7 +1617,8 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
 
   //····················································································································
 
@@ -1694,7 +1695,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.selectedInspector_property.mSetterDelegate = nil
             managedObject.comments_property.mSetterDelegate = nil
             managedObject.horizontalFlip_property.mSetterDelegate = nil

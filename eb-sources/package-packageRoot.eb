@@ -90,13 +90,13 @@ graphic entity PackageSegment : PackageObject {
   
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
@@ -127,17 +127,17 @@ graphic entity PackageBezier : PackageObject {
      self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
@@ -160,16 +160,16 @@ graphic entity PackageOval : PackageObject {
      self.x, self.y, self.width, self.height
   ;
  
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
   
-  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -195,17 +195,17 @@ graphic entity PackageArc : PackageObject {
      self.pathIsClosed, self.startTangent, self.endTangent
   ;
  
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.startTangent, self.endTangent, self.pathIsClosed
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle, self.pathIsClosed
   ;
 }
@@ -232,14 +232,14 @@ graphic entity PackagePad : PackageObject {
   toOne PackageZone zone ;
   toMany PackageSlavePad slaves inverse toOne master ;
 
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
      prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
      prefs.backSidePadColor, prefs.displayPackageBackSidePads
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
  
@@ -248,7 +248,7 @@ graphic entity PackagePad : PackageObject {
      prefs.padNumberFont, prefs.padNumberColor, self.padName
   ;
  
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
   ;
   
@@ -287,17 +287,17 @@ graphic entity PackageSlavePad : PackageObject {
   
   toOne PackagePad master inverse toMany slaves ;
 
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
      prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
      prefs.backSidePadColor, prefs.displayPackageBackSidePads
   ;
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
   ;
   
@@ -327,12 +327,11 @@ graphic entity PackageGuide : PackageObject {
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
   
-  transient EBShape objectDisplay dependsFrom
-     self.x1, self.y1, self.x2, self.y2
-  ;
-  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
+  override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -358,19 +357,19 @@ graphic entity PackageDimension : PackageObject {
      self.x1, self.y1, self.x2, self.y2
   ;
  
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
      prefs.packageBackgroundColor,
      prefs.packageDimensionColor
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont
   ;
 
-  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -395,16 +394,17 @@ graphic entity PackageZone : PackageObject {
 #--- Pad numbering
   property PadNumbering zoneNumbering default noNumbering ;
 
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
   ;
-  transient EBShape selectionDisplay dependsFrom
+
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.x, self.y, self.width, self.height,
     self.xName, self.yName, self.zoneName
   ;

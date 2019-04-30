@@ -1669,7 +1669,8 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : FontRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : FontRoot) -> Void > = nil
 
   //····················································································································
 
@@ -1746,7 +1747,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.comments_property.mSetterDelegate = nil
             managedObject.nominalSize_property.mSetterDelegate = nil
             managedObject.selectedTab_property.mSetterDelegate = nil

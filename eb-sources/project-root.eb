@@ -187,7 +187,11 @@ entity ComponentInProject {
   
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
   transient StringTagArray unplacedSymbols dependsFrom
-    self.componentName, self.mSymbols, self.mSymbols.all.mSymbolInstanceName, self.mSymbols.all.mSymbolTypeName
+    self.componentName,
+    self.mSymbols,
+    self.mSymbols.all.symbolInSchematics,
+    self.mSymbols.all.mSymbolInstanceName,
+    self.mSymbols.all.mSymbolTypeName
   ;
 
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;  
@@ -251,11 +255,18 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property String mSymbolTypeName default "" ;
   
   transient ComponentSymbolInfo symbolInfo dependsFrom
-     self.mComponent.one.deviceSymbolDictionary, self.mSymbolInstanceName, self.mSymbolTypeName, self.mCenterX, self.mCenterY ;
+     self.mComponent.one.deviceSymbolDictionary,
+     self.mSymbolInstanceName,
+     self.mSymbolTypeName,
+#     super.SchematicsObject.isPlacedInSchematics,
+     self.mCenterX,
+     self.mCenterY ;
+ 
+  transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;
+
+  override transient EBShape objectDisplay dependsFrom self.symbolInfo ;
   
-  transient EBShape objectDisplay dependsFrom self.symbolInfo ;
-  
-  transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
+  override transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,7 +274,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SheetInProject {
-  toMany SchematicsObject mObjects ;
+  toMany SchematicsObject mObjects inverse toOne mSheet ;
 
   property String mSheetTitle default "" ;
 }
@@ -273,6 +284,9 @@ entity SheetInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SchematicsObject {
+  toOne SheetInProject mSheet inverse toMany mObjects ;
+  
+  transient Bool isPlacedInSchematics dependsFrom self.mSheet.none ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

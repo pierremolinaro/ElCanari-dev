@@ -2062,7 +2062,8 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageArc?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
 
   //····················································································································
 
@@ -2139,7 +2140,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.radius_property.mSetterDelegate = nil
             managedObject.startAngle_property.mSetterDelegate = nil

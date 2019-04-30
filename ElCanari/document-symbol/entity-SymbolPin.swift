@@ -1896,7 +1896,8 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPin?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
 
   //····················································································································
 
@@ -1973,7 +1974,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.yPin_property.mSetterDelegate = nil
             managedObject.xName_property.mSetterDelegate = nil
             managedObject.yName_property.mSetterDelegate = nil

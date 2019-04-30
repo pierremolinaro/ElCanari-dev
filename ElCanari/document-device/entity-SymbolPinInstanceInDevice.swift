@@ -1023,7 +1023,8 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPinInstanceInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPinInstanceInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinInstanceInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1100,7 +1101,7 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties

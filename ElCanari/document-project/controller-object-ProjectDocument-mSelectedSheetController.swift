@@ -51,14 +51,23 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
   //    Controller
   //····················································································································
 
-  private var mController : EBSimpleController? = nil
+  private var mModelController : EBSimpleController? = nil
+  private var mBoundObjectController_mObjects : EBSimpleController? = nil
 
   //····················································································································
 
   func bind_model (_ inToOneRelationship : ToOneRelationship_ProjectRoot_mSelectedSheet) {
-    self.mController = EBSimpleController (
+    self.mModelController = EBSimpleController (
       observedObjects: [inToOneRelationship],
       callBack: { [weak self] in self?.modelDidChange (inToOneRelationship) }
+    )
+    self.mBoundObjectController_mObjects = EBSimpleController (
+      observedObjects: [self.mObjects_property],
+      callBack: { [weak self] in
+        let objects = self?.mObjects_property.propval ?? []
+        //NSLog ("bound objects \(objects.count) \(self?.mModel)")
+        self?.mModel?.mObjects = objects
+      }
     )
   }
 
@@ -66,18 +75,18 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
 
   private func modelDidChange (_ inToOneRelationship : ToOneRelationship_ProjectRoot_mSelectedSheet) {
     self.mModel = inToOneRelationship.propval
-    let objects = self.mModel?.mObjects_property.propval ?? []
-    self.mObjects_property.setProp (objects)
-    // NSLog ("objects \(objects.count)")
+    self.mObjects_property.setProp (self.mModel?.mObjects_property.propval ?? [])
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.mController?.unregister ()
-    self.mController = nil
+    self.mModelController?.unregister ()
+    self.mModelController = nil
+    self.mBoundObjectController_mObjects?.unregister ()
+    self.mBoundObjectController_mObjects = nil
     self.mModel = nil
- }
+  }
 
   //····················································································································
   //    Model
@@ -86,14 +95,12 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
   private var mModel : SheetInProject? = nil {
     didSet {
       if self.mModel !== oldValue {
-      //--- ToMany relationshipmObjects
-        // oldValue?.mObjects_property.removeEBObserver (self.mObjects_property)
-        // self.mModel?.mObjects_property.addEBObserver (self.mObjects_property)
-        if let controller = self.mController {
+      //--- ToMany relationship mObjects
+        if let controller = self.mModelController {
           oldValue?.mObjects_property.removeEBObserver (controller)
           self.mModel?.mObjects_property.addEBObserver (controller)
         }
-      //--- Atomic propertymSheetTitle
+      //--- Atomic property mSheetTitle
         oldValue?.mSheetTitle_property.removeEBObserver (self.mSheetTitle_property)
         self.mModel?.mSheetTitle_property.addEBObserver (self.mSheetTitle_property)
       }

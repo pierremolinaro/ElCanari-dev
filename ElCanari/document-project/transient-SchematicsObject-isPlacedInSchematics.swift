@@ -11,21 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_symbolInfo (
-       _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
-       _ self_mSymbolInstanceName : String,         
-       _ self_mSymbolTypeName : String,             
-       _ self_mCenterX : Int,                       
-       _ self_mCenterY : Int
-) -> ComponentSymbolInfo {
+func transient_SchematicsObject_isPlacedInSchematics (
+       _ self_mSheet_none : Bool
+) -> Bool {
 //--- START OF USER ZONE 2
-        let key = TwoStrings (self_mSymbolInstanceName, self_mSymbolTypeName)
-        let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
-        let tr = NSAffineTransform ()
-        tr.translateX (by: canariUnitToCocoa (self_mCenterX - deviceInfo.center.x), yBy: canariUnitToCocoa (self_mCenterY - deviceInfo.center.y))
-        let shape = deviceInfo.shape.transformedBy (tr)
-        let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
-  return ComponentSymbolInfo (shape: shape, center: componentSymbolCenter)
+        return !self_mSheet_none
 //--- END OF USER ZONE 2
 }
 

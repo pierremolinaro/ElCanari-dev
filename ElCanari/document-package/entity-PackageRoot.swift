@@ -2491,7 +2491,8 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
 
   //····················································································································
 
@@ -2568,7 +2569,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
             managedObject.selectedInspector_property.mSetterDelegate = nil
             managedObject.comments_property.mSetterDelegate = nil

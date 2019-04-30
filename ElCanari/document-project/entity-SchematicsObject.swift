@@ -17,12 +17,71 @@ protocol SchematicsObject_objectDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SchematicsObject_isPlacedInSchematics : class {
+  var isPlacedInSchematics : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SchematicsObject : EBGraphicManagedObject,
          SchematicsObject_selectionDisplay,
-         SchematicsObject_objectDisplay {
+         SchematicsObject_objectDisplay,
+         SchematicsObject_isPlacedInSchematics {
+
+  //····················································································································
+  //   To one property: mSheet
+  //····················································································································
+
+  let mSheet_property = ToOneRelationship_SchematicsObject_mSheet ()
+
+  //····················································································································
+
+  var mSheet_property_selection : EBSelection <SheetInProject?> {
+    return .single (self.mSheet_property.propval)
+  }
+
+  //····················································································································
+
+  var mSheet : SheetInProject? {
+    get { return self.mSheet_property.propval }
+    set { self.mSheet_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSheet_none : ToOneRelationship_SchematicsObject_mSheet { return self.mSheet_property }
+
+  //····················································································································
+
+  var mSheet_none_selection : EBSelection <Bool> {
+    return .single (self.mSheet_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: isPlacedInSchematics
+  //····················································································································
+
+  var isPlacedInSchematics_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var isPlacedInSchematics_property_selection : EBSelection <Bool> {
+    return self.isPlacedInSchematics_property.prop
+  }
+
+  //····················································································································
+
+  var isPlacedInSchematics : Bool? {
+    switch self.isPlacedInSchematics_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //    init
@@ -30,6 +89,30 @@ class SchematicsObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To one property: mSheet
+    self.mSheet_property.owner = self
+  //--- Atomic property: isPlacedInSchematics
+    self.isPlacedInSchematics_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheet_none_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSheet_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SchematicsObject_isPlacedInSchematics (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheet_property.addEBObserver (self.isPlacedInSchematics_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -39,6 +122,7 @@ class SchematicsObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mSheet_property.removeEBObserver (self.isPlacedInSchematics_property)
   //--- Unregister properties for handling signature
   }
 
@@ -70,8 +154,23 @@ class SchematicsObject : EBGraphicManagedObject,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
       valueExplorer:&self.objectDisplay_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "isPlacedInSchematics",
+      idx:self.isPlacedInSchematics_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.isPlacedInSchematics_property.mObserverExplorer,
+      valueExplorer:&self.isPlacedInSchematics_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mSheet",
+      idx:self.mSheet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mSheet_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -80,6 +179,9 @@ class SchematicsObject : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To one property: mSheet
+    self.mSheet_property.mObserverExplorer = nil
+    self.mSheet_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -98,6 +200,7 @@ class SchematicsObject : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mSheet_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -117,6 +220,17 @@ class SchematicsObject : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mSheet
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mSheet",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? SheetInProject {
+        self.mSheet_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -133,6 +247,10 @@ class SchematicsObject : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mSheet
+    if let managedObject = self.mSheet_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -141,6 +259,10 @@ class SchematicsObject : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mSheet
+    if let managedObject = self.mSheet_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -266,6 +388,62 @@ class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <Schemati
   }
 
   //····················································································································
+  //   Observers of 'isPlacedInSchematics' transient property
+  //····················································································································
+
+  private var mObserversOf_isPlacedInSchematics = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isPlacedInSchematics.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isPlacedInSchematics_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isPlacedInSchematics.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isPlacedInSchematics_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isPlacedInSchematics_toElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematics_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_isPlacedInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematics_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -378,7 +556,8 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
 
   //····················································································································
 
@@ -455,12 +634,13 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -473,6 +653,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         //--- Add observers of transient properties
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -594,6 +775,131 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mSheet
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SchematicsObject? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : SheetInProject? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mObjects_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mObjects_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
+      //--- Add property observers to new object
+        self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : SheetInProject? { return self.mValue }
+
+  var prop : EBSelection <SheetInProject?> { return .single (self.mValue) }
+
+  func setProp (_ value : SheetInProject?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : SheetInProject?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : SheetInProject) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSheetTitle
+  //····················································································································
+
+  private var mObserversOf_mSheetTitle = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSheetTitle_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSheetTitle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
+    self.mObserversOf_mSheetTitle.insert (inObserver)
+    if let object = self.propval {
+      object.mSheetTitle_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
+    self.mObserversOf_mSheetTitle.remove (inObserver)
+    if let object = self.propval {
+      object.mSheetTitle_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

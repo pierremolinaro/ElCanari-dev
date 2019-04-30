@@ -47,6 +47,12 @@ protocol ComponentSymbolInProject_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_symbolInSchematics : class {
+  var symbolInSchematics : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mSymbolTypeName,
          ComponentSymbolInProject_symbolInfo,
          ComponentSymbolInProject_objectDisplay,
-         ComponentSymbolInProject_selectionDisplay {
+         ComponentSymbolInProject_selectionDisplay,
+         ComponentSymbolInProject_symbolInSchematics {
 
   //····················································································································
   //   Atomic property: mCenterX
@@ -180,6 +187,29 @@ class ComponentSymbolInProject : SchematicsObject,
   }
 
   //····················································································································
+  //   Transient property: symbolInSchematics
+  //····················································································································
+
+  var symbolInSchematics_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var symbolInSchematics_property_selection : EBSelection <Bool> {
+    return self.symbolInSchematics_property.prop
+  }
+
+  //····················································································································
+
+  var symbolInSchematics : Bool? {
+    switch self.symbolInSchematics_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -269,6 +299,28 @@ class ComponentSymbolInProject : SchematicsObject,
       }
     }
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: symbolInSchematics
+    self.symbolInSchematics_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.isPlacedInSchematics_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.isPlacedInSchematics_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentSymbolInProject_symbolInSchematics (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.isPlacedInSchematics_property.addEBObserver (self.symbolInSchematics_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -285,6 +337,7 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
+    self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
   //--- Unregister properties for handling signature
   }
 
@@ -355,6 +408,14 @@ class ComponentSymbolInProject : SchematicsObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolInSchematics",
+      idx:self.symbolInSchematics_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolInSchematics_property.mObserverExplorer,
+      valueExplorer:&self.symbolInSchematics_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -894,6 +955,62 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   }
 
   //····················································································································
+  //   Observers of 'symbolInSchematics' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolInSchematics = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolInSchematics (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolInSchematics.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolInSchematics_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolInSchematics (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolInSchematics.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolInSchematics_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolInSchematics_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.symbolInSchematics_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolInSchematics_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.symbolInSchematics_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -969,6 +1086,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -980,6 +1098,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.addEBObserversOf_symbolInfo_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1028,7 +1147,8 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1105,7 +1225,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
@@ -1120,6 +1240,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1141,6 +1262,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

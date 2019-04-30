@@ -989,8 +989,13 @@ class PackagePad : PackageObject,
     g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padName_property.addEBObserver (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageSlavePad?) in
-      inManagedObject?.master_property.setProp (self)
+    self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageSlavePad) in
+      if let me = self {
+        inManagedObject.master_property.setProp (me)
+      }
+    }
+    self.slaves_property.resetOppositeRelationship = { (_ inManagedObject : PackageSlavePad) in
+      inManagedObject.master_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
@@ -3133,7 +3138,8 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackagePad?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
 
   //····················································································································
 
@@ -3210,7 +3216,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = nil
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil

@@ -21,7 +21,7 @@ graphic entity SymbolPin : SymbolObject {
   
   transient NSBezierPath filledBezierPath dependsFrom self.xPin, self.yPin ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xName, self.yName, 
      self.xNumber, self.yNumber, 
@@ -30,14 +30,14 @@ graphic entity SymbolPin : SymbolObject {
      prefs.symbolColor, prefs.pinNameFont
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xName, self.yName, 
      self.xNumber, self.yNumber,
      self.nameHorizontalAlignment, self.numberHorizontalAlignment
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
      self.xPin, self.yPin, 
      self.xName, self.yName, 
      self.xNumber, self.yNumber, 
@@ -59,16 +59,16 @@ graphic entity SymbolText : SymbolObject {
   property @signature String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.text, self.horizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.text, self.horizontalAlignment, prefs.pinNameFont
   ;
 
-  transient CanariIssueArray issues dependsFrom self.x, self.y, self.text ;
+  override transient CanariIssueArray issues dependsFrom self.x, self.y, self.text ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -81,16 +81,16 @@ graphic entity SymbolSolidRect : SymbolObject {
   
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
 
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
   
-  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,15 +103,16 @@ graphic entity SymbolOval : SymbolObject {
  
   transient NSBezierPath strokeBezierPath dependsFrom self.x, self.y, self.width, self.height ;
  
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
-  transient EBShape selectionDisplay dependsFrom
+
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
   
-  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -124,15 +125,15 @@ graphic entity SymbolSolidOval : SymbolObject {
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
   
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor
   ;
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
   
-  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -152,17 +153,17 @@ graphic entity SymbolBezierCurve : SymbolObject {
      self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
  
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.cpx1, self.cpy1, self.cpx2, self.cpy2,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
-  transient EBShape selectionDisplay dependsFrom
+  override transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
   
-  transient CanariIssueArray issues dependsFrom
+  override transient CanariIssueArray issues dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
@@ -178,12 +179,12 @@ graphic entity SymbolSegment : SymbolObject {
   
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient EBShape objectDisplay dependsFrom
+  override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
-  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

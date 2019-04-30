@@ -628,8 +628,13 @@ class DeviceInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_shape (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_center (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
-    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
-      inManagedObject?.mDevice_property.setProp (self)
+    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject) in
+      if let me = self {
+        inManagedObject.mDevice_property.setProp (me)
+      }
+    }
+    self.mComponents_property.resetOppositeRelationship = { (_ inManagedObject : ComponentInProject) in
+      inManagedObject.mDevice_property.setProp (nil)
     }
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1813,7 +1818,8 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1890,7 +1896,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mDeviceName_property.mSetterDelegate = nil
             managedObject.mPrefix_property.mSetterDelegate = nil
             managedObject.mDeviceVersion_property.mSetterDelegate = nil

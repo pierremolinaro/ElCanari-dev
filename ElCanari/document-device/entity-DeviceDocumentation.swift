@@ -578,7 +578,8 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
 
   //····················································································································
 
@@ -655,7 +656,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mFileName_property.mSetterDelegate = nil
             managedObject.mFileData_property.mSetterDelegate = nil
           }

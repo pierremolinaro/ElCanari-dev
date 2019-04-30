@@ -1063,8 +1063,13 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
-      inManagedObject?.mRoot_property.setProp (self)
+    self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice) in
+      if let me = self {
+        inManagedObject.mRoot_property.setProp (me)
+      }
+    }
+    self.mPackages_property.resetOppositeRelationship = { (_ inManagedObject : PackageInDevice) in
+      inManagedObject.mRoot_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.mComments_property.setSignatureObserver (observer: self)
@@ -3304,7 +3309,8 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
 
   //····················································································································
 
@@ -3381,7 +3387,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
             managedObject.mTitle_property.mSetterDelegate = nil
             managedObject.mPrefix_property.mSetterDelegate = nil

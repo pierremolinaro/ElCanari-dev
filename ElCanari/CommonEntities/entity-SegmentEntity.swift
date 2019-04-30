@@ -744,7 +744,8 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
 
   //····················································································································
 
@@ -821,7 +822,7 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil

@@ -942,7 +942,8 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1019,7 +1020,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties

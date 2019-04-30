@@ -2622,7 +2622,8 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
 
   //····················································································································
 
@@ -2699,7 +2700,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.drawBoardLimits_property.mSetterDelegate = nil
             managedObject.drawInternalBoardLimits_property.mSetterDelegate = nil
             managedObject.drawComponentNamesTopSide_property.mSetterDelegate = nil

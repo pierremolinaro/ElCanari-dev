@@ -1111,7 +1111,8 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidOval?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidOval) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidOval) -> Void > = nil
 
   //····················································································································
 
@@ -1188,7 +1189,7 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
             managedObject.height_property.mSetterDelegate = nil

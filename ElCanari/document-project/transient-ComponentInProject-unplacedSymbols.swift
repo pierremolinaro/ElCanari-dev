@@ -14,6 +14,7 @@ import Cocoa
 func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,              
        _ self_mSymbols : [EBManagedObject_alloc_index_protocol],
+       _ self_mSymbols_symbolInSchematics : [ComponentSymbolInProject_symbolInSchematics],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
        _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName]
 ) -> StringTagArray {
@@ -21,16 +22,19 @@ func transient_ComponentInProject_unplacedSymbols (
         var result = StringTagArray ()
         var idx = 0
         while idx < self_mSymbols_mSymbolInstanceName.count {
-          let ebObjectIndex = self_mSymbols [idx].ebObjectIndex
-          let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
-          let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
-          idx += 1
-          var name = self_componentName
-          if symbolInstanceName != "" {
-            name += ":" + symbolInstanceName
+          let inSchematics = self_mSymbols_symbolInSchematics [idx].symbolInSchematics!
+          if !inSchematics {
+            let ebObjectIndex = self_mSymbols [idx].ebObjectIndex
+            let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
+            let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
+            var name = self_componentName
+            if symbolInstanceName != "" {
+              name += ":" + symbolInstanceName
+            }
+            name += " (" + symbolTypeName + ")"
+            result.append (StringTag (name, ebObjectIndex))
           }
-          name += " (" + symbolTypeName + ")"
-          result.append (StringTag (name, ebObjectIndex))
+          idx += 1
         }
         return result
 //--- END OF USER ZONE 2

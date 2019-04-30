@@ -2039,7 +2039,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot) -> Void > = nil
 
   //····················································································································
 
@@ -2116,7 +2117,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
             managedObject.mSelectedSchematicsInspector_property.mSetterDelegate = nil
             managedObject.mSchematicsTitle_property.mSetterDelegate = nil

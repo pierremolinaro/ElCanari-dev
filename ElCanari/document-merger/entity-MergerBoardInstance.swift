@@ -1242,7 +1242,8 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
 
   //····················································································································
 
@@ -1319,7 +1320,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.x_property.mSetterDelegate = nil
             managedObject.y_property.mSetterDelegate = nil
             managedObject.instanceRotation_property.mSetterDelegate = nil

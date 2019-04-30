@@ -1095,7 +1095,8 @@ final class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMast
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceMasterPadInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceMasterPadInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceMasterPadInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1172,7 +1173,7 @@ final class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMast
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mWidth_property.mSetterDelegate = nil

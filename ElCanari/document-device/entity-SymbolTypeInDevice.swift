@@ -348,8 +348,13 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice?) in
-      inManagedObject?.mType_property.setProp (self)
+    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice) in
+      if let me = self {
+        inManagedObject.mType_property.setProp (me)
+      }
+    }
+    self.mInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolInstanceInDevice) in
+      inManagedObject.mType_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
@@ -1240,7 +1245,8 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1317,7 +1323,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mTypeName_property.mSetterDelegate = nil
             managedObject.mVersion_property.mSetterDelegate = nil
             managedObject.mFileData_property.mSetterDelegate = nil

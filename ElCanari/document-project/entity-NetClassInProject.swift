@@ -515,8 +515,13 @@ class NetClassInProject : EBManagedObject,
     }
     self.mNets_property.addEBObserver (self.netUsage_property)
   //--- Install undoers and opposite setter for relationships
-    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject : NetInProject?) in
-      inManagedObject?.mNetClass_property.setProp (self)
+    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject : NetInProject) in
+      if let me = self {
+        inManagedObject.mNetClass_property.setProp (me)
+      }
+    }
+    self.mNets_property.resetOppositeRelationship = { (_ inManagedObject : NetInProject) in
+      inManagedObject.mNetClass_property.setProp (nil)
     }
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1706,7 +1711,8 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1783,7 +1789,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mNetClassName_property.mSetterDelegate = nil
             managedObject.mNetClassColor_property.mSetterDelegate = nil
             managedObject.mNetWidth_property.mSetterDelegate = nil

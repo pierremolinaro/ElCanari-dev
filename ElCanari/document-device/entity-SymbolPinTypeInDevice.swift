@@ -363,8 +363,13 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.nameShape_property)
   //--- Install undoers and opposite setter for relationships
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice?) in
-      inManagedObject?.mType_property.setProp (self)
+    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice) in
+      if let me = self {
+        inManagedObject.mType_property.setProp (me)
+      }
+    }
+    self.mInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolPinInstanceInDevice) in
+      inManagedObject.mType_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.mName_property.setSignatureObserver (observer: self)
@@ -1475,7 +1480,8 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1552,7 +1558,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mPinX_property.mSetterDelegate = nil
             managedObject.mPinY_property.mSetterDelegate = nil
             managedObject.mXName_property.mSetterDelegate = nil

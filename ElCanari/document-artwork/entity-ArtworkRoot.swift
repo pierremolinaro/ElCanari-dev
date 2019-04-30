@@ -1425,7 +1425,8 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
 
   //····················································································································
 
@@ -1502,7 +1503,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.selectedTab_property.mSetterDelegate = nil
             managedObject.comments_property.mSetterDelegate = nil
             managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = nil

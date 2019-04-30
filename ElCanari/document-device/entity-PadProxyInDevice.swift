@@ -884,7 +884,8 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -961,7 +962,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mPadName_property.mSetterDelegate = nil
             managedObject.mIsNC_property.mSetterDelegate = nil
           }

@@ -164,18 +164,19 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
 
   //····················································································································
 
-  override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+    let pasteboard = sender.draggingPasteboard
     var ok = false
-    if let documentView = destinationScrollView.documentView {
+    if let documentView = destinationScrollView.documentView,
+       let _ = pasteboard.data (forType: kDragAndDropSymbolType),
+       let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
-      // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
-      let pasteboard = sender.draggingPasteboard
-      if let _ = pasteboard.data (forType: kDragAndDropSymbolType), let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
-       // NSLog ("\(symbolInstanceName)")
-        self.rootObject.mSelectedSheet?.mObjects.append (symbol)
-        ok = true
-      }
+      let p = draggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (50))
+      symbol.mCenterX = p.x
+      symbol.mCenterY = p.y
+      self.rootObject.mSelectedSheet?.mObjects.append (symbol)
+      ok = true
     }
     return ok
   }

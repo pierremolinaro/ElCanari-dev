@@ -2489,7 +2489,8 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
 
   //····················································································································
 
@@ -2566,7 +2567,7 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = nil
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil

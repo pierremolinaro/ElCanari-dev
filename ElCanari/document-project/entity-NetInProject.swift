@@ -405,7 +405,8 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
 
   //····················································································································
 
@@ -482,7 +483,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mNetName_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties

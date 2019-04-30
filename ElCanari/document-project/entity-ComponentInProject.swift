@@ -479,15 +479,16 @@ class ComponentInProject : EBManagedObject,
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
+        kind &= unwSelf.mSymbols_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.componentName_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ComponentInProject_unplacedSymbols (v0, v1, v2, v3))
+          switch (unwSelf.componentName_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_ComponentInProject_unplacedSymbols (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -498,11 +499,17 @@ class ComponentInProject : EBManagedObject,
     }
     self.componentName_property.addEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserver (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
   //--- Install undoers and opposite setter for relationships
-    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentSymbolInProject?) in
-      inManagedObject?.mComponent_property.setProp (self)
+    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentSymbolInProject) in
+      if let me = self {
+        inManagedObject.mComponent_property.setProp (me)
+      }
+    }
+    self.mSymbols_property.resetOppositeRelationship = { (_ inManagedObject : ComponentSymbolInProject) in
+      inManagedObject.mComponent_property.setProp (nil)
     }
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -520,6 +527,7 @@ class ComponentInProject : EBManagedObject,
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.componentName_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserver (self.unplacedSymbols_property)
+    self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
  //   self.mSymbols_property.setOppositeRelationship = nil
@@ -1454,7 +1462,8 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1531,7 +1540,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mNamePrefix_property.mSetterDelegate = nil
             managedObject.mNameIndex_property.mSetterDelegate = nil
             managedObject.mComponentValue_property.mSetterDelegate = nil

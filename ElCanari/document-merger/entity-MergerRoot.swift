@@ -941,8 +941,13 @@ class MergerRoot : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
-      inManagedObject?.myRoot_property.setProp (self)
+    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance) in
+      if let me = self {
+        inManagedObject.myRoot_property.setProp (me)
+      }
+    }
+    self.boardInstances_property.resetOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
+      inManagedObject.myRoot_property.setProp (nil)
     }
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -3156,7 +3161,8 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
 
   //····················································································································
 
@@ -3233,7 +3239,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
             managedObject.zoom_property.mSetterDelegate = nil
             managedObject.automaticBoardSize_property.mSetterDelegate = nil

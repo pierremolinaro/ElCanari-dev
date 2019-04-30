@@ -875,7 +875,8 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
 
   //····················································································································
 
@@ -952,7 +953,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.x1_property.mSetterDelegate = nil
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil

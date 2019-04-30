@@ -1574,7 +1574,8 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolBezierCurve?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolBezierCurve) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolBezierCurve) -> Void > = nil
 
   //····················································································································
 
@@ -1651,7 +1652,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil

@@ -3,7 +3,7 @@ digraph G {
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>mObjects|String mSheetTitle"] ;
-  SchematicsObject[label="<SchematicsObject>SchematicsObject"] ;
+  SchematicsObject[label="<SchematicsObject>SchematicsObject|<mSheet>mSheet"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
@@ -16,14 +16,14 @@ digraph G {
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>mDevice|Int mNameIndex|String mNamePrefix|<mSelectedPackage>mSelectedPackage|<mSymbols>mSymbols"] ;
-  ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|Int mCenterX|Int mCenterY|<mComponent>mComponent|String mSymbolInstanceName|String mSymbolTypeName"] ;
+  ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|Int mCenterX|Int mCenterY|<mComponent>mComponent|<mSheet>mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
   ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mNetClasses -> NetClassInProject:NetClassInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mSelectedSheet -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=onormal] ;
   ProjectRoot:mSheets -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=vee] ;
-  SheetInProject:mObjects -> SchematicsObject:SchematicsObject [dir=both arrowtail=none arrowhead=vee] ;
+  SheetInProject:mObjects -> SchematicsObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
   NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;

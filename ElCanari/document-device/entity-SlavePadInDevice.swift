@@ -1440,7 +1440,8 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1517,7 +1518,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mWidth_property.mSetterDelegate = nil

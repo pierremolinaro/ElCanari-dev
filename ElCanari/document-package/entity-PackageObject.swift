@@ -472,7 +472,8 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageObject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageObject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageObject) -> Void > = nil
 
   //····················································································································
 
@@ -549,7 +550,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties

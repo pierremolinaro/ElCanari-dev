@@ -1517,7 +1517,8 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageOval?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
 
   //····················································································································
 
@@ -1594,7 +1595,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
             managedObject.height_property.mSetterDelegate = nil

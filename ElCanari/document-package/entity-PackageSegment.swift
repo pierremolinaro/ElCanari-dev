@@ -1748,7 +1748,8 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSegment?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
 
   //····················································································································
 
@@ -1825,7 +1826,7 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil

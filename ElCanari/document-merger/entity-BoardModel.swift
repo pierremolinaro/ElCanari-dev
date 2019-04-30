@@ -3316,8 +3316,13 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
   //--- Install undoers and opposite setter for relationships
-    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
-      inManagedObject?.myModel_property.setProp (self)
+    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance) in
+      if let me = self {
+        inManagedObject.myModel_property.setProp (me)
+      }
+    }
+    self.myInstances_property.resetOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
+      inManagedObject.myModel_property.setProp (nil)
     }
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -7897,7 +7902,8 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
 
   //····················································································································
 
@@ -7974,7 +7980,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.name_property.mSetterDelegate = nil
             managedObject.modelWidth_property.mSetterDelegate = nil
             managedObject.modelWidthUnit_property.mSetterDelegate = nil

@@ -395,7 +395,8 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
 
   //····················································································································
 
@@ -472,7 +473,7 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mPackageName_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties

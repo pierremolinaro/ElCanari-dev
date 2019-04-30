@@ -782,7 +782,8 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
 
   //····················································································································
 
@@ -859,7 +860,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mFontName_property.mSetterDelegate = nil
             managedObject.mFontVersion_property.mSetterDelegate = nil
             managedObject.mDescriptiveString_property.mSetterDelegate = nil

@@ -544,7 +544,8 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
 
   //····················································································································
 
@@ -621,7 +622,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.padDiameter_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil

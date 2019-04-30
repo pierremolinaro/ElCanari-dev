@@ -1466,7 +1466,8 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
 
   //····················································································································
 
@@ -1543,7 +1544,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mPinName_property.mSetterDelegate = nil
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
             managedObject.mPinX_property.mSetterDelegate = nil

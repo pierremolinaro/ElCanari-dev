@@ -669,7 +669,8 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolTypeInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolTypeInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolTypeInProject) -> Void > = nil
 
   //····················································································································
 
@@ -746,7 +747,7 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mSymbolTypeName_property.mSetterDelegate = nil
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil

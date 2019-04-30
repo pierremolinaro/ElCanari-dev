@@ -396,8 +396,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice?) in
-      inManagedObject?.mSymbolInstance_property.setProp (self)
+    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice) in
+      if let me = self {
+        inManagedObject.mSymbolInstance_property.setProp (me)
+      }
+    }
+    self.mPinInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolPinInstanceInDevice) in
+      inManagedObject.mSymbolInstance_property.setProp (nil)
     }
   //--- Register properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: self)
@@ -1278,7 +1283,8 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
 
   //····················································································································
 
@@ -1355,7 +1361,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mInstanceName_property.mSetterDelegate = nil
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil

@@ -1216,7 +1216,8 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
 
   //····················································································································
 
@@ -1293,7 +1294,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.codePoint_property.mSetterDelegate = nil
             managedObject.advance_property.mSetterDelegate = nil
             managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = nil

@@ -59,11 +59,22 @@ class SheetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To many property: mObjects (no option)
+  //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
+    self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SchematicsObject?) in
+      inManagedObject?.mSheet_property.setProp (self)
+    }
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
+    self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SchematicsObject) in
+      if let me = self {
+        inManagedObject.mSheet_property.setProp (me)
+      }
+    }
+    self.mObjects_property.resetOppositeRelationship = { (_ inManagedObject : SchematicsObject) in
+      inManagedObject.mSheet_property.setProp (nil)
+    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -72,6 +83,7 @@ class SheetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+ //   self.mObjects_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -395,7 +407,8 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SheetInProject?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
 
   //····················································································································
 
@@ -472,7 +485,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.setOppositeRelationship? (nil)
+            self.resetOppositeRelationship? (managedObject)
             managedObject.mSheetTitle_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
