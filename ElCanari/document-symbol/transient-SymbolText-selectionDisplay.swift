@@ -28,7 +28,7 @@ func transient_SymbolText_selectionDisplay (
     let bp = NSBezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
     shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-    shape.append (EBKnobShape (at: origin, index: 0, .rect))
+    shape.append (EBKnobShape (at: origin, index: 0, .rect, 2.0))
     return shape
 //--- END OF USER ZONE 2
 }

@@ -34,11 +34,11 @@ func transient_SymbolPin_selectionDisplay (
     bp.lineCapStyle = .round
     shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
   //--- Pin
-    shape.append (EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect))
+    shape.append (EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect, 2.0))
   //--- Name
-    shape.append (EBKnobShape (at: namePoint, index: SYMBOL_PIN_LABEL, .circ))
+    shape.append (EBKnobShape (at: namePoint, index: SYMBOL_PIN_LABEL, .circ, 2.0))
   //--- Number
-    shape.append (EBKnobShape (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ))
+    shape.append (EBKnobShape (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ, 2.0))
   //---
     return shape
 //--- END OF USER ZONE 2

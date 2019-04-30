@@ -26,10 +26,10 @@ func transient_SymbolSolidOval_selectionDisplay (
   let bp = NSBezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_OVAL_BOTTOM, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_OVAL_TOP, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_RIGHT, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_LEFT, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_OVAL_BOTTOM, .circ, 2.0))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_OVAL_TOP, .circ, 2.0))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_RIGHT, .circ, 2.0))
+  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_LEFT, .circ, 2.0))
   return shape
 
 //--- END OF USER ZONE 2

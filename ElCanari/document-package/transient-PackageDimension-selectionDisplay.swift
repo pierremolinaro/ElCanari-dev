@@ -38,8 +38,8 @@ func transient_PackageDimension_selectionDisplay (
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   let shape = EBShape ()
   shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: p1, index: PACKAGE_DIMENSION_ENDPOINT_1, .circ))
-  shape.append (EBKnobShape (at: p2, index: PACKAGE_DIMENSION_ENDPOINT_2, .circ))
+  shape.append (EBKnobShape (at: p1, index: PACKAGE_DIMENSION_ENDPOINT_1, .circ, 2.0))
+  shape.append (EBKnobShape (at: p2, index: PACKAGE_DIMENSION_ENDPOINT_2, .circ, 2.0))
   shape.append (EBTextKnobShape (dimensionText, pText, prefs_dimensionFont, .center, .center, PACKAGE_DIMENSION_TEXT))
 //---
   return shape

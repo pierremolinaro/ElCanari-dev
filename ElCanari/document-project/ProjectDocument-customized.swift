@@ -97,7 +97,8 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
       sheetDown: self.mSheetDownButton
     )
   //---
-    self.mSchematicsView?.mGridStepInCanariUnit = milsToCanariUnit (100)
+    self.mSchematicsView?.mGridStepInCanariUnit = milsToCanariUnit (50)
+    self.mSchematicsView?.set (mouseGridInCanariUnit: milsToCanariUnit (50))
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
     self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolType])
     self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolType)
