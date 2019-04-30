@@ -1953,12 +1953,6 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageArc> ()
 
   //····················································································································
@@ -2131,7 +2125,6 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
   private var mSet = Set <PackageArc> ()
   private var mValue = [PackageArc] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2161,23 +2154,6 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
             managedObject.endTangentUnit_property.mSetterDelegate = nil
             managedObject.xCenter_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_radius_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_startAngle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_arcAngle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_startTangent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_endTangent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_radiusUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_radius_fromElementsOfSet (removedObjectSet)
@@ -2218,23 +2194,6 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
             managedObject.endTangentUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.xCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_radius_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_startAngle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_arcAngle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_startTangent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_endTangent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pathIsClosed_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_radiusUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_startTangentUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_endTangentUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_radius_toElementsOfSet (addedObjectSet)

@@ -933,12 +933,6 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <ComponentSymbolInProject> ()
 
   //····················································································································
@@ -1091,7 +1085,6 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
   private var mSet = Set <ComponentSymbolInProject> ()
   private var mValue = [ComponentSymbolInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1112,13 +1105,6 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
             managedObject.mSymbolTypeName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
@@ -1140,13 +1126,6 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)

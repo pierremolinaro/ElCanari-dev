@@ -311,12 +311,6 @@ class TransientArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 
   //····················································································································
 
-//  override init () {
-//    super.init ()
-//  }
-
-  //····················································································································
-
   private var mSet = Set <SchematicsObject> ()
 
   //····················································································································
@@ -447,7 +441,6 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
   private var mSet = Set <SchematicsObject> ()
   private var mValue = [SchematicsObject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -464,8 +457,6 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -478,8 +469,6 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
         //--- Add observers of transient properties
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

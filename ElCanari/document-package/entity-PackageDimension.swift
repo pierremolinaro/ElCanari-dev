@@ -1962,12 +1962,6 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageDimension> ()
 
   //····················································································································
@@ -2140,7 +2134,6 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   private var mSet = Set <PackageDimension> ()
   private var mValue = [PackageDimension] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2170,23 +2163,6 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
             managedObject.distanceUnit_property.mSetterDelegate = nil
             managedObject.x1_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xDimension_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yDimension_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xDimensionUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yDimensionUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_distanceUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_distanceInCanariUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
@@ -2227,23 +2203,6 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
             managedObject.distanceUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xDimension_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yDimension_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xDimensionUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yDimensionUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_distanceUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_distanceInCanariUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)

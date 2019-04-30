@@ -586,12 +586,6 @@ class TransientArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceSymbolTypeInProject> ()
 
   //····················································································································
@@ -738,7 +732,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
   private var mSet = Set <DeviceSymbolTypeInProject> ()
   private var mValue = [DeviceSymbolTypeInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -758,10 +751,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
@@ -779,10 +768,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
             managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)

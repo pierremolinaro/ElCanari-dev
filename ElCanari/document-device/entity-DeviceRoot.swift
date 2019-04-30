@@ -3179,12 +3179,6 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceRoot> ()
 
   //····················································································································
@@ -3373,7 +3367,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   private var mSet = Set <DeviceRoot> ()
   private var mValue = [DeviceRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -3405,31 +3398,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = nil
             managedObject.mImageData_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mComments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mImageData_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet)
@@ -3480,31 +3448,6 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
             managedObject.mSymbolDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mComments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mImageData_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet)

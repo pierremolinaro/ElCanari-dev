@@ -1149,12 +1149,6 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolTypeInDevice> ()
 
   //····················································································································
@@ -1309,7 +1303,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   private var mSet = Set <SymbolTypeInDevice> ()
   private var mValue = [SymbolTypeInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1331,14 +1324,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
             managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
             managedObject.mFilledBezierPath_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
@@ -1362,14 +1347,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
             managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinNameShape_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)

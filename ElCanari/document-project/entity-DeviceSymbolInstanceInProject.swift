@@ -737,12 +737,6 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceSymbolInstanceInProject> ()
 
   //····················································································································
@@ -889,7 +883,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
   private var mSet = Set <DeviceSymbolInstanceInProject> ()
   private var mValue = [DeviceSymbolInstanceInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -907,10 +900,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             self.setOppositeRelationship? (nil)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -926,10 +915,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
             self.setOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties

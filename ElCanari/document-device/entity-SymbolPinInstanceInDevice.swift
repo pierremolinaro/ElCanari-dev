@@ -956,12 +956,6 @@ class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolPinInst
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolPinInstanceInDevice> ()
 
   //····················································································································
@@ -1092,7 +1086,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   private var mSet = Set <SymbolPinInstanceInDevice> ()
   private var mValue = [SymbolPinInstanceInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1109,11 +1102,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
-       //   self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_numberShape_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
           self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
@@ -1129,11 +1117,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
-        // self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
         //--- Add observers of transient properties
           self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)

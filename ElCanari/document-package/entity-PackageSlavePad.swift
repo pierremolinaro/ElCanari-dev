@@ -2374,12 +2374,6 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageSlavePad> ()
 
   //····················································································································
@@ -2558,7 +2552,6 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
   private var mSet = Set <PackageSlavePad> ()
   private var mValue = [PackageSlavePad] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2588,26 +2581,6 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
             managedObject.holeDiameterUnit_property.mSetterDelegate = nil
             managedObject.annularRingUnit_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padShape_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padStyle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
@@ -2651,26 +2624,6 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
             managedObject.holeDiameterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.annularRingUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padShape_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padStyle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)

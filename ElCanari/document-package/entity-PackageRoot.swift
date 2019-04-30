@@ -2378,12 +2378,6 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageRoot> ()
 
   //····················································································································
@@ -2560,7 +2554,6 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   private var mSet = Set <PackageRoot> ()
   private var mValue = [PackageRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2591,25 +2584,6 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
             managedObject.xPlacardUnit_property.mSetterDelegate = nil
             managedObject.yPlacardUnit_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_program_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
@@ -2653,25 +2627,6 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
             managedObject.xPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_program_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)

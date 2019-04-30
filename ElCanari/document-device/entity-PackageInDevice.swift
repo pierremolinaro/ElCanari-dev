@@ -1615,12 +1615,6 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageInDevice> ()
 
   //····················································································································
@@ -1783,7 +1777,6 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
   private var mSet = Set <PackageInDevice> ()
   private var mValue = [PackageInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1806,18 +1799,6 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padNameSet_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
@@ -1846,18 +1827,6 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padNameSet_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)

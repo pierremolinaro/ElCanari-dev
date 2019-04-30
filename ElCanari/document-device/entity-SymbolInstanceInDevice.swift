@@ -1187,12 +1187,6 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolInstanceInDevice> ()
 
   //····················································································································
@@ -1347,7 +1341,6 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
   private var mSet = Set <SymbolInstanceInDevice> ()
   private var mValue = [SymbolInstanceInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1367,14 +1360,6 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
@@ -1396,14 +1381,6 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)

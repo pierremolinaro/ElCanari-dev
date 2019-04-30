@@ -328,12 +328,6 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <NetInProject> ()
 
   //····················································································································
@@ -474,7 +468,6 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
   private var mSet = Set <NetInProject> ()
   private var mValue = [NetInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -492,7 +485,6 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
             self.setOppositeRelationship? (nil)
             managedObject.mNetName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -505,7 +497,6 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
             self.setOppositeRelationship? (managedObject)
             managedObject.mNetName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties

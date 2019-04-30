@@ -799,12 +799,6 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PadProxyInDevice> ()
 
   //····················································································································
@@ -953,7 +947,6 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   private var mSet = Set <PadProxyInDevice> ()
   private var mValue = [PadProxyInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -972,11 +965,6 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
             managedObject.mPadName_property.mSetterDelegate = nil
             managedObject.mIsNC_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedObjectSet)
@@ -994,11 +982,6 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
             managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mIsNC_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mIsNC_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mIsNC_toElementsOfSet (addedObjectSet)

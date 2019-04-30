@@ -1378,12 +1378,6 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDe
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolPinTypeInDevice> ()
 
   //····················································································································
@@ -1544,7 +1538,6 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
   private var mSet = Set <SymbolPinTypeInDevice> ()
   private var mValue = [SymbolPinTypeInDevice] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1571,17 +1564,6 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
             managedObject.mYNumber_property.mSetterDelegate = nil
             managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mYName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_nameShape_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet)
@@ -1613,17 +1595,6 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
             managedObject.mYNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mYName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mXNumber_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mYNumber_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_nameShape_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet)

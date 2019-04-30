@@ -697,12 +697,6 @@ class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <FontInProject> ()
 
   //····················································································································
@@ -851,7 +845,6 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
   private var mSet = Set <FontInProject> ()
   private var mValue = [FontInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -871,11 +864,6 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
             managedObject.mFontVersion_property.mSetterDelegate = nil
             managedObject.mDescriptiveString_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mFontName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mFontName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedObjectSet)
@@ -894,11 +882,6 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
             managedObject.mFontVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDescriptiveString_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mFontName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mFontVersion_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mFontName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFontVersion_toElementsOfSet (addedObjectSet)

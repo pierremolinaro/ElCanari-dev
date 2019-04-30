@@ -463,12 +463,6 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <BoardModelVia> ()
 
   //····················································································································
@@ -613,7 +607,6 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   private var mSet = Set <BoardModelVia> ()
   private var mValue = [BoardModelVia] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -633,9 +626,6 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
             managedObject.padDiameter_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
@@ -652,9 +642,6 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
             managedObject.padDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)

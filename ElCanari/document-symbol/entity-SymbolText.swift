@@ -897,12 +897,6 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolText> ()
 
   //····················································································································
@@ -1055,7 +1049,6 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   private var mSet = Set <SymbolText> ()
   private var mValue = [SymbolText] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1076,13 +1069,6 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
             managedObject.horizontalAlignment_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
@@ -1104,13 +1090,6 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
             managedObject.horizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_text_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_text_toElementsOfSet (addedObjectSet)

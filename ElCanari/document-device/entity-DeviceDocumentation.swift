@@ -497,12 +497,6 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceDocumentation> ()
 
   //····················································································································
@@ -647,7 +641,6 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
   private var mSet = Set <DeviceDocumentation> ()
   private var mValue = [DeviceDocumentation] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -666,9 +659,6 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
             managedObject.mFileName_property.mSetterDelegate = nil
             managedObject.mFileData_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
@@ -684,9 +674,6 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
             managedObject.mFileName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)

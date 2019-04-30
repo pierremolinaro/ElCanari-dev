@@ -788,12 +788,6 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SegmentForFontCharacter> ()
 
   //····················································································································
@@ -944,7 +938,6 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   private var mSet = Set <SegmentForFontCharacter> ()
   private var mValue = [SegmentForFontCharacter] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -965,12 +958,6 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
@@ -991,12 +978,6 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)

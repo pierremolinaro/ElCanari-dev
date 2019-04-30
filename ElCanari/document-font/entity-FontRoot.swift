@@ -1570,12 +1570,6 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <FontRoot> ()
 
   //····················································································································
@@ -1738,7 +1732,6 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   private var mSet = Set <FontRoot> ()
   private var mValue = [FontRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1760,18 +1753,6 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
             managedObject.selectedInspector_property.mSetterDelegate = nil
             managedObject.currentCharacterCodePoint_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_definedCharacters_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
@@ -1799,18 +1780,6 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
             managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.currentCharacterCodePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_definedCharacters_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)

@@ -27,7 +27,7 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
   }
 
   //····················································································································
-  //  Property needed for handling "symbol count" to insert in segmented cointrol title
+  //  Property needed for handling "symbol count" to insert in segmented control title
   //····················································································································
 
   fileprivate var mSymbolCountToInsertController : EBSimpleController? = nil
@@ -170,31 +170,10 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
       // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
       let pasteboard = sender.draggingPasteboard
-      if let data = pasteboard.data (forType: kDragAndDropSymbolType), let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
+      if let _ = pasteboard.data (forType: kDragAndDropSymbolType), let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
        // NSLog ("\(symbolInstanceName)")
         self.rootObject.mSelectedSheet?.mObjects.append (symbol)
         ok = true
-//        var possibleBoardModel : BoardModel? = nilm
-//        for boardModel in self.rootObject.boardModels_property.propval {
-//          if boardModel.name == boardModelName {
-//            possibleBoardModel = boardModel
-//            break
-//          }
-//        }
-//        if  let boardModel = possibleBoardModel {
-//         // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
-//          let rotation = QuadrantRotation (rawValue: self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
-//          let newBoard = MergerBoardInstance (self.ebUndoManager)
-//          newBoard.myModel_property.setProp (boardModel)
-//          newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
-//          newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
-//          newBoard.instanceRotation = rotation
-//          self.rootObject.boardInstances_property.add (newBoard)
-//          self.mBoardInstanceController.setSelection ([newBoard])
-//          ok = true
-//        }else{
-//          NSLog ("Cannot find '\(boardModelName)' board model")
-//        }
       }
     }
     return ok

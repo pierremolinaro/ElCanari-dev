@@ -1605,12 +1605,6 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <NetClassInProject> ()
 
   //····················································································································
@@ -1775,7 +1769,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   private var mSet = Set <NetClassInProject> ()
   private var mValue = [NetClassInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1800,19 +1793,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
             managedObject.mViaPadDiameter_property.mSetterDelegate = nil
             managedObject.mViaPadDiameterUnit_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_netWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet)
@@ -1844,19 +1824,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
             managedObject.mViaPadDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mViaPadDiameterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNetWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_netWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet)

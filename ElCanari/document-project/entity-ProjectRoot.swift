@@ -1936,12 +1936,6 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <ProjectRoot> ()
 
   //····················································································································
@@ -2108,7 +2102,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   private var mSet = Set <ProjectRoot> ()
   private var mValue = [ProjectRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2136,20 +2129,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = nil
             managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
@@ -2185,20 +2164,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
             managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)

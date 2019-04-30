@@ -318,12 +318,6 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SheetInProject> ()
 
   //····················································································································
@@ -464,7 +458,6 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
   private var mSet = Set <SheetInProject> ()
   private var mValue = [SheetInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -482,7 +475,6 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
             self.setOppositeRelationship? (nil)
             managedObject.mSheetTitle_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -495,7 +487,6 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
             self.setOppositeRelationship? (managedObject)
             managedObject.mSheetTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties

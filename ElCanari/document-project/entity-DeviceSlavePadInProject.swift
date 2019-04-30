@@ -855,12 +855,6 @@ class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadI
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceSlavePadInProject> ()
 
   //····················································································································
@@ -1013,7 +1007,6 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
   private var mSet = Set <DeviceSlavePadInProject> ()
   private var mValue = [DeviceSlavePadInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1037,13 +1030,6 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
             managedObject.mShape_property.mSetterDelegate = nil
             managedObject.mStyle_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
@@ -1068,13 +1054,6 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
             managedObject.mShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)

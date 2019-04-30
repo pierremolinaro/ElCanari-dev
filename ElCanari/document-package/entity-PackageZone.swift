@@ -2063,12 +2063,6 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageZone> ()
 
   //····················································································································
@@ -2243,7 +2237,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   private var mSet = Set <PackageZone> ()
   private var mValue = [PackageZone] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2274,24 +2267,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
             managedObject.yNameUnit_property.mSetterDelegate = nil
             managedObject.zoneNumbering_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_rect_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -2334,24 +2309,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
             managedObject.yNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.zoneNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)

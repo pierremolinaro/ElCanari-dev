@@ -35,13 +35,13 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
   //   ToMany relationship: mObjects
   //····················································································································
 
-  var mObjects_property = StoredArrayOf_SchematicsObject ()
+  let mObjects_property = StoredArrayOf_SchematicsObject ()
 
   //····················································································································
   //   Observable atomic property: mSheetTitle
   //····················································································································
 
-  var mSheetTitle_property = EBPropertyProxy_String ()
+  let mSheetTitle_property = EBPropertyProxy_String ()
 
   var mSheetTitle_property_selection : EBSelection <String> {
     return self.mSheetTitle_property.prop
@@ -68,6 +68,7 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
     self.mModel = inToOneRelationship.propval
     let objects = self.mModel?.mObjects_property.propval ?? []
     self.mObjects_property.setProp (objects)
+    // NSLog ("objects \(objects.count)")
   }
 
   //····················································································································
@@ -85,10 +86,16 @@ final class Controller_ProjectDocument_mSelectedSheetController : EBObject {
   private var mModel : SheetInProject? = nil {
     didSet {
       if self.mModel !== oldValue {
+      //--- ToMany relationshipmObjects
+        // oldValue?.mObjects_property.removeEBObserver (self.mObjects_property)
+        // self.mModel?.mObjects_property.addEBObserver (self.mObjects_property)
+        if let controller = self.mController {
+          oldValue?.mObjects_property.removeEBObserver (controller)
+          self.mModel?.mObjects_property.addEBObserver (controller)
+        }
+      //--- Atomic propertymSheetTitle
         oldValue?.mSheetTitle_property.removeEBObserver (self.mSheetTitle_property)
         self.mModel?.mSheetTitle_property.addEBObserver (self.mSheetTitle_property)
-        oldValue?.mObjects_property.removeEBObserver (self.mObjects_property)
-        self.mModel?.mObjects_property.addEBObserver (self.mObjects_property)
       }
     }
   }

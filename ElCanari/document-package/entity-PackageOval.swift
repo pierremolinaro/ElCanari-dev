@@ -1418,12 +1418,6 @@ class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <PackageOval> ()
 
   //····················································································································
@@ -1586,7 +1580,6 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
   private var mSet = Set <PackageOval> ()
   private var mValue = [PackageOval] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1611,18 +1604,6 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
             managedObject.heightUnit_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
@@ -1653,18 +1634,6 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
             managedObject.heightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)

@@ -1711,12 +1711,6 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DeviceInProject> ()
 
   //····················································································································
@@ -1879,7 +1873,6 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
   private var mSet = Set <DeviceInProject> ()
   private var mValue = [DeviceInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1900,18 +1893,6 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
             managedObject.mDeviceVersion_property.mSetterDelegate = nil
             managedObject.mDeviceFileData_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
@@ -1938,18 +1919,6 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
             managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDeviceFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)

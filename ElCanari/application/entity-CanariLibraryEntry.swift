@@ -680,12 +680,6 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <CanariLibraryEntry> ()
 
   //····················································································································
@@ -834,7 +828,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   private var mSet = Set <CanariLibraryEntry> ()
   private var mValue = [CanariLibraryEntry] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -855,11 +848,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
             managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
@@ -879,11 +867,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)

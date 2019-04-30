@@ -1361,12 +1361,6 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <ComponentInProject> ()
 
   //····················································································································
@@ -1523,7 +1517,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   private var mSet = Set <ComponentInProject> ()
   private var mValue = [ComponentInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1543,15 +1536,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             managedObject.mNameIndex_property.mSetterDelegate = nil
             managedObject.mComponentValue_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
@@ -1574,15 +1558,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
             managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_mComponentValue_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)

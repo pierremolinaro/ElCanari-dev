@@ -2501,12 +2501,6 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <ArtworkFileGenerationParameters> ()
 
   //····················································································································
@@ -2691,7 +2685,6 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   private var mSet = Set <ArtworkFileGenerationParameters> ()
   private var mValue = [ArtworkFileGenerationParameters] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2731,29 +2724,6 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
             managedObject.measurementUnitForPadHoleInPDF_property.mSetterDelegate = nil
             managedObject.padHoleDiameterInPDF_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drawVias_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_fileExtension_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
@@ -2810,29 +2780,6 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
             managedObject.measurementUnitForPadHoleInPDF_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.padHoleDiameterInPDF_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drawVias_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_fileExtension_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_horizontalMirror_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)

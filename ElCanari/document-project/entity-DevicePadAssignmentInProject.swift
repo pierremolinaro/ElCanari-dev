@@ -455,12 +455,6 @@ class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadA
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DevicePadAssignmentInProject> ()
 
   //····················································································································
@@ -603,7 +597,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
   private var mSet = Set <DevicePadAssignmentInProject> ()
   private var mValue = [DevicePadAssignmentInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -621,8 +614,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
             self.setOppositeRelationship? (nil)
             managedObject.mPadName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -636,8 +627,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
             self.setOppositeRelationship? (managedObject)
             managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinPadAssignment_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties

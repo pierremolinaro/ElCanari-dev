@@ -3029,12 +3029,6 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <MergerRoot> ()
 
   //····················································································································
@@ -3225,7 +3219,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   private var mSet = Set <MergerRoot> ()
   private var mValue = [MergerRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -3262,32 +3255,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
             managedObject.generatePDFProductFile_property.mSetterDelegate = nil
             managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
@@ -3344,32 +3311,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
             managedObject.generatePDFProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)

@@ -1023,12 +1023,6 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolOval> ()
 
   //····················································································································
@@ -1183,7 +1177,6 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
   private var mSet = Set <SymbolOval> ()
   private var mValue = [SymbolOval] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1204,14 +1197,6 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
             managedObject.height_property.mSetterDelegate = nil
             managedObject.x_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
@@ -1234,14 +1219,6 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
             managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)

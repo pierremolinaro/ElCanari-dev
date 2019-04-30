@@ -1518,12 +1518,6 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolRoot> ()
 
   //····················································································································
@@ -1686,7 +1680,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   private var mSet = Set <SymbolRoot> ()
   private var mValue = [SymbolRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1713,18 +1706,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
             managedObject.yPlacardUnit_property.mSetterDelegate = nil
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
@@ -1757,18 +1738,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
             managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)

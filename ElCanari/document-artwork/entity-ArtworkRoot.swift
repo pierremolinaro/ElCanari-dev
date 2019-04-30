@@ -1328,12 +1328,6 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <ArtworkRoot> ()
 
   //····················································································································
@@ -1494,7 +1488,6 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   private var mSet = Set <ArtworkRoot> ()
   private var mValue = [ArtworkRoot] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1522,17 +1515,6 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
             managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = nil
             managedObject.drillDataFileExtension_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
@@ -1565,17 +1547,6 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
             managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.drillDataFileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)

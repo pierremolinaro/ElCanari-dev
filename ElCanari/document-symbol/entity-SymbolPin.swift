@@ -1791,12 +1791,6 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SymbolPin> ()
 
   //····················································································································
@@ -1965,7 +1959,6 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   private var mSet = Set <SymbolPin> ()
   private var mValue = [SymbolPin] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1992,21 +1985,6 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
             managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
             managedObject.xPin_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
@@ -2042,21 +2020,6 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
             managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.xPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)

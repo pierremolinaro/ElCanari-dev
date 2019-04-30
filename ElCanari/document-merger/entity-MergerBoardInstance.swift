@@ -1151,12 +1151,6 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <MergerBoardInstance> ()
 
   //····················································································································
@@ -1311,7 +1305,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   private var mSet = Set <MergerBoardInstance> ()
   private var mValue = [MergerBoardInstance] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1331,14 +1324,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
             managedObject.y_property.mSetterDelegate = nil
             managedObject.instanceRotation_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -1360,14 +1345,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.instanceRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)

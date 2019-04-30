@@ -659,12 +659,6 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <SegmentEntity> ()
 
   //····················································································································
@@ -813,7 +807,6 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
   private var mSet = Set <SegmentEntity> ()
   private var mValue = [SegmentEntity] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -835,11 +828,6 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
             managedObject.width_property.mSetterDelegate = nil
             managedObject.x1_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-       //   self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
@@ -860,11 +848,6 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        // self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)

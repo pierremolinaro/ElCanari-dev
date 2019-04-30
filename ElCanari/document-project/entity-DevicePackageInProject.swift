@@ -318,12 +318,6 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
   private var mSet = Set <DevicePackageInProject> ()
 
   //····················································································································
@@ -464,7 +458,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
   private var mSet = Set <DevicePackageInProject> ()
   private var mValue = [DevicePackageInProject] () {
     didSet {
-     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -482,7 +475,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
             self.setOppositeRelationship? (nil)
             managedObject.mPackageName_property.mSetterDelegate = nil
           }
-       //   self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPackageName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
@@ -495,7 +487,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
             self.setOppositeRelationship? (managedObject)
             managedObject.mPackageName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-        // self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet)
         //--- Add observers of stored properties
           self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
