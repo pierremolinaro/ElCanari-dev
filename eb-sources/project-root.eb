@@ -280,8 +280,11 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property Int mDisplayComponentValueOffsetX default 0 ;
   property Int mDisplayComponentValueOffsetY default -457_200 ; # -200 mils
  
+  transient String componentName dependsFrom self.mComponent.one.componentName ;
+  transient String deviceName dependsFrom self.mComponent.one.deviceName ;
+  
   transient ComponentSymbolInfo symbolInfo dependsFrom
-     self.mComponent.one.componentName,
+     self.componentName,
      self.mComponent.one.mComponentValue,
      self.mComponent.one.deviceSymbolDictionary,
      self.mSymbolInstanceName,

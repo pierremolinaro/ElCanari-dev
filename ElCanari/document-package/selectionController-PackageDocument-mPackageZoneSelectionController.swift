@@ -11,183 +11,183 @@ import Cocoa
 final class SelectionController_PackageDocument_mPackageZoneSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: height
-  //····················································································································
-
-  var height_property = EBPropertyProxy_Int ()
-
-  var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: heightUnit
-  //····················································································································
-
-  var heightUnit_property = EBPropertyProxy_Int ()
-
-  var heightUnit_property_selection : EBSelection <Int> {
-    return self.heightUnit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: issues
-  //····················································································································
-
-  var issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: objectDisplay
-  //····················································································································
-
-  var objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: rect
-  //····················································································································
-
-  var rect_property = EBTransientProperty_CanariRect ()
-
-  var rect_property_selection : EBSelection <CanariRect> {
-    return self.rect_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: width
-  //····················································································································
-
-  var width_property = EBPropertyProxy_Int ()
-
-  var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: widthUnit
-  //····················································································································
-
-  var widthUnit_property = EBPropertyProxy_Int ()
-
-  var widthUnit_property_selection : EBSelection <Int> {
-    return self.widthUnit_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: x
   //····················································································································
 
-  var x_property = EBPropertyProxy_Int ()
+  let x_property = EBPropertyProxy_Int ()
 
   var x_property_selection : EBSelection <Int> {
     return self.x_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: xName
-  //····················································································································
-
-  var xName_property = EBPropertyProxy_Int ()
-
-  var xName_property_selection : EBSelection <Int> {
-    return self.xName_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xNameUnit
-  //····················································································································
-
-  var xNameUnit_property = EBPropertyProxy_Int ()
-
-  var xNameUnit_property_selection : EBSelection <Int> {
-    return self.xNameUnit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xUnit
-  //····················································································································
-
-  var xUnit_property = EBPropertyProxy_Int ()
-
-  var xUnit_property_selection : EBSelection <Int> {
-    return self.xUnit_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: y
   //····················································································································
 
-  var y_property = EBPropertyProxy_Int ()
+  let y_property = EBPropertyProxy_Int ()
 
   var y_property_selection : EBSelection <Int> {
     return self.y_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: yName
+  //   Selection observable property: width
   //····················································································································
 
-  var yName_property = EBPropertyProxy_Int ()
+  let width_property = EBPropertyProxy_Int ()
 
-  var yName_property_selection : EBSelection <Int> {
-    return self.yName_property.prop
+  var width_property_selection : EBSelection <Int> {
+    return self.width_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: yNameUnit
+  //   Selection observable property: height
   //····················································································································
 
-  var yNameUnit_property = EBPropertyProxy_Int ()
+  let height_property = EBPropertyProxy_Int ()
 
-  var yNameUnit_property_selection : EBSelection <Int> {
-    return self.yNameUnit_property.prop
+  var height_property_selection : EBSelection <Int> {
+    return self.height_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: xUnit
+  //····················································································································
+
+  let xUnit_property = EBPropertyProxy_Int ()
+
+  var xUnit_property_selection : EBSelection <Int> {
+    return self.xUnit_property.prop
   }
 
   //····················································································································
   //   Selection observable property: yUnit
   //····················································································································
 
-  var yUnit_property = EBPropertyProxy_Int ()
+  let yUnit_property = EBPropertyProxy_Int ()
 
   var yUnit_property_selection : EBSelection <Int> {
     return self.yUnit_property.prop
   }
 
   //····················································································································
+  //   Selection observable property: widthUnit
+  //····················································································································
+
+  let widthUnit_property = EBPropertyProxy_Int ()
+
+  var widthUnit_property_selection : EBSelection <Int> {
+    return self.widthUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: heightUnit
+  //····················································································································
+
+  let heightUnit_property = EBPropertyProxy_Int ()
+
+  var heightUnit_property_selection : EBSelection <Int> {
+    return self.heightUnit_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: zoneName
   //····················································································································
 
-  var zoneName_property = EBPropertyProxy_String ()
+  let zoneName_property = EBPropertyProxy_String ()
 
   var zoneName_property_selection : EBSelection <String> {
     return self.zoneName_property.prop
   }
 
   //····················································································································
+  //   Selection observable property: xName
+  //····················································································································
+
+  let xName_property = EBPropertyProxy_Int ()
+
+  var xName_property_selection : EBSelection <Int> {
+    return self.xName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: yName
+  //····················································································································
+
+  let yName_property = EBPropertyProxy_Int ()
+
+  var yName_property_selection : EBSelection <Int> {
+    return self.yName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: xNameUnit
+  //····················································································································
+
+  let xNameUnit_property = EBPropertyProxy_Int ()
+
+  var xNameUnit_property_selection : EBSelection <Int> {
+    return self.xNameUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: yNameUnit
+  //····················································································································
+
+  let yNameUnit_property = EBPropertyProxy_Int ()
+
+  var yNameUnit_property_selection : EBSelection <Int> {
+    return self.yNameUnit_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: zoneNumbering
   //····················································································································
 
-  var zoneNumbering_property = EBPropertyProxy_PadNumbering ()
+  let zoneNumbering_property = EBPropertyProxy_PadNumbering ()
 
   var zoneNumbering_property_selection : EBSelection <PadNumbering> {
     return self.zoneNumbering_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: objectDisplay
+  //····················································································································
+
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: selectionDisplay
+  //····················································································································
+
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: rect
+  //····················································································································
+
+  let rect_property = EBTransientProperty_CanariRect ()
+
+  var rect_property_selection : EBSelection <CanariRect> {
+    return self.rect_property.prop
   }
 
   //····················································································································
@@ -222,24 +222,24 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
     model.addEBObserver (self.mActualModel)
-    self.bind_property_height (model: self.mActualModel)
-    self.bind_property_heightUnit (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_rect (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_width (model: self.mActualModel)
-    self.bind_property_widthUnit (model: self.mActualModel)
     self.bind_property_x (model: self.mActualModel)
-    self.bind_property_xName (model: self.mActualModel)
-    self.bind_property_xNameUnit (model: self.mActualModel)
-    self.bind_property_xUnit (model: self.mActualModel)
     self.bind_property_y (model: self.mActualModel)
-    self.bind_property_yName (model: self.mActualModel)
-    self.bind_property_yNameUnit (model: self.mActualModel)
+    self.bind_property_width (model: self.mActualModel)
+    self.bind_property_height (model: self.mActualModel)
+    self.bind_property_xUnit (model: self.mActualModel)
     self.bind_property_yUnit (model: self.mActualModel)
+    self.bind_property_widthUnit (model: self.mActualModel)
+    self.bind_property_heightUnit (model: self.mActualModel)
     self.bind_property_zoneName (model: self.mActualModel)
+    self.bind_property_xName (model: self.mActualModel)
+    self.bind_property_yName (model: self.mActualModel)
+    self.bind_property_xNameUnit (model: self.mActualModel)
+    self.bind_property_yNameUnit (model: self.mActualModel)
     self.bind_property_zoneNumbering (model: self.mActualModel)
+    self.bind_property_objectDisplay (model: self.mActualModel)
+    self.bind_property_selectionDisplay (model: self.mActualModel)
+    self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_rect (model: self.mActualModel)
   }
 
   //····················································································································
@@ -249,88 +249,88 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
-  //--- height
-    self.height_property.mReadModelFunction = nil 
-    self.height_property.mWriteModelFunction = nil 
-    self.height_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_height (self.height_property)
-  //--- heightUnit
-    self.heightUnit_property.mReadModelFunction = nil 
-    self.heightUnit_property.mWriteModelFunction = nil 
-    self.heightUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_heightUnit (self.heightUnit_property)
-  //--- issues
-    self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- rect
-    self.rect_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_rect (self.rect_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- width
-    self.width_property.mReadModelFunction = nil 
-    self.width_property.mWriteModelFunction = nil 
-    self.width_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_width (self.width_property)
-  //--- widthUnit
-    self.widthUnit_property.mReadModelFunction = nil 
-    self.widthUnit_property.mWriteModelFunction = nil 
-    self.widthUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_widthUnit (self.widthUnit_property)
   //--- x
     self.x_property.mReadModelFunction = nil 
     self.x_property.mWriteModelFunction = nil 
     self.x_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x (self.x_property)
-  //--- xName
-    self.xName_property.mReadModelFunction = nil 
-    self.xName_property.mWriteModelFunction = nil 
-    self.xName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
-  //--- xNameUnit
-    self.xNameUnit_property.mReadModelFunction = nil 
-    self.xNameUnit_property.mWriteModelFunction = nil 
-    self.xNameUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xNameUnit (self.xNameUnit_property)
-  //--- xUnit
-    self.xUnit_property.mReadModelFunction = nil 
-    self.xUnit_property.mWriteModelFunction = nil 
-    self.xUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xUnit (self.xUnit_property)
   //--- y
     self.y_property.mReadModelFunction = nil 
     self.y_property.mWriteModelFunction = nil 
     self.y_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y (self.y_property)
-  //--- yName
-    self.yName_property.mReadModelFunction = nil 
-    self.yName_property.mWriteModelFunction = nil 
-    self.yName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
-  //--- yNameUnit
-    self.yNameUnit_property.mReadModelFunction = nil 
-    self.yNameUnit_property.mWriteModelFunction = nil 
-    self.yNameUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yNameUnit (self.yNameUnit_property)
+  //--- width
+    self.width_property.mReadModelFunction = nil 
+    self.width_property.mWriteModelFunction = nil 
+    self.width_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_width (self.width_property)
+  //--- height
+    self.height_property.mReadModelFunction = nil 
+    self.height_property.mWriteModelFunction = nil 
+    self.height_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_height (self.height_property)
+  //--- xUnit
+    self.xUnit_property.mReadModelFunction = nil 
+    self.xUnit_property.mWriteModelFunction = nil 
+    self.xUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xUnit (self.xUnit_property)
   //--- yUnit
     self.yUnit_property.mReadModelFunction = nil 
     self.yUnit_property.mWriteModelFunction = nil 
     self.yUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yUnit (self.yUnit_property)
+  //--- widthUnit
+    self.widthUnit_property.mReadModelFunction = nil 
+    self.widthUnit_property.mWriteModelFunction = nil 
+    self.widthUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_widthUnit (self.widthUnit_property)
+  //--- heightUnit
+    self.heightUnit_property.mReadModelFunction = nil 
+    self.heightUnit_property.mWriteModelFunction = nil 
+    self.heightUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_heightUnit (self.heightUnit_property)
   //--- zoneName
     self.zoneName_property.mReadModelFunction = nil 
     self.zoneName_property.mWriteModelFunction = nil 
     self.zoneName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_zoneName (self.zoneName_property)
+  //--- xName
+    self.xName_property.mReadModelFunction = nil 
+    self.xName_property.mWriteModelFunction = nil 
+    self.xName_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
+  //--- yName
+    self.yName_property.mReadModelFunction = nil 
+    self.yName_property.mWriteModelFunction = nil 
+    self.yName_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
+  //--- xNameUnit
+    self.xNameUnit_property.mReadModelFunction = nil 
+    self.xNameUnit_property.mWriteModelFunction = nil 
+    self.xNameUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xNameUnit (self.xNameUnit_property)
+  //--- yNameUnit
+    self.yNameUnit_property.mReadModelFunction = nil 
+    self.yNameUnit_property.mWriteModelFunction = nil 
+    self.yNameUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yNameUnit (self.yNameUnit_property)
   //--- zoneNumbering
     self.zoneNumbering_property.mReadModelFunction = nil 
     self.zoneNumbering_property.mWriteModelFunction = nil 
     self.zoneNumbering_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_zoneNumbering (self.zoneNumbering_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- rect
+    self.rect_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_rect (self.rect_property)
   //---
     self.mModel = nil    
   }
@@ -372,68 +372,12 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "height",
-      idx:self.height_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "heightUnit",
-      idx:self.heightUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.heightUnit_property.mObserverExplorer,
-      valueExplorer:&self.heightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "widthUnit",
-      idx:self.widthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.widthUnit_property.mObserverExplorer,
-      valueExplorer:&self.widthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "x",
       idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
       valueExplorer:&self.x_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xName",
-      idx:self.xName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xName_property.mObserverExplorer,
-      valueExplorer:&self.xName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xNameUnit",
-      idx:self.xNameUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xNameUnit_property.mObserverExplorer,
-      valueExplorer:&self.xNameUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xUnit",
-      idx:self.xUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xUnit_property.mObserverExplorer,
-      valueExplorer:&self.xUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y",
@@ -444,20 +388,28 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       valueExplorer:&self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "yName",
-      idx:self.yName_property.ebObjectIndex,
+      "width",
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.yName_property.mObserverExplorer,
-      valueExplorer:&self.yName_property.mValueExplorer
+      observerExplorer:&self.width_property.mObserverExplorer,
+      valueExplorer:&self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "yNameUnit",
-      idx:self.yNameUnit_property.ebObjectIndex,
+      "height",
+      idx:self.height_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.yNameUnit_property.mObserverExplorer,
-      valueExplorer:&self.yNameUnit_property.mValueExplorer
+      observerExplorer:&self.height_property.mObserverExplorer,
+      valueExplorer:&self.height_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xUnit",
+      idx:self.xUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xUnit_property.mObserverExplorer,
+      valueExplorer:&self.xUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yUnit",
@@ -468,12 +420,60 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       valueExplorer:&self.yUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "widthUnit",
+      idx:self.widthUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.widthUnit_property.mObserverExplorer,
+      valueExplorer:&self.widthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "heightUnit",
+      idx:self.heightUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.heightUnit_property.mObserverExplorer,
+      valueExplorer:&self.heightUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "zoneName",
       idx:self.zoneName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoneName_property.mObserverExplorer,
       valueExplorer:&self.zoneName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xName",
+      idx:self.xName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xName_property.mObserverExplorer,
+      valueExplorer:&self.xName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yName",
+      idx:self.yName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yName_property.mObserverExplorer,
+      valueExplorer:&self.yName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xNameUnit",
+      idx:self.xNameUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.xNameUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yNameUnit",
+      idx:self.yNameUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.yNameUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoneNumbering",
@@ -535,449 +535,9 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.mExplorerWindow = nil
   }
 
-  //···················································································································*
+  //····················································································································
 
-  private final func bind_property_height (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_height (self.height_property)
-    self.height_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.height_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.height_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.height_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.height_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_heightUnit (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_heightUnit (self.heightUnit_property)
-    self.heightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.heightUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.heightUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.heightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariIssueArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.issues_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_rect (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_rect (self.rect_property)
-    self.rect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariRect> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.rect_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_width (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_width (self.width_property)
-    self.width_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.width_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.width_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.width_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_widthUnit (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_widthUnit (self.widthUnit_property)
-    self.widthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.widthUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.widthUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.widthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x (model : ReadOnlyArrayOf_PackageZone) {
+  private final func bind_property_x (model : TransientArrayOf_PackageZone) {
     model.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1044,220 +604,9 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
-
-  private final func bind_property_xName (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_xName (self.xName_property)
-    self.xName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xName_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xNameUnit (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_xNameUnit (self.xNameUnit_property)
-    self.xNameUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xNameUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xNameUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xUnit (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_xUnit (self.xUnit_property)
-    self.xUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_y (model : ReadOnlyArrayOf_PackageZone) {
+  private final func bind_property_y (model : TransientArrayOf_PackageZone) {
     model.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1324,12 +673,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
-
-  private final func bind_property_yName (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_yName (self.yName_property)
-    self.yName_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_width (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_width (self.width_property)
+    self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1340,7 +688,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yName_property_selection {
+            switch object.width_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1363,26 +711,26 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.yName_property.setProp (inValue)
+            object.width_property.setProp (inValue)
           }
         }
       }
     }
-    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.width_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1394,12 +742,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
-
-  private final func bind_property_yNameUnit (model : ReadOnlyArrayOf_PackageZone) {
-    model.addEBObserverOf_yNameUnit (self.yNameUnit_property)
-    self.yNameUnit_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_height (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_height (self.height_property)
+    self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1410,7 +757,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yNameUnit_property_selection {
+            switch object.height_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1433,26 +780,26 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.yNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.height_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.yNameUnit_property.setProp (inValue)
+            object.height_property.setProp (inValue)
           }
         }
       }
     }
-    self.yNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.yNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.height_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1464,10 +811,78 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
+  private final func bind_property_xUnit (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_xUnit (self.xUnit_property)
+    self.xUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
 
-  private final func bind_property_yUnit (model : ReadOnlyArrayOf_PackageZone) {
+  private final func bind_property_yUnit (model : TransientArrayOf_PackageZone) {
     model.addEBObserverOf_yUnit (self.yUnit_property)
     self.yUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1534,10 +949,147 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
+  private final func bind_property_widthUnit (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_widthUnit (self.widthUnit_property)
+    self.widthUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.widthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.widthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.widthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
 
-  private final func bind_property_zoneName (model : ReadOnlyArrayOf_PackageZone) {
+  private final func bind_property_heightUnit (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_heightUnit (self.heightUnit_property)
+    self.heightUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.heightUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.heightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.heightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_zoneName (model : TransientArrayOf_PackageZone) {
     model.addEBObserverOf_zoneName (self.zoneName_property)
     self.zoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1604,10 +1156,285 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
+  private final func bind_property_xName (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_xName (self.xName_property)
+    self.xName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
 
-  private final func bind_property_zoneNumbering (model : ReadOnlyArrayOf_PackageZone) {
+  private final func bind_property_yName (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_yName (self.yName_property)
+    self.yName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_xNameUnit (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_xNameUnit (self.xNameUnit_property)
+    self.xNameUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xNameUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xNameUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_yNameUnit (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_yNameUnit (self.yNameUnit_property)
+    self.yNameUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yNameUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yNameUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_zoneNumbering (model : TransientArrayOf_PackageZone) {
     model.addEBObserverOf_zoneNumbering (self.zoneNumbering_property)
     self.zoneNumbering_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1674,7 +1501,162 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       }
     }
   }
+  //····················································································································
 
+  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_rect (model : TransientArrayOf_PackageZone) {
+    model.addEBObserverOf_rect (self.rect_property)
+    self.rect_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariRect> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.rect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
 
 
   //····················································································································

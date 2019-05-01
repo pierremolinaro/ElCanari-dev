@@ -11,100 +11,180 @@ import Cocoa
 final class SelectionController_PackageDocument_mPackageBezierCurveSelectionController : EBObject {
 
   //····················································································································
+  //   Selection observable property: y1
+  //····················································································································
+
+  let y1_property = EBPropertyProxy_Int ()
+
+  var y1_property_selection : EBSelection <Int> {
+    return self.y1_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: x2
+  //····················································································································
+
+  let x2_property = EBPropertyProxy_Int ()
+
+  var x2_property_selection : EBSelection <Int> {
+    return self.x2_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: y2
+  //····················································································································
+
+  let y2_property = EBPropertyProxy_Int ()
+
+  var y2_property_selection : EBSelection <Int> {
+    return self.y2_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: cpx1
   //····················································································································
 
-  var cpx1_property = EBPropertyProxy_Int ()
+  let cpx1_property = EBPropertyProxy_Int ()
 
   var cpx1_property_selection : EBSelection <Int> {
     return self.cpx1_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: cpx1Unit
-  //····················································································································
-
-  var cpx1Unit_property = EBPropertyProxy_Int ()
-
-  var cpx1Unit_property_selection : EBSelection <Int> {
-    return self.cpx1Unit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: cpx2
-  //····················································································································
-
-  var cpx2_property = EBPropertyProxy_Int ()
-
-  var cpx2_property_selection : EBSelection <Int> {
-    return self.cpx2_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: cpx2Unit
-  //····················································································································
-
-  var cpx2Unit_property = EBPropertyProxy_Int ()
-
-  var cpx2Unit_property_selection : EBSelection <Int> {
-    return self.cpx2Unit_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: cpy1
   //····················································································································
 
-  var cpy1_property = EBPropertyProxy_Int ()
+  let cpy1_property = EBPropertyProxy_Int ()
 
   var cpy1_property_selection : EBSelection <Int> {
     return self.cpy1_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: cpy1Unit
+  //   Selection observable property: cpx2
   //····················································································································
 
-  var cpy1Unit_property = EBPropertyProxy_Int ()
+  let cpx2_property = EBPropertyProxy_Int ()
 
-  var cpy1Unit_property_selection : EBSelection <Int> {
-    return self.cpy1Unit_property.prop
+  var cpx2_property_selection : EBSelection <Int> {
+    return self.cpx2_property.prop
   }
 
   //····················································································································
   //   Selection observable property: cpy2
   //····················································································································
 
-  var cpy2_property = EBPropertyProxy_Int ()
+  let cpy2_property = EBPropertyProxy_Int ()
 
   var cpy2_property_selection : EBSelection <Int> {
     return self.cpy2_property.prop
   }
 
   //····················································································································
+  //   Selection observable property: x1Unit
+  //····················································································································
+
+  let x1Unit_property = EBPropertyProxy_Int ()
+
+  var x1Unit_property_selection : EBSelection <Int> {
+    return self.x1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: y1Unit
+  //····················································································································
+
+  let y1Unit_property = EBPropertyProxy_Int ()
+
+  var y1Unit_property_selection : EBSelection <Int> {
+    return self.y1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: x2Unit
+  //····················································································································
+
+  let x2Unit_property = EBPropertyProxy_Int ()
+
+  var x2Unit_property_selection : EBSelection <Int> {
+    return self.x2Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: y2Unit
+  //····················································································································
+
+  let y2Unit_property = EBPropertyProxy_Int ()
+
+  var y2Unit_property_selection : EBSelection <Int> {
+    return self.y2Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: cpx1Unit
+  //····················································································································
+
+  let cpx1Unit_property = EBPropertyProxy_Int ()
+
+  var cpx1Unit_property_selection : EBSelection <Int> {
+    return self.cpx1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: cpy1Unit
+  //····················································································································
+
+  let cpy1Unit_property = EBPropertyProxy_Int ()
+
+  var cpy1Unit_property_selection : EBSelection <Int> {
+    return self.cpy1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: cpx2Unit
+  //····················································································································
+
+  let cpx2Unit_property = EBPropertyProxy_Int ()
+
+  var cpx2Unit_property_selection : EBSelection <Int> {
+    return self.cpx2Unit_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: cpy2Unit
   //····················································································································
 
-  var cpy2Unit_property = EBPropertyProxy_Int ()
+  let cpy2Unit_property = EBPropertyProxy_Int ()
 
   var cpy2Unit_property_selection : EBSelection <Int> {
     return self.cpy2Unit_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: issues
+  //   Selection observable property: x1
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let x1_property = EBPropertyProxy_Int ()
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+  var x1_property_selection : EBSelection <Int> {
+    return self.x1_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: strokeBezierPath
+  //····················································································································
+
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
     return self.objectDisplay_property.prop
@@ -114,100 +194,20 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
     return self.selectionDisplay_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: strokeBezierPath
+  //   Selection observable property: issues
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: x1
-  //····················································································································
-
-  var x1_property = EBPropertyProxy_Int ()
-
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: x1Unit
-  //····················································································································
-
-  var x1Unit_property = EBPropertyProxy_Int ()
-
-  var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: x2
-  //····················································································································
-
-  var x2_property = EBPropertyProxy_Int ()
-
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: x2Unit
-  //····················································································································
-
-  var x2Unit_property = EBPropertyProxy_Int ()
-
-  var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: y1
-  //····················································································································
-
-  var y1_property = EBPropertyProxy_Int ()
-
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: y1Unit
-  //····················································································································
-
-  var y1Unit_property = EBPropertyProxy_Int ()
-
-  var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: y2
-  //····················································································································
-
-  var y2_property = EBPropertyProxy_Int ()
-
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: y2Unit
-  //····················································································································
-
-  var y2Unit_property = EBPropertyProxy_Int ()
-
-  var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.prop
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -242,26 +242,26 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     model.addEBObserver (self.mActualModel)
+    self.bind_property_y1 (model: self.mActualModel)
+    self.bind_property_x2 (model: self.mActualModel)
+    self.bind_property_y2 (model: self.mActualModel)
     self.bind_property_cpx1 (model: self.mActualModel)
-    self.bind_property_cpx1Unit (model: self.mActualModel)
-    self.bind_property_cpx2 (model: self.mActualModel)
-    self.bind_property_cpx2Unit (model: self.mActualModel)
     self.bind_property_cpy1 (model: self.mActualModel)
-    self.bind_property_cpy1Unit (model: self.mActualModel)
+    self.bind_property_cpx2 (model: self.mActualModel)
     self.bind_property_cpy2 (model: self.mActualModel)
+    self.bind_property_x1Unit (model: self.mActualModel)
+    self.bind_property_y1Unit (model: self.mActualModel)
+    self.bind_property_x2Unit (model: self.mActualModel)
+    self.bind_property_y2Unit (model: self.mActualModel)
+    self.bind_property_cpx1Unit (model: self.mActualModel)
+    self.bind_property_cpy1Unit (model: self.mActualModel)
+    self.bind_property_cpx2Unit (model: self.mActualModel)
     self.bind_property_cpy2Unit (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_x1 (model: self.mActualModel)
+    self.bind_property_strokeBezierPath (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_strokeBezierPath (model: self.mActualModel)
-    self.bind_property_x1 (model: self.mActualModel)
-    self.bind_property_x1Unit (model: self.mActualModel)
-    self.bind_property_x2 (model: self.mActualModel)
-    self.bind_property_x2Unit (model: self.mActualModel)
-    self.bind_property_y1 (model: self.mActualModel)
-    self.bind_property_y1Unit (model: self.mActualModel)
-    self.bind_property_y2 (model: self.mActualModel)
-    self.bind_property_y2Unit (model: self.mActualModel)
+    self.bind_property_issues (model: self.mActualModel)
   }
 
   //····················································································································
@@ -271,98 +271,98 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
+  //--- y1
+    self.y1_property.mReadModelFunction = nil 
+    self.y1_property.mWriteModelFunction = nil 
+    self.y1_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_y1 (self.y1_property)
+  //--- x2
+    self.x2_property.mReadModelFunction = nil 
+    self.x2_property.mWriteModelFunction = nil 
+    self.x2_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_x2 (self.x2_property)
+  //--- y2
+    self.y2_property.mReadModelFunction = nil 
+    self.y2_property.mWriteModelFunction = nil 
+    self.y2_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_y2 (self.y2_property)
   //--- cpx1
     self.cpx1_property.mReadModelFunction = nil 
     self.cpx1_property.mWriteModelFunction = nil 
     self.cpx1_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_cpx1 (self.cpx1_property)
-  //--- cpx1Unit
-    self.cpx1Unit_property.mReadModelFunction = nil 
-    self.cpx1Unit_property.mWriteModelFunction = nil 
-    self.cpx1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx1Unit (self.cpx1Unit_property)
-  //--- cpx2
-    self.cpx2_property.mReadModelFunction = nil 
-    self.cpx2_property.mWriteModelFunction = nil 
-    self.cpx2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx2 (self.cpx2_property)
-  //--- cpx2Unit
-    self.cpx2Unit_property.mReadModelFunction = nil 
-    self.cpx2Unit_property.mWriteModelFunction = nil 
-    self.cpx2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx2Unit (self.cpx2Unit_property)
   //--- cpy1
     self.cpy1_property.mReadModelFunction = nil 
     self.cpy1_property.mWriteModelFunction = nil 
     self.cpy1_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_cpy1 (self.cpy1_property)
-  //--- cpy1Unit
-    self.cpy1Unit_property.mReadModelFunction = nil 
-    self.cpy1Unit_property.mWriteModelFunction = nil 
-    self.cpy1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpy1Unit (self.cpy1Unit_property)
+  //--- cpx2
+    self.cpx2_property.mReadModelFunction = nil 
+    self.cpx2_property.mWriteModelFunction = nil 
+    self.cpx2_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_cpx2 (self.cpx2_property)
   //--- cpy2
     self.cpy2_property.mReadModelFunction = nil 
     self.cpy2_property.mWriteModelFunction = nil 
     self.cpy2_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_cpy2 (self.cpy2_property)
+  //--- x1Unit
+    self.x1Unit_property.mReadModelFunction = nil 
+    self.x1Unit_property.mWriteModelFunction = nil 
+    self.x1Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_x1Unit (self.x1Unit_property)
+  //--- y1Unit
+    self.y1Unit_property.mReadModelFunction = nil 
+    self.y1Unit_property.mWriteModelFunction = nil 
+    self.y1Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_y1Unit (self.y1Unit_property)
+  //--- x2Unit
+    self.x2Unit_property.mReadModelFunction = nil 
+    self.x2Unit_property.mWriteModelFunction = nil 
+    self.x2Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_x2Unit (self.x2Unit_property)
+  //--- y2Unit
+    self.y2Unit_property.mReadModelFunction = nil 
+    self.y2Unit_property.mWriteModelFunction = nil 
+    self.y2Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_y2Unit (self.y2Unit_property)
+  //--- cpx1Unit
+    self.cpx1Unit_property.mReadModelFunction = nil 
+    self.cpx1Unit_property.mWriteModelFunction = nil 
+    self.cpx1Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_cpx1Unit (self.cpx1Unit_property)
+  //--- cpy1Unit
+    self.cpy1Unit_property.mReadModelFunction = nil 
+    self.cpy1Unit_property.mWriteModelFunction = nil 
+    self.cpy1Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_cpy1Unit (self.cpy1Unit_property)
+  //--- cpx2Unit
+    self.cpx2Unit_property.mReadModelFunction = nil 
+    self.cpx2Unit_property.mWriteModelFunction = nil 
+    self.cpx2Unit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_cpx2Unit (self.cpx2Unit_property)
   //--- cpy2Unit
     self.cpy2Unit_property.mReadModelFunction = nil 
     self.cpy2Unit_property.mWriteModelFunction = nil 
     self.cpy2Unit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_cpy2Unit (self.cpy2Unit_property)
-  //--- issues
-    self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- x1
+    self.x1_property.mReadModelFunction = nil 
+    self.x1_property.mWriteModelFunction = nil 
+    self.x1_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_x1 (self.x1_property)
+  //--- strokeBezierPath
+    self.strokeBezierPath_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- strokeBezierPath
-    self.strokeBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-  //--- x1
-    self.x1_property.mReadModelFunction = nil 
-    self.x1_property.mWriteModelFunction = nil 
-    self.x1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1 (self.x1_property)
-  //--- x1Unit
-    self.x1Unit_property.mReadModelFunction = nil 
-    self.x1Unit_property.mWriteModelFunction = nil 
-    self.x1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1Unit (self.x1Unit_property)
-  //--- x2
-    self.x2_property.mReadModelFunction = nil 
-    self.x2_property.mWriteModelFunction = nil 
-    self.x2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2 (self.x2_property)
-  //--- x2Unit
-    self.x2Unit_property.mReadModelFunction = nil 
-    self.x2Unit_property.mWriteModelFunction = nil 
-    self.x2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2Unit (self.x2Unit_property)
-  //--- y1
-    self.y1_property.mReadModelFunction = nil 
-    self.y1_property.mWriteModelFunction = nil 
-    self.y1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1 (self.y1_property)
-  //--- y1Unit
-    self.y1Unit_property.mReadModelFunction = nil 
-    self.y1Unit_property.mWriteModelFunction = nil 
-    self.y1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1Unit (self.y1Unit_property)
-  //--- y2
-    self.y2_property.mReadModelFunction = nil 
-    self.y2_property.mWriteModelFunction = nil 
-    self.y2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2 (self.y2_property)
-  //--- y2Unit
-    self.y2Unit_property.mReadModelFunction = nil 
-    self.y2Unit_property.mWriteModelFunction = nil 
-    self.y2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2Unit (self.y2Unit_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //---
     self.mModel = nil    
   }
@@ -404,36 +404,36 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
+      "y1",
+      idx:self.y1_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y1_property.mObserverExplorer,
+      valueExplorer:&self.y1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x2",
+      idx:self.x2_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x2_property.mObserverExplorer,
+      valueExplorer:&self.x2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y2",
+      idx:self.y2_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y2_property.mObserverExplorer,
+      valueExplorer:&self.y2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "cpx1",
       idx:self.cpx1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1_property.mObserverExplorer,
       valueExplorer:&self.cpx1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx1Unit",
-      idx:self.cpx1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpx1Unit_property.mObserverExplorer,
-      valueExplorer:&self.cpx1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx2",
-      idx:self.cpx2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpx2_property.mObserverExplorer,
-      valueExplorer:&self.cpx2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "cpx2Unit",
-      idx:self.cpx2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpx2Unit_property.mObserverExplorer,
-      valueExplorer:&self.cpx2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpy1",
@@ -444,12 +444,12 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       valueExplorer:&self.cpy1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "cpy1Unit",
-      idx:self.cpy1Unit_property.ebObjectIndex,
+      "cpx2",
+      idx:self.cpx2_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.cpy1Unit_property.mObserverExplorer,
-      valueExplorer:&self.cpy1Unit_property.mValueExplorer
+      observerExplorer:&self.cpx2_property.mObserverExplorer,
+      valueExplorer:&self.cpx2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpy2",
@@ -458,6 +458,62 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       view:view,
       observerExplorer:&self.cpy2_property.mObserverExplorer,
       valueExplorer:&self.cpy2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x1Unit",
+      idx:self.x1Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x1Unit_property.mObserverExplorer,
+      valueExplorer:&self.x1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y1Unit",
+      idx:self.y1Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y1Unit_property.mObserverExplorer,
+      valueExplorer:&self.y1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x2Unit",
+      idx:self.x2Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x2Unit_property.mObserverExplorer,
+      valueExplorer:&self.x2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y2Unit",
+      idx:self.y2Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y2Unit_property.mObserverExplorer,
+      valueExplorer:&self.y2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpx1Unit",
+      idx:self.cpx1Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpx1Unit_property.mObserverExplorer,
+      valueExplorer:&self.cpx1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpy1Unit",
+      idx:self.cpy1Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpy1Unit_property.mObserverExplorer,
+      valueExplorer:&self.cpy1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpx2Unit",
+      idx:self.cpx2Unit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpx2Unit_property.mObserverExplorer,
+      valueExplorer:&self.cpx2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpy2Unit",
@@ -474,62 +530,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
       valueExplorer:&self.x1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x1Unit",
-      idx:self.x1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1Unit_property.mObserverExplorer,
-      valueExplorer:&self.x1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2Unit",
-      idx:self.x2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2Unit_property.mObserverExplorer,
-      valueExplorer:&self.x2Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1",
-      idx:self.y1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1Unit",
-      idx:self.y1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1Unit_property.mObserverExplorer,
-      valueExplorer:&self.y1Unit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2Unit",
-      idx:self.y2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2Unit_property.mObserverExplorer,
-      valueExplorer:&self.y2Unit_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -583,1009 +583,9 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     self.mExplorerWindow = nil
   }
 
-  //···················································································································*
+  //····················································································································
 
-  private final func bind_property_cpx1 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpx1 (self.cpx1_property)
-    self.cpx1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpx1_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpx1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpx1_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpx1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpx1Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpx1Unit (self.cpx1Unit_property)
-    self.cpx1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpx1Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpx1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpx1Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpx1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpx2 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpx2 (self.cpx2_property)
-    self.cpx2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpx2_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpx2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpx2_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpx2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpx2Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpx2Unit (self.cpx2Unit_property)
-    self.cpx2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpx2Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpx2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpx2Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpx2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpx2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpy1 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpy1 (self.cpy1_property)
-    self.cpy1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpy1_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpy1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpy1_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpy1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpy1Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpy1Unit (self.cpy1Unit_property)
-    self.cpy1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpy1Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpy1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpy1Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpy1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpy2 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpy2 (self.cpy2_property)
-    self.cpy2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpy2_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpy2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpy2_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpy2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_cpy2Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_cpy2Unit (self.cpy2Unit_property)
-    self.cpy2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.cpy2Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.cpy2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.cpy2Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.cpy2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.cpy2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariIssueArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.issues_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_strokeBezierPath (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSBezierPath> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.strokeBezierPath_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x1 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_x1 (self.x1_property)
-    self.x1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.x1_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.x1_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x1Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_x1Unit (self.x1Unit_property)
-    self.x1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.x1Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.x1Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x2 (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_x2 (self.x2_property)
-    self.x2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.x2_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.x2_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x2Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_x2Unit (self.x2Unit_property)
-    self.x2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.x2Unit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.x2Unit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_y1 (model : ReadOnlyArrayOf_PackageBezier) {
+  private final func bind_property_y1 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1652,12 +652,11 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
-
-  private final func bind_property_y1Unit (model : ReadOnlyArrayOf_PackageBezier) {
-    model.addEBObserverOf_y1Unit (self.y1Unit_property)
-    self.y1Unit_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_x2 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_x2 (self.x2_property)
+    self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1668,7 +667,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y1Unit_property_selection {
+            switch object.x2_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1691,26 +690,26 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
         return .empty
       }
     }
-    self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.y1Unit_property.setProp (inValue)
+            object.x2_property.setProp (inValue)
           }
         }
       }
     }
-    self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.y1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.x2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1722,10 +721,9 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
-
-  private final func bind_property_y2 (model : ReadOnlyArrayOf_PackageBezier) {
+  private final func bind_property_y2 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1792,10 +790,492 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
+  private final func bind_property_cpx1 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpx1 (self.cpx1_property)
+    self.cpx1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpx1_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpx1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpx1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpx1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpx1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
 
-  private final func bind_property_y2Unit (model : ReadOnlyArrayOf_PackageBezier) {
+  private final func bind_property_cpy1 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpy1 (self.cpy1_property)
+    self.cpy1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpy1_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpy1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpy1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpy1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpy1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_cpx2 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpx2 (self.cpx2_property)
+    self.cpx2_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpx2_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpx2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpx2_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpx2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpx2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_cpy2 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpy2 (self.cpy2_property)
+    self.cpy2_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpy2_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpy2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpy2_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpy2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpy2_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_x1Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_x1Unit (self.x1Unit_property)
+    self.x1Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.x1Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.x1Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.x1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_y1Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_y1Unit (self.y1Unit_property)
+    self.y1Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.y1Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.y1Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.y1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_x2Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_x2Unit (self.x2Unit_property)
+    self.x2Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.x2Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.x2Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.x2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_y2Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1862,7 +1342,507 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
   }
+  //····················································································································
 
+  private final func bind_property_cpx1Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpx1Unit (self.cpx1Unit_property)
+    self.cpx1Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpx1Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpx1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpx1Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpx1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpx1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_cpy1Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpy1Unit (self.cpy1Unit_property)
+    self.cpy1Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpy1Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpy1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpy1Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpy1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpy1Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_cpx2Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpx2Unit (self.cpx2Unit_property)
+    self.cpx2Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpx2Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpx2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpx2Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpx2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpx2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_cpy2Unit (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_cpy2Unit (self.cpy2Unit_property)
+    self.cpy2Unit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.cpy2Unit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cpy2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.cpy2Unit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.cpy2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.cpy2Unit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_x1 (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_x1 (self.x1_property)
+    self.x1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.x1_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.x1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.x1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.strokeBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues (model : TransientArrayOf_PackageBezier) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
 
 
   //····················································································································

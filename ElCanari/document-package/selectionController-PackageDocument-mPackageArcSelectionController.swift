@@ -11,173 +11,173 @@ import Cocoa
 final class SelectionController_PackageDocument_mPackageArcSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: arcAngle
-  //····················································································································
-
-  var arcAngle_property = EBPropertyProxy_Int ()
-
-  var arcAngle_property_selection : EBSelection <Int> {
-    return self.arcAngle_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: endTangent
-  //····················································································································
-
-  var endTangent_property = EBPropertyProxy_Int ()
-
-  var endTangent_property_selection : EBSelection <Int> {
-    return self.endTangent_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: endTangentUnit
-  //····················································································································
-
-  var endTangentUnit_property = EBPropertyProxy_Int ()
-
-  var endTangentUnit_property_selection : EBSelection <Int> {
-    return self.endTangentUnit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: issues
-  //····················································································································
-
-  var issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: objectDisplay
-  //····················································································································
-
-  var objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: pathIsClosed
-  //····················································································································
-
-  var pathIsClosed_property = EBPropertyProxy_Bool ()
-
-  var pathIsClosed_property_selection : EBSelection <Bool> {
-    return self.pathIsClosed_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: radius
-  //····················································································································
-
-  var radius_property = EBPropertyProxy_Int ()
-
-  var radius_property_selection : EBSelection <Int> {
-    return self.radius_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: radiusUnit
-  //····················································································································
-
-  var radiusUnit_property = EBPropertyProxy_Int ()
-
-  var radiusUnit_property_selection : EBSelection <Int> {
-    return self.radiusUnit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: startAngle
-  //····················································································································
-
-  var startAngle_property = EBPropertyProxy_Int ()
-
-  var startAngle_property_selection : EBSelection <Int> {
-    return self.startAngle_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: startTangent
-  //····················································································································
-
-  var startTangent_property = EBPropertyProxy_Int ()
-
-  var startTangent_property_selection : EBSelection <Int> {
-    return self.startTangent_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: startTangentUnit
-  //····················································································································
-
-  var startTangentUnit_property = EBPropertyProxy_Int ()
-
-  var startTangentUnit_property_selection : EBSelection <Int> {
-    return self.startTangentUnit_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: strokeBezierPath
-  //····················································································································
-
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xCenter
-  //····················································································································
-
-  var xCenter_property = EBPropertyProxy_Int ()
-
-  var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xCenterUnit
-  //····················································································································
-
-  var xCenterUnit_property = EBPropertyProxy_Int ()
-
-  var xCenterUnit_property_selection : EBSelection <Int> {
-    return self.xCenterUnit_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: yCenter
   //····················································································································
 
-  var yCenter_property = EBPropertyProxy_Int ()
+  let yCenter_property = EBPropertyProxy_Int ()
 
   var yCenter_property_selection : EBSelection <Int> {
     return self.yCenter_property.prop
   }
 
   //····················································································································
+  //   Selection observable property: radius
+  //····················································································································
+
+  let radius_property = EBPropertyProxy_Int ()
+
+  var radius_property_selection : EBSelection <Int> {
+    return self.radius_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: startAngle
+  //····················································································································
+
+  let startAngle_property = EBPropertyProxy_Int ()
+
+  var startAngle_property_selection : EBSelection <Int> {
+    return self.startAngle_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: arcAngle
+  //····················································································································
+
+  let arcAngle_property = EBPropertyProxy_Int ()
+
+  var arcAngle_property_selection : EBSelection <Int> {
+    return self.arcAngle_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: startTangent
+  //····················································································································
+
+  let startTangent_property = EBPropertyProxy_Int ()
+
+  var startTangent_property_selection : EBSelection <Int> {
+    return self.startTangent_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: endTangent
+  //····················································································································
+
+  let endTangent_property = EBPropertyProxy_Int ()
+
+  var endTangent_property_selection : EBSelection <Int> {
+    return self.endTangent_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: pathIsClosed
+  //····················································································································
+
+  let pathIsClosed_property = EBPropertyProxy_Bool ()
+
+  var pathIsClosed_property_selection : EBSelection <Bool> {
+    return self.pathIsClosed_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: xCenterUnit
+  //····················································································································
+
+  let xCenterUnit_property = EBPropertyProxy_Int ()
+
+  var xCenterUnit_property_selection : EBSelection <Int> {
+    return self.xCenterUnit_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: yCenterUnit
   //····················································································································
 
-  var yCenterUnit_property = EBPropertyProxy_Int ()
+  let yCenterUnit_property = EBPropertyProxy_Int ()
 
   var yCenterUnit_property_selection : EBSelection <Int> {
     return self.yCenterUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: radiusUnit
+  //····················································································································
+
+  let radiusUnit_property = EBPropertyProxy_Int ()
+
+  var radiusUnit_property_selection : EBSelection <Int> {
+    return self.radiusUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: startTangentUnit
+  //····················································································································
+
+  let startTangentUnit_property = EBPropertyProxy_Int ()
+
+  var startTangentUnit_property_selection : EBSelection <Int> {
+    return self.startTangentUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: endTangentUnit
+  //····················································································································
+
+  let endTangentUnit_property = EBPropertyProxy_Int ()
+
+  var endTangentUnit_property_selection : EBSelection <Int> {
+    return self.endTangentUnit_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: xCenter
+  //····················································································································
+
+  let xCenter_property = EBPropertyProxy_Int ()
+
+  var xCenter_property_selection : EBSelection <Int> {
+    return self.xCenter_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: strokeBezierPath
+  //····················································································································
+
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.strokeBezierPath_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: objectDisplay
+  //····················································································································
+
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: selectionDisplay
+  //····················································································································
+
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -212,23 +212,23 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       }
     }
     model.addEBObserver (self.mActualModel)
-    self.bind_property_arcAngle (model: self.mActualModel)
-    self.bind_property_endTangent (model: self.mActualModel)
-    self.bind_property_endTangentUnit (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_pathIsClosed (model: self.mActualModel)
-    self.bind_property_radius (model: self.mActualModel)
-    self.bind_property_radiusUnit (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_startAngle (model: self.mActualModel)
-    self.bind_property_startTangent (model: self.mActualModel)
-    self.bind_property_startTangentUnit (model: self.mActualModel)
-    self.bind_property_strokeBezierPath (model: self.mActualModel)
-    self.bind_property_xCenter (model: self.mActualModel)
-    self.bind_property_xCenterUnit (model: self.mActualModel)
     self.bind_property_yCenter (model: self.mActualModel)
+    self.bind_property_radius (model: self.mActualModel)
+    self.bind_property_startAngle (model: self.mActualModel)
+    self.bind_property_arcAngle (model: self.mActualModel)
+    self.bind_property_startTangent (model: self.mActualModel)
+    self.bind_property_endTangent (model: self.mActualModel)
+    self.bind_property_pathIsClosed (model: self.mActualModel)
+    self.bind_property_xCenterUnit (model: self.mActualModel)
     self.bind_property_yCenterUnit (model: self.mActualModel)
+    self.bind_property_radiusUnit (model: self.mActualModel)
+    self.bind_property_startTangentUnit (model: self.mActualModel)
+    self.bind_property_endTangentUnit (model: self.mActualModel)
+    self.bind_property_xCenter (model: self.mActualModel)
+    self.bind_property_strokeBezierPath (model: self.mActualModel)
+    self.bind_property_objectDisplay (model: self.mActualModel)
+    self.bind_property_selectionDisplay (model: self.mActualModel)
+    self.bind_property_issues (model: self.mActualModel)
   }
 
   //····················································································································
@@ -238,83 +238,83 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
-  //--- arcAngle
-    self.arcAngle_property.mReadModelFunction = nil 
-    self.arcAngle_property.mWriteModelFunction = nil 
-    self.arcAngle_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_arcAngle (self.arcAngle_property)
-  //--- endTangent
-    self.endTangent_property.mReadModelFunction = nil 
-    self.endTangent_property.mWriteModelFunction = nil 
-    self.endTangent_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_endTangent (self.endTangent_property)
-  //--- endTangentUnit
-    self.endTangentUnit_property.mReadModelFunction = nil 
-    self.endTangentUnit_property.mWriteModelFunction = nil 
-    self.endTangentUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
-  //--- issues
-    self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- pathIsClosed
-    self.pathIsClosed_property.mReadModelFunction = nil 
-    self.pathIsClosed_property.mWriteModelFunction = nil 
-    self.pathIsClosed_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_pathIsClosed (self.pathIsClosed_property)
-  //--- radius
-    self.radius_property.mReadModelFunction = nil 
-    self.radius_property.mWriteModelFunction = nil 
-    self.radius_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_radius (self.radius_property)
-  //--- radiusUnit
-    self.radiusUnit_property.mReadModelFunction = nil 
-    self.radiusUnit_property.mWriteModelFunction = nil 
-    self.radiusUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_radiusUnit (self.radiusUnit_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- startAngle
-    self.startAngle_property.mReadModelFunction = nil 
-    self.startAngle_property.mWriteModelFunction = nil 
-    self.startAngle_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_startAngle (self.startAngle_property)
-  //--- startTangent
-    self.startTangent_property.mReadModelFunction = nil 
-    self.startTangent_property.mWriteModelFunction = nil 
-    self.startTangent_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_startTangent (self.startTangent_property)
-  //--- startTangentUnit
-    self.startTangentUnit_property.mReadModelFunction = nil 
-    self.startTangentUnit_property.mWriteModelFunction = nil 
-    self.startTangentUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
-  //--- strokeBezierPath
-    self.strokeBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-  //--- xCenter
-    self.xCenter_property.mReadModelFunction = nil 
-    self.xCenter_property.mWriteModelFunction = nil 
-    self.xCenter_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xCenter (self.xCenter_property)
-  //--- xCenterUnit
-    self.xCenterUnit_property.mReadModelFunction = nil 
-    self.xCenterUnit_property.mWriteModelFunction = nil 
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
     self.yCenter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenter (self.yCenter_property)
+  //--- radius
+    self.radius_property.mReadModelFunction = nil 
+    self.radius_property.mWriteModelFunction = nil 
+    self.radius_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_radius (self.radius_property)
+  //--- startAngle
+    self.startAngle_property.mReadModelFunction = nil 
+    self.startAngle_property.mWriteModelFunction = nil 
+    self.startAngle_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_startAngle (self.startAngle_property)
+  //--- arcAngle
+    self.arcAngle_property.mReadModelFunction = nil 
+    self.arcAngle_property.mWriteModelFunction = nil 
+    self.arcAngle_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_arcAngle (self.arcAngle_property)
+  //--- startTangent
+    self.startTangent_property.mReadModelFunction = nil 
+    self.startTangent_property.mWriteModelFunction = nil 
+    self.startTangent_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_startTangent (self.startTangent_property)
+  //--- endTangent
+    self.endTangent_property.mReadModelFunction = nil 
+    self.endTangent_property.mWriteModelFunction = nil 
+    self.endTangent_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_endTangent (self.endTangent_property)
+  //--- pathIsClosed
+    self.pathIsClosed_property.mReadModelFunction = nil 
+    self.pathIsClosed_property.mWriteModelFunction = nil 
+    self.pathIsClosed_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_pathIsClosed (self.pathIsClosed_property)
+  //--- xCenterUnit
+    self.xCenterUnit_property.mReadModelFunction = nil 
+    self.xCenterUnit_property.mWriteModelFunction = nil 
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenterUnit
     self.yCenterUnit_property.mReadModelFunction = nil 
     self.yCenterUnit_property.mWriteModelFunction = nil 
     self.yCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+  //--- radiusUnit
+    self.radiusUnit_property.mReadModelFunction = nil 
+    self.radiusUnit_property.mWriteModelFunction = nil 
+    self.radiusUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_radiusUnit (self.radiusUnit_property)
+  //--- startTangentUnit
+    self.startTangentUnit_property.mReadModelFunction = nil 
+    self.startTangentUnit_property.mWriteModelFunction = nil 
+    self.startTangentUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+  //--- endTangentUnit
+    self.endTangentUnit_property.mReadModelFunction = nil 
+    self.endTangentUnit_property.mWriteModelFunction = nil 
+    self.endTangentUnit_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+  //--- xCenter
+    self.xCenter_property.mReadModelFunction = nil 
+    self.xCenter_property.mWriteModelFunction = nil 
+    self.xCenter_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xCenter (self.xCenter_property)
+  //--- strokeBezierPath
+    self.strokeBezierPath_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //---
     self.mModel = nil    
   }
@@ -356,36 +356,12 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "arcAngle",
-      idx:self.arcAngle_property.ebObjectIndex,
+      "yCenter",
+      idx:self.yCenter_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.arcAngle_property.mObserverExplorer,
-      valueExplorer:&self.arcAngle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "endTangent",
-      idx:self.endTangent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangent_property.mObserverExplorer,
-      valueExplorer:&self.endTangent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "endTangentUnit",
-      idx:self.endTangentUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.endTangentUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "pathIsClosed",
-      idx:self.pathIsClosed_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
-      valueExplorer:&self.pathIsClosed_property.mValueExplorer
+      observerExplorer:&self.yCenter_property.mObserverExplorer,
+      valueExplorer:&self.yCenter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "radius",
@@ -396,20 +372,20 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       valueExplorer:&self.radius_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "radiusUnit",
-      idx:self.radiusUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.radiusUnit_property.mObserverExplorer,
-      valueExplorer:&self.radiusUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "startAngle",
       idx:self.startAngle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startAngle_property.mObserverExplorer,
       valueExplorer:&self.startAngle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "arcAngle",
+      idx:self.arcAngle_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.arcAngle_property.mObserverExplorer,
+      valueExplorer:&self.arcAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startTangent",
@@ -420,20 +396,20 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       valueExplorer:&self.startTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "startTangentUnit",
-      idx:self.startTangentUnit_property.ebObjectIndex,
+      "endTangent",
+      idx:self.endTangent_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.startTangentUnit_property.mValueExplorer
+      observerExplorer:&self.endTangent_property.mObserverExplorer,
+      valueExplorer:&self.endTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "xCenter",
-      idx:self.xCenter_property.ebObjectIndex,
+      "pathIsClosed",
+      idx:self.pathIsClosed_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.xCenter_property.mObserverExplorer,
-      valueExplorer:&self.xCenter_property.mValueExplorer
+      observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
+      valueExplorer:&self.pathIsClosed_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
@@ -444,20 +420,44 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       valueExplorer:&self.xCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "yCenter",
-      idx:self.yCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenter_property.mObserverExplorer,
-      valueExplorer:&self.yCenter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "yCenterUnit",
       idx:self.yCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
       valueExplorer:&self.yCenterUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "radiusUnit",
+      idx:self.radiusUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.radiusUnit_property.mObserverExplorer,
+      valueExplorer:&self.radiusUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "startTangentUnit",
+      idx:self.startTangentUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.startTangentUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "endTangentUnit",
+      idx:self.endTangentUnit_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.endTangentUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xCenter",
+      idx:self.xCenter_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xCenter_property.mObserverExplorer,
+      valueExplorer:&self.xCenter_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -511,939 +511,9 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     self.mExplorerWindow = nil
   }
 
-  //···················································································································*
+  //····················································································································
 
-  private final func bind_property_arcAngle (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_arcAngle (self.arcAngle_property)
-    self.arcAngle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.arcAngle_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.arcAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.arcAngle_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.arcAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.arcAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_endTangent (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangent (self.endTangent_property)
-    self.endTangent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.endTangent_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.endTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.endTangent_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.endTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.endTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_endTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
-    self.endTangentUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.endTangentUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.endTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.endTangentUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.endTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.endTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariIssueArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.issues_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_pathIsClosed (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
-    self.pathIsClosed_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.pathIsClosed_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.pathIsClosed_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.pathIsClosed_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.pathIsClosed_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.pathIsClosed_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_radius (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_radius (self.radius_property)
-    self.radius_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.radius_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.radius_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.radius_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.radius_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.radius_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_radiusUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_radiusUnit (self.radiusUnit_property)
-    self.radiusUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.radiusUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.radiusUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.radiusUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.radiusUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.radiusUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_startAngle (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_startAngle (self.startAngle_property)
-    self.startAngle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.startAngle_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.startAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.startAngle_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.startAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_startTangent (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangent (self.startTangent_property)
-    self.startTangent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.startTangent_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.startTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.startTangent_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.startTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_startTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
-    self.startTangentUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.startTangentUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.startTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.startTangentUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.startTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.startTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_strokeBezierPath (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSBezierPath> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.strokeBezierPath_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xCenter (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_xCenter (self.xCenter_property)
-    self.xCenter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xCenter_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xCenter_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xCenterUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
-    self.xCenterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xCenterUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xCenterUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_yCenter (model : ReadOnlyArrayOf_PackageArc) {
+  private final func bind_property_yCenter (model : TransientArrayOf_PackageArc) {
     model.addEBObserverOf_yCenter (self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1510,10 +580,492 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       }
     }
   }
+  //····················································································································
 
-  //···················································································································*
+  private final func bind_property_radius (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_radius (self.radius_property)
+    self.radius_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.radius_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.radius_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.radius_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.radius_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.radius_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
 
-  private final func bind_property_yCenterUnit (model : ReadOnlyArrayOf_PackageArc) {
+  private final func bind_property_startAngle (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_startAngle (self.startAngle_property)
+    self.startAngle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.startAngle_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.startAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.startAngle_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.startAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.startAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_arcAngle (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_arcAngle (self.arcAngle_property)
+    self.arcAngle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.arcAngle_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.arcAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.arcAngle_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.arcAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.arcAngle_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_startTangent (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_startTangent (self.startTangent_property)
+    self.startTangent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.startTangent_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.startTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.startTangent_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.startTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.startTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_endTangent (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_endTangent (self.endTangent_property)
+    self.endTangent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.endTangent_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.endTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.endTangent_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.endTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.endTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_pathIsClosed (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
+    self.pathIsClosed_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.pathIsClosed_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.pathIsClosed_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.pathIsClosed_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.pathIsClosed_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.pathIsClosed_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_xCenterUnit (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+    self.xCenterUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xCenterUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xCenterUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xCenterUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_yCenterUnit (model : TransientArrayOf_PackageArc) {
     model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1580,7 +1132,438 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       }
     }
   }
+  //····················································································································
 
+  private final func bind_property_radiusUnit (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_radiusUnit (self.radiusUnit_property)
+    self.radiusUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.radiusUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.radiusUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.radiusUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.radiusUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.radiusUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_startTangentUnit (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+    self.startTangentUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.startTangentUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.startTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.startTangentUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.startTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.startTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_endTangentUnit (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+    self.endTangentUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.endTangentUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.endTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.endTangentUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.endTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.endTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_xCenter (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_xCenter (self.xCenter_property)
+    self.xCenter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xCenter_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xCenter_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xCenter_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.strokeBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues (model : TransientArrayOf_PackageArc) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
 
 
   //····················································································································

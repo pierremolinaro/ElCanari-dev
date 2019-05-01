@@ -16,14 +16,31 @@ extension CustomizedProjectDocument {
 
   @objc @IBAction func renameComponentAction (_ sender : NSObject?) { // Targeted in IB
     let selectedComponents = self.mComponentController.selectedArray_property.propval
-    if selectedComponents.count == 1, let window = self.windowForSheet, let panel = self.mRenameComponentPanel {
-    //--- Component current settings
-      let component = selectedComponents [0]
-      self.mSelectedComponentForRenaming = component
-      self.mComponentCurrentIndex = component.mNameIndex
-      self.mComponentCurrentPrefix = component.mNamePrefix
-      self.mComponentNewIndex = component.mNameIndex
-      self.mComponentNewPrefix = component.mNamePrefix
+    if selectedComponents.count == 1 {
+      self.renameComponentDialog (selectedComponents [0])
+    }
+  }
+
+  //····················································································································
+
+  @objc @IBAction func renameComponentFromComponentSymbolAction (_ sender : NSObject?) {  // Targeted in IB
+    let selectedObjects = self.mSchematicsObjectsController.selectedArray_property.propval
+    if selectedObjects.count == 1,
+        let symbol = selectedObjects [0] as? ComponentSymbolInProject,
+        let component = symbol.mComponent {
+      self.renameComponentDialog (component)
+    }
+  }
+
+  //····················································································································
+
+  internal func renameComponentDialog (_ inComponent : ComponentInProject) {
+    if let window = self.windowForSheet, let panel = self.mRenameComponentPanel {
+      self.mSelectedComponentForRenaming = inComponent
+      self.mComponentCurrentIndex = inComponent.mNameIndex
+      self.mComponentCurrentPrefix = inComponent.mNamePrefix
+      self.mComponentNewIndex = inComponent.mNameIndex
+      self.mComponentNewPrefix = inComponent.mNamePrefix
       self.updateRenameComponentValidationButton ()
       self.mCurrentComponentNameTextField?.stringValue = self.mComponentCurrentPrefix + ":\(self.mComponentCurrentIndex)"
       self.mRenameComponentErrorMessageTextField?.stringValue = ""

@@ -254,7 +254,32 @@ document ProjectDocument root ProjectRoot {
     self.mSchematicsObjectsController.selectedArray
   ;
 
-  outlet EBSwitch mComponentSymbolShowComponentValueSwitch $value mComponentSymbolSelectionController.mDisplayComponentValue ;  
+  outlet EBSwitch mComponentSymbolShowComponentValueSwitch
+    $value mComponentSymbolSelectionController.mDisplayComponentValue
+  ;  
+  outlet EBTextObserverField mComponentSymbolComponentNameTextField
+    $valueObserver mComponentSymbolSelectionController.componentName
+  ;
+ 
+  outlet EBButton mRenameComponentFromComponentSymbolButton # Action set in IB
+    $enabled mSchematicsObjectsController.selectedArray.count == 1
+  ;
+
+#  outlet EBTextField mComponentSymbolValueTextField
+#    $value mComponentSymbolSelectionController.mComponent.one.mComponentValue
+#  ;
+
+  outlet EBTextObserverField mComponentSymbolDeviceNameTextField
+    $valueObserver mComponentSymbolSelectionController.deviceName
+  ;
+
+  outlet EBTextObserverField mComponentSymbolTypeNameTextField
+    $valueObserver mComponentSymbolSelectionController.mSymbolTypeName
+  ;
+
+  outlet EBTextObserverField mComponentSymbolInstanceNameTextField
+    $valueObserver mComponentSymbolSelectionController.mSymbolInstanceName
+  ;
 }
 
 #----------------------------------------------------------------------------*

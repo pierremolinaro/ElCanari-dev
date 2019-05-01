@@ -11,30 +11,60 @@ import Cocoa
 final class SelectionController_SymbolDocument_mSymbolPinSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: filledBezierPath
+  //   Selection observable property: yPin
   //····················································································································
 
-  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let yPin_property = EBPropertyProxy_Int ()
 
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.prop
+  var yPin_property_selection : EBSelection <Int> {
+    return self.yPin_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: issues
+  //   Selection observable property: xName
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let xName_property = EBPropertyProxy_Int ()
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+  var xName_property_selection : EBSelection <Int> {
+    return self.xName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: yName
+  //····················································································································
+
+  let yName_property = EBPropertyProxy_Int ()
+
+  var yName_property_selection : EBSelection <Int> {
+    return self.yName_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: xNumber
+  //····················································································································
+
+  let xNumber_property = EBPropertyProxy_Int ()
+
+  var xNumber_property_selection : EBSelection <Int> {
+    return self.xNumber_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: yNumber
+  //····················································································································
+
+  let yNumber_property = EBPropertyProxy_Int ()
+
+  var yNumber_property_selection : EBSelection <Int> {
+    return self.yNumber_property.prop
   }
 
   //····················································································································
   //   Selection observable property: name
   //····················································································································
 
-  var name_property = EBPropertyProxy_String ()
+  let name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
     return self.name_property.prop
@@ -44,120 +74,90 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //   Selection observable property: nameHorizontalAlignment
   //····················································································································
 
-  var nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  let nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
   var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.nameHorizontalAlignment_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: nameRect
-  //····················································································································
-
-  var nameRect_property = EBTransientProperty_NSRect ()
-
-  var nameRect_property_selection : EBSelection <NSRect> {
-    return self.nameRect_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: numberHorizontalAlignment
   //····················································································································
 
-  var numberHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  let numberHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
   var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.numberHorizontalAlignment_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: objectDisplay
-  //····················································································································
-
-  var objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: pinNameIsDisplayedInSchematics
   //····················································································································
 
-  var pinNameIsDisplayedInSchematics_property = EBPropertyProxy_Bool ()
+  let pinNameIsDisplayedInSchematics_property = EBPropertyProxy_Bool ()
 
   var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> {
     return self.pinNameIsDisplayedInSchematics_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xName
-  //····················································································································
-
-  var xName_property = EBPropertyProxy_Int ()
-
-  var xName_property_selection : EBSelection <Int> {
-    return self.xName_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: xNumber
-  //····················································································································
-
-  var xNumber_property = EBPropertyProxy_Int ()
-
-  var xNumber_property_selection : EBSelection <Int> {
-    return self.xNumber_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: xPin
   //····················································································································
 
-  var xPin_property = EBPropertyProxy_Int ()
+  let xPin_property = EBPropertyProxy_Int ()
 
   var xPin_property_selection : EBSelection <Int> {
     return self.xPin_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: yName
+  //   Selection observable property: filledBezierPath
   //····················································································································
 
-  var yName_property = EBPropertyProxy_Int ()
+  let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
-  var yName_property_selection : EBSelection <Int> {
-    return self.yName_property.prop
+  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.filledBezierPath_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: yNumber
+  //   Selection observable property: objectDisplay
   //····················································································································
 
-  var yNumber_property = EBPropertyProxy_Int ()
+  let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var yNumber_property_selection : EBSelection <Int> {
-    return self.yNumber_property.prop
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: yPin
+  //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var yPin_property = EBPropertyProxy_Int ()
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var yPin_property_selection : EBSelection <Int> {
-    return self.yPin_property.prop
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: nameRect
+  //····················································································································
+
+  let nameRect_property = EBTransientProperty_NSRect ()
+
+  var nameRect_property_selection : EBSelection <NSRect> {
+    return self.nameRect_property.prop
   }
 
   //····················································································································
@@ -192,21 +192,21 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     model.addEBObserver (self.mActualModel)
-    self.bind_property_filledBezierPath (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_yPin (model: self.mActualModel)
+    self.bind_property_xName (model: self.mActualModel)
+    self.bind_property_yName (model: self.mActualModel)
+    self.bind_property_xNumber (model: self.mActualModel)
+    self.bind_property_yNumber (model: self.mActualModel)
     self.bind_property_name (model: self.mActualModel)
     self.bind_property_nameHorizontalAlignment (model: self.mActualModel)
-    self.bind_property_nameRect (model: self.mActualModel)
     self.bind_property_numberHorizontalAlignment (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_pinNameIsDisplayedInSchematics (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_xName (model: self.mActualModel)
-    self.bind_property_xNumber (model: self.mActualModel)
     self.bind_property_xPin (model: self.mActualModel)
-    self.bind_property_yName (model: self.mActualModel)
-    self.bind_property_yNumber (model: self.mActualModel)
-    self.bind_property_yPin (model: self.mActualModel)
+    self.bind_property_filledBezierPath (model: self.mActualModel)
+    self.bind_property_objectDisplay (model: self.mActualModel)
+    self.bind_property_selectionDisplay (model: self.mActualModel)
+    self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_nameRect (model: self.mActualModel)
   }
 
   //····················································································································
@@ -216,12 +216,31 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
-  //--- filledBezierPath
-    self.filledBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
-  //--- issues
-    self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- yPin
+    self.yPin_property.mReadModelFunction = nil 
+    self.yPin_property.mWriteModelFunction = nil 
+    self.yPin_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yPin (self.yPin_property)
+  //--- xName
+    self.xName_property.mReadModelFunction = nil 
+    self.xName_property.mWriteModelFunction = nil 
+    self.xName_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
+  //--- yName
+    self.yName_property.mReadModelFunction = nil 
+    self.yName_property.mWriteModelFunction = nil 
+    self.yName_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
+  //--- xNumber
+    self.xNumber_property.mReadModelFunction = nil 
+    self.xNumber_property.mWriteModelFunction = nil 
+    self.xNumber_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xNumber (self.xNumber_property)
+  //--- yNumber
+    self.yNumber_property.mReadModelFunction = nil 
+    self.yNumber_property.mWriteModelFunction = nil 
+    self.yNumber_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yNumber (self.yNumber_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
@@ -232,55 +251,36 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.nameHorizontalAlignment_property.mWriteModelFunction = nil 
     self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
-  //--- nameRect
-    self.nameRect_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_nameRect (self.nameRect_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mReadModelFunction = nil 
     self.numberHorizontalAlignment_property.mWriteModelFunction = nil 
     self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- pinNameIsDisplayedInSchematics
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- xName
-    self.xName_property.mReadModelFunction = nil 
-    self.xName_property.mWriteModelFunction = nil 
-    self.xName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
-  //--- xNumber
-    self.xNumber_property.mReadModelFunction = nil 
-    self.xNumber_property.mWriteModelFunction = nil 
-    self.xNumber_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xNumber (self.xNumber_property)
   //--- xPin
     self.xPin_property.mReadModelFunction = nil 
     self.xPin_property.mWriteModelFunction = nil 
     self.xPin_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xPin (self.xPin_property)
-  //--- yName
-    self.yName_property.mReadModelFunction = nil 
-    self.yName_property.mWriteModelFunction = nil 
-    self.yName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
-  //--- yNumber
-    self.yNumber_property.mReadModelFunction = nil 
-    self.yNumber_property.mWriteModelFunction = nil 
-    self.yNumber_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yNumber (self.yNumber_property)
-  //--- yPin
-    self.yPin_property.mReadModelFunction = nil 
-    self.yPin_property.mWriteModelFunction = nil 
-    self.yPin_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yPin (self.yPin_property)
+  //--- filledBezierPath
+    self.filledBezierPath_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- nameRect
+    self.nameRect_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_nameRect (self.nameRect_property)
   //---
     self.mModel = nil    
   }
@@ -322,6 +322,46 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
+      "yPin",
+      idx:self.yPin_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yPin_property.mObserverExplorer,
+      valueExplorer:&self.yPin_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xName",
+      idx:self.xName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xName_property.mObserverExplorer,
+      valueExplorer:&self.xName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yName",
+      idx:self.yName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yName_property.mObserverExplorer,
+      valueExplorer:&self.yName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xNumber",
+      idx:self.xNumber_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xNumber_property.mObserverExplorer,
+      valueExplorer:&self.xNumber_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yNumber",
+      idx:self.yNumber_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yNumber_property.mObserverExplorer,
+      valueExplorer:&self.yNumber_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "name",
       idx:self.name_property.ebObjectIndex,
       y:&y,
@@ -354,52 +394,12 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       valueExplorer:&self.pinNameIsDisplayedInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "xName",
-      idx:self.xName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xName_property.mObserverExplorer,
-      valueExplorer:&self.xName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "xNumber",
-      idx:self.xNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xNumber_property.mObserverExplorer,
-      valueExplorer:&self.xNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "xPin",
       idx:self.xPin_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xPin_property.mObserverExplorer,
       valueExplorer:&self.xPin_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yName",
-      idx:self.yName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yName_property.mObserverExplorer,
-      valueExplorer:&self.yName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yNumber",
-      idx:self.yNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yNumber_property.mObserverExplorer,
-      valueExplorer:&self.yNumber_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yPin",
-      idx:self.yPin_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yPin_property.mObserverExplorer,
-      valueExplorer:&self.yPin_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -453,839 +453,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.mExplorerWindow = nil
   }
 
-  //···················································································································*
+  //····················································································································
 
-  private final func bind_property_filledBezierPath (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_filledBezierPath (self.filledBezierPath_property)
-    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSBezierPath> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.filledBezierPath_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_issues (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariIssueArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.issues_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_name (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_name (self.name_property)
-    self.name_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.name_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.name_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.name_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_nameHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
-    self.nameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <HorizontalAlignment> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.nameHorizontalAlignment_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.nameHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.nameHorizontalAlignment_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.nameHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_nameRect (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_nameRect (self.nameRect_property)
-    self.nameRect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSRect> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.nameRect_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_numberHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
-    self.numberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <HorizontalAlignment> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.numberHorizontalAlignment_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.numberHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.numberHorizontalAlignment_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.numberHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_pinNameIsDisplayedInSchematics (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
-    self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.pinNameIsDisplayedInSchematics_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.pinNameIsDisplayedInSchematics_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.pinNameIsDisplayedInSchematics_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xName (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_xName (self.xName_property)
-    self.xName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xName_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xNumber (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_xNumber (self.xNumber_property)
-    self.xNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xNumber_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xNumber_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_xPin (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_xPin (self.xPin_property)
-    self.xPin_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.xPin_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.xPin_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.xPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.xPin_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_yName (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_yName (self.yName_property)
-    self.yName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.yName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.yName_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_yNumber (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_yNumber (self.yNumber_property)
-    self.yNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.yNumber_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.yNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.yNumber_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.yNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.yNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_yPin (model : ReadOnlyArrayOf_SymbolPin) {
+  private final func bind_property_yPin (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_yPin (self.yPin_property)
     self.yPin_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1352,7 +522,822 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
   }
+  //····················································································································
 
+  private final func bind_property_xName (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_xName (self.xName_property)
+    self.xName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_yName (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_yName (self.yName_property)
+    self.yName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_xNumber (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_xNumber (self.xNumber_property)
+    self.xNumber_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xNumber_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xNumber_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_yNumber (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_yNumber (self.yNumber_property)
+    self.yNumber_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yNumber_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yNumber_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_name (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_name (self.name_property)
+    self.name_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.name_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.name_property.mWriteModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.name_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_nameHorizontalAlignment (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+    self.nameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <HorizontalAlignment> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.nameHorizontalAlignment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.nameHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.nameHorizontalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.nameHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_numberHorizontalAlignment (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
+    self.numberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <HorizontalAlignment> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.numberHorizontalAlignment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.numberHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.numberHorizontalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.numberHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_pinNameIsDisplayedInSchematics (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
+    self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.pinNameIsDisplayedInSchematics_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.pinNameIsDisplayedInSchematics_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.pinNameIsDisplayedInSchematics_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_xPin (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_xPin (self.xPin_property)
+    self.xPin_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xPin_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xPin_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xPin_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_filledBezierPath (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.filledBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_objectDisplay (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_nameRect (model : TransientArrayOf_SymbolPin) {
+    model.addEBObserverOf_nameRect (self.nameRect_property)
+    self.nameRect_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSRect> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.nameRect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
 
 
   //····················································································································

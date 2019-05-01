@@ -304,8 +304,12 @@ import Cocoa
   @IBOutlet var mChangeValuePanel : NSPanel?
   @IBOutlet var mChangeValueValidationButton : NSButton?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
+  @IBOutlet var mComponentSymbolComponentNameTextField : EBTextObserverField?
+  @IBOutlet var mComponentSymbolDeviceNameTextField : EBTextObserverField?
   @IBOutlet var mComponentSymbolInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mComponentSymbolInstanceNameTextField : EBTextObserverField?
   @IBOutlet var mComponentSymbolShowComponentValueSwitch : EBSwitch?
+  @IBOutlet var mComponentSymbolTypeNameTextField : EBTextObserverField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
@@ -344,6 +348,7 @@ import Cocoa
   @IBOutlet var mRemoveSheetButton : EBButton?
   @IBOutlet var mRenameComponentButton : EBButton?
   @IBOutlet var mRenameComponentErrorMessageTextField : NSTextField?
+  @IBOutlet var mRenameComponentFromComponentSymbolButton : EBButton?
   @IBOutlet var mRenameComponentIndexesPopUpButton : NSPopUpButton?
   @IBOutlet var mRenameComponentPanel : NSPanel?
   @IBOutlet var mRenameComponentPrefixComboxBox : CanariComboBox?
@@ -397,6 +402,7 @@ import Cocoa
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRenameComponentFromComponentSymbolButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -492,8 +498,12 @@ import Cocoa
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolComponentNameTextField, "mComponentSymbolComponentNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolDeviceNameTextField, "mComponentSymbolDeviceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolInspectorView, "mComponentSymbolInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolInstanceNameTextField, "mComponentSymbolInstanceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolShowComponentValueSwitch, "mComponentSymbolShowComponentValueSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolTypeNameTextField, "mComponentSymbolTypeNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
@@ -532,6 +542,7 @@ import Cocoa
     checkOutletConnection (self.mRemoveSheetButton, "mRemoveSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mRenameComponentFromComponentSymbolButton, "mRenameComponentFromComponentSymbolButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentIndexesPopUpButton, "mRenameComponentIndexesPopUpButton", NSPopUpButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentPanel, "mRenameComponentPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameComponentPrefixComboxBox, "mRenameComponentPrefixComboxBox", CanariComboBox.self, #file, #line)
@@ -819,6 +830,10 @@ import Cocoa
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
+    self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
+    self.mComponentSymbolDeviceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.deviceName_property, file: #file, line: #line)
+    self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
+    self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -990,6 +1005,16 @@ import Cocoa
       self.rootObject.mSheets_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSheetButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mSchematicsObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mRenameComponentFromComponentSymbolButton
+      )
+      self.mSchematicsObjectsController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRenameComponentFromComponentSymbolButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -1079,6 +1104,10 @@ import Cocoa
     self.mSchematicsView?.unbind_gridCrossColor ()
     self.mSchematicsView?.unbind_zoom ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
+    self.mComponentSymbolComponentNameTextField?.unbind_valueObserver ()
+    self.mComponentSymbolDeviceNameTextField?.unbind_valueObserver ()
+    self.mComponentSymbolTypeNameTextField?.unbind_valueObserver ()
+    self.mComponentSymbolInstanceNameTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1114,6 +1143,8 @@ import Cocoa
     self.mController_mUpdateDeviceButton_enabled = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
+    self.mSchematicsObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
+    self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mComponentController.unbind_tableView (self.mComponentTableView)
     self.mNetClassController.unbind_tableView (self.mNetClassTableView)
@@ -1187,8 +1218,12 @@ import Cocoa
     self.mChangeValuePanel?.ebCleanUp ()
     self.mChangeValueValidationButton?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
+    self.mComponentSymbolComponentNameTextField?.ebCleanUp ()
+    self.mComponentSymbolDeviceNameTextField?.ebCleanUp ()
     self.mComponentSymbolInspectorView?.ebCleanUp ()
+    self.mComponentSymbolInstanceNameTextField?.ebCleanUp ()
     self.mComponentSymbolShowComponentValueSwitch?.ebCleanUp ()
+    self.mComponentSymbolTypeNameTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
@@ -1227,6 +1262,7 @@ import Cocoa
     self.mRemoveSheetButton?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
     self.mRenameComponentErrorMessageTextField?.ebCleanUp ()
+    self.mRenameComponentFromComponentSymbolButton?.ebCleanUp ()
     self.mRenameComponentIndexesPopUpButton?.ebCleanUp ()
     self.mRenameComponentPanel?.ebCleanUp ()
     self.mRenameComponentPrefixComboxBox?.ebCleanUp ()

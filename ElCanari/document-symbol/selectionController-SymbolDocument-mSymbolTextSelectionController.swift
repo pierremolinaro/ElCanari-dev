@@ -11,30 +11,50 @@ import Cocoa
 final class SelectionController_SymbolDocument_mSymbolTextSelectionController : EBObject {
 
   //····················································································································
+  //   Selection observable property: y
+  //····················································································································
+
+  let y_property = EBPropertyProxy_Int ()
+
+  var y_property_selection : EBSelection <Int> {
+    return self.y_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: text
+  //····················································································································
+
+  let text_property = EBPropertyProxy_String ()
+
+  var text_property_selection : EBSelection <String> {
+    return self.text_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: horizontalAlignment
   //····················································································································
 
-  var horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  let horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
   var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     return self.horizontalAlignment_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: issues
+  //   Selection observable property: x
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let x_property = EBPropertyProxy_Int ()
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+  var x_property_selection : EBSelection <Int> {
+    return self.x_property.prop
   }
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  let objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
     return self.objectDisplay_property.prop
@@ -44,40 +64,20 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
     return self.selectionDisplay_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: text
+  //   Selection observable property: issues
   //····················································································································
 
-  var text_property = EBPropertyProxy_String ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
-  var text_property_selection : EBSelection <String> {
-    return self.text_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: x
-  //····················································································································
-
-  var x_property = EBPropertyProxy_Int ()
-
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: y
-  //····················································································································
-
-  var y_property = EBPropertyProxy_Int ()
-
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -112,13 +112,13 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
       }
     }
     model.addEBObserver (self.mActualModel)
+    self.bind_property_y (model: self.mActualModel)
+    self.bind_property_text (model: self.mActualModel)
     self.bind_property_horizontalAlignment (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_x (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_text (model: self.mActualModel)
-    self.bind_property_x (model: self.mActualModel)
-    self.bind_property_y (model: self.mActualModel)
+    self.bind_property_issues (model: self.mActualModel)
   }
 
   //····················································································································
@@ -128,35 +128,35 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
+  //--- y
+    self.y_property.mReadModelFunction = nil 
+    self.y_property.mWriteModelFunction = nil 
+    self.y_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_y (self.y_property)
+  //--- text
+    self.text_property.mReadModelFunction = nil 
+    self.text_property.mWriteModelFunction = nil 
+    self.text_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_text (self.text_property)
   //--- horizontalAlignment
     self.horizontalAlignment_property.mReadModelFunction = nil 
     self.horizontalAlignment_property.mWriteModelFunction = nil 
     self.horizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
-  //--- issues
-    self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- x
+    self.x_property.mReadModelFunction = nil 
+    self.x_property.mWriteModelFunction = nil 
+    self.x_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_x (self.x_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- text
-    self.text_property.mReadModelFunction = nil 
-    self.text_property.mWriteModelFunction = nil 
-    self.text_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_text (self.text_property)
-  //--- x
-    self.x_property.mReadModelFunction = nil 
-    self.x_property.mWriteModelFunction = nil 
-    self.x_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x (self.x_property)
-  //--- y
-    self.y_property.mReadModelFunction = nil 
-    self.y_property.mWriteModelFunction = nil 
-    self.y_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y (self.y_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //---
     self.mModel = nil    
   }
@@ -198,12 +198,12 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "horizontalAlignment",
-      idx:self.horizontalAlignment_property.ebObjectIndex,
+      "y",
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.horizontalAlignment_property.mValueExplorer
+      observerExplorer:&self.y_property.mObserverExplorer,
+      valueExplorer:&self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "text",
@@ -214,20 +214,20 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
       valueExplorer:&self.text_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "horizontalAlignment",
+      idx:self.horizontalAlignment_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
+      valueExplorer:&self.horizontalAlignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "x",
       idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
       valueExplorer:&self.x_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -281,339 +281,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.mExplorerWindow = nil
   }
 
-  //···················································································································*
+  //····················································································································
 
-  private final func bind_property_horizontalAlignment (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
-    self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <HorizontalAlignment> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.horizontalAlignment_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.horizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.horizontalAlignment_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.horizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.horizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_issues (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariIssueArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.issues_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_text (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_text (self.text_property)
-    self.text_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.text_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.text_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.text_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.text_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.text_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_x (model : ReadOnlyArrayOf_SymbolText) {
-    model.addEBObserverOf_x (self.x_property)
-    self.x_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.x_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.x_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.x_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_y (model : ReadOnlyArrayOf_SymbolText) {
+  private final func bind_property_y (model : TransientArrayOf_SymbolText) {
     model.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -680,7 +350,330 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
       }
     }
   }
+  //····················································································································
 
+  private final func bind_property_text (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_text (self.text_property)
+    self.text_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.text_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.text_property.mWriteModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.text_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.text_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.text_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_horizontalAlignment (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
+    self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <HorizontalAlignment> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.horizontalAlignment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.horizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.horizontalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.horizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.horizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_x (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_x (self.x_property)
+    self.x_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.x_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.x_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.x_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_objectDisplay (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_issues (model : TransientArrayOf_SymbolText) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
 
 
   //····················································································································

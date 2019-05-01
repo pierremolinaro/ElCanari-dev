@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_symbolInfo (
-       _ self_mComponent_componentName : String?,   
+       _ self_componentName : String,               
        _ self_mComponent_mComponentValue : String?, 
        _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
        _ self_mSymbolInstanceName : String,         
@@ -62,7 +62,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
           strokeBezierPath: transformedStrokeBezierPath,
           center: componentSymbolCenter,
           pinShapes: pinNameShapes,
-          componentName: self_mComponent_componentName!,
+          componentName: self_componentName,
           componentValue: self_mComponent_mComponentValue!
         )
 //--- END OF USER ZONE 2
