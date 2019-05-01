@@ -83,8 +83,7 @@ entity DeviceInProject {
     self.mPadAssignments.all.descriptor,
     self.mSymbols.all.symbolAndTypeName,
     self.mSymbols.all.filledBezierPath,
-    self.mSymbols.all.strokeBezierPath,
-    self.mSymbols.all.center ;
+    self.mSymbols.all.strokeBezierPath ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -127,7 +126,7 @@ entity DeviceSlavePadInProject {
 entity DeviceSymbolInstanceInProject {
 
   toOne DeviceSymbolTypeInProject mSymbolType ;
-  toMany DevicePinInProject mPins ;
+# § toMany DevicePinInProject mPins ;
 
   property String mSymbolInstanceName default "" ;
 
@@ -138,8 +137,6 @@ entity DeviceSymbolInstanceInProject {
   transient NSBezierPath filledBezierPath dependsFrom self.mSymbolType.one.mFilledBezierPath ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.mSymbolType.one.mStrokeBezierPath ;
-  
-  transient CanariPoint center dependsFrom self.mPins.all.mPinX, self.mPins.all.mPinY ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

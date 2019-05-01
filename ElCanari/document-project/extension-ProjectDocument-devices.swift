@@ -182,7 +182,7 @@ extension ProjectDocument {
           pinInProject.mYName = pinInDevice.mYName
           pinInProject.mXNumber = pinInDevice.mXNumber
           pinInProject.mYNumber = pinInDevice.mYNumber
-          symbolInstanceInProject.mPins.append (pinInProject)
+          // § symbolInstanceInProject.mPins.append (pinInProject)
           let pinQualifiedName = pinInProject.pinQualifiedName!
           // Swift.print ("pinQualifiedName \(pinQualifiedName)")
           devicePinDictionary [pinQualifiedName] = pinInProject

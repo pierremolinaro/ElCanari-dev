@@ -608,16 +608,15 @@ class DeviceInProject : EBManagedObject,
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
-        kind &= unwSelf.mSymbols_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPadAssignments_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3, v4))
+          switch (unwSelf.mPadAssignments_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -630,7 +629,6 @@ class DeviceInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.addEBObserverOf_center (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject) in
       if let me = self {
@@ -659,7 +657,6 @@ class DeviceInProject : EBManagedObject,
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.removeEBObserverOf_center (self.deviceSymbolDictionary_property)
  //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }

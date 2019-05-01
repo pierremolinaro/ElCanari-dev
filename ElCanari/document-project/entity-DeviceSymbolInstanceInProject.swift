@@ -35,12 +35,6 @@ protocol DeviceSymbolInstanceInProject_strokeBezierPath : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceSymbolInstanceInProject_center : class {
-  var center : CanariPoint? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -49,8 +43,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
          DeviceSymbolInstanceInProject_symbolAndTypeName,
          DeviceSymbolInstanceInProject_symbolTypeName,
          DeviceSymbolInstanceInProject_filledBezierPath,
-         DeviceSymbolInstanceInProject_strokeBezierPath,
-         DeviceSymbolInstanceInProject_center {
+         DeviceSymbolInstanceInProject_strokeBezierPath {
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -68,25 +61,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
-
-  //····················································································································
-  //   To many property: mPins
-  //····················································································································
-
-  let mPins_property = StoredArrayOf_DevicePinInProject ()
-
-  //····················································································································
-
-  var mPins_property_selection : EBSelection < [DevicePinInProject] > {
-    return self.mPins_property.prop
-  }
-
-  //····················································································································
-
-  var mPins : [DevicePinInProject] {
-    get { return self.mPins_property.propval }
-    set { self.mPins_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   To one property: mSymbolType
@@ -210,29 +184,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: center
-  //····················································································································
-
-  var center_property = EBTransientProperty_CanariPoint ()
-
-  //····················································································································
-
-  var center_property_selection : EBSelection <CanariPoint> {
-    return self.center_property.prop
-  }
-
-  //····················································································································
-
-  var center : CanariPoint? {
-    switch self.center_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -240,8 +191,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mPins (no option)
-    self.mPins_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
     self.mSymbolType_property.owner = self
   //--- Atomic property: symbolAndTypeName
@@ -334,30 +283,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-  //--- Atomic property: center
-    self.center_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mPins_property_selection.kind ()
-        kind &= unwSelf.mPins_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mPins_property_selection, unwSelf.mPins_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceSymbolInstanceInProject_center (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mPins_property.addEBObserverOf_mPinX (self.center_property)
-    self.mPins_property.addEBObserverOf_mPinY (self.center_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -372,8 +297,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
     self.mSymbolType_property.removeEBObserverOf_mFilledBezierPath (self.filledBezierPath_property)
     self.mSymbolType_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
-    self.mPins_property.removeEBObserverOf_mPinX (self.center_property)
-    self.mPins_property.removeEBObserverOf_mPinY (self.center_property)
   //--- Unregister properties for handling signature
   }
 
@@ -429,22 +352,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       observerExplorer:&self.strokeBezierPath_property.mObserverExplorer,
       valueExplorer:&self.strokeBezierPath_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "center",
-      idx:self.center_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.center_property.mObserverExplorer,
-      valueExplorer:&self.center_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mPins",
-      idx:mPins_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPins_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "mSymbolType",
@@ -464,8 +372,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
-  //--- To many property: mPins
-    self.mPins_property.mValueExplorer = nil
   //--- To one property: mSymbolType
     self.mSymbolType_property.mObserverExplorer = nil
     self.mSymbolType_property.mValueExplorer = nil
@@ -478,7 +384,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPins_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -501,12 +406,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
-  //--- To many property: mPins
-    self.store (
-      managedObjectArray: self.mPins_property.propval,
-      relationshipName: "mPins",
-      intoDictionary: ioDictionary
-    )
   //--- To one property: mSymbolType
     self.store (managedObject:self.mSymbolType_property.propval,
       relationshipName: "mSymbolType",
@@ -520,12 +419,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mPins
-    self.mPins_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPins",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DevicePinInProject])
   //--- To one property: mSymbolType
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -555,10 +448,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mPins
-    for managedObject in self.mPins_property.propval {
-      objects.append (managedObject)
-    }
   //--- To one property: mSymbolType
     if let managedObject = self.mSymbolType_property.propval {
       objects.append (managedObject)
@@ -571,10 +460,6 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mPins
-    for managedObject in self.mPins_property.propval {
-      objects.append (managedObject)
-    }
   //--- To one property: mSymbolType
     if let managedObject = self.mSymbolType_property.propval {
       objects.append (managedObject)
@@ -873,62 +758,6 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   }
 
   //····················································································································
-  //   Observers of 'center' transient property
-  //····················································································································
-
-  private var mObserversOf_center = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_center (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_center.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.center_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_center (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_center.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.center_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_center_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_center.apply { (_ observer : EBEvent) in
-        managedObject.center_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_center_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_center.apply { (_ observer : EBEvent) in
-        managedObject.center_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -1002,7 +831,6 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
       self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_center_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1012,7 +840,6 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
       self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedSet)
-      self.addEBObserversOf_center_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1149,7 +976,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_center_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1166,7 +992,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_center_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

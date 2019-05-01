@@ -8,10 +8,10 @@ digraph G {
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages|<mPadAssignments>mPadAssignments|String mPrefix|<mSymbols>mSymbols"] ;
-  DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|<mPins>mPins|String mSymbolInstanceName|<mSymbolType>mSymbolType"] ;
+  DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|String mSymbolInstanceName|<mSymbolType>mSymbolType"] ;
   DeviceSymbolTypeInProject[label="<DeviceSymbolTypeInProject>DeviceSymbolTypeInProject|NSBezierPath mFilledBezierPath|NSBezierPath mStrokeBezierPath|String mSymbolTypeName"] ;
-  DevicePinInProject[label="<DevicePinInProject>DevicePinInProject|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|String mPinName|Bool mPinNameIsDisplayedInSchematics|Int mPinX|Int mPinY|String mSymbolInstanceName|String mSymbolTypeName|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
   DevicePadAssignmentInProject[label="<DevicePadAssignmentInProject>DevicePadAssignmentInProject|String mPadName|<mPin>mPin"] ;
+  DevicePinInProject[label="<DevicePinInProject>DevicePinInProject|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|String mPinName|Bool mPinNameIsDisplayedInSchematics|Int mPinX|Int mPinY|String mSymbolInstanceName|String mSymbolTypeName|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>mMasterPads|String mPackageName"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
@@ -29,7 +29,6 @@ digraph G {
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceInProject:mPadAssignments -> DevicePadAssignmentInProject:DevicePadAssignmentInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceInProject:mSymbols -> DeviceSymbolInstanceInProject:DeviceSymbolInstanceInProject [dir=both arrowtail=none arrowhead=vee] ;
-  DeviceSymbolInstanceInProject:mPins -> DevicePinInProject:DevicePinInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceSymbolInstanceInProject:mSymbolType -> DeviceSymbolTypeInProject:DeviceSymbolTypeInProject [dir=both arrowtail=none arrowhead=onormal] ;
   DevicePadAssignmentInProject:mPin -> DevicePinInProject:DevicePinInProject [dir=both arrowtail=none arrowhead=onormal] ;
   DevicePackageInProject:mMasterPads -> DeviceMasterPadInProject:DeviceMasterPadInProject [dir=both arrowtail=none arrowhead=vee] ;
