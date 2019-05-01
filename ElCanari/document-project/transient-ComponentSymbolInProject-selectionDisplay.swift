@@ -16,6 +16,8 @@ func transient_ComponentSymbolInProject_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let shape = EBShape ()
+        shape.append (EBStrokeBezierPathShape ([self_symbolInfo.strokeBezierPath], .cyan))
+        shape.append (EBFilledBezierPathShape ([self_symbolInfo.filledBezierPath], .cyan))
         let p = self_symbolInfo.center.cocoaPoint ()
         shape.append (EBKnobShape (at: p, index: 0, .rect, 8.0))
         return shape

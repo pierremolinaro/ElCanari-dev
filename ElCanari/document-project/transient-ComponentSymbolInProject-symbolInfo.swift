@@ -23,9 +23,10 @@ func transient_ComponentSymbolInProject_symbolInfo (
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
         let tr = NSAffineTransform ()
         tr.translateX (by: canariUnitToCocoa (self_mCenterX - deviceInfo.center.x), yBy: canariUnitToCocoa (self_mCenterY - deviceInfo.center.y))
-        let shape = deviceInfo.shape.transformedBy (tr)
+        let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
+        let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
         let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
-  return ComponentSymbolInfo (shape: shape, center: componentSymbolCenter)
+  return ComponentSymbolInfo (filledBezierPath: transformedFilledBezierPath, strokeBezierPath: transformedStrokeBezierPath, center: componentSymbolCenter)
 //--- END OF USER ZONE 2
 }
 

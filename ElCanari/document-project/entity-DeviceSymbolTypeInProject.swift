@@ -23,20 +23,13 @@ protocol DeviceSymbolTypeInProject_mFilledBezierPath : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceSymbolTypeInProject_shape : class {
-  var shape : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceSymbolTypeInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceSymbolTypeInProject : EBManagedObject,
          DeviceSymbolTypeInProject_mSymbolTypeName,
          DeviceSymbolTypeInProject_mStrokeBezierPath,
-         DeviceSymbolTypeInProject_mFilledBezierPath,
-         DeviceSymbolTypeInProject_shape {
+         DeviceSymbolTypeInProject_mFilledBezierPath {
 
   //····················································································································
   //   Atomic property: mSymbolTypeName
@@ -90,29 +83,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
   var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.prop }
 
   //····················································································································
-  //   Transient property: shape
-  //····················································································································
-
-  var shape_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var shape_property_selection : EBSelection <EBShape> {
-    return self.shape_property.prop
-  }
-
-  //····················································································································
-
-  var shape : EBShape? {
-    switch self.shape_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -124,32 +94,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: shape
-    self.shape_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mStrokeBezierPath_property_selection.kind ()
-        kind &= unwSelf.mFilledBezierPath_property_selection.kind ()
-        kind &= g_Preferences!.symbolColorForSchematic_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.mStrokeBezierPath_property_selection, unwSelf.mFilledBezierPath_property_selection, g_Preferences!.symbolColorForSchematic_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_DeviceSymbolTypeInProject_shape (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mStrokeBezierPath_property.addEBObserver (self.shape_property)
-    self.mFilledBezierPath_property.addEBObserver (self.shape_property)
-    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.shape_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -159,9 +103,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mStrokeBezierPath_property.removeEBObserver (self.shape_property)
-    self.mFilledBezierPath_property.removeEBObserver (self.shape_property)
-    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.shape_property)
   //--- Unregister properties for handling signature
   }
 
@@ -201,14 +142,6 @@ class DeviceSymbolTypeInProject : EBManagedObject,
       valueExplorer:&self.mFilledBezierPath_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "shape",
-      idx:self.shape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.shape_property.mObserverExplorer,
-      valueExplorer:&self.shape_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -485,62 +418,6 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
   }
 
   //····················································································································
-  //   Observers of 'shape' transient property
-  //····················································································································
-
-  private var mObserversOf_shape = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_shape.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.shape_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_shape.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.shape_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_shape_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-        managedObject.shape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-        managedObject.shape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -612,7 +489,6 @@ class TransientArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
       self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_shape_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -620,7 +496,6 @@ class TransientArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
       self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_shape_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -757,7 +632,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
           self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
-          self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -774,7 +648,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
           self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
-          self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

@@ -12,10 +12,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_objectDisplay (
-       _ self_symbolInfo : ComponentSymbolInfo
+       _ self_symbolInfo : ComponentSymbolInfo,        
+       _ prefs_symbolColorForSchematic : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        return self_symbolInfo.shape
+        let shape = EBShape ()
+        let strokeShape = EBStrokeBezierPathShape ([self_symbolInfo.strokeBezierPath], prefs_symbolColorForSchematic)
+        let filledPath = EBFilledBezierPathShape ([self_symbolInfo.filledBezierPath], prefs_symbolColorForSchematic)
+        let box = filledPath.boundingBox.union (strokeShape.boundingBox)
+        shape.append (EBFilledBezierPathShape ([NSBezierPath (rect: box)], nil))
+        shape.append (strokeShape)
+        shape.append (filledPath)
+        return shape
 //--- END OF USER ZONE 2
 }
 

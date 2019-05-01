@@ -11,11 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_shape (
-       _ self_mSymbolType_shape : EBShape?
-) -> EBShape {
+func transient_DeviceSymbolInstanceInProject_filledBezierPath (
+       _ self_mSymbolType_mFilledBezierPath : NSBezierPath?,   
+       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
-        return self_mSymbolType_shape ?? EBShape ()
+
 //--- END OF USER ZONE 2
 }
 

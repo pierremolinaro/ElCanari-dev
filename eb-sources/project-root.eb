@@ -79,8 +79,11 @@ entity DeviceInProject {
   transient TwoStringArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
   transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
   
-  transient DeviceSymbolDictionary deviceSymbolDictionary
-    dependsFrom self.mSymbols.all.symbolAndTypeName, self.mSymbols.all.shape, self.mSymbols.all.center ;
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom 
+    self.mSymbols.all.symbolAndTypeName,
+    self.mSymbols.all.filledBezierPath,
+    self.mSymbols.all.strokeBezierPath,
+    self.mSymbols.all.center ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -131,7 +134,9 @@ entity DeviceSymbolInstanceInProject {
   
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
   
-  transient EBShape shape dependsFrom self.mSymbolType.one.shape ;
+  transient NSBezierPath filledBezierPath dependsFrom self.mSymbolType.one.mFilledBezierPath ;
+
+  transient NSBezierPath strokeBezierPath dependsFrom self.mSymbolType.one.mStrokeBezierPath ;
   
   transient CanariPoint center dependsFrom self.mPins.all.mPinX, self.mPins.all.mPinY ;
 }
@@ -143,8 +148,6 @@ entity DeviceSymbolTypeInProject {
   
   property NSBezierPath mStrokeBezierPath default empty ;
   property NSBezierPath mFilledBezierPath default empty ;
-  
-  transient EBShape shape dependsFrom self.mStrokeBezierPath, self.mFilledBezierPath, prefs.symbolColorForSchematic ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -258,13 +261,12 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
      self.mComponent.one.deviceSymbolDictionary,
      self.mSymbolInstanceName,
      self.mSymbolTypeName,
-#     super.SchematicsObject.isPlacedInSchematics,
      self.mCenterX,
      self.mCenterY ;
  
   transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;
 
-  override transient EBShape objectDisplay dependsFrom self.symbolInfo ;
+  override transient EBShape objectDisplay dependsFrom self.symbolInfo, prefs.symbolColorForSchematic ;
   
   override transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
 }

@@ -10,13 +10,13 @@ import Cocoa
 
 class EBFilledBezierPathShape : EBShape {
   private var mFilledPaths : [NSBezierPath]
-  private let mColor : NSColor
+  private let mColor : NSColor?
 
   //····················································································································
   //  Init
   //····················································································································
 
-  init (_ inPaths : [NSBezierPath], _ inColor : NSColor) {
+  init (_ inPaths : [NSBezierPath], _ inColor : NSColor?) {
     mColor = inColor
     mFilledPaths = []
     for path in inPaths {
@@ -48,10 +48,12 @@ class EBFilledBezierPathShape : EBShape {
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     super.draw (inView, inDirtyRect)
-    self.mColor.setFill ()
-    for bp in self.mFilledPaths {
-      if inView.needsToDraw (bp.bounds) {
-        bp.fill ()
+    if let color = self.mColor {
+      color.setFill ()
+      for bp in self.mFilledPaths {
+        if inView.needsToDraw (bp.bounds) {
+          bp.fill ()
+        }
       }
     }
   }

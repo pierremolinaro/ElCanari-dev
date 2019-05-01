@@ -11,16 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolTypeInProject_shape (
-       _ self_mStrokeBezierPath : NSBezierPath, 
-       _ self_mFilledBezierPath : NSBezierPath, 
-       _ prefs_symbolColorForSchematic : NSColor
-) -> EBShape {
+func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
+       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
-         let shape = EBShape ()
-         shape.append (EBStrokeBezierPathShape ([self_mStrokeBezierPath], prefs_symbolColorForSchematic))
-         shape.append (EBFilledBezierPathShape ([self_mFilledBezierPath], prefs_symbolColorForSchematic))
-         return shape
+
 //--- END OF USER ZONE 2
 }
 

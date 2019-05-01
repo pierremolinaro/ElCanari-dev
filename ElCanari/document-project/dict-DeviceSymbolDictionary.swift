@@ -6,19 +6,21 @@
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Foundation
+import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct ComponentSymbolInfo {
-  let shape : EBShape
+  let filledBezierPath : NSBezierPath
+  let strokeBezierPath : NSBezierPath
   let center : CanariPoint
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct DeviceSymbolInfo {
-  let shape : EBShape
+  let filledBezierPath : NSBezierPath
+  let strokeBezierPath : NSBezierPath
   let center : CanariPoint
 }
 

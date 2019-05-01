@@ -258,16 +258,17 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.symbolInfo_property_selection.kind ()
+        var kind = unwSelf.symbolInfo_property_selection.kind ()
+        kind &= g_Preferences!.symbolColorForSchematic_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolInfo_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_objectDisplay (v0))
+          switch (unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1))
           default :
             return .empty
           }
@@ -277,6 +278,7 @@ class ComponentSymbolInProject : SchematicsObject,
       }
     }
     self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -336,6 +338,7 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
   //--- Unregister properties for handling signature
