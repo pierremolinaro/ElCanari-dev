@@ -261,6 +261,12 @@ final class Controller_ProjectDocument_mComponentController : EBObject, EBTableV
       }else{
         presentErrorWindow (file, line, "\"value\" column view unknown")
       }
+    //--- Check 'inSchematics' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "inSchematics")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"inSchematics\" column view unknown")
+      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -408,6 +414,13 @@ final class Controller_ProjectDocument_mComponentController : EBObject, EBTableV
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.mComponentValue_property, file: #file, line: #line, sendContinously:false)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "inSchematics", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.placementInSchematics_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

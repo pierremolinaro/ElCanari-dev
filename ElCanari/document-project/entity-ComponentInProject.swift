@@ -59,6 +59,12 @@ protocol ComponentInProject_unplacedSymbols : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentInProject_placementInSchematics : class {
+  var placementInSchematics : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -71,7 +77,8 @@ class ComponentInProject : EBManagedObject,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
          ComponentInProject_deviceSymbolDictionary,
-         ComponentInProject_unplacedSymbols {
+         ComponentInProject_unplacedSymbols,
+         ComponentInProject_placementInSchematics {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -340,6 +347,29 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: placementInSchematics
+  //····················································································································
+
+  var placementInSchematics_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var placementInSchematics_property_selection : EBSelection <String> {
+    return self.placementInSchematics_property.prop
+  }
+
+  //····················································································································
+
+  var placementInSchematics : String? {
+    switch self.placementInSchematics_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -502,6 +532,28 @@ class ComponentInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+  //--- Atomic property: placementInSchematics
+    self.placementInSchematics_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbols_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbols_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_placementInSchematics (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentSymbolInProject) in
       if let me = self {
@@ -530,6 +582,7 @@ class ComponentInProject : EBManagedObject,
     self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+    self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
  //   self.mSymbols_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -617,6 +670,14 @@ class ComponentInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.unplacedSymbols_property.mObserverExplorer,
       valueExplorer:&self.unplacedSymbols_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "placementInSchematics",
+      idx:self.placementInSchematics_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.placementInSchematics_property.mObserverExplorer,
+      valueExplorer:&self.placementInSchematics_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1324,6 +1385,62 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
+  //   Observers of 'placementInSchematics' transient property
+  //····················································································································
+
+  private var mObserversOf_placementInSchematics = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_placementInSchematics.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.placementInSchematics_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_placementInSchematics.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.placementInSchematics_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_placementInSchematics_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematics_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_placementInSchematics_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematics_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1401,6 +1518,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_placementInSchematics_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1414,6 +1532,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
       self.addEBObserversOf_availablePackages_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedSet)
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
+      self.addEBObserversOf_placementInSchematics_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1556,6 +1675,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_placementInSchematics_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1578,6 +1698,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_placementInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

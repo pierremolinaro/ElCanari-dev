@@ -124,9 +124,7 @@ entity DeviceSlavePadInProject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolInstanceInProject {
-
   toOne DeviceSymbolTypeInProject mSymbolType ;
-# § toMany DevicePinInProject mPins ;
 
   property String mSymbolInstanceName default "" ;
 
@@ -211,7 +209,9 @@ entity ComponentInProject {
     self.mSymbols.all.mSymbolTypeName
   ;
 
-  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ; 
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
+  
+  transient String placementInSchematics dependsFrom self.mSymbols.all.symbolInSchematics ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -273,7 +273,6 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
   
-  property Bool mDisplayComponentName default yes ;
   property Int mDisplayComponentNameOffsetX default 0 ;
   property Int mDisplayComponentNameOffsetY default 457_200 ; # 200 mils
   
@@ -296,7 +295,6 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
 
   override transient EBShape objectDisplay dependsFrom 
     prefs.pinNameFont,
-    self.mDisplayComponentName,
     self.mDisplayComponentNameOffsetX,
     self.mDisplayComponentNameOffsetY,
     self.mDisplayComponentValue,
@@ -310,7 +308,6 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   
   override transient EBShape selectionDisplay dependsFrom
     prefs.pinNameFont,
-    self.mDisplayComponentName,
     self.mDisplayComponentNameOffsetX,
     self.mDisplayComponentNameOffsetY,
     self.mDisplayComponentValue,

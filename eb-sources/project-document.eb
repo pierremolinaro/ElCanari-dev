@@ -68,6 +68,7 @@ document ProjectDocument root ProjectRoot {
      column "device" EBTextObserverField $valueObserver self.deviceName
      column "package" EBTextObserverField $valueObserver self.selectedPackageName
      column "value" EBTextField $value self.mComponentValue { sendContinously : no }
+     column "inSchematics" EBTextObserverField $valueObserver self.placementInSchematics
   }
   outlet EBTableView mComponentTableView $tableValue mComponentController ;
 
@@ -246,7 +247,14 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet EBScrollView mSchematicsScrollView ;
-  
+
+#--- Selected symbol in schematic inspector
+  outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
+  selectionController ComponentSymbolInProject mComponentSymbolSelectionController : 
+    self.mSchematicsObjectsController.selectedArray
+  ;
+
+  outlet EBSwitch mComponentSymbolShowComponentValueSwitch $value mComponentSymbolSelectionController.mDisplayComponentValue ;  
 }
 
 #----------------------------------------------------------------------------*

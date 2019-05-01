@@ -45,6 +45,12 @@ import Cocoa
   var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
 
   //····················································································································
+  //   Selection controller: mComponentSymbolSelectionController
+  //····················································································································
+
+  var mComponentSymbolSelectionController = SelectionController_ProjectDocument_mComponentSymbolSelectionController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -298,6 +304,8 @@ import Cocoa
   @IBOutlet var mChangeValuePanel : NSPanel?
   @IBOutlet var mChangeValueValidationButton : NSButton?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
+  @IBOutlet var mComponentSymbolInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mComponentSymbolShowComponentValueSwitch : EBSwitch?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
@@ -432,6 +440,8 @@ import Cocoa
     self.mSelectedSheetController.addExplorer (name: "mSelectedSheetController", y:&y, view:view)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
+  //--- Selection controller property: mComponentSymbolSelectionController
+    self.mComponentSymbolSelectionController.addExplorer (name: "mComponentSymbolSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -482,6 +492,8 @@ import Cocoa
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolInspectorView, "mComponentSymbolInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolShowComponentValueSwitch, "mComponentSymbolShowComponentValueSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
@@ -573,6 +585,8 @@ import Cocoa
     self.mSelectedSheetController.bind_model (self.rootObject.mSelectedSheet_property)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.bind_model (self.mSelectedSheetController.mObjects_property)
+  //--- Selection controller property: mComponentSymbolSelectionController
+    self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -804,6 +818,7 @@ import Cocoa
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
+    self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1063,6 +1078,7 @@ import Cocoa
     self.mSchematicsView?.unbind_gridLineColor ()
     self.mSchematicsView?.unbind_gridCrossColor ()
     self.mSchematicsView?.unbind_zoom ()
+    self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1116,6 +1132,8 @@ import Cocoa
     self.mSelectedSheetController.unbind_model ()
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.unbind_model ()
+  //--- Selection controller property: mComponentSymbolSelectionController
+    self.mComponentSymbolSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
@@ -1169,6 +1187,8 @@ import Cocoa
     self.mChangeValuePanel?.ebCleanUp ()
     self.mChangeValueValidationButton?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
+    self.mComponentSymbolInspectorView?.ebCleanUp ()
+    self.mComponentSymbolShowComponentValueSwitch?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()

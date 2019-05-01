@@ -73,6 +73,10 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
       self.mSchematicsSheetsInspectorView
     ]
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
+
+  //--- Register schematics inspector views
+    self.mSchematicsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
+    self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
@@ -181,6 +185,7 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
       symbol.mCenterX = p.x
       symbol.mCenterY = p.y
       self.rootObject.mSelectedSheet?.mObjects.append (symbol)
+      self.mSchematicsObjectsController.setSelection ([symbol])
       ok = true
     }
     return ok

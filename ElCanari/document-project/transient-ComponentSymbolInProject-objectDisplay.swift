@@ -13,7 +13,6 @@ import Cocoa
 
 func transient_ComponentSymbolInProject_objectDisplay (
        _ prefs_pinNameFont : NSFont,                   
-       _ self_mDisplayComponentName : Bool,            
        _ self_mDisplayComponentNameOffsetX : Int,      
        _ self_mDisplayComponentNameOffsetY : Int,      
        _ self_mDisplayComponentValue : Bool,           
@@ -33,12 +32,12 @@ func transient_ComponentSymbolInProject_objectDisplay (
         shape.append (strokeShape)
         shape.append (filledPath)
         for pinShape in self_symbolInfo.pinShapes {
-          if (pinShape.0.instanceName == self_mSymbolInstanceName) && (pinShape.0.typeName == self_mSymbolTypeName) {
-            shape.append (pinShape.1)
+          if (pinShape.symbol.instanceName == self_mSymbolInstanceName) && (pinShape.symbol.typeName == self_mSymbolTypeName) {
+            shape.append (pinShape.shape)
           }
         }
       //--- Component name
-        if self_mDisplayComponentName {
+        do{
           let componentNameTextAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_pinNameFont
           ]

@@ -17,11 +17,18 @@ struct SymbolInProjectIdentifier : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ComponentSymbolInfo {
+struct PinShapeDescriptor : Hashable {
+  let symbol : SymbolInProjectIdentifier
+  let shape : EBShape
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct ComponentSymbolInfo : Hashable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint
-  let pinShapes : [(SymbolInProjectIdentifier, EBShape)]
+  let pinShapes : [PinShapeDescriptor]
   let componentName : String
   let componentValue : String
 }

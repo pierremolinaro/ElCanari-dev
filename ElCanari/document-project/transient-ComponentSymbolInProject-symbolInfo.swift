@@ -30,7 +30,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
         let pinNameAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont
         ]
-        var pinNameShapes = [(SymbolInProjectIdentifier, EBShape)] ()
+        var pinNameShapes = [PinShapeDescriptor] ()
         for pinPadAssignment in deviceInfo.assignments {
           if let pin = pinPadAssignment.pin {
             if pin.pinNameIsDisplayedInSchematics {
@@ -41,7 +41,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
                 pin.nameHorizontalAlignment.ebTextShapeHorizontalAlignment(),
                 .center
               )
-              pinNameShapes.append ((pin.symbol, pinNameTextShape.transformedBy (tr)))
+              pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNameTextShape.transformedBy (tr)))
             }
             let pinNumberTextShape = EBTextShape (
               pinPadAssignment.padName,
@@ -50,7 +50,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
               pin.numberHorizontalAlignment.ebTextShapeHorizontalAlignment (),
               .center
             )
-            pinNameShapes.append ((pin.symbol, pinNumberTextShape.transformedBy (tr)))
+            pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNumberTextShape.transformedBy (tr)))
           }
         }
       //---

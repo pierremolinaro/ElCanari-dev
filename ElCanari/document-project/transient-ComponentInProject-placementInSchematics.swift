@@ -11,32 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension ProjectDocument {
-  @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
+func transient_ComponentInProject_placementInSchematics (
+       _ self_mSymbols_symbolInSchematics : [ComponentSymbolInProject_symbolInSchematics]
+) -> String {
 //--- START OF USER ZONE 2
-        for component in self.mComponentController.selectedArray_property.propval {
-          if let idx = self.rootObject.mComponents.firstIndex (of: component) {
-          //--- Remove all symbols from schematics sheets
-            for symbol in component.mSymbols {
-              symbol.mSheet = nil
-            }
-          //--- Remove from component lis
-            self.rootObject.mComponents.remove (at: idx)
-          //--- Adapt remaining component names
-            let prefix = component.mDevice!.mPrefix
-            let index = component.mNameIndex
-            component.mDevice = nil
-            component.mSelectedPackage = nil
-            component.mSymbols = []
-            for remainingComponent in self.rootObject.mComponents {
-              if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
-                remainingComponent.mNameIndex -= 1
-              }
-            }
-          }
-        }
+
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

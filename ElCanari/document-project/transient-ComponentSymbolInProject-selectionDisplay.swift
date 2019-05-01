@@ -13,7 +13,6 @@ import Cocoa
 
 func transient_ComponentSymbolInProject_selectionDisplay (
        _ prefs_pinNameFont : NSFont,                      
-       _ self_mDisplayComponentName : Bool,               
        _ self_mDisplayComponentNameOffsetX : Int,         
        _ self_mDisplayComponentNameOffsetY : Int,         
        _ self_mDisplayComponentValue : Bool,              
@@ -26,8 +25,9 @@ func transient_ComponentSymbolInProject_selectionDisplay (
         shape.append (EBStrokeBezierPathShape ([self_symbolInfo.strokeBezierPath], .cyan))
         shape.append (EBFilledBezierPathShape ([self_symbolInfo.filledBezierPath], .cyan))
         let symbolCenter = self_symbolInfo.center.cocoaPoint ()
+        shape.append (EBKnobShape (at: symbolCenter, index: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, 8.0))
       //--- Component name knob
-        if self_mDisplayComponentName {
+        do{
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
           let bp = NSBezierPath ()
           bp.move (to: symbolCenter)
@@ -63,8 +63,6 @@ func transient_ComponentSymbolInProject_selectionDisplay (
           )
           shape.append (componentValueShape)
         }
-      //---
-        shape.append (EBKnobShape (at: symbolCenter, index: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, 8.0))
       //---
         return shape
 //--- END OF USER ZONE 2
