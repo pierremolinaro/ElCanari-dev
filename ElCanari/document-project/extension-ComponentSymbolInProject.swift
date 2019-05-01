@@ -9,6 +9,12 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let SYMBOL_IN_SCHEMATICS_CENTER_KNOB = 0
+let SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB = 1
+let SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB = 2
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -32,8 +38,16 @@ extension ComponentSymbolInProject {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    self.mCenterX += inDx
-    self.mCenterY += inDy
+    if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
+      self.mCenterX += inDx
+      self.mCenterY += inDy
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB {
+      self.mDisplayComponentNameOffsetX += inDx
+      self.mDisplayComponentNameOffsetY += inDy
+    }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB {
+      self.mDisplayComponentValueOffsetX += inDx
+      self.mDisplayComponentValueOffsetY += inDy
+    }
   }
 
   //····················································································································
@@ -81,6 +95,18 @@ extension ComponentSymbolInProject {
     if !result {
       result = (self.mCenterY % inGrid) != 0
     }
+    if !result {
+      result = (self.mDisplayComponentNameOffsetX % inGrid) != 0
+    }
+    if !result {
+      result = (self.mDisplayComponentNameOffsetY % inGrid) != 0
+    }
+    if !result {
+      result = (self.mDisplayComponentValueOffsetX % inGrid) != 0
+    }
+    if !result {
+      result = (self.mDisplayComponentValueOffsetY % inGrid) != 0
+    }
     return result
   }
 
@@ -89,6 +115,10 @@ extension ComponentSymbolInProject {
   override func snapToGrid (_ inGrid : Int) {
     self.mCenterX = ((self.mCenterX + inGrid / 2) / inGrid) * inGrid
     self.mCenterY = ((self.mCenterY + inGrid / 2) / inGrid) * inGrid
+    self.mDisplayComponentNameOffsetX = ((self.mDisplayComponentNameOffsetX + inGrid / 2) / inGrid) * inGrid
+    self.mDisplayComponentNameOffsetY = ((self.mDisplayComponentNameOffsetY + inGrid / 2) / inGrid) * inGrid
+    self.mDisplayComponentValueOffsetX = ((self.mDisplayComponentValueOffsetX + inGrid / 2) / inGrid) * inGrid
+    self.mDisplayComponentValueOffsetY = ((self.mDisplayComponentValueOffsetY + inGrid / 2) / inGrid) * inGrid
   }
 
   //····················································································································
@@ -103,7 +133,6 @@ extension ComponentSymbolInProject {
   //····················································································································
 
 //  override func operationBeforeRemoving () {
-//    self.mSheet = nil
 //  }
 
   //····················································································································

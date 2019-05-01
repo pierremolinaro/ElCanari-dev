@@ -22,6 +22,8 @@ struct ComponentSymbolInfo {
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint
   let pinShapes : [(SymbolInProjectIdentifier, EBShape)]
+  let componentName : String
+  let componentValue : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -47,6 +49,7 @@ struct PinInProjectDescriptor : Hashable {
   let pinName : String
   let symbol : SymbolInProjectIdentifier
   let pinXY : CanariPoint
+
   let nameXY : CanariPoint
   let nameHorizontalAlignment : HorizontalAlignment
   let pinNameIsDisplayedInSchematics : Bool

@@ -30,6 +30,42 @@ protocol ComponentSymbolInProject_mSymbolTypeName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentSymbolInProject_mDisplayComponentName : class {
+  var mDisplayComponentName : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : class {
+  var mDisplayComponentNameOffsetX : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : class {
+  var mDisplayComponentNameOffsetY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_mDisplayComponentValue : class {
+  var mDisplayComponentValue : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : class {
+  var mDisplayComponentValueOffsetX : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : class {
+  var mDisplayComponentValueOffsetY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentSymbolInProject_symbolInfo : class {
   var symbolInfo : ComponentSymbolInfo? { get }
 }
@@ -61,6 +97,12 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mCenterY,
          ComponentSymbolInProject_mSymbolInstanceName,
          ComponentSymbolInProject_mSymbolTypeName,
+         ComponentSymbolInProject_mDisplayComponentName,
+         ComponentSymbolInProject_mDisplayComponentNameOffsetX,
+         ComponentSymbolInProject_mDisplayComponentNameOffsetY,
+         ComponentSymbolInProject_mDisplayComponentValue,
+         ComponentSymbolInProject_mDisplayComponentValueOffsetX,
+         ComponentSymbolInProject_mDisplayComponentValueOffsetY,
          ComponentSymbolInProject_symbolInfo,
          ComponentSymbolInProject_objectDisplay,
          ComponentSymbolInProject_selectionDisplay,
@@ -133,6 +175,108 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentName
+  //····················································································································
+
+  var mDisplayComponentName_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayComponentName : Bool {
+    get { return self.mDisplayComponentName_property.propval }
+    set { self.mDisplayComponentName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentName_property_selection : EBSelection <Bool> { return self.mDisplayComponentName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentNameOffsetX
+  //····················································································································
+
+  var mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mDisplayComponentNameOffsetX : Int {
+    get { return self.mDisplayComponentNameOffsetX_property.propval }
+    set { self.mDisplayComponentNameOffsetX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetX_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentNameOffsetY
+  //····················································································································
+
+  var mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
+
+  //····················································································································
+
+  var mDisplayComponentNameOffsetY : Int {
+    get { return self.mDisplayComponentNameOffsetY_property.propval }
+    set { self.mDisplayComponentNameOffsetY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentNameOffsetY_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentValue
+  //····················································································································
+
+  var mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mDisplayComponentValue : Bool {
+    get { return self.mDisplayComponentValue_property.propval }
+    set { self.mDisplayComponentValue_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentValue_property_selection : EBSelection <Bool> { return self.mDisplayComponentValue_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentValueOffsetX
+  //····················································································································
+
+  var mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mDisplayComponentValueOffsetX : Int {
+    get { return self.mDisplayComponentValueOffsetX_property.propval }
+    set { self.mDisplayComponentValueOffsetX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetX_property.prop }
+
+  //····················································································································
+  //   Atomic property: mDisplayComponentValueOffsetY
+  //····················································································································
+
+  var mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
+
+  //····················································································································
+
+  var mDisplayComponentValueOffsetY : Int {
+    get { return self.mDisplayComponentValueOffsetY_property.propval }
+    set { self.mDisplayComponentValueOffsetY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
 
   //····················································································································
   //   To one property: mComponent
@@ -223,12 +367,26 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentName
+    self.mDisplayComponentName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentNameOffsetX
+    self.mDisplayComponentNameOffsetX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentNameOffsetY
+    self.mDisplayComponentNameOffsetY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentValue
+    self.mDisplayComponentValue_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentValueOffsetX
+    self.mDisplayComponentValueOffsetX_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDisplayComponentValueOffsetY
+    self.mDisplayComponentValueOffsetY_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mComponent
     self.mComponent_property.owner = self
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
+        var kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
+        kind &= unwSelf.mComponent_property.mComponentValue_property_selection.kind ()
+        kind &= unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
         kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
         kind &= unwSelf.mCenterX_property_selection.kind ()
@@ -240,9 +398,9 @@ class ComponentSymbolInProject : SchematicsObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mComponent_property.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -251,6 +409,8 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
+    self.mComponent_property.addEBObserverOf_componentName (self.symbolInfo_property)
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
     self.mSymbolInstanceName_property.addEBObserver (self.symbolInfo_property)
     self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
@@ -260,7 +420,14 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.symbolInfo_property_selection.kind ()
+        var kind = g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentName_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentNameOffsetX_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentNameOffsetY_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValue_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValueOffsetX_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
+        kind &= unwSelf.symbolInfo_property_selection.kind ()
         kind &= g_Preferences!.symbolColorForSchematic_property_selection.kind ()
         kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
@@ -270,9 +437,9 @@ class ComponentSymbolInProject : SchematicsObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3))
+          switch (g_Preferences!.pinNameFont_property_selection, unwSelf.mDisplayComponentName_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
             return .empty
           }
@@ -281,6 +448,13 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentName_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValue_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
     self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
@@ -288,16 +462,23 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.symbolInfo_property_selection.kind ()
+        var kind = g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentName_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentNameOffsetX_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentNameOffsetY_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValue_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValueOffsetX_property_selection.kind ()
+        kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
+        kind &= unwSelf.symbolInfo_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolInfo_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_selectionDisplay (v0))
+          switch (g_Preferences!.pinNameFont_property_selection, unwSelf.mDisplayComponentName_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -306,6 +487,13 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentName_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValue_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.addEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.addEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematics
     self.symbolInSchematics_property.mReadModelFunction = { [weak self] in
@@ -338,16 +526,32 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mComponent_property.removeEBObserverOf_componentName (self.symbolInfo_property)
+    self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
     self.mSymbolInstanceName_property.removeEBObserver (self.symbolInfo_property)
     self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentName_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValue_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     self.mSymbolInstanceName_property.removeEBObserver (self.objectDisplay_property)
     self.mSymbolTypeName_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentName_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValue_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
   //--- Unregister properties for handling signature
@@ -395,6 +599,54 @@ class ComponentSymbolInProject : SchematicsObject,
       view:view,
       observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
       valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentName",
+      idx:self.mDisplayComponentName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentName_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentNameOffsetX",
+      idx:self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentNameOffsetX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentNameOffsetY",
+      idx:self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentNameOffsetY_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentValue",
+      idx:self.mDisplayComponentValue_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentValue_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentValue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentValueOffsetX",
+      idx:self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentValueOffsetX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDisplayComponentValueOffsetY",
+      idx:self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
+      valueExplorer:&self.mDisplayComponentValueOffsetY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -458,6 +710,24 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.mObserverExplorer = nil
     self.mSymbolTypeName_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentName
+    self.mDisplayComponentName_property.mObserverExplorer = nil
+    self.mDisplayComponentName_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentNameOffsetX
+    self.mDisplayComponentNameOffsetX_property.mObserverExplorer = nil
+    self.mDisplayComponentNameOffsetX_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentNameOffsetY
+    self.mDisplayComponentNameOffsetY_property.mObserverExplorer = nil
+    self.mDisplayComponentNameOffsetY_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentValue
+    self.mDisplayComponentValue_property.mObserverExplorer = nil
+    self.mDisplayComponentValue_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentValueOffsetX
+    self.mDisplayComponentValueOffsetX_property.mObserverExplorer = nil
+    self.mDisplayComponentValueOffsetX_property.mValueExplorer = nil
+  //--- Atomic property: mDisplayComponentValueOffsetY
+    self.mDisplayComponentValueOffsetY_property.mObserverExplorer = nil
+    self.mDisplayComponentValueOffsetY_property.mValueExplorer = nil
   //--- To one property: mComponent
     self.mComponent_property.mObserverExplorer = nil
     self.mComponent_property.mValueExplorer = nil
@@ -498,6 +768,18 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
+  //--- Atomic property: mDisplayComponentName
+    self.mDisplayComponentName_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentName")
+  //--- Atomic property: mDisplayComponentNameOffsetX
+    self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentNameOffsetX")
+  //--- Atomic property: mDisplayComponentNameOffsetY
+    self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentNameOffsetY")
+  //--- Atomic property: mDisplayComponentValue
+    self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValue")
+  //--- Atomic property: mDisplayComponentValueOffsetX
+    self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetX")
+  //--- Atomic property: mDisplayComponentValueOffsetY
+    self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetY")
   }
 
   //····················································································································
@@ -534,6 +816,18 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
+  //--- Atomic property: mDisplayComponentName
+    self.mDisplayComponentName_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentName")
+  //--- Atomic property: mDisplayComponentNameOffsetX
+    self.mDisplayComponentNameOffsetX_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentNameOffsetX")
+  //--- Atomic property: mDisplayComponentNameOffsetY
+    self.mDisplayComponentNameOffsetY_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentNameOffsetY")
+  //--- Atomic property: mDisplayComponentValue
+    self.mDisplayComponentValue_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValue")
+  //--- Atomic property: mDisplayComponentValueOffsetX
+    self.mDisplayComponentValueOffsetX_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValueOffsetX")
+  //--- Atomic property: mDisplayComponentValueOffsetY
+    self.mDisplayComponentValueOffsetY_property.readFrom (dictionary: inDictionary, forKey:"mDisplayComponentValueOffsetY")
   }
 
   //····················································································································
@@ -794,6 +1088,348 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolTypeName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentName' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentName_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentName.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentName_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentNameOffsetX' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentNameOffsetX.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentNameOffsetX_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentNameOffsetX.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentNameOffsetX_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentNameOffsetX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentNameOffsetX_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentNameOffsetY' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentNameOffsetY.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentNameOffsetY.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentNameOffsetY_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentNameOffsetY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentNameOffsetY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentValue' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValue_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValue_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentValue_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentValue.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentValue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentValue.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentValue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentValueOffsetX' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValueOffsetX.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentValueOffsetX.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentValueOffsetX_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentValueOffsetX.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentValueOffsetX_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mDisplayComponentValueOffsetY' stored property
+  //····················································································································
+
+  private var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDisplayComponentValueOffsetY.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDisplayComponentValueOffsetY_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDisplayComponentValueOffsetY.apply { (_ observer : EBEvent) in
+        managedObject.mDisplayComponentValueOffsetY_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mDisplayComponentValueOffsetY.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDisplayComponentValueOffsetY_property.removeEBObserver (observer)
       }
     }
   }
@@ -1094,6 +1730,12 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -1106,6 +1748,12 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
       self.addEBObserversOf_mCenterY_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_symbolInfo_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -1242,12 +1890,24 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
             managedObject.mSymbolTypeName_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentName_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentNameOffsetY_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentValue_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentValueOffsetX_property.mSetterDelegate = nil
+            managedObject.mDisplayComponentValueOffsetY_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
@@ -1264,12 +1924,24 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentNameOffsetY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentValueOffsetX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDisplayComponentValueOffsetY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)

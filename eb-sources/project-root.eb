@@ -273,7 +273,17 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
   
+  property Bool mDisplayComponentName default yes ;
+  property Int mDisplayComponentNameOffsetX default 0 ;
+  property Int mDisplayComponentNameOffsetY default 457_200 ; # 200 mils
+  
+  property Bool mDisplayComponentValue default yes ;
+  property Int mDisplayComponentValueOffsetX default 0 ;
+  property Int mDisplayComponentValueOffsetY default -457_200 ; # -200 mils
+ 
   transient ComponentSymbolInfo symbolInfo dependsFrom
+     self.mComponent.one.componentName,
+     self.mComponent.one.mComponentValue,
      self.mComponent.one.deviceSymbolDictionary,
      self.mSymbolInstanceName,
      self.mSymbolTypeName,
@@ -285,13 +295,29 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;
 
   override transient EBShape objectDisplay dependsFrom 
+    prefs.pinNameFont,
+    self.mDisplayComponentName,
+    self.mDisplayComponentNameOffsetX,
+    self.mDisplayComponentNameOffsetY,
+    self.mDisplayComponentValue,
+    self.mDisplayComponentValueOffsetX,
+    self.mDisplayComponentValueOffsetY,
     self.symbolInfo,
     prefs.symbolColorForSchematic,
     self.mSymbolInstanceName,
     self.mSymbolTypeName
   ;
   
-  override transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
+  override transient EBShape selectionDisplay dependsFrom
+    prefs.pinNameFont,
+    self.mDisplayComponentName,
+    self.mDisplayComponentNameOffsetX,
+    self.mDisplayComponentNameOffsetY,
+    self.mDisplayComponentValue,
+    self.mDisplayComponentValueOffsetX,
+    self.mDisplayComponentValueOffsetY,
+    self.symbolInfo
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

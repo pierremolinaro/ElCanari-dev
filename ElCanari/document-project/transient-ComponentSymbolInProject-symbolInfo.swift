@@ -12,6 +12,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_symbolInfo (
+       _ self_mComponent_componentName : String?,   
+       _ self_mComponent_mComponentValue : String?, 
        _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
        _ self_mSymbolInstanceName : String,         
        _ self_mSymbolTypeName : String,             
@@ -24,6 +26,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
         let tr = NSAffineTransform ()
         tr.translateX (by: canariUnitToCocoa (self_mCenterX - deviceInfo.center.x), yBy: canariUnitToCocoa (self_mCenterY - deviceInfo.center.y))
+      //--- Pin names and pad names
         let pinNameAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont
         ]
@@ -50,6 +53,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
             pinNameShapes.append ((pin.symbol, pinNumberTextShape.transformedBy (tr)))
           }
         }
+      //---
         let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
         let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
         let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
@@ -57,7 +61,9 @@ func transient_ComponentSymbolInProject_symbolInfo (
           filledBezierPath: transformedFilledBezierPath,
           strokeBezierPath: transformedStrokeBezierPath,
           center: componentSymbolCenter,
-          pinShapes: pinNameShapes
+          pinShapes: pinNameShapes,
+          componentName: self_mComponent_componentName!,
+          componentValue: self_mComponent_mComponentValue!
         )
 //--- END OF USER ZONE 2
 }

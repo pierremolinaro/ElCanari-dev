@@ -12,6 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_objectDisplay (
+       _ prefs_pinNameFont : NSFont,                   
+       _ self_mDisplayComponentName : Bool,            
+       _ self_mDisplayComponentNameOffsetX : Int,      
+       _ self_mDisplayComponentNameOffsetY : Int,      
+       _ self_mDisplayComponentValue : Bool,           
+       _ self_mDisplayComponentValueOffsetX : Int,     
+       _ self_mDisplayComponentValueOffsetY : Int,     
        _ self_symbolInfo : ComponentSymbolInfo,        
        _ prefs_symbolColorForSchematic : NSColor,      
        _ self_mSymbolInstanceName : String,            
@@ -30,6 +37,38 @@ func transient_ComponentSymbolInProject_objectDisplay (
             shape.append (pinShape.1)
           }
         }
+      //--- Component name
+        if self_mDisplayComponentName {
+          let componentNameTextAttributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : prefs_pinNameFont
+          ]
+          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
+          let componentNameShape = EBTextShape (
+            self_symbolInfo.componentName,
+            componentNameCenter.cocoaPoint (),
+            componentNameTextAttributes,
+            .center,
+            .center
+          )
+          shape.append (componentNameShape)
+        }
+      //--- Component value
+        if self_mDisplayComponentValue {
+          let componentValueTextAttributes : [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : prefs_pinNameFont
+          ]
+          let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
+          let componentValueCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY)
+          let componentValueShape = EBTextShape (
+            value,
+            componentValueCenter.cocoaPoint (),
+            componentValueTextAttributes,
+            .center,
+            .center
+          )
+          shape.append (componentValueShape)
+        }
+      //--
         return shape
 //--- END OF USER ZONE 2
 }
