@@ -15,7 +15,7 @@ func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
        _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
-
+        return self_mSymbolType_mStrokeBezierPath ?? NSBezierPath ()
 //--- END OF USER ZONE 2
 }
 

@@ -233,15 +233,16 @@ class ComponentSymbolInProject : SchematicsObject,
         kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
         kind &= unwSelf.mCenterX_property_selection.kind ()
         kind &= unwSelf.mCenterY_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4))
+          switch (unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -255,20 +256,23 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolTypeName_property.addEBObserver (self.symbolInfo_property)
     self.mCenterX_property.addEBObserver (self.symbolInfo_property)
     self.mCenterY_property.addEBObserver (self.symbolInfo_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.symbolInfo_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.symbolInfo_property_selection.kind ()
         kind &= g_Preferences!.symbolColorForSchematic_property_selection.kind ()
+        kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
+        kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1))
+          switch (unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -279,6 +283,8 @@ class ComponentSymbolInProject : SchematicsObject,
     }
     self.symbolInfo_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.objectDisplay_property)
+    self.mSymbolTypeName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -337,8 +343,11 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mSymbolTypeName_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterX_property.removeEBObserver (self.symbolInfo_property)
     self.mCenterY_property.removeEBObserver (self.symbolInfo_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.symbolInfo_property)
     self.symbolInfo_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    self.mSymbolInstanceName_property.removeEBObserver (self.objectDisplay_property)
+    self.mSymbolTypeName_property.removeEBObserver (self.objectDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
   //--- Unregister properties for handling signature

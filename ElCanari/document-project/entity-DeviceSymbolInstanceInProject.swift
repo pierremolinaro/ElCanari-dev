@@ -13,7 +13,7 @@ protocol DeviceSymbolInstanceInProject_mSymbolInstanceName : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol DeviceSymbolInstanceInProject_symbolAndTypeName : class {
-  var symbolAndTypeName : TwoStrings? { get }
+  var symbolAndTypeName : SymbolInProjectIdentifier? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -121,17 +121,17 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: symbolAndTypeName
   //····················································································································
 
-  var symbolAndTypeName_property = EBTransientProperty_TwoStrings ()
+  var symbolAndTypeName_property = EBTransientProperty_SymbolInProjectIdentifier ()
 
   //····················································································································
 
-  var symbolAndTypeName_property_selection : EBSelection <TwoStrings> {
+  var symbolAndTypeName_property_selection : EBSelection <SymbolInProjectIdentifier> {
     return self.symbolAndTypeName_property.prop
   }
 
   //····················································································································
 
-  var symbolAndTypeName : TwoStrings? {
+  var symbolAndTypeName : SymbolInProjectIdentifier? {
     switch self.symbolAndTypeName_property_selection {
     case .empty, .multiple :
       return nil

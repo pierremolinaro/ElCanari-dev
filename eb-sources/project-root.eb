@@ -76,10 +76,11 @@ entity DeviceInProject {
   transient Bool canExport dependsFrom self.mDeviceFileData ;
   transient Bool canRemove dependsFrom self.mComponents.count ;
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
-  transient TwoStringArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
+  transient SymbolInProjectIdentifierArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
   transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
   
-  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom 
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom
+    self.mPadAssignments.all.descriptor,
     self.mSymbols.all.symbolAndTypeName,
     self.mSymbols.all.filledBezierPath,
     self.mSymbols.all.strokeBezierPath,
@@ -130,7 +131,7 @@ entity DeviceSymbolInstanceInProject {
 
   property String mSymbolInstanceName default "" ;
 
-  transient TwoStrings symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
+  transient SymbolInProjectIdentifier symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
   
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
   
@@ -155,6 +156,7 @@ entity DeviceSymbolTypeInProject {
 entity DevicePinInProject {
   property String mPinName default "" ;
   property String mSymbolInstanceName default "" ;
+  property String mSymbolTypeName default "" ;
 
   property Int mPinX default 0 ;
   property Int mPinY default 0 ;
@@ -170,6 +172,21 @@ entity DevicePinInProject {
   property HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;
+ 
+  transient PinInProjectDescriptor descriptor dependsFrom
+    self.mPinName,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName,
+    self.mPinX,
+    self.mPinY,
+    self.mXName,
+    self.mYName,
+    self.mNameHorizontalAlignment,
+    self.mPinNameIsDisplayedInSchematics,
+    self.mXNumber,
+    self.mYNumber,
+    self.mNumberHorizontalAlignment
+  ; 
 }
 
 
@@ -197,7 +214,7 @@ entity ComponentInProject {
     self.mSymbols.all.mSymbolTypeName
   ;
 
-  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;  
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ; 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -207,6 +224,8 @@ entity DevicePadAssignmentInProject {
   toOne DevicePinInProject mPin ; # Is nil if pad is NC
 
   transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
+  
+  transient PinPadAssignmentInProject descriptor dependsFrom self.mPadName, self.mPin.one.descriptor ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -262,11 +281,18 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
      self.mSymbolInstanceName,
      self.mSymbolTypeName,
      self.mCenterX,
-     self.mCenterY ;
+     self.mCenterY,
+     prefs.pinNameFont
+  ;
  
   transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;
 
-  override transient EBShape objectDisplay dependsFrom self.symbolInfo, prefs.symbolColorForSchematic ;
+  override transient EBShape objectDisplay dependsFrom 
+    self.symbolInfo,
+    prefs.symbolColorForSchematic,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName
+  ;
   
   override transient EBShape selectionDisplay dependsFrom self.symbolInfo ;
 }

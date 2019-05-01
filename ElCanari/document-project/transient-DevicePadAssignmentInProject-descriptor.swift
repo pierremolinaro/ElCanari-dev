@@ -11,17 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_symbolAndTypesNames (
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
-) -> SymbolInProjectIdentifierArray {
+func transient_DevicePadAssignmentInProject_descriptor (
+       _ self_mPadName : String,                        
+       _ self_mPin_descriptor : PinInProjectDescriptor?
+) -> PinPadAssignmentInProject {
 //--- START OF USER ZONE 2
-        var result = SymbolInProjectIdentifierArray ()
-        for symbol in self_mSymbols_symbolAndTypeName {
-          if let name = symbol.symbolAndTypeName {
-            result.append (name)
-          }
-        }
-        return result
+  return PinPadAssignmentInProject (padName: self_mPadName, pin: self_mPin_descriptor)
 //--- END OF USER ZONE 2
 }
 

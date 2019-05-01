@@ -12,19 +12,31 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceInProject_deviceSymbolDictionary (
+       _ self_mPadAssignments_descriptor : [DevicePadAssignmentInProject_descriptor],
        _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName],
        _ self_mSymbols_filledBezierPath : [DeviceSymbolInstanceInProject_filledBezierPath],
        _ self_mSymbols_strokeBezierPath : [DeviceSymbolInstanceInProject_strokeBezierPath],
        _ self_mSymbols_center : [DeviceSymbolInstanceInProject_center]
 ) -> DeviceSymbolDictionary {
 //--- START OF USER ZONE 2
+        var pinPadDescriptorArray = [PinPadAssignmentInProject] ()
+        for d in self_mPadAssignments_descriptor {
+          if let descriptor = d.descriptor {
+            pinPadDescriptorArray.append (descriptor)
+          }
+        }
         var result = DeviceSymbolDictionary ()
         for idx in 0 ..< self_mSymbols_symbolAndTypeName.count {
           let symbolTypeAndName = self_mSymbols_symbolAndTypeName [idx].symbolAndTypeName!
           let filledBezierPath = self_mSymbols_filledBezierPath [idx].filledBezierPath!
           let strokeBezierPath = self_mSymbols_strokeBezierPath [idx].strokeBezierPath!
           let center = self_mSymbols_center [idx].center!
-          result [symbolTypeAndName] = DeviceSymbolInfo (filledBezierPath: filledBezierPath, strokeBezierPath: strokeBezierPath, center: center)
+          result [symbolTypeAndName] = DeviceSymbolInfo (
+            filledBezierPath: filledBezierPath,
+            strokeBezierPath: strokeBezierPath,
+            center: center,
+            assignments: pinPadDescriptorArray
+          )
         }
         return result
 //--- END OF USER ZONE 2

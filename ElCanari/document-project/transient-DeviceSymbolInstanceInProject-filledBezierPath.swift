@@ -12,11 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceSymbolInstanceInProject_filledBezierPath (
-       _ self_mSymbolType_mFilledBezierPath : NSBezierPath?,   
-       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?
+       _ self_mSymbolType_mFilledBezierPath : NSBezierPath?
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
-
+        return self_mSymbolType_mFilledBezierPath ?? NSBezierPath ()
 //--- END OF USER ZONE 2
 }
 

@@ -14,9 +14,9 @@ import Cocoa
 func transient_DeviceSymbolInstanceInProject_symbolAndTypeName (
        _ self_mSymbolInstanceName : String,                     
        _ self_mSymbolType_mSymbolTypeName : String?
-) -> TwoStrings {
+) -> SymbolInProjectIdentifier {
 //--- START OF USER ZONE 2
-       return TwoStrings (self_mSymbolInstanceName, self_mSymbolType_mSymbolTypeName!)
+  return SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolType_mSymbolTypeName!)
 //--- END OF USER ZONE 2
 }
 

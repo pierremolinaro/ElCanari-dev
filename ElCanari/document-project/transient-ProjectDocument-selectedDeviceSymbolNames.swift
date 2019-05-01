@@ -18,7 +18,9 @@ func transient_ProjectDocument_selectedDeviceSymbolNames (
         var result = [TwoStrings] ()
         if self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames.count == 1 {
           if let a = self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames [0].symbolAndTypesNames {
-            result = a
+            for symbolDescriptor in a {
+              result.append (TwoStrings (symbolDescriptor.instanceName, symbolDescriptor.typeName))
+            }
           }
         }
         return result

@@ -1922,6 +1922,30 @@ typealias EBTransientProperty_CanariPoint = EBTransientValueProperty <CanariPoin
 typealias EBReadOnlyProperty_ComponentSymbolInfo  = EBReadOnlyValueProperty <ComponentSymbolInfo>
 typealias EBTransientProperty_ComponentSymbolInfo = EBTransientValueProperty <ComponentSymbolInfo>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property SymbolInProjectIdentifier
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SymbolInProjectIdentifier  = EBReadOnlyValueProperty <SymbolInProjectIdentifier>
+typealias EBTransientProperty_SymbolInProjectIdentifier = EBTransientValueProperty <SymbolInProjectIdentifier>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property SymbolInProjectIdentifierArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SymbolInProjectIdentifierArray  = EBReadOnlyValueProperty <SymbolInProjectIdentifierArray>
+typealias EBTransientProperty_SymbolInProjectIdentifierArray = EBTransientValueProperty <SymbolInProjectIdentifierArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property PinInProjectDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_PinInProjectDescriptor  = EBReadOnlyValueProperty <PinInProjectDescriptor>
+typealias EBTransientProperty_PinInProjectDescriptor = EBTransientValueProperty <PinInProjectDescriptor>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property PinPadAssignmentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_PinPadAssignmentInProject  = EBReadOnlyValueProperty <PinPadAssignmentInProject>
+typealias EBTransientProperty_PinPadAssignmentInProject = EBTransientValueProperty <PinPadAssignmentInProject>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property DeviceSymbolDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

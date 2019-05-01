@@ -17,12 +17,19 @@ protocol DevicePadAssignmentInProject_pinPadAssignment : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DevicePadAssignmentInProject_descriptor : class {
+  var descriptor : PinPadAssignmentInProject? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DevicePadAssignmentInProject : EBManagedObject,
          DevicePadAssignmentInProject_mPadName,
-         DevicePadAssignmentInProject_pinPadAssignment {
+         DevicePadAssignmentInProject_pinPadAssignment,
+         DevicePadAssignmentInProject_descriptor {
 
   //····················································································································
   //   Atomic property: mPadName
@@ -94,6 +101,29 @@ class DevicePadAssignmentInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: descriptor
+  //····················································································································
+
+  var descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject> {
+    return self.descriptor_property.prop
+  }
+
+  //····················································································································
+
+  var descriptor : PinPadAssignmentInProject? {
+    switch self.descriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -129,6 +159,30 @@ class DevicePadAssignmentInProject : EBManagedObject,
     self.mPadName_property.addEBObserver (self.pinPadAssignment_property)
     self.mPin_property.addEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
     self.mPin_property.addEBObserverOf_mPinName (self.pinPadAssignment_property)
+  //--- Atomic property: descriptor
+    self.descriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPadName_property_selection.kind ()
+        kind &= unwSelf.mPin_property.descriptor_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.descriptor_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DevicePadAssignmentInProject_descriptor (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPadName_property.addEBObserver (self.descriptor_property)
+    self.mPin_property.addEBObserverOf_descriptor (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -141,6 +195,8 @@ class DevicePadAssignmentInProject : EBManagedObject,
     self.mPadName_property.removeEBObserver (self.pinPadAssignment_property)
     self.mPin_property.removeEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
     self.mPin_property.removeEBObserverOf_mPinName (self.pinPadAssignment_property)
+    self.mPadName_property.removeEBObserver (self.descriptor_property)
+    self.mPin_property.removeEBObserverOf_descriptor (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 
@@ -171,6 +227,14 @@ class DevicePadAssignmentInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.pinPadAssignment_property.mObserverExplorer,
       valueExplorer:&self.pinPadAssignment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "descriptor",
+      idx:self.descriptor_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.descriptor_property.mObserverExplorer,
+      valueExplorer:&self.descriptor_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -410,6 +474,62 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   }
 
   //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -480,12 +600,14 @@ class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadA
       self.removeEBObserversOf_mPadName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_descriptor_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mPadName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_pinPadAssignment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_descriptor_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -619,6 +741,7 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
           self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_descriptor_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -632,6 +755,7 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
           self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_pinPadAssignment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_descriptor_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -800,6 +924,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
+        oldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor)
         oldValue?.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         oldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
         oldValue?.mPinName_property.removeEBObserversFrom (&self.mObserversOf_mPinName)
@@ -807,12 +932,14 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
         oldValue?.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX)
         oldValue?.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY)
         oldValue?.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName)
+        oldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
         oldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName)
         oldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber)
         oldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName)
         oldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber)
         oldValue?.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName)
       //--- Add property observers to new object
+        self.mValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor)
         self.mValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         self.mValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
         self.mValue?.mPinName_property.addEBObserversFrom (&self.mObserversOf_mPinName)
@@ -820,6 +947,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
         self.mValue?.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX)
         self.mValue?.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY)
         self.mValue?.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName)
+        self.mValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
         self.mValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName)
         self.mValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber)
         self.mValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName)
@@ -850,6 +978,47 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   func remove (_ object : DevicePinInProject) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: descriptor
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <PinInProjectDescriptor?> {
+    if let model = self.propval {
+      switch (model.descriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.mObserversOf_descriptor.insert (inObserver)
+    if let object = self.propval {
+      object.descriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.mObserversOf_descriptor.remove (inObserver)
+    if let object = self.propval {
+      object.descriptor_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1137,6 +1306,47 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
     self.mObserversOf_mSymbolInstanceName.remove (inObserver)
     if let object = self.propval {
       object.mSymbolInstanceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolTypeName
+  //····················································································································
+
+  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolTypeName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSymbolTypeName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypeName.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolTypeName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypeName.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolTypeName_property.removeEBObserver (inObserver)
     }
   }
 

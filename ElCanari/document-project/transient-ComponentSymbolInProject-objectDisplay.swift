@@ -13,7 +13,9 @@ import Cocoa
 
 func transient_ComponentSymbolInProject_objectDisplay (
        _ self_symbolInfo : ComponentSymbolInfo,        
-       _ prefs_symbolColorForSchematic : NSColor
+       _ prefs_symbolColorForSchematic : NSColor,      
+       _ self_mSymbolInstanceName : String,            
+       _ self_mSymbolTypeName : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let shape = EBShape ()
@@ -23,6 +25,11 @@ func transient_ComponentSymbolInProject_objectDisplay (
         shape.append (EBFilledBezierPathShape ([NSBezierPath (rect: box)], nil))
         shape.append (strokeShape)
         shape.append (filledPath)
+        for pinShape in self_symbolInfo.pinShapes {
+          if (pinShape.0.instanceName == self_mSymbolInstanceName) && (pinShape.0.typeName == self_mSymbolTypeName) {
+            shape.append (pinShape.1)
+          }
+        }
         return shape
 //--- END OF USER ZONE 2
 }

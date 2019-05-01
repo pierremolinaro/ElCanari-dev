@@ -171,6 +171,8 @@ extension ProjectDocument {
           let pinInProject = DevicePinInProject (self.ebUndoManager)
           pinInProject.mPinName = pinInDevice.mName
           pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
+          pinInProject.mSymbolTypeName = symbolTypeInProject.mSymbolTypeName
+          // NSLog ("pinInProject.mSymbolTypeName \(pinInProject.mSymbolTypeName)")
           pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
           pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
           pinInProject.mPinNameIsDisplayedInSchematics = pinInDevice.mPinNameIsDisplayedInSchematics
@@ -187,18 +189,18 @@ extension ProjectDocument {
         }
       }
     }
-  //--- Append pin/pad assignment
+  //--- Append pin/pad assignments
+    inDeviceInProject.mPadAssignments = []
     for pinPadAssignmentInDevice in inDeviceRoot.mPadProxies {
+      let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
+      let padName = pinPadAssignmentInDevice.mPadName
+      assignment.mPadName = padName
       if let pinInstanceInDevice = pinPadAssignmentInDevice.mPinInstance { // If nil, pad is NC
-        let padName = pinPadAssignmentInDevice.mPadName
         let qualifiedPinName = pinInstanceInDevice.pinQualifiedName!
-        // Swift.print ("padName '\(padName)' qualifiedPinName '\(qualifiedPinName)'")
         let pinInProject = devicePinDictionary [qualifiedPinName]!
-        let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
-        assignment.mPadName = padName
         assignment.mPin = pinInProject
-        inDeviceInProject.mPadAssignments.append (assignment)
       }
+      inDeviceInProject.mPadAssignments.append (assignment)
     }
   }
 

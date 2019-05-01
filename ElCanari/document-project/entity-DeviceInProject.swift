@@ -61,7 +61,7 @@ protocol DeviceInProject_packageNames : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol DeviceInProject_symbolAndTypesNames : class {
-  var symbolAndTypesNames : TwoStringArray? { get }
+  var symbolAndTypesNames : SymbolInProjectIdentifierArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -357,17 +357,17 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: symbolAndTypesNames
   //····················································································································
 
-  var symbolAndTypesNames_property = EBTransientProperty_TwoStringArray ()
+  var symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
 
   //····················································································································
 
-  var symbolAndTypesNames_property_selection : EBSelection <TwoStringArray> {
+  var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray> {
     return self.symbolAndTypesNames_property.prop
   }
 
   //····················································································································
 
-  var symbolAndTypesNames : TwoStringArray? {
+  var symbolAndTypesNames : SymbolInProjectIdentifierArray? {
     switch self.symbolAndTypesNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -604,7 +604,8 @@ class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSymbols_property_selection.kind ()
+        var kind = unwSelf.mPadAssignments_property_selection.kind ()
+        kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
         kind &= unwSelf.mSymbols_property_selection.kind ()
@@ -614,9 +615,9 @@ class DeviceInProject : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3))
+          switch (unwSelf.mPadAssignments_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -625,6 +626,7 @@ class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
+    self.mPadAssignments_property.addEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
@@ -653,6 +655,7 @@ class DeviceInProject : EBManagedObject,
     self.mPackages_property.removeEBObserverOf_mPackageName (self.packageNames_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
     self.mPadAssignments_property.removeEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
+    self.mPadAssignments_property.removeEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)

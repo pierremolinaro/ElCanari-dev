@@ -16,17 +16,39 @@ func transient_ComponentSymbolInProject_symbolInfo (
        _ self_mSymbolInstanceName : String,         
        _ self_mSymbolTypeName : String,             
        _ self_mCenterX : Int,                       
-       _ self_mCenterY : Int
+       _ self_mCenterY : Int,                       
+       _ prefs_pinNameFont : NSFont
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
-        let key = TwoStrings (self_mSymbolInstanceName, self_mSymbolTypeName)
+        let key = SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolTypeName)
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
         let tr = NSAffineTransform ()
         tr.translateX (by: canariUnitToCocoa (self_mCenterX - deviceInfo.center.x), yBy: canariUnitToCocoa (self_mCenterY - deviceInfo.center.y))
+        let pinNameAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : prefs_pinNameFont
+        ]
+        var pinNameShapes = [(SymbolInProjectIdentifier, EBShape)] ()
+        for pinPadAssignment in deviceInfo.assignments {
+          if let pin = pinPadAssignment.pin, pin.pinNameIsDisplayedInSchematics {
+            let ts = EBTextShape (
+              pin.pinName,
+              pin.nameXY.cocoaPoint (),
+              pinNameAttributes,
+              pin.nameHorizontalAlignment.ebTextShapeHorizontalAlignment(),
+              .center
+            )
+            pinNameShapes.append ((pin.symbol, ts.transformedBy (tr)))
+          }
+        }
         let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
         let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
         let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
-  return ComponentSymbolInfo (filledBezierPath: transformedFilledBezierPath, strokeBezierPath: transformedStrokeBezierPath, center: componentSymbolCenter)
+        return ComponentSymbolInfo (
+          filledBezierPath: transformedFilledBezierPath,
+          strokeBezierPath: transformedStrokeBezierPath,
+          center: componentSymbolCenter,
+          pinShapes: pinNameShapes
+        )
 //--- END OF USER ZONE 2
 }
 

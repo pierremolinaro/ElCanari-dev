@@ -2,6 +2,10 @@
 
 transient property struct CanariPoint ;
 transient property struct ComponentSymbolInfo ;
+transient property struct SymbolInProjectIdentifier ;
+transient property struct SymbolInProjectIdentifierArray ;
+transient property struct PinInProjectDescriptor ;
+transient property struct PinPadAssignmentInProject ;
 
 transient property struct DeviceSymbolDictionary ;
 transient property struct StringArray ;

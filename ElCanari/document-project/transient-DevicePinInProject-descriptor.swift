@@ -11,17 +11,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_symbolAndTypesNames (
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
-) -> SymbolInProjectIdentifierArray {
+func transient_DevicePinInProject_descriptor (
+       _ self_mPinName : String,              
+       _ self_mSymbolInstanceName : String,   
+       _ self_mSymbolTypeName : String,       
+       _ self_mPinX : Int,                    
+       _ self_mPinY : Int,                    
+       _ self_mXName : Int,                   
+       _ self_mYName : Int,                   
+       _ self_mNameHorizontalAlignment : HorizontalAlignment,
+       _ self_mPinNameIsDisplayedInSchematics : Bool,
+       _ self_mXNumber : Int,                 
+       _ self_mYNumber : Int,                 
+       _ self_mNumberHorizontalAlignment : HorizontalAlignment
+) -> PinInProjectDescriptor {
 //--- START OF USER ZONE 2
-        var result = SymbolInProjectIdentifierArray ()
-        for symbol in self_mSymbols_symbolAndTypeName {
-          if let name = symbol.symbolAndTypeName {
-            result.append (name)
-          }
-        }
-        return result
+        return PinInProjectDescriptor (
+          pinName: self_mPinName,
+          symbol: SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolTypeName),
+          pinXY: CanariPoint (x: self_mPinX, y: self_mPinY),
+          nameXY: CanariPoint (x: self_mXName, y: self_mYName),
+          nameHorizontalAlignment: self_mNameHorizontalAlignment,
+          pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematics,
+          numberXY : CanariPoint (x: self_mXNumber, y:self_mYNumber),
+          numberHorizontalAlignment: self_mNumberHorizontalAlignment
+        )
 //--- END OF USER ZONE 2
 }
 

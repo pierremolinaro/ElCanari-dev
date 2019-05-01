@@ -18,6 +18,12 @@ protocol DevicePinInProject_mSymbolInstanceName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DevicePinInProject_mSymbolTypeName : class {
+  var mSymbolTypeName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DevicePinInProject_mPinX : class {
   var mPinX : Int { get }
 }
@@ -77,12 +83,19 @@ protocol DevicePinInProject_pinQualifiedName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DevicePinInProject_descriptor : class {
+  var descriptor : PinInProjectDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DevicePinInProject : EBManagedObject,
          DevicePinInProject_mPinName,
          DevicePinInProject_mSymbolInstanceName,
+         DevicePinInProject_mSymbolTypeName,
          DevicePinInProject_mPinX,
          DevicePinInProject_mPinY,
          DevicePinInProject_mXName,
@@ -92,7 +105,8 @@ class DevicePinInProject : EBManagedObject,
          DevicePinInProject_mXNumber,
          DevicePinInProject_mYNumber,
          DevicePinInProject_mNumberHorizontalAlignment,
-         DevicePinInProject_pinQualifiedName {
+         DevicePinInProject_pinQualifiedName,
+         DevicePinInProject_descriptor {
 
   //····················································································································
   //   Atomic property: mPinName
@@ -127,6 +141,23 @@ class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.prop }
+
+  //····················································································································
+  //   Atomic property: mSymbolTypeName
+  //····················································································································
+
+  var mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mSymbolTypeName : String {
+    get { return self.mSymbolTypeName_property.propval }
+    set { self.mSymbolTypeName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.prop }
 
   //····················································································································
   //   Atomic property: mPinX
@@ -305,6 +336,29 @@ class DevicePinInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: descriptor
+  //····················································································································
+
+  var descriptor_property = EBTransientProperty_PinInProjectDescriptor ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <PinInProjectDescriptor> {
+    return self.descriptor_property.prop
+  }
+
+  //····················································································································
+
+  var descriptor : PinInProjectDescriptor? {
+    switch self.descriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -314,6 +368,8 @@ class DevicePinInProject : EBManagedObject,
     self.mPinName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinX
     self.mPinX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinY
@@ -356,6 +412,50 @@ class DevicePinInProject : EBManagedObject,
     }
     self.mSymbolInstanceName_property.addEBObserver (self.pinQualifiedName_property)
     self.mPinName_property.addEBObserver (self.pinQualifiedName_property)
+  //--- Atomic property: descriptor
+    self.descriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPinName_property_selection.kind ()
+        kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
+        kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
+        kind &= unwSelf.mPinX_property_selection.kind ()
+        kind &= unwSelf.mPinY_property_selection.kind ()
+        kind &= unwSelf.mXName_property_selection.kind ()
+        kind &= unwSelf.mYName_property_selection.kind ()
+        kind &= unwSelf.mNameHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.mPinNameIsDisplayedInSchematics_property_selection.kind ()
+        kind &= unwSelf.mXNumber_property_selection.kind ()
+        kind &= unwSelf.mYNumber_property_selection.kind ()
+        kind &= unwSelf.mNumberHorizontalAlignment_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPinName_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mPinX_property_selection, unwSelf.mPinY_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, unwSelf.mXNumber_property_selection, unwSelf.mYNumber_property_selection, unwSelf.mNumberHorizontalAlignment_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_DevicePinInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPinName_property.addEBObserver (self.descriptor_property)
+    self.mSymbolInstanceName_property.addEBObserver (self.descriptor_property)
+    self.mSymbolTypeName_property.addEBObserver (self.descriptor_property)
+    self.mPinX_property.addEBObserver (self.descriptor_property)
+    self.mPinY_property.addEBObserver (self.descriptor_property)
+    self.mXName_property.addEBObserver (self.descriptor_property)
+    self.mYName_property.addEBObserver (self.descriptor_property)
+    self.mNameHorizontalAlignment_property.addEBObserver (self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.descriptor_property)
+    self.mXNumber_property.addEBObserver (self.descriptor_property)
+    self.mYNumber_property.addEBObserver (self.descriptor_property)
+    self.mNumberHorizontalAlignment_property.addEBObserver (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -367,6 +467,18 @@ class DevicePinInProject : EBManagedObject,
     super.removeAllObservers ()
     self.mSymbolInstanceName_property.removeEBObserver (self.pinQualifiedName_property)
     self.mPinName_property.removeEBObserver (self.pinQualifiedName_property)
+    self.mPinName_property.removeEBObserver (self.descriptor_property)
+    self.mSymbolInstanceName_property.removeEBObserver (self.descriptor_property)
+    self.mSymbolTypeName_property.removeEBObserver (self.descriptor_property)
+    self.mPinX_property.removeEBObserver (self.descriptor_property)
+    self.mPinY_property.removeEBObserver (self.descriptor_property)
+    self.mXName_property.removeEBObserver (self.descriptor_property)
+    self.mYName_property.removeEBObserver (self.descriptor_property)
+    self.mNameHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.descriptor_property)
+    self.mXNumber_property.removeEBObserver (self.descriptor_property)
+    self.mYNumber_property.removeEBObserver (self.descriptor_property)
+    self.mNumberHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
   //--- Unregister properties for handling signature
   }
 
@@ -396,6 +508,14 @@ class DevicePinInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
       valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSymbolTypeName",
+      idx:self.mSymbolTypeName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPinX",
@@ -478,6 +598,14 @@ class DevicePinInProject : EBManagedObject,
       observerExplorer:&self.pinQualifiedName_property.mObserverExplorer,
       valueExplorer:&self.pinQualifiedName_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "descriptor",
+      idx:self.descriptor_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.descriptor_property.mObserverExplorer,
+      valueExplorer:&self.descriptor_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -494,6 +622,9 @@ class DevicePinInProject : EBManagedObject,
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.mObserverExplorer = nil
+    self.mSymbolTypeName_property.mValueExplorer = nil
   //--- Atomic property: mPinX
     self.mPinX_property.mObserverExplorer = nil
     self.mPinX_property.mValueExplorer = nil
@@ -553,6 +684,8 @@ class DevicePinInProject : EBManagedObject,
     self.mPinName_property.storeIn (dictionary: ioDictionary, forKey:"mPinName")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolTypeName")
   //--- Atomic property: mPinX
     self.mPinX_property.storeIn (dictionary: ioDictionary, forKey:"mPinX")
   //--- Atomic property: mPinY
@@ -592,6 +725,8 @@ class DevicePinInProject : EBManagedObject,
     self.mPinName_property.readFrom (dictionary: inDictionary, forKey:"mPinName")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
+  //--- Atomic property: mSymbolTypeName
+    self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolTypeName")
   //--- Atomic property: mPinX
     self.mPinX_property.readFrom (dictionary: inDictionary, forKey:"mPinX")
   //--- Atomic property: mPinY
@@ -748,6 +883,63 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSymbolTypeName' stored property
+  //····················································································································
+
+  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSymbolTypeName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSymbolTypeName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSymbolTypeName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSymbolTypeName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
+        managedObject.mSymbolTypeName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mSymbolTypeName_property.removeEBObserver (observer)
       }
     }
   }
@@ -1322,6 +1514,62 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   }
 
   //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1391,6 +1639,7 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mPinName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPinX_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPinY_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mXName_fromElementsOfSet (removedSet)
@@ -1402,11 +1651,13 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
       self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_descriptor_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mPinName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPinX_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPinY_toElementsOfSet (addedSet)
       self.addEBObserversOf_mXName_toElementsOfSet (addedSet)
@@ -1418,6 +1669,7 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
       self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_descriptor_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1547,6 +1799,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
             self.resetOppositeRelationship? (managedObject)
             managedObject.mPinName_property.mSetterDelegate = nil
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
+            managedObject.mSymbolTypeName_property.mSetterDelegate = nil
             managedObject.mPinX_property.mSetterDelegate = nil
             managedObject.mPinY_property.mSetterDelegate = nil
             managedObject.mXName_property.mSetterDelegate = nil
@@ -1560,6 +1813,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mPinName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet)
@@ -1571,6 +1825,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
           self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_descriptor_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1580,6 +1835,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
             self.setOppositeRelationship? (managedObject)
             managedObject.mPinName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPinX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPinY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mXName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -1593,6 +1849,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
         //--- Add observers of stored properties
           self.addEBObserversOf_mPinName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet)
@@ -1604,6 +1861,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
           self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_descriptor_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
