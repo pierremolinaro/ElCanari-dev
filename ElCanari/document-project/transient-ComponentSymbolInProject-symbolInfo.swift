@@ -29,15 +29,25 @@ func transient_ComponentSymbolInProject_symbolInfo (
         ]
         var pinNameShapes = [(SymbolInProjectIdentifier, EBShape)] ()
         for pinPadAssignment in deviceInfo.assignments {
-          if let pin = pinPadAssignment.pin, pin.pinNameIsDisplayedInSchematics {
-            let ts = EBTextShape (
-              pin.pinName,
-              pin.nameXY.cocoaPoint (),
+          if let pin = pinPadAssignment.pin {
+            if pin.pinNameIsDisplayedInSchematics {
+              let pinNameTextShape = EBTextShape (
+                pin.pinName,
+                pin.nameXY.cocoaPoint (),
+                pinNameAttributes,
+                pin.nameHorizontalAlignment.ebTextShapeHorizontalAlignment(),
+                .center
+              )
+              pinNameShapes.append ((pin.symbol, pinNameTextShape.transformedBy (tr)))
+            }
+            let pinNumberTextShape = EBTextShape (
+              pinPadAssignment.padName,
+              pin.numberXY.cocoaPoint (),
               pinNameAttributes,
-              pin.nameHorizontalAlignment.ebTextShapeHorizontalAlignment(),
+              pin.numberHorizontalAlignment.ebTextShapeHorizontalAlignment (),
               .center
             )
-            pinNameShapes.append ((pin.symbol, ts.transformedBy (tr)))
+            pinNameShapes.append ((pin.symbol, pinNumberTextShape.transformedBy (tr)))
           }
         }
         let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
