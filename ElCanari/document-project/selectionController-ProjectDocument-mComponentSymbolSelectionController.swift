@@ -45,16 +45,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //····················································································································
 
   //····················································································································
-  //   Selection observable property: mDisplayComponentName
-  //····················································································································
-
-  var mDisplayComponentName_property = EBPropertyProxy_Bool ()
-
-  var mDisplayComponentName_property_selection : EBSelection <Bool> {
-    return self.mDisplayComponentName_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: mDisplayComponentNameOffsetX
   //····················································································································
 
@@ -203,7 +193,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.bind_property_isPlacedInSchematics (model: self.mActualModel)
     self.bind_property_mCenterX (model: self.mActualModel)
     self.bind_property_mCenterY (model: self.mActualModel)
-    self.bind_property_mDisplayComponentName (model: self.mActualModel)
     self.bind_property_mDisplayComponentNameOffsetX (model: self.mActualModel)
     self.bind_property_mDisplayComponentNameOffsetY (model: self.mActualModel)
     self.bind_property_mDisplayComponentValue (model: self.mActualModel)
@@ -226,7 +215,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.mActualModel.mReadModelFunction = nil
   //--- isPlacedInSchematics
     self.isPlacedInSchematics_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_isPlacedInSchematics (self.isPlacedInSchematics_property)
   //--- mCenterX
     self.mCenterX_property.mReadModelFunction = nil 
     self.mCenterX_property.mWriteModelFunction = nil 
@@ -237,11 +225,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.mCenterY_property.mWriteModelFunction = nil 
     self.mCenterY_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_mCenterY (self.mCenterY_property)
-  //--- mDisplayComponentName
-    self.mDisplayComponentName_property.mReadModelFunction = nil 
-    self.mDisplayComponentName_property.mWriteModelFunction = nil 
-    self.mDisplayComponentName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentName (self.mDisplayComponentName_property)
   //--- mDisplayComponentNameOffsetX
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = nil 
     self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = nil 
@@ -344,14 +327,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       view:view,
       observerExplorer:&self.mCenterY_property.mObserverExplorer,
       valueExplorer:&self.mCenterY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mDisplayComponentName",
-      idx:self.mDisplayComponentName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentName_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentNameOffsetX",
@@ -464,7 +439,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //···················································································································*
 
   private final func bind_property_isPlacedInSchematics (model : ReadOnlyArrayOf_ComponentSymbolInProject) {
-    model.addEBObserverOf_isPlacedInSchematics (self.isPlacedInSchematics_property)
     self.isPlacedInSchematics_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
@@ -629,76 +603,6 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
         case .single (let v) :
           for object in v {
             let result = object.mCenterY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_mDisplayComponentName (model : ReadOnlyArrayOf_ComponentSymbolInProject) {
-    model.addEBObserverOf_mDisplayComponentName (self.mDisplayComponentName_property)
-    self.mDisplayComponentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mDisplayComponentName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDisplayComponentName_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mDisplayComponentName_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.mDisplayComponentName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mDisplayComponentName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

@@ -15,7 +15,13 @@ func transient_ComponentInProject_placementInSchematics (
        _ self_mSymbols_symbolInSchematics : [ComponentSymbolInProject_symbolInSchematics]
 ) -> String {
 //--- START OF USER ZONE 2
-
+        var placedCount = 0
+        for symbol in self_mSymbols_symbolInSchematics {
+          if let placed = symbol.symbolInSchematics, placed {
+            placedCount += 1
+          }
+        }
+        return "\(placedCount)/\(self_mSymbols_symbolInSchematics.count)"
 //--- END OF USER ZONE 2
 }
 
