@@ -12,10 +12,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
-       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?
+       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?,   
+       _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
-        return self_mSymbolType_mStrokeBezierPath ?? NSBezierPath ()
+        let bp = NSBezierPath ()
+        if let strokeBezierPath = self_mSymbolType_mStrokeBezierPath {
+          bp.append (strokeBezierPath)
+          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
+          bp.lineJoinStyle = .round
+          bp.lineCapStyle = .round
+        }
+        return bp
 //--- END OF USER ZONE 2
 }
 

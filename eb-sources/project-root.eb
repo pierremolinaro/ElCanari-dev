@@ -134,7 +134,10 @@ entity DeviceSymbolInstanceInProject {
   
   transient NSBezierPath filledBezierPath dependsFrom self.mSymbolType.one.mFilledBezierPath ;
 
-  transient NSBezierPath strokeBezierPath dependsFrom self.mSymbolType.one.mStrokeBezierPath ;
+  transient NSBezierPath strokeBezierPath dependsFrom
+    self.mSymbolType.one.mStrokeBezierPath,
+    prefs.symbolDrawingWidthMultipliedByTenForSchematic
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -269,6 +272,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
+  property QuadrantRotation mRotation default rotation0 ;
 
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
@@ -284,14 +288,15 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;
   
   transient ComponentSymbolInfo symbolInfo dependsFrom
-     self.componentName,
-     self.mComponent.one.mComponentValue,
-     self.mComponent.one.deviceSymbolDictionary,
-     self.mSymbolInstanceName,
-     self.mSymbolTypeName,
-     self.mCenterX,
-     self.mCenterY,
-     prefs.pinNameFont
+    self.mRotation,
+    self.componentName,
+    self.mComponent.one.mComponentValue,
+    self.mComponent.one.deviceSymbolDictionary,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName,
+    self.mCenterX,
+    self.mCenterY,
+    prefs.pinNameFont
   ;
  
   transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;

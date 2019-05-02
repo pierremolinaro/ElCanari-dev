@@ -18,6 +18,12 @@ protocol ComponentSymbolInProject_mCenterY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentSymbolInProject_mRotation : class {
+  var mRotation : QuadrantRotation { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentSymbolInProject_mSymbolInstanceName : class {
   var mSymbolInstanceName : String { get }
 }
@@ -101,6 +107,7 @@ protocol ComponentSymbolInProject_symbolInSchematics : class {
 class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mCenterX,
          ComponentSymbolInProject_mCenterY,
+         ComponentSymbolInProject_mRotation,
          ComponentSymbolInProject_mSymbolInstanceName,
          ComponentSymbolInProject_mSymbolTypeName,
          ComponentSymbolInProject_mDisplayComponentNameOffsetX,
@@ -148,6 +155,23 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   var mCenterY_property_selection : EBSelection <Int> { return self.mCenterY_property.prop }
+
+  //····················································································································
+  //   Atomic property: mRotation
+  //····················································································································
+
+  var mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+
+  //····················································································································
+
+  var mRotation : QuadrantRotation {
+    get { return self.mRotation_property.propval }
+    set { self.mRotation_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -399,6 +423,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
     self.mCenterY_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mRotation
+    self.mRotation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolTypeName
@@ -462,7 +488,8 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.componentName_property_selection.kind ()
+        var kind = unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.componentName_property_selection.kind ()
         kind &= unwSelf.mComponent_property.mComponentValue_property_selection.kind ()
         kind &= unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
         kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
@@ -476,9 +503,9 @@ class ComponentSymbolInProject : SchematicsObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -487,6 +514,7 @@ class ComponentSymbolInProject : SchematicsObject,
         return .empty
       }
     }
+    self.mRotation_property.addEBObserver (self.symbolInfo_property)
     self.componentName_property.addEBObserver (self.symbolInfo_property)
     self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
@@ -602,6 +630,7 @@ class ComponentSymbolInProject : SchematicsObject,
     super.removeAllObservers ()
     self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
     self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
+    self.mRotation_property.removeEBObserver (self.symbolInfo_property)
     self.componentName_property.removeEBObserver (self.symbolInfo_property)
     self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
@@ -657,6 +686,14 @@ class ComponentSymbolInProject : SchematicsObject,
       view:view,
       observerExplorer:&self.mCenterY_property.mObserverExplorer,
       valueExplorer:&self.mCenterY_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mRotation",
+      idx:self.mRotation_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mRotation_property.mObserverExplorer,
+      valueExplorer:&self.mRotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
@@ -786,6 +823,9 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: mCenterY
     self.mCenterY_property.mObserverExplorer = nil
     self.mCenterY_property.mValueExplorer = nil
+  //--- Atomic property: mRotation
+    self.mRotation_property.mObserverExplorer = nil
+    self.mRotation_property.mValueExplorer = nil
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
@@ -843,6 +883,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
   //--- Atomic property: mCenterY
     self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey:"mCenterY")
+  //--- Atomic property: mRotation
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -889,6 +931,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey:"mCenterX")
   //--- Atomic property: mCenterY
     self.mCenterY_property.readFrom (dictionary: inDictionary, forKey:"mCenterY")
+  //--- Atomic property: mRotation
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -1049,6 +1093,63 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCenterY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mRotation' stored property
+  //····················································································································
+
+  private var mObserversOf_mRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRotation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mRotation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+        managedObject.mRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mRotation_property.removeEBObserver (observer)
       }
     }
   }
@@ -1858,6 +1959,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mRotation_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedSet)
@@ -1877,6 +1979,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
      //--- Add observers of stored properties
       self.addEBObserversOf_mCenterX_toElementsOfSet (addedSet)
       self.addEBObserversOf_mCenterY_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mRotation_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedSet)
@@ -2020,6 +2123,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             self.resetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
+            managedObject.mRotation_property.mSetterDelegate = nil
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
             managedObject.mSymbolTypeName_property.mSetterDelegate = nil
             managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = nil
@@ -2031,6 +2135,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedObjectSet)
@@ -2054,6 +2159,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
             self.setOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -2065,6 +2171,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
         //--- Add observers of stored properties
           self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedObjectSet)

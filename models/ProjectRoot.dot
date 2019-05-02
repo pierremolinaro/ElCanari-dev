@@ -16,7 +16,7 @@ digraph G {
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>mDevice|Int mNameIndex|String mNamePrefix|<mSelectedPackage>mSelectedPackage|<mSymbols>mSymbols"] ;
-  ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|Int mCenterX|Int mCenterY|<mComponent>mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|<mSheet>mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
+  ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|Int mCenterX|Int mCenterY|<mComponent>mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|QuadrantRotation mRotation|<mSheet>mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
   ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;

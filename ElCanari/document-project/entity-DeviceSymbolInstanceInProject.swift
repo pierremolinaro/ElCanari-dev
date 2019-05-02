@@ -264,16 +264,17 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection.kind ()
+        var kind = unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceSymbolInstanceInProject_strokeBezierPath (v0))
+          switch (unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTenForSchematic_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceSymbolInstanceInProject_strokeBezierPath (v0, v1))
           default :
             return .empty
           }
@@ -283,6 +284,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -297,6 +299,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mSymbolType_property.removeEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
     self.mSymbolType_property.removeEBObserverOf_mFilledBezierPath (self.filledBezierPath_property)
     self.mSymbolType_property.removeEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.strokeBezierPath_property)
   //--- Unregister properties for handling signature
   }
 

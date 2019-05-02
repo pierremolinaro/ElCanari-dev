@@ -280,6 +280,10 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextObserverField mComponentSymbolInstanceNameTextField
     $valueObserver mComponentSymbolSelectionController.mSymbolInstanceName
   ;
+  
+  outlet CanariQuadrantSegmentedControl mSymbolRotationSegmentedControl
+     $quadrant mComponentSymbolSelectionController.mRotation ;
+
 }
 
 #----------------------------------------------------------------------------*

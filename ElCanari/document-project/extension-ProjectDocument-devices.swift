@@ -156,8 +156,6 @@ extension ProjectDocument {
   //--- Append symbols
     var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
     for symbolTypeInDevice in inDeviceRoot.mSymbolTypes {
-      symbolTypeInDevice.mStrokeBezierPath.lineCapStyle = .round
-      symbolTypeInDevice.mStrokeBezierPath.lineJoinStyle = .round
       let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath

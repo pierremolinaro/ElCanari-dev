@@ -263,7 +263,7 @@ final class Controller_MergerDocument_mBoardInstanceController : EBObject, EBVie
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
@@ -288,7 +288,7 @@ final class Controller_MergerDocument_mBoardInstanceController : EBObject, EBVie
   //····················································································································
 
   private func stopObservingSelectionShape () {
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = nil
   }
 

@@ -375,6 +375,7 @@ import Cocoa
   @IBOutlet var mSheetDownButton : EBButton?
   @IBOutlet var mSheetPopUpButton : EBPopUpButton?
   @IBOutlet var mSheetUpButton : EBButton?
+  @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
   @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
@@ -569,6 +570,7 @@ import Cocoa
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
@@ -834,6 +836,7 @@ import Cocoa
     self.mComponentSymbolDeviceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.deviceName_property, file: #file, line: #line)
     self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
     self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
+    self.mSymbolRotationSegmentedControl?.bind_quadrant (self.mComponentSymbolSelectionController.mRotation_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1108,6 +1111,7 @@ import Cocoa
     self.mComponentSymbolDeviceNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolTypeNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolInstanceNameTextField?.unbind_valueObserver ()
+    self.mSymbolRotationSegmentedControl?.unbind_quadrant ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1289,6 +1293,7 @@ import Cocoa
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
+    self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
     self.mUnplacedSymbolsTextField?.ebCleanUp ()

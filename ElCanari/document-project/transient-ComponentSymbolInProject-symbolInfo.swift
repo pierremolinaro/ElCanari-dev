@@ -12,6 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ComponentSymbolInProject_symbolInfo (
+       _ self_mRotation : QuadrantRotation,         
        _ self_componentName : String,               
        _ self_mComponent_mComponentValue : String?, 
        _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
@@ -22,10 +23,14 @@ func transient_ComponentSymbolInProject_symbolInfo (
        _ prefs_pinNameFont : NSFont
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
+      //--- Device info
         let key = SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolTypeName)
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
+      //--- Affine transformation for drawings
         let tr = NSAffineTransform ()
-        tr.translateX (by: canariUnitToCocoa (self_mCenterX - deviceInfo.center.x), yBy: canariUnitToCocoa (self_mCenterY - deviceInfo.center.y))
+        tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+        tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+        tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
       //--- Pin names and pad names
         let pinNameAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont
@@ -34,23 +39,35 @@ func transient_ComponentSymbolInProject_symbolInfo (
         for pinPadAssignment in deviceInfo.assignments {
           if let pin = pinPadAssignment.pin {
             if pin.pinNameIsDisplayedInSchematics {
+              let trText = NSAffineTransform ()
+              trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+              trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+              trText.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+              trText.translateX (by: canariUnitToCocoa (pin.nameXY.x), yBy: canariUnitToCocoa (pin.nameXY.y))
+              trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
               let pinNameTextShape = EBTextShape (
                 pin.pinName,
-                pin.nameXY.cocoaPoint (),
+                NSPoint (),
                 pinNameAttributes,
-                pin.nameHorizontalAlignment.ebTextShapeHorizontalAlignment(),
-                .center
+                self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment),
+                self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment)
               )
-              pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNameTextShape.transformedBy (tr)))
+              pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNameTextShape.transformedBy (trText)))
             }
-            let pinNumberTextShape = EBTextShape (
+            let trText = NSAffineTransform ()
+            trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+            trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+            trText.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+            trText.translateX (by: canariUnitToCocoa (pin.numberXY.x), yBy: canariUnitToCocoa (pin.numberXY.y))
+            trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
+             let pinNumberTextShape = EBTextShape (
               pinPadAssignment.padName,
-              pin.numberXY.cocoaPoint (),
+              NSPoint (),
               pinNameAttributes,
-              pin.numberHorizontalAlignment.ebTextShapeHorizontalAlignment (),
-              .center
+              self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment),
+              self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment)
             )
-            pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNumberTextShape.transformedBy (tr)))
+            pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNumberTextShape.transformedBy (trText)))
           }
         }
       //---
