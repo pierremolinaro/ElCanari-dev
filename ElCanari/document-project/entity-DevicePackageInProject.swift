@@ -21,7 +21,7 @@ class DevicePackageInProject : EBManagedObject,
   //   Atomic property: mPackageName
   //····················································································································
 
-  var mPackageName_property = EBStoredProperty_String (defaultValue: "")
+  let mPackageName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

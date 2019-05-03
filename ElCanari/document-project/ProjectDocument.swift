@@ -54,7 +54,7 @@ import Cocoa
   //   Transient property: componentCount
   //····················································································································
 
-  var componentCount_property = EBTransientProperty_String ()
+  let componentCount_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -77,7 +77,7 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  var documentFilePath_property = EBTransientProperty_String ()
+  let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -100,7 +100,7 @@ import Cocoa
   //   Transient property: canRemoveNetClasses
   //····················································································································
 
-  var canRemoveNetClasses_property = EBTransientProperty_Bool ()
+  let canRemoveNetClasses_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -123,7 +123,7 @@ import Cocoa
   //   Transient property: selectedDevicePackageNames
   //····················································································································
 
-  var selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+  let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -146,7 +146,7 @@ import Cocoa
   //   Transient property: selectedDeviceSymbolNames
   //····················································································································
 
-  var selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
+  let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
 
   //····················································································································
 
@@ -169,7 +169,7 @@ import Cocoa
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  var pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
 
@@ -192,7 +192,7 @@ import Cocoa
   //   Transient property: unplacedSymbolsCount
   //····················································································································
 
-  var unplacedSymbolsCount_property = EBTransientProperty_Int ()
+  let unplacedSymbolsCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -215,7 +215,7 @@ import Cocoa
   //   Transient property: unplacedSymbolsCountString
   //····················································································································
 
-  var unplacedSymbolsCountString_property = EBTransientProperty_String ()
+  let unplacedSymbolsCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -238,7 +238,7 @@ import Cocoa
   //   Transient property: canChangePackage
   //····················································································································
 
-  var canChangePackage_property = EBTransientProperty_Bool ()
+  let canChangePackage_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -261,7 +261,7 @@ import Cocoa
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
-  var canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+  let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
 
   //····················································································································
 

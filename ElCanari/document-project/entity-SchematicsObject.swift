@@ -64,7 +64,7 @@ class SchematicsObject : EBGraphicManagedObject,
   //   Transient property: isPlacedInSchematics
   //····················································································································
 
-  var isPlacedInSchematics_property = EBTransientProperty_Bool ()
+  let isPlacedInSchematics_property = EBTransientProperty_Bool ()
 
   //····················································································································
 

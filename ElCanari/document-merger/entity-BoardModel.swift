@@ -378,7 +378,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  var name_property = EBStoredProperty_String (defaultValue: "")
+  let name_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -395,7 +395,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidth
   //····················································································································
 
-  var modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -412,7 +412,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidthUnit
   //····················································································································
 
-  var modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -429,7 +429,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeight
   //····················································································································
 
-  var modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -446,7 +446,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeightUnit
   //····················································································································
 
-  var modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -463,7 +463,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (defaultValue: 0)
+  let zoom_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -689,7 +689,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidth
   //····················································································································
 
-  var modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -706,7 +706,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidthUnit
   //····················································································································
 
-  var modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
+  let modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -875,7 +875,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: artworkName
   //····················································································································
 
-  var artworkName_property = EBStoredProperty_String (defaultValue: "")
+  let artworkName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -911,7 +911,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesSegments
   //····················································································································
 
-  var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -934,7 +934,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesSegments
   //····················································································································
 
-  var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -957,7 +957,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesBezierPaths
   //····················································································································
 
-  var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -980,7 +980,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsSegments
   //····················································································································
 
-  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1003,7 +1003,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsBezierPaths
   //····················································································································
 
-  var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1026,7 +1026,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsSegments
   //····················································································································
 
-  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1049,7 +1049,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsBezierPaths
   //····················································································································
 
-  var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1072,7 +1072,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsSegments
   //····················································································································
 
-  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1095,7 +1095,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsBezierPaths
   //····················································································································
 
-  var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1118,7 +1118,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsSegments
   //····················································································································
 
-  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1141,7 +1141,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsBezierPaths
   //····················································································································
 
-  var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1164,7 +1164,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsSegments
   //····················································································································
 
-  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1187,7 +1187,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsBezierPaths
   //····················································································································
 
-  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1210,7 +1210,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: drillSegments
   //····················································································································
 
-  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let drillSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1233,7 +1233,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: holesBezierPaths
   //····················································································································
 
-  var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1256,7 +1256,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: viaShapes
   //····················································································································
 
-  var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+  let viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
 
   //····················································································································
 
@@ -1279,7 +1279,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: viasBezierPaths
   //····················································································································
 
-  var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1302,7 +1302,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPadArray
   //····················································································································
 
-  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
+  let frontPadArray_property = EBTransientProperty_MergerPadArray ()
 
   //····················································································································
 
@@ -1325,7 +1325,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPadsBezierPaths
   //····················································································································
 
-  var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1348,7 +1348,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPadArray
   //····················································································································
 
-  var backPadArray_property = EBTransientProperty_MergerPadArray ()
+  let backPadArray_property = EBTransientProperty_MergerPadArray ()
 
   //····················································································································
 
@@ -1371,7 +1371,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPadsBezierPaths
   //····················································································································
 
-  var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1394,7 +1394,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: boardLimits
   //····················································································································
 
-  var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
+  let boardLimits_property = EBTransientProperty_MergerBoardLimits ()
 
   //····················································································································
 
@@ -1417,7 +1417,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: boardLimitsBezierPaths
   //····················································································································
 
-  var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1440,7 +1440,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentNameSegments
   //····················································································································
 
-  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1463,7 +1463,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentNamesBezierPaths
   //····················································································································
 
-  var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1486,7 +1486,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNameSegments
   //····················································································································
 
-  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1509,7 +1509,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNamesBezierPaths
   //····················································································································
 
-  var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1532,7 +1532,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValueSegments
   //····················································································································
 
-  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1555,7 +1555,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValuesBezierPaths
   //····················································································································
 
-  var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1578,7 +1578,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentValueSegments
   //····················································································································
 
-  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1601,7 +1601,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backComponentValuesBezierPaths
   //····················································································································
 
-  var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1624,7 +1624,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backTrackSegments
   //····················································································································
 
-  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1647,7 +1647,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backTracksBezierPaths
   //····················································································································
 
-  var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1670,7 +1670,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontTrackSegments
   //····················································································································
 
-  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1693,7 +1693,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontTracksBezierPaths
   //····················································································································
 
-  var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1716,7 +1716,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesSegments
   //····················································································································
 
-  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1739,7 +1739,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesBezierPaths
   //····················································································································
 
-  var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1762,7 +1762,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPackagesSegments
   //····················································································································
 
-  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  let backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
 
@@ -1785,7 +1785,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: backPackagesBezierPaths
   //····················································································································
 
-  var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1808,7 +1808,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  var instanceCount_property = EBTransientProperty_Int ()
+  let instanceCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -1831,7 +1831,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesBezierPaths
   //····················································································································
 
-  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  let frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -1854,7 +1854,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: imageForModel
   //····················································································································
 
-  var imageForModel_property = EBTransientProperty_EBShape ()
+  let imageForModel_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
@@ -1877,7 +1877,7 @@ class BoardModel : EBManagedObject,
   //   Transient property: imageForInstances
   //····················································································································
 
-  var imageForInstances_property = EBTransientProperty_EBShape ()
+  let imageForInstances_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

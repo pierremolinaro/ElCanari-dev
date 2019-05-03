@@ -1,36 +1,36 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#     A R T W O R K    D O C U M E N T
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//     A R T W O R K    D O C U M E N T
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ArtworkRoot {
   toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
 
-  property Int minPPTPTTTWdisplayUnit default 90 ; # 1µm
-  property @signature Int minPPTPTTTW default 18_000 ; # 200µm
+  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
+  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
 
-  property Int minValueForOARdisplayUnit default 90 ; # 1µm
-  property @signature Int minValueForOARinEBUnit default 18_000 ; # 200µm
+  property Int minValueForOARdisplayUnit default 90 ; // 1µm
+  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
 
-  property Int minValueForPHDdisplayUnit default 90 ; # 1µm
-  property @signature Int minValueForPHDinEBUnit default 18_000 ; # 200µm
+  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
+  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
 
-  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; # 1mm
-  property @signature Int minValueForBoardLimitWidth default 90_000 ; # 1mm
+  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
 
-#--- Excellon drill data
+//--- Excellon drill data
   property @signature String drillDataFileExtension default "drf" ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 document ArtworkDocument root ArtworkRoot {
-#--- Selected Tab
+//--- Selected Tab
   outlet CanariSegmentedControl mSegmentedControl $selectedPage root.selectedTab ;
   outlet NSView mMasterView ;
 
-#---------------- Minima Page
+//---------------- Minima Page
   outlet CanariViewWithKeyView mMinimaPageView ;
 
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
@@ -53,65 +53,65 @@ document ArtworkDocument root ArtworkRoot {
      $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
   ;
 
-#--- Drill Page
+//--- Drill Page
   outlet CanariViewWithKeyView mDrillPageView ;
   outlet EBTextField mDrillDataFileExtensionTextField $value root.drillDataFileExtension {sendContinously:no} ;
 
-#--- Data Tab
+//--- Data Tab
   outlet CanariViewWithKeyView mDataPageView ;
   outlet EBTableView mDataTableView $tableValue mDataController ;
-  tableViewController mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
+  tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
 
-  outlet EBButton mAddGenerationFileButton $run mDataController.add ;
-  outlet EBButton mRemoveGenerationFileButton $run mDataController.remove $enabled mDataController.selectedArray.count > 0 ;
+  outlet EBButton mAddGenerationFileButton $run #mDataController.add ;
+  outlet EBButton mRemoveGenerationFileButton $run #mDataController.remove $enabled #mDataController.selectedArray.count > 0 ;
 
-  selectionController ArtworkFileGenerationParameters mDataSelection : self.mDataController.selectedArray ;
+  selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
 
-  outlet EBTextField mExtensionTextField $value mDataSelection.fileExtension {sendContinously:no} ;
-  outlet EBSwitch mDrawBoardInternalLimitsSwitch $value mDataSelection.drawInternalBoardLimits ;
-  outlet EBSwitch mDrawBoardLimitsSwitch $value mDataSelection.drawBoardLimits ;
-  outlet EBSwitch mDrawComponentValuesTopSideSwitch $value mDataSelection.drawComponentValuesTopSide ;
-  outlet EBSwitch mDrawComponentValuesBottomSideSwitch $value mDataSelection.drawComponentValuesBottomSide ;
-  outlet EBSwitch mDrawComponentNamesTopSideSwitch $value mDataSelection.drawComponentNamesTopSide ;
-  outlet EBSwitch mDrawComponentNamesBottomSideSwitch $value mDataSelection.drawComponentNamesBottomSide ;
-  outlet EBSwitch mDrawPackageLegendTopSideSwitch $value mDataSelection.drawPackageLegendTopSide ;
-  outlet EBSwitch mDrawPackageLegendBottomSideSwitch $value mDataSelection.drawPackageLegendBottomSide ;
-  outlet EBSwitch mDrawPadHolesInPDFSwitch $value mDataSelection.drawPadHolesInPDF ;
-  outlet EBSwitch mDrawPadsTopSideSwitch $value mDataSelection.drawPadsTopSide ;
-  outlet EBSwitch mDrawPadsBottomSideSwitch $value mDataSelection.drawPadsBottomSide ;
-  outlet EBSwitch mDrawTextsLayoutTopSideSwitch $value mDataSelection.drawTextsLayoutTopSide ;
-  outlet EBSwitch mDrawTextsLayoutBottomSideSwitch $value mDataSelection.drawTextsLayoutBottomSide ;
-  outlet EBSwitch mDrawTextsLegendTopSideSwitch $value mDataSelection.drawTextsLegendTopSide ;
-  outlet EBSwitch mDrawTextsLegendBottomSideSwitch $value mDataSelection.drawTextsLegendBottomSide ;
-  outlet EBSwitch mDrawTracksTopSideSwitch $value mDataSelection.drawTracksTopSide ;
-  outlet EBSwitch mDrawTracksBottomSidSwitche $value mDataSelection.drawTracksBottomSide ;
-  outlet EBSwitch mDrawViasSwitch $value mDataSelection.drawVias ;
-  outlet EBSwitch mHorizontalMirrorSwitch $value mDataSelection.horizontalMirror ;
-  
-  outlet EBPopUpButton mMeasurementUnitForPadHoleInPDFPopUp $selectedTag mDataSelection.measurementUnitForPadHoleInPDF ;
+  outlet EBTextField mExtensionTextField $value #mDataSelection.fileExtension {sendContinously:no} ;
+  outlet EBSwitch mDrawBoardInternalLimitsSwitch $value #mDataSelection.drawInternalBoardLimits ;
+  outlet EBSwitch mDrawBoardLimitsSwitch $value #mDataSelection.drawBoardLimits ;
+  outlet EBSwitch mDrawComponentValuesTopSideSwitch $value #mDataSelection.drawComponentValuesTopSide ;
+  outlet EBSwitch mDrawComponentValuesBottomSideSwitch $value #mDataSelection.drawComponentValuesBottomSide ;
+  outlet EBSwitch mDrawComponentNamesTopSideSwitch $value #mDataSelection.drawComponentNamesTopSide ;
+  outlet EBSwitch mDrawComponentNamesBottomSideSwitch $value #mDataSelection.drawComponentNamesBottomSide ;
+  outlet EBSwitch mDrawPackageLegendTopSideSwitch $value #mDataSelection.drawPackageLegendTopSide ;
+  outlet EBSwitch mDrawPackageLegendBottomSideSwitch $value #mDataSelection.drawPackageLegendBottomSide ;
+  outlet EBSwitch mDrawPadHolesInPDFSwitch $value #mDataSelection.drawPadHolesInPDF ;
+  outlet EBSwitch mDrawPadsTopSideSwitch $value #mDataSelection.drawPadsTopSide ;
+  outlet EBSwitch mDrawPadsBottomSideSwitch $value #mDataSelection.drawPadsBottomSide ;
+  outlet EBSwitch mDrawTextsLayoutTopSideSwitch $value #mDataSelection.drawTextsLayoutTopSide ;
+  outlet EBSwitch mDrawTextsLayoutBottomSideSwitch $value #mDataSelection.drawTextsLayoutBottomSide ;
+  outlet EBSwitch mDrawTextsLegendTopSideSwitch $value #mDataSelection.drawTextsLegendTopSide ;
+  outlet EBSwitch mDrawTextsLegendBottomSideSwitch $value #mDataSelection.drawTextsLegendBottomSide ;
+  outlet EBSwitch mDrawTracksTopSideSwitch $value #mDataSelection.drawTracksTopSide ;
+  outlet EBSwitch mDrawTracksBottomSidSwitche $value #mDataSelection.drawTracksBottomSide ;
+  outlet EBSwitch mDrawViasSwitch $value #mDataSelection.drawVias ;
+  outlet EBSwitch mHorizontalMirrorSwitch $value #mDataSelection.horizontalMirror ;
+
+  outlet EBPopUpButton mMeasurementUnitForPadHoleInPDFPopUp $selectedTag #mDataSelection.measurementUnitForPadHoleInPDF ;
   outlet CanariDimensionTextField mDimensionForPadHoleInPDFTextField
-     $dimensionAndUnit mDataSelection.padHoleDiameterInPDF, mDataSelection.measurementUnitForPadHoleInPDF
+     $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
   ;
-  outlet NSView mPadHoleDefinitionView $hidden !mDataSelection.drawPadHolesInPDF ;
-  transient String mGeneratedFileCountString dependsFrom mDataController.sortedArray.count ;
+  outlet NSView mPadHoleDefinitionView $hidden !#mDataSelection.drawPadHolesInPDF ;
+  transient String mGeneratedFileCountString dependsFrom #mDataController.sortedArray.count ;
   outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
 
 
-#----------------------------------------------------- Info Tab
+//----------------------------------------------------- Info Tab
   outlet CanariViewWithKeyView mInfosPageView ;
   outlet EBTextView mCommentTextView $value root.comments ;
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariSignatureField mOtherSignatureTextField $signature signature ;
-  
+
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-#--- Reset
+//--- Reset
   action resetVersionAndSignatureAction ;
-  outlet EBButton resetVersionAndSignatureButton $run self.resetVersionAndSignatureAction ;
+  outlet EBButton resetVersionAndSignatureButton $run resetVersionAndSignatureAction ;
 
-#--- Toolbar
+//--- Toolbar
   outlet CanariVersionField mVersionFieldInToolbar $version version $versionShouldChange versionShouldChange ;
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage
@@ -120,7 +120,7 @@ document ArtworkDocument root ArtworkRoot {
     dependsFrom root.fileGenerationParameterArray.all.fileExtension, root.fileGenerationParameterArray.all.name ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ArtworkFileGenerationParameters {
   property @signature Bool drawBoardLimits default no ;
@@ -144,8 +144,8 @@ entity ArtworkFileGenerationParameters {
   property @signature String fileExtension default "?" ;
   property @signature Bool horizontalMirror default no ;
   property @signature String name default "Unnamed" ;
-  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; # mm
-  property @signature Int padHoleDiameterInPDF default 90_000 ; # 1 mm
+  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
+  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

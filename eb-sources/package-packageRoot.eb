@@ -1,10 +1,10 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity PackageObject {
-  abstract transient CanariIssueArray issues ; 
+  abstract transient CanariIssueArray issues ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 enum PadNumbering {
   noNumbering,
@@ -18,55 +18,55 @@ enum PadNumbering {
   leftUp,
   leftDown
 }
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 graphic entity PackageRoot {
-#--- Selected page index
+//--- Selected page index
   property Int selectedPageIndex default 0 ;
 
-#--- Selected inspector
+//--- Selected inspector
   property Int selectedInspector default 0 ;
 
-#--- Comment
+//--- Comment
   property @signature String comments default "" ;
 
-#--- Program
+//--- Program
   property @signature String program default "" ;
 
-#--- Package definition
+//--- Package definition
   toMany @signature PackageObject packageObjects ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
   toMany PackageSlavePad packageSlavePads dependsFrom self.packageObjects ;
   toMany PackageZone packageZones dependsFrom self.packageObjects ;
 
-#--- Grid and display inspector
+//--- Grid and display inspector
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
-  property Int gridStep default 57_150 ; # 25 mils
-  property Int gridStepUnit default 2_286 ; # mil
+  property Int gridStep default 57_150 ; // 25 mils
+  property Int gridStepUnit default 2_286 ; // mil
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
 
-#--- Pad numbering
+//--- Pad numbering
   property PadNumbering padNumbering default noNumbering ;
   transient Bool freePadNumbering dependsFrom self.padNumbering ;
 
-#--- XY placard unit
-  property @signature Int xPlacardUnit default 2_286 ; # mils
-  property @signature Int yPlacardUnit default 2_286 ; # mils
+//--- XY placard unit
+  property @signature Int xPlacardUnit default 2_286 ; // mils
+  property @signature Int yPlacardUnit default 2_286 ; // mils
 
-#--- Issues
+//--- Issues
   transient CanariIssueArray issues dependsFrom
     self.packageObjects.all.issues, self.packageZones.all.rect,
     self.packageZones.all.zoneName, self.packageZones.all.xName, self.packageZones.all.yName, prefs.padZoneFont
   ;
   transient Bool noIssue dependsFrom self.issues ;
 
- #--- Mouse grid 
+ //--- Mouse grid
   transient Int gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;
- 
- #--- Pad number display
+
+ //--- Pad number display
    transient EBShape padNumberDisplay dependsFrom
      prefs.showPadNumber,
      self.packagePads.all.padNumberDisplay,
@@ -74,22 +74,22 @@ graphic entity PackageRoot {
    ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSegment : PackageObject {
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 6_858_00 ;
-  
+
   property @signature Int x1Unit default 2_286 ;
   property @signature Int y1Unit default 2_286 ;
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
   property @signature Int lengthUnit default 2_286 ;
-  
+
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
-  
+
   override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
@@ -101,7 +101,7 @@ graphic entity PackageSegment : PackageObject {
   transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageBezier : PackageObject {
   property @signature Int x1 default 0 ;
@@ -121,12 +121,12 @@ graphic entity PackageBezier : PackageObject {
   property @signature Int cpy1Unit default 2_286 ;
   property @signature Int cpx2Unit default 2_286 ;
   property @signature Int cpy2Unit default 2_286 ;
-  
+
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
-  
+
   override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
@@ -136,30 +136,30 @@ graphic entity PackageBezier : PackageObject {
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageOval : PackageObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
- 
+
   property @signature Int xUnit default 2_286 ;
   property @signature Int yUnit default 2_286 ;
   property @signature Int widthUnit default 2_286 ;
   property @signature Int heightUnit default 2_286 ;
- 
+
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x, self.y, self.width, self.height
   ;
- 
+
   override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
@@ -168,33 +168,33 @@ graphic entity PackageOval : PackageObject {
   override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageArc : PackageObject {
   property @signature Int xCenter default 3_429_00 ;
   property @signature Int yCenter default 3_429_00 ;
   property @signature Int radius default 3_429_00 ;
-  property @signature Int startAngle default 45_000 ; # In degrees * 1000
-  property @signature Int arcAngle default 270_000 ; # In degrees * 1000
+  property @signature Int startAngle default 45_000 ; // In degrees * 1000
+  property @signature Int arcAngle default 270_000 ; // In degrees * 1000
   property @signature Int startTangent default 0 ;
   property @signature Int endTangent default 0 ;
   property @signature Bool pathIsClosed default no ;
- 
+
   property @signature Int xCenterUnit default 2_286 ;
   property @signature Int yCenterUnit default 2_286 ;
   property @signature Int radiusUnit  default 2_286 ;
   property @signature Int startTangentUnit default 2_286 ;
   property @signature Int endTangentUnit default 2_286 ;
- 
+
   transient NSBezierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.pathIsClosed, self.startTangent, self.endTangent
   ;
- 
+
   override transient EBShape objectDisplay dependsFrom
      self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
@@ -204,13 +204,13 @@ graphic entity PackageArc : PackageObject {
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.startTangent, self.endTangent, self.pathIsClosed
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle, self.pathIsClosed
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackagePad : PackageObject {
   property @signature Int xCenter default 0 ;
@@ -228,7 +228,7 @@ graphic entity PackagePad : PackageObject {
   property @signature Int heightUnit  default 2_286 ;
   property @signature Int holeDiameterUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
-  
+
   toOne PackageZone zone ;
   toMany PackageSlavePad slaves inverse toOne master ;
 
@@ -242,32 +242,32 @@ graphic entity PackagePad : PackageObject {
   override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
- 
+
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
      prefs.padNumberFont, prefs.padNumberColor, self.padName
   ;
- 
+
   override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
   ;
-  
+
   transient Bool padIsTraversing dependsFrom self.padStyle ;
-  
+
   transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
-  
+
   transient String padName dependsFrom self.padNumber, self.zone.one.zoneName ;
-  
+
   transient String zoneName dependsFrom self.zone.one.zoneName ;
-  
+
   transient Bool noZone dependsFrom self.zone.none ;
-  
+
   transient Bool zoneAllowsManualRenumbering dependsFrom self.zone.one.zoneNumbering ;
-  
+
   transient Int slavePadCount dependsFrom self.slaves.count ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageSlavePad : PackageObject {
   property @signature Int xCenter default 0 ;
@@ -284,7 +284,7 @@ graphic entity PackageSlavePad : PackageObject {
   property @signature Int heightUnit  default 2_286 ;
   property @signature Int holeDiameterUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
-  
+
   toOne PackagePad master inverse toMany slaves ;
 
   override transient EBShape objectDisplay dependsFrom
@@ -296,37 +296,37 @@ graphic entity PackageSlavePad : PackageObject {
   override transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
   ;
-  
+
   transient Bool padIsTraversing dependsFrom self.padStyle ;
-  
+
   transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
-  
+
   transient String padName dependsFrom self.master.one.padName ;
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
      prefs.padNumberFont, prefs.padNumberColor, self.padName
   ;
- 
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageGuide : PackageObject {
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 6_858_00 ;
-  
+
   property @signature Int x1Unit default 2_286 ;
   property @signature Int y1Unit default 2_286 ;
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
-  
+
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
@@ -334,7 +334,7 @@ graphic entity PackageGuide : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageDimension : PackageObject {
   property @signature Int x1 default 0 ;
@@ -343,7 +343,7 @@ graphic entity PackageDimension : PackageObject {
   property @signature Int y2 default 0 ;
   property @signature Int xDimension default 0 ;
   property @signature Int yDimension default 0 ;
-  
+
   property @signature Int x1Unit default 2_286 ;
   property @signature Int y1Unit default 2_286 ;
   property @signature Int x2Unit default 2_286 ;
@@ -351,12 +351,12 @@ graphic entity PackageDimension : PackageObject {
   property @signature Int xDimensionUnit default 2_286 ;
   property @signature Int yDimensionUnit default 2_286 ;
   property @signature Int distanceUnit default 2_286 ;
- 
- 
+
+
   transient Int distanceInCanariUnit dependsFrom
      self.x1, self.y1, self.x2, self.y2
   ;
- 
+
   override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
@@ -372,26 +372,26 @@ graphic entity PackageDimension : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageZone : PackageObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
   property @signature Int width default 4_572_00 ;
   property @signature Int height default 4_572_00 ;
- 
+
   property @signature Int xUnit default 2_286 ;
   property @signature Int yUnit default 2_286 ;
   property @signature Int widthUnit default 2_286 ;
   property @signature Int heightUnit default 2_286 ;
- 
+
   property @signature String zoneName default "" ;
   property @signature Int xName default 2_286_00 ;
   property @signature Int yName default 2_286_00 ;
   property @signature Int xNameUnit default 2_286 ;
   property @signature Int yNameUnit default 2_286 ;
 
-#--- Pad numbering
+//--- Pad numbering
   property PadNumbering zoneNumbering default noNumbering ;
 
   override transient EBShape objectDisplay dependsFrom
@@ -403,13 +403,13 @@ graphic entity PackageZone : PackageObject {
      self.x, self.y, self.width, self.height,
      self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
     self.x, self.y, self.width, self.height,
     self.xName, self.yName, self.zoneName
   ;
-  
+
   transient CanariRect rect dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

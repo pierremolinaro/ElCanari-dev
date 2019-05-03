@@ -126,7 +126,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  var mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -143,7 +143,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  var mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mRotation
   //····················································································································
 
-  var mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
@@ -177,7 +177,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  var mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -194,7 +194,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  var mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -211,7 +211,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mDisplayComponentNameOffsetX
   //····················································································································
 
-  var mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -228,7 +228,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mDisplayComponentNameOffsetY
   //····················································································································
 
-  var mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
+  let mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -245,7 +245,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mDisplayComponentValue
   //····················································································································
 
-  var mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
+  let mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -262,7 +262,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mDisplayComponentValueOffsetX
   //····················································································································
 
-  var mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -279,7 +279,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Atomic property: mDisplayComponentValueOffsetY
   //····················································································································
 
-  var mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
+  let mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200)
 
   //····················································································································
 
@@ -331,7 +331,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Transient property: componentName
   //····················································································································
 
-  var componentName_property = EBTransientProperty_String ()
+  let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -354,7 +354,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Transient property: deviceName
   //····················································································································
 
-  var deviceName_property = EBTransientProperty_String ()
+  let deviceName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Transient property: symbolInfo
   //····················································································································
 
-  var symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
+  let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
 
   //····················································································································
 
@@ -400,7 +400,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   Transient property: symbolInSchematics
   //····················································································································
 
-  var symbolInSchematics_property = EBTransientProperty_Bool ()
+  let symbolInSchematics_property = EBTransientProperty_Bool ()
 
   //····················································································································
 

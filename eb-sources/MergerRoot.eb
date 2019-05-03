@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity MergerRoot {
   toMany BoardModel boardModels ;
@@ -7,7 +7,7 @@ entity MergerRoot {
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
 
-#--- Board size
+//--- Board size
   property Bool automaticBoardSize default yes ;
   property Int boardManualWidth default 9_000_000 ;
   property Int boardManualHeight default 9_000_000 ;
@@ -18,39 +18,39 @@ entity MergerRoot {
   property Int selectedBoardXUnit default 90_000 ;
   property Int selectedBoardYUnit default 90_000 ;
 
-#--- Board line width
-  property Int boardLimitWidth default 90_000 ; # 1mm
-  property Int boardLimitWidthUnit default 90_000 ; # 1mm
+//--- Board line width
+  property Int boardLimitWidth default 90_000 ; // 1mm
+  property Int boardLimitWidthUnit default 90_000 ; // 1mm
 
-#--- Arrow magnitude
-  property Int arrowMagnitude default 900_000 ; # 10mm
-  property Int arrowMagnitudeUnit default 90_000 ; # 1mm
+//--- Arrow magnitude
+  property Int arrowMagnitude default 900_000 ; // 10mm
+  property Int arrowMagnitudeUnit default 90_000 ; // 1mm
 
-  property Int shiftArrowMagnitude default 3_600_000 ; # 40mm
-  property Int shiftArrowMagnitudeUnit default 90_000 ; # 1mm
-  
-#--- Board model name array
+  property Int shiftArrowMagnitude default 3_600_000 ; // 40mm
+  property Int shiftArrowMagnitudeUnit default 90_000 ; // 1mm
+
+//--- Board model name array
   transient StringTagArray modelNames dependsFrom self.boardModels.all.name ;
 
-#--- Instance display
+//--- Instance display
   transient EBShape boardOutlineRectDisplay  dependsFrom
     self.boardRect, self.boardLimitWidth, prefs.mergerBoardViewDisplayBoardLimits, prefs.mergerColorBoardLimits ;
 
 
-#--- Board rect (rect from instances (automatic mode) or from manuel sizes)
+//--- Board rect (rect from instances (automatic mode) or from manuel sizes)
   transient CanariRect boardRect dependsFrom
      self.automaticBoardSize,
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
-#--- Display rect (includes manual size and or instances rect)
+//--- Display rect (includes manual size and or instances rect)
   transient CanariRect boardDisplayRect dependsFrom
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
-#--- Artwork
+//--- Artwork
   toOne ArtworkRoot artwork ;
   property String artworkName default "" ;
   property Bool generateGerberProductFile default yes ;
@@ -58,4 +58,4 @@ entity MergerRoot {
   property BoardArchiveFormat generatedBoardArchiveFormat default noGeneration ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

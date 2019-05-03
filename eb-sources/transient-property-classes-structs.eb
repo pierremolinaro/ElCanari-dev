@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 transient property struct CanariPoint ;
 transient property struct ComponentSymbolInfo ;
@@ -29,4 +29,4 @@ transient property struct UnconnectedSymbolPinsInDevice ;
 transient property struct AssignedPadProxiesInDevice ;
 transient property struct DefinedCharactersInDevice ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

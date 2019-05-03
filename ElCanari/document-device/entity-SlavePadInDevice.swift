@@ -84,7 +84,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  var mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -101,7 +101,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  var mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mWidth
   //····················································································································
 
-  var mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+  let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
 
   //····················································································································
 
@@ -135,7 +135,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mHeight
   //····················································································································
 
-  var mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
+  let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mHoleDiameter
   //····················································································································
 
-  var mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -169,7 +169,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mShape
   //····················································································································
 
-  var mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+  let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
 
   //····················································································································
 
@@ -186,7 +186,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Atomic property: mStyle
   //····················································································································
 
-  var mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
+  let mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
 
   //····················································································································
 
@@ -232,7 +232,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Transient property: frontSideFilledBezierPath
   //····················································································································
 
-  var frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
@@ -255,7 +255,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Transient property: backSideFilledBezierPath
   //····················································································································
 
-  var backSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let backSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
@@ -278,7 +278,7 @@ class SlavePadInDevice : EBManagedObject,
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  var padNumberDisplay_property = EBTransientProperty_EBShape ()
+  let padNumberDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

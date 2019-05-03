@@ -1,9 +1,9 @@
-#----------------------------------------------------------------------------*
-#     P R O J E C T    D O C U M E N T                                       *
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
+//     P R O J E C T    D O C U M E N T                                       *
+//----------------------------------------------------------------------------*
 
 document ProjectDocument root ProjectRoot {
-#--- Selected Page
+//--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mComponentsPageView ;
@@ -13,30 +13,30 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mNetListPageView ;
   outlet CanariViewWithKeyView mBoardPageView ;
   outlet CanariViewWithKeyView mProductPageView ;
-  
-#---------------------- Components Tab
+
+//---------------------- Components Tab
   action addComponentAction ;
-  outlet EBButton mAddComponentButton $run self.addComponentAction ;
+  outlet EBButton mAddComponentButton $run addComponentAction ;
 
   outlet CanariNewComponentFromDevicePullDownButton mNewComponentFromDevicePullDownButton
     $deviceNames root.deviceNames ;
 
   action duplicateSelectedComponentsAction ;
   outlet EBButton mDuplicateSelectedComponentsActionButton
-    $run self.duplicateSelectedComponentsAction
-    $enabled mComponentController.selectedArray.count > 0
+    $run duplicateSelectedComponentsAction
+    $enabled #mComponentController.selectedArray.count > 0
   ;
 
   action removeSelectedComponentsAction ;
   outlet EBButton mRemoveSelectedComponentsActionButton
-    $run self.removeSelectedComponentsAction
-    $enabled mComponentController.selectedArray.count > 0
+    $run removeSelectedComponentsAction
+    $enabled #mComponentController.selectedArray.count > 0
   ;
 
   action changePackageOfSelectedComponentsAction ;
-  transient Bool canChangePackage dependsFrom mComponentController.selectedArray.all.availablePackages ;
+  transient Bool canChangePackage dependsFrom #mComponentController.selectedArray.all.availablePackages ;
   outlet EBButton mChangePackageOfSelectedComponentsActionButton
-    $run self.changePackageOfSelectedComponentsAction
+    $run changePackageOfSelectedComponentsAction
     $enabled self.canChangePackage
   ;
   outlet NSPanel mChangePackagePanel ;
@@ -46,8 +46,8 @@ document ProjectDocument root ProjectRoot {
 
   action changeValueOfSelectedComponentsAction ;
   outlet EBButton mChangeValueOfSelectedComponentsActionButton
-    $run self.changeValueOfSelectedComponentsAction
-    $enabled mComponentController.selectedArray.count > 0
+    $run changeValueOfSelectedComponentsAction
+    $enabled #mComponentController.selectedArray.count > 0
   ;
   outlet NSPanel mChangeValuePanel ;
   outlet CanariComboBox mChangeComponentValueComboxBox ;
@@ -55,15 +55,15 @@ document ProjectDocument root ProjectRoot {
   outlet NSButton mChangeValueValidationButton ;
 
 
-  outlet EBButton mRenameComponentButton $enabled mComponentController.selectedArray.count == 1 ; # Action targeted in IB
+  outlet EBButton mRenameComponentButton $enabled #mComponentController.selectedArray.count == 1 ; // Action targeted in IB
   outlet NSPanel mRenameComponentPanel ;
   outlet NSTextField mCurrentComponentNameTextField ;
   outlet NSTextField mRenameComponentErrorMessageTextField ;
   outlet CanariComboBox mRenameComponentPrefixComboxBox ;
   outlet NSPopUpButton mRenameComponentIndexesPopUpButton ;
   outlet NSButton mRenameComponentValidationButton ;
-  
-  tableViewController mComponentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
+
+  tableViewController #mComponentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
      column "name" EBTextObserverField $valueObserver self.componentName
      column "device" EBTextObserverField $valueObserver self.deviceName
      column "package" EBTextObserverField $valueObserver self.selectedPackageName
@@ -75,8 +75,8 @@ document ProjectDocument root ProjectRoot {
   transient String componentCount dependsFrom root.mComponents.count ;
   outlet EBTextObserverField mComponentCountTextField $valueObserver self.componentCount ;
 
-#---------------------- Net Class Tab
-  tableViewController mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
+//---------------------- Net Class Tab
+  tableViewController #mNetClassController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mNetClasses {
     column "name" EBTextObserverField $valueObserver self.mNetClassName
     column "netcolor" EBTextObserverField $backColor self.mNetClassColor
     column "width" EBTextObserverField $valueObserver self.netWidth
@@ -87,7 +87,7 @@ document ProjectDocument root ProjectRoot {
   outlet EBTableView mNetClassTableView $tableValue mNetClassController ;
 
   action addNetClassAction ;
-  outlet EBButton mAddNetClassButton $run self.addNetClassAction ;
+  outlet EBButton mAddNetClassButton $run addNetClassAction ;
   outlet NSPanel mAddNetClassPanel ;
   outlet EBTextField mAddNetClassTextField ;
   outlet NSTextField mAddNetClassErrorMessageTextField ;
@@ -101,88 +101,89 @@ document ProjectDocument root ProjectRoot {
   outlet NSButton mAddNetClassValidationButton ;
 
   action removeNetClassAction ;
-  transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, mNetClassController.selectedArray.all.canRemove ;
+  transient Bool canRemoveNetClasses dependsFrom root.mNetClasses.count, #mNetClassController.selectedArray.all.canRemove ;
   outlet EBButton mRemoveNetClassButton
-    $run self.removeNetClassAction
+    $run removeNetClassAction
     $enabled self.canRemoveNetClasses
   ;
 
   action editNetClassAction ;
-  outlet EBButton mEditNetClassButton $run self.editNetClassAction $enabled mNetClassController.selectedArray.count == 1 ;
+  outlet EBButton mEditNetClassButton $run editNetClassAction $enabled #mNetClassController.selectedArray.count == 1 ;
 
-#---------------------- Library Tab
+//---------------------- Library Tab
   action addFontAction ;
-  outlet EBButton mAddFontButton $run self.addFontAction ;
+  outlet EBButton mAddFontButton $run addFontAction ;
 
   action editFontAction ;
-  outlet EBButton mEditFontButton $run self.editFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+  outlet EBButton mEditFontButton $run editFontAction $enabled #mProjectFontController.selectedArray.count > 0 ;
 
   action updateFontAction ;
-  outlet EBButton mUpdateFontButton $run self.updateFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+  outlet EBButton mUpdateFontButton $run updateFontAction $enabled #mProjectFontController.selectedArray.count > 0 ;
 
   action removeFontAction ;
-  outlet EBButton mRemoveFontButton $run self.removeFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+  outlet EBButton mRemoveFontButton $run removeFontAction $enabled #mProjectFontController.selectedArray.count > 0 ;
 
   action resetFontVersionAction ;
-  outlet EBButton mResetFontVersionButton $run self.resetFontVersionAction $enabled mProjectFontController.selectedArray.count > 0 ;
+  outlet EBButton mResetFontVersionButton $run resetFontVersionAction $enabled #mProjectFontController.selectedArray.count > 0 ;
 
-  tableViewController mProjectFontController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mFonts {
+  tableViewController #mProjectFontController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mFonts {
      column "name" EBTextObserverField $valueObserver self.mFontName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
   }
   outlet EBTableView mFontLibraryTableView $tableValue mProjectFontController ;
 
-#--- Devices
+//--- Devices
   action resetDeviceVersionAction ;
   outlet EBButton mResetDeviceVersionButton
-    $run self.resetDeviceVersionAction
-    $enabled mProjectDeviceController.selectedArray.count > 0
+    $run resetDeviceVersionAction
+    $enabled #mProjectDeviceController.selectedArray.count > 0
   ;
 
-  transient Bool canRemoveSelectedDevices dependsFrom mProjectDeviceController.selectedArray.all.canRemove ;
+  transient Bool canRemoveSelectedDevices dependsFrom #mProjectDeviceController.selectedArray.all.canRemove ;
   action removeDeviceAction ;
   outlet EBButton mRemoveDeviceButton
-    $run self.removeDeviceAction
+    $run removeDeviceAction
     $enabled self.canRemoveSelectedDevices
   ;
 
   action editDeviceAction ;
   outlet EBButton mEditDeviceButton
-    $run self.editDeviceAction
-    $enabled mProjectDeviceController.selectedArray.count > 0
+    $run editDeviceAction
+    $enabled #mProjectDeviceController.selectedArray.count > 0
   ;
 
   action exportDeviceAction ;
   outlet EBButton mExportDeviceButton
-    $run self.exportDeviceAction
-    $enabled mProjectDeviceController.selectedArray.count > 0
+    $run exportDeviceAction
+    $enabled #mProjectDeviceController.selectedArray.count > 0
   ;
 
   action updateDeviceAction ;
   outlet EBButton mUpdateDeviceButton
-    $run self.updateDeviceAction
-    $enabled mProjectDeviceController.selectedArray.count > 0
+    $run updateDeviceAction
+    $enabled #mProjectDeviceController.selectedArray.count > 0
   ;
 
-  tableViewController mProjectDeviceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mDevices {
+  tableViewController #mProjectDeviceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mDevices {
      column "name" EBTextObserverField $valueObserver self.mDeviceName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
      column "componentCount" EBIntObserverField $valueObserver self.mComponents.count {autoFormatter:yes}
   }
   outlet EBTableView mDeviceLibraryTableView $tableValue mProjectDeviceController ;
-  
-  transient StringArray selectedDevicePackageNames dependsFrom mProjectDeviceController.selectedArray.all.packageNames ;
+
+  transient StringArray selectedDevicePackageNames dependsFrom #mProjectDeviceController.selectedArray.all.packageNames ;
   outlet StringArrayTableView mDevicePackageTableView $array self.selectedDevicePackageNames ;
-  
-  transient TwoStringArray selectedDeviceSymbolNames dependsFrom mProjectDeviceController.selectedArray.all.symbolAndTypesNames ;
+
+  transient TwoStringArray selectedDeviceSymbolNames dependsFrom
+    #mProjectDeviceController.selectedArray.all.symbolAndTypesNames ;
   outlet TwoStringArrayTableView mDeviceSymbolTableView $array self.selectedDeviceSymbolNames ;
 
-  transient ThreeStringArray pinPadAssignments dependsFrom mProjectDeviceController.selectedArray.all.pinPadAssignments ;
+  transient ThreeStringArray pinPadAssignments dependsFrom #mProjectDeviceController.selectedArray.all.pinPadAssignments ;
   outlet ThreeStringArrayTableView mPinPadAssignmentTableView $array self.pinPadAssignments ;
 
-#---------------------- Schematics Tab
+//---------------------- Schematics Tab
   outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicsInspector ;
   outlet NSView mBaseSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;
@@ -190,46 +191,46 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mUnplacedSymbolsSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
 
-#--- Unplaced symbols inspector
+//--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
   outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
 
-#--- Grid and Flip inspector
+//--- Grid and Flip inspector
   outlet EBSwitch mSchematicsHorizontalFlipSwitch $value root.mSchematicsHorizontalFlip ;
   outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicsVerticalFlip ;
   outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicsGridStyle ;
   outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicsGridDisplayFactor ;
 
-#--- Sheet inspector
+//--- Sheet inspector
   outlet EBTextField mSchematicsTitleTextField $value root.mSchematicsTitle {sendContinously : yes} ;
   outlet EBTextField mSchematicsVersionTextField $value root.mSchematicsVersion {sendContinously : yes} ;
   outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl $selectedSegment root.mSchematicsSheetOrientation ;
-  objectController mSelectedSheetController : root.mSelectedSheet ;
-  outlet EBTextField mSelectedSheetTitleTextField $value mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
+  objectController #mSelectedSheetController : root.mSelectedSheet ;
+  outlet EBTextField mSelectedSheetTitleTextField $value #mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
 
-  outlet EBPopUpButton mSheetPopUpButton ; # All bindings done programmatically
-  outlet EBButton mSheetUpButton ; # All bindings done programmatically
-  outlet EBButton mSheetDownButton ; # All bindings done programmatically
-    
+  outlet EBPopUpButton mSheetPopUpButton ; // All bindings done programmatically
+  outlet EBButton mSheetUpButton ; // All bindings done programmatically
+  outlet EBButton mSheetDownButton ; // All bindings done programmatically
+
   action newSheetAction ;
-  outlet EBButton mNewSheetButton $run self.newSheetAction ;
-  
-  action removeSheetAction ;
-  outlet EBButton mRemoveSheetButton $run self.removeSheetAction $enabled root.mSheets.count > 1 ;
+  outlet EBButton mNewSheetButton $run newSheetAction ;
 
-    
+  action removeSheetAction ;
+  outlet EBButton mRemoveSheetButton $run removeSheetAction $enabled root.mSheets.count > 1 ;
+
+
   action setDateToNowAction ;
-  outlet EBButton mSetDateToNowButton $run self.setDateToNowAction ;
-    
+  outlet EBButton mSetDateToNowButton $run setDateToNowAction ;
+
   action openSetDateDialogAction ;
-  outlet EBButton mOpenSetDateDialogButton $run self.openSetDateDialogAction ;
+  outlet EBButton mOpenSetDateDialogButton $run openSetDateDialogAction ;
   outlet NSPanel mSetDatePanel ;
   outlet NSDatePicker mSchematicsDatePicker ;
 
-#--- Schematics view
-  arrayController mSchematicsObjectsController : mSelectedSheetController.mObjects ;
+//--- Schematics view
+  arrayController #mSchematicsObjectsController : mSelectedSheetController.mObjects ;
 
   outlet EBView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
@@ -241,51 +242,51 @@ document ProjectDocument root ProjectRoot {
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridCrossColor prefs.crossColorOfSymbolGrid
     $zoom root.mSchematicsZoom
-#    $backColor prefs.symbolBackgroundColor
-#    $xPlacardUnit root.xPlacardUnit
-#    $yPlacardUnit root.yPlacardUnit
+//    $backColor prefs.symbolBackgroundColor
+//    $xPlacardUnit root.xPlacardUnit
+//    $yPlacardUnit root.yPlacardUnit
   ;
 
   outlet EBScrollView mSchematicsScrollView ;
 
-#--- Selected symbol in schematic inspector
+//--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
-  selectionController ComponentSymbolInProject mComponentSymbolSelectionController : 
-    self.mSchematicsObjectsController.selectedArray
+  selectionController ComponentSymbolInProject #mComponentSymbolSelectionController :
+    #mSchematicsObjectsController.selectedArray
   ;
 
   outlet EBSwitch mComponentSymbolShowComponentValueSwitch
-    $value mComponentSymbolSelectionController.mDisplayComponentValue
-  ;  
+    $value #mComponentSymbolSelectionController.mDisplayComponentValue
+  ;
   outlet EBTextObserverField mComponentSymbolComponentNameTextField
-    $valueObserver mComponentSymbolSelectionController.componentName
-  ;
- 
-  outlet EBButton mRenameComponentFromComponentSymbolButton # Action set in IB
-    $enabled mSchematicsObjectsController.selectedArray.count == 1
+    $valueObserver #mComponentSymbolSelectionController.componentName
   ;
 
-# objectController mComponentInSymbolController : mComponentSymbolSelectionController.mComponentInSymbolController ;
+  outlet EBButton mRenameComponentFromComponentSymbolButton // Action set in IB
+    $enabled #mSchematicsObjectsController.selectedArray.count == 1
+  ;
 
-#  outlet EBTextField mComponentSymbolValueTextField
-#    $value mComponentSymbolSelectionController.mComponentController.mComponentValue {sendContinously : yes}
-#  ;
+// objectController mComponentInSymbolController : mComponentSymbolSelectionController.mComponentInSymbolController ;
+
+//  outlet EBTextField mComponentSymbolValueTextField
+//    $value mComponentSymbolSelectionController.mComponentController.mComponentValue {sendContinously : yes}
+//  ;
 
   outlet EBTextObserverField mComponentSymbolDeviceNameTextField
-    $valueObserver mComponentSymbolSelectionController.deviceName
+    $valueObserver #mComponentSymbolSelectionController.deviceName
   ;
 
   outlet EBTextObserverField mComponentSymbolTypeNameTextField
-    $valueObserver mComponentSymbolSelectionController.mSymbolTypeName
+    $valueObserver #mComponentSymbolSelectionController.mSymbolTypeName
   ;
 
   outlet EBTextObserverField mComponentSymbolInstanceNameTextField
-    $valueObserver mComponentSymbolSelectionController.mSymbolInstanceName
+    $valueObserver #mComponentSymbolSelectionController.mSymbolInstanceName
   ;
-  
+
   outlet CanariQuadrantSegmentedControl mSymbolRotationSegmentedControl
-     $quadrant mComponentSymbolSelectionController.mRotation ;
+     $quadrant #mComponentSymbolSelectionController.mRotation ;
 
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*

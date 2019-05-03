@@ -1,9 +1,9 @@
-#----------------------------------------------------------------------------*
-#     D E V I C E    D O C U M E N T                                         *
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
+//     D E V I C E    D O C U M E N T                                         *
+//----------------------------------------------------------------------------*
 
 document DeviceDocument root DeviceRoot {
-#--- Selected Page
+//--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mDescriptionPageView ;
@@ -13,13 +13,13 @@ document DeviceDocument root DeviceRoot {
   outlet CanariViewWithKeyView mLibraryPageView ;
   outlet CanariViewWithKeyView mInfosPageView ;
 
-#--- Signature
+//--- Signature
   outlet CanariSignatureField mSignatureTextField $signature signature ;
 
-#--- Version
+//--- Version
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-#--- Issues
+//--- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
@@ -27,21 +27,21 @@ document DeviceDocument root DeviceRoot {
 
   outlet EBTextObserverView mIssueTextView $valueObserver self.mStatusMessage ;
 
-#-------------------------- Page : Description
+//-------------------------- Page : Description
   outlet EBTextField mTitleTextField $value root.mTitle {sendContinously: yes} ;
 
   outlet DeviceDroppableImageView mRepresentationImageView $imageData root.mImageData ;
-  
-  action pasteImageAction ;
-  outlet EBButton mPasteImageButton $run self.pasteImageAction ;
-  
-  action copyImageAction ;
-  outlet EBButton mCopyImageButton $run self.copyImageAction $enabled root.imageIsValid ;
-  
-  action removeImageAction ;
-  outlet EBButton mRemoveImageButton $run self.removeImageAction $enabled root.imageIsValid ;
 
-  tableViewController mDocumentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
+  action pasteImageAction ;
+  outlet EBButton mPasteImageButton $run pasteImageAction ;
+
+  action copyImageAction ;
+  outlet EBButton mCopyImageButton $run copyImageAction $enabled root.imageIsValid ;
+
+  action removeImageAction ;
+  outlet EBButton mRemoveImageButton $run removeImageAction $enabled root.imageIsValid ;
+
+  tableViewController #mDocumentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
      column "name" EBTextObserverField $valueObserver self.mFileName
      column "size" EBIntObserverField $valueObserver self.fileSize {autoFormatter : yes}
   }
@@ -50,29 +50,29 @@ document DeviceDocument root DeviceRoot {
   outlet DeviceDocumentationTableView mDocumentationTableView $tableValue mDocumentationController ;
 
   outlet EBButton mRemoveSelectedDocButton
-    $run mDocumentationController.remove
-    $enabled mDocumentationController.selectedArray.count > 0
+    $run #mDocumentationController.remove
+    $enabled #mDocumentationController.selectedArray.count > 0
   ;
 
   action showDocAction ;
   outlet EBButton mShowDocButton
-    $run self.showDocAction
-    $enabled mDocumentationController.selectedArray.count > 0
+    $run showDocAction
+    $enabled #mDocumentationController.selectedArray.count > 0
   ;
 
   action saveDocAction ;
   outlet EBButton mSaveDocButton
-    $run self.saveDocAction
-    $enabled mDocumentationController.selectedArray.count > 0
+    $run saveDocAction
+    $enabled #mDocumentationController.selectedArray.count > 0
   ;
 
 
-#-------------------------- Page : Symbols
+//-------------------------- Page : Symbols
   action addSymbolFromLibraryAction ;
-  outlet EBButton mAddSymbolFromLibraryButton $run self.addSymbolFromLibraryAction ;
+  outlet EBButton mAddSymbolFromLibraryButton $run addSymbolFromLibraryAction ;
 
-  arrayController mSymbolDisplayController : root.mSymbolInstances ;
-  selectionController SymbolInstanceInDevice mSymbolInstanceSelection : self.mSymbolDisplayController.selectedArray ;
+  arrayController #mSymbolDisplayController : root.mSymbolInstances ;
+  selectionController SymbolInstanceInDevice #mSymbolInstanceSelection : #mSymbolDisplayController.selectedArray ;
 
   outlet EBView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
@@ -102,17 +102,17 @@ document DeviceDocument root DeviceRoot {
   ;
 
   outlet EBTextObserverField mSymbolTypeTextField
-#     $tooltip mSymbolInstanceSelection.symbolTypeName
-     $valueObserver mSymbolInstanceSelection.symbolTypeName
+//     $tooltip mSymbolInstanceSelection.symbolTypeName
+     $valueObserver #mSymbolInstanceSelection.symbolTypeName
    ;
 
-  outlet EBTextField mSymbolNameTextField $value mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
- 
-#-------------------------- Page : Packages
-  action addPackageFromLibraryAction ;
-  outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;
+  outlet EBTextField mSymbolNameTextField $value #mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
 
-  arrayController mPackageDisplayController : root.mPackages ;
+//-------------------------- Page : Packages
+  action addPackageFromLibraryAction ;
+  outlet EBButton mAddPackageFromLibraryButton $run addPackageFromLibraryAction ;
+
+  arrayController #mPackageDisplayController : root.mPackages ;
 
   outlet EBView mComposedPackageView
     $horizontalFlip root.mPackageDisplayHorizontalFlip
@@ -144,22 +144,22 @@ document DeviceDocument root DeviceRoot {
     $hidden root.packagePadNameSetsAreConsistent
   ;
 
-#-------------------------- Page : Library
+//-------------------------- Page : Library
 
   action resetSymbolsAndPackagesVersion ;
   outlet EBButton mResetSymbolAndPackagesVersionButton
-    $run self.resetSymbolsAndPackagesVersion
+    $run resetSymbolsAndPackagesVersion
     $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
   ;
 
   action updateSymbolsAndPackagesAction ;
   outlet EBButton mUpdateSymbolAndPackagesButton
-    $run self.updateSymbolsAndPackagesAction
+    $run updateSymbolsAndPackagesAction
     $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
   ;
 
-#--- Symbols
-  tableViewController mSymbolController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {
+//--- Symbols
+  tableViewController #mSymbolController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {
      column "symbol" EBTextObserverField $valueObserver self.mTypeName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "count" EBIntObserverField $valueObserver self.instanceCount {autoFormatter : yes}
@@ -168,60 +168,60 @@ document DeviceDocument root DeviceRoot {
 
   action resetSelectedSymbolVersion ;
   outlet EBButton mResetSelectedSymbolVersionButton
-    $run self.resetSelectedSymbolVersion
-    $enabled mSymbolController.selectedArray.count > 0
+    $run resetSelectedSymbolVersion
+    $enabled #mSymbolController.selectedArray.count > 0
   ;
 
   action editSelectedSymbols ;
   outlet EBButton mEditSelectedSymbolsButton
-    $run self.editSelectedSymbols
-    $enabled mSymbolController.selectedArray.count > 0
+    $run editSelectedSymbols
+    $enabled #mSymbolController.selectedArray.count > 0
   ;
 
   action exportSelectedSymbols ;
   outlet EBButton mExportSelectedSymbolsButton
-    $run self.exportSelectedSymbols
-    $enabled mSymbolController.selectedArray.count > 0
+    $run exportSelectedSymbols
+    $enabled #mSymbolController.selectedArray.count > 0
   ;
 
   action updateSelectedSymbols ;
   outlet EBButton mUpdateSelectedSymbolsButton
-    $run self.updateSelectedSymbols
-    $enabled mSymbolController.selectedArray.count > 0
+    $run updateSelectedSymbols
+    $enabled #mSymbolController.selectedArray.count > 0
   ;
 
-#--- Packages
-  tableViewController mPackageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mPackages {
+//--- Packages
+  tableViewController #mPackageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mPackages {
      column "package" EBTextObserverField $valueObserver self.mName
      column "version" EBTextObserverField $valueObserver self.versionString
   }
   outlet EBTableView mPackageTableView $tableValue mPackageController ;
-  
+
   action resetSelectedPackageVersion ;
   outlet EBButton mResetSelectedPackageVersionButton
-    $run self.resetSelectedPackageVersion
-    $enabled mPackageController.selectedArray.count > 0
+    $run resetSelectedPackageVersion
+    $enabled #mPackageController.selectedArray.count > 0
   ;
 
   action editSelectedPackages ;
   outlet EBButton mEditSelectedPackagesButton
-    $run self.editSelectedPackages
-    $enabled mPackageController.selectedArray.count > 0
+    $run editSelectedPackages
+    $enabled #mPackageController.selectedArray.count > 0
   ;
 
   action exportSelectedPackages ;
   outlet EBButton mExportSelectedPackagesButton
-    $run self.exportSelectedPackages
-    $enabled mPackageController.selectedArray.count > 0
+    $run exportSelectedPackages
+    $enabled #mPackageController.selectedArray.count > 0
   ;
 
   action updateSelectedPackages ;
   outlet EBButton mUpdateSelectedPackagesButton
-    $run self.updateSelectedPackages
-    $enabled mPackageController.selectedArray.count > 0
+    $run updateSelectedPackages
+    $enabled #mPackageController.selectedArray.count > 0
   ;
 
-#--------------- Page : assignments
+//--------------- Page : assignments
   transient String assignmentInhibitionMessage
     dependsFrom root.inconsistentPackagePadNameSetsMessage, root.inconsistentSymbolNameSetMessage
   ;
@@ -251,29 +251,29 @@ document DeviceDocument root DeviceRoot {
   transient Bool hasUnconnectedPin dependsFrom root.unconnectedPins ;
 
   action performBindAction ;
-  outlet EBButton mBindButton $run self.performBindAction $enabled self.hasUnconnectedPad & self.hasUnconnectedPin ;
+  outlet EBButton mBindButton $run performBindAction $enabled self.hasUnconnectedPad & self.hasUnconnectedPin ;
 
   action performNCAction ;
-  outlet EBButton mNCButton $run self.performNCAction $enabled self.hasUnconnectedPad ;
+  outlet EBButton mNCButton $run performNCAction $enabled self.hasUnconnectedPad ;
 
   transient Bool hasAssignedPadProxies dependsFrom root.assignedPadProxies ;
- 
-  action performUnbindAction ;
-  outlet EBButton mUnbindButton $run self.performUnbindAction $enabled self.hasAssignedPadProxies ;
- 
-  action performUnbindAllAction ;
-  outlet EBButton mUnbindAllButton $run self.performUnbindAllAction $enabled self.hasAssignedPadProxies ;
 
-#--------------- Page : Infos
-#--- Prefix
+  action performUnbindAction ;
+  outlet EBButton mUnbindButton $run performUnbindAction $enabled self.hasAssignedPadProxies ;
+
+  action performUnbindAllAction ;
+  outlet EBButton mUnbindAllButton $run performUnbindAllAction $enabled self.hasAssignedPadProxies ;
+
+//--------------- Page : Infos
+//--- Prefix
   outlet EBTextField mPrefixTextField $value root.mPrefix {sendContinously : yes} ;
 
-#--- Prefix
+//--- Prefix
   outlet EBTextView mCommentTextView $value root.mComments ;
 
-#--- Reset
+//--- Reset
   action resetVersionAction ;
-  outlet EBButton mResetVersionButton $run self.resetVersionAction ;
+  outlet EBButton mResetVersionButton $run resetVersionAction ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*

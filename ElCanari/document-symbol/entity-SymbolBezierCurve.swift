@@ -98,7 +98,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let y1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (defaultValue: 0)
+  let x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (defaultValue: 0)
+  let y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx1
   //····················································································································
 
-  var cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy1
   //····················································································································
 
-  var cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx2
   //····················································································································
 
-  var cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -200,7 +200,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy2
   //····················································································································
 
-  var cpy2_property = EBStoredProperty_Int (defaultValue: 0)
+  let cpy2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -217,7 +217,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (defaultValue: 0)
+  let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -234,7 +234,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 

@@ -35,7 +35,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  var mPadName_property = EBStoredProperty_String (defaultValue: "")
+  let mPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -81,7 +81,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: pinPadAssignment
   //····················································································································
 
-  var pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
+  let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
 
   //····················································································································
 
@@ -104,7 +104,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  var descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
+  let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
 
   //····················································································································
 

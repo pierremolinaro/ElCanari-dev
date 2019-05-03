@@ -21,7 +21,7 @@ class NetInProject : EBManagedObject,
   //   Atomic property: mNetName
   //····················································································································
 
-  var mNetName_property = EBStoredProperty_String (defaultValue: "")
+  let mNetName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

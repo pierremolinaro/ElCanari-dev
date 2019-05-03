@@ -112,7 +112,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (defaultValue: 0)
+  let y1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -129,7 +129,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (defaultValue: 685800)
+  let x2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (defaultValue: 685800)
+  let y2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -163,7 +163,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x1Unit
   //····················································································································
 
-  var x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -180,7 +180,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y1Unit
   //····················································································································
 
-  var y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -197,7 +197,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x2Unit
   //····················································································································
 
-  var x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -214,7 +214,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: y2Unit
   //····················································································································
 
-  var y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -231,7 +231,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: lengthUnit
   //····················································································································
 
-  var lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class PackageSegment : PackageObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (defaultValue: 0)
+  let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class PackageSegment : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
@@ -288,7 +288,7 @@ class PackageSegment : PackageObject,
   //   Transient property: lengthInCanariUnit
   //····················································································································
 
-  var lengthInCanariUnit_property = EBTransientProperty_Int ()
+  let lengthInCanariUnit_property = EBTransientProperty_Int ()
 
   //····················································································································
 

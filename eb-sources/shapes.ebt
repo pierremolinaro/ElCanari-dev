@@ -1,6 +1,6 @@
-#----------------------------------------------------------------------------*
-#     S H A P E    C L A S S E S                                             *
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
+//     S H A P E    C L A S S E S                                             *
+//----------------------------------------------------------------------------*
 
 shapeClass PMBezierCurveShape {
   attribute p1 : NSPoint ;
@@ -14,7 +14,7 @@ shapeClass PMBezierCurveShape {
   attribute hiliteGuidesColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMArcCircleShape {
   attribute center : NSPoint ;
@@ -30,7 +30,7 @@ shapeClass PMArcCircleShape {
   attribute endingTangentLength : double ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSegmentShape {
   attribute p1 : NSPoint ;
@@ -41,7 +41,7 @@ shapeClass PMSegmentShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMFramedOvalShape {
   attribute r : NSRect ;
@@ -51,7 +51,7 @@ shapeClass PMFramedOvalShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSolidRectShape {
   attribute r : NSRect ;
@@ -60,7 +60,7 @@ shapeClass PMSolidRectShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSolidOvalShape {
   attribute r : NSRect ;
@@ -69,7 +69,7 @@ shapeClass PMSolidOvalShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolPinShape {
   attribute origin : NSPoint ;
@@ -79,7 +79,7 @@ shapeClass PMSymbolPinShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMNCShape {
   attribute origin : NSPoint ;
@@ -91,7 +91,7 @@ shapeClass PMNCShape {
   attribute font : NSFont ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolPinNumberShape {
   attribute font : NSFont ;
@@ -101,7 +101,7 @@ shapeClass PMSymbolPinNumberShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolTextShape {
   attribute font : NSFont ;
@@ -113,7 +113,7 @@ shapeClass PMSymbolTextShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMComponentValueInSchematicsShape {
   attribute stringValue : NSString ;
@@ -124,7 +124,7 @@ shapeClass PMComponentValueInSchematicsShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMComponentNameInSchematicsShape {
   attribute componentName : NSString ;
@@ -134,7 +134,7 @@ shapeClass PMComponentNameInSchematicsShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolPinNameShape {
   attribute name : NSString ;
@@ -146,7 +146,7 @@ shapeClass PMSymbolPinNameShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPackagePadNumberShape {
   attribute padString : NSString ;
@@ -156,7 +156,7 @@ shapeClass PMPackagePadNumberShape {
 }
 
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPadShape {
   attribute center : NSPoint ;
@@ -170,7 +170,7 @@ shapeClass PMPadShape {
   attribute solderSidePadColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMGuideForPackageShape {
   attribute p1 : NSPoint ;
@@ -180,7 +180,7 @@ shapeClass PMGuideForPackageShape {
   attribute hiliteColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMDimensionForPackageShape {
   attribute p1 : NSPoint ;
@@ -194,7 +194,7 @@ shapeClass PMDimensionForPackageShape {
   attribute hiliteColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSimpleWireShape {
   attribute p1 : NSPoint ;
@@ -207,7 +207,7 @@ shapeClass PMSimpleWireShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMLabelShapeShape {
   attribute origin : NSPoint ;
@@ -221,7 +221,7 @@ shapeClass PMLabelShapeShape {
   attribute font : NSFont ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMUnifiedRestrictRectangleShape {
   attribute rect : NSRect ;
@@ -231,20 +231,20 @@ shapeClass PMUnifiedRestrictRectangleShape {
   attribute solderSideColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMTextInBoardShape {
   attribute origin : NSPoint ;
   attribute direction : double ;
   attribute side : integer32 ;
   attribute textBezierPath : NSBezierPath ;
-  attribute legendComponentSideColor : NSColor onlyRedrawOnChange ; # For side == 0
-  attribute layoutComponentSideColor : NSColor onlyRedrawOnChange ; # For side == 1
-  attribute layoutSolderSideColor : NSColor onlyRedrawOnChange ;    # For side == 2
-  attribute legendSolderSideColor : NSColor onlyRedrawOnChange ;    # For side == 3
+  attribute legendComponentSideColor : NSColor onlyRedrawOnChange ; // For side == 0
+  attribute layoutComponentSideColor : NSColor onlyRedrawOnChange ; // For side == 1
+  attribute layoutSolderSideColor : NSColor onlyRedrawOnChange ;    // For side == 2
+  attribute legendSolderSideColor : NSColor onlyRedrawOnChange ;    // For side == 3
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPackageInDeviceShapeNew {
   attribute origin : NSPoint ;
@@ -264,7 +264,7 @@ shapeClass PMPackageInDeviceShapeNew {
   attribute padNumberColor : NSColor onlyRedrawOnChange ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolInDeviceShape {
   attribute origin : NSPoint ;
@@ -281,7 +281,7 @@ shapeClass PMSymbolInDeviceShape {
   attribute fontForDrawingPinNames : NSFont ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPackageInBoardShape {
   attribute origin : NSPoint ;
@@ -311,7 +311,7 @@ shapeClass PMPackageInBoardShape {
   attribute componentValueDirection : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSymbolInSchematicsShape {
   attribute origin : NSPoint ;
@@ -332,7 +332,7 @@ shapeClass PMSymbolInSchematicsShape {
   attribute pinNumberFont : NSFont ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPadZoneShape {
   attribute r : NSRect ;
@@ -341,7 +341,7 @@ shapeClass PMPadZoneShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPadZoneNameShape {
   attribute name : NSString ;
@@ -353,7 +353,7 @@ shapeClass PMPadZoneNameShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMTrackInBoardShape {
   attribute p1 : NSPoint ;
@@ -366,7 +366,7 @@ shapeClass PMTrackInBoardShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMViaInBoardShape {
   attribute location : NSPoint ;
@@ -379,7 +379,7 @@ shapeClass PMViaInBoardShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMPassingPointInBoardShape {
   attribute location : NSPoint ;
@@ -390,7 +390,7 @@ shapeClass PMPassingPointInBoardShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 shapeClass PMSegmentInBoardShape {
   attribute p1 : NSPoint ;
@@ -403,5 +403,5 @@ shapeClass PMSegmentInBoardShape {
   attribute hiliteWidthMultipliedByTen : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 

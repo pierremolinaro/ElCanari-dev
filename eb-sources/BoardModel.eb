@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModel {  
+entity BoardModel {
   property String artworkName default "" ;
   property String name default "" ;
   property Int modelWidth default 0 ;
@@ -8,14 +8,14 @@ entity BoardModel {
   property Int modelHeight default 0 ;
   property Int modelHeightUnit default 0 ;
 
-  property Int zoom default 0 ; # 0 means "fit to window"
+  property Int zoom default 0 ; // 0 means "fit to window"
 
-#--- Instances
+//--- Instances
   toMany MergerBoardInstance myInstances inverse toOne myModel ;
 
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
-#--- Front Legend Lines
+//--- Front Legend Lines
   toMany SegmentEntity frontLegendLines ;
 
   transient MergerSegmentArray frontLegendLinesSegments dependsFrom
@@ -26,7 +26,7 @@ entity BoardModel {
 
   transient BezierPathArray frontLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendLinesSegments ;
 
-#--- Back Legend Lines
+//--- Back Legend Lines
   toMany SegmentEntity backLegendLines ;
 
   transient MergerSegmentArray backLegendLinesSegments dependsFrom
@@ -37,7 +37,7 @@ entity BoardModel {
 
   transient BezierPathArray backLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendLinesSegments ;
 
-#--- Front Legend Texts
+//--- Front Legend Texts
   toMany SegmentEntity frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
@@ -48,7 +48,7 @@ entity BoardModel {
 
   transient BezierPathArray frontLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendTextsSegments ;
 
-#--- Front Layout Texts
+//--- Front Layout Texts
   toMany SegmentEntity frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
@@ -59,7 +59,7 @@ entity BoardModel {
 
   transient BezierPathArray frontLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLayoutTextsSegments ;
 
-#--- Back Legend Texts
+//--- Back Legend Texts
   toMany SegmentEntity backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
@@ -70,7 +70,7 @@ entity BoardModel {
 
   transient BezierPathArray backLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendTextsSegments ;
 
-#--- Back Layout Texts
+//--- Back Layout Texts
   toMany SegmentEntity backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
@@ -81,7 +81,7 @@ entity BoardModel {
 
   transient BezierPathArray backLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
-#--- Internal board limits
+//--- Internal board limits
   toMany SegmentEntity internalBoardsLimits ;
 
   transient MergerSegmentArray internalBoardsLimitsSegments dependsFrom
@@ -92,23 +92,23 @@ entity BoardModel {
 
   transient BezierPathArray internalBoardsLimitsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
 
-#--- Drills
+//--- Drills
   toMany SegmentEntity drills ;
- 
+
   transient MergerSegmentArray drillSegments
     dependsFrom self.drills.all.x1, self.drills.all.y1, self.drills.all.x2, self.drills.all.y2, self.drills.all.width ;
 
   transient BezierPathArray holesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.drillSegments ;
 
-#--- Vias 
+//--- Vias
   toMany BoardModelVia vias ;
-  
+
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
 
   transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
 
-#--- Front pads
+//--- Front pads
   toMany BoardModelPad frontPads ;
 
   transient MergerPadArray frontPadArray
@@ -117,7 +117,7 @@ entity BoardModel {
 
   transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPadArray ;
 
-#--- Back pads
+//--- Back pads
   toMany BoardModelPad backPads ;
 
   transient MergerPadArray backPadArray
@@ -126,7 +126,7 @@ entity BoardModel {
 
   transient BezierPathArray backPadsBezierPaths dependsFrom self.backPadArray ;
 
-#--- Board limits
+//--- Board limits
   property Int modelLimitWidth default 0 ;
   property Int modelLimitWidthUnit default 0 ;
 
@@ -135,8 +135,8 @@ entity BoardModel {
   ;
 
   transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
- 
-#--- Back component names
+
+//--- Back component names
   toMany SegmentEntity backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
@@ -147,7 +147,7 @@ entity BoardModel {
 
   transient BezierPathArray backComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentNameSegments ;
 
-#--- Front component names
+//--- Front component names
   toMany SegmentEntity frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
@@ -158,7 +158,7 @@ entity BoardModel {
 
   transient BezierPathArray frontComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentNameSegments ;
 
-#--- Front component values
+//--- Front component values
   toMany SegmentEntity frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
@@ -169,7 +169,7 @@ entity BoardModel {
 
   transient BezierPathArray frontComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentValueSegments ;
 
-#--- Back component values
+//--- Back component values
   toMany SegmentEntity backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
@@ -180,7 +180,7 @@ entity BoardModel {
 
   transient BezierPathArray backComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentValueSegments ;
 
-#--- Back tracks
+//--- Back tracks
   toMany SegmentEntity backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
@@ -191,7 +191,7 @@ entity BoardModel {
 
   transient BezierPathArray backTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backTrackSegments ;
 
-#--- Front tracks
+//--- Front tracks
   toMany SegmentEntity frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
@@ -202,7 +202,7 @@ entity BoardModel {
 
   transient BezierPathArray frontTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontTrackSegments ;
 
-#--- Front packages
+//--- Front packages
   toMany SegmentEntity frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
@@ -213,7 +213,7 @@ entity BoardModel {
 
   transient BezierPathArray frontPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontPackagesSegments ;
 
-#--- Back packages
+//--- Back packages
   toMany SegmentEntity backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
@@ -225,176 +225,176 @@ entity BoardModel {
   transient BezierPathArray backPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backPackagesSegments ;
 
 
-#--- Image for model
+//--- Image for model
   transient EBShape imageForModel dependsFrom
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,
-# Board limits
+// Board limits
     self.boardLimitsBezierPaths,
     prefs.mergerModelViewDisplayBoardLimits,
     prefs.mergerColorBoardLimits,
-# Internal Board limits
+// Internal Board limits
     self.internalBoardsLimitsBezierPaths,
     prefs.mergerModelViewDisplayInternalBoardsLimits,
     prefs.mergerColorInternalBoardsLimits,
-# Front tracks
+// Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
     prefs.mergerColorFrontTracks,
-# Back tracks
+// Back tracks
     self.backTracksBezierPaths,
     prefs.mergerModelViewDisplayBackTracks,
     prefs.mergerColorBackTracks,
-# Front pads
+// Front pads
     self.frontPadsBezierPaths,
     prefs.mergerModelViewDisplayFrontPads,
     prefs.mergerColorFrontPads,
-# Back pads
+// Back pads
     self.backPadsBezierPaths,
     prefs.mergerModelViewDisplayBackPads,
     prefs.mergerColorBackPads,
-# Vias
-    self.viasBezierPaths,    
+// Vias
+    self.viasBezierPaths,
     prefs.mergerModelViewDisplayVias,
     prefs.mergerColorVias,
-# Holes   
+// Holes
     self.holesBezierPaths,
     prefs.mergerModelViewDisplayHoles,
     prefs.mergerColorHoles,
-# Front Legend lines   
+// Front Legend lines
     self.frontLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
-# Back Legend lines   
+// Back Legend lines
     self.backLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayBackLegendLines,
     prefs.mergerColorBackLegendLines,
-# Front Legend Texts   
+// Front Legend Texts
     self.frontLegendTextsBezierPaths,
     prefs.mergerModelViewDisplayFrontLegendTexts,
     prefs.mergerColorFrontLegendTexts,
-# Front Layout Texts   
+// Front Layout Texts
     self.frontLayoutTextsBezierPaths,
     prefs.mergerModelViewDisplayFrontLayoutTexts,
     prefs.mergerColorFrontLayoutTexts,
-# Back Legend Texts   
+// Back Legend Texts
     self.backLegendTextsBezierPaths,
     prefs.mergerModelViewDisplayBackLegendTexts,
     prefs.mergerColorBackLegendTexts,
-# Front Layout Texts   
+// Front Layout Texts
     self.backLayoutTextsBezierPaths,
     prefs.mergerModelViewDisplayBackLayoutTexts,
     prefs.mergerColorBackLayoutTexts,
-# Back Component Names   
+// Back Component Names
     self.backComponentNamesBezierPaths,
     prefs.mergerModelViewDisplayBackComponentNames,
     prefs.mergerColorBackComponentNames,
-# Front Component Names   
+// Front Component Names
     self.frontComponentNamesBezierPaths,
     prefs.mergerModelViewDisplayFrontComponentNames,
     prefs.mergerColorFrontComponentNames,
-# Front Component Values   
+// Front Component Values
     self.frontComponentValuesBezierPaths,
     prefs.mergerModelViewDisplayFrontComponentValues,
     prefs.mergerColorFrontComponentValues,
-# Front Component Values   
+// Front Component Values
     self.backComponentValuesBezierPaths,
     prefs.mergerModelViewDisplayBackComponentValues,
     prefs.mergerColorBackComponentValues,
-# Front Packages   
+// Front Packages
     self.frontPackagesBezierPaths,
     prefs.mergerModelViewDisplayFrontPackages,
     prefs.mergerColorFrontPackages,
-# Back Packages   
+// Back Packages
     self.backPackagesBezierPaths,
     prefs.mergerModelViewDisplayBackPackages,
     prefs.mergerColorBackPackages
   ;
 
-#----
+//----
   transient EBShape imageForInstances dependsFrom
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,
-# Front tracks
+// Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerBoardViewDisplayFrontTracks,
     prefs.mergerColorFrontTracks,
-# Back tracks
+// Back tracks
     self.backTracksBezierPaths,
     prefs.mergerBoardViewDisplayBackTracks,
     prefs.mergerColorBackTracks,
-# Internal Board limits
+// Internal Board limits
     self.internalBoardsLimitsBezierPaths,
     self.boardLimitsBezierPaths,
     prefs.mergerBoardViewDisplayInternalBoardsLimits,
     prefs.mergerColorInternalBoardsLimits,
-# Front pads
+// Front pads
     self.frontPadsBezierPaths,
     prefs.mergerBoardViewDisplayFrontPads,
     prefs.mergerColorFrontPads,
-# Back pads
+// Back pads
     self.backPadsBezierPaths,
     prefs.mergerBoardViewDisplayBackPads,
     prefs.mergerColorBackPads,
-# Vias
-    self.viasBezierPaths,    
+// Vias
+    self.viasBezierPaths,
     prefs.mergerBoardViewDisplayVias,
     prefs.mergerColorVias,
-# Holes   
+// Holes
     self.holesBezierPaths,
     prefs.mergerBoardViewDisplayHoles,
     prefs.mergerColorHoles,
-# Front Legend lines   
+// Front Legend lines
     self.frontLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
-# Back Legend lines   
+// Back Legend lines
     self.backLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayBackLegendLines,
     prefs.mergerColorBackLegendLines,
-# Front Legend Texts   
+// Front Legend Texts
     self.frontLegendTextsBezierPaths,
     prefs.mergerBoardViewDisplayFrontLegendTexts,
     prefs.mergerColorFrontLegendTexts,
-# Front Layout Texts   
+// Front Layout Texts
     self.frontLayoutTextsBezierPaths,
     prefs.mergerBoardViewDisplayFrontLayoutTexts,
     prefs.mergerColorFrontLayoutTexts,
-# Back Legend Texts   
+// Back Legend Texts
     self.backLegendTextsBezierPaths,
     prefs.mergerBoardViewDisplayBackLegendTexts,
     prefs.mergerColorBackLegendTexts,
-# Front Layout Texts   
+// Front Layout Texts
     self.backLayoutTextsBezierPaths,
     prefs.mergerBoardViewDisplayBackLayoutTexts,
     prefs.mergerColorBackLayoutTexts,
-# Back Component Names   
+// Back Component Names
     self.backComponentNamesBezierPaths,
     prefs.mergerBoardViewDisplayBackComponentNames,
     prefs.mergerColorBackComponentNames,
-# Front Component Names   
+// Front Component Names
     self.frontComponentNamesBezierPaths,
     prefs.mergerBoardViewDisplayFrontComponentNames,
     prefs.mergerColorFrontComponentNames,
-# Front Component Values   
+// Front Component Values
     self.frontComponentValuesBezierPaths,
     prefs.mergerBoardViewDisplayFrontComponentValues,
     prefs.mergerColorFrontComponentValues,
-# Front Component Values   
+// Front Component Values
     self.backComponentValuesBezierPaths,
     prefs.mergerBoardViewDisplayBackComponentValues,
     prefs.mergerColorBackComponentValues,
-# Front Packages   
+// Front Packages
     self.frontPackagesBezierPaths,
     prefs.mergerBoardViewDisplayFrontPackages,
     prefs.mergerColorFrontPackages,
-# Back Packages   
+// Back Packages
     self.backPackagesBezierPaths,
     prefs.mergerBoardViewDisplayBackPackages,
     prefs.mergerColorBackPackages
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

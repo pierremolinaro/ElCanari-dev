@@ -89,7 +89,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mInstanceName
   //····················································································································
 
-  var mInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  let mInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -106,7 +106,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  var mX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -123,7 +123,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Atomic property: mY
   //····················································································································
 
-  var mY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -169,7 +169,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: symbolQualifiedName
   //····················································································································
 
-  var symbolQualifiedName_property = EBTransientProperty_String ()
+  let symbolQualifiedName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -192,7 +192,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: symbolTypeName
   //····················································································································
 
-  var symbolTypeName_property = EBTransientProperty_String ()
+  let symbolTypeName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: unconnectedPins
   //····················································································································
 
-  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
 
   //····················································································································
 

@@ -84,7 +84,7 @@ class ComponentInProject : EBManagedObject,
   //   Atomic property: mNamePrefix
   //····················································································································
 
-  var mNamePrefix_property = EBStoredProperty_String (defaultValue: "")
+  let mNamePrefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -101,7 +101,7 @@ class ComponentInProject : EBManagedObject,
   //   Atomic property: mNameIndex
   //····················································································································
 
-  var mNameIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let mNameIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class ComponentInProject : EBManagedObject,
   //   Atomic property: mComponentValue
   //····················································································································
 
-  var mComponentValue_property = EBStoredProperty_String (defaultValue: "")
+  let mComponentValue_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -212,7 +212,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: componentName
   //····················································································································
 
-  var componentName_property = EBTransientProperty_String ()
+  let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -235,7 +235,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: deviceName
   //····················································································································
 
-  var deviceName_property = EBTransientProperty_String ()
+  let deviceName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -258,7 +258,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: selectedPackageName
   //····················································································································
 
-  var selectedPackageName_property = EBTransientProperty_String ()
+  let selectedPackageName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -281,7 +281,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: availablePackages
   //····················································································································
 
-  var availablePackages_property = EBTransientProperty_StringArray ()
+  let availablePackages_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -304,7 +304,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
-  var deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
 
   //····················································································································
 
@@ -327,7 +327,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  var unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
@@ -350,7 +350,7 @@ class ComponentInProject : EBManagedObject,
   //   Transient property: placementInSchematics
   //····················································································································
 
-  var placementInSchematics_property = EBTransientProperty_String ()
+  let placementInSchematics_property = EBTransientProperty_String ()
 
   //····················································································································
 

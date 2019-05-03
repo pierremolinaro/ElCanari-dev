@@ -98,7 +98,7 @@ class PackageOval : PackageObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (defaultValue: 0)
+  let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class PackageOval : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 685800)
+  let width_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class PackageOval : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 685800)
+  let height_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class PackageOval : PackageObject,
   //   Atomic property: xUnit
   //····················································································································
 
-  var xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class PackageOval : PackageObject,
   //   Atomic property: yUnit
   //····················································································································
 
-  var yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class PackageOval : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  var widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -200,7 +200,7 @@ class PackageOval : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  var heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -217,7 +217,7 @@ class PackageOval : PackageObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (defaultValue: 0)
+  let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -234,7 +234,7 @@ class PackageOval : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 

@@ -136,7 +136,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: pinName
   //····················································································································
 
-  var pinName_property = EBTransientProperty_String ()
+  let pinName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -159,7 +159,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: symbolName
   //····················································································································
 
-  var symbolName_property = EBTransientProperty_String ()
+  let symbolName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -182,7 +182,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: pinQualifiedName
   //····················································································································
 
-  var pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
+  let pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
 
   //····················································································································
 
@@ -205,7 +205,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  var isConnected_property = EBTransientProperty_Bool ()
+  let isConnected_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -228,7 +228,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: numberShape
   //····················································································································
 
-  var numberShape_property = EBTransientProperty_EBShape ()
+  let numberShape_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

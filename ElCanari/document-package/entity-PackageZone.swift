@@ -140,7 +140,7 @@ class PackageZone : PackageObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (defaultValue: 0)
+  let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -157,7 +157,7 @@ class PackageZone : PackageObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (defaultValue: 0)
+  let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -174,7 +174,7 @@ class PackageZone : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 457200)
+  let width_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -191,7 +191,7 @@ class PackageZone : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 457200)
+  let height_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -208,7 +208,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xUnit
   //····················································································································
 
-  var xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -225,7 +225,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yUnit
   //····················································································································
 
-  var yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -242,7 +242,7 @@ class PackageZone : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  var widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class PackageZone : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  var heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -276,7 +276,7 @@ class PackageZone : PackageObject,
   //   Atomic property: zoneName
   //····················································································································
 
-  var zoneName_property = EBStoredProperty_String (defaultValue: "")
+  let zoneName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -293,7 +293,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xName
   //····················································································································
 
-  var xName_property = EBStoredProperty_Int (defaultValue: 228600)
+  let xName_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -310,7 +310,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yName
   //····················································································································
 
-  var yName_property = EBStoredProperty_Int (defaultValue: 228600)
+  let yName_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -327,7 +327,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xNameUnit
   //····················································································································
 
-  var xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -344,7 +344,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yNameUnit
   //····················································································································
 
-  var yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -361,7 +361,7 @@ class PackageZone : PackageObject,
   //   Atomic property: zoneNumbering
   //····················································································································
 
-  var zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering)
+  let zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering)
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class PackageZone : PackageObject,
   //   Transient property: rect
   //····················································································································
 
-  var rect_property = EBTransientProperty_CanariRect ()
+  let rect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 

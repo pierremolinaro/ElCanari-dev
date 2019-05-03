@@ -1,6 +1,6 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#     P R O J E C T    R O O T
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//     P R O J E C T    R O O T
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
   toMany FontInProject mFonts ;
@@ -23,11 +23,11 @@ entity ProjectRoot {
   property Int mSchematicsGridDisplayFactor default 4 ;
 
   property SchematicsSheetOrientation mSchematicsSheetOrientation default horizontal ;
-  
+
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
   transient StringTagArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
-  
+
   transient EBShape schematicsBackgroundDisplay dependsFrom
     self.mSchematicsTitle,
     self.mSchematicsVersion,
@@ -39,13 +39,13 @@ entity ProjectRoot {
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum SchematicsSheetOrientation { horizontal, vertical }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Font
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Font
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontInProject {
   property String mFontName default "" ;
@@ -56,9 +56,9 @@ entity FontInProject {
   transient String sizeString dependsFrom self.mDescriptiveString ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Device
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Device
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceInProject {
   property String mDeviceName default "" ;
@@ -78,7 +78,7 @@ entity DeviceInProject {
   transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
   transient SymbolInProjectIdentifierArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
   transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
-  
+
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom
     self.mPadAssignments.all.descriptor,
     self.mSymbols.all.symbolAndTypeName,
@@ -86,7 +86,7 @@ entity DeviceInProject {
     self.mSymbols.all.strokeBezierPath ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DevicePackageInProject {
   toMany DeviceMasterPadInProject mMasterPads ;
@@ -94,7 +94,7 @@ entity DevicePackageInProject {
   property String mPackageName default "" ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceMasterPadInProject {
   toMany DeviceSlavePadInProject mSlavePads ;
@@ -109,7 +109,7 @@ entity DeviceMasterPadInProject {
   property  String mName default "" ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSlavePadInProject {
   property Int mCenterX default 0 ;
@@ -121,7 +121,7 @@ entity DeviceSlavePadInProject {
   property SlavePadStyle mStyle default traversing ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolInstanceInProject {
   toOne DeviceSymbolTypeInProject mSymbolType ;
@@ -129,9 +129,9 @@ entity DeviceSymbolInstanceInProject {
   property String mSymbolInstanceName default "" ;
 
   transient SymbolInProjectIdentifier symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
-  
+
   transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
-  
+
   transient NSBezierPath filledBezierPath dependsFrom self.mSymbolType.one.mFilledBezierPath ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
@@ -140,16 +140,16 @@ entity DeviceSymbolInstanceInProject {
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolTypeInProject {
   property String mSymbolTypeName default "" ;
-  
+
   property NSBezierPath mStrokeBezierPath default empty ;
   property NSBezierPath mFilledBezierPath default empty ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DevicePinInProject {
   property String mPinName default "" ;
@@ -170,7 +170,7 @@ entity DevicePinInProject {
   property HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;
- 
+
   transient PinInProjectDescriptor descriptor dependsFrom
     self.mPinName,
     self.mSymbolInstanceName,
@@ -184,25 +184,25 @@ entity DevicePinInProject {
     self.mXNumber,
     self.mYNumber,
     self.mNumberHorizontalAlignment
-  ; 
+  ;
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ComponentInProject {
   toOne DeviceInProject mDevice inverse toMany mComponents ;
   toOne DevicePackageInProject mSelectedPackage ;
   toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
-  
+
   property String mNamePrefix default "" ;
   property Int mNameIndex default 0 ;
   property String mComponentValue default "" ;
-  
+
   transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
   transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
-  
+
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
   transient StringTagArray unplacedSymbols dependsFrom
     self.componentName,
@@ -213,38 +213,38 @@ entity ComponentInProject {
   ;
 
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
-  
+
   transient String placementInSchematics dependsFrom self.mSymbols.all.symbolInSchematics ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DevicePadAssignmentInProject {
   property String mPadName default "" ;
-  toOne DevicePinInProject mPin ; # Is nil if pad is NC
+  toOne DevicePinInProject mPin ; // Is nil if pad is NC
 
   transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
-  
+
   transient PinPadAssignmentInProject descriptor dependsFrom self.mPadName, self.mPin.one.descriptor ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Net class
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Net class
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity NetClassInProject {
   toMany NetInProject mNets inverse toOne mNetClass ;
   property String mNetClassName default "Default" ;
   property NSColor mNetClassColor default brown ;
 
-  property Int mNetWidth default 45_720 ; # 20 mils
-  property Int mNetWidthUnit default 2_286 ; # mil
+  property Int mNetWidth default 45_720 ; // 20 mils
+  property Int mNetWidthUnit default 2_286 ; // mil
 
-  property Int mViaHoleDiameter default 45_720 ; # 20 mils
-  property Int mViaHoleDiameterUnit default 2_286 ; # mil
+  property Int mViaHoleDiameter default 45_720 ; // 20 mils
+  property Int mViaHoleDiameterUnit default 2_286 ; // mil
 
-  property Int mViaPadDiameter default 91_440 ; # 40 mils
-  property Int mViaPadDiameterUnit default 2_286 ; # mil
+  property Int mViaPadDiameter default 91_440 ; // 40 mils
+  property Int mViaPadDiameterUnit default 2_286 ; // mil
 
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;
@@ -253,43 +253,43 @@ entity NetClassInProject {
   transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Net
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Net
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity NetInProject {
   property String mNetName default "" ;
   toOne NetClassInProject mNetClass inverse toMany mNets ;
-  
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Component Symbol
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Component Symbol
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity ComponentSymbolInProject : SchematicsObject {
   toOne ComponentInProject mComponent inverse toMany mSymbols ;
-  
+
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
   property QuadrantRotation mRotation default rotation0 ;
 
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
-  
+
   property Int mDisplayComponentNameOffsetX default 0 ;
-  property Int mDisplayComponentNameOffsetY default 457_200 ; # 200 mils
-  
+  property Int mDisplayComponentNameOffsetY default 457_200 ; // 200 mils
+
   property Bool mDisplayComponentValue default yes ;
   property Int mDisplayComponentValueOffsetX default 0 ;
-  property Int mDisplayComponentValueOffsetY default -457_200 ; # -200 mils
- 
-#  proxy componentValueProxy : ComponentInProject.mComponent.mComponentValue ;
-  objectController mComponentInSymbolController : self.mComponent ;
+  property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
+
+//  proxy componentValueProxy : ComponentInProject.mComponent.mComponentValue ;
+  objectController #mComponentInSymbolController : self.mComponent ;
 
   transient String componentName dependsFrom self.mComponent.one.componentName ;
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;
-  
+
   transient ComponentSymbolInfo symbolInfo dependsFrom
     self.mRotation,
     self.componentName,
@@ -301,10 +301,10 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
     self.mCenterY,
     prefs.pinNameFont
   ;
- 
+
   transient Bool symbolInSchematics dependsFrom super.SchematicsObject.isPlacedInSchematics ;
 
-  override transient EBShape objectDisplay dependsFrom 
+  override transient EBShape objectDisplay dependsFrom
     prefs.pinNameFont,
     self.mDisplayComponentNameOffsetX,
     self.mDisplayComponentNameOffsetY,
@@ -316,7 +316,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
     self.mSymbolInstanceName,
     self.mSymbolTypeName
   ;
-  
+
   override transient EBShape selectionDisplay dependsFrom
     prefs.pinNameFont,
     self.mDisplayComponentNameOffsetX,
@@ -328,9 +328,9 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   Sheet
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Sheet
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SheetInProject {
   toMany SchematicsObject mObjects inverse toOne mSheet ;
@@ -338,14 +338,14 @@ entity SheetInProject {
   property String mSheetTitle default "" ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SchematicsObject
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   SchematicsObject
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SchematicsObject {
   toOne SheetInProject mSheet inverse toMany mObjects ;
-  
+
   transient Bool isPlacedInSchematics dependsFrom self.mSheet.none ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -35,7 +35,7 @@ class DeviceDocumentation : EBManagedObject,
   //   Atomic property: mFileName
   //····················································································································
 
-  var mFileName_property = EBStoredProperty_String (defaultValue: "")
+  let mFileName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -52,7 +52,7 @@ class DeviceDocumentation : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  var mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -69,7 +69,7 @@ class DeviceDocumentation : EBManagedObject,
   //   Transient property: fileSize
   //····················································································································
 
-  var fileSize_property = EBTransientProperty_Int ()
+  let fileSize_property = EBTransientProperty_Int ()
 
   //····················································································································
 

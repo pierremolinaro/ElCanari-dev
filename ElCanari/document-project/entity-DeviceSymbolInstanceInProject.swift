@@ -49,7 +49,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  var mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: symbolAndTypeName
   //····················································································································
 
-  var symbolAndTypeName_property = EBTransientProperty_SymbolInProjectIdentifier ()
+  let symbolAndTypeName_property = EBTransientProperty_SymbolInProjectIdentifier ()
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: symbolTypeName
   //····················································································································
 
-  var symbolTypeName_property = EBTransientProperty_String ()
+  let symbolTypeName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -141,7 +141,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: filledBezierPath
   //····················································································································
 
-  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
@@ -164,7 +164,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 

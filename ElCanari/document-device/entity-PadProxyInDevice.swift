@@ -49,7 +49,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mPadName
   //····················································································································
 
-  var mPadName_property = EBStoredProperty_String (defaultValue: "")
+  let mPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -66,7 +66,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Atomic property: mIsNC
   //····················································································································
 
-  var mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
+  let mIsNC_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -112,7 +112,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  var isConnected_property = EBTransientProperty_Bool ()
+  let isConnected_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -135,7 +135,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Transient property: pinInstanceName
   //····················································································································
 
-  var pinInstanceName_property = EBTransientProperty_String ()
+  let pinInstanceName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class PadProxyInDevice : EBManagedObject,
   //   Transient property: symbolName
   //····················································································································
 
-  var symbolName_property = EBTransientProperty_String ()
+  let symbolName_property = EBTransientProperty_String ()
 
   //····················································································································
 

@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity MergerBoardInstance {
   toOne MergerRoot myRoot inverse toMany boardInstances ;
@@ -6,24 +6,24 @@ graphic entity MergerBoardInstance {
   property Int x default 0 ;
   property Int y default 0 ;
 
-#--- Instance rotation
+//--- Instance rotation
   property QuadrantRotation instanceRotation default rotation0 ;
 
-#--- Instance rect
+//--- Instance rect
   transient CanariRect instanceRect
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight, self.instanceRotation
   ;
 
-#--- Model Name
+//--- Model Name
   transient String modelName dependsFrom self.myModel.one.name ;
 
-#--- Limit width
+//--- Limit width
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
-#--- Selection layer
+//--- Selection layer
   transient EBShape selectionDisplay dependsFrom self.instanceRect ;
 
-#--- Background
+//--- Background
   transient EBShape objectDisplay dependsFrom
     self.x, self.y,
     self.myModel.one.modelWidth, self.myModel.one.modelHeight,
@@ -32,4 +32,4 @@ graphic entity MergerBoardInstance {
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -112,7 +112,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -129,7 +129,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSelectedSchematicsInspector
   //····················································································································
 
-  var mSelectedSchematicsInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  let mSelectedSchematicsInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsTitle
   //····················································································································
 
-  var mSchematicsTitle_property = EBStoredProperty_String (defaultValue: "")
+  let mSchematicsTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -163,7 +163,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsVersion
   //····················································································································
 
-  var mSchematicsVersion_property = EBStoredProperty_String (defaultValue: "")
+  let mSchematicsVersion_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -180,7 +180,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsDate
   //····················································································································
 
-  var mSchematicsDate_property = EBStoredProperty_Date (defaultValue: Date ())
+  let mSchematicsDate_property = EBStoredProperty_Date (defaultValue: Date ())
 
   //····················································································································
 
@@ -197,7 +197,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsHorizontalFlip
   //····················································································································
 
-  var mSchematicsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mSchematicsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -214,7 +214,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsVerticalFlip
   //····················································································································
 
-  var mSchematicsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mSchematicsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -231,7 +231,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsZoom
   //····················································································································
 
-  var mSchematicsZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let mSchematicsZoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsGridStyle
   //····················································································································
 
-  var mSchematicsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  let mSchematicsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsGridDisplayFactor
   //····················································································································
 
-  var mSchematicsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  let mSchematicsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicsSheetOrientation
   //····················································································································
 
-  var mSchematicsSheetOrientation_property = EBStoredProperty_SchematicsSheetOrientation (defaultValue: SchematicsSheetOrientation.horizontal)
+  let mSchematicsSheetOrientation_property = EBStoredProperty_SchematicsSheetOrientation (defaultValue: SchematicsSheetOrientation.horizontal)
 
   //····················································································································
 
@@ -394,7 +394,7 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  var unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
@@ -446,7 +446,7 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: deviceNames
   //····················································································································
 
-  var deviceNames_property = EBTransientProperty_StringArray ()
+  let deviceNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -469,7 +469,7 @@ class ProjectRoot : EBManagedObject,
   //   Transient property: schematicsBackgroundDisplay
   //····················································································································
 
-  var schematicsBackgroundDisplay_property = EBTransientProperty_EBShape ()
+  let schematicsBackgroundDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

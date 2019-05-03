@@ -1,26 +1,26 @@
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 graphic entity DeviceRoot {
-#--- Selected page index
+//--- Selected page index
   property Int mSelectedPageIndex default 0 ;
 
-#--- Title
+//--- Title
   property @signature String mTitle default "" ;
 
-#--- Image
+//--- Image
   property @signature Data mImageData default empty ;
   transient Bool imageIsValid dependsFrom self.mImageData ;
 
-#--- Documentation
+//--- Documentation
   toMany @signature DeviceDocumentation mDocs ;
 
-#--- Prefix
+//--- Prefix
   property @signature String mPrefix default "" ;
 
-#--- Comment
+//--- Comment
   property @signature String mComments default "" ;
 
-#--- Issues
+//--- Issues
   transient CanariIssueArray issues dependsFrom
     self.mTitle, self.mPrefix,
     self.inconsistentPackagePadNameSetsMessage,
@@ -39,7 +39,7 @@ graphic entity DeviceRoot {
   transient String inconsistentSymbolNameSetMessage dependsFrom self.mSymbolInstances.all.symbolQualifiedName ;
   transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
-#--- Packages
+//--- Packages
   toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
   property @signature Int mPackageDisplayZoom default 100 ;
   property @signature Bool mPackageDisplayHorizontalFlip default no ;
@@ -48,22 +48,22 @@ graphic entity DeviceRoot {
   property @signature Bool mShowPackagePadNumbers default yes ;
   property @signature Bool mShowPackageFrontPads default yes ;
   property @signature Bool mShowPackageBackPads default yes ;
-  
-#--- Symbols
+
+//--- Symbols
   toMany @signature SymbolTypeInDevice mSymbolTypes ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
   property @signature Int mSymbolDisplayZoom default 100 ;
   property @signature Bool mSymbolDisplayHorizontalFlip default no ;
   property @signature Bool mSymbolDisplayVerticalFlip default no ;
-  
+
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
-  
+
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
 
-#--- Pad proxys
+//--- Pad proxys
   toMany @signature PadProxyInDevice mPadProxies ;
-  
+
   transient StringArray unconnectedPads
     dependsFrom self.mPadProxies.all.mPadName, self.mPadProxies.all.isConnected ;
 
@@ -74,32 +74,32 @@ graphic entity DeviceRoot {
     self.mPadProxies.all.isConnected ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceDocumentation {
 
   property @signature String mFileName default "" ;
   property @signature Data mFileData default empty ;
-  
+
   transient Int fileSize dependsFrom self.mFileData ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany mPackages ;
-  
+
   toMany @signature MasterPadInDevice mMasterPads ;
- 
+
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
   property @signature Int mVersion default 0 ;
-  
+
   property @signature NSBezierPath mStrokeBezierPath default empty ;
- 
+
   property @signature Int mX default 0 ;
   property @signature Int mY default 0 ;
-  
+
   transient String versionString dependsFrom self.mVersion ;
 
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
@@ -133,11 +133,11 @@ graphic entity PackageInDevice {
      self.backSidePadFilledBezierPathArray,
      self.mName, self.mX, self.mY
   ;
-  
+
   transient StringSet padNameSet dependsFrom self.mMasterPads.all.mName ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity MasterPadInDevice {
   toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
@@ -150,7 +150,7 @@ entity MasterPadInDevice {
   property @signature PadShape mShape default octo ;
   property @signature PadStyle mStyle default traversing ;
   property @signature String mName default "" ;
-  
+
   transient BezierPathArray frontSideFilledBezierPathArray dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
      self.mShape, self.mStyle,
@@ -167,7 +167,7 @@ entity MasterPadInDevice {
      self.mCenterX, self.mCenterY, prefs.padNumberColor, self.mName, prefs.padNumberFont ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SlavePadInDevice {
   toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
@@ -194,10 +194,10 @@ entity SlavePadInDevice {
      self.mCenterX, self.mCenterY,
      prefs.padNumberFont, prefs.padNumberColor, self.mMasterPad.one.mName
   ;
- 
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
   toMany @signature SymbolInstanceInDevice mInstances inverse toOne mType ;
@@ -206,18 +206,18 @@ entity SymbolTypeInDevice {
   property @signature String mTypeName default "" ;
   property @signature Int mVersion default 0 ;
   property @signature Data mFileData default empty ;
-  
+
   property @signature NSBezierPath mStrokeBezierPath default empty ;
   property @signature NSBezierPath mFilledBezierPath default empty ;
-  
+
   transient String versionString dependsFrom self.mVersion ;
 
   transient Int instanceCount dependsFrom self.mInstances.count ;
-  
+
   transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolPinTypeInDevice {
   toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
@@ -237,19 +237,19 @@ entity SymbolPinTypeInDevice {
   property @signature HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient EBShape nameShape dependsFrom
-     self.mXName, self.mYName, 
+     self.mXName, self.mYName,
      self.mName, self.mNameHorizontalAlignment,
      self.mPinNameIsDisplayedInSchematics,
      prefs.pinNameFont
    ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
   toMany SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
- 
+
   property @signature String mInstanceName default "" ;
   property @signature Int mX default 0 ;
   property @signature Int mY default 0 ;
@@ -276,14 +276,14 @@ graphic entity SymbolInstanceInDevice {
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
-  
-  transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom 
+
+  transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom
     self.mPinInstances.all.pinName,
     self.mPinInstances.all.isConnected,
     self.mInstanceName  ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolPinInstanceInDevice {
   toOne SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
@@ -291,7 +291,7 @@ entity SymbolPinInstanceInDevice {
   toOne PadProxyInDevice mPadProxy inverse toOne mPinInstance ;
 
   transient EBShape numberShape dependsFrom
-     self.mType.one.mXNumber, self.mType.one.mYNumber, 
+     self.mType.one.mXNumber, self.mType.one.mYNumber,
      self.mType.one.mNumberHorizontalAlignment,
      self.mPadProxy.one.mPadName,
      prefs.pinNameFont
@@ -306,20 +306,20 @@ entity SymbolPinInstanceInDevice {
   transient Bool isConnected dependsFrom self.mPadProxy.none ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
-  
+
   property @signature String mPadName default "" ;
-  
+
   property @signature Bool mIsNC default no ;
-  
+
   transient Bool isConnected dependsFrom self.mIsNC, self.mPinInstance.none ;
-  
+
   transient String pinInstanceName dependsFrom self.mPinInstance.one.pinName ;
-  
+
   transient String symbolName dependsFrom self.mPinInstance.one.symbolName ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

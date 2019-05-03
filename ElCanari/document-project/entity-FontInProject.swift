@@ -49,7 +49,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontName
   //····················································································································
 
-  var mFontName_property = EBStoredProperty_String (defaultValue: "")
+  let mFontName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -66,7 +66,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mFontVersion
   //····················································································································
 
-  var mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  let mFontVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -83,7 +83,7 @@ class FontInProject : EBManagedObject,
   //   Atomic property: mDescriptiveString
   //····················································································································
 
-  var mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
+  let mDescriptiveString_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -100,7 +100,7 @@ class FontInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -123,7 +123,7 @@ class FontInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  var sizeString_property = EBTransientProperty_String ()
+  let sizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 

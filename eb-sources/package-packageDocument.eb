@@ -1,22 +1,22 @@
-#----------------------------------------------------------------------------*
-#     P A C K A G E    D O C U M E N T                                       *
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
+//     P A C K A G E    D O C U M E N T                                       *
+//----------------------------------------------------------------------------*
 
 document PackageDocument root PackageRoot {
-#--- Selected Page
+//--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mPackagePageView ;
   outlet CanariViewWithKeyView mProgramPageView ;
   outlet CanariViewWithKeyView mInfosPageView ;
 
-#--- Signature
+//--- Signature
   outlet CanariSignatureField mSignatureTextField $signature signature ;
 
-#--- Version
+//--- Version
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-#-------------------------- Page : Package
+//-------------------------- Page : Package
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
@@ -25,361 +25,361 @@ document PackageDocument root PackageRoot {
   outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
 
-#--- Segment inspector
-  selectionController PackageSegment mPackageSegmentSelectionController : self.mPackageObjectsController.selectedArray ;
+//--- Segment inspector
+  selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mSegmentInspectorView ;
-#--- x1
-  outlet EBPopUpButton mSegmentX1UnitPopUp $selectedTag mPackageSegmentSelectionController.x1Unit ;
+//--- x1
+  outlet EBPopUpButton mSegmentX1UnitPopUp $selectedTag #mPackageSegmentSelectionController.x1Unit ;
   outlet CanariDimensionTextField mSegmentX1TextField
-     $dimensionAndUnit mPackageSegmentSelectionController.x1, mPackageSegmentSelectionController.x1Unit
+     $dimensionAndUnit #mPackageSegmentSelectionController.x1, #mPackageSegmentSelectionController.x1Unit
   ;
-#--- y1
-  outlet EBPopUpButton mSegmentY1UnitPopUp $selectedTag mPackageSegmentSelectionController.y1Unit ;
+//--- y1
+  outlet EBPopUpButton mSegmentY1UnitPopUp $selectedTag #mPackageSegmentSelectionController.y1Unit ;
   outlet CanariDimensionTextField mSegmentY1TextField
-     $dimensionAndUnit mPackageSegmentSelectionController.y1, mPackageSegmentSelectionController.y1Unit
+     $dimensionAndUnit #mPackageSegmentSelectionController.y1, #mPackageSegmentSelectionController.y1Unit
   ;
-#--- x2
-  outlet EBPopUpButton mSegmentX2UnitPopUp $selectedTag mPackageSegmentSelectionController.x2Unit ;
+//--- x2
+  outlet EBPopUpButton mSegmentX2UnitPopUp $selectedTag #mPackageSegmentSelectionController.x2Unit ;
   outlet CanariDimensionTextField mSegmentX2TextField
-     $dimensionAndUnit mPackageSegmentSelectionController.x2, mPackageSegmentSelectionController.x2Unit
+     $dimensionAndUnit #mPackageSegmentSelectionController.x2, #mPackageSegmentSelectionController.x2Unit
   ;
-#--- y2
-  outlet EBPopUpButton mSegmentY2UnitPopUp $selectedTag mPackageSegmentSelectionController.y2Unit ;
+//--- y2
+  outlet EBPopUpButton mSegmentY2UnitPopUp $selectedTag #mPackageSegmentSelectionController.y2Unit ;
   outlet CanariDimensionTextField mSegmentY2TextField
-     $dimensionAndUnit mPackageSegmentSelectionController.y2, mPackageSegmentSelectionController.y2Unit
+     $dimensionAndUnit #mPackageSegmentSelectionController.y2, #mPackageSegmentSelectionController.y2Unit
   ;
-#--- length
-  outlet EBPopUpButton mSegmentLengthUnitPopUp $selectedTag mPackageSegmentSelectionController.lengthUnit ;
+//--- length
+  outlet EBPopUpButton mSegmentLengthUnitPopUp $selectedTag #mPackageSegmentSelectionController.lengthUnit ;
   outlet CanariDimensionObserverTextField mSegmentLengthTextField
-     $dimensionAndUnit mPackageSegmentSelectionController.lengthInCanariUnit, mPackageSegmentSelectionController.lengthUnit
+     $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
   ;
 
-#--- Bezier Curve inspector
-  selectionController PackageBezier mPackageBezierCurveSelectionController : self.mPackageObjectsController.selectedArray ;
+//--- Bezier Curve inspector
+  selectionController PackageBezier #mPackageBezierCurveSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mBezierInspectorView ;
-#--- x1
-  outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.x1Unit ;
+//--- x1
+  outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.x1Unit ;
   outlet CanariDimensionTextField mBezierCurveX1TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.x1, mPackageBezierCurveSelectionController.x1Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.x1, #mPackageBezierCurveSelectionController.x1Unit
   ;
-#--- y1
-  outlet EBPopUpButton mBezierCurveY1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.y1Unit ;
+//--- y1
+  outlet EBPopUpButton mBezierCurveY1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.y1Unit ;
   outlet CanariDimensionTextField mBezierCurveY1TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.y1, mPackageBezierCurveSelectionController.y1Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.y1, #mPackageBezierCurveSelectionController.y1Unit
   ;
-#--- x2
-  outlet EBPopUpButton mBezierCurveX2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.x2Unit ;
+//--- x2
+  outlet EBPopUpButton mBezierCurveX2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.x2Unit ;
   outlet CanariDimensionTextField mBezierCurveX2TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.x2, mPackageBezierCurveSelectionController.x2Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.x2, #mPackageBezierCurveSelectionController.x2Unit
   ;
-#--- y2
-  outlet EBPopUpButton mBezierCurveY2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.y2Unit ;
+//--- y2
+  outlet EBPopUpButton mBezierCurveY2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.y2Unit ;
   outlet CanariDimensionTextField mBezierCurveY2TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.y2, mPackageBezierCurveSelectionController.y2Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.y2, #mPackageBezierCurveSelectionController.y2Unit
   ;
-#--- cpx1
-  outlet EBPopUpButton mBezierCurveCPX1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpx1Unit ;
+//--- cpx1
+  outlet EBPopUpButton mBezierCurveCPX1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpx1Unit ;
   outlet CanariDimensionTextField mBezierCurveCPX1TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.cpx1, mPackageBezierCurveSelectionController.cpx1Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx1, #mPackageBezierCurveSelectionController.cpx1Unit
   ;
-#--- cpy1
-  outlet EBPopUpButton mBezierCurveCPY1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpy1Unit ;
+//--- cpy1
+  outlet EBPopUpButton mBezierCurveCPY1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpy1Unit ;
   outlet CanariDimensionTextField mBezierCurveCPY1TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.cpy1, mPackageBezierCurveSelectionController.cpy1Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy1, #mPackageBezierCurveSelectionController.cpy1Unit
   ;
-#--- cpx2
-  outlet EBPopUpButton mBezierCurveCPX2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpx2Unit ;
+//--- cpx2
+  outlet EBPopUpButton mBezierCurveCPX2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpx2Unit ;
   outlet CanariDimensionTextField mBezierCurveCPX2TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.cpx2, mPackageBezierCurveSelectionController.cpx2Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx2, #mPackageBezierCurveSelectionController.cpx2Unit
   ;
-#--- cpy2
-  outlet EBPopUpButton mBezierCurveCPY2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpy2Unit ;
+//--- cpy2
+  outlet EBPopUpButton mBezierCurveCPY2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpy2Unit ;
   outlet CanariDimensionTextField mBezierCurveCPY2TextField
-     $dimensionAndUnit mPackageBezierCurveSelectionController.cpy2, mPackageBezierCurveSelectionController.cpy2Unit
+     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
   ;
 
 
-#------- Oval inspector
-  selectionController PackageOval mPackageOvalSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Oval inspector
+  selectionController PackageOval #mPackageOvalSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mOvalInspectorView ;
-#--- x
-  outlet EBPopUpButton mOvalXUnitPopUp $selectedTag mPackageOvalSelectionController.xUnit ;
+//--- x
+  outlet EBPopUpButton mOvalXUnitPopUp $selectedTag #mPackageOvalSelectionController.xUnit ;
   outlet CanariDimensionTextField mOvalXTextField
-     $dimensionAndUnit mPackageOvalSelectionController.x, mPackageOvalSelectionController.xUnit
+     $dimensionAndUnit #mPackageOvalSelectionController.x, #mPackageOvalSelectionController.xUnit
   ;
-#--- y
-  outlet EBPopUpButton mOvalYUnitPopUp $selectedTag mPackageOvalSelectionController.yUnit ;
+//--- y
+  outlet EBPopUpButton mOvalYUnitPopUp $selectedTag #mPackageOvalSelectionController.yUnit ;
   outlet CanariDimensionTextField mOvalYTextField
-     $dimensionAndUnit mPackageOvalSelectionController.y, mPackageOvalSelectionController.yUnit
+     $dimensionAndUnit #mPackageOvalSelectionController.y, #mPackageOvalSelectionController.yUnit
   ;
-#--- Width
-  outlet EBPopUpButton mOvalWidthUnitPopUp $selectedTag mPackageOvalSelectionController.widthUnit ;
+//--- Width
+  outlet EBPopUpButton mOvalWidthUnitPopUp $selectedTag #mPackageOvalSelectionController.widthUnit ;
   outlet CanariDimensionTextField mOvalWidthTextField
-     $dimensionAndUnit mPackageOvalSelectionController.width, mPackageOvalSelectionController.widthUnit
+     $dimensionAndUnit #mPackageOvalSelectionController.width, #mPackageOvalSelectionController.widthUnit
   ;
-#--- Height
-  outlet EBPopUpButton mOvalHeightUnitPopUp $selectedTag mPackageOvalSelectionController.heightUnit ;
+//--- Height
+  outlet EBPopUpButton mOvalHeightUnitPopUp $selectedTag #mPackageOvalSelectionController.heightUnit ;
   outlet CanariDimensionTextField mOvalHeightTextField
-     $dimensionAndUnit mPackageOvalSelectionController.height, mPackageOvalSelectionController.heightUnit
+     $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
   ;
 
 
-#------- Arc inspector
-  selectionController PackageArc mPackageArcSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Arc inspector
+  selectionController PackageArc #mPackageArcSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mArcInspectorView ;
-#--- xCenter
-  outlet EBPopUpButton mArcRadiusUnitPopUp $selectedTag mPackageArcSelectionController.radiusUnit ;
+//--- xCenter
+  outlet EBPopUpButton mArcRadiusUnitPopUp $selectedTag #mPackageArcSelectionController.radiusUnit ;
   outlet CanariDimensionTextField mArcRadiusTextField
-     $dimensionAndUnit mPackageArcSelectionController.radius, mPackageArcSelectionController.radiusUnit
+     $dimensionAndUnit #mPackageArcSelectionController.radius, #mPackageArcSelectionController.radiusUnit
   ;
-#--- yCenter
-  outlet EBPopUpButton mArcXCenterUnitPopUp $selectedTag mPackageArcSelectionController.xCenterUnit ;
+//--- yCenter
+  outlet EBPopUpButton mArcXCenterUnitPopUp $selectedTag #mPackageArcSelectionController.xCenterUnit ;
   outlet CanariDimensionTextField mArcXCenterTextField
-     $dimensionAndUnit mPackageArcSelectionController.xCenter, mPackageArcSelectionController.xCenterUnit
+     $dimensionAndUnit #mPackageArcSelectionController.xCenter, #mPackageArcSelectionController.xCenterUnit
   ;
-#--- yCenter
-  outlet EBPopUpButton mArcYCenterUnitPopUp $selectedTag mPackageArcSelectionController.yCenterUnit ;
+//--- yCenter
+  outlet EBPopUpButton mArcYCenterUnitPopUp $selectedTag #mPackageArcSelectionController.yCenterUnit ;
   outlet CanariDimensionTextField mArcYCenterTextField
-     $dimensionAndUnit mPackageArcSelectionController.yCenter, mPackageArcSelectionController.yCenterUnit
+     $dimensionAndUnit #mPackageArcSelectionController.yCenter, #mPackageArcSelectionController.yCenterUnit
   ;
-#--- Start Tangent
-  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag mPackageArcSelectionController.startTangentUnit ;
+//--- Start Tangent
+  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag #mPackageArcSelectionController.startTangentUnit ;
   outlet CanariDimensionTextField mArcStartTangentTextField
-     $dimensionAndUnit mPackageArcSelectionController.startTangent, mPackageArcSelectionController.startTangentUnit
+     $dimensionAndUnit #mPackageArcSelectionController.startTangent, #mPackageArcSelectionController.startTangentUnit
   ;
-#--- End Tangent
-  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag mPackageArcSelectionController.endTangentUnit ;
+//--- End Tangent
+  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag #mPackageArcSelectionController.endTangentUnit ;
   outlet CanariDimensionTextField mArcEndTangentTextField
-     $dimensionAndUnit mPackageArcSelectionController.endTangent, mPackageArcSelectionController.endTangentUnit
+     $dimensionAndUnit #mPackageArcSelectionController.endTangent, #mPackageArcSelectionController.endTangentUnit
   ;
-#--- Close path
-  outlet EBSwitch mArcPathIsClosedSwitch $value mPackageArcSelectionController.pathIsClosed ;
+//--- Close path
+  outlet EBSwitch mArcPathIsClosedSwitch $value #mPackageArcSelectionController.pathIsClosed ;
 
-#--- Start angle
-  outlet CanariPackageArcAngleTextField mArcStartAngleTextField $angle mPackageArcSelectionController.startAngle ;
-  outlet CanariPackageArcAngleSlider mArcStartAngleSlider $angle mPackageArcSelectionController.startAngle ;
+//--- Start angle
+  outlet CanariPackageArcAngleTextField mArcStartAngleTextField $angle #mPackageArcSelectionController.startAngle ;
+  outlet CanariPackageArcAngleSlider mArcStartAngleSlider $angle #mPackageArcSelectionController.startAngle ;
 
-#--- Arc angle
-  outlet CanariPackageArcAngleTextField mArcAngle $angle mPackageArcSelectionController.arcAngle ;
+//--- Arc angle
+  outlet CanariPackageArcAngleTextField mArcAngle $angle #mPackageArcSelectionController.arcAngle ;
 
 
 
-#------- Pad inspector
-  selectionController PackagePad mPackagePadSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Pad inspector
+  selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mPadInspectorView ;
-#--- Pad shape
-  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex mPackagePadSelectionController.padShape ;
-#--- Pad style
-  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex mPackagePadSelectionController.padStyle ;
-  outlet NSView mPadStyleView $hidden !mPackagePadSelectionController.padIsTraversing ;
-#--- xCenter
-  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag mPackagePadSelectionController.xCenterUnit ;
+//--- Pad shape
+  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex #mPackagePadSelectionController.padShape ;
+//--- Pad style
+  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex #mPackagePadSelectionController.padStyle ;
+  outlet NSView mPadStyleView $hidden !#mPackagePadSelectionController.padIsTraversing ;
+//--- xCenter
+  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag #mPackagePadSelectionController.xCenterUnit ;
   outlet CanariDimensionTextField mPadXCenterTextField
-     $dimensionAndUnit mPackagePadSelectionController.xCenter, mPackagePadSelectionController.xCenterUnit
+     $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
   ;
-#--- yCenter
-  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag mPackagePadSelectionController.yCenterUnit ;
+//--- yCenter
+  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag #mPackagePadSelectionController.yCenterUnit ;
   outlet CanariDimensionTextField mPadYCenterTextField
-     $dimensionAndUnit mPackagePadSelectionController.yCenter, mPackagePadSelectionController.yCenterUnit
+     $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
   ;
-#--- Width
-  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag mPackagePadSelectionController.widthUnit ;
+//--- Width
+  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag #mPackagePadSelectionController.widthUnit ;
   outlet CanariDimensionTextField mPadWidthTextField
-     $dimensionAndUnit mPackagePadSelectionController.width, mPackagePadSelectionController.widthUnit
+     $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
   ;
-#--- Height
-  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag mPackagePadSelectionController.heightUnit ;
+//--- Height
+  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag #mPackagePadSelectionController.heightUnit ;
   outlet CanariDimensionTextField mPadHeightTextField
-     $dimensionAndUnit mPackagePadSelectionController.height, mPackagePadSelectionController.heightUnit
+     $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
   ;
-#--- Hole Diameter
-  outlet EBPopUpButton mPadHoleDiameterUnitPopUp $selectedTag mPackagePadSelectionController.holeDiameterUnit ;
+//--- Hole Diameter
+  outlet EBPopUpButton mPadHoleDiameterUnitPopUp $selectedTag #mPackagePadSelectionController.holeDiameterUnit ;
   outlet CanariDimensionTextField mPadHoleDiameterTextField
-     $dimensionAndUnit mPackagePadSelectionController.holeDiameter, mPackagePadSelectionController.holeDiameterUnit
+     $dimensionAndUnit #mPackagePadSelectionController.holeDiameter, #mPackagePadSelectionController.holeDiameterUnit
   ;
-#--- Annular Ring
-  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag mPackagePadSelectionController.annularRingUnit ;
+//--- Annular Ring
+  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag #mPackagePadSelectionController.annularRingUnit ;
   outlet CanariDimensionObserverTextField mPadAnnularRingTextField
-     $dimensionAndUnit mPackagePadSelectionController.annularRing, mPackagePadSelectionController.annularRingUnit
+     $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
   ;
-#--- Pad zone
-  outlet EBTextObserverField mPadZoneNameTextField $valueObserver mPackagePadSelectionController.zoneName ;
-#--- Pad Number
-  outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
+//--- Pad zone
+  outlet EBTextObserverField mPadZoneNameTextField $valueObserver #mPackagePadSelectionController.zoneName ;
+//--- Pad Number
+  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
   outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton
-    $currentNumber mPackagePadSelectionController.padNumber
-    $currentZoneName mPackagePadSelectionController.zoneName
-    $enabled (mPackagePadSelectionController.noZone & root.freePadNumbering) | mPackagePadSelectionController.zoneAllowsManualRenumbering
+    $currentNumber #mPackagePadSelectionController.padNumber
+    $currentZoneName #mPackagePadSelectionController.zoneName
+    $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
   ;
-#--- Slave Pad count
-  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver mPackagePadSelectionController.slavePadCount {autoFormatter : yes};
+//--- Slave Pad count
+  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount {autoFormatter : yes};
 
 
 
-#------- Slave Pad inspector
-  selectionController PackageSlavePad mPackageSlavePadSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Slave Pad inspector
+  selectionController PackageSlavePad #mPackageSlavePadSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mSlavePadInspectorView ;
-#--- Pad shape
-  outlet EBPopUpButton mPackageSlavePadShapePopUpButton $selectedIndex mPackageSlavePadSelectionController.padShape ;
-#--- Pad style
-  outlet EBPopUpButton mPackageSlavePadStylePopUpButton $selectedIndex mPackageSlavePadSelectionController.padStyle ;
-  outlet NSView mSlavePadStyleView $hidden !mPackageSlavePadSelectionController.padIsTraversing ;
-#--- xCenter
-  outlet EBPopUpButton mSlavePadXCenterUnitPopUp $selectedTag mPackageSlavePadSelectionController.xCenterUnit ;
+//--- Pad shape
+  outlet EBPopUpButton mPackageSlavePadShapePopUpButton $selectedIndex #mPackageSlavePadSelectionController.padShape ;
+//--- Pad style
+  outlet EBPopUpButton mPackageSlavePadStylePopUpButton $selectedIndex #mPackageSlavePadSelectionController.padStyle ;
+  outlet NSView mSlavePadStyleView $hidden !#mPackageSlavePadSelectionController.padIsTraversing ;
+//--- xCenter
+  outlet EBPopUpButton mSlavePadXCenterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.xCenterUnit ;
   outlet CanariDimensionTextField mSlavePadXCenterTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.xCenter, mPackageSlavePadSelectionController.xCenterUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.xCenter, #mPackageSlavePadSelectionController.xCenterUnit
   ;
-#--- yCenter
-  outlet EBPopUpButton mSlavePadYCenterUnitPopUp $selectedTag mPackageSlavePadSelectionController.yCenterUnit ;
+//--- yCenter
+  outlet EBPopUpButton mSlavePadYCenterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.yCenterUnit ;
   outlet CanariDimensionTextField mSlavePadYCenterTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.yCenter, mPackageSlavePadSelectionController.yCenterUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
   ;
-#--- Width
-  outlet EBPopUpButton mSlavePadWidthUnitPopUp $selectedTag mPackageSlavePadSelectionController.widthUnit ;
+//--- Width
+  outlet EBPopUpButton mSlavePadWidthUnitPopUp $selectedTag #mPackageSlavePadSelectionController.widthUnit ;
   outlet CanariDimensionTextField mSlavePadWidthTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.width, mPackageSlavePadSelectionController.widthUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
   ;
-#--- Height
-  outlet EBPopUpButton mSlavePadHeightUnitPopUp $selectedTag mPackageSlavePadSelectionController.heightUnit ;
+//--- Height
+  outlet EBPopUpButton mSlavePadHeightUnitPopUp $selectedTag #mPackageSlavePadSelectionController.heightUnit ;
   outlet CanariDimensionTextField mSlavePadHeightTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.height, mPackageSlavePadSelectionController.heightUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
   ;
-#--- Hole Diameter
-  outlet EBPopUpButton mSlavePadHoleDiameterUnitPopUp $selectedTag mPackageSlavePadSelectionController.holeDiameterUnit ;
+//--- Hole Diameter
+  outlet EBPopUpButton mSlavePadHoleDiameterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeDiameterUnit ;
   outlet CanariDimensionTextField mSlavePadHoleDiameterTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.holeDiameter, mPackageSlavePadSelectionController.holeDiameterUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.holeDiameter, #mPackageSlavePadSelectionController.holeDiameterUnit
   ;
-#--- Annular Ring
-  outlet EBPopUpButton mSlavePadAnnularRingUnitPopUp $selectedTag mPackageSlavePadSelectionController.annularRingUnit ;
+//--- Annular Ring
+  outlet EBPopUpButton mSlavePadAnnularRingUnitPopUp $selectedTag #mPackageSlavePadSelectionController.annularRingUnit ;
   outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
-     $dimensionAndUnit mPackageSlavePadSelectionController.annularRing, mPackageSlavePadSelectionController.annularRingUnit
+     $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
   ;
-#--- Master Pad
+//--- Master Pad
   outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
-    $masterPadName mPackageSlavePadSelectionController.padName
+    $masterPadName #mPackageSlavePadSelectionController.padName
   ;
 
 
 
 
-#------- Guide inspector
-  selectionController PackageGuide mPackageGuideSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Guide inspector
+  selectionController PackageGuide #mPackageGuideSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mGuideInspectorView ;
 
-#--- x1
-  outlet EBPopUpButton mGuideX1UnitPopUp $selectedTag mPackageGuideSelectionController.x1Unit ;
+//--- x1
+  outlet EBPopUpButton mGuideX1UnitPopUp $selectedTag #mPackageGuideSelectionController.x1Unit ;
   outlet CanariDimensionTextField mGuideX1TextField
-     $dimensionAndUnit mPackageGuideSelectionController.x1, mPackageGuideSelectionController.x1Unit
+     $dimensionAndUnit #mPackageGuideSelectionController.x1, #mPackageGuideSelectionController.x1Unit
   ;
-#--- y1
-  outlet EBPopUpButton mGuideY1UnitPopUp $selectedTag mPackageGuideSelectionController.y1Unit ;
+//--- y1
+  outlet EBPopUpButton mGuideY1UnitPopUp $selectedTag #mPackageGuideSelectionController.y1Unit ;
   outlet CanariDimensionTextField mGuideY1TextField
-     $dimensionAndUnit mPackageGuideSelectionController.y1, mPackageGuideSelectionController.y1Unit
+     $dimensionAndUnit #mPackageGuideSelectionController.y1, #mPackageGuideSelectionController.y1Unit
   ;
-#--- x2
-  outlet EBPopUpButton mGuideX2UnitPopUp $selectedTag mPackageGuideSelectionController.x2Unit ;
+//--- x2
+  outlet EBPopUpButton mGuideX2UnitPopUp $selectedTag #mPackageGuideSelectionController.x2Unit ;
   outlet CanariDimensionTextField mGuideX2TextField
-     $dimensionAndUnit mPackageGuideSelectionController.x2, mPackageGuideSelectionController.x2Unit
+     $dimensionAndUnit #mPackageGuideSelectionController.x2, #mPackageGuideSelectionController.x2Unit
   ;
-#--- y2
-  outlet EBPopUpButton mGuideY2UnitPopUp $selectedTag mPackageGuideSelectionController.y2Unit ;
+//--- y2
+  outlet EBPopUpButton mGuideY2UnitPopUp $selectedTag #mPackageGuideSelectionController.y2Unit ;
   outlet CanariDimensionTextField mGuideY2TextField
-     $dimensionAndUnit mPackageGuideSelectionController.y2, mPackageGuideSelectionController.y2Unit
+     $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit
   ;
 
 
-#------- Dimension inspector
-  selectionController PackageDimension mPackageDimensionSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Dimension inspector
+  selectionController PackageDimension #mPackageDimensionSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mDimensionInspectorView ;
 
   action setDimensionTextOriginAtMidXAction ;
-  outlet EBButton mSetDimensionTextOriginAtMidX $run self.setDimensionTextOriginAtMidXAction ;
+  outlet EBButton mSetDimensionTextOriginAtMidX $run setDimensionTextOriginAtMidXAction ;
 
   action setDimensionTextOriginAtMidYAction ;
-  outlet EBButton mSetDimensionTextOriginAtMidY $run self.setDimensionTextOriginAtMidYAction ;
+  outlet EBButton mSetDimensionTextOriginAtMidY $run setDimensionTextOriginAtMidYAction ;
 
-#--- x1
-  outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag mPackageDimensionSelectionController.x1Unit ;
+//--- x1
+  outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag #mPackageDimensionSelectionController.x1Unit ;
   outlet CanariDimensionTextField mDimensionX1TextField
-     $dimensionAndUnit mPackageDimensionSelectionController.x1, mPackageDimensionSelectionController.x1Unit
+     $dimensionAndUnit #mPackageDimensionSelectionController.x1, #mPackageDimensionSelectionController.x1Unit
   ;
-#--- y1
-  outlet EBPopUpButton mDimensionY1UnitPopUp $selectedTag mPackageDimensionSelectionController.y1Unit ;
+//--- y1
+  outlet EBPopUpButton mDimensionY1UnitPopUp $selectedTag #mPackageDimensionSelectionController.y1Unit ;
   outlet CanariDimensionTextField mDimensionY1TextField
-     $dimensionAndUnit mPackageDimensionSelectionController.y1, mPackageDimensionSelectionController.y1Unit
+     $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
   ;
-#--- x2
-  outlet EBPopUpButton mDimensionX2UnitPopUp $selectedTag mPackageDimensionSelectionController.x2Unit ;
+//--- x2
+  outlet EBPopUpButton mDimensionX2UnitPopUp $selectedTag #mPackageDimensionSelectionController.x2Unit ;
   outlet CanariDimensionTextField mDimensionX2TextField
-     $dimensionAndUnit mPackageDimensionSelectionController.x2, mPackageDimensionSelectionController.x2Unit
+     $dimensionAndUnit #mPackageDimensionSelectionController.x2, #mPackageDimensionSelectionController.x2Unit
   ;
-#--- y2
-  outlet EBPopUpButton mDimensionY2UnitPopUp $selectedTag mPackageDimensionSelectionController.y2Unit ;
+//--- y2
+  outlet EBPopUpButton mDimensionY2UnitPopUp $selectedTag #mPackageDimensionSelectionController.y2Unit ;
   outlet CanariDimensionTextField mDimensionY2TextField
-     $dimensionAndUnit mPackageDimensionSelectionController.y2, mPackageDimensionSelectionController.y2Unit
+     $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
   ;
-#--- Distance
-  outlet EBPopUpButton mDimensionDistanceUnitPopUp $selectedTag mPackageDimensionSelectionController.distanceUnit ;
+//--- Distance
+  outlet EBPopUpButton mDimensionDistanceUnitPopUp $selectedTag #mPackageDimensionSelectionController.distanceUnit ;
   outlet CanariDimensionObserverTextField mDimensionDistanceTextField
-     $dimensionAndUnit mPackageDimensionSelectionController.distanceInCanariUnit, mPackageDimensionSelectionController.distanceUnit
+     $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
   ;
-#--- xLabel
-  outlet EBPopUpButton mDimensionXLabelUnitPopUp $selectedTag mPackageDimensionSelectionController.xDimensionUnit ;
+//--- xLabel
+  outlet EBPopUpButton mDimensionXLabelUnitPopUp $selectedTag #mPackageDimensionSelectionController.xDimensionUnit ;
   outlet CanariDimensionTextField mDimensionXLabelTextField
-     $dimensionAndUnit mPackageDimensionSelectionController.xDimension, mPackageDimensionSelectionController.xDimensionUnit
+     $dimensionAndUnit #mPackageDimensionSelectionController.xDimension, #mPackageDimensionSelectionController.xDimensionUnit
   ;
-#--- yLabel
-  outlet EBPopUpButton mDimensionYLabelUnitPopUp $selectedTag mPackageDimensionSelectionController.yDimensionUnit ;
+//--- yLabel
+  outlet EBPopUpButton mDimensionYLabelUnitPopUp $selectedTag #mPackageDimensionSelectionController.yDimensionUnit ;
   outlet CanariDimensionTextField mDimensionYLabelTextField
-     $dimensionAndUnit mPackageDimensionSelectionController.yDimension, mPackageDimensionSelectionController.yDimensionUnit
+     $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
   ;
 
 
 
-#------- Zone inspector
-  selectionController PackageZone mPackageZoneSelectionController : self.mPackageObjectsController.selectedArray ;
+//------- Zone inspector
+  selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mZoneInspectorView ;
-#--- x
-  outlet EBPopUpButton mZoneXUnitPopUp $selectedTag mPackageZoneSelectionController.xUnit ;
+//--- x
+  outlet EBPopUpButton mZoneXUnitPopUp $selectedTag #mPackageZoneSelectionController.xUnit ;
   outlet CanariDimensionTextField mZoneXTextField
-     $dimensionAndUnit mPackageZoneSelectionController.x, mPackageZoneSelectionController.xUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.x, #mPackageZoneSelectionController.xUnit
   ;
-#--- y
-  outlet EBPopUpButton mZoneYUnitPopUp $selectedTag mPackageZoneSelectionController.yUnit ;
+//--- y
+  outlet EBPopUpButton mZoneYUnitPopUp $selectedTag #mPackageZoneSelectionController.yUnit ;
   outlet CanariDimensionTextField mZoneYTextField
-     $dimensionAndUnit mPackageZoneSelectionController.y, mPackageZoneSelectionController.yUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.y, #mPackageZoneSelectionController.yUnit
   ;
-#--- Width
-  outlet EBPopUpButton mZoneWidthUnitPopUp $selectedTag mPackageZoneSelectionController.widthUnit ;
+//--- Width
+  outlet EBPopUpButton mZoneWidthUnitPopUp $selectedTag #mPackageZoneSelectionController.widthUnit ;
   outlet CanariDimensionTextField mZoneWidthTextField
-     $dimensionAndUnit mPackageZoneSelectionController.width, mPackageZoneSelectionController.widthUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.width, #mPackageZoneSelectionController.widthUnit
   ;
-#--- Height
-  outlet EBPopUpButton mZoneHeightUnitPopUp $selectedTag mPackageZoneSelectionController.heightUnit ;
+//--- Height
+  outlet EBPopUpButton mZoneHeightUnitPopUp $selectedTag #mPackageZoneSelectionController.heightUnit ;
   outlet CanariDimensionTextField mZoneHeightTextField
-     $dimensionAndUnit mPackageZoneSelectionController.height, mPackageZoneSelectionController.heightUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
   ;
-#--- Name
-  outlet EBTextField mZoneNameTextField $value mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
-#--- Zone numbering
-  outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex mPackageZoneSelectionController.zoneNumbering ;
-#--- xLabel
-  outlet EBPopUpButton mZoneXLabelUnitPopUp $selectedTag mPackageZoneSelectionController.xNameUnit ;
+//--- Name
+  outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
+//--- Zone numbering
+  outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex #mPackageZoneSelectionController.zoneNumbering ;
+//--- xLabel
+  outlet EBPopUpButton mZoneXLabelUnitPopUp $selectedTag #mPackageZoneSelectionController.xNameUnit ;
   outlet CanariDimensionTextField mZoneXLabelTextField
-     $dimensionAndUnit mPackageZoneSelectionController.xName, mPackageZoneSelectionController.xNameUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.xName, #mPackageZoneSelectionController.xNameUnit
   ;
-#--- yLabel
-  outlet EBPopUpButton mZoneYLabelUnitPopUp $selectedTag mPackageZoneSelectionController.yNameUnit ;
+//--- yLabel
+  outlet EBPopUpButton mZoneYLabelUnitPopUp $selectedTag #mPackageZoneSelectionController.yNameUnit ;
   outlet CanariDimensionTextField mZoneYLabelTextField
-     $dimensionAndUnit mPackageZoneSelectionController.yName, mPackageZoneSelectionController.yNameUnit
+     $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
   ;
 
 
 
-#--- Pad numbering inspector
+//--- Pad numbering inspector
   outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
 
-#------- Issues
+//------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
@@ -393,7 +393,7 @@ document PackageDocument root PackageRoot {
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;
   outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
-#--- Buttons for new elements
+//--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
   outlet CanariDragSourceButton mAddBezierButton ;
   outlet CanariDragSourceButton mAddOvalButton ;
@@ -404,8 +404,8 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddDimensionButton ;
   outlet CanariDragSourceButton mAddZoneButton ;
 
-#--- Package display
-  arrayController mPackageObjectsController : root.packageObjects ;
+//--- Package display
+  arrayController #mPackageObjectsController : root.packageObjects ;
 
   outlet EBView mComposedPackageView
     $horizontalFlip root.horizontalFlip
@@ -428,7 +428,7 @@ document PackageDocument root PackageRoot {
 
   outlet EBScrollView mComposedPackageScrollView ;
 
-#--- Zoom and flip inspector
+//--- Zoom and flip inspector
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
@@ -436,8 +436,8 @@ document PackageDocument root PackageRoot {
   outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-  
-#--- Display inspector
+
+//--- Display inspector
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
@@ -450,37 +450,37 @@ document PackageDocument root PackageRoot {
   outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
   outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
-#--- Grid
+//--- Grid
   outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
   outlet CanariDimensionTextField mGridTextField
      $dimensionAndUnit root.gridStep, root.gridStepUnit
   ;
 
-#--------------- Program Tab
+//--------------- Program Tab
   outlet NSPanel mProgramHelpSheet ;
   action programHelpAction ;
-  outlet EBButton mProgramHelpButton $run self.programHelpAction ;
-  
+  outlet EBButton mProgramHelpButton $run programHelpAction ;
+
   outlet EBTextView mProgramTextView $value root.program ;
 
   action loadFromDesignAction ;
-  outlet EBButton mLoadFromDesignButton $run self.loadFromDesignAction ;
+  outlet EBButton mLoadFromDesignButton $run loadFromDesignAction ;
 
   action runProgramAction ;
-  outlet EBButton mRunProgramButton $run self.runProgramAction ;
+  outlet EBButton mRunProgramButton $run runProgramAction ;
 
   action clearProgramErrorAction ;
-  outlet EBButton mClearProgramErrorButton $run self.clearProgramErrorAction ;
+  outlet EBButton mClearProgramErrorButton $run clearProgramErrorAction ;
 
   outlet EBTextField mProgramErrorTextField ;
 
-#--------------- Infos Tab
-#--- Comments
+//--------------- Infos Tab
+//--- Comments
   outlet EBTextView mCommentTextView  $value root.comments ;
 
-#--- Reset
+//--- Reset
   action resetVersionAction ;
-  outlet EBButton mResetVersionButton $run self.resetVersionAction ;
+  outlet EBButton mResetVersionButton $run resetVersionAction ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*

@@ -1,10 +1,10 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SymbolObject {
-  abstract transient CanariIssueArray issues ; 
+  abstract transient CanariIssueArray issues ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolPin : SymbolObject {
   property @signature Int xPin default 0 ;
@@ -16,49 +16,49 @@ graphic entity SymbolPin : SymbolObject {
   property @signature String name default "" ;
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
-  
+
   property @signature Bool pinNameIsDisplayedInSchematics default yes ;
-  
+
   transient NSBezierPath filledBezierPath dependsFrom self.xPin, self.yPin ;
-  
+
   override transient EBShape objectDisplay dependsFrom
-     self.xPin, self.yPin, 
-     self.xName, self.yName, 
-     self.xNumber, self.yNumber, 
+     self.xPin, self.yPin,
+     self.xName, self.yName,
+     self.xNumber, self.yNumber,
      self.name, self.pinNameIsDisplayedInSchematics,
      self.nameHorizontalAlignment, self.numberHorizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-     self.xPin, self.yPin, 
-     self.xName, self.yName, 
+     self.xPin, self.yPin,
+     self.xName, self.yName,
      self.xNumber, self.yNumber,
      self.nameHorizontalAlignment, self.numberHorizontalAlignment
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
-     self.xPin, self.yPin, 
-     self.xName, self.yName, 
-     self.xNumber, self.yNumber, 
+     self.xPin, self.yPin,
+     self.xName, self.yName,
+     self.xNumber, self.yNumber,
      self.name
   ;
 
   transient NSRect nameRect dependsFrom
-     self.xName, self.yName, 
+     self.xName, self.yName,
      self.name, self.nameHorizontalAlignment, prefs.pinNameFont
   ;
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolText : SymbolObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
   property @signature String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
-  
+
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.text, self.horizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
@@ -71,16 +71,16 @@ graphic entity SymbolText : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.text ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidRect : SymbolObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
-  
+
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
-  
+
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
@@ -89,20 +89,20 @@ graphic entity SymbolSolidRect : SymbolObject {
   override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolOval : SymbolObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
- 
+
   transient NSBezierPath strokeBezierPath dependsFrom self.x, self.y, self.width, self.height ;
- 
+
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
@@ -111,11 +111,11 @@ graphic entity SymbolOval : SymbolObject {
   override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidOval : SymbolObject {
   property @signature Int x default 0 ;
@@ -124,7 +124,7 @@ graphic entity SymbolSolidOval : SymbolObject {
   property @signature Int height default 6_858_00 ;
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
-  
+
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor
@@ -132,11 +132,11 @@ graphic entity SymbolSolidOval : SymbolObject {
   override transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolBezierCurve : SymbolObject {
   property @signature Int x1 default 0 ;
@@ -147,12 +147,12 @@ graphic entity SymbolBezierCurve : SymbolObject {
   property @signature Int cpy1 default 6_858_00 ;
   property @signature Int cpx2 default 6_858_00 ;
   property @signature Int cpy2 default 0 ;
-  
+
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
- 
+
   override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.cpx1, self.cpy1, self.cpx2, self.cpy2,
@@ -162,21 +162,21 @@ graphic entity SymbolBezierCurve : SymbolObject {
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
-  
+
   override transient CanariIssueArray issues dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSegment : SymbolObject {
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 6_858_00 ;
-  
+
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   override transient EBShape objectDisplay dependsFrom
@@ -187,34 +187,34 @@ graphic entity SymbolSegment : SymbolObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolRoot {
-#--- Selected page index
+//--- Selected page index
   property Int selectedPageIndex default 0 ;
 
-#--- Selected inspector
+//--- Selected inspector
   property Int selectedInspector default 0 ;
 
-#--- Comment
+//--- Comment
   property @signature String comments default "" ;
 
-#--- Grid and display inspector
+//--- Grid and display inspector
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
   property Int gridDisplay default 4 ;
   property Int zoom default 600 ;
 
-#--- XY placard unit
-  property @signature Int xPlacardUnit default 2_286 ; # mils
-  property @signature Int yPlacardUnit default 2_286 ; # mils
+//--- XY placard unit
+  property @signature Int xPlacardUnit default 2_286 ; // mils
+  property @signature Int yPlacardUnit default 2_286 ; // mils
 
-#--- Symbol definition
+//--- Symbol definition
   toMany @signature SymbolObject symbolObjects ;
   toMany SymbolPin symbolPins dependsFrom self.symbolObjects ;
 
-#--- Issues
+//--- Issues
   transient CanariIssueArray issues dependsFrom
     self.symbolObjects.all.issues,
     self.symbolPins.all.name, self.symbolPins.all.nameRect, self.symbolPins.all.xPin, self.symbolPins.all.yPin ;
@@ -223,4 +223,4 @@ entity SymbolRoot {
 
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*

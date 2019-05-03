@@ -91,7 +91,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  var selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -108,7 +108,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String (defaultValue: "")
+  let comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -125,7 +125,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minPPTPTTTWdisplayUnit
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
+  let minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
 
   //····················································································································
 
@@ -142,7 +142,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minPPTPTTTW
   //····················································································································
 
-  var minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000)
+  let minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000)
 
   //····················································································································
 
@@ -159,7 +159,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForOARdisplayUnit
   //····················································································································
 
-  var minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
+  let minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
 
   //····················································································································
 
@@ -176,7 +176,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForOARinEBUnit
   //····················································································································
 
-  var minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
+  let minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
 
   //····················································································································
 
@@ -193,7 +193,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForPHDdisplayUnit
   //····················································································································
 
-  var minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
+  let minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90)
 
   //····················································································································
 
@@ -210,7 +210,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForPHDinEBUnit
   //····················································································································
 
-  var minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
+  let minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000)
 
   //····················································································································
 
@@ -227,7 +227,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForBoardLimitWidthDisplayUnit
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -244,7 +244,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: minValueForBoardLimitWidth
   //····················································································································
 
-  var minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
+  let minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -261,7 +261,7 @@ class ArtworkRoot : EBManagedObject,
   //   Atomic property: drillDataFileExtension
   //····················································································································
 
-  var drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf")
+  let drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf")
 
   //····················································································································
 

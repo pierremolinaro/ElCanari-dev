@@ -36,7 +36,7 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  var documentFilePath_property = EBTransientProperty_String ()
+  let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -59,7 +59,7 @@ import Cocoa
   //   Transient property: incorrectDocumentFileErrorMessage
   //····················································································································
 
-  var incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
+  let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -82,7 +82,7 @@ import Cocoa
   //   Transient property: documentIsUnnamed
   //····················································································································
 
-  var documentIsUnnamed_property = EBTransientProperty_Bool ()
+  let documentIsUnnamed_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -105,7 +105,7 @@ import Cocoa
   //   Transient property: importArtworkButtonTitle
   //····················································································································
 
-  var importArtworkButtonTitle_property = EBTransientProperty_String ()
+  let importArtworkButtonTitle_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -128,7 +128,7 @@ import Cocoa
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
@@ -151,7 +151,7 @@ import Cocoa
   //   Transient property: mStatusImage
   //····················································································································
 
-  var mStatusImage_property = EBTransientProperty_NSImage ()
+  let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
@@ -174,7 +174,7 @@ import Cocoa
   //   Transient property: mStatusMessage
   //····················································································································
 
-  var mStatusMessage_property = EBTransientProperty_String ()
+  let mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -197,7 +197,7 @@ import Cocoa
   //   Transient property: documentFileNameOk
   //····················································································································
 
-  var documentFileNameOk_property = EBTransientProperty_Bool ()
+  let documentFileNameOk_property = EBTransientProperty_Bool ()
 
   //····················································································································
 

@@ -98,7 +98,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  var mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mName
   //····················································································································
 
-  var mName_property = EBStoredProperty_String (defaultValue: "")
+  let mName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mVersion
   //····················································································································
 
-  var mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  var mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mX
   //····················································································································
 
-  var mX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Atomic property: mY
   //····················································································································
 
-  var mY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -271,7 +271,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: frontSidePadFilledBezierPathArray
   //····················································································································
 
-  var frontSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  let frontSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -294,7 +294,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: backSidePadFilledBezierPathArray
   //····················································································································
 
-  var backSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  let backSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
 
   //····················································································································
 
@@ -317,7 +317,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: padNameSet
   //····················································································································
 
-  var padNameSet_property = EBTransientProperty_StringSet ()
+  let padNameSet_property = EBTransientProperty_StringSet ()
 
   //····················································································································
 

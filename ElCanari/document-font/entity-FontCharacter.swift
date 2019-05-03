@@ -70,7 +70,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: codePoint
   //····················································································································
 
-  var codePoint_property = EBStoredProperty_Int (defaultValue: 0)
+  let codePoint_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -87,7 +87,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: advance
   //····················································································································
 
-  var advance_property = EBStoredProperty_Int (defaultValue: 0)
+  let advance_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -104,7 +104,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: mWarnsWhenNoSegment
   //····················································································································
 
-  var mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
+  let mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class FontCharacter : EBManagedObject,
   //   Atomic property: mWarnsWhenAdvanceIsZero
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
+  let mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -157,7 +157,7 @@ class FontCharacter : EBManagedObject,
   //   Transient property: segmentArrayForDrawing
   //····················································································································
 
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   //····················································································································
 
@@ -180,7 +180,7 @@ class FontCharacter : EBManagedObject,
   //   Transient property: gerberCode
   //····················································································································
 
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+  let gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class FontCharacter : EBManagedObject,
   //   Transient property: gerberCodeInstructionCountMessage
   //····················································································································
 
-  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+  let gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -226,7 +226,7 @@ class FontCharacter : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 

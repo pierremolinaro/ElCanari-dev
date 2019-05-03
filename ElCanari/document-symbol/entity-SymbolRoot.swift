@@ -98,7 +98,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String (defaultValue: "")
+  let comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  var horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: verticalFlip
   //····················································································································
 
-  var verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+  let gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridDisplay
   //····················································································································
 
-  var gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
+  let gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -200,7 +200,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (defaultValue: 600)
+  let zoom_property = EBStoredProperty_Int (defaultValue: 600)
 
   //····················································································································
 
@@ -217,7 +217,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  var xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -234,7 +234,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: yPlacardUnit
   //····················································································································
 
-  var yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -288,7 +288,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -305,7 +305,7 @@ class SymbolRoot : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
@@ -328,7 +328,7 @@ class SymbolRoot : EBManagedObject,
   //   Transient property: noIssue
   //····················································································································
 
-  var noIssue_property = EBTransientProperty_Bool ()
+  let noIssue_property = EBTransientProperty_Bool ()
 
   //····················································································································
 

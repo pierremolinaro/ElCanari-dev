@@ -40,7 +40,7 @@ class SheetInProject : EBManagedObject,
   //   Atomic property: mSheetTitle
   //····················································································································
 
-  var mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
+  let mSheetTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

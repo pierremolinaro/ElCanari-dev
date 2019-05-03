@@ -1,26 +1,26 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#     F O N T    D O C U M E N T
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//     F O N T    D O C U M E N T
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 transient property class CharacterGerberCodeClass ;
 transient property class CharacterSegmentListClass ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class NewCharacterView ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariCharacterGerberCodeTableView ;
 binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCodeClass ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariFontSampleStringView ;
 binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
 binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariCharacterView ;
 binding CanariCharacterView $advance : transient Int ;
@@ -29,17 +29,17 @@ binding CanariCharacterView $transparency : transient Double ;
 binding CanariCharacterView $displayFlow : transient Bool ;
 binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 document FontDocument root FontRoot {
-#--- Toolbar
+//--- Toolbar
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
   outlet NSView mMasterView ;
 
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-#------------ Page Font
+//------------ Page Font
   outlet CanariViewWithKeyView mFontPageView ;
 
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
@@ -47,31 +47,31 @@ document FontDocument root FontRoot {
   outlet CanariViewWithKeyView mSelectedCharacterInspectorView ;
   outlet CanariViewWithKeyView mCharacterIssuesInspectorView ;
 
-  tableViewController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
-  selectionController FontCharacter mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
+  tableViewController #mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
+  selectionController FontCharacter #mCharacterSelection : #mSelectedCharacterController.selectedArray ;
 
-#--- Advancement
-  outlet EBIntField advancementTextField $value mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;
-  outlet EBSlider advancementSlider $intValue mCharacterSelection.advance {sendContinously:yes} ;
+//--- Advancement
+  outlet EBIntField advancementTextField $value #mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;
+  outlet EBSlider advancementSlider $intValue #mCharacterSelection.advance {sendContinously:yes} ;
 
-#--- Transparency
+//--- Transparency
   outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
   outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
 
-#--- Warning checkboxes
-  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value mCharacterSelection.mWarnsWhenNoSegment ;
-  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value mCharacterSelection.mWarnsWhenAdvanceIsZero ;
+//--- Warning checkboxes
+  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value #mCharacterSelection.mWarnsWhenNoSegment ;
+  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value #mCharacterSelection.mWarnsWhenAdvanceIsZero ;
 
-#--- Font
-  outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
+//--- Font
+  outlet EBButton mAddCharacterButton $run addCharacterAction ;
   action addCharacterAction ;
-  
+
   outlet NSPanel mNewCharacterPanel ;
   outlet NewCharacterView mNewCharacterView ;
 
   outlet EBIntField mFontNominalSizeTextField $value root.nominalSize {sendContinously:no, autoFormatter:no} ;
- 
-#--- Current Character
+
+//--- Current Character
   outlet FontCharacterSelectButton mFontCharacterSelectButton
     $codePoint root.currentCharacterCodePoint
     $characters root.definedCharacters
@@ -82,53 +82,53 @@ document FontDocument root FontRoot {
   outlet EBStepper currentCharacterStepper
     $value root .currentCharacterCodePoint {sendContinously:yes}
   ;
-  
+
   transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
-  
+
   outlet EBButton mDeleteCurrentCharacterButton
-    $run self.deleteCurrentCharacterAction
+    $run deleteCurrentCharacterAction
     $enabled self.canDeleteCurrentCharacter
   ;
   action deleteCurrentCharacterAction ;
-    
-  outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
+
+  outlet EBButton mAddSegmentButton $run addSegmentAction ;
   action addSegmentAction ;
 
-#--- Gerber Code inspector
+//--- Gerber Code inspector
   outlet CanariViewWithKeyView mSampleStringInspectorView ;
   outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
 
   outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
 
   outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
-    $valueObserver mCharacterSelection.gerberCodeInstructionCountMessage
+    $valueObserver #mCharacterSelection.gerberCodeInstructionCountMessage
   ;
-  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode mCharacterSelection.gerberCode ;
+  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode #mCharacterSelection.gerberCode ;
 
-#--- Sample String
+//--- Sample String
   outlet EBTextField mSampleStringField $value prefs.sampleString {sendContinously:yes};
 
-#--- Sample string display
+//--- Sample string display
   outlet CanariFontSampleStringView mFontSampleStringView
     $bezierPath root.sampleStringBezierPath
   ;
 
-#--- Sample String Display
+//--- Sample String Display
   outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
   outlet EBTextObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth ;
   outlet EBTextObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent;
   outlet EBTextObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent ;
 
-#--- View
+//--- View
   outlet CanariCharacterView currentCharacterView
-    $advance mCharacterSelection.advance
-    $characterSegmentList mCharacterSelection.segmentArrayForDrawing
+    $advance #mCharacterSelection.advance
+    $characterSegmentList #mCharacterSelection.segmentArrayForDrawing
     $transparency prefs.fontEditionTransparency
     $displayFlow prefs.showGerberDrawingFlow
     $displayDrawingIndexes prefs.showGerberDrawingIndexes
   ;
 
-#--- Issues
+//--- Issues
   transient Bool noIssue dependsFrom root.issues ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
 
@@ -138,14 +138,14 @@ document FontDocument root FontRoot {
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
   transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
 
-#--------------- Infos Tab
+//--------------- Infos Tab
   outlet CanariViewWithKeyView mInfosPageView ;
 
-#--- Comments
+//--- Comments
   outlet EBTextView commentTextView $value root.comments ;
-#--- Reset
+//--- Reset
   action resetVersionAndSignatureAction ;
-  outlet EBButton resetVersionAndSignatureButton $run self.resetVersionAndSignatureAction ;
+  outlet EBButton resetVersionAndSignatureButton $run resetVersionAndSignatureAction ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

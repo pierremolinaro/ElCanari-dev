@@ -24,7 +24,7 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  var documentFilePath_property = EBTransientProperty_String ()
+  let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -47,7 +47,7 @@ import Cocoa
   //   Transient property: mGeneratedFileCountString
   //····················································································································
 
-  var mGeneratedFileCountString_property = EBTransientProperty_String ()
+  let mGeneratedFileCountString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -70,7 +70,7 @@ import Cocoa
   //   Transient property: mStatusImage
   //····················································································································
 
-  var mStatusImage_property = EBTransientProperty_NSImage ()
+  let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
@@ -93,7 +93,7 @@ import Cocoa
   //   Transient property: mStatusMessage
   //····················································································································
 
-  var mStatusMessage_property = EBTransientProperty_String ()
+  let mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 

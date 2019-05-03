@@ -89,7 +89,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mTypeName
   //····················································································································
 
-  var mTypeName_property = EBStoredProperty_String (defaultValue: "")
+  let mTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -106,7 +106,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mVersion
   //····················································································································
 
-  var mVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  let mVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -123,7 +123,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFileData
   //····················································································································
 
-  var mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  let mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -140,7 +140,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
-  var mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  let mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -157,7 +157,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Atomic property: mFilledBezierPath
   //····················································································································
 
-  var mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
+  let mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath ())
 
   //····················································································································
 
@@ -193,7 +193,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -216,7 +216,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  var instanceCount_property = EBTransientProperty_Int ()
+  let instanceCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: pinNameShape
   //····················································································································
 
-  var pinNameShape_property = EBTransientProperty_EBShape ()
+  let pinNameShape_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

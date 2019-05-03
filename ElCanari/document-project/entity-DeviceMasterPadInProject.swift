@@ -70,7 +70,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mCenterX
   //····················································································································
 
-  var mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -87,7 +87,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mCenterY
   //····················································································································
 
-  var mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mCenterY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -104,7 +104,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mWidth
   //····················································································································
 
-  var mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+  let mWidth_property = EBStoredProperty_Int (defaultValue: 114300)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mHeight
   //····················································································································
 
-  var mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
+  let mHeight_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -138,7 +138,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mHoleDiameter
   //····················································································································
 
-  var mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mHoleDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -155,7 +155,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mShape
   //····················································································································
 
-  var mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+  let mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
 
   //····················································································································
 
@@ -172,7 +172,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mStyle
   //····················································································································
 
-  var mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing)
+  let mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing)
 
   //····················································································································
 
@@ -189,7 +189,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //   Atomic property: mName
   //····················································································································
 
-  var mName_property = EBStoredProperty_String (defaultValue: "")
+  let mName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

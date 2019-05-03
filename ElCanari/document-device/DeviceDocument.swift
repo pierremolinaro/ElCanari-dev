@@ -48,7 +48,7 @@ import Cocoa
   //   Transient property: documentFilePath
   //····················································································································
 
-  var documentFilePath_property = EBTransientProperty_String ()
+  let documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -71,7 +71,7 @@ import Cocoa
   //   Transient property: assignmentInhibitionMessage
   //····················································································································
 
-  var assignmentInhibitionMessage_property = EBTransientProperty_String ()
+  let assignmentInhibitionMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -94,7 +94,7 @@ import Cocoa
   //   Transient property: hasUnconnectedPin
   //····················································································································
 
-  var hasUnconnectedPin_property = EBTransientProperty_Bool ()
+  let hasUnconnectedPin_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -117,7 +117,7 @@ import Cocoa
   //   Transient property: mStatusMessage
   //····················································································································
 
-  var mStatusMessage_property = EBTransientProperty_String ()
+  let mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -140,7 +140,7 @@ import Cocoa
   //   Transient property: mMetadataStatus
   //····················································································································
 
-  var mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+  let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
 
   //····················································································································
 
@@ -163,7 +163,7 @@ import Cocoa
   //   Transient property: hasUnconnectedPad
   //····················································································································
 
-  var hasUnconnectedPad_property = EBTransientProperty_Bool ()
+  let hasUnconnectedPad_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -186,7 +186,7 @@ import Cocoa
   //   Transient property: hasAssignedPadProxies
   //····················································································································
 
-  var hasAssignedPadProxies_property = EBTransientProperty_Bool ()
+  let hasAssignedPadProxies_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ import Cocoa
   //   Transient property: mStatusImage
   //····················································································································
 
-  var mStatusImage_property = EBTransientProperty_NSImage ()
+  let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 

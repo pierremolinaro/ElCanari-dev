@@ -154,7 +154,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: xCenter
   //····················································································································
 
-  var xCenter_property = EBStoredProperty_Int (defaultValue: 0)
+  let xCenter_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -171,7 +171,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: yCenter
   //····················································································································
 
-  var yCenter_property = EBStoredProperty_Int (defaultValue: 0)
+  let yCenter_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -188,7 +188,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 114300)
+  let width_property = EBStoredProperty_Int (defaultValue: 114300)
 
   //····················································································································
 
@@ -205,7 +205,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 228600)
+  let height_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -222,7 +222,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: holeDiameter
   //····················································································································
 
-  var holeDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
+  let holeDiameter_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: padShape
   //····················································································································
 
-  var padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
+  let padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo)
 
   //····················································································································
 
@@ -256,7 +256,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: padStyle
   //····················································································································
 
-  var padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
+  let padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing)
 
   //····················································································································
 
@@ -273,7 +273,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: xCenterUnit
   //····················································································································
 
-  var xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -290,7 +290,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: yCenterUnit
   //····················································································································
 
-  var yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -307,7 +307,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  var widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -324,7 +324,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  var heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -341,7 +341,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: holeDiameterUnit
   //····················································································································
 
-  var holeDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let holeDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -358,7 +358,7 @@ class PackageSlavePad : PackageObject,
   //   Atomic property: annularRingUnit
   //····················································································································
 
-  var annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -404,7 +404,7 @@ class PackageSlavePad : PackageObject,
   //   Transient property: padIsTraversing
   //····················································································································
 
-  var padIsTraversing_property = EBTransientProperty_Bool ()
+  let padIsTraversing_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -427,7 +427,7 @@ class PackageSlavePad : PackageObject,
   //   Transient property: annularRing
   //····················································································································
 
-  var annularRing_property = EBTransientProperty_Int ()
+  let annularRing_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -450,7 +450,7 @@ class PackageSlavePad : PackageObject,
   //   Transient property: padName
   //····················································································································
 
-  var padName_property = EBTransientProperty_String ()
+  let padName_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -473,7 +473,7 @@ class PackageSlavePad : PackageObject,
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  var padNumberDisplay_property = EBTransientProperty_EBShape ()
+  let padNumberDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

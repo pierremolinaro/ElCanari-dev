@@ -189,7 +189,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
-  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -206,7 +206,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mTitle
   //····················································································································
 
-  var mTitle_property = EBStoredProperty_String (defaultValue: "")
+  let mTitle_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -223,7 +223,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPrefix
   //····················································································································
 
-  var mPrefix_property = EBStoredProperty_String (defaultValue: "")
+  let mPrefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -240,7 +240,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mComments
   //····················································································································
 
-  var mComments_property = EBStoredProperty_String (defaultValue: "")
+  let mComments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -257,7 +257,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayZoom
   //····················································································································
 
-  var mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -274,7 +274,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayHorizontalFlip
   //····················································································································
 
-  var mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -291,7 +291,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mPackageDisplayVerticalFlip
   //····················································································································
 
-  var mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackages
   //····················································································································
 
-  var mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
+  let mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -325,7 +325,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackagePadNumbers
   //····················································································································
 
-  var mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
+  let mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -342,7 +342,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackageFrontPads
   //····················································································································
 
-  var mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
+  let mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -359,7 +359,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mShowPackageBackPads
   //····················································································································
 
-  var mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
+  let mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -376,7 +376,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayZoom
   //····················································································································
 
-  var mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -393,7 +393,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayHorizontalFlip
   //····················································································································
 
-  var mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mSymbolDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -410,7 +410,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mSymbolDisplayVerticalFlip
   //····················································································································
 
-  var mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+  let mSymbolDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -503,7 +503,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: mImageData
   //····················································································································
 
-  var mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
+  let mImageData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -539,7 +539,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
-  var inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
+  let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -562,7 +562,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: inconsistentSymbolNameSetMessage
   //····················································································································
 
-  var inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
+  let inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -585,7 +585,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: unconnectedPins
   //····················································································································
 
-  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
 
   //····················································································································
 
@@ -608,7 +608,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: imageIsValid
   //····················································································································
 
-  var imageIsValid_property = EBTransientProperty_Bool ()
+  let imageIsValid_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -631,7 +631,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: packagePadNameSetsAreConsistent
   //····················································································································
 
-  var packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
+  let packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -654,7 +654,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: symbolNameAreConsistent
   //····················································································································
 
-  var symbolNameAreConsistent_property = EBTransientProperty_Bool ()
+  let symbolNameAreConsistent_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -677,7 +677,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: symbolTypeNames
   //····················································································································
 
-  var symbolTypeNames_property = EBTransientProperty_StringArray ()
+  let symbolTypeNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -700,7 +700,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: unconnectedPads
   //····················································································································
 
-  var unconnectedPads_property = EBTransientProperty_StringArray ()
+  let unconnectedPads_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -723,7 +723,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: assignedPadProxies
   //····················································································································
 
-  var assignedPadProxies_property = EBTransientProperty_AssignedPadProxiesInDevice ()
+  let assignedPadProxies_property = EBTransientProperty_AssignedPadProxiesInDevice ()
 
   //····················································································································
 
@@ -746,7 +746,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 

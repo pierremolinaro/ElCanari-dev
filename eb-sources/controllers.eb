@@ -1,6 +1,6 @@
-#----------------------------------------------------------------------------*
-#     C O N T R O L L E R S                                                  *
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
+//     C O N T R O L L E R S                                                  *
+//----------------------------------------------------------------------------*
 
 controllerClass EBMeasurementController {
   binding $valueInEBUnit : integer16, integer32, integer64 ;
@@ -8,7 +8,7 @@ controllerClass EBMeasurementController {
   attribute valueInUnitFactor : double ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass PMSchematicsPaperWidthController {
   binding $customWidth : integer16, integer32, integer64 ;
@@ -16,7 +16,7 @@ controllerClass PMSchematicsPaperWidthController {
   attribute actualWidth : integer64 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass PMSchematicsPaperHeightController {
   binding $customHeight : integer16, integer32, integer64 ;
@@ -24,14 +24,14 @@ controllerClass PMSchematicsPaperHeightController {
   attribute actualHeight : integer64 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass AngleForSliderController {
   binding $angle : double ;
   attribute angleForSlider : double ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass PMDistanceArcController {
   binding $radius : integer32 ;
@@ -41,7 +41,7 @@ controllerClass PMDistanceArcController {
   attribute distance : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass PMOvalController {
   binding $rectangleXOrigin : integer32 ;
@@ -52,7 +52,7 @@ controllerClass PMOvalController {
   attribute yCenter : integer32 ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*
 
 controllerClass PMTrackDirectionController {
   binding $p1x : integer32 ;
@@ -66,4 +66,4 @@ controllerClass PMTrackDirectionController {
   attribute trackCanRotate : boolean ;
 }
 
-#----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------*

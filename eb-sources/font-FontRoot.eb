@@ -1,4 +1,4 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontRoot {
   toMany @signature @customStore FontCharacter characters ;
@@ -15,18 +15,18 @@ entity FontRoot {
     prefs.sampleString,
     prefs.sampleStringSize
   ;
-  
+
   transient String sampleStringBezierPathWidth dependsFrom self.sampleStringBezierPath ;
-  
+
   transient String sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
-  
+
   transient String sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
 
   transient String currentCharacterCodePointString dependsFrom self.currentCharacterCodePoint ;
-  
+
   transient DefinedCharactersInDevice definedCharacters dependsFrom self.characters.all.codePoint ;
 
   transient CanariIssueArray issues dependsFrom self.characters.all.issues ;
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

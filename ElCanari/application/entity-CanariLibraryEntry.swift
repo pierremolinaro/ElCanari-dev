@@ -49,7 +49,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mPath
   //····················································································································
 
-  var mPath_property = EBStoredProperty_String (defaultValue: "Hello")
+  let mPath_property = EBStoredProperty_String (defaultValue: "Hello")
 
   //····················································································································
 
@@ -66,7 +66,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUses
   //····················································································································
 
-  var mUses_property = EBStoredProperty_Bool (defaultValue: true)
+  let mUses_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -83,7 +83,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mLibraryRepositoryURL
   //····················································································································
 
-  var mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
+  let mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -100,7 +100,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUserAndPasswordTag
   //····················································································································
 
-  var mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
+  let mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -117,7 +117,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Transient property: mStatusImage
   //····················································································································
 
-  var mStatusImage_property = EBTransientProperty_NSImage ()
+  let mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 

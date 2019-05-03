@@ -234,7 +234,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -251,7 +251,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (defaultValue: 100)
+  let zoom_property = EBStoredProperty_Int (defaultValue: 100)
 
   //····················································································································
 
@@ -268,7 +268,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: automaticBoardSize
   //····················································································································
 
-  var automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true)
+  let automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -285,7 +285,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardManualWidth
   //····················································································································
 
-  var boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
+  let boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000)
 
   //····················································································································
 
@@ -302,7 +302,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardManualHeight
   //····················································································································
 
-  var boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
+  let boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000)
 
   //····················································································································
 
@@ -319,7 +319,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardWidthUnit
   //····················································································································
 
-  var boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -336,7 +336,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardHeightUnit
   //····················································································································
 
-  var boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -353,7 +353,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: overlapingArrangment
   //····················································································································
 
-  var overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false)
+  let overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -370,7 +370,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: selectedBoardXUnit
   //····················································································································
 
-  var selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -387,7 +387,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: selectedBoardYUnit
   //····················································································································
 
-  var selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -404,7 +404,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardLimitWidth
   //····················································································································
 
-  var boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
+  let boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -421,7 +421,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: boardLimitWidthUnit
   //····················································································································
 
-  var boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -438,7 +438,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: arrowMagnitude
   //····················································································································
 
-  var arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000)
+  let arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000)
 
   //····················································································································
 
@@ -455,7 +455,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: arrowMagnitudeUnit
   //····················································································································
 
-  var arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -472,7 +472,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: shiftArrowMagnitude
   //····················································································································
 
-  var shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000)
+  let shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000)
 
   //····················································································································
 
@@ -489,7 +489,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: shiftArrowMagnitudeUnit
   //····················································································································
 
-  var shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -506,7 +506,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: artworkName
   //····················································································································
 
-  var artworkName_property = EBStoredProperty_String (defaultValue: "")
+  let artworkName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -523,7 +523,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: generateGerberProductFile
   //····················································································································
 
-  var generateGerberProductFile_property = EBStoredProperty_Bool (defaultValue: true)
+  let generateGerberProductFile_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -540,7 +540,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: generatePDFProductFile
   //····················································································································
 
-  var generatePDFProductFile_property = EBStoredProperty_Bool (defaultValue: true)
+  let generatePDFProductFile_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -557,7 +557,7 @@ class MergerRoot : EBManagedObject,
   //   Atomic property: generatedBoardArchiveFormat
   //····················································································································
 
-  var generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (defaultValue: BoardArchiveFormat.noGeneration)
+  let generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (defaultValue: BoardArchiveFormat.noGeneration)
 
   //····················································································································
 
@@ -574,7 +574,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: modelNames
   //····················································································································
 
-  var modelNames_property = EBTransientProperty_StringTagArray ()
+  let modelNames_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
 
@@ -597,7 +597,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardRect
   //····················································································································
 
-  var boardRect_property = EBTransientProperty_CanariRect ()
+  let boardRect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
@@ -620,7 +620,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardDisplayRect
   //····················································································································
 
-  var boardDisplayRect_property = EBTransientProperty_CanariRect ()
+  let boardDisplayRect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
@@ -643,7 +643,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardWidth
   //····················································································································
 
-  var boardWidth_property = EBTransientProperty_Int ()
+  let boardWidth_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -666,7 +666,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardHeight
   //····················································································································
 
-  var boardHeight_property = EBTransientProperty_Int ()
+  let boardHeight_property = EBTransientProperty_Int ()
 
   //····················································································································
 
@@ -718,7 +718,7 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
-  var boardOutlineRectDisplay_property = EBTransientProperty_EBShape ()
+  let boardOutlineRectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

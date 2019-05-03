@@ -133,7 +133,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (defaultValue: 0)
+  let y1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -150,7 +150,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (defaultValue: 685800)
+  let x2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -167,7 +167,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (defaultValue: 0)
+  let y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -184,7 +184,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: xDimension
   //····················································································································
 
-  var xDimension_property = EBStoredProperty_Int (defaultValue: 0)
+  let xDimension_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -201,7 +201,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: yDimension
   //····················································································································
 
-  var yDimension_property = EBStoredProperty_Int (defaultValue: 0)
+  let yDimension_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -218,7 +218,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: x1Unit
   //····················································································································
 
-  var x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -235,7 +235,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: y1Unit
   //····················································································································
 
-  var y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -252,7 +252,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: x2Unit
   //····················································································································
 
-  var x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -269,7 +269,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: y2Unit
   //····················································································································
 
-  var y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -286,7 +286,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: xDimensionUnit
   //····················································································································
 
-  var xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -303,7 +303,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: yDimensionUnit
   //····················································································································
 
-  var yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -320,7 +320,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: distanceUnit
   //····················································································································
 
-  var distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -337,7 +337,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (defaultValue: 0)
+  let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -354,7 +354,7 @@ class PackageDimension : PackageObject,
   //   Transient property: distanceInCanariUnit
   //····················································································································
 
-  var distanceInCanariUnit_property = EBTransientProperty_Int ()
+  let distanceInCanariUnit_property = EBTransientProperty_Int ()
 
   //····················································································································
 

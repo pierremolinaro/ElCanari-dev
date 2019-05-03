@@ -1,21 +1,21 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 document MergerDocument root MergerRoot {
-#--- Selected Page
+//--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;
 
-#--- Show Preferences for setting display
+//--- Show Preferences for setting display
   action showPrefsForSettingMergerDisplayAction ;
   outlet EBButton showPrefsForSettingMergerDisplayButton
-    $run self.showPrefsForSettingMergerDisplayAction
+    $run showPrefsForSettingMergerDisplayAction
     $enabled root.selectedPageIndex <= 1 ;
 
   outlet EBButton dismissPrefsForSettingMergerDisplayButton
-    $run self.showPrefsForSettingMergerDisplayAction ;
+    $run showPrefsForSettingMergerDisplayAction ;
 
-#--- Issues
-  transient CanariIssueArray issues dependsFrom 
+//--- Issues
+  transient CanariIssueArray issues dependsFrom
     root.overlapingArrangment, root.boardRect, root.boardDisplayRect,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth ;
 
@@ -28,7 +28,7 @@ document MergerDocument root MergerRoot {
   outlet EBButton mDeselectIssueButton ;
   outlet CanariIssueTableView mIssueTableView $issues self.issues ;
 
-#------------------------------------- Display setting panel
+//------------------------------------- Display setting panel
   outlet NSView mDisplaySettingView $hidden root.selectedPageIndex > 1  ;
 
   outlet EBSwitch mModelViewHorizontalFlipCheckbox $value prefs.mergerModelViewHorizontalFlip ;
@@ -102,7 +102,7 @@ document MergerDocument root MergerRoot {
   outlet EBColorWell mergerViewDisplayBackPadsColorWell
     $color prefs.mergerColorBackPads {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayBackComponentNamesColorWell
-    $color prefs.mergerColorBackComponentNames {sendContinously:no} ; 
+    $color prefs.mergerColorBackComponentNames {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayBackComponentValuesColorWell
     $color prefs.mergerColorBackComponentValues {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayBackLegendTextsColorWell
@@ -121,152 +121,152 @@ document MergerDocument root MergerRoot {
     $color prefs.mergerColorBackLegendLines {sendContinously:no} ;
 
 
-#------------------------------------- Model Page
+//------------------------------------- Model Page
   outlet CanariViewWithKeyView mModelPageView ;
 
-#--- "No model" message
+//--- "No model" message
  outlet EBTextField mNoModelMessage $hidden root.boardModels.count > 0 ;
 
-#--- Add board model
+//--- Add board model
   action addBoardModelAction ;
-  outlet EBButton addBoardModelButton $run self.addBoardModelAction ;
+  outlet EBButton addBoardModelButton $run addBoardModelAction ;
 
-#--- Remove board model
+//--- Remove board model
   outlet EBButton removeBoardModelButton
-    $run mBoardModelController.remove
-    $enabled (mBoardModelController.selectedArray.count > 0) & (mBoardModelSelection.instanceCount == 0)
+    $run #mBoardModelController.remove
+    $enabled (#mBoardModelController.selectedArray.count > 0) & (#mBoardModelSelection.instanceCount == 0)
   ;
 
-#--- Update board model
+//--- Update board model
   action updateBoardModelAction ;
   outlet EBButton updateBoardModelButton
-    $run self.updateBoardModelAction
-    $enabled mBoardModelController.selectedArray.count > 0
+    $run updateBoardModelAction
+    $enabled #mBoardModelController.selectedArray.count > 0
   ;
 
-#--- Model table view 
-  tableViewController mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
+//--- Model table view
+  tableViewController #mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
 
   outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
 
-  selectionController BoardModel mBoardModelSelection : self.mBoardModelController.selectedArray ;
+  selectionController BoardModel #mBoardModelSelection : #mBoardModelController.selectedArray ;
 
-#--- Model view
+//--- Model view
   outlet EBView mBoardModelView
-    $zoom mBoardModelSelection.zoom
+    $zoom #mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
-    $overObjectsDisplay mBoardModelSelection.imageForModel
+    $overObjectsDisplay #mBoardModelSelection.imageForModel
   ;
 
-#--- Artwork model name
-  outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
+//--- Artwork model name
+  outlet EBTextObserverField mArtworkNameTextField $valueObserver #mBoardModelSelection.artworkName ;
 
-#--- Model Instance count
-  outlet EBIntObserverField mInstanceCountTextField $valueObserver mBoardModelSelection.instanceCount {autoFormatter:yes} ;
+//--- Model Instance count
+  outlet EBIntObserverField mInstanceCountTextField $valueObserver #mBoardModelSelection.instanceCount {autoFormatter:yes} ;
 
-#--- Model width display
-  outlet EBPopUpButton mModelWidthUnitPopUp $selectedTag mBoardModelSelection.modelWidthUnit ;
+//--- Model width display
+  outlet EBPopUpButton mModelWidthUnitPopUp $selectedTag #mBoardModelSelection.modelWidthUnit ;
   outlet CanariDimensionObserverTextField mModelWidthTextField
-     $dimensionAndUnit mBoardModelSelection.modelWidth, mBoardModelSelection.modelWidthUnit
+     $dimensionAndUnit #mBoardModelSelection.modelWidth, #mBoardModelSelection.modelWidthUnit
   ;
 
-#--- Model Height display
-  outlet EBPopUpButton mModelHeightUnitPopUp $selectedTag mBoardModelSelection.modelHeightUnit ;
+//--- Model Height display
+  outlet EBPopUpButton mModelHeightUnitPopUp $selectedTag #mBoardModelSelection.modelHeightUnit ;
   outlet CanariDimensionObserverTextField mModelHeightTextField
-     $dimensionAndUnit mBoardModelSelection.modelHeight, mBoardModelSelection.modelHeightUnit
+     $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
   ;
 
-#--- Model Limits display
-  outlet EBPopUpButton mModelLimitWidthUnitPopUp $selectedTag mBoardModelSelection.modelLimitWidthUnit ;
+//--- Model Limits display
+  outlet EBPopUpButton mModelLimitWidthUnitPopUp $selectedTag #mBoardModelSelection.modelLimitWidthUnit ;
   outlet CanariDimensionObserverTextField mModelBoardLimitTextField
-     $dimensionAndUnit mBoardModelSelection.modelLimitWidth, mBoardModelSelection.modelLimitWidthUnit
+     $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
   ;
 
-#------------------------------------- Board Page
+//------------------------------------- Board Page
   outlet CanariViewWithKeyView mBoardPageView ;
 
   outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
-  action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
+  action insertBoardAction ; // Called directly by selecting an item of mBoardInsertMenu
   outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
 
-#--- Board model name
-  outlet EBTextObserverField mInstanceModelNameTextField $valueObserver mBoardInstanceSelection.modelName ;
-  
-#--- Automatic Board size
+//--- Board model name
+  outlet EBTextObserverField mInstanceModelNameTextField $valueObserver #mBoardInstanceSelection.modelName ;
+
+//--- Automatic Board size
   outlet EBSwitch mAutomaticBoardSizeSwitch $value root.automaticBoardSize ;
   outlet NSView mAutomaticBoardSizeView $hidden !root.automaticBoardSize ;
   outlet NSView mManualBoardSizeView $hidden root.automaticBoardSize ;
 
 
-#--- Arrow Magnitude
+//--- Arrow Magnitude
   outlet EBPopUpButton mArrowMagnitudeUnitPopUp $selectedTag root.arrowMagnitudeUnit ;
   outlet CanariDimensionTextField mArrowMagnitudeTextField
      $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
   ;
 
 
-#--- Shift Arrow Magnitude
+//--- Shift Arrow Magnitude
   outlet EBPopUpButton mShiftArrowMagnitudeUnitPopUp $selectedTag root.shiftArrowMagnitudeUnit ;
   outlet CanariDimensionTextField mShiftArrowMagnitudeTextField
      $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
   ;
 
 
-#--- Manual Board width display
+//--- Manual Board width display
   outlet EBPopUpButton mManualBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
   outlet CanariDimensionTextField mManualBoardWidthTextField
      $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
   ;
 
-#--- Manual Board Height display
+//--- Manual Board Height display
   outlet EBPopUpButton mManualBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
   outlet CanariDimensionTextField mManualBoardHeightTextField
      $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
   ;
 
-#--- Automatic Board width display
+//--- Automatic Board width display
   outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
   outlet CanariDimensionObserverTextField mBoardWidthTextField
      $dimensionAndUnit root.boardWidth, root.boardWidthUnit
   ;
 
-#--- Automatic Board Height display
+//--- Automatic Board Height display
   outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
   outlet CanariDimensionObserverTextField mBoardHeightTextField
      $dimensionAndUnit root.boardHeight, root.boardHeightUnit
   ;
 
-#--- Help
+//--- Help
   action showBoardHelpAction ;
-  outlet EBButton showBoardHelpButton $run self.showBoardHelpAction ;
+  outlet EBButton showBoardHelpButton $run showBoardHelpAction ;
   outlet NSPanel boardHelpPanel ;
 
-#--- Table view, source of model drag
+//--- Table view, source of model drag
   outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
-  
-#--- Board Limit Width display
+
+//--- Board Limit Width display
   outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;
   outlet CanariDimensionTextField mBoardBoardLimitTextField
      $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
   ;
 
-#--- "Insert array of boards" panel
+//--- "Insert array of boards" panel
   outlet NSPanel mInsertArrayOfBoardsPanel ;
   outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
   outlet NSSegmentedControl mInsertArrayOfBoardsOrientation ;
   outlet NSTextField mInsertArrayOfBoardsXCountField ;
   outlet NSTextField mInsertArrayOfBoardsYCountField ;
-  
-#--- "Empty Board" message
+
+//--- "Empty Board" message
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
 
-#--- Composed Board View
-  arrayController mBoardInstanceController : root.boardInstances ;
-  selectionController MergerBoardInstance mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
+//--- Composed Board View
+  arrayController #mBoardInstanceController : root.boardInstances ;
+  selectionController MergerBoardInstance #mBoardInstanceSelection : #mBoardInstanceController.selectedArray ;
   outlet EBView mComposedBoardView
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
@@ -287,35 +287,35 @@ document MergerDocument root MergerRoot {
 
   outlet EBPopUpButton mSelectedBoardXUnitPopUp $selectedTag root.selectedBoardXUnit ;
   outlet CanariDimensionTextField mSelectedBoardXTextField
-     $dimensionAndUnit mBoardInstanceSelection.x, root.selectedBoardXUnit
+     $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
   ;
- 
+
   outlet EBPopUpButton mSelectedBoardYUnitPopUp $selectedTag root.selectedBoardYUnit ;
   outlet CanariDimensionTextField mSelectedBoardYTextField
-     $dimensionAndUnit mBoardInstanceSelection.y, root.selectedBoardYUnit
+     $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
   ;
 
 
-#--- Instance rotation
-  outlet CanariQuadrantSegmentedControl mInstanceRotation $quadrant mBoardInstanceSelection.instanceRotation ;
- 
-#--- Arrange & move selection
+//--- Instance rotation
+  outlet CanariQuadrantSegmentedControl mInstanceRotation $quadrant #mBoardInstanceSelection.instanceRotation ;
+
+//--- Arrange & move selection
   outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;
 
   action moveRightAction ;
-  outlet EBButton mMoveRightButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveRightAction ;
+  outlet EBButton mMoveRightButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveRightAction ;
   action moveLeftAction ;
-  outlet EBButton mMoveLeftButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveLeftAction ;
+  outlet EBButton mMoveLeftButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveLeftAction ;
   action moveUpAction ;
-  outlet EBButton mMoveUpButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveUpAction ;
+  outlet EBButton mMoveUpButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveUpAction ;
   action moveDownAction ;
-  outlet EBButton mMoveDownButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveDownAction ;
+  outlet EBButton mMoveDownButton $enabled #mBoardInstanceController.selectedArray.count > 0 $run moveDownAction ;
 
-#------------------------------------- Product Page
+//------------------------------------- Product Page
   outlet CanariViewWithKeyView mProductPageView ;
 
   transient Bool documentFileNameOk dependsFrom self.documentFilePath ;
- 
+
   outlet EBTextField mNoArtworkMessage $hidden !root.artwork.none ;
 
   transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFilePath ;
@@ -325,43 +325,43 @@ document MergerDocument root MergerRoot {
 
 
   outlet NSView mDangerView $hidden self.documentFileNameOk ;
- 
+
   transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
 
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton
     $enabled !root.artwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
-    $run self.generateProductFilesAction
+    $run generateProductFilesAction
   ;
 
   action importArtworkAction ;
   transient String importArtworkButtonTitle dependsFrom root.artworkName ;
-  outlet EBButton mImportArtworkButton $run self.importArtworkAction $title self.importArtworkButtonTitle ;
+  outlet EBButton mImportArtworkButton $run importArtworkAction $title self.importArtworkButtonTitle ;
 
   outlet EBSwitch mGenerateGerber $value root.generateGerberProductFile ;
   outlet EBSwitch mGeneratePDF $value root.generatePDFProductFile ;
 
   outlet CanariBoardBoardArchivePopUpButton mBoardArchiveFormatPopUpButton $format root.generatedBoardArchiveFormat ;
-  
+
   outlet NSTextView mLogTextView $hidden root.artwork.none ;
-#--- 
-#------------------------------------------- Artwork settings
-#--- Minimum tab
-#  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.artwork.one.minPP_TP_TT_TW_displayUnit ;
-#  outlet CanariDimensionTextField mMinPP_TP_TT_TW_displayUnit_TextField
-#     $dimensionAndUnit root.minPP_TP_TT_TW_inEBUnit, root.minPP_TP_TT_TW_displayUnit
-#  ;
-#
-#  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
-#  outlet CanariDimensionTextField mOARValueTextField
-#     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
-#  ;
-#
-#  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
-#  outlet CanariDimensionTextField mPHDValueTextField
-#     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
-#  ;
+//---
+//------------------------------------------- Artwork settings
+//--- Minimum tab
+//  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.artwork.one.minPP_TP_TT_TW_displayUnit ;
+//  outlet CanariDimensionTextField mMinPP_TP_TT_TW_displayUnit_TextField
+//     $dimensionAndUnit root.minPP_TP_TT_TW_inEBUnit, root.minPP_TP_TT_TW_displayUnit
+//  ;
+//
+//  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
+//  outlet CanariDimensionTextField mOARValueTextField
+//     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
+//  ;
+//
+//  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
+//  outlet CanariDimensionTextField mPHDValueTextField
+//     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
+//  ;
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

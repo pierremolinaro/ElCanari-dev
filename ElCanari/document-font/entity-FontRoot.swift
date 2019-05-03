@@ -98,7 +98,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String (defaultValue: "")
+  let comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: nominalSize
   //····················································································································
 
-  var nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
+  let nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  var selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  let selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: currentCharacterCodePoint
   //····················································································································
 
-  var currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
+  let currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
 
   //····················································································································
 
@@ -208,7 +208,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: currentCharacterCodePointString
   //····················································································································
 
-  var currentCharacterCodePointString_property = EBTransientProperty_String ()
+  let currentCharacterCodePointString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -231,7 +231,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPath
   //····················································································································
 
-  var sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
@@ -254,7 +254,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathWidth
   //····················································································································
 
-  var sampleStringBezierPathWidth_property = EBTransientProperty_String ()
+  let sampleStringBezierPathWidth_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -277,7 +277,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathAscent
   //····················································································································
 
-  var sampleStringBezierPathAscent_property = EBTransientProperty_String ()
+  let sampleStringBezierPathAscent_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -300,7 +300,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: sampleStringBezierPathDescent
   //····················································································································
 
-  var sampleStringBezierPathDescent_property = EBTransientProperty_String ()
+  let sampleStringBezierPathDescent_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -323,7 +323,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: definedCharacters
   //····················································································································
 
-  var definedCharacters_property = EBTransientProperty_DefinedCharactersInDevice ()
+  let definedCharacters_property = EBTransientProperty_DefinedCharactersInDevice ()
 
   //····················································································································
 
@@ -346,7 +346,7 @@ class FontRoot : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 

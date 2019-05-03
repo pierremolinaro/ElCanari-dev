@@ -98,7 +98,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceName
   //····················································································································
 
-  var mDeviceName_property = EBStoredProperty_String (defaultValue: "")
+  let mDeviceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mPrefix
   //····················································································································
 
-  var mPrefix_property = EBStoredProperty_String (defaultValue: "")
+  let mPrefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceVersion
   //····················································································································
 
-  var mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
+  let mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -149,7 +149,7 @@ class DeviceInProject : EBManagedObject,
   //   Atomic property: mDeviceFileData
   //····················································································································
 
-  var mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
+  let mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -242,7 +242,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  let versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  var sizeString_property = EBTransientProperty_String ()
+  let sizeString_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -288,7 +288,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: canExport
   //····················································································································
 
-  var canExport_property = EBTransientProperty_Bool ()
+  let canExport_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -311,7 +311,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: canRemove
   //····················································································································
 
-  var canRemove_property = EBTransientProperty_Bool ()
+  let canRemove_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -334,7 +334,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: packageNames
   //····················································································································
 
-  var packageNames_property = EBTransientProperty_StringArray ()
+  let packageNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
@@ -357,7 +357,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: symbolAndTypesNames
   //····················································································································
 
-  var symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
+  let symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
 
   //····················································································································
 
@@ -380,7 +380,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  var pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
 
@@ -403,7 +403,7 @@ class DeviceInProject : EBManagedObject,
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
-  var deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
 
   //····················································································································
 

@@ -154,7 +154,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let y1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -171,7 +171,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (defaultValue: 0)
+  let x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -188,7 +188,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (defaultValue: 0)
+  let y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -205,7 +205,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpx1
   //····················································································································
 
-  var cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpx1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -222,7 +222,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpy1
   //····················································································································
 
-  var cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpy1_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpx2
   //····················································································································
 
-  var cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
+  let cpx2_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -256,7 +256,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpy2
   //····················································································································
 
-  var cpy2_property = EBStoredProperty_Int (defaultValue: 0)
+  let cpy2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -273,7 +273,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: x1Unit
   //····················································································································
 
-  var x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -290,7 +290,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: y1Unit
   //····················································································································
 
-  var y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -307,7 +307,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: x2Unit
   //····················································································································
 
-  var x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let x2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -324,7 +324,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: y2Unit
   //····················································································································
 
-  var y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let y2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -341,7 +341,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpx1Unit
   //····················································································································
 
-  var cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -358,7 +358,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpy1Unit
   //····················································································································
 
-  var cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -375,7 +375,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpx2Unit
   //····················································································································
 
-  var cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -392,7 +392,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: cpy2Unit
   //····················································································································
 
-  var cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -409,7 +409,7 @@ class PackageBezier : PackageObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (defaultValue: 0)
+  let x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -426,7 +426,7 @@ class PackageBezier : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 

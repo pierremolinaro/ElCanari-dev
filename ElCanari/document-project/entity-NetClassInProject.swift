@@ -105,7 +105,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetClassName
   //····················································································································
 
-  var mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
+  let mNetClassName_property = EBStoredProperty_String (defaultValue: "Default")
 
   //····················································································································
 
@@ -122,7 +122,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetClassColor
   //····················································································································
 
-  var mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
+  let mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
 
   //····················································································································
 
@@ -139,7 +139,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetWidth
   //····················································································································
 
-  var mNetWidth_property = EBStoredProperty_Int (defaultValue: 45720)
+  let mNetWidth_property = EBStoredProperty_Int (defaultValue: 45720)
 
   //····················································································································
 
@@ -156,7 +156,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetWidthUnit
   //····················································································································
 
-  var mNetWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mNetWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -173,7 +173,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaHoleDiameter
   //····················································································································
 
-  var mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
+  let mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720)
 
   //····················································································································
 
@@ -190,7 +190,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaHoleDiameterUnit
   //····················································································································
 
-  var mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -207,7 +207,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaPadDiameter
   //····················································································································
 
-  var mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
+  let mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440)
 
   //····················································································································
 
@@ -224,7 +224,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mViaPadDiameterUnit
   //····················································································································
 
-  var mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -260,7 +260,7 @@ class NetClassInProject : EBManagedObject,
   //   Transient property: netWidth
   //····················································································································
 
-  var netWidth_property = EBTransientProperty_String ()
+  let netWidth_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -283,7 +283,7 @@ class NetClassInProject : EBManagedObject,
   //   Transient property: viaHoleDiameter
   //····················································································································
 
-  var viaHoleDiameter_property = EBTransientProperty_String ()
+  let viaHoleDiameter_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -306,7 +306,7 @@ class NetClassInProject : EBManagedObject,
   //   Transient property: viaPadDiameter
   //····················································································································
 
-  var viaPadDiameter_property = EBTransientProperty_String ()
+  let viaPadDiameter_property = EBTransientProperty_String ()
 
   //····················································································································
 
@@ -329,7 +329,7 @@ class NetClassInProject : EBManagedObject,
   //   Transient property: canRemove
   //····················································································································
 
-  var canRemove_property = EBTransientProperty_Bool ()
+  let canRemove_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
@@ -352,7 +352,7 @@ class NetClassInProject : EBManagedObject,
   //   Transient property: netUsage
   //····················································································································
 
-  var netUsage_property = EBTransientProperty_String ()
+  let netUsage_property = EBTransientProperty_String ()
 
   //····················································································································
 

@@ -112,7 +112,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mSymbolInstanceName
   //····················································································································
 
-  var mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
+  let mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -129,7 +129,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
-  var mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
+  let mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinX
   //····················································································································
 
-  var mPinX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mPinX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -163,7 +163,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinY
   //····················································································································
 
-  var mPinY_property = EBStoredProperty_Int (defaultValue: 0)
+  let mPinY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -180,7 +180,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mXName
   //····················································································································
 
-  var mXName_property = EBStoredProperty_Int (defaultValue: 0)
+  let mXName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -197,7 +197,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mYName
   //····················································································································
 
-  var mYName_property = EBStoredProperty_Int (defaultValue: 0)
+  let mYName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -214,7 +214,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mNameHorizontalAlignment
   //····················································································································
 
-  var mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  let mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -231,7 +231,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinNameIsDisplayedInSchematics
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
+  let mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mXNumber
   //····················································································································
 
-  var mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  let mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mYNumber
   //····················································································································
 
-  var mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
+  let mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -282,7 +282,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mNumberHorizontalAlignment
   //····················································································································
 
-  var mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+  let mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -299,7 +299,7 @@ class DevicePinInProject : EBManagedObject,
   //   Atomic property: mPinName
   //····················································································································
 
-  var mPinName_property = EBStoredProperty_String (defaultValue: "")
+  let mPinName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -316,7 +316,7 @@ class DevicePinInProject : EBManagedObject,
   //   Transient property: pinQualifiedName
   //····················································································································
 
-  var pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
+  let pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
 
   //····················································································································
 
@@ -339,7 +339,7 @@ class DevicePinInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  var descriptor_property = EBTransientProperty_PinInProjectDescriptor ()
+  let descriptor_property = EBTransientProperty_PinInProjectDescriptor ()
 
   //····················································································································
 

@@ -70,7 +70,7 @@ class SymbolSolidRect : SymbolObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (defaultValue: 0)
+  let y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -87,7 +87,7 @@ class SymbolSolidRect : SymbolObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 685800)
+  let width_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -104,7 +104,7 @@ class SymbolSolidRect : SymbolObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 685800)
+  let height_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class SymbolSolidRect : SymbolObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (defaultValue: 0)
+  let x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -138,7 +138,7 @@ class SymbolSolidRect : SymbolObject,
   //   Transient property: filledBezierPath
   //····················································································································
 
-  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
