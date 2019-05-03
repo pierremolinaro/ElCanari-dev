@@ -8,7 +8,9 @@ entity ProjectRoot {
   toMany ComponentInProject mComponents ;
   toMany NetClassInProject mNetClasses ;
   toMany SheetInProject mSheets ;
+
   toOne SheetInProject mSelectedSheet ;
+  proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
 
   property Int mSelectedPageIndex default 0 ;
 
@@ -284,7 +286,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property Int mDisplayComponentValueOffsetX default 0 ;
   property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
 
-  proxy componentValueProxy : ComponentInProject.mComponent.mComponentValue ;
+  proxy String componentValueProxy : mComponent.mComponentValue ;
 
   transient String componentName dependsFrom self.mComponent.one.componentName ;
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;

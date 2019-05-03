@@ -1,7 +1,7 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets|String selectedSheetTitle"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>mObjects|String mSheetTitle"] ;
   SchematicsObject[label="<SchematicsObject>SchematicsObject|<mSheet>mSheet"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;

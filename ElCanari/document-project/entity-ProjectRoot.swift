@@ -72,6 +72,12 @@ protocol ProjectRoot_mSchematicsSheetOrientation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_selectedSheetTitle : class {
+  var selectedSheetTitle : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -104,6 +110,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicsGridStyle,
          ProjectRoot_mSchematicsGridDisplayFactor,
          ProjectRoot_mSchematicsSheetOrientation,
+         ProjectRoot_selectedSheetTitle,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicsBackgroundDisplay {
@@ -391,6 +398,34 @@ class ProjectRoot : EBManagedObject,
   var mSchematicsSheetOrientation_property_selection : EBSelection <SchematicsSheetOrientation> { return self.mSchematicsSheetOrientation_property.prop }
 
   //····················································································································
+  //   Atomic proxy property: selectedSheetTitle
+  //····················································································································
+
+  let selectedSheetTitle_property = EBPropertyProxy_String ()
+
+  //····················································································································
+
+  var selectedSheetTitle : String? {
+    get {
+      switch self.selectedSheetTitle_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.selectedSheetTitle_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var selectedSheetTitle_property_selection : EBSelection <String> { return self.selectedSheetTitle_property.prop }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -526,6 +561,21 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicsSheetOrientation
     self.mSchematicsSheetOrientation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic proxy property: selectedSheetTitle
+    self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mSelectedSheet {
+        return .single (object.mSheetTitle)
+      }else{
+        return .empty
+      }
+    }
+    self.selectedSheetTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+      self?.mSelectedSheet?.mSheetTitle = inValue
+    }
+    self.selectedSheetTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+      return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -615,6 +665,11 @@ class ProjectRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Atomic proxy property: selectedSheetTitle
+    self.selectedSheetTitle_property.mReadModelFunction = nil
+    self.selectedSheetTitle_property.mWriteModelFunction = nil
+    self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
+    self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicsTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
@@ -846,6 +901,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSchematicsSheetOrientation
     self.mSchematicsSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicsSheetOrientation_property.mValueExplorer = nil
+  //--- Atomic proxy property: selectedSheetTitle
+    self.selectedSheetTitle_property.mObserverExplorer = nil
+    self.selectedSheetTitle_property.mValueExplorer = nil
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.mObserverExplorer = nil
     self.mSelectedSheet_property.mValueExplorer = nil
@@ -1718,6 +1776,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mSchematicsSheetOrientation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectedSheetTitle' proxy property
+  //····················································································································
+
+  private var mObserversOf_selectedSheetTitle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectedSheetTitle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedSheetTitle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectedSheetTitle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedSheetTitle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectedSheetTitle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
+        managedObject.selectedSheetTitle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectedSheetTitle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.selectedSheetTitle_property.removeEBObserver (observer)
       }
     }
   }

@@ -824,7 +824,7 @@ import Cocoa
     self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicsTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicsVersion_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicsSheetOrientation_property, file: #file, line: #line)
-    self.mSelectedSheetTitleTextField?.bind_value (self.mSelectedSheetController.mSheetTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mSelectedSheetTitleTextField?.bind_value (self.rootObject.selectedSheetTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsView?.bind_underObjectsDisplay (self.rootObject.schematicsBackgroundDisplay_property, file: #file, line: #line)
     self.mSchematicsView?.bind_horizontalFlip (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
     self.mSchematicsView?.bind_verticalFlip (self.rootObject.mSchematicsVerticalFlip_property, file: #file, line: #line)
