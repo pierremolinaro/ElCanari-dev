@@ -265,6 +265,8 @@ document ProjectDocument root ProjectRoot {
     $enabled mSchematicsObjectsController.selectedArray.count == 1
   ;
 
+# objectController mComponentInSymbolController : mComponentSymbolSelectionController.mComponentInSymbolController ;
+
 #  outlet EBTextField mComponentSymbolValueTextField
 #    $value mComponentSymbolSelectionController.mComponentController.mComponentValue {sendContinously : yes}
 #  ;

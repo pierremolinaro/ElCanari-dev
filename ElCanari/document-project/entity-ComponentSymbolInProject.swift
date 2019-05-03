@@ -293,6 +293,12 @@ class ComponentSymbolInProject : SchematicsObject,
   var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
 
   //····················································································································
+  //   Object controller: mComponentInSymbolController
+  //····················································································································
+
+  var mComponentInSymbolController = Controller_ComponentSymbolInProject_mComponentInSymbolController ()
+
+  //····················································································································
   //   To one property: mComponent
   //····················································································································
 
@@ -439,6 +445,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mDisplayComponentValueOffsetX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.ebUndoManager = self.ebUndoManager
+  //--- Object controller property: mComponentInSymbolController
+    self.mComponentInSymbolController.bind_model (self.mComponent_property)
   //--- To one property: mComponent
     self.mComponent_property.owner = self
   //--- Atomic property: componentName
@@ -628,6 +636,8 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Object controller property: mComponentInSymbolController
+    self.mComponentInSymbolController.unbind_model ()
     self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
     self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
     self.mRotation_property.removeEBObserver (self.symbolInfo_property)
