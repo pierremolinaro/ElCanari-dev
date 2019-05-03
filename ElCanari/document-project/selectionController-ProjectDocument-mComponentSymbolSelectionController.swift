@@ -111,6 +111,16 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: componentValueProxy
+  //····················································································································
+
+  let componentValueProxy_property = EBPropertyProxy_String ()
+
+  var componentValueProxy_property_selection : EBSelection <String> {
+    return self.componentValueProxy_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
@@ -212,6 +222,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.bind_property_mDisplayComponentValue (model: self.mActualModel)
     self.bind_property_mDisplayComponentValueOffsetX (model: self.mActualModel)
     self.bind_property_mDisplayComponentValueOffsetY (model: self.mActualModel)
+    self.bind_property_componentValueProxy (model: self.mActualModel)
     self.bind_property_componentName (model: self.mActualModel)
     self.bind_property_deviceName (model: self.mActualModel)
     self.bind_property_symbolInfo (model: self.mActualModel)
@@ -1146,6 +1157,75 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
         case .single (let v) :
           for object in v {
             let result = object.mDisplayComponentValueOffsetY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_componentValueProxy (model : TransientArrayOf_ComponentSymbolInProject) {
+    model.addEBObserverOf_componentValueProxy (self.componentValueProxy_property)
+    self.componentValueProxy_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.componentValueProxy_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.componentValueProxy_property.mWriteModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.componentValueProxy_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.componentValueProxy_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

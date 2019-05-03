@@ -66,6 +66,12 @@ protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentSymbolInProject_componentValueProxy : class {
+  var componentValueProxy : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentSymbolInProject_componentName : class {
   var componentName : String? { get }
 }
@@ -115,6 +121,7 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mDisplayComponentValue,
          ComponentSymbolInProject_mDisplayComponentValueOffsetX,
          ComponentSymbolInProject_mDisplayComponentValueOffsetY,
+         ComponentSymbolInProject_componentValueProxy,
          ComponentSymbolInProject_componentName,
          ComponentSymbolInProject_deviceName,
          ComponentSymbolInProject_symbolInfo,
@@ -293,10 +300,32 @@ class ComponentSymbolInProject : SchematicsObject,
   var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
 
   //····················································································································
-  //   Object controller: mComponentInSymbolController
+  //   Atomic proxy property: componentValueProxy
   //····················································································································
 
-  var mComponentInSymbolController = Controller_ComponentSymbolInProject_mComponentInSymbolController ()
+  let componentValueProxy_property = EBPropertyProxy_String ()
+
+  //····················································································································
+
+  var componentValueProxy : String? {
+    get {
+      switch self.componentValueProxy_property.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.componentValueProxy_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var componentValueProxy_property_selection : EBSelection <String> { return self.componentValueProxy_property.prop }
 
   //····················································································································
   //   To one property: mComponent
@@ -445,8 +474,21 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mDisplayComponentValueOffsetX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.ebUndoManager = self.ebUndoManager
-  //--- Object controller property: mComponentInSymbolController
-    self.mComponentInSymbolController.bind_model (self.mComponent_property)
+  //--- Atomic proxy property: componentValueProxy
+    self.componentValueProxy_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mComponent {
+        return .single (object.mComponentValue)
+      }else{
+        return .empty
+      }
+    }
+    self.componentValueProxy_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+      self?.mComponent?.mComponentValue = inValue
+    }
+    self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+      return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
   //--- To one property: mComponent
     self.mComponent_property.owner = self
   //--- Atomic property: componentName
@@ -636,8 +678,11 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-  //--- Object controller property: mComponentInSymbolController
-    self.mComponentInSymbolController.unbind_model ()
+  //--- Atomic proxy property: componentValueProxy
+    self.componentValueProxy_property.mReadModelFunction = nil
+    self.componentValueProxy_property.mWriteModelFunction = nil
+    self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
+    self.mComponent_property.removeEBObserverOf_mComponentValue (self.componentValueProxy_property)
     self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
     self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
     self.mRotation_property.removeEBObserver (self.symbolInfo_property)
@@ -857,6 +902,9 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.mObserverExplorer = nil
     self.mDisplayComponentValueOffsetY_property.mValueExplorer = nil
+  //--- Atomic proxy property: componentValueProxy
+    self.componentValueProxy_property.mObserverExplorer = nil
+    self.componentValueProxy_property.mValueExplorer = nil
   //--- To one property: mComponent
     self.mComponent_property.mObserverExplorer = nil
     self.mComponent_property.mValueExplorer = nil
@@ -1559,6 +1607,63 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mDisplayComponentValueOffsetY_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentValueProxy' proxy property
+  //····················································································································
+
+  private var mObserversOf_componentValueProxy = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentValueProxy (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentValueProxy.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValueProxy_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentValueProxy (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentValueProxy.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.componentValueProxy_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentValueProxy_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentValueProxy.apply { (_ observer : EBEvent) in
+        managedObject.componentValueProxy_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentValueProxy_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_componentValueProxy.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.componentValueProxy_property.removeEBObserver (observer)
       }
     }
   }

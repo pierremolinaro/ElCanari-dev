@@ -344,8 +344,6 @@
 		CF4646C2213AA47C0062ECFD /* kicad-font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4646C1213AA47C0062ECFD /* kicad-font.swift */; };
 		CF46523E2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
 		CF46523F2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
-		CF4861EC227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4861EB227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift */; };
-		CF4861ED227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4861EB227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift */; };
 		CF4A463721C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A463621C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift */; };
 		CF4A463821C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A463621C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift */; };
 		CF4A66282257EFF2003A7A7A /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */; };
@@ -1784,7 +1782,6 @@
 		CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-new-document.swift"; sourceTree = "<group>"; };
 		CF4646C1213AA47C0062ECFD /* kicad-font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-font.swift"; sourceTree = "<group>"; };
 		CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-perform-commit.swift"; sourceTree = "<group>"; };
-		CF4861EB227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift"; sourceTree = "<group>"; };
 		CF4A463621C2FF8D005F722D /* controller-array-PackageDocument-mPackageObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-array-PackageDocument-mPackageObjectsController.swift"; sourceTree = "<group>"; };
 		CF4A66242257EFF2003A7A7A /* ProjectDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		CF4A66252257EFF2003A7A7A /* ProjectDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectDocument.xib; sourceTree = "<group>"; };
@@ -2585,8 +2582,6 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
-				CF4861EB227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift */,
-				CF79A72B227A16A000832F6B /* transient-ComponentSymbolInProject-deviceName.swift */,
 				CF11AB99225A1B740092A524 /* action-ProjectDocument-addComponentAction.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
 				CFCBE0012272426A00D72511 /* action-ProjectDocument-addNetClassAction.swift */,
@@ -2653,6 +2648,7 @@
 				CFD3F8F0225BA3E400387FF1 /* transient-ComponentInProject-selectedPackageName.swift */,
 				CFFA7B3A2274699E00E2D69A /* transient-ComponentInProject-unplacedSymbols.swift */,
 				CF79A641227A015F00832F6B /* transient-ComponentSymbolInProject-componentName.swift */,
+				CF79A72B227A16A000832F6B /* transient-ComponentSymbolInProject-deviceName.swift */,
 				CF5205CD22775CAA002B12B7 /* transient-ComponentSymbolInProject-objectDisplay.swift */,
 				CF5205CC22775CAA002B12B7 /* transient-ComponentSymbolInProject-selectionDisplay.swift */,
 				CF52031622771D22002B12B7 /* transient-ComponentSymbolInProject-symbolInfo.swift */,
@@ -4309,7 +4305,6 @@
 				CF323C2920E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */,
 				CF00846221C4363E003627E9 /* transient-PackageDocument-mStatusMessage.swift in Sources */,
-				CF4861EC227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift in Sources */,
 				CF71F9261B3EA3DF00FB5049 /* EBFontButton.swift in Sources */,
 				CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */,
 				CFFA7B4F2274821A00E2D69A /* view-StringArrayTableView.swift in Sources */,
@@ -5023,7 +5018,6 @@
 				CFDD886322341D5F008D3781 /* transient-DeviceDocument-hasAssignedPadProxies.swift in Sources */,
 				CFCD3AD721FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */,
 				CF001F7121F8AE730091518E /* run-shell-command.swift in Sources */,
-				CF4861ED227C67EF00425481 /* controller-object-ComponentSymbolInProject-mComponentInSymbolController.swift in Sources */,
 				CF116B83224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */,
 				CF30CDE621C5709800CFE9CC /* transient-PackagePad-objectDisplay.swift in Sources */,
 				CFDEC6DE21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,

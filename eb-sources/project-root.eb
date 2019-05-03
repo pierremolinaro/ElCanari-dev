@@ -284,8 +284,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property Int mDisplayComponentValueOffsetX default 0 ;
   property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
 
-//  proxy componentValueProxy : ComponentInProject.mComponent.mComponentValue ;
-  objectController #mComponentInSymbolController : self.mComponent ;
+  proxy componentValueProxy : ComponentInProject.mComponent.mComponentValue ;
 
   transient String componentName dependsFrom self.mComponent.one.componentName ;
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;

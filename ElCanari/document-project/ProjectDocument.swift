@@ -310,6 +310,7 @@ import Cocoa
   @IBOutlet var mComponentSymbolInstanceNameTextField : EBTextObserverField?
   @IBOutlet var mComponentSymbolShowComponentValueSwitch : EBSwitch?
   @IBOutlet var mComponentSymbolTypeNameTextField : EBTextObserverField?
+  @IBOutlet var mComponentSymbolValueTextField : EBTextField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
@@ -505,6 +506,7 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolInstanceNameTextField, "mComponentSymbolInstanceNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolShowComponentValueSwitch, "mComponentSymbolShowComponentValueSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolTypeNameTextField, "mComponentSymbolTypeNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
@@ -833,6 +835,7 @@ import Cocoa
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
     self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
+    self.mComponentSymbolValueTextField?.bind_value (self.mComponentSymbolSelectionController.componentValueProxy_property, file: #file, line: #line, sendContinously:true)
     self.mComponentSymbolDeviceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.deviceName_property, file: #file, line: #line)
     self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
     self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
@@ -1108,6 +1111,7 @@ import Cocoa
     self.mSchematicsView?.unbind_zoom ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
     self.mComponentSymbolComponentNameTextField?.unbind_valueObserver ()
+    self.mComponentSymbolValueTextField?.unbind_value ()
     self.mComponentSymbolDeviceNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolTypeNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolInstanceNameTextField?.unbind_valueObserver ()
@@ -1228,6 +1232,7 @@ import Cocoa
     self.mComponentSymbolInstanceNameTextField?.ebCleanUp ()
     self.mComponentSymbolShowComponentValueSwitch?.ebCleanUp ()
     self.mComponentSymbolTypeNameTextField?.ebCleanUp ()
+    self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
