@@ -456,29 +456,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: unplacedSymbols
-  //····················································································································
-
-  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedSymbols_property.prop
-  }
-
-  //····················································································································
-
-  var unplacedSymbols : StringTagArray? {
-    switch self.unplacedSymbols_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   To one property: mSelectedSheet
   //····················································································································
 
@@ -505,6 +482,29 @@ class ProjectRoot : EBManagedObject,
 
   var mSelectedSheet_none_selection : EBSelection <Bool> {
     return .single (self.mSelectedSheet_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: unplacedSymbols
+  //····················································································································
+
+  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+
+  //····················································································································
+
+  var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
+    return self.unplacedSymbols_property.prop
+  }
+
+  //····················································································································
+
+  var unplacedSymbols : StringTagArray? {
+    switch self.unplacedSymbols_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -627,6 +627,8 @@ class ProjectRoot : EBManagedObject,
         }
       }
     )
+  //--- To one property: mSelectedSheet
+    self.mSelectedSheet_property.owner = self
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -649,8 +651,6 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
-  //--- To one property: mSelectedSheet
-    self.mSelectedSheet_property.owner = self
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

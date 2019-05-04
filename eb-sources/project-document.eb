@@ -206,9 +206,9 @@ document ProjectDocument root ProjectRoot {
 //--- Sheet inspector
   outlet EBTextField mSchematicsTitleTextField $value root.mSchematicsTitle {sendContinously : yes} ;
   outlet EBTextField mSchematicsVersionTextField $value root.mSchematicsVersion {sendContinously : yes} ;
-  outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl $selectedSegment root.mSchematicsSheetOrientation ;
-  objectController #mSelectedSheetController : root.mSelectedSheet ;
-// outlet EBTextField mSelectedSheetTitleTextField $value #mSelectedSheetController.one.mSheetTitle {sendContinously : yes} ;
+  outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
+    $selectedSegment root.mSchematicsSheetOrientation
+  ;
   outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle {sendContinously : yes} ;
 
   outlet EBPopUpButton mSheetPopUpButton ; // All bindings done programmatically
@@ -231,7 +231,6 @@ document ProjectDocument root ProjectRoot {
   outlet NSDatePicker mSchematicsDatePicker ;
 
 //--- Schematics view
-//  arrayController #mSchematicsObjectsController : #mSelectedSheetController.mObjects ;
   arrayController #mSchematicsObjectsController : root.selectedSheetObjects ;
 
   outlet EBView mSchematicsView

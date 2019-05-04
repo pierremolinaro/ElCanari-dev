@@ -33,12 +33,6 @@ import Cocoa
   var mProjectDeviceController = Controller_ProjectDocument_mProjectDeviceController ()
 
   //····················································································································
-  //   Object controller: mSelectedSheetController
-  //····················································································································
-
-  var mSelectedSheetController = Controller_ProjectDocument_mSelectedSheetController ()
-
-  //····················································································································
   //   Array controller: mSchematicsObjectsController
   //····················································································································
 
@@ -444,8 +438,6 @@ import Cocoa
     self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
-  //--- Object controller property: mSelectedSheetController
-    self.mSelectedSheetController.addExplorer (name: "mSelectedSheetController", y:&y, view:view)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
   //--- Selection controller property: mComponentSymbolSelectionController
@@ -596,8 +588,6 @@ import Cocoa
     self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
-  //--- Object controller property: mSelectedSheetController
-    self.mSelectedSheetController.bind_model (self.rootObject.mSelectedSheet_property)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
   //--- Selection controller property: mComponentSymbolSelectionController
@@ -1167,8 +1157,6 @@ import Cocoa
     self.mProjectFontController.unbind_model ()
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
-  //--- Object controller property: mSelectedSheetController
-    self.mSelectedSheetController.unbind_model ()
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.unbind_model ()
   //--- Selection controller property: mComponentSymbolSelectionController
