@@ -768,10 +768,10 @@ class DevicePinInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DevicePinInProject
+//    ReadOnlyArrayOf_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <DevicePinInProject> {
+class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <DevicePinInProject> {
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
@@ -1571,6 +1571,16 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DevicePinInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DevicePinInProject] > > = nil
 
   //····················································································································
@@ -1690,7 +1700,7 @@ class TransientArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Devic
 //    To many relationship read write: DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DevicePinInProject : TransientArrayOf_DevicePinInProject {
+class ReadWriteArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 
   //····················································································································
  

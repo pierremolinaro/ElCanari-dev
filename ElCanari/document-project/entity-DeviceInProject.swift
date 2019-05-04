@@ -995,10 +995,10 @@ class DeviceInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceInProject
+//    ReadOnlyArrayOf_DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInProject> {
+class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInProject> {
 
   //····················································································································
   //   Observers of 'mDeviceName' stored property
@@ -1678,6 +1678,16 @@ class TransientArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceIn
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DeviceInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DeviceInProject] > > = nil
 
   //····················································································································
@@ -1793,7 +1803,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceIn
 //    To many relationship read write: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceInProject : TransientArrayOf_DeviceInProject {
+class ReadWriteArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
  

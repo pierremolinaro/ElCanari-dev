@@ -625,10 +625,10 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolPinInstanceInDevice
+//    ReadOnlyArrayOf_SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolPinInstanceInDevice> {
+class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolPinInstanceInDevice> {
 
   //····················································································································
   //   Observers of 'pinName' transient property
@@ -912,6 +912,16 @@ class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolPinInstanceInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolPinInstanceInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolPinInstanceInDevice] > > = nil
 
   //····················································································································
@@ -995,7 +1005,7 @@ class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty
 //    To many relationship read write: SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolPinInstanceInDevice : TransientArrayOf_SymbolPinInstanceInDevice {
+class ReadWriteArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolPinInstanceInDevice {
 
   //····················································································································
  

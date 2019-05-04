@@ -363,10 +363,10 @@ class FontInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontInProject
+//    ReadOnlyArrayOf_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
+class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
 
   //····················································································································
   //   Observers of 'mFontName' stored property
@@ -653,6 +653,16 @@ class TransientArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProj
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_FontInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [FontInProject] > > = nil
 
   //····················································································································
@@ -754,7 +764,7 @@ class TransientArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProj
 //    To many relationship read write: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontInProject : TransientArrayOf_FontInProject {
+class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
   //····················································································································
  

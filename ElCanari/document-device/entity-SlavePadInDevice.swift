@@ -727,10 +727,10 @@ class SlavePadInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SlavePadInDevice
+//    ReadOnlyArrayOf_SlavePadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePadInDevice> {
+class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePadInDevice> {
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -1301,6 +1301,16 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePa
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SlavePadInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SlavePadInDevice] > > = nil
 
   //····················································································································
@@ -1412,7 +1422,7 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePa
 //    To many relationship read write: SlavePadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SlavePadInDevice : TransientArrayOf_SlavePadInDevice {
+class ReadWriteArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 
   //····················································································································
  

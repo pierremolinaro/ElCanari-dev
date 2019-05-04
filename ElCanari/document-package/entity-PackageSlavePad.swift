@@ -1190,10 +1190,10 @@ class PackageSlavePad : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageSlavePad
+//    ReadOnlyArrayOf_PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSlavePad> {
+class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSlavePad> {
 
   //····················································································································
   //   Observers of 'xCenter' stored property
@@ -2330,6 +2330,16 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageS
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageSlavePad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageSlavePad] > > = nil
 
   //····················································································································
@@ -2461,7 +2471,7 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageS
 //    To many relationship read write: PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageSlavePad : TransientArrayOf_PackageSlavePad {
+class ReadWriteArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
  

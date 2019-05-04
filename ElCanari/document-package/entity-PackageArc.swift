@@ -937,10 +937,10 @@ class PackageArc : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageArc
+//    ReadOnlyArrayOf_PackageArc
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
+class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
   //   Observers of 'yCenter' stored property
@@ -1909,6 +1909,16 @@ class TransientArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageArc
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageArc] > > = nil
 
   //····················································································································
@@ -2034,7 +2044,7 @@ class TransientArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 //    To many relationship read write: PackageArc
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageArc : TransientArrayOf_PackageArc {
+class ReadWriteArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 
   //····················································································································
  

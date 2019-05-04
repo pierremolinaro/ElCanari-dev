@@ -323,10 +323,10 @@ class SegmentEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SegmentEntity
+//    ReadOnlyArrayOf_SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
+class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -615,6 +615,16 @@ class TransientArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnt
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SegmentEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SegmentEntity] > > = nil
 
   //····················································································································
@@ -716,7 +726,7 @@ class TransientArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnt
 //    To many relationship read write: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SegmentEntity : TransientArrayOf_SegmentEntity {
+class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
  

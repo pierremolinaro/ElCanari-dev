@@ -622,10 +622,10 @@ class FontCharacter : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontCharacter
+//    ReadOnlyArrayOf_FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
+class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
 
   //····················································································································
   //   Observers of 'codePoint' stored property
@@ -1081,6 +1081,16 @@ class TransientArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharac
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_FontCharacter
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
 
   //····················································································································
@@ -1188,7 +1198,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharac
 //    To many relationship read write: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontCharacter : TransientArrayOf_FontCharacter {
+class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
  

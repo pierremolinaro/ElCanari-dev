@@ -1507,10 +1507,10 @@ class MergerRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_MergerRoot
+//    ReadOnlyArrayOf_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
+class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   //····················································································································
   //   Observers of 'selectedPageIndex' stored property
@@ -2990,6 +2990,16 @@ class TransientArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_MergerRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [MergerRoot] > > = nil
 
   //····················································································································
@@ -3133,7 +3143,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 //    To many relationship read write: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_MergerRoot : TransientArrayOf_MergerRoot {
+class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
  

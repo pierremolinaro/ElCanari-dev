@@ -186,10 +186,10 @@ class SymbolObject : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolObject
+//    ReadOnlyArrayOf_SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject> {
+class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject> {
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -361,6 +361,16 @@ class TransientArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObjec
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolObject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolObject] > > = nil
 
   //····················································································································
@@ -444,7 +454,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObjec
 //    To many relationship read write: SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolObject : TransientArrayOf_SymbolObject {
+class ReadWriteArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
  

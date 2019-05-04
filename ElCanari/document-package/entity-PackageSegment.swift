@@ -801,10 +801,10 @@ class PackageSegment : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageSegment
+//    ReadOnlyArrayOf_PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSegment> {
+class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSegment> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1601,6 +1601,16 @@ class TransientArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSe
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageSegment
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageSegment] > > = nil
 
   //····················································································································
@@ -1720,7 +1730,7 @@ class TransientArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSe
 //    To many relationship read write: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageSegment : TransientArrayOf_PackageSegment {
+class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
   //····················································································································
  

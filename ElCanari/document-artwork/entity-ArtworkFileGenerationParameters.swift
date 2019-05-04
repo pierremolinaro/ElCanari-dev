@@ -1139,10 +1139,10 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ArtworkFileGenerationParameters
+//    ReadOnlyArrayOf_ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
+class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
 
   //····················································································································
   //   Observers of 'drawBoardLimits' stored property
@@ -2457,6 +2457,16 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPr
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > > = nil
 
   //····················································································································
@@ -2594,7 +2604,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPr
 //    To many relationship read write: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ArtworkFileGenerationParameters : TransientArrayOf_ArtworkFileGenerationParameters {
+class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
  

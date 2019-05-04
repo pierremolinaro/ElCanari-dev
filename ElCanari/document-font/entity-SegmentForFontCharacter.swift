@@ -397,10 +397,10 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SegmentForFontCharacter
+//    ReadOnlyArrayOf_SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
+class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -744,6 +744,16 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SegmentForFontCharacter
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SegmentForFontCharacter] > > = nil
 
   //····················································································································
@@ -847,7 +857,7 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <
 //    To many relationship read write: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SegmentForFontCharacter : TransientArrayOf_SegmentForFontCharacter {
+class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
  

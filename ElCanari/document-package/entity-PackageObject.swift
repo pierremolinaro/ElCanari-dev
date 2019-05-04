@@ -186,10 +186,10 @@ class PackageObject : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageObject
+//    ReadOnlyArrayOf_PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObject> {
+class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObject> {
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -361,6 +361,16 @@ class TransientArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObj
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageObject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageObject] > > = nil
 
   //····················································································································
@@ -444,7 +454,7 @@ class TransientArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObj
 //    To many relationship read write: PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageObject : TransientArrayOf_PackageObject {
+class ReadWriteArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
  

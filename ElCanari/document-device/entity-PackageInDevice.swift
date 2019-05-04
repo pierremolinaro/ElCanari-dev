@@ -886,10 +886,10 @@ class PackageInDevice : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageInDevice
+//    ReadOnlyArrayOf_PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageInDevice> {
+class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageInDevice> {
 
   //····················································································································
   //   Observers of 'mFileData' stored property
@@ -1571,6 +1571,16 @@ class TransientArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageI
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageInDevice] > > = nil
 
   //····················································································································
@@ -1686,7 +1696,7 @@ class TransientArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageI
 //    To many relationship read write: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageInDevice : TransientArrayOf_PackageInDevice {
+class ReadWriteArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
  

@@ -872,10 +872,10 @@ class ComponentInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ComponentInProject
+//    ReadOnlyArrayOf_ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <ComponentInProject> {
+class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <ComponentInProject> {
 
   //····················································································································
   //   Observers of 'mNamePrefix' stored property
@@ -1442,6 +1442,16 @@ class TransientArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compo
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_ComponentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [ComponentInProject] > > = nil
 
   //····················································································································
@@ -1553,7 +1563,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compo
 //    To many relationship read write: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ComponentInProject : TransientArrayOf_ComponentInProject {
+class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 
   //····················································································································
  

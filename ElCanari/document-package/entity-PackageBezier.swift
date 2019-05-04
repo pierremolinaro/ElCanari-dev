@@ -1075,10 +1075,10 @@ class PackageBezier : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageBezier
+//    ReadOnlyArrayOf_PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezier> {
+class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezier> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -2218,6 +2218,16 @@ class TransientArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBez
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageBezier
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageBezier] > > = nil
 
   //····················································································································
@@ -2349,7 +2359,7 @@ class TransientArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBez
 //    To many relationship read write: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageBezier : TransientArrayOf_PackageBezier {
+class ReadWriteArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
  

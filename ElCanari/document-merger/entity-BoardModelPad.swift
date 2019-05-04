@@ -364,10 +364,10 @@ class BoardModelPad : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelPad
+//    ReadOnlyArrayOf_BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelPad> {
+class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelPad> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -713,6 +713,16 @@ class TransientArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModel
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_BoardModelPad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [BoardModelPad] > > = nil
 
   //····················································································································
@@ -816,7 +826,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModel
 //    To many relationship read write: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_BoardModelPad : TransientArrayOf_BoardModelPad {
+class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
  

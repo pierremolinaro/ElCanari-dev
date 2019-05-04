@@ -649,10 +649,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_MergerBoardInstance
+//    ReadOnlyArrayOf_MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <MergerBoardInstance> {
+class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <MergerBoardInstance> {
 
   //····················································································································
   //   Observers of 'x' stored property
@@ -1107,6 +1107,16 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merg
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_MergerBoardInstance
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [MergerBoardInstance] > > = nil
 
   //····················································································································
@@ -1214,7 +1224,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merg
 //    To many relationship read write: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_MergerBoardInstance : TransientArrayOf_MergerBoardInstance {
+class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
  

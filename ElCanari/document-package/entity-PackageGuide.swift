@@ -620,10 +620,10 @@ class PackageGuide : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageGuide
+//    ReadOnlyArrayOf_PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide> {
+class ReadOnlyArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuide> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1251,6 +1251,16 @@ class TransientArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuid
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageGuide
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageGuide] > > = nil
 
   //····················································································································
@@ -1364,7 +1374,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyAbstractArrayProperty <PackageGuid
 //    To many relationship read write: PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageGuide : TransientArrayOf_PackageGuide {
+class ReadWriteArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
  

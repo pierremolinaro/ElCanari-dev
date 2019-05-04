@@ -222,10 +222,10 @@ class SheetInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SheetInProject
+//    ReadOnlyArrayOf_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInProject> {
+class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInProject> {
 
   //····················································································································
   //   Observers of 'mSheetTitle' stored property
@@ -283,6 +283,16 @@ class TransientArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPr
       }
     }
   }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SheetInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
 
@@ -379,7 +389,7 @@ class TransientArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPr
 //    To many relationship read write: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SheetInProject : TransientArrayOf_SheetInProject {
+class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
  

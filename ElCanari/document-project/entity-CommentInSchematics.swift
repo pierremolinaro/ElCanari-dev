@@ -12,8 +12,8 @@ protocol CommentInSchematics_mX : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_my : class {
-  var my : Int { get }
+protocol CommentInSchematics_mY : class {
+  var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -23,13 +23,27 @@ protocol CommentInSchematics_mComment : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol CommentInSchematics_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol CommentInSchematics_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: CommentInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CommentInSchematics : SchematicsObject,
          CommentInSchematics_mX,
-         CommentInSchematics_my,
-         CommentInSchematics_mComment {
+         CommentInSchematics_mY,
+         CommentInSchematics_mComment,
+         CommentInSchematics_objectDisplay,
+         CommentInSchematics_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mX
@@ -49,21 +63,21 @@ class CommentInSchematics : SchematicsObject,
   var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
 
   //····················································································································
-  //   Atomic property: my
+  //   Atomic property: mY
   //····················································································································
 
-  let my_property = EBStoredProperty_Int (defaultValue: 0)
+  let mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var my : Int {
-    get { return self.my_property.propval }
-    set { self.my_property.setProp (newValue) }
+  var mY : Int {
+    get { return self.mY_property.propval }
+    set { self.mY_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var my_property_selection : EBSelection <Int> { return self.my_property.prop }
+  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
 
   //····················································································································
   //   Atomic property: mComment
@@ -90,10 +104,62 @@ class CommentInSchematics : SchematicsObject,
     super.init (ebUndoManager)
   //--- Atomic property: mX
     self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: my
-    self.my_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mY
+    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mComment
     self.mComment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComment_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_CommentInSchematics_objectDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComment_property.addEBObserver (self.objectDisplay_property)
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mComment_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_CommentInSchematics_selectionDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComment_property.addEBObserver (self.selectionDisplay_property)
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -103,6 +169,12 @@ class CommentInSchematics : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mComment_property.removeEBObserver (self.objectDisplay_property)
+    self.mX_property.removeEBObserver (self.objectDisplay_property)
+    self.mY_property.removeEBObserver (self.objectDisplay_property)
+    self.mComment_property.removeEBObserver (self.selectionDisplay_property)
+    self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -126,12 +198,12 @@ class CommentInSchematics : SchematicsObject,
       valueExplorer:&self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "my",
-      idx:self.my_property.ebObjectIndex,
+      "mY",
+      idx:self.mY_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.my_property.mObserverExplorer,
-      valueExplorer:&self.my_property.mValueExplorer
+      observerExplorer:&self.mY_property.mObserverExplorer,
+      valueExplorer:&self.mY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mComment",
@@ -142,6 +214,22 @@ class CommentInSchematics : SchematicsObject,
       valueExplorer:&self.mComment_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -155,9 +243,9 @@ class CommentInSchematics : SchematicsObject,
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
-  //--- Atomic property: my
-    self.my_property.mObserverExplorer = nil
-    self.my_property.mValueExplorer = nil
+  //--- Atomic property: mY
+    self.mY_property.mObserverExplorer = nil
+    self.mY_property.mValueExplorer = nil
   //--- Atomic property: mComment
     self.mComment_property.mObserverExplorer = nil
     self.mComment_property.mValueExplorer = nil
@@ -191,8 +279,8 @@ class CommentInSchematics : SchematicsObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
-  //--- Atomic property: my
-    self.my_property.storeIn (dictionary: ioDictionary, forKey:"my")
+  //--- Atomic property: mY
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
   //--- Atomic property: mComment
     self.mComment_property.storeIn (dictionary: ioDictionary, forKey:"mComment")
   }
@@ -214,8 +302,8 @@ class CommentInSchematics : SchematicsObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
-  //--- Atomic property: my
-    self.my_property.readFrom (dictionary: inDictionary, forKey:"my")
+  //--- Atomic property: mY
+    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   //--- Atomic property: mComment
     self.mComment_property.readFrom (dictionary: inDictionary, forKey:"mComment")
   }
@@ -241,10 +329,10 @@ class CommentInSchematics : SchematicsObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_CommentInSchematics
+//    ReadOnlyArrayOf_CommentInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <CommentInSchematics> {
+class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <CommentInSchematics> {
 
   //····················································································································
   //   Observers of 'mX' stored property
@@ -304,58 +392,58 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comm
   }
 
   //····················································································································
-  //   Observers of 'my' stored property
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_my = EBWeakEventSet ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_my (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_my.insert (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.my_property.addEBObserver (inObserver)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_my (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_my.remove (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.my_property.removeEBObserver (inObserver)
+        managedObject.mY_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_my_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
     for managedObject in inSet {
-      self.mObserversOf_my.apply { (_ observer : EBEvent) in
-        managedObject.my_property.addEBObserver (observer)
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_my_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_my.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.my_property.removeEBObserver (observer)
+        managedObject.mY_property.removeEBObserver (observer)
       }
     }
   }
@@ -418,6 +506,128 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comm
   }
 
   //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_CommentInSchematics
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics {
+
+  //····················································································································
 
   var mReadModelFunction : Optional < () -> EBSelection < [CommentInSchematics] > > = nil
 
@@ -476,16 +686,20 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comm
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_my_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mComment_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_my_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mY_toElementsOfSet (addedSet)
       self.addEBObserversOf_mComment_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -516,7 +730,7 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comm
 //    To many relationship read write: CommentInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_CommentInSchematics : TransientArrayOf_CommentInSchematics {
+class ReadWriteArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics {
 
   //····················································································································
  
@@ -614,14 +828,16 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
             managedObject.setSignatureObserver (observer: nil)
             self.resetOppositeRelationship? (managedObject)
             managedObject.mX_property.mSetterDelegate = nil
-            managedObject.my_property.mSetterDelegate = nil
+            managedObject.mY_property.mSetterDelegate = nil
             managedObject.mComment_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_my_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mComment_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -630,14 +846,16 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.my_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mComment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties
           self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_my_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mComment_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

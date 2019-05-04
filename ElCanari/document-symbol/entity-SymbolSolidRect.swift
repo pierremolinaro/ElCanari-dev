@@ -520,10 +520,10 @@ class SymbolSolidRect : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSolidRect
+//    ReadOnlyArrayOf_SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSolidRect> {
+class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSolidRect> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -979,6 +979,16 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSo
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolSolidRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidRect] > > = nil
 
   //····················································································································
@@ -1086,7 +1096,7 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSo
 //    To many relationship read write: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSolidRect : TransientArrayOf_SymbolSolidRect {
+class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 
   //····················································································································
  

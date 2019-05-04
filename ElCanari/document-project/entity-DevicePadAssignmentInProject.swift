@@ -355,10 +355,10 @@ class DevicePadAssignmentInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DevicePadAssignmentInProject
+//    ReadOnlyArrayOf_DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProperty <DevicePadAssignmentInProject> {
+class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProperty <DevicePadAssignmentInProject> {
 
   //····················································································································
   //   Observers of 'mPadName' stored property
@@ -531,6 +531,16 @@ class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DevicePadAssignmentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadAssignmentInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DevicePadAssignmentInProject] > > = nil
 
   //····················································································································
@@ -628,7 +638,7 @@ class TransientArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayPrope
 //    To many relationship read write: DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DevicePadAssignmentInProject : TransientArrayOf_DevicePadAssignmentInProject {
+class ReadWriteArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadAssignmentInProject {
 
   //····················································································································
  

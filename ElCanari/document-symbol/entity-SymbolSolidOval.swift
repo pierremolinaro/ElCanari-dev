@@ -517,10 +517,10 @@ class SymbolSolidOval : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSolidOval
+//    ReadOnlyArrayOf_SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSolidOval> {
+class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSolidOval> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -976,6 +976,16 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSo
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolSolidOval
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
 
   //····················································································································
@@ -1083,7 +1093,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSo
 //    To many relationship read write: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSolidOval : TransientArrayOf_SymbolSolidOval {
+class ReadWriteArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 
   //····················································································································
  

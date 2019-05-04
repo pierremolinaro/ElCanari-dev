@@ -520,10 +520,10 @@ class SymbolSegment : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSegment
+//    ReadOnlyArrayOf_SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegment> {
+class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegment> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -979,6 +979,16 @@ class TransientArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegm
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolSegment
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolSegment] > > = nil
 
   //····················································································································
@@ -1086,7 +1096,7 @@ class TransientArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegm
 //    To many relationship read write: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSegment : TransientArrayOf_SymbolSegment {
+class ReadWriteArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 
   //····················································································································
  

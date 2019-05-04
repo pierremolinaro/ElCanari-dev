@@ -782,10 +782,10 @@ class MasterPadInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_MasterPadInDevice
+//    ReadOnlyArrayOf_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterPadInDevice> {
+class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterPadInDevice> {
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -1413,6 +1413,16 @@ class TransientArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <Master
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_MasterPadInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [MasterPadInDevice] > > = nil
 
   //····················································································································
@@ -1526,7 +1536,7 @@ class TransientArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <Master
 //    To many relationship read write: MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_MasterPadInDevice : TransientArrayOf_MasterPadInDevice {
+class ReadWriteArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
 
   //····················································································································
  

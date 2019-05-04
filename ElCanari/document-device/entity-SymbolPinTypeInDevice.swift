@@ -706,10 +706,10 @@ class SymbolPinTypeInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolPinTypeInDevice
+//    ReadOnlyArrayOf_SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <SymbolPinTypeInDevice> {
+class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <SymbolPinTypeInDevice> {
 
   //····················································································································
   //   Observers of 'mPinX' stored property
@@ -1339,6 +1339,16 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolPinTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolPinTypeInDevice] > > = nil
 
   //····················································································································
@@ -1452,7 +1462,7 @@ class TransientArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sy
 //    To many relationship read write: SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolPinTypeInDevice : TransientArrayOf_SymbolPinTypeInDevice {
+class ReadWriteArrayOf_SymbolPinTypeInDevice : ReadOnlyArrayOf_SymbolPinTypeInDevice {
 
   //····················································································································
  

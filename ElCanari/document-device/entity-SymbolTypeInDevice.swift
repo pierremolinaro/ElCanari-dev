@@ -650,10 +650,10 @@ class SymbolTypeInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolTypeInDevice
+//    ReadOnlyArrayOf_SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <SymbolTypeInDevice> {
+class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <SymbolTypeInDevice> {
 
   //····················································································································
   //   Observers of 'mTypeName' stored property
@@ -1110,6 +1110,16 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbo
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolTypeInDevice] > > = nil
 
   //····················································································································
@@ -1217,7 +1227,7 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbo
 //    To many relationship read write: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolTypeInDevice : TransientArrayOf_SymbolTypeInDevice {
+class ReadWriteArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
 
   //····················································································································
  

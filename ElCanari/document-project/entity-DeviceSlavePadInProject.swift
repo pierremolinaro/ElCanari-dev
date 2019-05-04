@@ -405,10 +405,10 @@ class DeviceSlavePadInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceSlavePadInProject
+//    ReadOnlyArrayOf_DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <DeviceSlavePadInProject> {
+class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <DeviceSlavePadInProject> {
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -811,6 +811,16 @@ class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DeviceSlavePadInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DeviceSlavePadInProject] > > = nil
 
   //····················································································································
@@ -916,7 +926,7 @@ class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <
 //    To many relationship read write: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceSlavePadInProject : TransientArrayOf_DeviceSlavePadInProject {
+class ReadWriteArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadInProject {
 
   //····················································································································
  

@@ -276,10 +276,10 @@ class DeviceDocumentation : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceDocumentation
+//    ReadOnlyArrayOf_DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <DeviceDocumentation> {
+class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <DeviceDocumentation> {
 
   //····················································································································
   //   Observers of 'mFileName' stored property
@@ -453,6 +453,16 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devi
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DeviceDocumentation
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DeviceDocumentation] > > = nil
 
   //····················································································································
@@ -550,7 +560,7 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devi
 //    To many relationship read write: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceDocumentation : TransientArrayOf_DeviceDocumentation {
+class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation {
 
   //····················································································································
  

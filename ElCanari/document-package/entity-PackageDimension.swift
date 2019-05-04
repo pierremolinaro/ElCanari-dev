@@ -946,10 +946,10 @@ class PackageDimension : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageDimension
+//    ReadOnlyArrayOf_PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageDimension> {
+class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageDimension> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1918,6 +1918,16 @@ class TransientArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <Package
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageDimension
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageDimension] > > = nil
 
   //····················································································································
@@ -2043,7 +2053,7 @@ class TransientArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <Package
 //    To many relationship read write: PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageDimension : TransientArrayOf_PackageDimension {
+class ReadWriteArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
 
   //····················································································································
  

@@ -687,10 +687,10 @@ class PackageOval : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageOval
+//    ReadOnlyArrayOf_PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> {
+class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -1374,6 +1374,16 @@ class TransientArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval>
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_PackageOval
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [PackageOval] > > = nil
 
   //····················································································································
@@ -1489,7 +1499,7 @@ class TransientArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval>
 //    To many relationship read write: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageOval : TransientArrayOf_PackageOval {
+class ReadWriteArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
  

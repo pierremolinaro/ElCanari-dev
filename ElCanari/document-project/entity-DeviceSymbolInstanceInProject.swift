@@ -474,10 +474,10 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceSymbolInstanceInProject
+//    ReadOnlyArrayOf_DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
+class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
@@ -762,6 +762,16 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOf_DeviceSymbolInstanceInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSymbolInstanceInProject {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection < [DeviceSymbolInstanceInProject] > > = nil
 
   //····················································································································
@@ -863,7 +873,7 @@ class TransientArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProp
 //    To many relationship read write: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceSymbolInstanceInProject : TransientArrayOf_DeviceSymbolInstanceInProject {
+class ReadWriteArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSymbolInstanceInProject {
 
   //····················································································································
  
