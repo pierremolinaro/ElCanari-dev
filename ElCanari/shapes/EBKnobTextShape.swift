@@ -74,7 +74,7 @@ class EBTextKnobShape : EBShape {
   //····················································································································
 
   private var knobRect : NSRect {
-    return self.mFilledBezierPath.bounds.insetBy(dx: -0.5, dy: -0.5)
+    return self.mFilledBezierPath.bounds.insetBy(dx: -1.0, dy: -1.0)
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ class EBTextKnobShape : EBShape {
   //····················································································································
 
   override internal func internalBoundingBox () -> NSRect {
-    return self.knobRect
+    return self.knobRect.insetBy (dx: -0.5, dy: -0.5)
   }
 
   //····················································································································

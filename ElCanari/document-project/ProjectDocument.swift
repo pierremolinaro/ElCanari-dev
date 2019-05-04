@@ -39,6 +39,12 @@ import Cocoa
   var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
 
   //····················································································································
+  //   Selection controller: commentInSchematicsSelectionController
+  //····················································································································
+
+  var commentInSchematicsSelectionController = SelectionController_ProjectDocument_commentInSchematicsSelectionController ()
+
+  //····················································································································
   //   Selection controller: mComponentSymbolSelectionController
   //····················································································································
 
@@ -279,6 +285,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddCommentButton : CanariDragSourceButton?
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mAddNetClassButton : EBButton?
@@ -297,6 +304,8 @@ import Cocoa
   @IBOutlet var mChangeValueOfSelectedComponentsActionButton : EBButton?
   @IBOutlet var mChangeValuePanel : NSPanel?
   @IBOutlet var mChangeValueValidationButton : NSButton?
+  @IBOutlet var mCommentInSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mCommentInSchematicsTextField : EBTextField?
   @IBOutlet var mComponentCountTextField : EBTextObserverField?
   @IBOutlet var mComponentSymbolComponentNameTextField : EBTextObserverField?
   @IBOutlet var mComponentSymbolDeviceNameTextField : EBTextObserverField?
@@ -440,6 +449,8 @@ import Cocoa
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
+  //--- Selection controller property: commentInSchematicsSelectionController
+    self.commentInSchematicsSelectionController.addExplorer (name: "commentInSchematicsSelectionController", y:&y, view:view)
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.addExplorer (name: "mComponentSymbolSelectionController", y:&y, view:view)
   //---
@@ -473,6 +484,7 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    checkOutletConnection (self.mAddCommentButton, "mAddCommentButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddNetClassButton, "mAddNetClassButton", EBButton.self, #file, #line)
@@ -491,6 +503,8 @@ import Cocoa
     checkOutletConnection (self.mChangeValueOfSelectedComponentsActionButton, "mChangeValueOfSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mChangeValuePanel, "mChangeValuePanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mChangeValueValidationButton, "mChangeValueValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mCommentInSchematicsInspectorView, "mCommentInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mCommentInSchematicsTextField, "mCommentInSchematicsTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolComponentNameTextField, "mComponentSymbolComponentNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentSymbolDeviceNameTextField, "mComponentSymbolDeviceNameTextField", EBTextObserverField.self, #file, #line)
@@ -590,6 +604,8 @@ import Cocoa
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+  //--- Selection controller property: commentInSchematicsSelectionController
+    self.commentInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
@@ -823,6 +839,7 @@ import Cocoa
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
+    self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicsSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
     self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
     self.mComponentSymbolValueTextField?.bind_value (self.mComponentSymbolSelectionController.componentValueProxy_property, file: #file, line: #line, sendContinously:true)
@@ -1099,6 +1116,7 @@ import Cocoa
     self.mSchematicsView?.unbind_gridLineColor ()
     self.mSchematicsView?.unbind_gridCrossColor ()
     self.mSchematicsView?.unbind_zoom ()
+    self.mCommentInSchematicsTextField?.unbind_value ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
     self.mComponentSymbolComponentNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolValueTextField?.unbind_value ()
@@ -1159,6 +1177,8 @@ import Cocoa
     self.mProjectDeviceController.unbind_model ()
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.unbind_model ()
+  //--- Selection controller property: commentInSchematicsSelectionController
+    self.commentInSchematicsSelectionController.unbind_selection ()
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
@@ -1195,6 +1215,7 @@ import Cocoa
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddCommentButton?.ebCleanUp ()
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
     self.mAddNetClassButton?.ebCleanUp ()
@@ -1213,6 +1234,8 @@ import Cocoa
     self.mChangeValueOfSelectedComponentsActionButton?.ebCleanUp ()
     self.mChangeValuePanel?.ebCleanUp ()
     self.mChangeValueValidationButton?.ebCleanUp ()
+    self.mCommentInSchematicsInspectorView?.ebCleanUp ()
+    self.mCommentInSchematicsTextField?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentSymbolComponentNameTextField?.ebCleanUp ()
     self.mComponentSymbolDeviceNameTextField?.ebCleanUp ()

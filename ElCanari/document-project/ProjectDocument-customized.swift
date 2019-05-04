@@ -4,7 +4,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.symbol")
+fileprivate let kDragAndDropSymbolInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.symbol")
+fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.comment")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -77,6 +78,7 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
   //--- Register schematics inspector views
     self.mSchematicsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
     self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
+    self.mSchematicsObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematics")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
@@ -104,8 +106,14 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
     self.mSchematicsView?.mGridStepInCanariUnit = milsToCanariUnit (50)
     self.mSchematicsView?.set (mouseGridInCanariUnit: milsToCanariUnit (50))
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolType])
-    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolType)
+    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematics, kDragAndDropCommentInSchematics])
+    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematics)
+  //--- Drag source buttons and destination scroll view
+    self.mAddCommentButton?.register (
+      draggedType: kDragAndDropCommentInSchematics,
+      entityName: "CommentInSchematics",
+      scaleProvider: self.mSchematicsView
+    )
   }
 
   //····················································································································
@@ -176,19 +184,39 @@ fileprivate let kDragAndDropSymbolType = NSPasteboard.PasteboardType (rawValue: 
   override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     let pasteboard = sender.draggingPasteboard
     var ok = false
-    if let documentView = destinationScrollView.documentView,
-       let _ = pasteboard.data (forType: kDragAndDropSymbolType),
-       let symbol = self.mPossibleDraggedSymbol { // , let symbolInstanceName = String (data: data, encoding: .ascii) {
+    if let documentView = destinationScrollView.documentView {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
-      let p = draggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (50))
-      symbol.mCenterX = p.x
-      symbol.mCenterY = p.y
-      self.rootObject.mSelectedSheet?.mObjects.append (symbol)
-      self.mSchematicsObjectsController.setSelection ([symbol])
-      ok = true
+      if let _ = pasteboard.data (forType: kDragAndDropSymbolInSchematics), let symbol = self.mPossibleDraggedSymbol {
+        self.performAddSymbolDragOperation (symbol, draggingLocationInDestinationView)
+        ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropCommentInSchematics]) {
+        self.performAddCommentDragOperation (draggingLocationInDestinationView)
+        ok = true
+      }
     }
     return ok
+  }
+
+  //····················································································································
+
+  private func performAddSymbolDragOperation (_ inSymbol : ComponentSymbolInProject, _ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (50))
+    inSymbol.mCenterX = p.x
+    inSymbol.mCenterY = p.y
+    self.rootObject.mSelectedSheet?.mObjects.append (inSymbol)
+    self.mSchematicsObjectsController.setSelection ([inSymbol])
+  }
+
+  //····················································································································
+
+  private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (50))
+    let comment = CommentInSchematics (self.ebUndoManager)
+    comment.mX = p.x
+    comment.mY = p.y
+    self.rootObject.mSelectedSheet?.mObjects.append (comment)
+    self.mSchematicsObjectsController.setSelection ([comment])
   }
 
   //····················································································································

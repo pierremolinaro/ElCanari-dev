@@ -191,6 +191,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mUnplacedSymbolsSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
 
+  outlet CanariDragSourceButton mAddCommentButton ;
+
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
@@ -249,6 +251,16 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet EBScrollView mSchematicsScrollView ;
+
+//--- Selected comment in schematic inspector
+  outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
+  selectionController CommentInSchematics #commentInSchematicsSelectionController :
+    #mSchematicsObjectsController.selectedArray
+  ;
+
+  outlet EBTextField mCommentInSchematicsTextField
+    $value #commentInSchematicsSelectionController.mComment {sendContinously : yes}
+  ;
 
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
