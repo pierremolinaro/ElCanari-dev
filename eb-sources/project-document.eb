@@ -231,7 +231,8 @@ document ProjectDocument root ProjectRoot {
   outlet NSDatePicker mSchematicsDatePicker ;
 
 //--- Schematics view
-  arrayController #mSchematicsObjectsController : #mSelectedSheetController.mObjects ;
+//  arrayController #mSchematicsObjectsController : #mSelectedSheetController.mObjects ;
+  arrayController #mSchematicsObjectsController : root.selectedSheetObjects ;
 
   outlet EBView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay

@@ -599,7 +599,7 @@ import Cocoa
   //--- Object controller property: mSelectedSheetController
     self.mSelectedSheetController.bind_model (self.rootObject.mSelectedSheet_property)
   //--- Array controller property: mSchematicsObjectsController
-    self.mSchematicsObjectsController.bind_model (self.mSelectedSheetController.mObjects_property)
+    self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount

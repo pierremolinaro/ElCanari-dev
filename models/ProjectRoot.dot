@@ -1,9 +1,9 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets|String selectedSheetTitle"] ;
-  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>mObjects|String mSheetTitle"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|<mNetClasses>mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>mSelectedSheet|<mSheets>mSheets|<selectedSheetObjects>selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicsObject[label="<SchematicsObject>SchematicsObject|<mSheet>mSheet"] ;
+  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>mObjects|String mSheetTitle"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
   NetInProject[label="<NetInProject>NetInProject|<mNetClass>mNetClass|String mNetName"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
@@ -23,6 +23,7 @@ digraph G {
   ProjectRoot:mNetClasses -> NetClassInProject:NetClassInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mSelectedSheet -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=onormal] ;
   ProjectRoot:mSheets -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=vee] ;
+  ProjectRoot:selectedSheetObjects -> SchematicsObject:SchematicsObject [dir=both arrowtail=none arrowhead=vee] ;
   SheetInProject:mObjects -> SchematicsObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
   NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;

@@ -3542,7 +3542,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: height
+  //   Observable atomic property: height
   //····················································································································
 
   private var mObserversOf_height = EBWeakEventSet ()
@@ -3583,7 +3583,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: heightUnit
+  //   Observable atomic property: heightUnit
   //····················································································································
 
   private var mObserversOf_heightUnit = EBWeakEventSet ()
@@ -3624,7 +3624,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: issues
+  //   Observable atomic property: issues
   //····················································································································
 
   private var mObserversOf_issues = EBWeakEventSet ()
@@ -3665,7 +3665,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: objectDisplay
+  //   Observable atomic property: objectDisplay
   //····················································································································
 
   private var mObserversOf_objectDisplay = EBWeakEventSet ()
@@ -3706,7 +3706,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: rect
+  //   Observable atomic property: rect
   //····················································································································
 
   private var mObserversOf_rect = EBWeakEventSet ()
@@ -3747,7 +3747,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: selectionDisplay
+  //   Observable atomic property: selectionDisplay
   //····················································································································
 
   private var mObserversOf_selectionDisplay = EBWeakEventSet ()
@@ -3788,7 +3788,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: width
+  //   Observable atomic property: width
   //····················································································································
 
   private var mObserversOf_width = EBWeakEventSet ()
@@ -3829,7 +3829,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: widthUnit
+  //   Observable atomic property: widthUnit
   //····················································································································
 
   private var mObserversOf_widthUnit = EBWeakEventSet ()
@@ -3870,7 +3870,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: x
+  //   Observable atomic property: x
   //····················································································································
 
   private var mObserversOf_x = EBWeakEventSet ()
@@ -3911,7 +3911,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: xName
+  //   Observable atomic property: xName
   //····················································································································
 
   private var mObserversOf_xName = EBWeakEventSet ()
@@ -3952,7 +3952,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: xNameUnit
+  //   Observable atomic property: xNameUnit
   //····················································································································
 
   private var mObserversOf_xNameUnit = EBWeakEventSet ()
@@ -3993,7 +3993,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: xUnit
+  //   Observable atomic property: xUnit
   //····················································································································
 
   private var mObserversOf_xUnit = EBWeakEventSet ()
@@ -4034,7 +4034,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: y
+  //   Observable atomic property: y
   //····················································································································
 
   private var mObserversOf_y = EBWeakEventSet ()
@@ -4075,7 +4075,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: yName
+  //   Observable atomic property: yName
   //····················································································································
 
   private var mObserversOf_yName = EBWeakEventSet ()
@@ -4116,7 +4116,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: yNameUnit
+  //   Observable atomic property: yNameUnit
   //····················································································································
 
   private var mObserversOf_yNameUnit = EBWeakEventSet ()
@@ -4157,7 +4157,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: yUnit
+  //   Observable atomic property: yUnit
   //····················································································································
 
   private var mObserversOf_yUnit = EBWeakEventSet ()
@@ -4198,7 +4198,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: zoneName
+  //   Observable atomic property: zoneName
   //····················································································································
 
   private var mObserversOf_zoneName = EBWeakEventSet ()
@@ -4239,7 +4239,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: zoneNumbering
+  //   Observable atomic property: zoneNumbering
   //····················································································································
 
   private var mObserversOf_zoneNumbering = EBWeakEventSet ()

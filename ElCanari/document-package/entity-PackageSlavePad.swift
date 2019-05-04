@@ -2836,6 +2836,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
         oldValue?.padStyle_property.removeEBObserversFrom (&self.mObserversOf_padStyle)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
         oldValue?.slavePadCount_property.removeEBObserversFrom (&self.mObserversOf_slavePadCount)
+        oldValue?.slaves_property.removeEBObserversFrom (&self.mObserversOf_slaves)
         oldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width)
         oldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit)
         oldValue?.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter)
@@ -2862,6 +2863,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
         self.mValue?.padStyle_property.addEBObserversFrom (&self.mObserversOf_padStyle)
         self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
         self.mValue?.slavePadCount_property.addEBObserversFrom (&self.mObserversOf_slavePadCount)
+        self.mValue?.slaves_property.addEBObserversFrom (&self.mObserversOf_slaves)
         self.mValue?.width_property.addEBObserversFrom (&self.mObserversOf_width)
         self.mValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit)
         self.mValue?.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter)
@@ -2899,7 +2901,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: annularRing
+  //   Observable atomic property: annularRing
   //····················································································································
 
   private var mObserversOf_annularRing = EBWeakEventSet ()
@@ -2940,7 +2942,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: annularRingUnit
+  //   Observable atomic property: annularRingUnit
   //····················································································································
 
   private var mObserversOf_annularRingUnit = EBWeakEventSet ()
@@ -2981,7 +2983,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: height
+  //   Observable atomic property: height
   //····················································································································
 
   private var mObserversOf_height = EBWeakEventSet ()
@@ -3022,7 +3024,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: heightUnit
+  //   Observable atomic property: heightUnit
   //····················································································································
 
   private var mObserversOf_heightUnit = EBWeakEventSet ()
@@ -3063,7 +3065,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: holeDiameter
+  //   Observable atomic property: holeDiameter
   //····················································································································
 
   private var mObserversOf_holeDiameter = EBWeakEventSet ()
@@ -3104,7 +3106,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: holeDiameterUnit
+  //   Observable atomic property: holeDiameterUnit
   //····················································································································
 
   private var mObserversOf_holeDiameterUnit = EBWeakEventSet ()
@@ -3145,7 +3147,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: issues
+  //   Observable atomic property: issues
   //····················································································································
 
   private var mObserversOf_issues = EBWeakEventSet ()
@@ -3186,7 +3188,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: noZone
+  //   Observable atomic property: noZone
   //····················································································································
 
   private var mObserversOf_noZone = EBWeakEventSet ()
@@ -3227,7 +3229,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: objectDisplay
+  //   Observable atomic property: objectDisplay
   //····················································································································
 
   private var mObserversOf_objectDisplay = EBWeakEventSet ()
@@ -3268,7 +3270,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padIsTraversing
+  //   Observable atomic property: padIsTraversing
   //····················································································································
 
   private var mObserversOf_padIsTraversing = EBWeakEventSet ()
@@ -3309,7 +3311,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padName
+  //   Observable atomic property: padName
   //····················································································································
 
   private var mObserversOf_padName = EBWeakEventSet ()
@@ -3350,7 +3352,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padNumber
+  //   Observable atomic property: padNumber
   //····················································································································
 
   private var mObserversOf_padNumber = EBWeakEventSet ()
@@ -3391,7 +3393,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padNumberDisplay
+  //   Observable atomic property: padNumberDisplay
   //····················································································································
 
   private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
@@ -3432,7 +3434,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padShape
+  //   Observable atomic property: padShape
   //····················································································································
 
   private var mObserversOf_padShape = EBWeakEventSet ()
@@ -3473,7 +3475,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padStyle
+  //   Observable atomic property: padStyle
   //····················································································································
 
   private var mObserversOf_padStyle = EBWeakEventSet ()
@@ -3514,7 +3516,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: selectionDisplay
+  //   Observable atomic property: selectionDisplay
   //····················································································································
 
   private var mObserversOf_selectionDisplay = EBWeakEventSet ()
@@ -3555,7 +3557,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: slavePadCount
+  //   Observable atomic property: slavePadCount
   //····················································································································
 
   private var mObserversOf_slavePadCount = EBWeakEventSet ()
@@ -3596,7 +3598,48 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: width
+  //   Observable toMany property: slaves
+  //····················································································································
+
+  private var mObserversOf_slaves = EBWeakEventSet ()
+
+  //····················································································································
+
+  var slaves_property_selection : EBSelection <[PackageSlavePad]> {
+    if let model = self.propval {
+      switch (model.slaves_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_slaves (_ inObserver : EBEvent) {
+    self.mObserversOf_slaves.insert (inObserver)
+    if let object = self.propval {
+      object.slaves_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_slaves (_ inObserver : EBEvent) {
+    self.mObserversOf_slaves.remove (inObserver)
+    if let object = self.propval {
+      object.slaves_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: width
   //····················································································································
 
   private var mObserversOf_width = EBWeakEventSet ()
@@ -3637,7 +3680,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: widthUnit
+  //   Observable atomic property: widthUnit
   //····················································································································
 
   private var mObserversOf_widthUnit = EBWeakEventSet ()
@@ -3678,7 +3721,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: xCenter
+  //   Observable atomic property: xCenter
   //····················································································································
 
   private var mObserversOf_xCenter = EBWeakEventSet ()
@@ -3719,7 +3762,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: xCenterUnit
+  //   Observable atomic property: xCenterUnit
   //····················································································································
 
   private var mObserversOf_xCenterUnit = EBWeakEventSet ()
@@ -3760,7 +3803,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: yCenter
+  //   Observable atomic property: yCenter
   //····················································································································
 
   private var mObserversOf_yCenter = EBWeakEventSet ()
@@ -3801,7 +3844,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: yCenterUnit
+  //   Observable atomic property: yCenterUnit
   //····················································································································
 
   private var mObserversOf_yCenterUnit = EBWeakEventSet ()
@@ -3842,7 +3885,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: zoneAllowsManualRenumbering
+  //   Observable atomic property: zoneAllowsManualRenumbering
   //····················································································································
 
   private var mObserversOf_zoneAllowsManualRenumbering = EBWeakEventSet ()
@@ -3883,7 +3926,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: zoneName
+  //   Observable atomic property: zoneName
   //····················································································································
 
   private var mObserversOf_zoneName = EBWeakEventSet ()

@@ -1298,6 +1298,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
         self.mValue?.mPinInstances_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.mInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mInstanceName)
+        oldValue?.mPinInstances_property.removeEBObserversFrom (&self.mObserversOf_mPinInstances)
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
@@ -1307,6 +1308,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
         oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
       //--- Add property observers to new object
         self.mValue?.mInstanceName_property.addEBObserversFrom (&self.mObserversOf_mInstanceName)
+        self.mValue?.mPinInstances_property.addEBObserversFrom (&self.mObserversOf_mPinInstances)
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
@@ -1343,7 +1345,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mInstanceName
+  //   Observable atomic property: mInstanceName
   //····················································································································
 
   private var mObserversOf_mInstanceName = EBWeakEventSet ()
@@ -1384,7 +1386,48 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mX
+  //   Observable toMany property: mPinInstances
+  //····················································································································
+
+  private var mObserversOf_mPinInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPinInstances_property_selection : EBSelection <[SymbolPinInstanceInDevice]> {
+    if let model = self.propval {
+      switch (model.mPinInstances_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPinInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinInstances.insert (inObserver)
+    if let object = self.propval {
+      object.mPinInstances_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPinInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinInstances.remove (inObserver)
+    if let object = self.propval {
+      object.mPinInstances_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mX
   //····················································································································
 
   private var mObserversOf_mX = EBWeakEventSet ()
@@ -1425,7 +1468,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mY
+  //   Observable atomic property: mY
   //····················································································································
 
   private var mObserversOf_mY = EBWeakEventSet ()
@@ -1466,7 +1509,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: objectDisplay
+  //   Observable atomic property: objectDisplay
   //····················································································································
 
   private var mObserversOf_objectDisplay = EBWeakEventSet ()
@@ -1507,7 +1550,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: selectionDisplay
+  //   Observable atomic property: selectionDisplay
   //····················································································································
 
   private var mObserversOf_selectionDisplay = EBWeakEventSet ()
@@ -1548,7 +1591,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: symbolQualifiedName
+  //   Observable atomic property: symbolQualifiedName
   //····················································································································
 
   private var mObserversOf_symbolQualifiedName = EBWeakEventSet ()
@@ -1589,7 +1632,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: symbolTypeName
+  //   Observable atomic property: symbolTypeName
   //····················································································································
 
   private var mObserversOf_symbolTypeName = EBWeakEventSet ()
@@ -1630,7 +1673,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   }
 
   //····················································································································
-  //   Observable property: unconnectedPins
+  //   Observable atomic property: unconnectedPins
   //····················································································································
 
   private var mObserversOf_unconnectedPins = EBWeakEventSet ()
@@ -1723,6 +1766,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
       //--- Set new opposite relation ship
         self.mValue?.mInstances_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.mInstances_property.removeEBObserversFrom (&self.mObserversOf_mInstances)
         oldValue?.mName_property.removeEBObserversFrom (&self.mObserversOf_mName)
         oldValue?.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         oldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
@@ -1735,6 +1779,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
         oldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber)
         oldValue?.nameShape_property.removeEBObserversFrom (&self.mObserversOf_nameShape)
       //--- Add property observers to new object
+        self.mValue?.mInstances_property.addEBObserversFrom (&self.mObserversOf_mInstances)
         self.mValue?.mName_property.addEBObserversFrom (&self.mObserversOf_mName)
         self.mValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment)
         self.mValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment)
@@ -1775,7 +1820,48 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mName
+  //   Observable toMany property: mInstances
+  //····················································································································
+
+  private var mObserversOf_mInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mInstances_property_selection : EBSelection <[SymbolPinInstanceInDevice]> {
+    if let model = self.propval {
+      switch (model.mInstances_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstances.insert (inObserver)
+    if let object = self.propval {
+      object.mInstances_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstances.remove (inObserver)
+    if let object = self.propval {
+      object.mInstances_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mName
   //····················································································································
 
   private var mObserversOf_mName = EBWeakEventSet ()
@@ -1816,7 +1902,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mNameHorizontalAlignment
+  //   Observable atomic property: mNameHorizontalAlignment
   //····················································································································
 
   private var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
@@ -1857,7 +1943,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mNumberHorizontalAlignment
+  //   Observable atomic property: mNumberHorizontalAlignment
   //····················································································································
 
   private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
@@ -1898,7 +1984,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mPinNameIsDisplayedInSchematics
+  //   Observable atomic property: mPinNameIsDisplayedInSchematics
   //····················································································································
 
   private var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
@@ -1939,7 +2025,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mPinX
+  //   Observable atomic property: mPinX
   //····················································································································
 
   private var mObserversOf_mPinX = EBWeakEventSet ()
@@ -1980,7 +2066,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mPinY
+  //   Observable atomic property: mPinY
   //····················································································································
 
   private var mObserversOf_mPinY = EBWeakEventSet ()
@@ -2021,7 +2107,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mXName
+  //   Observable atomic property: mXName
   //····················································································································
 
   private var mObserversOf_mXName = EBWeakEventSet ()
@@ -2062,7 +2148,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mXNumber
+  //   Observable atomic property: mXNumber
   //····················································································································
 
   private var mObserversOf_mXNumber = EBWeakEventSet ()
@@ -2103,7 +2189,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mYName
+  //   Observable atomic property: mYName
   //····················································································································
 
   private var mObserversOf_mYName = EBWeakEventSet ()
@@ -2144,7 +2230,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: mYNumber
+  //   Observable atomic property: mYNumber
   //····················································································································
 
   private var mObserversOf_mYNumber = EBWeakEventSet ()
@@ -2185,7 +2271,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   }
 
   //····················································································································
-  //   Observable property: nameShape
+  //   Observable atomic property: nameShape
   //····················································································································
 
   private var mObserversOf_nameShape = EBWeakEventSet ()
@@ -2318,7 +2404,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: isConnected
+  //   Observable atomic property: isConnected
   //····················································································································
 
   private var mObserversOf_isConnected = EBWeakEventSet ()
@@ -2359,7 +2445,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mIsNC
+  //   Observable atomic property: mIsNC
   //····················································································································
 
   private var mObserversOf_mIsNC = EBWeakEventSet ()
@@ -2400,7 +2486,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mPadName
+  //   Observable atomic property: mPadName
   //····················································································································
 
   private var mObserversOf_mPadName = EBWeakEventSet ()
@@ -2441,7 +2527,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: pinInstanceName
+  //   Observable atomic property: pinInstanceName
   //····················································································································
 
   private var mObserversOf_pinInstanceName = EBWeakEventSet ()
@@ -2482,7 +2568,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: symbolName
+  //   Observable atomic property: symbolName
   //····················································································································
 
   private var mObserversOf_symbolName = EBWeakEventSet ()

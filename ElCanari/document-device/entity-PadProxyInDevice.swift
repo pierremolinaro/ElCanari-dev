@@ -1202,7 +1202,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   }
 
   //····················································································································
-  //   Observable property: isConnected
+  //   Observable atomic property: isConnected
   //····················································································································
 
   private var mObserversOf_isConnected = EBWeakEventSet ()
@@ -1243,7 +1243,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   }
 
   //····················································································································
-  //   Observable property: numberShape
+  //   Observable atomic property: numberShape
   //····················································································································
 
   private var mObserversOf_numberShape = EBWeakEventSet ()
@@ -1284,7 +1284,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   }
 
   //····················································································································
-  //   Observable property: pinName
+  //   Observable atomic property: pinName
   //····················································································································
 
   private var mObserversOf_pinName = EBWeakEventSet ()
@@ -1325,7 +1325,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   }
 
   //····················································································································
-  //   Observable property: pinQualifiedName
+  //   Observable atomic property: pinQualifiedName
   //····················································································································
 
   private var mObserversOf_pinQualifiedName = EBWeakEventSet ()
@@ -1366,7 +1366,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   }
 
   //····················································································································
-  //   Observable property: symbolName
+  //   Observable atomic property: symbolName
   //····················································································································
 
   private var mObserversOf_symbolName = EBWeakEventSet ()

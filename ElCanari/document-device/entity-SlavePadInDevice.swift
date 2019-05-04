@@ -1746,6 +1746,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
         oldValue?.mHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mHoleDiameter)
         oldValue?.mName_property.removeEBObserversFrom (&self.mObserversOf_mName)
         oldValue?.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape)
+        oldValue?.mSlavePads_property.removeEBObserversFrom (&self.mObserversOf_mSlavePads)
         oldValue?.mStyle_property.removeEBObserversFrom (&self.mObserversOf_mStyle)
         oldValue?.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth)
         oldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay)
@@ -1758,6 +1759,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
         self.mValue?.mHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mHoleDiameter)
         self.mValue?.mName_property.addEBObserversFrom (&self.mObserversOf_mName)
         self.mValue?.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape)
+        self.mValue?.mSlavePads_property.addEBObserversFrom (&self.mObserversOf_mSlavePads)
         self.mValue?.mStyle_property.addEBObserversFrom (&self.mObserversOf_mStyle)
         self.mValue?.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth)
         self.mValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay)
@@ -1790,7 +1792,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: backSideFilledBezierPathArray
+  //   Observable atomic property: backSideFilledBezierPathArray
   //····················································································································
 
   private var mObserversOf_backSideFilledBezierPathArray = EBWeakEventSet ()
@@ -1831,7 +1833,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: frontSideFilledBezierPathArray
+  //   Observable atomic property: frontSideFilledBezierPathArray
   //····················································································································
 
   private var mObserversOf_frontSideFilledBezierPathArray = EBWeakEventSet ()
@@ -1872,7 +1874,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mCenterX
+  //   Observable atomic property: mCenterX
   //····················································································································
 
   private var mObserversOf_mCenterX = EBWeakEventSet ()
@@ -1913,7 +1915,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mCenterY
+  //   Observable atomic property: mCenterY
   //····················································································································
 
   private var mObserversOf_mCenterY = EBWeakEventSet ()
@@ -1954,7 +1956,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mHeight
+  //   Observable atomic property: mHeight
   //····················································································································
 
   private var mObserversOf_mHeight = EBWeakEventSet ()
@@ -1995,7 +1997,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mHoleDiameter
+  //   Observable atomic property: mHoleDiameter
   //····················································································································
 
   private var mObserversOf_mHoleDiameter = EBWeakEventSet ()
@@ -2036,7 +2038,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mName
+  //   Observable atomic property: mName
   //····················································································································
 
   private var mObserversOf_mName = EBWeakEventSet ()
@@ -2077,7 +2079,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mShape
+  //   Observable atomic property: mShape
   //····················································································································
 
   private var mObserversOf_mShape = EBWeakEventSet ()
@@ -2118,7 +2120,48 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mStyle
+  //   Observable toMany property: mSlavePads
+  //····················································································································
+
+  private var mObserversOf_mSlavePads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSlavePads_property_selection : EBSelection <[SlavePadInDevice]> {
+    if let model = self.propval {
+      switch (model.mSlavePads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSlavePads (_ inObserver : EBEvent) {
+    self.mObserversOf_mSlavePads.insert (inObserver)
+    if let object = self.propval {
+      object.mSlavePads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSlavePads (_ inObserver : EBEvent) {
+    self.mObserversOf_mSlavePads.remove (inObserver)
+    if let object = self.propval {
+      object.mSlavePads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mStyle
   //····················································································································
 
   private var mObserversOf_mStyle = EBWeakEventSet ()
@@ -2159,7 +2202,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mWidth
+  //   Observable atomic property: mWidth
   //····················································································································
 
   private var mObserversOf_mWidth = EBWeakEventSet ()
@@ -2200,7 +2243,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padNumberDisplay
+  //   Observable atomic property: padNumberDisplay
   //····················································································································
 
   private var mObserversOf_padNumberDisplay = EBWeakEventSet ()

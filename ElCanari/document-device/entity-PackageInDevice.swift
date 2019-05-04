@@ -2020,10 +2020,13 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.inconsistentSymbolNameSetMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mComments_property.removeEBObserversFrom (&self.mObserversOf_mComments)
+        oldValue?.mDocs_property.removeEBObserversFrom (&self.mObserversOf_mDocs)
         oldValue?.mImageData_property.removeEBObserversFrom (&self.mObserversOf_mImageData)
         oldValue?.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         oldValue?.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        oldValue?.mPackages_property.removeEBObserversFrom (&self.mObserversOf_mPackages)
+        oldValue?.mPadProxies_property.removeEBObserversFrom (&self.mObserversOf_mPadProxies)
         oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
         oldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex)
         oldValue?.mShowPackageBackPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
@@ -2033,6 +2036,8 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
         oldValue?.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
         oldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        oldValue?.mSymbolInstances_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstances)
+        oldValue?.mSymbolTypes_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypes)
         oldValue?.mTitle_property.removeEBObserversFrom (&self.mObserversOf_mTitle)
         oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
         oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
@@ -2046,10 +2051,13 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.inconsistentSymbolNameSetMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mComments_property.addEBObserversFrom (&self.mObserversOf_mComments)
+        self.mValue?.mDocs_property.addEBObserversFrom (&self.mObserversOf_mDocs)
         self.mValue?.mImageData_property.addEBObserversFrom (&self.mObserversOf_mImageData)
         self.mValue?.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         self.mValue?.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        self.mValue?.mPackages_property.addEBObserversFrom (&self.mObserversOf_mPackages)
+        self.mValue?.mPadProxies_property.addEBObserversFrom (&self.mObserversOf_mPadProxies)
         self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
         self.mValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex)
         self.mValue?.mShowPackageBackPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
@@ -2059,6 +2067,8 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
         self.mValue?.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
         self.mValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        self.mValue?.mSymbolInstances_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstances)
+        self.mValue?.mSymbolTypes_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypes)
         self.mValue?.mTitle_property.addEBObserversFrom (&self.mObserversOf_mTitle)
         self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
         self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
@@ -2094,7 +2104,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: assignedPadProxies
+  //   Observable atomic property: assignedPadProxies
   //····················································································································
 
   private var mObserversOf_assignedPadProxies = EBWeakEventSet ()
@@ -2135,7 +2145,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: imageIsValid
+  //   Observable atomic property: imageIsValid
   //····················································································································
 
   private var mObserversOf_imageIsValid = EBWeakEventSet ()
@@ -2176,7 +2186,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: inconsistentPackagePadNameSetsMessage
+  //   Observable atomic property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
   private var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
@@ -2217,7 +2227,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: inconsistentSymbolNameSetMessage
+  //   Observable atomic property: inconsistentSymbolNameSetMessage
   //····················································································································
 
   private var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
@@ -2258,7 +2268,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: issues
+  //   Observable atomic property: issues
   //····················································································································
 
   private var mObserversOf_issues = EBWeakEventSet ()
@@ -2299,7 +2309,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mComments
+  //   Observable atomic property: mComments
   //····················································································································
 
   private var mObserversOf_mComments = EBWeakEventSet ()
@@ -2340,7 +2350,48 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mImageData
+  //   Observable toMany property: mDocs
+  //····················································································································
+
+  private var mObserversOf_mDocs = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mDocs_property_selection : EBSelection <[DeviceDocumentation]> {
+    if let model = self.propval {
+      switch (model.mDocs_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mDocs (_ inObserver : EBEvent) {
+    self.mObserversOf_mDocs.insert (inObserver)
+    if let object = self.propval {
+      object.mDocs_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDocs (_ inObserver : EBEvent) {
+    self.mObserversOf_mDocs.remove (inObserver)
+    if let object = self.propval {
+      object.mDocs_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mImageData
   //····················································································································
 
   private var mObserversOf_mImageData = EBWeakEventSet ()
@@ -2381,7 +2432,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mPackageDisplayHorizontalFlip
+  //   Observable atomic property: mPackageDisplayHorizontalFlip
   //····················································································································
 
   private var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
@@ -2422,7 +2473,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mPackageDisplayVerticalFlip
+  //   Observable atomic property: mPackageDisplayVerticalFlip
   //····················································································································
 
   private var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
@@ -2463,7 +2514,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mPackageDisplayZoom
+  //   Observable atomic property: mPackageDisplayZoom
   //····················································································································
 
   private var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
@@ -2504,7 +2555,89 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mPrefix
+  //   Observable toMany property: mPackages
+  //····················································································································
+
+  private var mObserversOf_mPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPackages_property_selection : EBSelection <[PackageInDevice]> {
+    if let model = self.propval {
+      switch (model.mPackages_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackages.insert (inObserver)
+    if let object = self.propval {
+      object.mPackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackages.remove (inObserver)
+    if let object = self.propval {
+      object.mPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPadProxies
+  //····················································································································
+
+  private var mObserversOf_mPadProxies = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPadProxies_property_selection : EBSelection <[PadProxyInDevice]> {
+    if let model = self.propval {
+      switch (model.mPadProxies_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPadProxies (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadProxies.insert (inObserver)
+    if let object = self.propval {
+      object.mPadProxies_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPadProxies (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadProxies.remove (inObserver)
+    if let object = self.propval {
+      object.mPadProxies_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mPrefix
   //····················································································································
 
   private var mObserversOf_mPrefix = EBWeakEventSet ()
@@ -2545,7 +2678,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSelectedPageIndex
+  //   Observable atomic property: mSelectedPageIndex
   //····················································································································
 
   private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
@@ -2586,7 +2719,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mShowPackageBackPads
+  //   Observable atomic property: mShowPackageBackPads
   //····················································································································
 
   private var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
@@ -2627,7 +2760,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mShowPackageFrontPads
+  //   Observable atomic property: mShowPackageFrontPads
   //····················································································································
 
   private var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
@@ -2668,7 +2801,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mShowPackagePadNumbers
+  //   Observable atomic property: mShowPackagePadNumbers
   //····················································································································
 
   private var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
@@ -2709,7 +2842,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mShowPackages
+  //   Observable atomic property: mShowPackages
   //····················································································································
 
   private var mObserversOf_mShowPackages = EBWeakEventSet ()
@@ -2750,7 +2883,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSymbolDisplayHorizontalFlip
+  //   Observable atomic property: mSymbolDisplayHorizontalFlip
   //····················································································································
 
   private var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
@@ -2791,7 +2924,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSymbolDisplayVerticalFlip
+  //   Observable atomic property: mSymbolDisplayVerticalFlip
   //····················································································································
 
   private var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
@@ -2832,7 +2965,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSymbolDisplayZoom
+  //   Observable atomic property: mSymbolDisplayZoom
   //····················································································································
 
   private var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
@@ -2873,7 +3006,89 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mTitle
+  //   Observable toMany property: mSymbolInstances
+  //····················································································································
+
+  private var mObserversOf_mSymbolInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
+    if let model = self.propval {
+      switch (model.mSymbolInstances_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolInstances.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolInstances_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolInstances.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolInstances_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mSymbolTypes
+  //····················································································································
+
+  private var mObserversOf_mSymbolTypes = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolTypes_property_selection : EBSelection <[SymbolTypeInDevice]> {
+    if let model = self.propval {
+      switch (model.mSymbolTypes_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolTypes (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypes.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolTypes_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolTypes (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolTypes.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolTypes_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mTitle
   //····················································································································
 
   private var mObserversOf_mTitle = EBWeakEventSet ()
@@ -2914,7 +3129,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: packagePadNameSetsAreConsistent
+  //   Observable atomic property: packagePadNameSetsAreConsistent
   //····················································································································
 
   private var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
@@ -2955,7 +3170,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: symbolNameAreConsistent
+  //   Observable atomic property: symbolNameAreConsistent
   //····················································································································
 
   private var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
@@ -2996,7 +3211,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: symbolTypeNames
+  //   Observable atomic property: symbolTypeNames
   //····················································································································
 
   private var mObserversOf_symbolTypeNames = EBWeakEventSet ()
@@ -3037,7 +3252,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: unconnectedPads
+  //   Observable atomic property: unconnectedPads
   //····················································································································
 
   private var mObserversOf_unconnectedPads = EBWeakEventSet ()
@@ -3078,7 +3293,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: unconnectedPins
+  //   Observable atomic property: unconnectedPins
   //····················································································································
 
   private var mObserversOf_unconnectedPins = EBWeakEventSet ()

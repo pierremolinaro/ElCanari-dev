@@ -982,7 +982,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: descriptor
+  //   Observable atomic property: descriptor
   //····················································································································
 
   private var mObserversOf_descriptor = EBWeakEventSet ()
@@ -1023,7 +1023,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mNameHorizontalAlignment
+  //   Observable atomic property: mNameHorizontalAlignment
   //····················································································································
 
   private var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
@@ -1064,7 +1064,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mNumberHorizontalAlignment
+  //   Observable atomic property: mNumberHorizontalAlignment
   //····················································································································
 
   private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
@@ -1105,7 +1105,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mPinName
+  //   Observable atomic property: mPinName
   //····················································································································
 
   private var mObserversOf_mPinName = EBWeakEventSet ()
@@ -1146,7 +1146,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mPinNameIsDisplayedInSchematics
+  //   Observable atomic property: mPinNameIsDisplayedInSchematics
   //····················································································································
 
   private var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
@@ -1187,7 +1187,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mPinX
+  //   Observable atomic property: mPinX
   //····················································································································
 
   private var mObserversOf_mPinX = EBWeakEventSet ()
@@ -1228,7 +1228,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mPinY
+  //   Observable atomic property: mPinY
   //····················································································································
 
   private var mObserversOf_mPinY = EBWeakEventSet ()
@@ -1269,7 +1269,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mSymbolInstanceName
+  //   Observable atomic property: mSymbolInstanceName
   //····················································································································
 
   private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
@@ -1310,7 +1310,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mSymbolTypeName
+  //   Observable atomic property: mSymbolTypeName
   //····················································································································
 
   private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
@@ -1351,7 +1351,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mXName
+  //   Observable atomic property: mXName
   //····················································································································
 
   private var mObserversOf_mXName = EBWeakEventSet ()
@@ -1392,7 +1392,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mXNumber
+  //   Observable atomic property: mXNumber
   //····················································································································
 
   private var mObserversOf_mXNumber = EBWeakEventSet ()
@@ -1433,7 +1433,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mYName
+  //   Observable atomic property: mYName
   //····················································································································
 
   private var mObserversOf_mYName = EBWeakEventSet ()
@@ -1474,7 +1474,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: mYNumber
+  //   Observable atomic property: mYNumber
   //····················································································································
 
   private var mObserversOf_mYNumber = EBWeakEventSet ()
@@ -1515,7 +1515,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   }
 
   //····················································································································
-  //   Observable property: pinQualifiedName
+  //   Observable atomic property: pinQualifiedName
   //····················································································································
 
   private var mObserversOf_pinQualifiedName = EBWeakEventSet ()

@@ -111,7 +111,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
 
   //····················································································································
-  //   Selection observable property: componentValueProxy
+  //   Atomic proxy property: componentValueProxy
   //····················································································································
 
   let componentValueProxy_property = EBPropertyProxy_String ()

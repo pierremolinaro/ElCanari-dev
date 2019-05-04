@@ -3515,6 +3515,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
         oldValue?.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension)
+        oldValue?.fileGenerationParameterArray_property.removeEBObserversFrom (&self.mObserversOf_fileGenerationParameterArray)
         oldValue?.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW)
         oldValue?.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit)
         oldValue?.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth)
@@ -3527,6 +3528,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
         self.mValue?.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension)
+        self.mValue?.fileGenerationParameterArray_property.addEBObserversFrom (&self.mObserversOf_fileGenerationParameterArray)
         self.mValue?.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW)
         self.mValue?.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit)
         self.mValue?.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth)
@@ -3565,7 +3567,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: comments
+  //   Observable atomic property: comments
   //····················································································································
 
   private var mObserversOf_comments = EBWeakEventSet ()
@@ -3606,7 +3608,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: drillDataFileExtension
+  //   Observable atomic property: drillDataFileExtension
   //····················································································································
 
   private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
@@ -3647,7 +3649,48 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minPPTPTTTW
+  //   Observable toMany property: fileGenerationParameterArray
+  //····················································································································
+
+  private var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
+    if let model = self.propval {
+      switch (model.fileGenerationParameterArray_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+    self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
+    if let object = self.propval {
+      object.fileGenerationParameterArray_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBEvent) {
+    self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
+    if let object = self.propval {
+      object.fileGenerationParameterArray_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: minPPTPTTTW
   //····················································································································
 
   private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
@@ -3688,7 +3731,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minPPTPTTTWdisplayUnit
+  //   Observable atomic property: minPPTPTTTWdisplayUnit
   //····················································································································
 
   private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
@@ -3729,7 +3772,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForBoardLimitWidth
+  //   Observable atomic property: minValueForBoardLimitWidth
   //····················································································································
 
   private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
@@ -3770,7 +3813,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForBoardLimitWidthDisplayUnit
+  //   Observable atomic property: minValueForBoardLimitWidthDisplayUnit
   //····················································································································
 
   private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
@@ -3811,7 +3854,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForOARdisplayUnit
+  //   Observable atomic property: minValueForOARdisplayUnit
   //····················································································································
 
   private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
@@ -3852,7 +3895,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForOARinEBUnit
+  //   Observable atomic property: minValueForOARinEBUnit
   //····················································································································
 
   private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
@@ -3893,7 +3936,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForPHDdisplayUnit
+  //   Observable atomic property: minValueForPHDdisplayUnit
   //····················································································································
 
   private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
@@ -3934,7 +3977,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: minValueForPHDinEBUnit
+  //   Observable atomic property: minValueForPHDinEBUnit
   //····················································································································
 
   private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
@@ -3975,7 +4018,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: selectedTab
+  //   Observable atomic property: selectedTab
   //····················································································································
 
   private var mObserversOf_selectedTab = EBWeakEventSet ()

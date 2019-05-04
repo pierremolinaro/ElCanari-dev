@@ -10,7 +10,8 @@ entity ProjectRoot {
   toMany SheetInProject mSheets ;
 
   toOne SheetInProject mSelectedSheet ;
-  proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
+  property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
+  toMany proxy SchematicsObject selectedSheetObjects : mSelectedSheet.mObjects ;
 
   property Int mSelectedPageIndex default 0 ;
 
@@ -271,6 +272,7 @@ entity NetInProject {
 
 graphic entity ComponentSymbolInProject : SchematicsObject {
   toOne ComponentInProject mComponent inverse toMany mSymbols ;
+  property proxy String componentValueProxy : mComponent.mComponentValue ;
 
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
@@ -285,8 +287,6 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property Bool mDisplayComponentValue default yes ;
   property Int mDisplayComponentValueOffsetX default 0 ;
   property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
-
-  proxy String componentValueProxy : mComponent.mComponentValue ;
 
   transient String componentName dependsFrom self.mComponent.one.componentName ;
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;

@@ -1572,6 +1572,8 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
         oldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount)
         oldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData)
         oldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        oldValue?.mInstances_property.removeEBObserversFrom (&self.mObserversOf_mInstances)
+        oldValue?.mPinTypes_property.removeEBObserversFrom (&self.mObserversOf_mPinTypes)
         oldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
         oldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName)
         oldValue?.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion)
@@ -1581,6 +1583,8 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
         self.mValue?.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount)
         self.mValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData)
         self.mValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        self.mValue?.mInstances_property.addEBObserversFrom (&self.mObserversOf_mInstances)
+        self.mValue?.mPinTypes_property.addEBObserversFrom (&self.mObserversOf_mPinTypes)
         self.mValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
         self.mValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName)
         self.mValue?.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion)
@@ -1615,7 +1619,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: instanceCount
+  //   Observable atomic property: instanceCount
   //····················································································································
 
   private var mObserversOf_instanceCount = EBWeakEventSet ()
@@ -1656,7 +1660,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: mFileData
+  //   Observable atomic property: mFileData
   //····················································································································
 
   private var mObserversOf_mFileData = EBWeakEventSet ()
@@ -1697,7 +1701,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: mFilledBezierPath
+  //   Observable atomic property: mFilledBezierPath
   //····················································································································
 
   private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
@@ -1738,7 +1742,89 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: mStrokeBezierPath
+  //   Observable toMany property: mInstances
+  //····················································································································
+
+  private var mObserversOf_mInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
+    if let model = self.propval {
+      switch (model.mInstances_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstances.insert (inObserver)
+    if let object = self.propval {
+      object.mInstances_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstances.remove (inObserver)
+    if let object = self.propval {
+      object.mInstances_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPinTypes
+  //····················································································································
+
+  private var mObserversOf_mPinTypes = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPinTypes_property_selection : EBSelection <[SymbolPinTypeInDevice]> {
+    if let model = self.propval {
+      switch (model.mPinTypes_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPinTypes (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinTypes.insert (inObserver)
+    if let object = self.propval {
+      object.mPinTypes_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPinTypes (_ inObserver : EBEvent) {
+    self.mObserversOf_mPinTypes.remove (inObserver)
+    if let object = self.propval {
+      object.mPinTypes_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mStrokeBezierPath
   //····················································································································
 
   private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
@@ -1779,7 +1865,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: mTypeName
+  //   Observable atomic property: mTypeName
   //····················································································································
 
   private var mObserversOf_mTypeName = EBWeakEventSet ()
@@ -1820,7 +1906,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: mVersion
+  //   Observable atomic property: mVersion
   //····················································································································
 
   private var mObserversOf_mVersion = EBWeakEventSet ()
@@ -1861,7 +1947,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: pinNameShape
+  //   Observable atomic property: pinNameShape
   //····················································································································
 
   private var mObserversOf_pinNameShape = EBWeakEventSet ()
@@ -1902,7 +1988,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
   }
 
   //····················································································································
-  //   Observable property: versionString
+  //   Observable atomic property: versionString
   //····················································································································
 
   private var mObserversOf_versionString = EBWeakEventSet ()

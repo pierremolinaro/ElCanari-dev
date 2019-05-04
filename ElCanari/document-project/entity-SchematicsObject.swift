@@ -826,8 +826,10 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mObjects_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
        //--- Notify observers
         self.postEvent ()
@@ -858,7 +860,48 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSheetTitle
+  //   Observable toMany property: mObjects
+  //····················································································································
+
+  private var mObserversOf_mObjects = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mObjects_property_selection : EBSelection <[SchematicsObject]> {
+    if let model = self.propval {
+      switch (model.mObjects_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.insert (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.remove (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mSheetTitle
   //····················································································································
 
   private var mObserversOf_mSheetTitle = EBWeakEventSet ()

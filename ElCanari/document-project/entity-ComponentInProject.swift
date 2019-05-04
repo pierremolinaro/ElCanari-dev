@@ -1874,10 +1874,14 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         oldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport)
         oldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove)
         oldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary)
+        oldValue?.mComponents_property.removeEBObserversFrom (&self.mObserversOf_mComponents)
         oldValue?.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData)
         oldValue?.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName)
         oldValue?.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion)
+        oldValue?.mPackages_property.removeEBObserversFrom (&self.mObserversOf_mPackages)
+        oldValue?.mPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_mPadAssignments)
         oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
+        oldValue?.mSymbols_property.removeEBObserversFrom (&self.mObserversOf_mSymbols)
         oldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames)
         oldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         oldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString)
@@ -1887,10 +1891,14 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         self.mValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport)
         self.mValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove)
         self.mValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary)
+        self.mValue?.mComponents_property.addEBObserversFrom (&self.mObserversOf_mComponents)
         self.mValue?.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData)
         self.mValue?.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName)
         self.mValue?.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion)
+        self.mValue?.mPackages_property.addEBObserversFrom (&self.mObserversOf_mPackages)
+        self.mValue?.mPadAssignments_property.addEBObserversFrom (&self.mObserversOf_mPadAssignments)
         self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
+        self.mValue?.mSymbols_property.addEBObserversFrom (&self.mObserversOf_mSymbols)
         self.mValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames)
         self.mValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments)
         self.mValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString)
@@ -1925,7 +1933,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: canExport
+  //   Observable atomic property: canExport
   //····················································································································
 
   private var mObserversOf_canExport = EBWeakEventSet ()
@@ -1966,7 +1974,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: canRemove
+  //   Observable atomic property: canRemove
   //····················································································································
 
   private var mObserversOf_canRemove = EBWeakEventSet ()
@@ -2007,7 +2015,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: deviceSymbolDictionary
+  //   Observable atomic property: deviceSymbolDictionary
   //····················································································································
 
   private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
@@ -2048,7 +2056,48 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mDeviceFileData
+  //   Observable toMany property: mComponents
+  //····················································································································
+
+  private var mObserversOf_mComponents = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
+    if let model = self.propval {
+      switch (model.mComponents_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.insert (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponents (_ inObserver : EBEvent) {
+    self.mObserversOf_mComponents.remove (inObserver)
+    if let object = self.propval {
+      object.mComponents_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mDeviceFileData
   //····················································································································
 
   private var mObserversOf_mDeviceFileData = EBWeakEventSet ()
@@ -2089,7 +2138,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mDeviceName
+  //   Observable atomic property: mDeviceName
   //····················································································································
 
   private var mObserversOf_mDeviceName = EBWeakEventSet ()
@@ -2130,7 +2179,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mDeviceVersion
+  //   Observable atomic property: mDeviceVersion
   //····················································································································
 
   private var mObserversOf_mDeviceVersion = EBWeakEventSet ()
@@ -2171,7 +2220,89 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mPrefix
+  //   Observable toMany property: mPackages
+  //····················································································································
+
+  private var mObserversOf_mPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
+    if let model = self.propval {
+      switch (model.mPackages_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackages.insert (inObserver)
+    if let object = self.propval {
+      object.mPackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackages.remove (inObserver)
+    if let object = self.propval {
+      object.mPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPadAssignments
+  //····················································································································
+
+  private var mObserversOf_mPadAssignments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPadAssignments_property_selection : EBSelection <[DevicePadAssignmentInProject]> {
+    if let model = self.propval {
+      switch (model.mPadAssignments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPadAssignments (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadAssignments.insert (inObserver)
+    if let object = self.propval {
+      object.mPadAssignments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPadAssignments (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadAssignments.remove (inObserver)
+    if let object = self.propval {
+      object.mPadAssignments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mPrefix
   //····················································································································
 
   private var mObserversOf_mPrefix = EBWeakEventSet ()
@@ -2212,7 +2343,48 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: packageNames
+  //   Observable toMany property: mSymbols
+  //····················································································································
+
+  private var mObserversOf_mSymbols = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbols_property_selection : EBSelection <[DeviceSymbolInstanceInProject]> {
+    if let model = self.propval {
+      switch (model.mSymbols_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbols.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbols_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbols.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbols_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: packageNames
   //····················································································································
 
   private var mObserversOf_packageNames = EBWeakEventSet ()
@@ -2253,7 +2425,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: pinPadAssignments
+  //   Observable atomic property: pinPadAssignments
   //····················································································································
 
   private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
@@ -2294,7 +2466,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: sizeString
+  //   Observable atomic property: sizeString
   //····················································································································
 
   private var mObserversOf_sizeString = EBWeakEventSet ()
@@ -2335,7 +2507,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: symbolAndTypesNames
+  //   Observable atomic property: symbolAndTypesNames
   //····················································································································
 
   private var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
@@ -2376,7 +2548,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: versionString
+  //   Observable atomic property: versionString
   //····················································································································
 
   private var mObserversOf_versionString = EBWeakEventSet ()
@@ -2465,8 +2637,10 @@ final class ToOneRelationship_ComponentInProject_mSelectedPackage : EBAbstractPr
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
+        oldValue?.mMasterPads_property.removeEBObserversFrom (&self.mObserversOf_mMasterPads)
         oldValue?.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName)
       //--- Add property observers to new object
+        self.mValue?.mMasterPads_property.addEBObserversFrom (&self.mObserversOf_mMasterPads)
         self.mValue?.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName)
        //--- Notify observers
         self.postEvent ()
@@ -2497,7 +2671,48 @@ final class ToOneRelationship_ComponentInProject_mSelectedPackage : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mPackageName
+  //   Observable toMany property: mMasterPads
+  //····················································································································
+
+  private var mObserversOf_mMasterPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mMasterPads_property_selection : EBSelection <[DeviceMasterPadInProject]> {
+    if let model = self.propval {
+      switch (model.mMasterPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mMasterPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mMasterPads.insert (inObserver)
+    if let object = self.propval {
+      object.mMasterPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mMasterPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mMasterPads.remove (inObserver)
+    if let object = self.propval {
+      object.mMasterPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mPackageName
   //····················································································································
 
   private var mObserversOf_mPackageName = EBWeakEventSet ()

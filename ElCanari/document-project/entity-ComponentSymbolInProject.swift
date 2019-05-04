@@ -2480,6 +2480,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
         oldValue?.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue)
         oldValue?.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex)
         oldValue?.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix)
+        oldValue?.mSymbols_property.removeEBObserversFrom (&self.mObserversOf_mSymbols)
         oldValue?.placementInSchematics_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematics)
         oldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName)
         oldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols)
@@ -2491,6 +2492,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
         self.mValue?.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue)
         self.mValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex)
         self.mValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix)
+        self.mValue?.mSymbols_property.addEBObserversFrom (&self.mObserversOf_mSymbols)
         self.mValue?.placementInSchematics_property.addEBObserversFrom (&self.mObserversOf_placementInSchematics)
         self.mValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName)
         self.mValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols)
@@ -2523,7 +2525,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: availablePackages
+  //   Observable atomic property: availablePackages
   //····················································································································
 
   private var mObserversOf_availablePackages = EBWeakEventSet ()
@@ -2564,7 +2566,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: componentName
+  //   Observable atomic property: componentName
   //····················································································································
 
   private var mObserversOf_componentName = EBWeakEventSet ()
@@ -2605,7 +2607,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: deviceName
+  //   Observable atomic property: deviceName
   //····················································································································
 
   private var mObserversOf_deviceName = EBWeakEventSet ()
@@ -2646,7 +2648,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: deviceSymbolDictionary
+  //   Observable atomic property: deviceSymbolDictionary
   //····················································································································
 
   private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
@@ -2687,7 +2689,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mComponentValue
+  //   Observable atomic property: mComponentValue
   //····················································································································
 
   private var mObserversOf_mComponentValue = EBWeakEventSet ()
@@ -2728,7 +2730,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mNameIndex
+  //   Observable atomic property: mNameIndex
   //····················································································································
 
   private var mObserversOf_mNameIndex = EBWeakEventSet ()
@@ -2769,7 +2771,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mNamePrefix
+  //   Observable atomic property: mNamePrefix
   //····················································································································
 
   private var mObserversOf_mNamePrefix = EBWeakEventSet ()
@@ -2810,7 +2812,48 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: placementInSchematics
+  //   Observable toMany property: mSymbols
+  //····················································································································
+
+  private var mObserversOf_mSymbols = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbols_property_selection : EBSelection <[ComponentSymbolInProject]> {
+    if let model = self.propval {
+      switch (model.mSymbols_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbols.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbols_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbols (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbols.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbols_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: placementInSchematics
   //····················································································································
 
   private var mObserversOf_placementInSchematics = EBWeakEventSet ()
@@ -2851,7 +2894,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: selectedPackageName
+  //   Observable atomic property: selectedPackageName
   //····················································································································
 
   private var mObserversOf_selectedPackageName = EBWeakEventSet ()
@@ -2892,7 +2935,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: unplacedSymbols
+  //   Observable atomic property: unplacedSymbols
   //····················································································································
 
   private var mObserversOf_unplacedSymbols = EBWeakEventSet ()

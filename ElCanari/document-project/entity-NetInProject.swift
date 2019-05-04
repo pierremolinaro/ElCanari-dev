@@ -678,6 +678,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         oldValue?.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName)
         oldValue?.mNetWidth_property.removeEBObserversFrom (&self.mObserversOf_mNetWidth)
         oldValue?.mNetWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
+        oldValue?.mNets_property.removeEBObserversFrom (&self.mObserversOf_mNets)
         oldValue?.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
         oldValue?.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
         oldValue?.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
@@ -692,6 +693,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         self.mValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName)
         self.mValue?.mNetWidth_property.addEBObserversFrom (&self.mObserversOf_mNetWidth)
         self.mValue?.mNetWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
+        self.mValue?.mNets_property.addEBObserversFrom (&self.mObserversOf_mNets)
         self.mValue?.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
         self.mValue?.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
         self.mValue?.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
@@ -729,7 +731,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: canRemove
+  //   Observable atomic property: canRemove
   //····················································································································
 
   private var mObserversOf_canRemove = EBWeakEventSet ()
@@ -770,7 +772,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mNetClassColor
+  //   Observable atomic property: mNetClassColor
   //····················································································································
 
   private var mObserversOf_mNetClassColor = EBWeakEventSet ()
@@ -811,7 +813,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mNetClassName
+  //   Observable atomic property: mNetClassName
   //····················································································································
 
   private var mObserversOf_mNetClassName = EBWeakEventSet ()
@@ -852,7 +854,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mNetWidth
+  //   Observable atomic property: mNetWidth
   //····················································································································
 
   private var mObserversOf_mNetWidth = EBWeakEventSet ()
@@ -893,7 +895,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mNetWidthUnit
+  //   Observable atomic property: mNetWidthUnit
   //····················································································································
 
   private var mObserversOf_mNetWidthUnit = EBWeakEventSet ()
@@ -934,7 +936,48 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mViaHoleDiameter
+  //   Observable toMany property: mNets
+  //····················································································································
+
+  private var mObserversOf_mNets = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNets_property_selection : EBSelection <[NetInProject]> {
+    if let model = self.propval {
+      switch (model.mNets_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNets (_ inObserver : EBEvent) {
+    self.mObserversOf_mNets.insert (inObserver)
+    if let object = self.propval {
+      object.mNets_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNets (_ inObserver : EBEvent) {
+    self.mObserversOf_mNets.remove (inObserver)
+    if let object = self.propval {
+      object.mNets_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mViaHoleDiameter
   //····················································································································
 
   private var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
@@ -975,7 +1018,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mViaHoleDiameterUnit
+  //   Observable atomic property: mViaHoleDiameterUnit
   //····················································································································
 
   private var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
@@ -1016,7 +1059,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mViaPadDiameter
+  //   Observable atomic property: mViaPadDiameter
   //····················································································································
 
   private var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
@@ -1057,7 +1100,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mViaPadDiameterUnit
+  //   Observable atomic property: mViaPadDiameterUnit
   //····················································································································
 
   private var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
@@ -1098,7 +1141,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: netUsage
+  //   Observable atomic property: netUsage
   //····················································································································
 
   private var mObserversOf_netUsage = EBWeakEventSet ()
@@ -1139,7 +1182,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: netWidth
+  //   Observable atomic property: netWidth
   //····················································································································
 
   private var mObserversOf_netWidth = EBWeakEventSet ()
@@ -1180,7 +1223,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: viaHoleDiameter
+  //   Observable atomic property: viaHoleDiameter
   //····················································································································
 
   private var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
@@ -1221,7 +1264,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: viaPadDiameter
+  //   Observable atomic property: viaPadDiameter
   //····················································································································
 
   private var mObserversOf_viaPadDiameter = EBWeakEventSet ()

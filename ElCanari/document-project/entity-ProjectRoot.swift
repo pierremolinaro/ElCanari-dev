@@ -426,6 +426,36 @@ class ProjectRoot : EBManagedObject,
   var selectedSheetTitle_property_selection : EBSelection <String> { return self.selectedSheetTitle_property.prop }
 
   //····················································································································
+  //   ToMany proxy: selectedSheetObjects
+  //····················································································································
+
+  var selectedSheetObjects_modelDidChangeController : EBSimpleController? = nil
+  var selectedSheetObjects_boundObjectDidChangeController : EBSimpleController? = nil
+  let selectedSheetObjects_property = StoredArrayOf_SchematicsObject ()
+
+  //····················································································································
+
+  var selectedSheetObjects : [SchematicsObject] {
+    get {
+      switch self.selectedSheetObjects_property.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      self.selectedSheetObjects_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var selectedSheetObjects_property_selection : EBSelection <[SchematicsObject]> {
+    return self.selectedSheetObjects_property.prop
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -576,6 +606,27 @@ class ProjectRoot : EBManagedObject,
       return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
+  //--- ToMany proxy: selectedSheetObjects
+    do{
+      let controller = EBSimpleController (
+        observedObjects: [self.mSelectedSheet_property],
+        callBack: { [weak self] in
+          if let objects = self?.mSelectedSheet?.mObjects {
+            self?.selectedSheetObjects = objects
+          }
+        }
+      )
+      self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
+      self.selectedSheetObjects_modelDidChangeController = controller
+    }
+    self.selectedSheetObjects_boundObjectDidChangeController = EBSimpleController (
+      observedObjects: [self.selectedSheetObjects_property],
+      callBack: { [weak self] in
+        if let objects = self?.selectedSheetObjects {
+          self?.mSelectedSheet?.mObjects = objects
+        }
+      }
+    )
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -670,6 +721,11 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mWriteModelFunction = nil
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
     self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
+  //--- ToMany proxy: selectedSheetObjects
+    self.selectedSheetObjects_boundObjectDidChangeController?.unregister ()
+    self.selectedSheetObjects_boundObjectDidChangeController = nil
+    self.selectedSheetObjects_modelDidChangeController?.unregister ()
+    self.selectedSheetObjects_modelDidChangeController = nil
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicsTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
@@ -904,6 +960,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mObserverExplorer = nil
     self.selectedSheetTitle_property.mValueExplorer = nil
+  //--- ToMany proxy: selectedSheetObjects
+    self.selectedSheetObjects_property.mObserverExplorer = nil
+    self.selectedSheetObjects_property.mValueExplorer = nil
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.mObserverExplorer = nil
     self.mSelectedSheet_property.mValueExplorer = nil
@@ -2464,8 +2523,10 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
+        oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
        //--- Notify observers
         self.postEvent ()
@@ -2496,7 +2557,48 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: mSheetTitle
+  //   Observable toMany property: mObjects
+  //····················································································································
+
+  private var mObserversOf_mObjects = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mObjects_property_selection : EBSelection <[SchematicsObject]> {
+    if let model = self.propval {
+      switch (model.mObjects_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.insert (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.remove (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mSheetTitle
   //····················································································································
 
   private var mObserversOf_mSheetTitle = EBWeakEventSet ()

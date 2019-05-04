@@ -1199,7 +1199,7 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mFilledBezierPath
+  //   Observable atomic property: mFilledBezierPath
   //····················································································································
 
   private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
@@ -1240,7 +1240,7 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mStrokeBezierPath
+  //   Observable atomic property: mStrokeBezierPath
   //····················································································································
 
   private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
@@ -1281,7 +1281,7 @@ final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbst
   }
 
   //····················································································································
-  //   Observable property: mSymbolTypeName
+  //   Observable atomic property: mSymbolTypeName
   //····················································································································
 
   private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
