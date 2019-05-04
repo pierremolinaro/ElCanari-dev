@@ -241,10 +241,10 @@ class BoardModelVia : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelVia
+//    TransientArrayOf_BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelVia> {
+class TransientArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelVia> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -419,16 +419,6 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelVia
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [BoardModelVia] > > = nil
 
   //····················································································································
@@ -526,7 +516,7 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 //    To many relationship read write: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
+class ReadWriteArrayOf_BoardModelVia : TransientArrayOf_BoardModelVia {
 
   //····················································································································
  

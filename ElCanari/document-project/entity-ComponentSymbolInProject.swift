@@ -1036,10 +1036,10 @@ class ComponentSymbolInProject : SchematicsObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ComponentSymbolInProject
+//    TransientArrayOf_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <ComponentSymbolInProject> {
+class TransientArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <ComponentSymbolInProject> {
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -2006,16 +2006,6 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ComponentSymbolInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [ComponentSymbolInProject] > > = nil
 
   //····················································································································
@@ -2139,7 +2129,7 @@ class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 //    To many relationship read write: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
+class ReadWriteArrayOf_ComponentSymbolInProject : TransientArrayOf_ComponentSymbolInProject {
 
   //····················································································································
  

@@ -478,6 +478,7 @@
 		CF5632C021A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5632BF21A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift */; };
 		CF5632C121A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5632BF21A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift */; };
 		CF56F3241C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56F3231C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift */; };
+		CF570B66227DC673003A4E00 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC5A2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift */; };
 		CF577BBF2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */; };
 		CF577BC02229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */; };
 		CF58A2D01DD77E7E00146883 /* action-FontDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A2CF1DD77E7E00146883 /* action-FontDocument-resetVersionAndSignatureAction.swift */; };
@@ -1347,7 +1348,6 @@
 		CFDBA0EC22491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */; };
 		CFDBEFFB1BEA134A001CEA4B /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFDBFC5B2143BA06006780C7 /* controller-table-view-FontDocument-mSelectedCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC592143BA06006780C7 /* controller-table-view-FontDocument-mSelectedCharacterController.swift */; };
-		CFDBFC5C2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC5A2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift */; };
 		CFDC5EFF20FB1F70003AB275 /* EBGraphicManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */; };
 		CFDC5FE720FB2235003AB275 /* extension-MergerBoardInstance-graphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC5FE620FB2235003AB275 /* extension-MergerBoardInstance-graphic.swift */; };
 		CFDCA18221AAFF78007B090C /* CanariDragSourceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCA18121AAFF78007B090C /* CanariDragSourceButton.swift */; };
@@ -3796,6 +3796,7 @@
 				CFF5EF03222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */,
 				CFFA7B382274620400E2D69A /* transient-DeviceSymbolInstanceInProject-symbolAndTypeName.swift in Sources */,
 				CF11ABA0225A26120092A524 /* entity-DeviceInProject.swift in Sources */,
+				CF570B66227DC673003A4E00 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */,
 				CFADD35F227882B7005588A9 /* extension-ComponentSymbolInProject.swift in Sources */,
 				CF2A69A9226F545100261C47 /* action-ProjectDocument-duplicateSelectedComponentsAction.swift in Sources */,
 				CF00843D21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
@@ -4264,7 +4265,6 @@
 				CFF2A1F321B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */,
 				CF403466225BBAE8001A2BF7 /* action-ProjectDocument-removeSelectedComponentsAction.swift in Sources */,
 				CF00843B21C41B8D003627E9 /* transient-PackageBezier-issues.swift in Sources */,
-				CFDBFC5C2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift in Sources */,
 				CF6B32F821C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
 				CFCC4BE720EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF4D54C02254B93600DBCB62 /* model-events.swift in Sources */,

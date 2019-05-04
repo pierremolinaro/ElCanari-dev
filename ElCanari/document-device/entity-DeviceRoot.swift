@@ -1718,10 +1718,10 @@ class DeviceRoot : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_DeviceRoot
+//    TransientArrayOf_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
+class TransientArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -3140,16 +3140,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
 
   //····················································································································
@@ -3291,7 +3281,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 //    To many relationship read write: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
+class ReadWriteArrayOf_DeviceRoot : TransientArrayOf_DeviceRoot {
 
   //····················································································································
  

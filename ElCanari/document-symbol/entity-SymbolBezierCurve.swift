@@ -744,10 +744,10 @@ class SymbolBezierCurve : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolBezierCurve
+//    TransientArrayOf_SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolBezierCurve> {
+class TransientArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolBezierCurve> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1431,16 +1431,6 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolBezierCurve
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > > = nil
 
   //····················································································································
@@ -1556,7 +1546,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 //    To many relationship read write: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
+class ReadWriteArrayOf_SymbolBezierCurve : TransientArrayOf_SymbolBezierCurve {
 
   //····················································································································
  

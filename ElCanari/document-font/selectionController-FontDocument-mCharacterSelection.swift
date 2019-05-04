@@ -98,11 +98,11 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_FontCharacter? = nil
+  private var mModel : TransientArrayOf_FontCharacter? = nil
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_FontCharacter, file:String, line:Int) {
+  func bind_selection (model : TransientArrayOf_FontCharacter, file:String, line:Int) {
     self.mModel = model
     self.bind_property_advance (model: model)
     self.bind_property_codePoint (model: model)
@@ -276,7 +276,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_advance (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_advance (self.advance_property)
     self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -346,7 +346,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_codePoint (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_codePoint (self.codePoint_property)
     self.codePoint_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -416,7 +416,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_gerberCode (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCode (self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -456,7 +456,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_gerberCodeInstructionCountMessage (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -496,7 +496,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_issues (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_issues (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -536,7 +536,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_mWarnsWhenAdvanceIsZero (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_mWarnsWhenAdvanceIsZero (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -606,7 +606,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_mWarnsWhenNoSegment (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_mWarnsWhenNoSegment (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
     self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -676,7 +676,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_segmentArrayForDrawing (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {

@@ -1249,10 +1249,10 @@ class PackageRoot : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageRoot
+//    TransientArrayOf_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> {
+class TransientArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> {
 
   //····················································································································
   //   Observers of 'selectedPageIndex' stored property
@@ -2334,16 +2334,6 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [PackageRoot] > > = nil
 
   //····················································································································
@@ -2473,7 +2463,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 //    To many relationship read write: PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
+class ReadWriteArrayOf_PackageRoot : TransientArrayOf_PackageRoot {
 
   //····················································································································
  

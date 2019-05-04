@@ -450,10 +450,10 @@ class SymbolText : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolText
+//    TransientArrayOf_SymbolText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
+class TransientArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -853,16 +853,6 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolText
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolText] > > = nil
 
   //····················································································································
@@ -968,7 +958,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 //    To many relationship read write: SymbolText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
+class ReadWriteArrayOf_SymbolText : TransientArrayOf_SymbolText {
 
   //····················································································································
  

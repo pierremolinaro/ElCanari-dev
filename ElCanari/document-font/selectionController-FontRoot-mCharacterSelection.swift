@@ -10,7 +10,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_FontCharacter?
+  private var mModel : TransientArrayOf_FontCharacter?
 
   //····················································································································
   //   SELECTION OBSERVABLE PROPERTIES
@@ -56,7 +56,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //   BIND SELECTION
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_FontCharacter, file:String, line:Int) {
+  func bind_selection (model : TransientArrayOf_FontCharacter, file:String, line:Int) {
     mModel = model
     bind_property_advance (model: model)
     bind_property_codePoint (model: model)
@@ -170,7 +170,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_advance (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_advance (self.advance_property)
     self.advance_property.mReadModelFunction = {
       if let model = self.mModel {
@@ -240,7 +240,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_codePoint (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_codePoint (self.codePoint_property)
     self.codePoint_property.mReadModelFunction = {
       if let model = self.mModel {
@@ -310,7 +310,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_gerberCode (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCode (self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = {
       if let model = self.mModel {
@@ -350,7 +350,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_gerberCodeInstructionCountMessage (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = {
       if let model = self.mModel {
@@ -390,7 +390,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
+  private final func bind_property_segmentArrayForDrawing (model : TransientArrayOf_FontCharacter) {
     model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = {
       if let model = self.mModel {

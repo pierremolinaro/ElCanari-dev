@@ -466,10 +466,10 @@ class PadProxyInDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PadProxyInDevice
+//    TransientArrayOf_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
+class TransientArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
 
   //····················································································································
   //   Observers of 'mPadName' stored property
@@ -755,16 +755,6 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [PadProxyInDevice] > > = nil
 
   //····················································································································
@@ -866,7 +856,7 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 //    To many relationship read write: PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
+class ReadWriteArrayOf_PadProxyInDevice : TransientArrayOf_PadProxyInDevice {
 
   //····················································································································
  

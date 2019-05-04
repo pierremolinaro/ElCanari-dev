@@ -186,10 +186,10 @@ class PackageObject : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageObject
+//    TransientArrayOf_PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObject> {
+class TransientArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObject> {
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -361,16 +361,6 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageObject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [PackageObject] > > = nil
 
   //····················································································································
@@ -454,7 +444,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 //    To many relationship read write: PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
+class ReadWriteArrayOf_PackageObject : TransientArrayOf_PackageObject {
 
   //····················································································································
  

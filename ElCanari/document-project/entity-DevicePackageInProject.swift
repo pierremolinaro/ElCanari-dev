@@ -210,10 +210,10 @@ class DevicePackageInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_DevicePackageInProject
+//    TransientArrayOf_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <DevicePackageInProject> {
+class TransientArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <DevicePackageInProject> {
 
   //····················································································································
   //   Observers of 'mPackageName' stored property
@@ -271,16 +271,6 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
       }
     }
   }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DevicePackageInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
 
   //····················································································································
 
@@ -377,7 +367,7 @@ class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 //    To many relationship read write: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
+class ReadWriteArrayOf_DevicePackageInProject : TransientArrayOf_DevicePackageInProject {
 
   //····················································································································
  

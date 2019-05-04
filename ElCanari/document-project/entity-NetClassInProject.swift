@@ -823,10 +823,10 @@ class NetClassInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_NetClassInProject
+//    TransientArrayOf_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClassInProject> {
+class TransientArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClassInProject> {
 
   //····················································································································
   //   Observers of 'mNetClassName' stored property
@@ -1566,16 +1566,6 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_NetClassInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [NetClassInProject] > > = nil
 
   //····················································································································
@@ -1693,7 +1683,7 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 //    To many relationship read write: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
+class ReadWriteArrayOf_NetClassInProject : TransientArrayOf_NetClassInProject {
 
   //····················································································································
  

@@ -842,10 +842,10 @@ class FontRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontRoot
+//    TransientArrayOf_FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
+class TransientArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
   //   Observers of 'comments' stored property
@@ -1526,16 +1526,6 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [FontRoot] > > = nil
 
   //····················································································································
@@ -1651,7 +1641,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 //    To many relationship read write: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
+class ReadWriteArrayOf_FontRoot : TransientArrayOf_FontRoot {
 
   //····················································································································
  

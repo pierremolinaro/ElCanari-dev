@@ -102,11 +102,11 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_SymbolInstanceInDevice? = nil
+  private var mModel : TransientArrayOf_SymbolInstanceInDevice? = nil
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolInstanceInDevice, file:String, line:Int) {
+  func bind_selection (model : TransientArrayOf_SymbolInstanceInDevice, file:String, line:Int) {
     self.mModel = model
     self.bind_property_mInstanceName (model: model)
     self.bind_property_mX (model: model)
@@ -270,7 +270,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_mInstanceName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_mInstanceName (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_mInstanceName (self.mInstanceName_property)
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -340,7 +340,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_mX (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_mX (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -410,7 +410,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_mY (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_mY (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -480,7 +480,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_objectDisplay (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -520,7 +520,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -560,7 +560,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_symbolQualifiedName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_symbolQualifiedName (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_symbolQualifiedName (self.symbolQualifiedName_property)
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -600,7 +600,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_symbolTypeName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_symbolTypeName (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_symbolTypeName (self.symbolTypeName_property)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -640,7 +640,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
 
   //···················································································································*
 
-  private final func bind_property_unconnectedPins (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+  private final func bind_property_unconnectedPins (model : TransientArrayOf_SymbolInstanceInDevice) {
     model.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {

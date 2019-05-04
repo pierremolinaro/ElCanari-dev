@@ -517,10 +517,10 @@ class SymbolSolidOval : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolSolidOval
+//    TransientArrayOf_SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSolidOval> {
+class TransientArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSolidOval> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -976,16 +976,6 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSolidOval
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
 
   //····················································································································
@@ -1093,7 +1083,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 //    To many relationship read write: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
+class ReadWriteArrayOf_SymbolSolidOval : TransientArrayOf_SymbolSolidOval {
 
   //····················································································································
  

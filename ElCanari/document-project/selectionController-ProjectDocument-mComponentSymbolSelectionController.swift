@@ -184,12 +184,12 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : ReadOnlyArrayOf_SchematicsObject? = nil
+   private var mModel : TransientArrayOf_SchematicsObject? = nil
    private var mActualModel = TransientArrayOf_ComponentSymbolInProject ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+  func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [ComponentSymbolInProject] > in
       if let model = self?.mModel {

@@ -345,10 +345,10 @@ class CanariLibraryEntry : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_CanariLibraryEntry
+//    TransientArrayOf_CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
+class TransientArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
 
   //····················································································································
   //   Observers of 'mPath' stored property
@@ -636,16 +636,6 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_CanariLibraryEntry
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > > = nil
 
   //····················································································································
@@ -747,7 +737,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //    To many relationship read write: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
+class ReadWriteArrayOf_CanariLibraryEntry : TransientArrayOf_CanariLibraryEntry {
 
   //····················································································································
  

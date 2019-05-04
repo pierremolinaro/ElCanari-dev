@@ -164,12 +164,12 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : ReadOnlyArrayOf_SymbolObject? = nil
+   private var mModel : TransientArrayOf_SymbolObject? = nil
    private var mActualModel = TransientArrayOf_SymbolPin ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
+  func bind_selection (model : TransientArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
       if let model = self?.mModel {

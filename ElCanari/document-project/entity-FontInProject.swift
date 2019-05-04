@@ -363,10 +363,10 @@ class FontInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontInProject
+//    TransientArrayOf_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
+class TransientArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
 
   //····················································································································
   //   Observers of 'mFontName' stored property
@@ -653,16 +653,6 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [FontInProject] > > = nil
 
   //····················································································································
@@ -764,7 +754,7 @@ class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 //    To many relationship read write: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
+class ReadWriteArrayOf_FontInProject : TransientArrayOf_FontInProject {
 
   //····················································································································
  

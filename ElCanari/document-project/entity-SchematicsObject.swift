@@ -270,10 +270,10 @@ class SchematicsObject : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SchematicsObject
+//    TransientArrayOf_SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <SchematicsObject> {
+class TransientArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <SchematicsObject> {
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -445,16 +445,6 @@ class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <Schemati
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SchematicsObject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SchematicsObject] > > = nil
 
   //····················································································································
@@ -538,7 +528,7 @@ class TransientArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 //    To many relationship read write: SchematicsObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
+class ReadWriteArrayOf_SchematicsObject : TransientArrayOf_SchematicsObject {
 
   //····················································································································
  

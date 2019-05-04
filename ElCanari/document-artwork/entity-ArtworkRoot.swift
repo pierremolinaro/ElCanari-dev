@@ -650,10 +650,10 @@ class ArtworkRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ArtworkRoot
+//    TransientArrayOf_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> {
+class TransientArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> {
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
@@ -1284,16 +1284,6 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ArtworkRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > > = nil
 
   //····················································································································
@@ -1407,7 +1397,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    To many relationship read write: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
+class ReadWriteArrayOf_ArtworkRoot : TransientArrayOf_ArtworkRoot {
 
   //····················································································································
  

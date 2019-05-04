@@ -84,12 +84,12 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : ReadOnlyArrayOf_SymbolObject? = nil
+   private var mModel : TransientArrayOf_SymbolObject? = nil
    private var mActualModel = TransientArrayOf_SymbolText ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
+  func bind_selection (model : TransientArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolText] > in
       if let model = self?.mModel {

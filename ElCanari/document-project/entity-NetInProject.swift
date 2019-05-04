@@ -220,10 +220,10 @@ class NetInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_NetInProject
+//    TransientArrayOf_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject> {
+class TransientArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject> {
 
   //····················································································································
   //   Observers of 'mNetName' stored property
@@ -281,16 +281,6 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
       }
     }
   }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_NetInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
@@ -387,7 +377,7 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 //    To many relationship read write: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
+class ReadWriteArrayOf_NetInProject : TransientArrayOf_NetInProject {
 
   //····················································································································
  

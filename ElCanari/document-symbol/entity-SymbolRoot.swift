@@ -785,10 +785,10 @@ class SymbolRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolRoot
+//    TransientArrayOf_SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
+class TransientArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
   //   Observers of 'selectedInspector' stored property
@@ -1474,16 +1474,6 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolRoot] > > = nil
 
   //····················································································································
@@ -1599,7 +1589,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 //    To many relationship read write: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
+class ReadWriteArrayOf_SymbolRoot : TransientArrayOf_SymbolRoot {
 
   //····················································································································
  

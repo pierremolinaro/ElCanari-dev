@@ -186,10 +186,10 @@ class SymbolObject : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolObject
+//    TransientArrayOf_SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject> {
+class TransientArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject> {
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -361,16 +361,6 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolObject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [SymbolObject] > > = nil
 
   //····················································································································
@@ -454,7 +444,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 //    To many relationship read write: SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
+class ReadWriteArrayOf_SymbolObject : TransientArrayOf_SymbolObject {
 
   //····················································································································
  

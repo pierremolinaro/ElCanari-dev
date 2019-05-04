@@ -1207,10 +1207,10 @@ class ProjectRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectRoot
+//    TransientArrayOf_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
+class TransientArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -2066,16 +2066,6 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
 
   //····················································································································
@@ -2195,7 +2185,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 //    To many relationship read write: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class ReadWriteArrayOf_ProjectRoot : TransientArrayOf_ProjectRoot {
 
   //····················································································································
  

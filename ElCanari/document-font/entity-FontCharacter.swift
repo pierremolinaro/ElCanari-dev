@@ -622,10 +622,10 @@ class FontCharacter : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontCharacter
+//    TransientArrayOf_FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
+class TransientArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
 
   //····················································································································
   //   Observers of 'codePoint' stored property
@@ -1081,16 +1081,6 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
 
   //····················································································································
@@ -1198,7 +1188,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    To many relationship read write: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+class ReadWriteArrayOf_FontCharacter : TransientArrayOf_FontCharacter {
 
   //····················································································································
  

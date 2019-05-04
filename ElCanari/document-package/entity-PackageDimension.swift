@@ -946,10 +946,10 @@ class PackageDimension : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageDimension
+//    TransientArrayOf_PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageDimension> {
+class TransientArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageDimension> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1918,16 +1918,6 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageDimension
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [PackageDimension] > > = nil
 
   //····················································································································
@@ -2053,7 +2043,7 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
 //    To many relationship read write: PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
+class ReadWriteArrayOf_PackageDimension : TransientArrayOf_PackageDimension {
 
   //····················································································································
  

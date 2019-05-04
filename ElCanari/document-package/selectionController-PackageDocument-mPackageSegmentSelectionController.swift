@@ -154,12 +154,12 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : ReadOnlyArrayOf_PackageObject? = nil
+   private var mModel : TransientArrayOf_PackageObject? = nil
    private var mActualModel = TransientArrayOf_PackageSegment ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+  func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSegment] > in
       if let model = self?.mModel {

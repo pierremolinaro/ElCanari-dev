@@ -801,10 +801,10 @@ class PackageSegment : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageSegment
+//    TransientArrayOf_PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSegment> {
+class TransientArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSegment> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1601,16 +1601,6 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageSegment
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
-
-  //····················································································································
-
   var mReadModelFunction : Optional < () -> EBSelection < [PackageSegment] > > = nil
 
   //····················································································································
@@ -1730,7 +1720,7 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 //    To many relationship read write: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
+class ReadWriteArrayOf_PackageSegment : TransientArrayOf_PackageSegment {
 
   //····················································································································
  

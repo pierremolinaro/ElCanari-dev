@@ -184,12 +184,12 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : ReadOnlyArrayOf_PackageObject? = nil
+   private var mModel : TransientArrayOf_PackageObject? = nil
    private var mActualModel = TransientArrayOf_PackageDimension ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+  func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageDimension] > in
       if let model = self?.mModel {
