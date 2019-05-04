@@ -26,8 +26,12 @@ final class Controller_DeviceDocument_mPackageDisplayController : EBObject, EBVi
         object.selectionDisplay_property.addEBObserver (self.mObjectSelectionObserver)
       }
     //--- Remove observers to deselected set
-      for object in self.mPrivateSelectedSet.subtracting (newValue) {
+      let deselectedSet = self.mPrivateSelectedSet.subtracting (newValue)
+      for object in deselectedSet {
         object.selectionDisplay_property.removeEBObserver (self.mObjectSelectionObserver)
+      }
+      if deselectedSet.count > 0 {
+        self.mObjectSelectionObserver.postEvent () // Required, as removing observer does not post event
       }
     //---
       self.mPrivateSelectedSet = newValue
