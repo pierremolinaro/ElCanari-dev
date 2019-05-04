@@ -155,7 +155,9 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
 
   override func draw (_ inDirtyRect : NSRect) {
     if self.mMouseWithin {
-      NSColor.lightGray.setFill ()
+      let x : CGFloat = 0.75
+      let myGray = NSColor (red: x, green: x, blue: x, alpha: 1.0)
+      myGray.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
     super.draw (inDirtyRect)

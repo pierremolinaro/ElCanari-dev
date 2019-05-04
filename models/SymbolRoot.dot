@@ -1,7 +1,7 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  SymbolRoot[label="<SymbolRoot>SymbolRoot|String comments|Int gridDisplay|GridStyle gridStyle|Bool horizontalFlip|Int selectedInspector|Int selectedPageIndex|<symbolObjects>symbolObjects|<symbolPins>symbolPins|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
+  SymbolRoot[label="<SymbolRoot>SymbolRoot|String comments|Int gridDisplay|GridStyle gridStyle|Bool horizontalFlip|Int selectedInspector|Int selectedPageIndex|<symbolObjects>[SymbolObject] symbolObjects|<symbolPins>[SymbolPin] symbolPins|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
   SymbolObject[label="<SymbolObject>SymbolObject"] ;
   SymbolRoot:symbolObjects -> SymbolObject:SymbolObject [dir=both arrowtail=none arrowhead=vee] ;
 }

@@ -167,8 +167,6 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
       screen: nil
     )
   //-------------------------------------------------- Adding properties
-  //  var nameRect = NSRect (x:0.0, y:0.0, width:300.0, height:22.0)
- //   let font = NSFont.boldSystemFontOfSize (NSFont.smallSystemFontSize ())
     let view = NSView (frame: r)
     var y : CGFloat = 0.0
     populateExplorerWindow (&y, view: view)
@@ -197,7 +195,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  @objc func showObjectWindowFromExplorerButton (_: Any) {
+  @objc func showObjectWindowFromExplorerButton (_ : Any) {
     self.showExplorerWindow ()
   }
   
@@ -205,7 +203,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //   deleteWindowAction
   //····················································································································
 
-  @objc func deleteWindowAction (_: Any) {
+  @objc func deleteWindowAction (_ : Any) {
     self.clearObjectExplorer ()
   }
 
@@ -214,10 +212,12 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   func clearObjectExplorer () {
-    let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = nil
-    self.mExplorerWindow?.orderOut (nil)
-    self.mExplorerWindow = nil
+    if let explorerWindow = self.mExplorerWindow {
+      let closeButton = explorerWindow.standardWindowButton (.closeButton)
+      closeButton?.target = nil
+      explorerWindow.orderOut (nil)
+      self.mExplorerWindow = nil
+    }
   }
 
   //····················································································································
@@ -225,13 +225,12 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   final func store (managedObjectArray : [EBManagedObject], // NSArray,
-                    relationshipName: String,
+                    relationshipName : String,
                     intoDictionary : NSMutableDictionary) {
 
     if managedObjectArray.count > 0 {
       let indexArray = NSMutableArray ()
       for managedObject in managedObjectArray {
-       // let managedObject = object as! EBManagedObject
         indexArray.add (NSNumber (value:managedObject.savingIndex))
       }
       intoDictionary.setObject (indexArray, forKey:relationshipName as NSCopying)
@@ -243,7 +242,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   final func store (managedObject : EBManagedObject?,
-                    relationshipName: String,
+                    relationshipName : String,
                     intoDictionary : NSMutableDictionary) {
     if let unwObject = managedObject {
       intoDictionary.setObject (NSNumber (value: unwObject.savingIndex), forKey: relationshipName as NSCopying)
@@ -254,7 +253,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //   readEntityFromDictionary
   //····················································································································
 
-  final func readEntityFromDictionary (inRelationshipName: String,
+  final func readEntityFromDictionary (inRelationshipName : String,
                                        inDictionary : NSDictionary,
                                        managedObjectArray : inout [EBManagedObject]) -> EBManagedObject? {
     let opValue : Int? = inDictionary.value (forKey: inRelationshipName) as? Int
