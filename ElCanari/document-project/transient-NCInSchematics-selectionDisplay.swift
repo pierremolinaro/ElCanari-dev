@@ -23,7 +23,7 @@ func transient_NCInSchematics_selectionDisplay (
         switch self_mRotation {
         case .rotation0 :
           point.x += NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .left
+          horizontalAlignment = .onTheRight
           verticalAlignment = .center
         case .rotation90 :
           point.y += NC_DISTANCE_IN_COCOA_UNIT
@@ -31,7 +31,7 @@ func transient_NCInSchematics_selectionDisplay (
           verticalAlignment = .above
         case .rotation180 :
           point.x -= NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .right
+          horizontalAlignment = .onTheLeft
           verticalAlignment = .center
          case .rotation270 :
           point.y -= NC_DISTANCE_IN_COCOA_UNIT

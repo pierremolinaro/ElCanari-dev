@@ -270,8 +270,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
       NSAttributedString.Key.foregroundColor : g_Preferences!.frontSidePadColor
     ]
-    shape.append (EBTextShape ("(", NSPoint (x : 2.0, y: 17.0), textAttributes, .left, .center))
-    shape.append (EBTextShape (")", NSPoint (x :38.0, y: 17.0), textAttributes, .right, .center))
+    shape.append (EBTextShape ("(", NSPoint (x : 2.0, y: 17.0), textAttributes, .onTheRight, .center))
+    shape.append (EBTextShape (")", NSPoint (x :38.0, y: 17.0), textAttributes, .onTheLeft, .center))
  //---
     let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)

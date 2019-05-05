@@ -17,29 +17,29 @@ extension QuadrantRotation {
   func ebSymbolTextShapeHorizontalAlignment (alignment inAlignment : HorizontalAlignment) -> EBTextHorizontalAlignment {
     let horizontalAlignment : EBTextHorizontalAlignment
     switch inAlignment {
-    case .left :
+    case .onTheRight :
       switch self {
       case .rotation0 :
-        horizontalAlignment = .left
+        horizontalAlignment = .onTheRight
       case .rotation90 :
-        horizontalAlignment = .left
+        horizontalAlignment = .onTheRight
       case .rotation180 :
-        horizontalAlignment = .right
+        horizontalAlignment = .onTheLeft
       case .rotation270 :
-        horizontalAlignment = .right
+        horizontalAlignment = .onTheLeft
       }
     case .center :
       horizontalAlignment = .center
-    case .right :
+    case .onTheLeft :
       switch self {
       case .rotation0 :
-        horizontalAlignment = .right
+        horizontalAlignment = .onTheLeft
       case .rotation90 :
-        horizontalAlignment = .right
+        horizontalAlignment = .onTheLeft
       case .rotation180 :
-        horizontalAlignment = .left
+        horizontalAlignment = .onTheRight
       case .rotation270 :
-        horizontalAlignment = .left
+        horizontalAlignment = .onTheRight
       }
     }
     return horizontalAlignment

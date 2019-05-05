@@ -7,18 +7,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum HorizontalAlignment : Int, EnumPropertyProtocol {
-  case left = 0
+  case onTheRight = 0
   case center = 1
-  case right = 2
+  case onTheLeft = 2
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "left" : self = .left // 0
+      case "onTheRight" : self = .onTheRight // 0
       case "center" : self = .center // 1
-      case "right" : self = .right // 2
+      case "onTheLeft" : self = .onTheLeft // 2
       case _ : return nil
     }
   }
@@ -27,9 +27,9 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .left : return "left" // 0
+      case .onTheRight : return "onTheRight" // 0
       case .center : return "center" // 1
-      case .right : return "right" // 2
+      case .onTheLeft : return "onTheLeft" // 2
     }
   }
 
@@ -69,7 +69,7 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol {
   }
 
   static func convertFromNSObject (object : NSObject) -> HorizontalAlignment {
-    var result = HorizontalAlignment.left
+    var result = HorizontalAlignment.onTheRight
     if let number = object as? NSNumber, let v = HorizontalAlignment (rawValue: number.intValue) {
       result = v
     }

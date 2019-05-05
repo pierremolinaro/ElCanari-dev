@@ -34,11 +34,11 @@ class EBTextKnobShape : EBShape {
       let height = filledBezierPath.bounds.height
       var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
       switch inHorizontalAlignment {
-      case .left :
+      case .onTheRight :
         ()
       case .center :
         deltaX -= width / 2.0
-      case .right :
+      case .onTheLeft :
         deltaX -= width
       }
       var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y

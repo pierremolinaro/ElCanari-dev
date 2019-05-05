@@ -27,11 +27,11 @@ func transient_SymbolPin_nameRect (
     let s = displayName.size (withAttributes: textAttributes)
     nameOrigin.y -= s.height / 2.0
     switch self_nameHorizontalAlignment {
-    case .right :
+    case .onTheLeft :
       ()
     case .center :
       nameOrigin.x -= s.width / 2.0
-    case .left :
+    case .onTheRight :
       nameOrigin.x -= s.width
     }
     return NSRect (origin: nameOrigin, size: s)

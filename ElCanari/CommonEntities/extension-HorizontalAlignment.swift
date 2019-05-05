@@ -8,12 +8,12 @@ extension HorizontalAlignment {
 
   func ebTextShapeHorizontalAlignment () -> EBTextHorizontalAlignment {
     switch self {
-      case .left :
-        return EBTextHorizontalAlignment.left
+      case .onTheRight :
+        return EBTextHorizontalAlignment.onTheRight
       case .center :
         return EBTextHorizontalAlignment.center
-      case .right :
-        return EBTextHorizontalAlignment.right
+      case .onTheLeft :
+        return EBTextHorizontalAlignment.onTheLeft
     }
   }
 
