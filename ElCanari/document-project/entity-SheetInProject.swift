@@ -17,12 +17,19 @@ protocol SheetInProject_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SheetInProject_connectedPoints : class {
+  var connectedPoints : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SheetInProject : EBManagedObject,
          SheetInProject_mSheetTitle,
-         SheetInProject_issues {
+         SheetInProject_issues,
+         SheetInProject_connectedPoints {
 
   //····················································································································
   //   To many property: mObjects
@@ -84,6 +91,29 @@ class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: connectedPoints
+  //····················································································································
+
+  let connectedPoints_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <EBShape> {
+    return self.connectedPoints_property.prop
+  }
+
+  //····················································································································
+
+  var connectedPoints : EBShape? {
+    switch self.connectedPoints_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -118,6 +148,28 @@ class SheetInProject : EBManagedObject,
       }
     }
     self.mObjects_property.addEBObserverOf_issues (self.issues_property)
+  //--- Atomic property: connectedPoints
+    self.connectedPoints_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mObjects_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SheetInProject_connectedPoints (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mObjects_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SchematicsObject) in
       if let me = self {
@@ -136,6 +188,7 @@ class SheetInProject : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mObjects_property.removeEBObserverOf_issues (self.issues_property)
+    self.mObjects_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
  //   self.mObjects_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -167,6 +220,14 @@ class SheetInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connectedPoints",
+      idx:self.connectedPoints_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
+      valueExplorer:&self.connectedPoints_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -402,6 +463,62 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   }
 
   //····················································································································
+  //   Observers of 'connectedPoints' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -472,12 +589,14 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
       self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -611,6 +730,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
           self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -624,6 +744,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
           self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

@@ -237,6 +237,7 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
+    $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mSchematicsHorizontalFlip
     $verticalFlip root.mSchematicsVerticalFlip
     $graphicController self.mSchematicsObjectsController

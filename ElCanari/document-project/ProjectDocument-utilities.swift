@@ -21,6 +21,10 @@ let NC_TITLE = "nc"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let CONNECTED_POINT_DIAMETER = milsToCocoaUnit (75.0)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct SymbolInProjectIdentifier : Hashable {
   let symbolInstanceName : String
   let symbolTypeName : String

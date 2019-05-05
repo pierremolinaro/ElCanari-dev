@@ -13,6 +13,7 @@ entity ProjectRoot {
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
   toMany proxy SchematicsObject selectedSheetObjects : mSelectedSheet.mObjects ;
   transient CanariIssueArray selectedSheetIssues dependsFrom self.mSelectedSheet.one.issues ;
+  transient EBShape connectedPoints dependsFrom self.mSelectedSheet.one.connectedPoints ;
  
   property Int mSelectedPageIndex default 0 ;
 
@@ -345,6 +346,8 @@ entity SheetInProject {
   property String mSheetTitle default "" ;
   
   transient CanariIssueArray issues dependsFrom self.mObjects.all.issues ;
+
+  transient EBShape connectedPoints dependsFrom self.mObjects.all.connectedPoints ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -357,6 +360,8 @@ abstract graphic entity SchematicsObject {
   transient Bool isPlacedInSchematics dependsFrom self.mSheet.none ;
   
   abstract transient CanariIssueArray issues ;
+  
+  abstract transient CanariPointArray connectedPoints ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -407,6 +412,8 @@ graphic entity PointInSchematics : SchematicsObject {
   transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
 
   override transient CanariIssueArray issues dependsFrom self.location, self.isConnected ;
+  
+  override transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

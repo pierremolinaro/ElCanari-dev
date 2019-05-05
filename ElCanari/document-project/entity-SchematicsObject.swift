@@ -12,6 +12,12 @@ protocol SchematicsObject_issues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SchematicsObject_connectedPoints : class {
+  var connectedPoints : CanariPointArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SchematicsObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -34,6 +40,7 @@ protocol SchematicsObject_isPlacedInSchematics : class {
 
 class SchematicsObject : EBGraphicManagedObject,
          SchematicsObject_issues,
+         SchematicsObject_connectedPoints,
          SchematicsObject_selectionDisplay,
          SchematicsObject_objectDisplay,
          SchematicsObject_isPlacedInSchematics {
@@ -83,6 +90,29 @@ class SchematicsObject : EBGraphicManagedObject,
 
   var issues : CanariIssueArray? {
     switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: connectedPoints
+  //····················································································································
+
+  let connectedPoints_property = EBTransientProperty_CanariPointArray ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <CanariPointArray> {
+    return self.connectedPoints_property.prop
+  }
+
+  //····················································································································
+
+  var connectedPoints : CanariPointArray? {
+    switch self.connectedPoints_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -175,6 +205,14 @@ class SchematicsObject : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connectedPoints",
+      idx:self.connectedPoints_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
+      valueExplorer:&self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
@@ -365,6 +403,62 @@ class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <Schemati
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connectedPoints' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.removeEBObserver (observer)
       }
     }
   }
@@ -733,6 +827,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet)
@@ -747,6 +842,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         //--- Add observers of stored properties
         //--- Add observers of transient properties
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
@@ -922,10 +1018,12 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mObjects_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
@@ -954,6 +1052,47 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
   func remove (_ object : SheetInProject) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connectedPoints
+  //····················································································································
+
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.connectedPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    if let object = self.propval {
+      object.connectedPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    if let object = self.propval {
+      object.connectedPoints_property.removeEBObserver (inObserver)
     }
   }
 

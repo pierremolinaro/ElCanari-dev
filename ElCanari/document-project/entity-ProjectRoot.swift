@@ -84,6 +84,12 @@ protocol ProjectRoot_selectedSheetIssues : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_connectedPoints : class {
+  var connectedPoints : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -118,6 +124,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicsSheetOrientation,
          ProjectRoot_selectedSheetTitle,
          ProjectRoot_selectedSheetIssues,
+         ProjectRoot_connectedPoints,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicsBackgroundDisplay {
@@ -515,6 +522,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: connectedPoints
+  //····················································································································
+
+  let connectedPoints_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <EBShape> {
+    return self.connectedPoints_property.prop
+  }
+
+  //····················································································································
+
+  var connectedPoints : EBShape? {
+    switch self.connectedPoints_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -681,6 +711,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property)
+  //--- Atomic property: connectedPoints
+    self.connectedPoints_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSelectedSheet_property.connectedPoints_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSelectedSheet_property.connectedPoints_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_connectedPoints (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -781,6 +833,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
+    self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicsTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
@@ -901,6 +954,14 @@ class ProjectRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.selectedSheetIssues_property.mObserverExplorer,
       valueExplorer:&self.selectedSheetIssues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connectedPoints",
+      idx:self.connectedPoints_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
+      valueExplorer:&self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",
@@ -2017,6 +2078,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'connectedPoints' transient property
+  //····················································································································
+
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connectedPoints_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
+        managedObject.connectedPoints_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -2265,6 +2382,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
@@ -2284,6 +2402,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
@@ -2440,6 +2559,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
@@ -2476,6 +2596,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
@@ -2647,10 +2768,12 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
+        oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
@@ -2679,6 +2802,47 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
   func remove (_ object : SheetInProject) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connectedPoints
+  //····················································································································
+
+  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.connectedPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_connectedPoints.insert (inObserver)
+    if let object = self.propval {
+      object.connectedPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_connectedPoints.remove (inObserver)
+    if let object = self.propval {
+      object.connectedPoints_property.removeEBObserver (inObserver)
     }
   }
 

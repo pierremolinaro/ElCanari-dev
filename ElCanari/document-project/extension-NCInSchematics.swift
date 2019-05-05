@@ -15,10 +15,55 @@ import Cocoa
 extension NCInSchematics {
 
   //····················································································································
+  //  ROTATE 90 CLOCKWISE
+  //····················································································································
+
+  override func rotate90Clockwise () {
+    switch self.mRotation {
+    case .rotation0 :
+      self.mRotation = .rotation270
+    case .rotation90 :
+      self.mRotation = .rotation0
+    case .rotation180 :
+      self.mRotation = .rotation90
+    case .rotation270 :
+      self.mRotation = .rotation180
+    }
+  }
+
+  //····················································································································
+
+  override func canRotate90Clockwise () -> Bool {
+    return true
+  }
+
+  //····················································································································
+  //  ROTATE 90 COUNTER CLOCKWISE
+  //····················································································································
+
+  override func rotate90CounterClockwise () {
+    switch self.mRotation {
+    case .rotation0 :
+      self.mRotation = .rotation90
+    case .rotation90 :
+      self.mRotation = .rotation180
+    case .rotation180 :
+      self.mRotation = .rotation270
+    case .rotation270 :
+      self.mRotation = .rotation0
+    }
+  }
+
+  //····················································································································
+
+  override func canRotate90CounterClockwise () -> Bool {
+    return true
+  }
+
+  //····················································································································
 
   override func operationBeforeRemoving () {
-    super.operationBeforeRemoving ()
-    self.mPoint = nil
+    self.mPoint = nil // Detach from point
   }
 
   //····················································································································

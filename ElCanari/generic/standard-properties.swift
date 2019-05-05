@@ -1922,6 +1922,12 @@ typealias EBTransientProperty_NSPoint = EBTransientValueProperty <NSPoint>
 typealias EBReadOnlyProperty_CanariPoint  = EBReadOnlyValueProperty <CanariPoint>
 typealias EBTransientProperty_CanariPoint = EBTransientValueProperty <CanariPoint>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property CanariPointArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariPointArray  = EBReadOnlyValueProperty <CanariPointArray>
+typealias EBTransientProperty_CanariPointArray = EBTransientValueProperty <CanariPointArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property ComponentSymbolInfo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
