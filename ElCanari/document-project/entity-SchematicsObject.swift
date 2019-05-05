@@ -1019,11 +1019,15 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
         self.mValue?.mObjects_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
+        oldValue?.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors)
+        oldValue?.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
+        self.mValue?.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors)
+        self.mValue?.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
@@ -1093,6 +1097,88 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
     self.mObserversOf_connectedPoints.remove (inObserver)
     if let object = self.propval {
       object.connectedPoints_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connexionErrors
+  //····················································································································
+
+  private var mObserversOf_connexionErrors = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connexionErrors_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionErrors_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionErrors.insert (inObserver)
+    if let object = self.propval {
+      object.connexionErrors_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionErrors.remove (inObserver)
+    if let object = self.propval {
+      object.connexionErrors_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connexionWarnings
+  //····················································································································
+
+  private var mObserversOf_connexionWarnings = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connexionWarnings_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionWarnings_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionWarnings.insert (inObserver)
+    if let object = self.propval {
+      object.connexionWarnings_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionWarnings.remove (inObserver)
+    if let object = self.propval {
+      object.connexionWarnings_property.removeEBObserver (inObserver)
     }
   }
 

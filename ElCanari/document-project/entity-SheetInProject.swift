@@ -23,13 +23,27 @@ protocol SheetInProject_connectedPoints : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SheetInProject_connexionWarnings : class {
+  var connexionWarnings : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SheetInProject_connexionErrors : class {
+  var connexionErrors : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SheetInProject : EBManagedObject,
          SheetInProject_mSheetTitle,
          SheetInProject_issues,
-         SheetInProject_connectedPoints {
+         SheetInProject_connectedPoints,
+         SheetInProject_connexionWarnings,
+         SheetInProject_connexionErrors {
 
   //····················································································································
   //   To many property: mObjects
@@ -114,6 +128,52 @@ class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: connexionWarnings
+  //····················································································································
+
+  let connexionWarnings_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var connexionWarnings_property_selection : EBSelection <Int> {
+    return self.connexionWarnings_property.prop
+  }
+
+  //····················································································································
+
+  var connexionWarnings : Int? {
+    switch self.connexionWarnings_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: connexionErrors
+  //····················································································································
+
+  let connexionErrors_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var connexionErrors_property_selection : EBSelection <Int> {
+    return self.connexionErrors_property.prop
+  }
+
+  //····················································································································
+
+  var connexionErrors : Int? {
+    switch self.connexionErrors_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -170,6 +230,50 @@ class SheetInProject : EBManagedObject,
       }
     }
     self.mObjects_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+  //--- Atomic property: connexionWarnings
+    self.connexionWarnings_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SheetInProject_connexionWarnings (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.connexionWarnings_property)
+  //--- Atomic property: connexionErrors
+    self.connexionErrors_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SheetInProject_connexionErrors (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.connexionErrors_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SchematicsObject) in
       if let me = self {
@@ -189,6 +293,8 @@ class SheetInProject : EBManagedObject,
     super.removeAllObservers ()
     self.mObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.mObjects_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.issues_property.removeEBObserver (self.connexionWarnings_property)
+    self.issues_property.removeEBObserver (self.connexionErrors_property)
  //   self.mObjects_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -228,6 +334,22 @@ class SheetInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.connectedPoints_property.mObserverExplorer,
       valueExplorer:&self.connectedPoints_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connexionWarnings",
+      idx:self.connexionWarnings_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connexionWarnings_property.mObserverExplorer,
+      valueExplorer:&self.connexionWarnings_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connexionErrors",
+      idx:self.connexionErrors_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connexionErrors_property.mObserverExplorer,
+      valueExplorer:&self.connexionErrors_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -519,6 +641,118 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   }
 
   //····················································································································
+  //   Observers of 'connexionWarnings' transient property
+  //····················································································································
+
+  private var mObserversOf_connexionWarnings = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connexionWarnings.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionWarnings_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connexionWarnings.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionWarnings_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
+        managedObject.connexionWarnings_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
+        managedObject.connexionWarnings_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connexionErrors' transient property
+  //····················································································································
+
+  private var mObserversOf_connexionErrors = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connexionErrors.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionErrors_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connexionErrors.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionErrors_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
+        managedObject.connexionErrors_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
+        managedObject.connexionErrors_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -590,6 +824,8 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connexionErrors_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -597,6 +833,8 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connexionWarnings_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connexionErrors_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -731,6 +969,8 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         //--- Remove observers of transient properties
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connexionErrors_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -745,6 +985,8 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         //--- Add observers of transient properties
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connexionWarnings_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connexionErrors_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

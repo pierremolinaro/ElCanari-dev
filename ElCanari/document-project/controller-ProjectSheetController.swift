@@ -35,6 +35,8 @@ class ProjectSheetController : EBOutletEvent {
     self.mSheetDownButton = inSheetDownButton
   //--- Add sheet titles observer
     self.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
+    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self)
+    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionErrors (self)
     inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self)
     inDocument.rootObject.mSelectedSheet_property.addEBObserver (self)
     self.mSheetUpButton?.target = self
@@ -48,6 +50,8 @@ class ProjectSheetController : EBOutletEvent {
   func unregister () {
     if let document = self.mDocument {
       document.rootObject.mSheets_property.removeEBObserverOf_mSheetTitle (self)
+      document.rootObject.mSheets_property.removeEBObserverOf_connexionWarnings (self)
+      document.rootObject.mSheets_property.removeEBObserverOf_connexionErrors (self)
       document.rootObject.mSelectedSheet_property.removeEBObserver (self)
     }
     self.mDocument = nil
@@ -68,7 +72,23 @@ class ProjectSheetController : EBOutletEvent {
     let sheets = self.mDocument?.rootObject.mSheets ?? []
     var idx = 0
     for sheet in sheets {
-      self.mSheetPopUpButton?.addItem (withTitle: "\(sheet.mSheetTitle) (\(idx + 1)/\(sheets.count))")
+    //--- Build title
+      let attributedString = NSMutableAttributedString ()
+      var attributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      ]
+      attributedString.append (NSAttributedString (string: "\(sheet.mSheetTitle) (\(idx + 1)/\(sheets.count))", attributes: attributes))
+      if let errorCount = sheet.connexionErrors, errorCount > 0 {
+        attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
+        attributedString.append (NSAttributedString (string: " (\(errorCount))", attributes: attributes))
+      }
+      if let warningCount = sheet.connexionWarnings, warningCount > 0 {
+        attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
+        attributedString.append (NSAttributedString (string: " (\(warningCount))", attributes: attributes))
+      }
+    //---
+      self.mSheetPopUpButton?.addItem (withTitle: "")
+      self.mSheetPopUpButton?.lastItem?.attributedTitle = attributedString
       self.mSheetPopUpButton?.lastItem?.tag = idx
       self.mSheetPopUpButton?.lastItem?.target = self
       self.mSheetPopUpButton?.lastItem?.action = #selector (ProjectSheetController.selectionDidChangeAction (_:))

@@ -43,6 +43,10 @@ entity ProjectRoot {
     self.mSchematicsDate,
     self.selectedSheetIssues
   ;
+  
+  transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;
+  
+  transient String connexionErrorString dependsFrom self.mSheets.all.connexionErrors ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -348,6 +352,10 @@ entity SheetInProject {
   transient CanariIssueArray issues dependsFrom self.mObjects.all.issues ;
 
   transient EBShape connectedPoints dependsFrom self.mObjects.all.connectedPoints ;
+  
+  transient Int connexionWarnings dependsFrom self.issues ;
+  
+  transient Int connexionErrors dependsFrom self.issues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

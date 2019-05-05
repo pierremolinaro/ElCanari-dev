@@ -107,6 +107,18 @@ protocol ProjectRoot_schematicsBackgroundDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_connexionWarningString : class {
+  var connexionWarningString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_connexionErrorString : class {
+  var connexionErrorString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -127,7 +139,9 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connectedPoints,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames,
-         ProjectRoot_schematicsBackgroundDisplay {
+         ProjectRoot_schematicsBackgroundDisplay,
+         ProjectRoot_connexionWarningString,
+         ProjectRoot_connexionErrorString {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -614,6 +628,52 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: connexionWarningString
+  //····················································································································
+
+  let connexionWarningString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var connexionWarningString_property_selection : EBSelection <String> {
+    return self.connexionWarningString_property.prop
+  }
+
+  //····················································································································
+
+  var connexionWarningString : String? {
+    switch self.connexionWarningString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: connexionErrorString
+  //····················································································································
+
+  let connexionErrorString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var connexionErrorString_property_selection : EBSelection <String> {
+    return self.connexionErrorString_property.prop
+  }
+
+  //····················································································································
+
+  var connexionErrorString : String? {
+    switch self.connexionErrorString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -813,6 +873,50 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.selectedSheetIssues_property.addEBObserver (self.schematicsBackgroundDisplay_property)
+  //--- Atomic property: connexionWarningString
+    self.connexionWarningString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSheets_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_connexionWarningString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property)
+  //--- Atomic property: connexionErrorString
+    self.connexionErrorString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSheets_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_connexionErrorString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -844,6 +948,8 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.selectedSheetIssues_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
   //--- Unregister properties for handling signature
   }
 
@@ -986,6 +1092,22 @@ class ProjectRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.schematicsBackgroundDisplay_property.mObserverExplorer,
       valueExplorer:&self.schematicsBackgroundDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connexionWarningString",
+      idx:self.connexionWarningString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connexionWarningString_property.mObserverExplorer,
+      valueExplorer:&self.connexionWarningString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connexionErrorString",
+      idx:self.connexionErrorString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.connexionErrorString_property.mObserverExplorer,
+      valueExplorer:&self.connexionErrorString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -2302,6 +2424,118 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'connexionWarningString' transient property
+  //····················································································································
+
+  private var mObserversOf_connexionWarningString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionWarningString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connexionWarningString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionWarningString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionWarningString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connexionWarningString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionWarningString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connexionWarningString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
+        managedObject.connexionWarningString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connexionWarningString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
+        managedObject.connexionWarningString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'connexionErrorString' transient property
+  //····················································································································
+
+  private var mObserversOf_connexionErrorString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionErrorString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_connexionErrorString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionErrorString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionErrorString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_connexionErrorString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.connexionErrorString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_connexionErrorString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
+        managedObject.connexionErrorString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_connexionErrorString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
+        managedObject.connexionErrorString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -2386,6 +2620,8 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -2406,6 +2642,8 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -2563,6 +2801,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -2600,6 +2840,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -2769,11 +3011,15 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
         }
       //--- Remove property observers of old object
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
+        oldValue?.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors)
+        oldValue?.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
+        self.mValue?.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors)
+        self.mValue?.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
@@ -2843,6 +3089,88 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
     self.mObserversOf_connectedPoints.remove (inObserver)
     if let object = self.propval {
       object.connectedPoints_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connexionErrors
+  //····················································································································
+
+  private var mObserversOf_connexionErrors = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connexionErrors_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionErrors_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionErrors.insert (inObserver)
+    if let object = self.propval {
+      object.connexionErrors_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionErrors.remove (inObserver)
+    if let object = self.propval {
+      object.connexionErrors_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: connexionWarnings
+  //····················································································································
+
+  private var mObserversOf_connexionWarnings = EBWeakEventSet ()
+
+  //····················································································································
+
+  var connexionWarnings_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionWarnings_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionWarnings.insert (inObserver)
+    if let object = self.propval {
+      object.connexionWarnings_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
+    self.mObserversOf_connexionWarnings.remove (inObserver)
+    if let object = self.propval {
+      object.connexionWarnings_property.removeEBObserver (inObserver)
     }
   }
 
