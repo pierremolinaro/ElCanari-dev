@@ -31,19 +31,60 @@ extension CustomizedProjectDocument {
          }
        }
      }
-     menu.addItem (withTitle: "Nada", action: nil, keyEquivalent: "")
   //---
     return menu
   }
 
   //····················································································································
 
-  @objc func addNCToPin (_ inSender : NSMenuItem) {
+  @objc internal func addNCToPin (_ inSender : NSMenuItem) {
     if let point = inSender.representedObject as? PointInSchematics {
       let nc = NCInSchematics (self.ebUndoManager)
       nc.mPoint = point
+      nc.mRotation = self.findPreferredNCOrientation (for: point)
       self.rootObject.mSelectedSheet?.mObjects.append (nc)
       self.mSchematicsObjectsController.setSelection ([nc])
+    }
+  }
+
+  //····················································································································
+
+  private func findPreferredNCOrientation (for inPoint : PointInSchematics) -> QuadrantRotation {
+  //--- Find the rectangle of all pins of current symbol
+    let symbol = inPoint.mSymbol!
+    let symbolInfo = symbol.symbolInfo!
+    var xMin = Int.max
+    var yMin = Int.max
+    var xMax = Int.min
+    var yMax = Int.min
+    for pin in symbolInfo.pins {
+      if pin.pinName == inPoint.mSymbolPinName {
+        if xMin > pin.pinLocation.x {
+          xMin = pin.pinLocation.x
+        }
+        if yMin > pin.pinLocation.y {
+          yMin = pin.pinLocation.y
+        }
+        if xMax < pin.pinLocation.x {
+          xMax = pin.pinLocation.x
+        }
+        if yMax < pin.pinLocation.y {
+          yMax = pin.pinLocation.y
+        }
+      }
+    }
+  //---
+    let pinLocation = inPoint.location!
+    if pinLocation.x == xMin {
+      return .rotation180
+    }else if pinLocation.x == xMax {
+      return .rotation0
+    }else if pinLocation.y == yMin {
+      return .rotation270
+    }else if pinLocation.y == yMax {
+      return .rotation90
+    }else{
+      return .rotation0
     }
   }
 

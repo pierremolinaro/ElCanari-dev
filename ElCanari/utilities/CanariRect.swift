@@ -100,37 +100,15 @@ struct CanariRect : Equatable, Hashable {
   }
 
   //····················································································································
-  //   Protocol Equatable
-  //····················································································································
-
-  public static func == (lhs: CanariRect, rhs: CanariRect) -> Bool {
-    return (lhs.origin == rhs.origin) && (lhs.size == rhs.size)
-  }
-
-  //····················································································································
-  //   Protocol Hashable: hashValue
-  //····················································································································
-
-//  var hashValue : Int {
-//    return self.origin.x ^ self.origin.y ^ self.size.width ^ self.size.height
-//  }
-  public func hash (into hasher: inout Hasher) {
-    self.origin.x.hash (into: &hasher)
-    self.origin.y.hash (into: &hasher)
-    self.size.width.hash (into: &hasher)
-    self.size.height.hash (into: &hasher)
-  }
-
-  //····················································································································
   //   cocoaRect
   //····················································································································
 
   func cocoaRect () -> NSRect {
     return NSRect (
-      x:canariUnitToCocoa (self.origin.x),
-      y:canariUnitToCocoa (self.origin.y),
-      width:canariUnitToCocoa (self.size.width),
-      height:canariUnitToCocoa (self.size.height)
+      x: canariUnitToCocoa (self.origin.x),
+      y: canariUnitToCocoa (self.origin.y),
+      width: canariUnitToCocoa (self.size.width),
+      height: canariUnitToCocoa (self.size.height)
     )
   }
 
@@ -149,7 +127,7 @@ struct CanariRect : Equatable, Hashable {
       let bottom = min (self.bottom, inOtherRect.bottom)
       let right = max (self.right, inOtherRect.right)
       let top = max (self.top, inOtherRect.top)
-      result = CanariRect (left:left, bottom:bottom, width: right - left, height: top - bottom)
+      result = CanariRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
     }
     return result
   }
