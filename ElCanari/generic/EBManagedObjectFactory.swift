@@ -69,7 +69,10 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "DevicePinInProject" : DevicePinInProject.self,
   "ComponentSymbolInProject" : ComponentSymbolInProject.self,
   "NetInProject" : NetInProject.self,
-  "CommentInSchematics" : CommentInSchematics.self
+  "WireInSchematics" : WireInSchematics.self,
+  "PointInSchematics" : PointInSchematics.self,
+  "CommentInSchematics" : CommentInSchematics.self,
+  "NCInSchematics" : NCInSchematics.self
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

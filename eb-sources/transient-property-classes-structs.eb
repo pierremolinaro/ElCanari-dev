@@ -1,5 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+transient property struct NSPoint ;
 transient property struct CanariPoint ;
 transient property struct ComponentSymbolInfo ;
 transient property struct SymbolInProjectIdentifier ;

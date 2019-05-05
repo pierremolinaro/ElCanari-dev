@@ -24,7 +24,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
       //--- Device info
-        let key = SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolTypeName)
+        let key = SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName)
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
       //--- Affine transformation for drawings
         let tr = NSAffineTransform ()
@@ -35,9 +35,11 @@ func transient_ComponentSymbolInProject_symbolInfo (
         let pinNameAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont
         ]
-        var pinNameShapes = [PinShapeDescriptor] ()
+        var pins = [PinDescriptor] ()
         for pinPadAssignment in deviceInfo.assignments {
           if let pin = pinPadAssignment.pin {
+            let pinTextShape = EBShape ()
+          //--- Pin name
             if pin.pinNameIsDisplayedInSchematics {
               let trText = NSAffineTransform ()
               trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
@@ -52,8 +54,9 @@ func transient_ComponentSymbolInProject_symbolInfo (
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment)
               )
-              pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNameTextShape.transformedBy (trText)))
+              pinTextShape.append (pinNameTextShape.transformedBy (trText))
             }
+          //--- Pin number
             let trText = NSAffineTransform ()
             trText.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
             trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
@@ -67,7 +70,15 @@ func transient_ComponentSymbolInProject_symbolInfo (
               self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment),
               self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment)
             )
-            pinNameShapes.append (PinShapeDescriptor (symbol: pin.symbol, shape: pinNumberTextShape.transformedBy (trText)))
+            pinTextShape.append (pinNumberTextShape.transformedBy (trText))
+          //--- Pin location
+            let pinLocationTransform = NSAffineTransform ()
+            pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+            pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+            pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint ())
+          //---
+            pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
           }
         }
       //---
@@ -78,7 +89,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
           filledBezierPath: transformedFilledBezierPath,
           strokeBezierPath: transformedStrokeBezierPath,
           center: componentSymbolCenter,
-          pinShapes: pinNameShapes,
+          pins: pins,
           componentName: self_componentName,
           componentValue: self_mComponent_mComponentValue!
         )

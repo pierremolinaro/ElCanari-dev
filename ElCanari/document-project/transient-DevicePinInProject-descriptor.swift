@@ -28,12 +28,12 @@ func transient_DevicePinInProject_descriptor (
 //--- START OF USER ZONE 2
         return PinInProjectDescriptor (
           pinName: self_mPinName,
-          symbol: SymbolInProjectIdentifier (instanceName: self_mSymbolInstanceName, typeName: self_mSymbolTypeName),
+          symbol: SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName),
           pinXY: CanariPoint (x: self_mPinX, y: self_mPinY),
           nameXY: CanariPoint (x: self_mXName, y: self_mYName),
           nameHorizontalAlignment: self_mNameHorizontalAlignment,
           pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematics,
-          numberXY : CanariPoint (x: self_mXNumber, y:self_mYNumber),
+          numberXY : CanariPoint (x: self_mXNumber, y: self_mYNumber),
           numberHorizontalAlignment: self_mNumberHorizontalAlignment
         )
 //--- END OF USER ZONE 2

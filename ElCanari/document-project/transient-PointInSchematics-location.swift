@@ -11,19 +11,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDocument_selectedDeviceSymbolNames (
-       _ self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames : [DeviceInProject_symbolAndTypesNames]
-) -> TwoStringArray {
+func transient_PointInSchematics_location (
+       _ self_mX : Int,                    
+       _ self_mY : Int,                    
+       _ self_mSymbolPinName : String,     
+       _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
+       _ self_mSymbol_mSymbolInstanceName : String?
+) -> NSPoint {
 //--- START OF USER ZONE 2
-        var result = [TwoStrings] ()
-        if self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames.count == 1 {
-          if let a = self_mProjectDeviceController_selectedArray_all_symbolAndTypesNames [0].symbolAndTypesNames {
-            for symbolDescriptor in a {
-              result.append (TwoStrings (symbolDescriptor.symbolInstanceName, symbolDescriptor.symbolTypeName))
+        if let symbolPins = self_mSymbol_symbolInfo?.pins, let symbolInstanceName = self_mSymbol_mSymbolInstanceName {
+          for pin in symbolPins {
+            if (pin.symbolIdentifier.symbolInstanceName == symbolInstanceName) && (pin.pinName == self_mSymbolPinName) {
+              return pin.pinLocation
             }
           }
+          return CanariPoint (x: self_mX, y: self_mY).cocoaPoint ()
+        }else{
+          return CanariPoint (x: self_mX, y: self_mY).cocoaPoint ()
         }
-        return result
 //--- END OF USER ZONE 2
 }
 

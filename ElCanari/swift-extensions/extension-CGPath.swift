@@ -58,3 +58,22 @@ private func CGPathCallback (_ info: UnsafeMutableRawPointer?, _ element : Unsaf
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension CGPoint : Hashable {
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  public func hash (into hasher: inout Hasher) {
+    self.x.hash (into: &hasher)
+    self.y.hash (into: &hasher)
+  }
+
+  //····················································································································}
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

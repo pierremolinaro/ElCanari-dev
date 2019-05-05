@@ -130,6 +130,25 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_symbolInSchematics {
 
   //····················································································································
+  //   To many property: mPoints
+  //····················································································································
+
+  let mPoints_property = StoredArrayOf_PointInSchematics ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
+    return self.mPoints_property.prop
+  }
+
+  //····················································································································
+
+  var mPoints : [PointInSchematics] {
+    get { return self.mPoints_property.propval }
+    set { self.mPoints_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mCenterX
   //····················································································································
 
@@ -454,6 +473,11 @@ class ComponentSymbolInProject : SchematicsObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To many property: mPoints (has opposite relationship)
+    self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PointInSchematics?) in
+      inManagedObject?.mSymbol_property.setProp (self)
+    }
   //--- Atomic property: mCenterX
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
@@ -670,6 +694,14 @@ class ComponentSymbolInProject : SchematicsObject,
     }
     self.isPlacedInSchematics_property.addEBObserver (self.symbolInSchematics_property)
   //--- Install undoers and opposite setter for relationships
+    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
+      if let me = self {
+        inManagedObject.mSymbol_property.setProp (me)
+      }
+    }
+    self.mPoints_property.resetOppositeRelationship = { (_ inManagedObject : PointInSchematics) in
+      inManagedObject.mSymbol_property.setProp (nil)
+    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -712,6 +744,7 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
+ //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -856,6 +889,13 @@ class ComponentSymbolInProject : SchematicsObject,
       valueExplorer:&self.symbolInSchematics_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mPoints",
+      idx:mPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPoints_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "mComponent",
@@ -872,6 +912,8 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mPoints
+    self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mCenterX
     self.mCenterX_property.mObserverExplorer = nil
     self.mCenterX_property.mValueExplorer = nil
@@ -917,6 +959,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mPoints_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -937,6 +980,12 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- To many property: mPoints
+    self.store (
+      managedObjectArray: self.mPoints_property.propval,
+      relationshipName: "mPoints",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mCenterX
     self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
   //--- Atomic property: mCenterY
@@ -966,6 +1015,12 @@ class ComponentSymbolInProject : SchematicsObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mPoints
+    self.mPoints_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPoints",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PointInSchematics])
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1013,6 +1068,10 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mPoints
+    for managedObject in self.mPoints_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mComponent
     if let managedObject = self.mComponent_property.propval {
       objects.append (managedObject)
@@ -1025,6 +1084,10 @@ class ComponentSymbolInProject : SchematicsObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mPoints
+    for managedObject in self.mPoints_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mComponent
     if let managedObject = self.mComponent_property.propval {
       objects.append (managedObject)

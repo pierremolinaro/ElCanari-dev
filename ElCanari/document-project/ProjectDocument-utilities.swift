@@ -1,5 +1,5 @@
 //
-//  dict-DeviceSymbolDictionary.swift
+//  ProjectDocument-utilities.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 29/04/2019.
@@ -10,15 +10,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let SCHEMATICS_GRID_IN_MILS = 50
+let SCHEMATICS_GRID_IN_CANARI_UNIT = milsToCanariUnit (SCHEMATICS_GRID_IN_MILS)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct SymbolInProjectIdentifier : Hashable {
-  let instanceName : String
-  let typeName : String
+  let symbolInstanceName : String
+  let symbolTypeName : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct PinShapeDescriptor : Hashable {
-  let symbol : SymbolInProjectIdentifier
+struct PinDescriptor : Hashable {
+  let symbolIdentifier : SymbolInProjectIdentifier
+  let pinName : String
+  let pinLocation : NSPoint
   let shape : EBShape
 }
 
@@ -28,7 +35,7 @@ struct ComponentSymbolInfo : Hashable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint
-  let pinShapes : [PinShapeDescriptor]
+  let pins : [PinDescriptor]
   let componentName : String
   let componentValue : String
 }

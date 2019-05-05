@@ -6,99 +6,61 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_mNetName : class {
-  var mNetName : String { get }
+protocol NCInSchematics_mRotation : class {
+  var mRotation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: NetInProject
+//    Entity: NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class NetInProject : EBManagedObject,
-         NetInProject_mNetName {
+class NCInSchematics : SchematicsObject,
+         NCInSchematics_mRotation {
 
   //····················································································································
-  //   Atomic property: mNetName
+  //   Atomic property: mRotation
   //····················································································································
 
-  let mNetName_property = EBStoredProperty_String (defaultValue: "")
+  let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
-  var mNetName : String {
-    get { return self.mNetName_property.propval }
-    set { self.mNetName_property.setProp (newValue) }
+  var mRotation : QuadrantRotation {
+    get { return self.mRotation_property.propval }
+    set { self.mRotation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
+  var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
 
   //····················································································································
-  //   To many property: mWires
+  //   To one property: mPoint
   //····················································································································
 
-  let mWires_property = StoredArrayOf_WireInSchematics ()
+  let mPoint_property = ToOneRelationship_NCInSchematics_mPoint ()
 
   //····················································································································
 
-  var mWires_property_selection : EBSelection < [WireInSchematics] > {
-    return self.mWires_property.prop
+  var mPoint_property_selection : EBSelection <PointInSchematics?> {
+    return .single (self.mPoint_property.propval)
   }
 
   //····················································································································
 
-  var mWires : [WireInSchematics] {
-    get { return self.mWires_property.propval }
-    set { self.mWires_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mPoints
-  //····················································································································
-
-  let mPoints_property = StoredArrayOf_PointInSchematics ()
-
-  //····················································································································
-
-  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
-    return self.mPoints_property.prop
+  var mPoint : PointInSchematics? {
+    get { return self.mPoint_property.propval }
+    set { self.mPoint_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematics] {
-    get { return self.mPoints_property.propval }
-    set { self.mPoints_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To one property: mNetClass
-  //····················································································································
-
-  let mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
+  var mPoint_none : ToOneRelationship_NCInSchematics_mPoint { return self.mPoint_property }
 
   //····················································································································
 
-  var mNetClass_property_selection : EBSelection <NetClassInProject?> {
-    return .single (self.mNetClass_property.propval)
-  }
-
-  //····················································································································
-
-  var mNetClass : NetClassInProject? {
-    get { return self.mNetClass_property.propval }
-    set { self.mNetClass_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mNetClass_none : ToOneRelationship_NetInProject_mNetClass { return self.mNetClass_property }
-
-  //····················································································································
-
-  var mNetClass_none_selection : EBSelection <Bool> {
-    return .single (self.mNetClass_property.propval == nil)
+  var mPoint_none_selection : EBSelection <Bool> {
+    return .single (self.mPoint_property.propval == nil)
   }
 
   //····················································································································
@@ -107,37 +69,11 @@ class NetInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mNetName
-    self.mNetName_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mWires (has opposite relationship)
-    self.mWires_property.ebUndoManager = self.ebUndoManager
-    self.mWires_property.setOppositeRelationship = { [weak self] (_ inManagedObject :WireInSchematics?) in
-      inManagedObject?.mNet_property.setProp (self)
-    }
-  //--- To many property: mPoints (has opposite relationship)
-    self.mPoints_property.ebUndoManager = self.ebUndoManager
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PointInSchematics?) in
-      inManagedObject?.mNet_property.setProp (self)
-    }
-  //--- To one property: mNetClass
-    self.mNetClass_property.owner = self
+  //--- Atomic property: mRotation
+    self.mRotation_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mPoint
+    self.mPoint_property.owner = self
   //--- Install undoers and opposite setter for relationships
-    self.mWires_property.setOppositeRelationship = { [weak self] (_ inManagedObject : WireInSchematics) in
-      if let me = self {
-        inManagedObject.mNet_property.setProp (me)
-      }
-    }
-    self.mWires_property.resetOppositeRelationship = { (_ inManagedObject : WireInSchematics) in
-      inManagedObject.mNet_property.setProp (nil)
-    }
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
-      if let me = self {
-        inManagedObject.mNet_property.setProp (me)
-      }
-    }
-    self.mPoints_property.resetOppositeRelationship = { (_ inManagedObject : PointInSchematics) in
-      inManagedObject.mNet_property.setProp (nil)
-    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -146,8 +82,6 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
- //   self.mWires_property.setOppositeRelationship = nil
- //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -163,36 +97,22 @@ class NetInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mNetName",
-      idx:self.mNetName_property.ebObjectIndex,
+      "mRotation",
+      idx:self.mRotation_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mNetName_property.mObserverExplorer,
-      valueExplorer:&self.mNetName_property.mValueExplorer
+      observerExplorer:&self.mRotation_property.mObserverExplorer,
+      valueExplorer:&self.mRotation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mWires",
-      idx:mWires_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mWires_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mPoints",
-      idx:mPoints_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mPoints_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
-      "mNetClass",
-      idx:self.mNetClass_property.ebObjectIndex,
+      "mPoint",
+      idx:self.mPoint_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&self.mNetClass_property.mValueExplorer
+      valueExplorer:&self.mPoint_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -202,16 +122,12 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mNetName
-    self.mNetName_property.mObserverExplorer = nil
-    self.mNetName_property.mValueExplorer = nil
-  //--- To many property: mWires
-    self.mWires_property.mValueExplorer = nil
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
-  //--- To one property: mNetClass
-    self.mNetClass_property.mObserverExplorer = nil
-    self.mNetClass_property.mValueExplorer = nil
+  //--- Atomic property: mRotation
+    self.mRotation_property.mObserverExplorer = nil
+    self.mRotation_property.mValueExplorer = nil
+  //--- To one property: mPoint
+    self.mPoint_property.mObserverExplorer = nil
+    self.mPoint_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -221,8 +137,6 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mWires_property.setProp ([])
-    self.mPoints_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -232,7 +146,7 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mNetClass_property.setProp (nil)
+    self.mPoint_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -243,20 +157,12 @@ class NetInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mNetName
-    self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
-  //--- To many property: mWires
-    self.store (
-      managedObjectArray: self.mWires_property.propval,
-      relationshipName: "mWires",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mPoints
-    self.store (
-      managedObjectArray: self.mPoints_property.propval,
-      relationshipName: "mPoints",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mRotation
+    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+  //--- To one property: mPoint // Opposite is toOne mNC
+    self.store (managedObject:self.mPoint_property.propval,
+      relationshipName: "mPoint",
+      intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -266,27 +172,15 @@ class NetInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mWires
-    self.mWires_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mWires",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematics])
-  //--- To many property: mPoints
-    self.mPoints_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPoints",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematics])
-  //--- To one property: mNetClass
+  //--- To one property: mPoint
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNetClass",
+        inRelationshipName: "mPoint",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? NetClassInProject {
-        self.mNetClass_property.setProp (entity)
+      if let entity = possibleEntity as? PointInSchematics {
+        self.mPoint_property.setProp (entity)
       }
     }
   }
@@ -297,8 +191,8 @@ class NetInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mNetName
-    self.mNetName_property.readFrom (dictionary: inDictionary, forKey:"mNetName")
+  //--- Atomic property: mRotation
+    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
   }
 
   //····················································································································
@@ -307,16 +201,8 @@ class NetInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mWires
-    for managedObject in self.mWires_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To one property: mNetClass
-    if let managedObject = self.mNetClass_property.propval {
+  //--- To one property: mPoint
+    if let managedObject = self.mPoint_property.propval {
       objects.append (managedObject)
     }
   }
@@ -327,16 +213,8 @@ class NetInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mWires
-    for managedObject in self.mWires_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To one property: mNetClass
-    if let managedObject = self.mNetClass_property.propval {
+  //--- To one property: mPoint
+    if let managedObject = self.mPoint_property.propval {
       objects.append (managedObject)
     }
   }
@@ -346,64 +224,64 @@ class NetInProject : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_NetInProject
+//    ReadOnlyArrayOf_NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject> {
+class ReadOnlyArrayOf_NCInSchematics : ReadOnlyAbstractArrayProperty <NCInSchematics> {
 
   //····················································································································
-  //   Observers of 'mNetName' stored property
+  //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mNetName = EBWeakEventSet ()
+  private var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mNetName.insert (inObserver)
+    self.mObserversOf_mRotation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetName_property.addEBObserver (inObserver)
+        managedObject.mRotation_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetName.remove (inObserver)
+    self.mObserversOf_mRotation.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetName_property.removeEBObserver (inObserver)
+        managedObject.mRotation_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : Set<NCInSchematics>) {
     for managedObject in inSet {
-      self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
-        managedObject.mNetName_property.addEBObserver (observer)
+      self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+        managedObject.mRotation_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
-    self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mNetName_property.removeEBObserver (observer)
+        managedObject.mRotation_property.removeEBObserver (observer)
       }
     }
   }
@@ -413,32 +291,32 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_NetInProject
+//    TransientArrayOf_NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
+class TransientArrayOf_NCInSchematics : ReadOnlyArrayOf_NCInSchematics {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [NetInProject] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [NCInSchematics] > > = nil
 
   //····················································································································
 
-  override var propset : Set <NetInProject> {
+  override var propset : Set <NCInSchematics> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [NetInProject] > {
+  override var prop : EBSelection < [NCInSchematics] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [NetInProject] {
+  override var propval : [NCInSchematics] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -454,11 +332,11 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  private var mSet = Set <NetInProject> ()
+  private var mSet = Set <NCInSchematics> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [NetInProject] >? = nil
+  private var mCachedValue : EBSelection < [NCInSchematics] >? = nil
 
   //····················································································································
 
@@ -466,22 +344,22 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       let cachedValue = unwrappedComputeFunction ()
       self.mCachedValue = cachedValue
-      let newSet : Set <NetInProject>
+      let newSet : Set <NCInSchematics>
       switch cachedValue {
       case .multiple, .empty :
-        newSet = Set <NetInProject> ()
+        newSet = Set <NCInSchematics> ()
       case .single (let array) :
         newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mNetName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mRotation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mNetName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mRotation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
     //--- Update object set
       self.mSet = newSet
@@ -510,29 +388,29 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: NetInProject
+//    To many relationship read write: NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
+class ReadWriteArrayOf_NCInSchematics : ReadOnlyArrayOf_NCInSchematics {
 
   //····················································································································
  
-  func setProp (_ value :  [NetInProject]) { } // Abstract method
+  func setProp (_ value :  [NCInSchematics]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: NetInProject
+//    To many relationship: NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol {
+final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
+  var resetOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
 
   //····················································································································
 
@@ -579,9 +457,9 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetInProject] ()
+      var objectArray = [NCInSchematics] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetInProject") as? NetInProject {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NCInSchematics") as? NCInSchematics {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -592,8 +470,8 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
 
  //····················································································································
 
-  private var mSet = Set <NetInProject> ()
-  private var mValue = [NetInProject] () {
+  private var mSet = Set <NCInSchematics> ()
+  private var mValue = [NCInSchematics] () {
     didSet {
       if oldValue != self.mValue {
         let oldSet = self.mSet
@@ -610,22 +488,22 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.resetOppositeRelationship? (managedObject)
-            managedObject.mNetName_property.mSetterDelegate = nil
+            managedObject.mRotation_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : NetInProject in addedObjectSet {
+          for managedObject : NCInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mNetName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties
-          self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
         }
       //--- Notify observers
@@ -654,29 +532,29 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < [NetInProject] > { return .single (self.mValue) }
+  override var prop : EBSelection < [NCInSchematics] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [NetInProject]) { self.mValue = inValue }
+  override func setProp (_ inValue : [NCInSchematics]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [NetInProject] { return self.mValue }
+  override var propval : [NCInSchematics] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <NetInProject> { return self.mSet }
+  override var propset : Set <NCInSchematics> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [NetInProject]) {
+  @objc func performUndo (_ oldValue : [NCInSchematics]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : NetInProject) {
+  func remove (_ object : NCInSchematics) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -687,7 +565,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
   
   //····················································································································
 
-  func add (_ object : NetInProject) {
+  func add (_ object : NCInSchematics) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
@@ -751,10 +629,10 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: mNetClass
+//    To one relationship: mPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
+final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
 
   //····················································································································
   //   Value explorer
@@ -775,7 +653,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  weak var owner : NetInProject? { // SOULD BE WEAK
+  weak var owner : NCInSchematics? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -785,7 +663,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : NetClassInProject? {
+  private var mValue : PointInSchematics? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
@@ -794,40 +672,30 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
-      //--- Reset old opposite relation ship
-        oldValue?.mNets_property.remove (unwrappedOwner)
+     //--- Reset old opposite relation ship
+        oldValue?.mNC_property.setProp (nil)
       //--- Set new opposite relation ship
-        self.mValue?.mNets_property.add (unwrappedOwner)
+        self.mValue?.mNC_property.setProp (unwrappedOwner)
       //--- Remove property observers of old object
-        oldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove)
-        oldValue?.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor)
-        oldValue?.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName)
-        oldValue?.mNetWidth_property.removeEBObserversFrom (&self.mObserversOf_mNetWidth)
-        oldValue?.mNetWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
-        oldValue?.mNets_property.removeEBObserversFrom (&self.mObserversOf_mNets)
-        oldValue?.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
-        oldValue?.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
-        oldValue?.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
-        oldValue?.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
-        oldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage)
-        oldValue?.netWidth_property.removeEBObserversFrom (&self.mObserversOf_netWidth)
-        oldValue?.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
-        oldValue?.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter)
+        oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
+        oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
+        oldValue?.mWiresP1s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP1s)
+        oldValue?.mWiresP2s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP2s)
+        oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
+        oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
+        oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
+        oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
-        self.mValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove)
-        self.mValue?.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor)
-        self.mValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName)
-        self.mValue?.mNetWidth_property.addEBObserversFrom (&self.mObserversOf_mNetWidth)
-        self.mValue?.mNetWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mNetWidthUnit)
-        self.mValue?.mNets_property.addEBObserversFrom (&self.mObserversOf_mNets)
-        self.mValue?.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter)
-        self.mValue?.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit)
-        self.mValue?.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter)
-        self.mValue?.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
-        self.mValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage)
-        self.mValue?.netWidth_property.addEBObserversFrom (&self.mObserversOf_netWidth)
-        self.mValue?.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
-        self.mValue?.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter)
+        self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
+        self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
+        self.mValue?.mWiresP1s_property.addEBObserversFrom (&self.mObserversOf_mWiresP1s)
+        self.mValue?.mWiresP2s_property.addEBObserversFrom (&self.mObserversOf_mWiresP2s)
+        self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
+        self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
+        self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
+        self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
        //--- Notify observers
         self.postEvent ()
       }
@@ -836,37 +704,37 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  var propval : NetClassInProject? { return self.mValue }
+  var propval : PointInSchematics? { return self.mValue }
 
-  var prop : EBSelection <NetClassInProject?> { return .single (self.mValue) }
+  var prop : EBSelection <PointInSchematics?> { return .single (self.mValue) }
 
-  func setProp (_ value : NetClassInProject?) { self.mValue = value }
+  func setProp (_ value : PointInSchematics?) { self.mValue = value }
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : NetClassInProject?) {
+  @objc func performUndo (_ oldValue : PointInSchematics?) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : NetClassInProject) {
+  func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
     }
   }
 
   //····················································································································
-  //   Observable atomic property: canRemove
+  //   Observable atomic property: isPlacedInSchematics
   //····················································································································
 
-  private var mObserversOf_canRemove = EBWeakEventSet ()
+  private var mObserversOf_isPlacedInSchematics = EBWeakEventSet ()
 
   //····················································································································
 
-  var canRemove_property_selection : EBSelection <Bool?> {
+  var isPlacedInSchematics_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
-      switch (model.canRemove_property_selection) {
+      switch (model.isPlacedInSchematics_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -881,33 +749,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.mObserversOf_canRemove.insert (inObserver)
+  final func addEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+    self.mObserversOf_isPlacedInSchematics.insert (inObserver)
     if let object = self.propval {
-      object.canRemove_property.addEBObserver (inObserver)
+      object.isPlacedInSchematics_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.mObserversOf_canRemove.remove (inObserver)
+  final func removeEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+    self.mObserversOf_isPlacedInSchematics.remove (inObserver)
     if let object = self.propval {
-      object.canRemove_property.removeEBObserver (inObserver)
+      object.isPlacedInSchematics_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mNetClassColor
+  //   Observable atomic property: location
   //····················································································································
 
-  private var mObserversOf_mNetClassColor = EBWeakEventSet ()
+  private var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNetClassColor_property_selection : EBSelection <NSColor?> {
+  var location_property_selection : EBSelection <NSPoint?> {
     if let model = self.propval {
-      switch (model.mNetClassColor_property_selection) {
+      switch (model.location_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -922,33 +790,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetClassColor.insert (inObserver)
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+    self.mObserversOf_location.insert (inObserver)
     if let object = self.propval {
-      object.mNetClassColor_property.addEBObserver (inObserver)
+      object.location_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetClassColor.remove (inObserver)
+  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
+    self.mObserversOf_location.remove (inObserver)
     if let object = self.propval {
-      object.mNetClassColor_property.removeEBObserver (inObserver)
+      object.location_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mNetClassName
+  //   Observable atomic property: mSymbolPinName
   //····················································································································
 
-  private var mObserversOf_mNetClassName = EBWeakEventSet ()
+  private var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNetClassName_property_selection : EBSelection <String?> {
+  var mSymbolPinName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mNetClassName_property_selection) {
+      switch (model.mSymbolPinName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -963,115 +831,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetClassName.insert (inObserver)
+  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolPinName.insert (inObserver)
     if let object = self.propval {
-      object.mNetClassName_property.addEBObserver (inObserver)
+      object.mSymbolPinName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetClassName.remove (inObserver)
+  final func removeEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolPinName.remove (inObserver)
     if let object = self.propval {
-      object.mNetClassName_property.removeEBObserver (inObserver)
+      object.mSymbolPinName_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mNetWidth
+  //   Observable toMany property: mWiresP1s
   //····················································································································
 
-  private var mObserversOf_mNetWidth = EBWeakEventSet ()
+  private var mObserversOf_mWiresP1s = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNetWidth_property_selection : EBSelection <Int?> {
+  var mWiresP1s_property_selection : EBSelection <[WireInSchematics]> {
     if let model = self.propval {
-      switch (model.mNetWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetWidth.insert (inObserver)
-    if let object = self.propval {
-      object.mNetWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetWidth.remove (inObserver)
-    if let object = self.propval {
-      object.mNetWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: mNetWidthUnit
-  //····················································································································
-
-  private var mObserversOf_mNetWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mNetWidthUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.mNetWidthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetWidthUnit.insert (inObserver)
-    if let object = self.propval {
-      object.mNetWidthUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mNetWidthUnit.remove (inObserver)
-    if let object = self.propval {
-      object.mNetWidthUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable toMany property: mNets
-  //····················································································································
-
-  private var mObserversOf_mNets = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mNets_property_selection : EBSelection <[NetInProject]> {
-    if let model = self.propval {
-      switch (model.mNets_property_selection) {
+      switch (model.mWiresP1s_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1086,33 +872,74 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mNets (_ inObserver : EBEvent) {
-    self.mObserversOf_mNets.insert (inObserver)
+  final func addEBObserverOf_mWiresP1s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP1s.insert (inObserver)
     if let object = self.propval {
-      object.mNets_property.addEBObserver (inObserver)
+      object.mWiresP1s_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNets (_ inObserver : EBEvent) {
-    self.mObserversOf_mNets.remove (inObserver)
+  final func removeEBObserverOf_mWiresP1s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP1s.remove (inObserver)
     if let object = self.propval {
-      object.mNets_property.removeEBObserver (inObserver)
+      object.mWiresP1s_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mViaHoleDiameter
+  //   Observable toMany property: mWiresP2s
   //····················································································································
 
-  private var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
+  private var mObserversOf_mWiresP2s = EBWeakEventSet ()
 
   //····················································································································
 
-  var mViaHoleDiameter_property_selection : EBSelection <Int?> {
+  var mWiresP2s_property_selection : EBSelection <[WireInSchematics]> {
     if let model = self.propval {
-      switch (model.mViaHoleDiameter_property_selection) {
+      switch (model.mWiresP2s_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP2s.insert (inObserver)
+    if let object = self.propval {
+      object.mWiresP2s_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP2s.remove (inObserver)
+    if let object = self.propval {
+      object.mWiresP2s_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: mX
+  //····················································································································
+
+  private var mObserversOf_mX = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1127,33 +954,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaHoleDiameter.insert (inObserver)
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.mObserversOf_mX.insert (inObserver)
     if let object = self.propval {
-      object.mViaHoleDiameter_property.addEBObserver (inObserver)
+      object.mX_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaHoleDiameter.remove (inObserver)
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.mObserversOf_mX.remove (inObserver)
     if let object = self.propval {
-      object.mViaHoleDiameter_property.removeEBObserver (inObserver)
+      object.mX_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mViaHoleDiameterUnit
+  //   Observable atomic property: mY
   //····················································································································
 
-  private var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mViaHoleDiameterUnit_property_selection : EBSelection <Int?> {
+  var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mViaHoleDiameterUnit_property_selection) {
+      switch (model.mY_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1168,33 +995,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.mObserversOf_mY.insert (inObserver)
     if let object = self.propval {
-      object.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+      object.mY_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.mObserversOf_mY.remove (inObserver)
     if let object = self.propval {
-      object.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+      object.mY_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mViaPadDiameter
+  //   Observable atomic property: objectDisplay
   //····················································································································
 
-  private var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var mViaPadDiameter_property_selection : EBSelection <Int?> {
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
-      switch (model.mViaPadDiameter_property_selection) {
+      switch (model.objectDisplay_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1209,33 +1036,33 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaPadDiameter.insert (inObserver)
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.insert (inObserver)
     if let object = self.propval {
-      object.mViaPadDiameter_property.addEBObserver (inObserver)
+      object.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaPadDiameter.remove (inObserver)
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.remove (inObserver)
     if let object = self.propval {
-      object.mViaPadDiameter_property.removeEBObserver (inObserver)
+      object.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
-  //   Observable atomic property: mViaPadDiameterUnit
+  //   Observable atomic property: selectionDisplay
   //····················································································································
 
-  private var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var mViaPadDiameterUnit_property_selection : EBSelection <Int?> {
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
-      switch (model.mViaPadDiameterUnit_property_selection) {
+      switch (model.selectionDisplay_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1250,183 +1077,19 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     if let object = self.propval {
-      object.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+      object.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
-    self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     if let object = self.propval {
-      object.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: netUsage
-  //····················································································································
-
-  private var mObserversOf_netUsage = EBWeakEventSet ()
-
-  //····················································································································
-
-  var netUsage_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.netUsage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
-    self.mObserversOf_netUsage.insert (inObserver)
-    if let object = self.propval {
-      object.netUsage_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_netUsage (_ inObserver : EBEvent) {
-    self.mObserversOf_netUsage.remove (inObserver)
-    if let object = self.propval {
-      object.netUsage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: netWidth
-  //····················································································································
-
-  private var mObserversOf_netWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var netWidth_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.netWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_netWidth (_ inObserver : EBEvent) {
-    self.mObserversOf_netWidth.insert (inObserver)
-    if let object = self.propval {
-      object.netWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_netWidth (_ inObserver : EBEvent) {
-    self.mObserversOf_netWidth.remove (inObserver)
-    if let object = self.propval {
-      object.netWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: viaHoleDiameter
-  //····················································································································
-
-  private var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  var viaHoleDiameter_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.viaHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_viaHoleDiameter.insert (inObserver)
-    if let object = self.propval {
-      object.viaHoleDiameter_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_viaHoleDiameter.remove (inObserver)
-    if let object = self.propval {
-      object.viaHoleDiameter_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: viaPadDiameter
-  //····················································································································
-
-  private var mObserversOf_viaPadDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  var viaPadDiameter_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.viaPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_viaPadDiameter.insert (inObserver)
-    if let object = self.propval {
-      object.viaPadDiameter_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
-    self.mObserversOf_viaPadDiameter.remove (inObserver)
-    if let object = self.propval {
-      object.viaPadDiameter_property.removeEBObserver (inObserver)
+      object.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 

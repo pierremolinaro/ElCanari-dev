@@ -60,7 +60,7 @@ class MultipleBindingController_enabled : EBOutletEvent {
 
   //····················································································································
 
-   private func updateOutlet () {
+  private func updateOutlet () {
     let model = self.mGetPropertyValueCallBack ()
     switch model {
     case .single (let b) :

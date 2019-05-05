@@ -132,8 +132,24 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-//  override func operationBeforeRemoving () {
-//  }
+  override func operationBeforeRemoving () {
+  //--- Remove nc, and attached points in project if they are not connected to any wire
+    for point in self.mPoints {
+    //--- Remove NC
+      point.mNC?.mSheet = nil // Remove from sheet
+      point.mNC = nil // Detach from pin
+      if (point.mWiresP1s.count == 0) && (point.mWiresP1s.count == 0) {
+        point.mNet = nil // Remove from net
+        point.mSheet = nil // Remove from sheet
+      }else{ // Define point location from pin
+        let pinLocation = point.location!.canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+        point.mX = pinLocation.x
+        point.mY = pinLocation.y
+      }
+    }
+  //--- Detach from symbol
+    self.mPoints = []
+  }
 
   //····················································································································
 
