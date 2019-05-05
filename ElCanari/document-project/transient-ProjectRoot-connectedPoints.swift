@@ -15,7 +15,7 @@ func transient_ProjectRoot_connectedPoints (
        _ self_mSelectedSheet_connectedPoints : EBShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+        return self_mSelectedSheet_connectedPoints ?? EBShape ()
 //--- END OF USER ZONE 2
 }
 

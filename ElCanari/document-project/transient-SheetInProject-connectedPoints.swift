@@ -13,9 +13,19 @@ import Cocoa
 
 func transient_SheetInProject_connectedPoints (
        _ self_mObjects_connectedPoints : [SchematicsObject_connectedPoints]
-) -> CanariPointArray {
+) -> EBShape {
 //--- START OF USER ZONE 2
-
+        let bp = NSBezierPath ()
+        for object in self_mObjects_connectedPoints {
+          if let a = object.connectedPoints {
+            for point in a {
+              let p = point.cocoaPoint ()
+              let r = NSRect (x: p.x - CONNECTED_POINT_DIAMETER / 2.0, y: p.y - CONNECTED_POINT_DIAMETER / 2.0, width: CONNECTED_POINT_DIAMETER, height: CONNECTED_POINT_DIAMETER)
+              bp.appendOval (in: r)
+            }
+          }
+        }
+        return EBFilledBezierPathShape ([bp], .black)
 //--- END OF USER ZONE 2
 }
 

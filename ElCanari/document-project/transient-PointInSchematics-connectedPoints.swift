@@ -16,7 +16,11 @@ func transient_PointInSchematics_connectedPoints (
        _ self_isConnected : Bool
 ) -> CanariPointArray {
 //--- START OF USER ZONE 2
-
+         var array = CanariPointArray ()
+         if self_isConnected {
+           array.append (self_location)
+         }
+         return array
 //--- END OF USER ZONE 2
 }
 
