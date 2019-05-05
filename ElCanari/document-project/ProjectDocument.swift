@@ -39,6 +39,12 @@ import Cocoa
   var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
 
   //····················································································································
+  //   Selection controller: ncInSchematicsSelectionController
+  //····················································································································
+
+  var ncInSchematicsSelectionController = SelectionController_ProjectDocument_ncInSchematicsSelectionController ()
+
+  //····················································································································
   //   Selection controller: commentInSchematicsSelectionController
   //····················································································································
 
@@ -329,6 +335,8 @@ import Cocoa
   @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mNCInSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mNCRotationSegmentedControl : CanariQuadrantSegmentedControl?
   @IBOutlet var mNetClassColorWell : EBColorWell?
   @IBOutlet var mNetClassHoleDiameterDimensionTextField : CanariDimensionTextField?
   @IBOutlet var mNetClassHoleDiameterUnitPopUpButton : EBPopUpButton?
@@ -449,6 +457,8 @@ import Cocoa
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
+  //--- Selection controller property: ncInSchematicsSelectionController
+    self.ncInSchematicsSelectionController.addExplorer (name: "ncInSchematicsSelectionController", y:&y, view:view)
   //--- Selection controller property: commentInSchematicsSelectionController
     self.commentInSchematicsSelectionController.addExplorer (name: "commentInSchematicsSelectionController", y:&y, view:view)
   //--- Selection controller property: mComponentSymbolSelectionController
@@ -528,6 +538,8 @@ import Cocoa
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mNCRotationSegmentedControl, "mNCRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mNetClassHoleDiameterDimensionTextField, "mNetClassHoleDiameterDimensionTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mNetClassHoleDiameterUnitPopUpButton, "mNetClassHoleDiameterUnitPopUpButton", EBPopUpButton.self, #file, #line)
@@ -604,6 +616,8 @@ import Cocoa
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+  //--- Selection controller property: ncInSchematicsSelectionController
+    self.ncInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: commentInSchematicsSelectionController
     self.commentInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mComponentSymbolSelectionController
@@ -839,6 +853,7 @@ import Cocoa
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
+    self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicsSelectionController.mRotation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicsSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
     self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
@@ -1116,6 +1131,7 @@ import Cocoa
     self.mSchematicsView?.unbind_gridLineColor ()
     self.mSchematicsView?.unbind_gridCrossColor ()
     self.mSchematicsView?.unbind_zoom ()
+    self.mNCRotationSegmentedControl?.unbind_quadrant ()
     self.mCommentInSchematicsTextField?.unbind_value ()
     self.mComponentSymbolShowComponentValueSwitch?.unbind_value ()
     self.mComponentSymbolComponentNameTextField?.unbind_valueObserver ()
@@ -1177,6 +1193,8 @@ import Cocoa
     self.mProjectDeviceController.unbind_model ()
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.unbind_model ()
+  //--- Selection controller property: ncInSchematicsSelectionController
+    self.ncInSchematicsSelectionController.unbind_selection ()
   //--- Selection controller property: commentInSchematicsSelectionController
     self.commentInSchematicsSelectionController.unbind_selection ()
   //--- Selection controller property: mComponentSymbolSelectionController
@@ -1259,6 +1277,8 @@ import Cocoa
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mNCInSchematicsInspectorView?.ebCleanUp ()
+    self.mNCRotationSegmentedControl?.ebCleanUp ()
     self.mNetClassColorWell?.ebCleanUp ()
     self.mNetClassHoleDiameterDimensionTextField?.ebCleanUp ()
     self.mNetClassHoleDiameterUnitPopUpButton?.ebCleanUp ()

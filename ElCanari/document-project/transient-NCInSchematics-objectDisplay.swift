@@ -11,24 +11,37 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_location (
-       _ self_mX : Int,                    
-       _ self_mY : Int,                    
-       _ self_mSymbolPinName : String,     
-       _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
-       _ self_mSymbol_mSymbolInstanceName : String?
-) -> CanariPoint {
+func transient_NCInSchematics_objectDisplay (
+       _ self_mPoint_location : CanariPoint?,
+       _ self_mRotation : QuadrantRotation,  
+       _ prefs_pinNameFont : NSFont
+) -> EBShape {
 //--- START OF USER ZONE 2
-        if let symbolPins = self_mSymbol_symbolInfo?.pins, let symbolInstanceName = self_mSymbol_mSymbolInstanceName {
-          for pin in symbolPins {
-            if (pin.symbolIdentifier.symbolInstanceName == symbolInstanceName) && (pin.pinName == self_mSymbolPinName) {
-              return pin.pinLocation
-            }
-          }
-          return CanariPoint (x: self_mX, y: self_mY)
-        }else{
-          return CanariPoint (x: self_mX, y: self_mY)
+        var point = self_mPoint_location!.cocoaPoint ()
+        let horizontalAlignment : EBTextHorizontalAlignment
+        let verticalAlignment : EBTextVerticalAlignment
+        switch self_mRotation {
+        case .rotation0 :
+          point.x += NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .left
+          verticalAlignment = .center
+        case .rotation90 :
+          point.y += NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .center
+          verticalAlignment = .above
+        case .rotation180 :
+          point.x -= NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .right
+          verticalAlignment = .center
+         case .rotation270 :
+          point.y -= NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .center
+          verticalAlignment = .below
         }
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : prefs_pinNameFont,
+        ]
+        return EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
 //--- END OF USER ZONE 2
 }
 

@@ -92,10 +92,10 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   fileprivate var mSelectedCharacter : Int? = nil {
     didSet {
       if let c = oldValue {
-        self.setNeedsDisplay (rectForCharacter (c))
+        self.setNeedsDisplay (rectForCharacter (c).insetBy(dx: -1.0, dy: -1.0))
       }
       if let c = mSelectedCharacter {
-        self.setNeedsDisplay (rectForCharacter (c))
+        self.setNeedsDisplay (rectForCharacter (c).insetBy(dx: -1.0, dy: -1.0))
       }
       self.needsDisplay = true
     }

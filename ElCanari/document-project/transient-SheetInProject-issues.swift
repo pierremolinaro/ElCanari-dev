@@ -11,24 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_location (
-       _ self_mX : Int,                    
-       _ self_mY : Int,                    
-       _ self_mSymbolPinName : String,     
-       _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
-       _ self_mSymbol_mSymbolInstanceName : String?
-) -> CanariPoint {
+func transient_SheetInProject_issues (
+       _ self_mObjects_issues : [SchematicsObject_issues]
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-        if let symbolPins = self_mSymbol_symbolInfo?.pins, let symbolInstanceName = self_mSymbol_mSymbolInstanceName {
-          for pin in symbolPins {
-            if (pin.symbolIdentifier.symbolInstanceName == symbolInstanceName) && (pin.pinName == self_mSymbolPinName) {
-              return pin.pinLocation
-            }
+        var issues = CanariIssueArray ()
+        for object in self_mObjects_issues {
+          if let objectIssues = object.issues {
+            issues += objectIssues
           }
-          return CanariPoint (x: self_mX, y: self_mY)
-        }else{
-          return CanariPoint (x: self_mX, y: self_mY)
         }
+        return issues
 //--- END OF USER ZONE 2
 }
 

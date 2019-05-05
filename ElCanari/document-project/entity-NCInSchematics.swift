@@ -11,11 +11,25 @@ protocol NCInSchematics_mRotation : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NCInSchematics_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NCInSchematics_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NCInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class NCInSchematics : SchematicsObject,
-         NCInSchematics_mRotation {
+         NCInSchematics_mRotation,
+         NCInSchematics_objectDisplay,
+         NCInSchematics_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mRotation
@@ -73,6 +87,58 @@ class NCInSchematics : SchematicsObject,
     self.mRotation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint
     self.mPoint_property.owner = self
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_NCInSchematics_objectDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mRotation_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_NCInSchematics_selectionDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -82,6 +148,12 @@ class NCInSchematics : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.mRotation_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -105,6 +177,22 @@ class NCInSchematics : SchematicsObject,
       valueExplorer:&self.mRotation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
@@ -287,6 +375,118 @@ class ReadOnlyArrayOf_NCInSchematics : ReadOnlyAbstractArrayProperty <NCInSchema
   }
 
   //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -356,11 +556,15 @@ class TransientArrayOf_NCInSchematics : ReadOnlyArrayOf_NCInSchematics {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mRotation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mRotation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -493,6 +697,8 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -505,6 +711,8 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
         //--- Add observers of stored properties
           self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -677,7 +885,9 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mNC_property.setProp (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         oldValue?.mWiresP1s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -687,7 +897,9 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
+        self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         self.mValue?.mWiresP1s_property.addEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -721,6 +933,47 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
   func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: isConnected
+  //····················································································································
+
+  private var mObserversOf_isConnected = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.insert (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.remove (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.removeEBObserver (inObserver)
     }
   }
 
@@ -766,6 +1019,47 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable atomic property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable atomic property: location
   //····················································································································
 
@@ -773,7 +1067,7 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
 
   //····················································································································
 
-  var location_property_selection : EBSelection <NSPoint?> {
+  var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :

@@ -12,7 +12,8 @@ entity ProjectRoot {
   toOne SheetInProject mSelectedSheet ;
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
   toMany proxy SchematicsObject selectedSheetObjects : mSelectedSheet.mObjects ;
-
+  transient CanariIssueArray selectedSheetIssues dependsFrom self.mSelectedSheet.one.issues ;
+ 
   property Int mSelectedPageIndex default 0 ;
 
   property Int mSelectedSchematicsInspector default 0 ;
@@ -38,7 +39,8 @@ entity ProjectRoot {
     self.mSelectedSheet.one.mSheetTitle,
     self.mSheets,
     self.mSelectedSheet,
-    self.mSchematicsDate
+    self.mSchematicsDate,
+    self.selectedSheetIssues
   ;
 }
 
@@ -341,6 +343,8 @@ entity SheetInProject {
   toMany SchematicsObject mObjects inverse toOne mSheet ;
 
   property String mSheetTitle default "" ;
+  
+  transient CanariIssueArray issues dependsFrom self.mObjects.all.issues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -351,6 +355,8 @@ abstract graphic entity SchematicsObject {
   toOne SheetInProject mSheet inverse toMany mObjects ;
 
   transient Bool isPlacedInSchematics dependsFrom self.mSheet.none ;
+  
+  abstract transient CanariIssueArray issues ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -394,9 +400,13 @@ graphic entity PointInSchematics : SchematicsObject {
   toMany WireInSchematics mWiresP1s inverse toOne mP1 ;
   toMany WireInSchematics mWiresP2s inverse toOne mP2 ;
   
-  transient NSPoint location dependsFrom
+  transient CanariPoint location dependsFrom
     self.mX, self.mY, self.mSymbolPinName,
     self.mSymbol.one.symbolInfo, self.mSymbol.one.mSymbolInstanceName ;
+
+  transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
+
+  override transient CanariIssueArray issues dependsFrom self.location, self.isConnected ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -407,6 +417,18 @@ graphic entity NCInSchematics : SchematicsObject {
   toOne PointInSchematics mPoint inverse toOne mNC ;
 
   property QuadrantRotation mRotation default rotation0 ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mPoint.one.location,
+    self.mRotation,
+    prefs.pinNameFont
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mPoint.one.location,
+    self.mRotation,
+    prefs.pinNameFont
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

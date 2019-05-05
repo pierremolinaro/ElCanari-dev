@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SchematicsObject_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SchematicsObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -27,6 +33,7 @@ protocol SchematicsObject_isPlacedInSchematics : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SchematicsObject : EBGraphicManagedObject,
+         SchematicsObject_issues,
          SchematicsObject_selectionDisplay,
          SchematicsObject_objectDisplay,
          SchematicsObject_isPlacedInSchematics {
@@ -58,6 +65,29 @@ class SchematicsObject : EBGraphicManagedObject,
 
   var mSheet_none_selection : EBSelection <Bool> {
     return .single (self.mSheet_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -138,6 +168,14 @@ class SchematicsObject : EBGraphicManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "selectionDisplay",
       idx:self.selectionDisplay_property.ebObjectIndex,
@@ -274,6 +312,62 @@ class SchematicsObject : EBGraphicManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_SchematicsObject : ReadOnlyAbstractArrayProperty <SchematicsObject> {
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SchematicsObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -638,6 +732,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet)
@@ -651,6 +746,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
           }
         //--- Add observers of stored properties
         //--- Add observers of transient properties
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
@@ -826,9 +922,11 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mObjects_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
        //--- Notify observers
@@ -856,6 +954,47 @@ final class ToOneRelationship_SchematicsObject_mSheet : EBAbstractProperty {
   func remove (_ object : SheetInProject) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
     }
   }
 

@@ -11,11 +11,18 @@ protocol SheetInProject_mSheetTitle : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SheetInProject_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SheetInProject : EBManagedObject,
-         SheetInProject_mSheetTitle {
+         SheetInProject_mSheetTitle,
+         SheetInProject_issues {
 
   //····················································································································
   //   To many property: mObjects
@@ -54,6 +61,29 @@ class SheetInProject : EBManagedObject,
   var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -66,6 +96,28 @@ class SheetInProject : EBManagedObject,
     }
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mObjects_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SheetInProject_issues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mObjects_property.addEBObserverOf_issues (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SchematicsObject) in
       if let me = self {
@@ -83,6 +135,7 @@ class SheetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mObjects_property.removeEBObserverOf_issues (self.issues_property)
  //   self.mObjects_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -107,6 +160,14 @@ class SheetInProject : EBManagedObject,
       valueExplorer:&self.mSheetTitle_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "mObjects",
@@ -285,6 +346,62 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -354,11 +471,13 @@ class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -491,6 +610,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -503,6 +623,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         //--- Add observers of stored properties
           self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

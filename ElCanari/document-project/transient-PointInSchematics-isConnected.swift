@@ -11,24 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_location (
-       _ self_mX : Int,                    
-       _ self_mY : Int,                    
-       _ self_mSymbolPinName : String,     
-       _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
-       _ self_mSymbol_mSymbolInstanceName : String?
-) -> CanariPoint {
+func transient_PointInSchematics_isConnected (
+       _ self_mNC_none : Bool,                
+       _ self_mWiresP1s_count : Int,          
+       _ self_mWiresP2s_count : Int
+) -> Bool {
 //--- START OF USER ZONE 2
-        if let symbolPins = self_mSymbol_symbolInfo?.pins, let symbolInstanceName = self_mSymbol_mSymbolInstanceName {
-          for pin in symbolPins {
-            if (pin.symbolIdentifier.symbolInstanceName == symbolInstanceName) && (pin.pinName == self_mSymbolPinName) {
-              return pin.pinLocation
-            }
-          }
-          return CanariPoint (x: self_mX, y: self_mY)
-        }else{
-          return CanariPoint (x: self_mX, y: self_mY)
-        }
+       return !self_mNC_none || ((self_mWiresP1s_count + self_mWiresP2s_count) > 1)
 //--- END OF USER ZONE 2
 }
 

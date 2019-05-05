@@ -29,8 +29,14 @@ extension EBView {
   override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
-      if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
+      let alignedLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
+      self.mLastMouseDraggedLocation = alignedLastMouseDraggedLocation
+      let modifierFlags = inEvent.modifierFlags
+      if modifierFlags.contains (.control), !modifierFlags.contains (.shift), !modifierFlags.contains (.option) { // Ctrl Key On, no shift
+        if let theMenu = self.mPopulateContextualMenuClosure? (alignedLastMouseDraggedLocation) {
+          NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
+        }
+      }else if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
         self.ebStartDragging (with: inEvent, dragType: pbType)
       }else{
       //--- Find index of object under mouse down

@@ -135,10 +135,10 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
           if self.mDefinedCharacterSet.contains (codePointUnderMouse), self.mSelectedCharacterCode != codePointUnderMouse {
             if let row = self.mDefinedLineArray.firstIndex (of: self.mSelectedCharacterCode / 16) {
               let r = self.rectangleForCharacter (atLineIndex: row, column: self.mSelectedCharacterCode % 16)
-              self.setNeedsDisplay (r)
+              self.setNeedsDisplay (r.insetBy(dx: -1.0, dy: -1.0))
             }
             let r = self.rectangleForCharacter (atLineIndex: row, column: column)
-            self.setNeedsDisplay (r)
+            self.setNeedsDisplay (r.insetBy(dx: -1.0, dy: -1.0))
             self.mSelectedCharacterCode = codePointUnderMouse
           }
         }

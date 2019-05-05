@@ -79,6 +79,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
     self.mSchematicsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
     self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
     self.mSchematicsObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematics")
+    self.mSchematicsObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematics")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
@@ -105,6 +106,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
   //---
     self.mSchematicsView?.mGridStepInCanariUnit = SCHEMATICS_GRID_IN_CANARI_UNIT
     self.mSchematicsView?.set (mouseGridInCanariUnit: SCHEMATICS_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
     self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematics, kDragAndDropCommentInSchematics])
     self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematics)
@@ -125,6 +127,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
     self.mSymbolCountToInsertController?.unregister ()
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
+    self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
   }
 
   //····················································································································

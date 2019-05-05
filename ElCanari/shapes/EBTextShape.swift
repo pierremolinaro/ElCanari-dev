@@ -56,25 +56,30 @@ class EBTextShape : EBShape {
     if inString == "" {
       mFilledBezierPath = NSBezierPath ()
     }else{
-      let size = inString.size (withAttributes: inTextAttributes)
-      var p = inOrigin
+      let filledBezierPath = inString.bezierPath (at: inOrigin, withAttributes: inTextAttributes)
+      let width = filledBezierPath.bounds.width
+      let height = filledBezierPath.bounds.height
+      var deltaX : CGFloat = inOrigin.x - filledBezierPath.bounds.origin.x
       switch inHorizontalAlignment {
       case .left :
         ()
       case .center :
-        p.x -= size.width / 2.0
+        deltaX -= width / 2.0
       case .right :
-        p.x -= size.width
+        deltaX -= width
       }
+      var deltaY : CGFloat = inOrigin.y - filledBezierPath.bounds.origin.y
       switch inVerticalAlignment {
       case .above :
         ()
       case .center :
-        p.y -= size.height / 2.0
+        deltaY -= height / 2.0
       case .below :
-        p.y -= size.height
+        deltaY -= height
       }
-      mFilledBezierPath = inString.bezierPath (at: p, withAttributes: inTextAttributes)
+      let af = NSAffineTransform ()
+      af.translateX (by: deltaX, yBy: deltaY)
+      mFilledBezierPath = af.transform (filledBezierPath)
     }
     super.init ()
   }

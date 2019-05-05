@@ -155,8 +155,8 @@ extension EBView {
 
   internal func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
-      self.setNeedsDisplay (inNewShape.boundingBox)
-      self.setNeedsDisplay (inOldShape.boundingBox)
+      self.setNeedsDisplay (inNewShape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inOldShape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
     }
   }
 
@@ -169,19 +169,19 @@ extension EBView {
     while idx < minCount {
       if !inNewShapes [idx].isEqualToShape (inOldShapes [idx]) {
         // Swift.print ("not equal")
-        self.setNeedsDisplay (inNewShapes [idx].boundingBox)
-        self.setNeedsDisplay (inOldShapes [idx].boundingBox)
+        self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
       }
       idx += 1
     }
     while idx < inOldShapes.count {
       // Swift.print ("  old object \(idx)")
-      self.setNeedsDisplay (inOldShapes [idx].boundingBox)
+      self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
       idx += 1
     }
     while idx < inNewShapes.count {
       // Swift.print ("  new object \(idx)")
-      self.setNeedsDisplay (inNewShapes [idx].boundingBox)
+      self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy(dx: -1.0, dy: -1.0))
       idx += 1
     }
   }

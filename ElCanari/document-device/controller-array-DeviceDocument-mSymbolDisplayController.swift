@@ -664,15 +664,15 @@ final class Controller_DeviceDocument_mSymbolDisplayController : EBObject, EBVie
   func deleteSelectedObjects () {
     if self.canDelete () {
     //--- Remove selected objects
-      var objects = self.mModel?.propval ?? []
       for object in self.selectedArray_property.propset {
+        object.operationBeforeRemoving ()
+        flushOutletEvents () // § Temporary !!!
+        var objects = self.mModel?.propval ?? []
         if let idx = objects.firstIndex (of: object) {
-         object.operationBeforeRemoving ()
-         objects.remove (at: idx)
+          objects.remove (at: idx)
+          self.mModel?.setProp (objects)
         }
       }
-      self.mModel?.setProp (objects)
-      self.selectedSet = Set ()
     //---
       self.mAfterObjectRemovingCallback? ()
     }

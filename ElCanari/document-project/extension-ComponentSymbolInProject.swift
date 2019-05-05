@@ -142,7 +142,7 @@ extension ComponentSymbolInProject {
         point.mNet = nil // Remove from net
         point.mSheet = nil // Remove from sheet
       }else{ // Define point location from pin
-        let pinLocation = point.location!.canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+        let pinLocation = point.location!
         point.mX = pinLocation.x
         point.mY = pinLocation.y
       }

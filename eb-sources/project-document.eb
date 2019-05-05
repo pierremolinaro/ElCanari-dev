@@ -252,6 +252,15 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBScrollView mSchematicsScrollView ;
 
+//--- Selected NC In schematics
+  outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
+  selectionController NCInSchematics #ncInSchematicsSelectionController :
+    #mSchematicsObjectsController.selectedArray
+  ;
+
+  outlet CanariQuadrantSegmentedControl mNCRotationSegmentedControl
+     $quadrant #ncInSchematicsSelectionController.mRotation ;
+
 //--- Selected comment in schematic inspector
   outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
   selectionController CommentInSchematics #commentInSchematicsSelectionController :

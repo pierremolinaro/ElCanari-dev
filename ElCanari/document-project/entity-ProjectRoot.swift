@@ -78,6 +78,12 @@ protocol ProjectRoot_selectedSheetTitle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_selectedSheetIssues : class {
+  var selectedSheetIssues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -111,6 +117,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicsGridDisplayFactor,
          ProjectRoot_mSchematicsSheetOrientation,
          ProjectRoot_selectedSheetTitle,
+         ProjectRoot_selectedSheetIssues,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicsBackgroundDisplay {
@@ -485,6 +492,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: selectedSheetIssues
+  //····················································································································
+
+  let selectedSheetIssues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray> {
+    return self.selectedSheetIssues_property.prop
+  }
+
+  //····················································································································
+
+  var selectedSheetIssues : CanariIssueArray? {
+    switch self.selectedSheetIssues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -629,6 +659,28 @@ class ProjectRoot : EBManagedObject,
     )
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.owner = self
+  //--- Atomic property: selectedSheetIssues
+    self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSelectedSheet_property.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSelectedSheet_property.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_selectedSheetIssues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -683,15 +735,16 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSelectedSheet_property_selection.kind ()
         kind &= unwSelf.mSchematicsDate_property_selection.kind ()
+        kind &= unwSelf.selectedSheetIssues_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mSchematicsTitle_property_selection, unwSelf.mSchematicsVersion_property_selection, unwSelf.mSchematicsSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicsDate_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.mSchematicsTitle_property_selection, unwSelf.mSchematicsVersion_property_selection, unwSelf.mSchematicsSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicsDate_property_selection, unwSelf.selectedSheetIssues_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -707,6 +760,7 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.addEBObserver (self.schematicsBackgroundDisplay_property)
+    self.selectedSheetIssues_property.addEBObserver (self.schematicsBackgroundDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -726,6 +780,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_boundObjectDidChangeController = nil
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
+    self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicsTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
@@ -735,6 +790,7 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsDate_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
+    self.selectedSheetIssues_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -838,6 +894,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer:&self.mSchematicsSheetOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "selectedSheetIssues",
+      idx:self.selectedSheetIssues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedSheetIssues_property.mObserverExplorer,
+      valueExplorer:&self.selectedSheetIssues_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "unplacedSymbols",
       idx:self.unplacedSymbols_property.ebObjectIndex,
@@ -1897,6 +1961,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'selectedSheetIssues' transient property
+  //····················································································································
+
+  private var mObserversOf_selectedSheetIssues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedSheetIssues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectedSheetIssues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedSheetIssues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedSheetIssues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectedSheetIssues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedSheetIssues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectedSheetIssues_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
+        managedObject.selectedSheetIssues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
+        managedObject.selectedSheetIssues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -2144,6 +2264,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
@@ -2162,6 +2283,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedSet)
       self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedSet)
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
@@ -2317,6 +2439,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
@@ -2352,6 +2475,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
@@ -2523,9 +2647,11 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
        //--- Notify observers
@@ -2553,6 +2679,47 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
   func remove (_ object : SheetInProject) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
     }
   }
 

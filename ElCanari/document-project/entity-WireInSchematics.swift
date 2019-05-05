@@ -683,7 +683,9 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mWiresP1s_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         oldValue?.mWiresP1s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -693,7 +695,9 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
+        self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         self.mValue?.mWiresP1s_property.addEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -727,6 +731,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
   func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: isConnected
+  //····················································································································
+
+  private var mObserversOf_isConnected = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.insert (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.remove (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.removeEBObserver (inObserver)
     }
   }
 
@@ -772,6 +817,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable atomic property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable atomic property: location
   //····················································································································
 
@@ -779,7 +865,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
 
   //····················································································································
 
-  var location_property_selection : EBSelection <NSPoint?> {
+  var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :
@@ -1152,7 +1238,9 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mWiresP2s_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         oldValue?.mWiresP1s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -1162,7 +1250,9 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
+        self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         self.mValue?.mWiresP1s_property.addEBObserversFrom (&self.mObserversOf_mWiresP1s)
@@ -1196,6 +1286,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
   func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: isConnected
+  //····················································································································
+
+  private var mObserversOf_isConnected = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.insert (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.remove (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1241,6 +1372,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable atomic property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable atomic property: location
   //····················································································································
 
@@ -1248,7 +1420,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
 
   //····················································································································
 
-  var location_property_selection : EBSelection <NSPoint?> {
+  var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :

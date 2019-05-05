@@ -12,6 +12,12 @@ import Cocoa
 
 let SCHEMATICS_GRID_IN_MILS = 50
 let SCHEMATICS_GRID_IN_CANARI_UNIT = milsToCanariUnit (SCHEMATICS_GRID_IN_MILS)
+let SCHEMATICS_GRID_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SCHEMATICS_GRID_IN_MILS))
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let NC_DISTANCE_IN_COCOA_UNIT = milsToCocoaUnit (50.0)
+let NC_TITLE = "nc"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -25,7 +31,7 @@ struct SymbolInProjectIdentifier : Hashable {
 struct PinDescriptor : Hashable {
   let symbolIdentifier : SymbolInProjectIdentifier
   let pinName : String
-  let pinLocation : NSPoint
+  let pinLocation : CanariPoint
   let shape : EBShape
 }
 

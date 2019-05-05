@@ -135,6 +135,8 @@ transient property class CanariMenuItemListClass ; // Used for populating « Ope
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extern outlet class CanariDragSourceTableView ;
 binding CanariDragSourceTableView $models : transient StringTagArray ;
 

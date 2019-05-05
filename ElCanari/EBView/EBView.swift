@@ -70,10 +70,10 @@ import Cocoa
   internal var mSelectionRectangle : NSRect? = nil {
     didSet {
       if let oldSelectionRectangle = oldValue {
-        self.setNeedsDisplay (oldSelectionRectangle)
+        self.setNeedsDisplay (oldSelectionRectangle.insetBy(dx: -1.0, dy: -1.0))
       }
       if let newSelectionRectangle = self.mSelectionRectangle {
-        self.setNeedsDisplay (newSelectionRectangle)
+        self.setNeedsDisplay (newSelectionRectangle.insetBy(dx: -1.0, dy: -1.0))
       }
     }
   }
@@ -287,14 +287,14 @@ import Cocoa
       for shape in self.mSelectionShapes {
         if !shape.boundingBox.isEmpty {
           // Swift.print ("  old \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox)
+          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
         }
       }
       self.mSelectionShapes = inShapes
       for shape in self.mSelectionShapes {
         if !shape.boundingBox.isEmpty {
            //Swift.print ("  new \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox)
+          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
         }
       }
       self.updateViewFrameAndBounds ()
@@ -549,6 +549,12 @@ import Cocoa
   //····················································································································
 
   internal var mGridCrossColorController : EBSimpleController? = nil
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
 
   //····················································································································
 }

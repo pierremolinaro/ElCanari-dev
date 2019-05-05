@@ -76,7 +76,7 @@ func transient_ComponentSymbolInProject_symbolInfo (
             pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
             pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
             pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint ())
+            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint ()).canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
           //---
             pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
           }
