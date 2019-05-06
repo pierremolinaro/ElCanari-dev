@@ -462,6 +462,7 @@ final class ProxyArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -470,14 +471,6 @@ final class ProxyArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics {
 
   private var mCurrentObjectSet = Set <WireInSchematics> () {
     didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-      //---
-        self.postEvent ()
-      }
     }
   }
 

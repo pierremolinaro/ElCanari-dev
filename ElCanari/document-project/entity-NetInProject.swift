@@ -574,6 +574,7 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -589,8 +590,6 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

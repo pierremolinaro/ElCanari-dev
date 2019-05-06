@@ -1597,6 +1597,7 @@ final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice 
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1632,8 +1633,6 @@ final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice 
         self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

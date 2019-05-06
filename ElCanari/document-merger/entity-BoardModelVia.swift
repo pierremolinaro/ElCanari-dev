@@ -587,6 +587,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -606,8 +607,6 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
         self.addEBObserversOf_y_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_x_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

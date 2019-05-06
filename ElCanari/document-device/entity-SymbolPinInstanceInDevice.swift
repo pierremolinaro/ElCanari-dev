@@ -1066,6 +1066,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1089,8 +1090,6 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
         self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

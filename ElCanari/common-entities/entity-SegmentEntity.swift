@@ -787,6 +787,7 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -810,8 +811,6 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
         self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_width_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

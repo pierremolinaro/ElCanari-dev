@@ -1354,6 +1354,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1381,8 +1382,6 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -1157,6 +1157,7 @@ final class ProxyArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1186,8 +1187,6 @@ final class ProxyArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

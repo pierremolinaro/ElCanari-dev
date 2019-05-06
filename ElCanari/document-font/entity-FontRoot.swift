@@ -1712,6 +1712,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1749,8 +1750,6 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
         self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_definedCharacters_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

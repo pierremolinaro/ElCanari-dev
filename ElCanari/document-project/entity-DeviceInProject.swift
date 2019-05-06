@@ -1864,6 +1864,7 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1901,8 +1902,6 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
         self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -587,6 +587,7 @@ final class ProxyArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSymb
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -606,8 +607,6 @@ final class ProxyArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSymb
         self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

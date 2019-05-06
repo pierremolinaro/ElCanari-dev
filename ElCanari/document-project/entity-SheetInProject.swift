@@ -926,6 +926,7 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -949,8 +950,6 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionWarnings_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionErrors_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

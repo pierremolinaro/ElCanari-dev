@@ -2263,6 +2263,7 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2308,8 +2309,6 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

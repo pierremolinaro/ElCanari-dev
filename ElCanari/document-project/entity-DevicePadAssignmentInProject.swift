@@ -699,6 +699,7 @@ final class ProxyArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DeviceP
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -718,8 +719,6 @@ final class ProxyArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DeviceP
         self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_pinPadAssignment_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_descriptor_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

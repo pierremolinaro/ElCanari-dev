@@ -2735,6 +2735,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2784,8 +2785,6 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
         self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

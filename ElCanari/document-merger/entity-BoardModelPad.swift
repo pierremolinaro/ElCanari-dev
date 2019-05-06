@@ -887,6 +887,7 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -912,8 +913,6 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
         self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_rotation_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_x_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

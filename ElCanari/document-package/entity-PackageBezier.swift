@@ -2420,6 +2420,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2473,8 +2474,6 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

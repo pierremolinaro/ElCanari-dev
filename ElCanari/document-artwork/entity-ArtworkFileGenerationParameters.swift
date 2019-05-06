@@ -2665,6 +2665,7 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2724,8 +2725,6 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
         self.addEBObserversOf_name_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

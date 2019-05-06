@@ -2532,6 +2532,7 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2585,8 +2586,6 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
         self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

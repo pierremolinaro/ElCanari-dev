@@ -3352,6 +3352,7 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -3415,8 +3416,6 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
         self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -7945,6 +7945,7 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -8062,8 +8063,6 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
         self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -1259,6 +1259,7 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1288,8 +1289,6 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
         self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -1754,6 +1754,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1793,8 +1794,6 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
         self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

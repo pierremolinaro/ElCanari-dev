@@ -1468,6 +1468,7 @@ final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1503,8 +1504,6 @@ final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
         self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }

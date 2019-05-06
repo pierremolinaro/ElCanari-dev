@@ -656,6 +656,7 @@ final class ProxyArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -675,8 +676,6 @@ final class ProxyArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics {
         self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

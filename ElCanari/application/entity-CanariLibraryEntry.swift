@@ -808,6 +808,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -831,8 +832,6 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
         self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

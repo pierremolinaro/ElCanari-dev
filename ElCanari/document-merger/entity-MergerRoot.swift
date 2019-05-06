@@ -3204,6 +3204,7 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -3269,8 +3270,6 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
         self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -1939,6 +1939,7 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1982,8 +1983,6 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -2217,6 +2217,7 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -2266,8 +2267,6 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

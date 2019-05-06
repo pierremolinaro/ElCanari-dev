@@ -1617,6 +1617,7 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1654,8 +1655,6 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

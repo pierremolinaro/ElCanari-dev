@@ -621,6 +621,7 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -640,8 +641,6 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
         self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

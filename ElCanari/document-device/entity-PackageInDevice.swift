@@ -1757,6 +1757,7 @@ final class ProxyArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1794,8 +1795,6 @@ final class ProxyArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_padNameSet_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

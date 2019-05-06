@@ -1483,6 +1483,7 @@ final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -1516,8 +1517,6 @@ final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
         self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -825,6 +825,7 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -848,8 +849,6 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
         self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet) // Transient property
-      //---
-        self.postEvent ()
       }
     }
   }

@@ -438,6 +438,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
           self.mCurrentObjectSet = Set (v)
         }
         self.propagateProxyUpdate ()
+        self.postEvent ()
       }
     }
   }
@@ -453,8 +454,6 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mPackageName_toElementsOfSet (addedObjectSet) // Stored property
-      //---
-        self.postEvent ()
       }
     }
   }
