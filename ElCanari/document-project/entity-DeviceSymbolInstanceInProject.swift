@@ -884,6 +884,53 @@ class ReadWriteArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_DeviceSymbolInstanceInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_DeviceSymbolInstanceInProject? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_DeviceSymbolInstanceInProject) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [DeviceSymbolInstanceInProject]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [DeviceSymbolInstanceInProject] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

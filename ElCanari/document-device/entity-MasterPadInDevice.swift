@@ -1547,6 +1547,53 @@ class ReadWriteArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_MasterPadInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_MasterPadInDevice? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_MasterPadInDevice) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [MasterPadInDevice]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [MasterPadInDevice] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

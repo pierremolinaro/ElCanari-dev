@@ -388,6 +388,53 @@ class ReadWriteArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_DevicePackageInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_DevicePackageInProject? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_DevicePackageInProject) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [DevicePackageInProject]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [DevicePackageInProject] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

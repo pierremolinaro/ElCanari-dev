@@ -1304,6 +1304,53 @@ class ReadWriteArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_PointInSchematics
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_PointInSchematics? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_PointInSchematics) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [PointInSchematics]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [PointInSchematics] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: PointInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

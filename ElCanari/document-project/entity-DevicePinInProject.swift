@@ -1711,6 +1711,53 @@ class ReadWriteArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_DevicePinInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_DevicePinInProject? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_DevicePinInProject) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [DevicePinInProject]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [DevicePinInProject] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

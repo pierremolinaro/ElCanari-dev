@@ -77,14 +77,17 @@ class ProjectSheetController : EBOutletEvent {
       var attributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       ]
-      attributedString.append (NSAttributedString (string: "\(sheet.mSheetTitle) (\(idx + 1)/\(sheets.count))", attributes: attributes))
+      attributedString.append (NSAttributedString (string: "\(idx + 1)/\(sheets.count)", attributes: attributes))
+      if sheet.mSheetTitle != "" {
+        attributedString.append (NSAttributedString (string: ": \(sheet.mSheetTitle)", attributes: attributes))
+      }
       if let errorCount = sheet.connexionErrors, errorCount > 0 {
         attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
-        attributedString.append (NSAttributedString (string: " (\(errorCount))", attributes: attributes))
+        attributedString.append (NSAttributedString (string: " \(errorCount)", attributes: attributes))
       }
       if let warningCount = sheet.connexionWarnings, warningCount > 0 {
         attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
-        attributedString.append (NSAttributedString (string: " (\(warningCount))", attributes: attributes))
+        attributedString.append (NSAttributedString (string: " \(warningCount)", attributes: attributes))
       }
     //---
       self.mSheetPopUpButton?.addItem (withTitle: "")

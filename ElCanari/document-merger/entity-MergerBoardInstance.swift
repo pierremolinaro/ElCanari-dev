@@ -1235,6 +1235,53 @@ class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_MergerBoardInstance
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_MergerBoardInstance) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [MergerBoardInstance]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [MergerBoardInstance] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

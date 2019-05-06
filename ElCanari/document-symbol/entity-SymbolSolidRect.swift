@@ -1107,6 +1107,53 @@ class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_SymbolSolidRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_SymbolSolidRect? = nil
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_SymbolSolidRect) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.addEBObserver (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.removeEBObserver (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [SymbolSolidRect]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolSolidRect] > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

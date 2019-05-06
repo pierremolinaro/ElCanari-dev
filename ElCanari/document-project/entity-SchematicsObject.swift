@@ -731,7 +731,126 @@ class ReadWriteArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
   //····················································································································
  
   func setProp (_ value :  [SchematicsObject]) { } // Abstract method
-  
+
+  //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SchematicsObject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SchematicsObject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SchematicsObject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyArrayOf_SchematicsObject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject {
+
+  //····················································································································
+
+  private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SchematicsObject] > = .empty {
+    didSet {
+      switch self.mInternalValue {
+      case .empty, .multiple :
+        self.mCurrentObjectSet = []
+      case .single (let v) :
+        self.mCurrentObjectSet = Set (v)
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SchematicsObject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet)
+
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
+
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  func bind (_ inModel : ReadWriteArrayOf_SchematicsObject) {
+    self.unbind ()
+    self.mModel = inModel
+    inModel.attachProxy (self)
+  }
+
+  //····················································································································
+
+  func unbind () {
+    if let model = self.mModel {
+      model.detachProxy (self)
+      self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inArrayValue :  [SchematicsObject]) {
+    self.mModel?.setProp (inArrayValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [SchematicsObject] > {
+    return self.mInternalValue
+  }
+
   //····················································································································
 
 }
@@ -848,6 +967,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
           self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

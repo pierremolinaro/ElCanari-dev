@@ -31,8 +31,11 @@ digraph G {
   NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
   NetInProject:mPoints -> PointInSchematics:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
   NetInProject:mWires -> WireInSchematics:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
+  WireInSchematics -> SchematicsObject [arrowhead=dot] ;
+  PointInSchematics -> SchematicsObject [arrowhead=dot] ;
   PointInSchematics:mWiresP1s -> WireInSchematics:mP1 [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematics:mWiresP2s -> WireInSchematics:mP2 [dir=both arrowtail=onormal arrowhead=vee] ;
+  NCInSchematics -> SchematicsObject [arrowhead=dot] ;
   NCInSchematics:mPoint -> PointInSchematics:mNC [dir=both arrowtail=onormal arrowhead=onormal] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
@@ -44,5 +47,6 @@ digraph G {
   DeviceMasterPadInProject:mSlavePads -> DeviceSlavePadInProject:DeviceSlavePadInProject [dir=both arrowtail=none arrowhead=vee] ;
   ComponentInProject:mSelectedPackage -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=onormal] ;
   ComponentInProject:mSymbols -> ComponentSymbolInProject:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
+  ComponentSymbolInProject -> SchematicsObject [arrowhead=dot] ;
   ComponentSymbolInProject:mPoints -> PointInSchematics:mSymbol [dir=both arrowtail=onormal arrowhead=vee] ;
 }
