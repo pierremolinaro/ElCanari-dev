@@ -871,6 +871,35 @@ class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
  
   func setProp (_ value :  [SheetInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SheetInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SheetInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SheetInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -881,24 +910,75 @@ class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
 final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SheetInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SheetInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SheetInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connexionErrors_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mSheetTitle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connexionWarnings_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connexionErrors_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SheetInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -911,11 +991,7 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
   //····················································································································
 
   override var prop : EBSelection < [SheetInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1036,6 +1112,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
           self.addEBObserversOf_connexionErrors_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

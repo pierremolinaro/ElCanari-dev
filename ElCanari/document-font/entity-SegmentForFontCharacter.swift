@@ -863,6 +863,35 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
  
   func setProp (_ value :  [SegmentForFontCharacter]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SegmentForFontCharacter] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SegmentForFontCharacter) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SegmentForFontCharacter) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -873,24 +902,77 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
 final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SegmentForFontCharacter? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SegmentForFontCharacter] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SegmentForFontCharacter> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SegmentForFontCharacter) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -903,11 +985,7 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
   //····················································································································
 
   override var prop : EBSelection < [SegmentForFontCharacter] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1036,6 +1114,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

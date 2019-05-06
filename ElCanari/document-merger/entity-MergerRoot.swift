@@ -3149,6 +3149,35 @@ class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
  
   func setProp (_ value :  [MergerRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_MergerRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_MergerRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_MergerRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -3159,24 +3188,117 @@ class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
 final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_MergerRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [MergerRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <MergerRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_MergerRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -3189,11 +3311,7 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
   //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -3394,6 +3512,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
           self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

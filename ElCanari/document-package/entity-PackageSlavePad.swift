@@ -2477,6 +2477,35 @@ class ReadWriteArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
  
   func setProp (_ value :  [PackageSlavePad]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageSlavePad] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageSlavePad) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageSlavePad) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2487,24 +2516,105 @@ class ReadWriteArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
 final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageSlavePad? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageSlavePad] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageSlavePad> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padShape_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padStyle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_padName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_width_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_height_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padShape_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padStyle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageSlavePad) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2517,11 +2627,7 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
   //····················································································································
 
   override var prop : EBSelection < [PackageSlavePad] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2696,6 +2802,7 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

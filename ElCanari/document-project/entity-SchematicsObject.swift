@@ -731,8 +731,8 @@ class ReadWriteArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
   //····················································································································
  
   func setProp (_ value :  [SchematicsObject]) { } // Abstract method
-
-  //····················································································································
+  
+ //····················································································································
 
   private var mProxyArray = [ProxyArrayOf_SchematicsObject] ()
 
@@ -771,7 +771,7 @@ class ReadWriteArrayOf_SchematicsObject : ReadOnlyArrayOf_SchematicsObject {
 
 final class ProxyArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
 
@@ -779,11 +779,14 @@ final class ProxyArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject {
 
   private var mInternalValue : EBSelection < [SchematicsObject] > = .empty {
     didSet {
-      switch self.mInternalValue {
-      case .empty, .multiple :
-        self.mCurrentObjectSet = []
-      case .single (let v) :
-        self.mCurrentObjectSet = Set (v)
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
       }
     }
   }
@@ -793,20 +796,21 @@ final class ProxyArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject {
   private var mCurrentObjectSet = Set <SchematicsObject> () {
     didSet {
       if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
         let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet)
-
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet)
-
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_isPlacedInSchematics_toElementsOfSet (addedObjectSet) // Transient property
+      //---
         self.postEvent ()
       }
     }

@@ -2050,6 +2050,35 @@ class ReadWriteArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
  
   func setProp (_ value :  [PackageArc]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageArc] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageArc) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageArc) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2060,24 +2089,99 @@ class ReadWriteArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 
 final class ProxyArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageArc? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageArc] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageArc> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_radius_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_startAngle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_arcAngle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_startTangent_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_endTangent_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_radiusUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_radius_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_startAngle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_arcAngle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_startTangent_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_endTangent_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_pathIsClosed_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_radiusUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_startTangentUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_endTangentUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageArc) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2090,11 +2194,7 @@ final class ProxyArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
   //····················································································································
 
   override var prop : EBSelection < [PackageArc] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2263,6 +2363,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

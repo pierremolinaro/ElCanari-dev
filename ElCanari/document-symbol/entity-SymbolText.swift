@@ -974,6 +974,35 @@ class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
  
   func setProp (_ value :  [SymbolText]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SymbolText] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SymbolText) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SymbolText) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -984,24 +1013,79 @@ class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 
 final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SymbolText? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SymbolText] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SymbolText> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_text_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_text_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SymbolText) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1014,11 +1098,7 @@ final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
   //····················································································································
 
   override var prop : EBSelection < [SymbolText] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1149,6 +1229,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

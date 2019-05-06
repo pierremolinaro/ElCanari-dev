@@ -3297,6 +3297,35 @@ class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
  
   func setProp (_ value :  [DeviceRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_DeviceRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_DeviceRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_DeviceRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -3307,24 +3336,115 @@ class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
 final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_DeviceRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [DeviceRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <DeviceRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mComments_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mImageData_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mComments_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mImageData_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_DeviceRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -3337,11 +3457,7 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
   //····················································································································
 
   override var prop : EBSelection < [DeviceRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -3530,6 +3646,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

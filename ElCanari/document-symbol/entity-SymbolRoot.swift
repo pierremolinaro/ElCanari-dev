@@ -1605,6 +1605,35 @@ class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
  
   func setProp (_ value :  [SymbolRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SymbolRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SymbolRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SymbolRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1615,24 +1644,89 @@ class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
 final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SymbolRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SymbolRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SymbolRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SymbolRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1645,11 +1739,7 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
   //····················································································································
 
   override var prop : EBSelection < [SymbolRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1802,6 +1892,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

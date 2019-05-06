@@ -2610,6 +2610,35 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
  
   func setProp (_ value :  [ArtworkFileGenerationParameters]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_ArtworkFileGenerationParameters] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_ArtworkFileGenerationParameters) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_ArtworkFileGenerationParameters) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2620,24 +2649,111 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
 final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [ArtworkFileGenerationParameters] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <ArtworkFileGenerationParameters> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drawVias_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_fileExtension_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedObjectSet) // Stored property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drawVias_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_fileExtension_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_horizontalMirror_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet) // Stored property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2650,11 +2766,7 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
   //····················································································································
 
   override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2855,6 +2967,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         //--- Add observers of transient properties
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

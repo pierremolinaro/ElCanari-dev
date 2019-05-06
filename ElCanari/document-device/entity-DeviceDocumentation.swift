@@ -566,6 +566,35 @@ class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
  
   func setProp (_ value :  [DeviceDocumentation]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_DeviceDocumentation] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_DeviceDocumentation) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_DeviceDocumentation) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -576,24 +605,71 @@ class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 
 final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [DeviceDocumentation] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <DeviceDocumentation> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_DeviceDocumentation) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -606,11 +682,7 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
   //····················································································································
 
   override var prop : EBSelection < [DeviceDocumentation] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -729,6 +801,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
           self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

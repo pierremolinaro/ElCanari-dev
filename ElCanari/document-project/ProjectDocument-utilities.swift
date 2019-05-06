@@ -41,7 +41,7 @@ struct PinDescriptor : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ComponentSymbolInfo : Hashable {
+struct ComponentSymbolInfo : Equatable, Hashable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint
@@ -52,7 +52,7 @@ struct ComponentSymbolInfo : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct DeviceSymbolInfo {
+struct DeviceSymbolInfo : Equatable {
   let filledBezierPath : NSBezierPath
   let strokeBezierPath : NSBezierPath
   let center : CanariPoint

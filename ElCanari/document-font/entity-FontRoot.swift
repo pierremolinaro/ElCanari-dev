@@ -1657,6 +1657,35 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
  
   func setProp (_ value :  [FontRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_FontRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_FontRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_FontRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1667,24 +1696,89 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
 final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_FontRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [FontRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <FontRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_definedCharacters_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_definedCharacters_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_FontRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1697,11 +1791,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
   //····················································································································
 
   override var prop : EBSelection < [FontRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1844,6 +1934,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

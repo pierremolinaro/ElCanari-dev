@@ -1204,6 +1204,35 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
  
   func setProp (_ value :  [FontCharacter]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_FontCharacter] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_FontCharacter) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_FontCharacter) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1214,24 +1243,81 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
 final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_FontCharacter? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [FontCharacter] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <FontCharacter> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_FontCharacter) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1244,11 +1330,7 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
   //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1381,6 +1463,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

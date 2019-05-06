@@ -2162,6 +2162,35 @@ class ReadWriteArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
  
   func setProp (_ value :  [PackageZone]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageZone] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageZone) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageZone) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2172,24 +2201,101 @@ class ReadWriteArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
 final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageZone? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageZone] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageZone> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_rect_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_width_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_height_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageZone) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2202,11 +2308,7 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
   //····················································································································
 
   override var prop : EBSelection < [PackageZone] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2379,6 +2481,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
           self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

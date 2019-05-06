@@ -532,6 +532,35 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
  
   func setProp (_ value :  [BoardModelVia]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_BoardModelVia] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_BoardModelVia) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_BoardModelVia) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -542,24 +571,71 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
 final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_BoardModelVia? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [BoardModelVia] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <BoardModelVia> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet) // Stored property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet) // Stored property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_BoardModelVia) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -572,11 +648,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
   //····················································································································
 
   override var prop : EBSelection < [BoardModelVia] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -697,6 +769,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
         //--- Add observers of transient properties
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

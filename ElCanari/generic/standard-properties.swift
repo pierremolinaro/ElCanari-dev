@@ -18,7 +18,7 @@ protocol ValuePropertyProtocol : Equatable {
 //   EBReadOnlyValueProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyValueProperty <T> : EBAbstractProperty {
+class EBReadOnlyValueProperty <T> : EBAbstractProperty where T : Equatable {
 
   //····················································································································
 
@@ -31,7 +31,7 @@ class EBReadOnlyValueProperty <T> : EBAbstractProperty {
 //   EBReadWriteValueProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> {
+class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equatable {
 
   //····················································································································
 
@@ -315,7 +315,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 //   EBTransientValueProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
+class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> where T : Equatable {
 
   //····················································································································
 
@@ -391,7 +391,7 @@ class EBAbstractEnumProperty : EBAbstractProperty {
 //   EBReadOnlyEnumProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty {
+class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty where T : Equatable {
 
   var prop : EBSelection <T> { return .empty } // Abstract method
 
@@ -414,7 +414,7 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty {
 //   EBReadWriteEnumProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
+class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> where T : Equatable {
 
   //····················································································································
 
@@ -709,7 +709,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 //   EBTransientEnumProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
+class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> where T : Equatable {
 
   //····················································································································
 
@@ -1204,7 +1204,7 @@ protocol ClassPropertyProtocol : class, Equatable {
 //   EBReadOnlyClassProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyClassProperty <T> : EBAbstractProperty {
+class EBReadOnlyClassProperty <T> : EBAbstractProperty where T : Equatable {
 
   var prop : EBSelection <T> { return .empty } // Abstract method
 
@@ -1214,7 +1214,7 @@ class EBReadOnlyClassProperty <T> : EBAbstractProperty {
 //   EBReadWriteClassProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> {
+class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equatable {
   func setProp (_ value : T) { } // Abstract method
   func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
     return false
@@ -1483,7 +1483,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 //   EBTransientClassProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
+class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> where T : Equatable {
   private var mValueCache : EBSelection <T>? = nil
   var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
   
@@ -2051,12 +2051,6 @@ typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[M
 
 typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
 typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property SymbolPinNameAndErrorLocationArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_SymbolPinNameAndErrorLocationArray  = EBReadOnlyValueProperty <SymbolPinNameAndErrorLocationArray>
-typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientValueProperty <SymbolPinNameAndErrorLocationArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property NSRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

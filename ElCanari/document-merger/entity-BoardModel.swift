@@ -7890,6 +7890,35 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
  
   func setProp (_ value :  [BoardModel]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_BoardModel] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_BoardModel) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_BoardModel) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -7900,24 +7929,169 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
 final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_BoardModel? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [BoardModel] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <BoardModel> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_BoardModel) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -7930,11 +8104,7 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
   //····················································································································
 
   override var prop : EBSelection < [BoardModel] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -8165,6 +8335,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

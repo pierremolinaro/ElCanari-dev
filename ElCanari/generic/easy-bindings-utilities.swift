@@ -582,7 +582,21 @@ func defaultValidationFunction <T> (_ currentValue : T, proposedValue : T) -> EB
 //   EBSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBSelection <T> {
+enum EBSelection <T> : Equatable where T : Equatable {
+
+  static func == (lhs : EBSelection <T>, rhs : EBSelection <T>) -> Bool {
+    switch (lhs, rhs) {
+    case (.empty, .empty) :
+      return true
+    case (.multiple, .multiple) :
+      return true
+    case (.single (let left), .single (let right)) :
+      return left == right
+    default :
+      return false
+    }
+  }
+
   case empty
   case multiple
   case single (T)

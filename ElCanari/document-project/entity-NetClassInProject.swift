@@ -1699,6 +1699,35 @@ class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
  
   func setProp (_ value :  [NetClassInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_NetClassInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_NetClassInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_NetClassInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1709,24 +1738,91 @@ class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
 final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [NetClassInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <NetClassInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_netWidth_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mNetWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_netWidth_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_NetClassInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1739,11 +1835,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
   //····················································································································
 
   override var prop : EBSelection < [NetClassInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1894,6 +1986,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

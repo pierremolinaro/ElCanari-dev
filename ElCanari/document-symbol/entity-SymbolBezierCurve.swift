@@ -1562,6 +1562,35 @@ class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
  
   func setProp (_ value :  [SymbolBezierCurve]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SymbolBezierCurve] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SymbolBezierCurve) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SymbolBezierCurve) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1572,24 +1601,89 @@ class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
 final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SymbolBezierCurve? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SymbolBezierCurve] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SymbolBezierCurve> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_cpx1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_cpy1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_cpx1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_cpy1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SymbolBezierCurve) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1602,11 +1696,7 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
   //····················································································································
 
   override var prop : EBSelection < [SymbolBezierCurve] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1755,6 +1845,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

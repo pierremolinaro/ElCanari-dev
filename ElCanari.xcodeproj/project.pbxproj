@@ -1059,8 +1059,6 @@
 		CF99E37621AE920F002AB233 /* CanariIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37321AE920F002AB233 /* CanariIssue.swift */; };
 		CF99E37721AE920F002AB233 /* CanariIssueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37421AE920F002AB233 /* CanariIssueArray.swift */; };
 		CF99E37821AE920F002AB233 /* CanariIssueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37421AE920F002AB233 /* CanariIssueArray.swift */; };
-		CF99E37A21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */; };
-		CF99E37B21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */; };
 		CF9AE9F91BFA763C00B68F69 /* entity-FontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */; };
 		CF9AE9FA1BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */; };
 		CF9D4B1A227F796C006E2035 /* action-ProjectDocument-addComponentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B04227F796A006E2035 /* action-ProjectDocument-addComponentAction.swift */; };
@@ -2119,7 +2117,6 @@
 		CF9768FF2279F5560095C356 /* selectionController-ProjectDocument-mComponentSymbolSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-mComponentSymbolSelectionController.swift"; sourceTree = "<group>"; };
 		CF99E37321AE920F002AB233 /* CanariIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariIssue.swift; sourceTree = "<group>"; };
 		CF99E37421AE920F002AB233 /* CanariIssueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariIssueArray.swift; sourceTree = "<group>"; };
-		CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "class-SymbolPinNameAndErrorLocationArray.swift"; sourceTree = "<group>"; };
 		CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-FontCharacter.swift"; sourceTree = "<group>"; };
 		CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentForFontCharacter.swift"; sourceTree = "<group>"; };
 		CF9D4B04227F796A006E2035 /* action-ProjectDocument-addComponentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-addComponentAction.swift"; sourceTree = "<group>"; };
@@ -3322,7 +3319,6 @@
 			children = (
 				CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */,
 				CF5632BF21A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift */,
-				CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */,
 				CFE85A6D21A5B37900991A66 /* entity-SymbolBezierCurve.swift */,
 				CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */,
 				CFE85A7D21A5BBE600991A66 /* entity-SymbolOval.swift */,
@@ -3872,7 +3868,6 @@
 				CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CF001F6A21F8AAE10091518E /* func-sha1.swift in Sources */,
 				CF3086531B4008F5005D3BCE /* EBTableView.swift in Sources */,
-				CF99E37A21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */,
 				CF12885C20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift in Sources */,
 				CF3EA65D21C29D300059392B /* EBScrollView-placards.swift in Sources */,
 				CFBAFCE51DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */,
@@ -4597,7 +4592,6 @@
 				CF6E148821CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CF001F6B21F8AAE10091518E /* func-sha1.swift in Sources */,
 				CF5C4CC9219F04D600EAC52A /* EBTableView.swift in Sources */,
-				CF99E37B21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */,
 				CF5C4CCB219F04D600EAC52A /* transient-BoardModel-viasBezierPaths.swift in Sources */,
 				CF3EA65E21C29D300059392B /* EBScrollView-placards.swift in Sources */,
 				CF5C4CCC219F04D600EAC52A /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */,

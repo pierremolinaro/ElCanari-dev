@@ -2680,6 +2680,35 @@ class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
  
   func setProp (_ value :  [ProjectRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_ProjectRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_ProjectRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_ProjectRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2690,24 +2719,101 @@ class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
 final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_ProjectRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [ProjectRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <ProjectRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_ProjectRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2720,11 +2826,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
   //····················································································································
 
   override var prop : EBSelection < [ProjectRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2891,6 +2993,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

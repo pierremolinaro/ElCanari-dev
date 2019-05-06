@@ -532,6 +532,35 @@ class ReadWriteArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
  
   func setProp (_ value :  [DeviceSymbolTypeInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_DeviceSymbolTypeInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_DeviceSymbolTypeInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_DeviceSymbolTypeInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -542,24 +571,71 @@ class ReadWriteArrayOf_DeviceSymbolTypeInProject : ReadOnlyArrayOf_DeviceSymbolT
 
 final class ProxyArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSymbolTypeInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_DeviceSymbolTypeInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [DeviceSymbolTypeInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <DeviceSymbolTypeInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet) // Stored property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet) // Stored property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_DeviceSymbolTypeInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -572,11 +648,7 @@ final class ProxyArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSymb
   //····················································································································
 
   override var prop : EBSelection < [DeviceSymbolTypeInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -697,6 +769,7 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
         //--- Add observers of transient properties
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

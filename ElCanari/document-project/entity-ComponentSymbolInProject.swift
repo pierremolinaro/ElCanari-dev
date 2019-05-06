@@ -2208,6 +2208,35 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
  
   func setProp (_ value :  [ComponentSymbolInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_ComponentSymbolInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_ComponentSymbolInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_ComponentSymbolInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2218,24 +2247,97 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 
 final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_ComponentSymbolInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [ComponentSymbolInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <ComponentSymbolInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_ComponentSymbolInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2248,11 +2350,7 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
   //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2413,6 +2511,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

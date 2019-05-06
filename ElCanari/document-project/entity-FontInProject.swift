@@ -770,6 +770,35 @@ class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
  
   func setProp (_ value :  [FontInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_FontInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_FontInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_FontInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -780,24 +809,75 @@ class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
 final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_FontInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [FontInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <FontInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mFontName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mFontName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mFontVersion_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_FontInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -810,11 +890,7 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
   //····················································································································
 
   override var prop : EBSelection < [FontInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -939,6 +1015,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
           self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

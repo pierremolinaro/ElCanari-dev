@@ -1380,6 +1380,35 @@ class ReadWriteArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
  
   func setProp (_ value :  [PackageGuide]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageGuide] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageGuide) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageGuide) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1390,24 +1419,87 @@ class ReadWriteArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
 final class ProxyArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageGuide? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageGuide] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageGuide> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageGuide) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1420,11 +1512,7 @@ final class ProxyArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
   //····················································································································
 
   override var prop : EBSelection < [PackageGuide] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1571,6 +1659,7 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

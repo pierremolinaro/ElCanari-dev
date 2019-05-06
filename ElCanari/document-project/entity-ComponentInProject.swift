@@ -1569,6 +1569,35 @@ class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
  
   func setProp (_ value :  [ComponentInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_ComponentInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_ComponentInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_ComponentInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1579,24 +1608,85 @@ class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 
 final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_ComponentInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [ComponentInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <ComponentInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_placementInSchematics_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mComponentValue_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_placementInSchematics_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_ComponentInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1609,11 +1699,7 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
   //····················································································································
 
   override var prop : EBSelection < [ComponentInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1748,6 +1834,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
           self.addEBObserversOf_placementInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

@@ -15,7 +15,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   // Models
   //····················································································································
  
-   private let mModel = ProxyArrayOf_SchematicsObject ()
+   private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
 
    //····················································································································
 
@@ -188,14 +188,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
    //····················································································································
 
   var objectCount : Int {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     return objects.count
   }
 
   //····················································································································
 
   func bind_model (_ inModel : ReadWriteArrayOf_SchematicsObject) {
-    self.mModel.bind (inModel)
+    self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
     self.startObservingObjectShape ()
     self.startObservingSelectionShape ()
@@ -208,18 +208,17 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()
-    self.mModel.unbind ()
-    self.mModel.removeEBObserver (self.objectArray_property)
+    self.mModel?.removeEBObserver (self.objectArray_property)
   //---
     self.selectedSet = Set ()
-//    self.mModel = nil
+    self.mModel = nil
  }
 
   //····················································································································
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? { return self.mModel.ebUndoManager }
+  var ebUndoManager : EBUndoManager? { return self.mModel?.ebUndoManager }
 
   //····················································································································
   //   SELECTION
@@ -229,7 +228,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.mModel.propval {
+    for object in self.mModel?.propval ?? [] {
       if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
@@ -255,7 +254,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
    //····················································································································
 
   var objectArray : [EBGraphicManagedObject] {
-    return self.mModel.propval
+    return self.mModel?.propval ?? []
   }
 
   //····················································································································
@@ -268,7 +267,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.mModel.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
@@ -276,7 +275,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
 
   private func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
-    for object in self.mModel.propval {
+    for object in self.mModel?.propval ?? [] {
       if !self.selectedArray_property.propset.contains (object) {
         selectionDisplayArray.append (EBShape ())
       }else if let shape = object.selectionDisplay {
@@ -293,7 +292,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   private func stopObservingSelectionShape () {
-    self.mModel.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = nil
   }
 
@@ -307,14 +306,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   private func startObservingObjectShape () {
-    self.mModel.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 
   //····················································································································
 
   private func stopObservingObjectShape () {
-    self.mModel.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = nil
   }
 
@@ -322,7 +321,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
 
   func updateObjectDisplay () {
     var displayArray = [EBShape] ()
-    for object in self.mModel.propval{
+    for object in self.mModel?.propval ?? [] {
       if let shape = object.objectDisplay {
         displayArray.append (shape)
       }else{
@@ -340,7 +339,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
 
   func alignmentPointsArray () -> [[CanariPoint]] {
     var result = [[CanariPoint]] ()
-    for object in self.mModel.propval {
+    for object in self.mModel?.propval ?? [] {
       result.append (object.alignmentPoints ().points)
     }
     return result
@@ -407,12 +406,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func select (object inObject : SchematicsObject) {
-    switch self.mModel.prop {
-    case .empty, .multiple :
-      break
-    case .single (let objectArray) :
-      if objectArray.contains (inObject) {
-         self.selectedSet = Set ([inObject])
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        break
+      case .single (let objectArray) :
+        if objectArray.contains (inObject) {
+           self.selectedSet = Set ([inObject])
+        }
       }
     }
   }
@@ -421,17 +422,19 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //    add
   //····················································································································
 
-  @objc func add (_ sender : Any) {
-    switch self.mModel.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      let newObject = SchematicsObject (self.ebUndoManager)
-      var array = v
-      array.append (newObject)
-    //--- New object is the selection
-      self.selectedSet = Set ([newObject])
-      self.mModel.setProp (array)
+   @objc func add (_ sender : Any) {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        break
+      case .single (let v) :
+        let newObject = SchematicsObject (self.ebUndoManager)
+        var array = v
+        array.append (newObject)
+      //--- New object is the selection
+        self.selectedSet = Set ([newObject])
+        model.setProp (array)
+      }
     }
   }
 
@@ -440,71 +443,73 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   @objc func remove (_ sender : Any) {
-    switch self.mModel.prop {
-    case .empty, .multiple :
-      break
-    case .single (let model_prop) :
-      switch self.objectArray_property.prop {
+    if let model = self.mModel {
+      switch model.prop {
       case .empty, .multiple :
         break
-      case .single (let sortedArray_prop) :
-      //------------- Find the object to be selected after selected object removing
-      //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [SchematicsObject : Int] ()
-        for (index, object) in sortedArray_prop.enumerated () {
-          sortedObjectDictionary [object] = index
-        }
-        var indexArrayOfSelectedObjects = [Int] ()
-        for object in self.selectedArray_property.propset {
-          let index = sortedObjectDictionary [object]
-          if let idx = index {
-            indexArrayOfSelectedObjects.append (idx)
+      case .single (let model_prop) :
+        switch self.objectArray_property.prop {
+        case .empty, .multiple :
+          break
+        case .single (let sortedArray_prop) :
+        //------------- Find the object to be selected after selected object removing
+        //--- Dictionary of object sorted indexes
+          var sortedObjectDictionary = [SchematicsObject : Int] ()
+          for (index, object) in sortedArray_prop.enumerated () {
+            sortedObjectDictionary [object] = index
           }
-        }
-      //--- Sort
-        indexArrayOfSelectedObjects.sort { $0 < $1 }
-      //--- Find the first index of a non selected object
-        var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
-        for index in indexArrayOfSelectedObjects {
-          if newSelectionIndex < index {
-            break
-          }else{
-            newSelectionIndex = index + 1
+          var indexArrayOfSelectedObjects = [Int] ()
+          for object in self.selectedArray_property.propset {
+            let index = sortedObjectDictionary [object]
+            if let idx = index {
+              indexArrayOfSelectedObjects.append (idx)
+            }
           }
-        }
-        var newSelectedObject : SchematicsObject? = nil
-        if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
-          newSelectedObject = sortedArray_prop [newSelectionIndex]
-        }
-      //----------------------------------------- Remove selected object
-      //--- Dictionary of object absolute indexes
-        var objectDictionary = [SchematicsObject : Int] ()
-        for (index, object) in model_prop.enumerated () {
-          objectDictionary [object] = index
-        }
-      //--- Build selected objects index array
-        var selectedObjectIndexArray = [Int] ()
-        for object in self.selectedArray_property.propset {
-          let index = objectDictionary [object]
-          if let idx = index {
-            selectedObjectIndexArray.append (idx)
+        //--- Sort
+          indexArrayOfSelectedObjects.sort { $0 < $1 }
+        //--- Find the first index of a non selected object
+          var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
+          for index in indexArrayOfSelectedObjects {
+            if newSelectionIndex < index {
+              break
+            }else{
+              newSelectionIndex = index + 1
+            }
           }
+          var newSelectedObject : SchematicsObject? = nil
+          if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
+            newSelectedObject = sortedArray_prop [newSelectionIndex]
+          }
+        //----------------------------------------- Remove selected object
+        //--- Dictionary of object absolute indexes
+          var objectDictionary = [SchematicsObject : Int] ()
+          for (index, object) in model_prop.enumerated () {
+            objectDictionary [object] = index
+          }
+        //--- Build selected objects index array
+          var selectedObjectIndexArray = [Int] ()
+          for object in self.selectedArray_property.propset {
+            let index = objectDictionary [object]
+            if let idx = index {
+              selectedObjectIndexArray.append (idx)
+            }
+          }
+        //--- Sort in reverse order
+          selectedObjectIndexArray.sort { $1 < $0 }
+        //--- Remove objects, in reverse of order of their index
+          var newObjectArray = model_prop
+          for index in selectedObjectIndexArray {
+            newObjectArray.remove (at: index)
+          }
+        //----------------------------------------- Set new selection
+          var newSelectionSet = Set <SchematicsObject> ()
+          if let object = newSelectedObject {
+            newSelectionSet.insert (object)
+          }
+          self.selectedSet = newSelectionSet
+        //----------------------------------------- Set new object array
+          model.setProp (newObjectArray)
         }
-      //--- Sort in reverse order
-        selectedObjectIndexArray.sort { $1 < $0 }
-      //--- Remove objects, in reverse of order of their index
-        var newObjectArray = model_prop
-        for index in selectedObjectIndexArray {
-          newObjectArray.remove (at: index)
-        }
-      //----------------------------------------- Set new selection
-        var newSelectionSet = Set <SchematicsObject> ()
-        if let object = newSelectedObject {
-          newSelectionSet.insert (object)
-        }
-        self.selectedSet = newSelectionSet
-      //----------------------------------------- Set new object array
-        self.mModel.setProp (newObjectArray)
       }
     }
   }
@@ -515,7 +520,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
 
   private func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     for object in self.selectedArray_property.propset {
       let idx = objects.firstIndex (of: object)!
       result.append (idx)
@@ -567,7 +572,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
       pb.declareTypes ([pasteboardType, .pdf], owner: self)
     //--- Build PDF representation
       let indexArray = self.sortedIndexArrayOfSelectedObjects ()
-      let objects = self.mModel.propval
+      let objects = mModel?.propval ?? []
       let shape = EBShape ()
       for idx in indexArray {
         let object = objects [idx]
@@ -626,9 +631,9 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
           newObjects.append (object)
         }
       }
-      var objects = self.mModel.propval
+      var objects = self.mModel?.propval ?? []
       objects += newObjects
-      self.mModel.setProp (objects)
+      self.mModel?.setProp (objects)
       self.selectedSet = Set (newObjects)
     }
   }
@@ -662,10 +667,10 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
       for object in self.selectedArray_property.propset {
         object.operationBeforeRemoving ()
         flushOutletEvents () // § Temporary !!!
-        var objects = self.mModel.propval
+        var objects = self.mModel?.propval ?? []
         if let idx = objects.firstIndex (of: object) {
           objects.remove (at: idx)
-          self.mModel.setProp (objects)
+          self.mModel?.setProp (objects)
         }
       }
     //---
@@ -678,7 +683,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func selectAllObjects () {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     self.selectedSet = Set (objects)
   }
 
@@ -692,7 +697,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   var canBringForward : Bool {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -704,14 +709,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func bringForward () {
-    var objects = self.mModel.propval
+    var objects = self.mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
        let object = objects [idx]
        objects.remove (at: idx)
        objects.insert (object, at: idx+1)
     }
-    self.mModel.setProp (objects)
+    self.mModel?.setProp (objects)
   }
 
   //····················································································································
@@ -724,7 +729,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   var canBringToFront : Bool {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var top = objects.count - 1
@@ -741,14 +746,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func bringToFront () {
-    var objects = self.mModel.propval
+    var objects = self.mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.append (object)
     }
-    self.mModel.setProp (objects)
+    self.mModel?.setProp (objects)
   }
 
   //····················································································································
@@ -761,7 +766,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   var canSendBackward : Bool {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -773,14 +778,14 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func sendBackward () {
-    var objects = self.mModel.propval
+    var objects = self.mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.insert (object, at: idx-1)
     }
-    self.mModel.setProp (objects)
+    self.mModel?.setProp (objects)
   }
   
   //····················································································································
@@ -793,20 +798,20 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func sendToBack () {
-    var objects = self.mModel.propval
+    var objects = self.mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.insert (object, at: 0)
     }
-    self.mModel.setProp (objects)
+    self.mModel?.setProp (objects)
   }
 
   //····················································································································
 
   var canSendToBack : Bool {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var bottom = 0
@@ -952,7 +957,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func addToSelection (objectsWithIndex inIndexes : [Int]) {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     var newSelectedSet = self.selectedArray_property.propset
     for idx in inIndexes {
       let newSelectedObject = objects [idx]
@@ -964,7 +969,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func removeFromSelection (objectWithIndex inIndex : Int) {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     let object = objects [inIndex]
     var newSelectedSet = self.selectedArray_property.propset
     newSelectedSet.remove (object)
@@ -980,7 +985,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : EBObject, 
   //····················································································································
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
-    let objects = self.mModel.propval
+    let objects = self.mModel?.propval ?? []
     var selectedObjects = [SchematicsObject] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]

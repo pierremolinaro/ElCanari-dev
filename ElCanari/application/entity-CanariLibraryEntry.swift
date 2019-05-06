@@ -753,6 +753,35 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
  
   func setProp (_ value :  [CanariLibraryEntry]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_CanariLibraryEntry] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_CanariLibraryEntry) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_CanariLibraryEntry) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -763,24 +792,75 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
 final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [CanariLibraryEntry] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <CanariLibraryEntry> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_CanariLibraryEntry) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -793,11 +873,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
   //····················································································································
 
   override var prop : EBSelection < [CanariLibraryEntry] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -924,6 +1000,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
           self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

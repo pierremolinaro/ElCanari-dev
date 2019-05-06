@@ -1413,6 +1413,35 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
  
   func setProp (_ value :  [ArtworkRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_ArtworkRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_ArtworkRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_ArtworkRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1423,24 +1452,87 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
 final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_ArtworkRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [ArtworkRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <ArtworkRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet) // Stored property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet) // Stored property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_ArtworkRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1453,11 +1545,7 @@ final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1610,6 +1698,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         //--- Add observers of transient properties
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

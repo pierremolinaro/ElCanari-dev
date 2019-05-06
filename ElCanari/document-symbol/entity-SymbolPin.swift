@@ -1884,6 +1884,35 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
  
   func setProp (_ value :  [SymbolPin]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_SymbolPin] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_SymbolPin) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_SymbolPin) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1894,24 +1923,95 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
 final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_SymbolPin? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [SymbolPin] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <SymbolPin> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_SymbolPin) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1924,11 +2024,7 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
   //····················································································································
 
   override var prop : EBSelection < [SymbolPin] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2087,6 +2183,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

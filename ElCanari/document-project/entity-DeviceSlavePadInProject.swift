@@ -932,6 +932,35 @@ class ReadWriteArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadI
  
   func setProp (_ value :  [DeviceSlavePadInProject]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_DeviceSlavePadInProject] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_DeviceSlavePadInProject) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_DeviceSlavePadInProject) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -942,24 +971,79 @@ class ReadWriteArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadI
 
 final class ProxyArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInProject {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_DeviceSlavePadInProject? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [DeviceSlavePadInProject] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <DeviceSlavePadInProject> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet) // Stored property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet) // Stored property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_DeviceSlavePadInProject) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -972,11 +1056,7 @@ final class ProxyArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlaveP
   //····················································································································
 
   override var prop : EBSelection < [DeviceSlavePadInProject] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1113,6 +1193,7 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
         //--- Add observers of transient properties
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

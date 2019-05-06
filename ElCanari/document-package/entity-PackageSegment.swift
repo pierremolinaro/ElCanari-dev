@@ -1736,6 +1736,35 @@ class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
  
   func setProp (_ value :  [PackageSegment]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageSegment] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageSegment) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageSegment) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1746,24 +1775,93 @@ class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
 final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageSegment? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageSegment] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageSegment> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_lengthUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_lengthInCanariUnit_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_lengthUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_lengthInCanariUnit_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageSegment) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1776,11 +1874,7 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
   //····················································································································
 
   override var prop : EBSelection < [PackageSegment] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1935,6 +2029,7 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
           self.addEBObserversOf_lengthInCanariUnit_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

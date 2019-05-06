@@ -2479,6 +2479,35 @@ class ReadWriteArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
  
   func setProp (_ value :  [PackageRoot]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_PackageRoot] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_PackageRoot) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_PackageRoot) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -2489,24 +2518,103 @@ class ReadWriteArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 
 final class ProxyArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_PackageRoot? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [PackageRoot] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <PackageRoot> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_program_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_program_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_PackageRoot) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -2519,11 +2627,7 @@ final class ProxyArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
   //····················································································································
 
   override var prop : EBSelection < [PackageRoot] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -2698,6 +2802,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
           self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

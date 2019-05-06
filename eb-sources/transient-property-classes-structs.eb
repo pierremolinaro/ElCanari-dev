@@ -31,7 +31,6 @@ transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 
 transient property struct CanariIssueArray ;
-transient property struct SymbolPinNameAndErrorLocationArray ;
 transient property struct NSRect ;
 transient property struct UnconnectedSymbolPinsInDevice ;
 transient property struct AssignedPadProxiesInDevice ;

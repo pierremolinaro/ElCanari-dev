@@ -1542,6 +1542,35 @@ class ReadWriteArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
  
   func setProp (_ value :  [MasterPadInDevice]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_MasterPadInDevice] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_MasterPadInDevice) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_MasterPadInDevice) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -1552,24 +1581,87 @@ class ReadWriteArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
 
 final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_MasterPadInDevice? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [MasterPadInDevice] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <MasterPadInDevice> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_frontSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_backSideFilledBezierPathArray_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_MasterPadInDevice) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -1582,11 +1674,7 @@ final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice 
   //····················································································································
 
   override var prop : EBSelection < [MasterPadInDevice] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -1733,6 +1821,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
           self.addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?

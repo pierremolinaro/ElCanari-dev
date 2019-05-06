@@ -736,6 +736,35 @@ class ReadWriteArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics
  
   func setProp (_ value :  [CommentInSchematics]) { } // Abstract method
   
+ //····················································································································
+
+  private var mProxyArray = [ProxyArrayOf_CommentInSchematics] ()
+
+  //····················································································································
+
+  func attachProxy (_ inProxy : ProxyArrayOf_CommentInSchematics) {
+    self.mProxyArray.append (inProxy)
+    inProxy.updateProxy ()
+    self.postEvent ()
+  }
+
+  //····················································································································
+
+  func detachProxy (_ inProxy : ProxyArrayOf_CommentInSchematics) {
+    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
+      self.mProxyArray.remove (at: idx)
+      self.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateProxyUpdate () {
+    for proxy in self.mProxyArray {
+      proxy.updateProxy ()
+    }
+  }
+
   //····················································································································
 
 }
@@ -746,24 +775,75 @@ class ReadWriteArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics
 
 final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchematics {
 
-  //····················································································································
+   //····················································································································
 
   private var mModel : ReadWriteArrayOf_CommentInSchematics? = nil
+
+  //····················································································································
+
+  private var mInternalValue : EBSelection < [CommentInSchematics] > = .empty {
+    didSet {
+      if self.mInternalValue != oldValue {
+        switch self.mInternalValue {
+        case .empty, .multiple :
+          self.mCurrentObjectSet = []
+        case .single (let v) :
+          self.mCurrentObjectSet = Set (v)
+        }
+        self.propagateProxyUpdate ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mCurrentObjectSet = Set <CommentInSchematics> () {
+    didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mComment_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mComment_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+      //---
+        self.postEvent ()
+      }
+    }
+  }
 
   //····················································································································
 
   func bind (_ inModel : ReadWriteArrayOf_CommentInSchematics) {
     self.unbind ()
     self.mModel = inModel
-    inModel.addEBObserver (self)
+    inModel.attachProxy (self)
   }
 
   //····················································································································
 
   func unbind () {
     if let model = self.mModel {
-      model.removeEBObserver (self)
+      model.detachProxy (self)
       self.mModel = nil
+    }
+  }
+
+  //····················································································································
+
+  func updateProxy () {
+    if let model = self.mModel {
+      self.mInternalValue = model.prop
+    }else{
+      self.mInternalValue = .empty
     }
   }
 
@@ -776,11 +856,7 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
   //····················································································································
 
   override var prop : EBSelection < [CommentInSchematics] > {
-    if let model = self.mModel {
-      return model.prop
-    }else{
-      return .empty
-    }
+    return self.mInternalValue
   }
 
   //····················································································································
@@ -905,6 +981,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
+        self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
