@@ -83,11 +83,11 @@ class ProjectSheetController : EBOutletEvent {
       }
       if let errorCount = sheet.connexionErrors, errorCount > 0 {
         attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
-        attributedString.append (NSAttributedString (string: " \(errorCount)", attributes: attributes))
+        attributedString.append (NSAttributedString (string: " — \(errorCount)", attributes: attributes))
       }
       if let warningCount = sheet.connexionWarnings, warningCount > 0 {
         attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
-        attributedString.append (NSAttributedString (string: " \(warningCount)", attributes: attributes))
+        attributedString.append (NSAttributedString (string: " — \(warningCount)", attributes: attributes))
       }
     //---
       self.mSheetPopUpButton?.addItem (withTitle: "")

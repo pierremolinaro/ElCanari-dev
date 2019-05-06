@@ -119,6 +119,18 @@ protocol ProjectRoot_connexionErrorString : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsStatusMessage : class {
+  var mSchematicsStatusMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mSchematicsStatusImage : class {
+  var mSchematicsStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -141,7 +153,9 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicsBackgroundDisplay,
          ProjectRoot_connexionWarningString,
-         ProjectRoot_connexionErrorString {
+         ProjectRoot_connexionErrorString,
+         ProjectRoot_mSchematicsStatusMessage,
+         ProjectRoot_mSchematicsStatusImage {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -674,6 +688,52 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: mSchematicsStatusMessage
+  //····················································································································
+
+  let mSchematicsStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mSchematicsStatusMessage_property_selection : EBSelection <String> {
+    return self.mSchematicsStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var mSchematicsStatusMessage : String? {
+    switch self.mSchematicsStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mSchematicsStatusImage
+  //····················································································································
+
+  let mSchematicsStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mSchematicsStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mSchematicsStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var mSchematicsStatusImage : NSImage? {
+    switch self.mSchematicsStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -917,6 +977,58 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
+  //--- Atomic property: mSchematicsStatusMessage
+    self.mSchematicsStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_mSchematicsStatusMessage (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.addEBObserver (self.mSchematicsStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.mSchematicsStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.mSchematicsStatusMessage_property)
+  //--- Atomic property: mSchematicsStatusImage
+    self.mSchematicsStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_mSchematicsStatusImage (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.addEBObserver (self.mSchematicsStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.mSchematicsStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.mSchematicsStatusImage_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -950,6 +1062,12 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetIssues_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
+    self.unplacedSymbols_property.removeEBObserver (self.mSchematicsStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.mSchematicsStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.mSchematicsStatusMessage_property)
+    self.unplacedSymbols_property.removeEBObserver (self.mSchematicsStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.mSchematicsStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.mSchematicsStatusImage_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1108,6 +1226,22 @@ class ProjectRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.connexionErrorString_property.mObserverExplorer,
       valueExplorer:&self.connexionErrorString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsStatusMessage",
+      idx:self.mSchematicsStatusMessage_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsStatusMessage_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsStatusMessage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mSchematicsStatusImage",
+      idx:self.mSchematicsStatusImage_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mSchematicsStatusImage_property.mObserverExplorer,
+      valueExplorer:&self.mSchematicsStatusImage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -2536,6 +2670,118 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'mSchematicsStatusMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsStatusMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsStatusMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsStatusMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsStatusMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsStatusMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsStatusMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsStatusMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsStatusMessage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsStatusMessage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mSchematicsStatusImage' transient property
+  //····················································································································
+
+  private var mObserversOf_mSchematicsStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mSchematicsStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mSchematicsStatusImage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsStatusImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSchematicsStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mSchematicsStatusImage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mSchematicsStatusImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mSchematicsStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.mSchematicsStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -2622,6 +2868,8 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -2644,6 +2892,8 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedSet)
       self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -2765,6 +3015,8 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
         self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
@@ -2785,6 +3037,8 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
         self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
   }
@@ -2951,6 +3205,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -2990,6 +3246,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()

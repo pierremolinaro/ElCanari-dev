@@ -378,6 +378,7 @@ import Cocoa
   @IBOutlet var mSchematicsScrollView : EBScrollView?
   @IBOutlet var mSchematicsSheetOrientationSegmentedControl : CanariEnumSegmentedControl?
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSchematicsStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSchematicsTitleTextField : EBTextField?
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
@@ -583,6 +584,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetOrientationSegmentedControl, "mSchematicsSheetOrientationSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsStatusImageViewInToolbar, "mSchematicsStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
@@ -833,6 +835,8 @@ import Cocoa
     self.mSchematicsObjectsController.bind_ebView (self.mSchematicsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
+    self.mSchematicsStatusImageViewInToolbar?.bind_image (self.rootObject.mSchematicsStatusImage_property, file: #file, line: #line)
+    self.mSchematicsStatusImageViewInToolbar?.bind_tooltip (self.rootObject.mSchematicsStatusMessage_property, file: #file, line: #line)
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
@@ -1114,6 +1118,8 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
+    self.mSchematicsStatusImageViewInToolbar?.unbind_image ()
+    self.mSchematicsStatusImageViewInToolbar?.unbind_tooltip ()
     self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
     self.mComponentCountTextField?.unbind_valueObserver ()
     self.mDevicePackageTableView?.unbind_array ()
@@ -1330,6 +1336,7 @@ import Cocoa
     self.mSchematicsScrollView?.ebCleanUp ()
     self.mSchematicsSheetOrientationSegmentedControl?.ebCleanUp ()
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
+    self.mSchematicsStatusImageViewInToolbar?.ebCleanUp ()
     self.mSchematicsTitleTextField?.ebCleanUp ()
     self.mSchematicsVersionTextField?.ebCleanUp ()
     self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()

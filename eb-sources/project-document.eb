@@ -14,6 +14,12 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mBoardPageView ;
   outlet CanariViewWithKeyView mProductPageView ;
 
+//--- Issues
+  outlet EBImageObserverView mSchematicsStatusImageViewInToolbar
+    $image root.mSchematicsStatusImage
+    $tooltip root.mSchematicsStatusMessage
+  ;
+
 //---------------------- Components Tab
   action addComponentAction ;
   outlet EBButton mAddComponentButton $run addComponentAction ;

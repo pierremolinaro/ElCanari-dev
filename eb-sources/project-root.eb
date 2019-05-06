@@ -47,6 +47,18 @@ entity ProjectRoot {
   transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;
   
   transient String connexionErrorString dependsFrom self.mSheets.all.connexionErrors ;
+
+  transient String mSchematicsStatusMessage dependsFrom
+     self.unplacedSymbols,
+     self.mSheets.all.connexionWarnings,
+     self.mSheets.all.connexionErrors
+   ;
+
+  transient NSImage mSchematicsStatusImage dependsFrom
+    self.unplacedSymbols,
+    self.mSheets.all.connexionWarnings,
+    self.mSheets.all.connexionErrors
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
