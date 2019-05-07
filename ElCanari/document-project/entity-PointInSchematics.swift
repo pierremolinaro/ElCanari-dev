@@ -30,6 +30,12 @@ protocol PointInSchematics_location : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematics_netName : class {
+  var netName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematics_isConnected : class {
   var isConnected : Bool? { get }
 }
@@ -55,6 +61,7 @@ class PointInSchematics : SchematicsObject,
          PointInSchematics_mX,
          PointInSchematics_mY,
          PointInSchematics_location,
+         PointInSchematics_netName,
          PointInSchematics_isConnected,
          PointInSchematics_issues,
          PointInSchematics_connectedPoints {
@@ -249,6 +256,29 @@ class PointInSchematics : SchematicsObject,
   }
 
   //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mNC
   //····················································································································
 
@@ -361,6 +391,28 @@ class PointInSchematics : SchematicsObject,
     self.mSymbolPinName_property.addEBObserver (self.location_property)
     self.mSymbol_property.addEBObserverOf_symbolInfo (self.location_property)
     self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.location_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.mNetName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mNet_property.mNetName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PointInSchematics_netName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
   //--- To one property: mNC
     self.mNC_property.owner = self
   //--- Atomic property: isConnected
@@ -475,6 +527,7 @@ class PointInSchematics : SchematicsObject,
     self.mSymbolPinName_property.removeEBObserver (self.location_property)
     self.mSymbol_property.removeEBObserverOf_symbolInfo (self.location_property)
     self.mSymbol_property.removeEBObserverOf_mSymbolInstanceName (self.location_property)
+    self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
     self.mWiresP2s_property.removeEBObserver (self.isConnected_property)
@@ -531,6 +584,14 @@ class PointInSchematics : SchematicsObject,
       view:view,
       observerExplorer:&self.location_property.mObserverExplorer,
       valueExplorer:&self.location_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netName",
+      idx:self.netName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netName_property.mObserverExplorer,
+      valueExplorer:&self.netName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",
@@ -1072,6 +1133,62 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
   }
 
   //····················································································································
+  //   Observers of 'netName' transient property
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
@@ -1312,6 +1429,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
       self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_location_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_netName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
@@ -1323,6 +1441,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
       self.addEBObserversOf_mY_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_location_toElementsOfSet (addedSet)
+      self.addEBObserversOf_netName_toElementsOfSet (addedSet)
       self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
@@ -1433,6 +1552,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet) // Stored property
         self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet) // Stored property
         self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
@@ -1442,6 +1562,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_location_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
@@ -1589,6 +1710,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
           self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
@@ -1609,6 +1731,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
           self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_location_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)

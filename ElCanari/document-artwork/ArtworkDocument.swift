@@ -574,6 +574,55 @@ import Cocoa
     self.minValueForBoardLimitTextField?.ebCleanUp ()
     self.minValueForBoardLimitUnitPopUp?.ebCleanUp ()
     self.resetVersionAndSignatureButton?.ebCleanUp ()
+//    self.mAddGenerationFileButton = nil
+//    self.mCommentTextView = nil
+//    self.mDataPageView = nil
+//    self.mDataTableView = nil
+//    self.mDimensionForPadHoleInPDFTextField = nil
+//    self.mDrawBoardInternalLimitsSwitch = nil
+//    self.mDrawBoardLimitsSwitch = nil
+//    self.mDrawComponentNamesBottomSideSwitch = nil
+//    self.mDrawComponentNamesTopSideSwitch = nil
+//    self.mDrawComponentValuesBottomSideSwitch = nil
+//    self.mDrawComponentValuesTopSideSwitch = nil
+//    self.mDrawPackageLegendBottomSideSwitch = nil
+//    self.mDrawPackageLegendTopSideSwitch = nil
+//    self.mDrawPadHolesInPDFSwitch = nil
+//    self.mDrawPadsBottomSideSwitch = nil
+//    self.mDrawPadsTopSideSwitch = nil
+//    self.mDrawTextsLayoutBottomSideSwitch = nil
+//    self.mDrawTextsLayoutTopSideSwitch = nil
+//    self.mDrawTextsLegendBottomSideSwitch = nil
+//    self.mDrawTextsLegendTopSideSwitch = nil
+//    self.mDrawTracksBottomSidSwitche = nil
+//    self.mDrawTracksTopSideSwitch = nil
+//    self.mDrawViasSwitch = nil
+//    self.mDrillDataFileExtensionTextField = nil
+//    self.mDrillPageView = nil
+//    self.mExtensionTextField = nil
+//    self.mGeneratedFileCountTextField = nil
+//    self.mHorizontalMirrorSwitch = nil
+//    self.mInfosPageView = nil
+//    self.mMasterView = nil
+//    self.mMeasurementUnitForPadHoleInPDFPopUp = nil
+//    self.mMinPPTPTTTWdisplayUnitTextField = nil
+//    self.mMinPPTPTTTWinEBUnitPopUp = nil
+//    self.mMinimaPageView = nil
+//    self.mOARUnitPopUp = nil
+//    self.mOARValueTextField = nil
+//    self.mOtherSignatureTextField = nil
+//    self.mPHDUnitPopUp = nil
+//    self.mPHDValueTextField = nil
+//    self.mPadHoleDefinitionView = nil
+//    self.mRemoveGenerationFileButton = nil
+//    self.mSegmentedControl = nil
+//    self.mSignatureTextField = nil
+//    self.mStatusImageViewInToolbar = nil
+//    self.mVersionField = nil
+//    self.mVersionFieldInToolbar = nil
+//    self.minValueForBoardLimitTextField = nil
+//    self.minValueForBoardLimitUnitPopUp = nil
+//    self.resetVersionAndSignatureButton = nil
   }
 
   //····················································································································

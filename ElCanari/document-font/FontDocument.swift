@@ -628,6 +628,48 @@ import Cocoa
     self.resetVersionAndSignatureButton?.ebCleanUp ()
     self.transparencySlider?.ebCleanUp ()
     self.transparencyTextField?.ebCleanUp ()
+//    self.advancementSlider = nil
+//    self.advancementTextField = nil
+//    self.commentTextView = nil
+//    self.currentCharacterStepper = nil
+//    self.currentCharacterView = nil
+//    self.gerberCodeInstructionCountMessageTextField = nil
+//    self.mAddCharacterButton = nil
+//    self.mAddSegmentButton = nil
+//    self.mCharacterIssuesInspectorView = nil
+//    self.mCurrentCharacterTextField = nil
+//    self.mDeleteCurrentCharacterButton = nil
+//    self.mFontCharacterSelectButton = nil
+//    self.mFontNominalSizeTextField = nil
+//    self.mFontPageView = nil
+//    self.mFontSampleStringView = nil
+//    self.mGerberCodeTableView = nil
+//    self.mInfosPageView = nil
+//    self.mInspectorSegmentedControl = nil
+//    self.mIssueTableView = nil
+//    self.mIssueTextField = nil
+//    self.mMasterFontPageView = nil
+//    self.mMasterView = nil
+//    self.mNewCharacterPanel = nil
+//    self.mNewCharacterView = nil
+//    self.mPageSegmentedControl = nil
+//    self.mSampleStringAscentTextField = nil
+//    self.mSampleStringDescentTextField = nil
+//    self.mSampleStringField = nil
+//    self.mSampleStringInspectorView = nil
+//    self.mSampleStringSizeField = nil
+//    self.mSampleStringWidthTextField = nil
+//    self.mSelectedCharacterInspectorView = nil
+//    self.mShowGerberDrawingFlowCheckbox = nil
+//    self.mShowGerberDrawingIndexesCheckbox = nil
+//    self.mSignatureTextField = nil
+//    self.mStatusImageViewInToolbar = nil
+//    self.mVersionField = nil
+//    self.mWarnsWhenAdvanceIsZeroCheckbox = nil
+//    self.mWarnsWhenNoSegmentCheckbox = nil
+//    self.resetVersionAndSignatureButton = nil
+//    self.transparencySlider = nil
+//    self.transparencyTextField = nil
   }
 
   //····················································································································

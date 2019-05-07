@@ -560,6 +560,53 @@ import Cocoa
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mYPlacardUnitPopUpButton?.ebCleanUp ()
+//    self.mAddBezierButton = nil
+//    self.mAddOvalButton = nil
+//    self.mAddPinButton = nil
+//    self.mAddSegmentButton = nil
+//    self.mAddSolidOvalButton = nil
+//    self.mAddSolidRectButton = nil
+//    self.mAddTextButton = nil
+//    self.mCommentTextView = nil
+//    self.mComposedSymbolScrollView = nil
+//    self.mComposedSymbolView = nil
+//    self.mCrossColorOfSymbolGridColorWell = nil
+//    self.mDeselectIssueButton = nil
+//    self.mGridDisplayFactorPopUpButton = nil
+//    self.mGridStyle = nil
+//    self.mHorizontalFlip = nil
+//    self.mInfosPageView = nil
+//    self.mInspectorSegmentedControl = nil
+//    self.mIssueScrollView = nil
+//    self.mIssueTableView = nil
+//    self.mIssueTextField = nil
+//    self.mLineColorOfSymbolGridColorWell = nil
+//    self.mMasterView = nil
+//    self.mPageSegmentedControl = nil
+//    self.mPinInspectorView = nil
+//    self.mPinNameFontButton = nil
+//    self.mResetVersionButton = nil
+//    self.mSignatureTextField = nil
+//    self.mStatusImageViewInToolbar = nil
+//    self.mSymbolBackgroundColorColorWell = nil
+//    self.mSymbolBaseInspectorView = nil
+//    self.mSymbolColorColorWell = nil
+//    self.mSymbolDrawingWidthMultipliedByTenPopupButton = nil
+//    self.mSymbolIssueInspectorView = nil
+//    self.mSymbolPageView = nil
+//    self.mSymbolPinLabelHorizontalAlignmentPopUpButton = nil
+//    self.mSymbolPinLabelNameTextField = nil
+//    self.mSymbolPinNumberHorizontalAlignmentPopUpButton = nil
+//    self.mSymbolPinNumberIsVisibleInSchematicsSwitch = nil
+//    self.mSymbolRootInspectorView = nil
+//    self.mSymbolTextHorizontalAlignmentPopUpButton = nil
+//    self.mSymbolTextValueTextField = nil
+//    self.mSymbolZoomFlipInspectorView = nil
+//    self.mTextInspectorView = nil
+//    self.mVersionField = nil
+//    self.mVerticalFlip = nil
+//    self.mXPlacardUnitPopUpButton = nil
+//    self.mYPlacardUnitPopUpButton = nil
   }
 
   //····················································································································

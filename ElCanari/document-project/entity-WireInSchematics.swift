@@ -740,6 +740,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         oldValue?.mWiresP2s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP2s)
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
+        oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
@@ -754,6 +755,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         self.mValue?.mWiresP2s_property.addEBObserversFrom (&self.mObserversOf_mWiresP2s)
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
+        self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
         self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
         self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
        //--- Notify observers
@@ -1232,6 +1234,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
     self.mObserversOf_mY.remove (inObserver)
     if let object = self.propval {
       object.mY_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: netName
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.insert (inObserver)
+    if let object = self.propval {
+      object.netName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.remove (inObserver)
+    if let object = self.propval {
+      object.netName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1381,6 +1424,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         oldValue?.mWiresP2s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP2s)
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
+        oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
@@ -1395,6 +1439,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         self.mValue?.mWiresP2s_property.addEBObserversFrom (&self.mObserversOf_mWiresP2s)
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
+        self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
         self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
         self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
        //--- Notify observers
@@ -1873,6 +1918,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
     self.mObserversOf_mY.remove (inObserver)
     if let object = self.propval {
       object.mY_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: netName
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.insert (inObserver)
+    if let object = self.propval {
+      object.netName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.remove (inObserver)
+    if let object = self.propval {
+      object.netName_property.removeEBObserver (inObserver)
     }
   }
 

@@ -1232,6 +1232,75 @@ import Cocoa
     self.mUpdateSelectedSymbolsButton?.ebCleanUp ()
     self.mUpdateSymbolAndPackagesButton?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
+//    self.mAddPackageFromLibraryButton = nil
+//    self.mAddSymbolFromLibraryButton = nil
+//    self.mAddSymbolInstancePullDownButton = nil
+//    self.mAssignedPadProxyTableView = nil
+//    self.mAssignmentPageView = nil
+//    self.mAssignmentSplitView = nil
+//    self.mBindButton = nil
+//    self.mCommentTextView = nil
+//    self.mComposedPackageView = nil
+//    self.mComposedSymbolView = nil
+//    self.mCopyImageButton = nil
+//    self.mDescriptionPageView = nil
+//    self.mDocumentationTableView = nil
+//    self.mEditSelectedPackagesButton = nil
+//    self.mEditSelectedSymbolsButton = nil
+//    self.mExportSelectedPackagesButton = nil
+//    self.mExportSelectedSymbolsButton = nil
+//    self.mInconsistentPackagePadNameSetsMessageScrollView = nil
+//    self.mInconsistentPackagePadNameSetsMessageTextView = nil
+//    self.mInconsistentPadNameSetTextField = nil
+//    self.mInconsistentSymbolNameMessageScrollView = nil
+//    self.mInconsistentSymbolNameMessageTextView = nil
+//    self.mInfosPageView = nil
+//    self.mIssueTextView = nil
+//    self.mLibraryPageView = nil
+//    self.mMasterView = nil
+//    self.mNCButton = nil
+//    self.mPackageBackPadsColorWell = nil
+//    self.mPackageDisplayHorizontalFlipSwitch = nil
+//    self.mPackageDisplayVerticalFlipSwitch = nil
+//    self.mPackageFrontPadsColorWell = nil
+//    self.mPackageNumbersColorWell = nil
+//    self.mPackagePageView = nil
+//    self.mPackageTableView = nil
+//    self.mPackagesColorWell = nil
+//    self.mPageSegmentedControl = nil
+//    self.mPasteImageButton = nil
+//    self.mPrefixTextField = nil
+//    self.mRemoveImageButton = nil
+//    self.mRemoveSelectedDocButton = nil
+//    self.mRepresentationImageView = nil
+//    self.mResetSelectedPackageVersionButton = nil
+//    self.mResetSelectedSymbolVersionButton = nil
+//    self.mResetSymbolAndPackagesVersionButton = nil
+//    self.mResetVersionButton = nil
+//    self.mSaveDocButton = nil
+//    self.mShowDocButton = nil
+//    self.mShowPackageBackPadsSwitch = nil
+//    self.mShowPackageFrontPadsSwitch = nil
+//    self.mShowPackagePadNumbersSwitch = nil
+//    self.mShowPackagesSwitch = nil
+//    self.mSignatureTextField = nil
+//    self.mStatusImageViewInToolbar = nil
+//    self.mSymbolDisplayHorizontalFlipSwitch = nil
+//    self.mSymbolDisplayVerticalFlipSwitch = nil
+//    self.mSymbolErrorMessageTitleTextField = nil
+//    self.mSymbolNameTextField = nil
+//    self.mSymbolPageView = nil
+//    self.mSymbolTableView = nil
+//    self.mSymbolTypeTextField = nil
+//    self.mTitleTextField = nil
+//    self.mUnbindAllButton = nil
+//    self.mUnbindButton = nil
+//    self.mUnconnectedPadsInDeviceTableView = nil
+//    self.mUnconnectedSymbolPinsInDeviceTableView = nil
+//    self.mUpdateSelectedPackagesButton = nil
+//    self.mUpdateSelectedSymbolsButton = nil
+//    self.mUpdateSymbolAndPackagesButton = nil
+//    self.mVersionField = nil
   }
 
   //····················································································································

@@ -431,6 +431,8 @@ graphic entity PointInSchematics : SchematicsObject {
     self.mX, self.mY, self.mSymbolPinName,
     self.mSymbol.one.symbolInfo, self.mSymbol.one.mSymbolInstanceName ;
 
+  transient String netName dependsFrom self.mNet.one.mNetName ;
+
   transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
 
   override transient CanariIssueArray issues dependsFrom self.location, self.isConnected ;
@@ -465,11 +467,10 @@ graphic entity NCInSchematics : SchematicsObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity WireInSchematics : SchematicsObject {
-  toOne PointInSchematics mP1 inverse toMany mWiresP1s ;
-  toOne PointInSchematics mP2 inverse toMany mWiresP2s ;
- 
 //  toOne NetInProject mNet inverse toMany mWires ;
-  
+
+  toOne PointInSchematics mP1 inverse toMany mWiresP1s ;
+  toOne PointInSchematics mP2 inverse toMany mWiresP2s ;  
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -477,12 +478,30 @@ graphic entity WireInSchematics : SchematicsObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity LabelInSchematics : SchematicsObject {
+//  toOne NetInProject mNet inverse toMany mWires ;
   toOne PointInSchematics mPoint inverse toMany mLabels ;
 
   property QuadrantRotation mOrientation default rotation0 ;
  
-//  toOne NetInProject mNet inverse toMany mWires ;
-  
+  transient CanariPoint location dependsFrom self.mPoint.one.location ;
+
+  override transient EBShape objectDisplay dependsFrom
+    prefs.symbolColorForSchematic,
+    prefs.symbolDrawingWidthMultipliedByTen,
+    self.mPoint.one.location,
+    self.netName,
+    prefs.pinNameFont,
+    self.mOrientation
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mPoint.one.location,
+    self.netName,
+    prefs.pinNameFont,
+    self.mOrientation
+  ;
+
+  transient String netName dependsFrom self.mPoint.one.netName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

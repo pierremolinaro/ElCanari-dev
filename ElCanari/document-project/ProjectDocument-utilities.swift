@@ -25,6 +25,10 @@ let CONNECTED_POINT_DIAMETER = milsToCocoaUnit (75.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let SCHEMATICS_LABEL_SIZE : CGFloat = 3.6
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct SymbolInProjectIdentifier : Hashable {
   let symbolInstanceName : String
   let symbolTypeName : String

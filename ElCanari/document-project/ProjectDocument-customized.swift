@@ -204,7 +204,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
   //····················································································································
 
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (50))
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
     let comment = CommentInSchematics (self.ebUndoManager)
     comment.mX = p.x
     comment.mY = p.y

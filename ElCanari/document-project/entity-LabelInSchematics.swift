@@ -11,11 +11,39 @@ protocol LabelInSchematics_mOrientation : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol LabelInSchematics_location : class {
+  var location : CanariPoint? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol LabelInSchematics_netName : class {
+  var netName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol LabelInSchematics_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol LabelInSchematics_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: LabelInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class LabelInSchematics : SchematicsObject,
-         LabelInSchematics_mOrientation {
+         LabelInSchematics_mOrientation,
+         LabelInSchematics_location,
+         LabelInSchematics_netName,
+         LabelInSchematics_objectDisplay,
+         LabelInSchematics_selectionDisplay {
 
   //····················································································································
   //   Atomic property: mOrientation
@@ -64,6 +92,52 @@ class LabelInSchematics : SchematicsObject,
   }
 
   //····················································································································
+  //   Transient property: location
+  //····················································································································
+
+  let location_property = EBTransientProperty_CanariPoint ()
+
+  //····················································································································
+
+  var location_property_selection : EBSelection <CanariPoint> {
+    return self.location_property.prop
+  }
+
+  //····················································································································
+
+  var location : CanariPoint? {
+    switch self.location_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -73,6 +147,110 @@ class LabelInSchematics : SchematicsObject,
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint
     self.mPoint_property.owner = self
+  //--- Atomic property: location
+    self.location_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoint_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_LabelInSchematics_location (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.location_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoint_property.netName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoint_property.netName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_LabelInSchematics_netName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_netName (self.netName_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.symbolColorForSchematic_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.symbolColorForSchematic_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_LabelInSchematics_objectDisplay (v0, v1, v2, v3, v4, v5))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.netName_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_LabelInSchematics_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -82,6 +260,18 @@ class LabelInSchematics : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mPoint_property.removeEBObserverOf_location (self.location_property)
+    self.mPoint_property.removeEBObserverOf_netName (self.netName_property)
+    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.netName_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -105,6 +295,38 @@ class LabelInSchematics : SchematicsObject,
       valueExplorer:&self.mOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "location",
+      idx:self.location_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.location_property.mObserverExplorer,
+      valueExplorer:&self.location_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netName",
+      idx:self.netName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netName_property.mObserverExplorer,
+      valueExplorer:&self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
@@ -283,6 +505,230 @@ class ReadOnlyArrayOf_LabelInSchematics : ReadOnlyAbstractArrayProperty <LabelIn
   }
 
   //····················································································································
+  //   Observers of 'location' transient property
+  //····················································································································
+
+  private var mObserversOf_location = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_location.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.location_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_location.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.location_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netName' transient property
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -352,11 +798,19 @@ class TransientArrayOf_LabelInSchematics : ReadOnlyArrayOf_LabelInSchematics {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_location_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_netName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mOrientation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_location_toElementsOfSet (addedSet)
+      self.addEBObserversOf_netName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -461,9 +915,17 @@ final class ProxyArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics 
       //--- Add observers from removed objects
         let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
         self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mOrientation_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_location_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
   }
@@ -603,6 +1065,10 @@ final class StoredArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -615,6 +1081,10 @@ final class StoredArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics
         //--- Add observers of stored properties
           self.addEBObserversOf_mOrientation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_location_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()
@@ -799,6 +1269,7 @@ final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
         oldValue?.mWiresP2s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP2s)
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
+        oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
         oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
@@ -813,6 +1284,7 @@ final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
         self.mValue?.mWiresP2s_property.addEBObserversFrom (&self.mObserversOf_mWiresP2s)
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
+        self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
         self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
         self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
        //--- Notify observers
@@ -1291,6 +1763,47 @@ final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
     self.mObserversOf_mY.remove (inObserver)
     if let object = self.propval {
       object.mY_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: netName
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.insert (inObserver)
+    if let object = self.propval {
+      object.netName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.mObserversOf_netName.remove (inObserver)
+    if let object = self.propval {
+      object.netName_property.removeEBObserver (inObserver)
     }
   }
 

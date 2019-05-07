@@ -31,6 +31,30 @@ extension CustomizedProjectDocument {
          }
        }
      }
+  //--- Add Labels
+     if menu.numberOfItems > 0 {
+       menu.addItem (.separator ())
+     }
+     var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+     menuItem.target = self
+     menuItem.tag = 0 // Right
+     menuItem.representedObject = inMouseDownPoint
+     menu.addItem (menuItem)
+     menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+     menuItem.target = self
+     menuItem.tag = 1 // Top
+     menuItem.representedObject = inMouseDownPoint
+     menu.addItem (menuItem)
+     menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+     menuItem.target = self
+     menuItem.tag = 2 // Left
+     menuItem.representedObject = inMouseDownPoint
+     menu.addItem (menuItem)
+     menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+     menuItem.target = self
+     menuItem.tag = 3 // Bottom
+     menuItem.representedObject = inMouseDownPoint
+     menu.addItem (menuItem)
   //---
     return menu
   }
@@ -44,6 +68,40 @@ extension CustomizedProjectDocument {
       nc.mOrientation = self.findPreferredNCOrientation (for: point)
       self.rootObject.mSelectedSheet?.mObjects.append (nc)
       self.mSchematicsObjectsController.setSelection ([nc])
+    }
+  }
+
+  //····················································································································
+
+  @objc internal func addLabelInSchematics (_ inSender : NSMenuItem) {
+    if let mouseLocation = inSender.representedObject as? CanariPoint {
+      let canariMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+      let points = self.pointInSchematics (at: canariMouseDownLocation)
+      var possiblePoint : PointInSchematics? = nil
+      if points.count == 1 {
+        possiblePoint = points [0]
+      }else if points.count == 0 {
+        let point = PointInSchematics (self.ebUndoManager)
+        point.mX = canariMouseDownLocation.x
+        point.mY = canariMouseDownLocation.y
+        self.rootObject.mSelectedSheet?.mObjects.append (point)
+        possiblePoint = point
+      }
+      if let point = possiblePoint {
+        let label = LabelInSchematics (self.ebUndoManager)
+        label.mPoint = point
+        if inSender.tag == 0 {
+          label.mOrientation = .rotation90
+        }else if inSender.tag == 1 {
+          label.mOrientation = .rotation180
+        }else if inSender.tag == 2 {
+          label.mOrientation = .rotation270
+        }else{
+          label.mOrientation = .rotation0
+        }
+        self.rootObject.mSelectedSheet?.mObjects.append (label)
+        self.mSchematicsObjectsController.setSelection ([label])
+      }
     }
   }
 
@@ -86,6 +144,18 @@ extension CustomizedProjectDocument {
     }else{
       return .rotation0
     }
+  }
+
+  //····················································································································
+
+  internal func pointInSchematics (at inPoint : CanariPoint) -> [PointInSchematics] {
+     var result = [PointInSchematics] ()
+     for object in self.rootObject.mSelectedSheet?.mObjects ?? [] {
+       if let point = object as? PointInSchematics, let location = point.location, inPoint == location {
+         result.append (point)
+       }
+     }
+     return result
   }
 
   //····················································································································

@@ -24,9 +24,10 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   override func ebCleanUp () {
     super.ebCleanUp ()
-    self.mMasterView = nil
+    self.mPageViews.removeAll ()
+    // self.mAttachedView?.removeFromSuperview ()
     self.mAttachedView = nil
-    self.mPageViews = []
+    self.mMasterView = nil
   }
 
   //····················································································································
@@ -58,6 +59,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   override var selectedSegment : Int {
     didSet {
       if self.selectedSegment != oldValue {
+        // NSLog ("self.selectedSegment \(self.selectedSegment), oldValue \(oldValue)")
         self.selectViewFromSelectedSegmentIndex ()
       }
     }
@@ -78,6 +80,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //····················································································································
 
   func selectViewFromSelectedSegmentIndex () {
+    // NSLog ("selectViewFromSelectedSegmentIndex")
     if let masterView = self.mMasterView {
     //--- View to attach
       var possibleViewToAttach : CanariViewWithKeyView? = nil
@@ -123,8 +126,8 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_selectedPage (_ object:EBReadWriteProperty_Int, file:String, line:Int) {
-    self.mController = Controller_CanariSegmentedControl_selectedPage (object:object, outlet:self)
+  func bind_selectedPage (_ object : EBReadWriteProperty_Int, file : String, line : Int) {
+    self.mController = Controller_CanariSegmentedControl_selectedPage (object: object, outlet: self)
   }
 
   //····················································································································
@@ -152,7 +155,7 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], callBack: { outlet.updateSelectedSegment (object) })
+    super.init (observedObjects: [object], callBack: { outlet.updateSelectedSegment (object) })
   }
 
   //····················································································································
