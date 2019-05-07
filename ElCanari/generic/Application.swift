@@ -61,16 +61,30 @@ class EBEvent : EBObject {
 
   //····················································································································
 
+//  private var mInternalDocumentArray = [EBManagedDocument] ()
+
+  //····················································································································
+
   override func sendEvent (_ event: NSEvent) {
     super.sendEvent (event)
     flushModelEvents ()
     flushOutletEvents ()
-    let documents = NSDocumentController.shared.documents
-    for doc in documents {
+    for doc in NSDocumentController.shared.documents {
       if let document = doc as? EBManagedDocument {
         document.updateReachableEntitiesPopUpButton ()
+//        if self.mInternalDocumentArray.firstIndex (of: document) == nil {
+//          self.mInternalDocumentArray.append (document)
+//        }
       }
     }
+//    var idx = 0
+//    NSLog ("docs: \(self.mInternalDocumentArray.count)")
+//    while idx < self.mInternalDocumentArray.count {
+//      if isKnownUniquelyReferenced (&self.mInternalDocumentArray [idx]) {
+//        Swift.print ("Unique")
+//      }
+//      idx += 1
+//    }
   }
 
   //····················································································································

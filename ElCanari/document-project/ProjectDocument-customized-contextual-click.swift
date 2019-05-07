@@ -41,7 +41,7 @@ extension CustomizedProjectDocument {
     if let point = inSender.representedObject as? PointInSchematics {
       let nc = NCInSchematics (self.ebUndoManager)
       nc.mPoint = point
-      nc.mRotation = self.findPreferredNCOrientation (for: point)
+      nc.mOrientation = self.findPreferredNCOrientation (for: point)
       self.rootObject.mSelectedSheet?.mObjects.append (nc)
       self.mSchematicsObjectsController.setSelection ([nc])
     }

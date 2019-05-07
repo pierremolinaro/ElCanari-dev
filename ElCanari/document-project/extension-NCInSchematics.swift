@@ -19,15 +19,15 @@ extension NCInSchematics {
   //····················································································································
 
   override func rotate90Clockwise () {
-    switch self.mRotation {
+    switch self.mOrientation {
     case .rotation0 :
-      self.mRotation = .rotation270
+      self.mOrientation = .rotation270
     case .rotation90 :
-      self.mRotation = .rotation0
+      self.mOrientation = .rotation0
     case .rotation180 :
-      self.mRotation = .rotation90
+      self.mOrientation = .rotation90
     case .rotation270 :
-      self.mRotation = .rotation180
+      self.mOrientation = .rotation180
     }
   }
 
@@ -42,15 +42,15 @@ extension NCInSchematics {
   //····················································································································
 
   override func rotate90CounterClockwise () {
-    switch self.mRotation {
+    switch self.mOrientation {
     case .rotation0 :
-      self.mRotation = .rotation90
+      self.mOrientation = .rotation90
     case .rotation90 :
-      self.mRotation = .rotation180
+      self.mOrientation = .rotation180
     case .rotation180 :
-      self.mRotation = .rotation270
+      self.mOrientation = .rotation270
     case .rotation270 :
-      self.mRotation = .rotation0
+      self.mOrientation = .rotation0
     }
   }
 

@@ -829,6 +829,8 @@
 		CF69ABD721A6D91B00F5E49A /* extension-SymbolPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABD521A6D91B00F5E49A /* extension-SymbolPin.swift */; };
 		CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */; };
 		CF6A96FA1BF1FB3D00CE1911 /* EBSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6A96F91BF1FB3D00CE1911 /* EBSlider.swift */; };
+		CF6AC32B22817F3D007A8D69 /* entity-LabelInSchematics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6AC32A22817F3D007A8D69 /* entity-LabelInSchematics.swift */; };
+		CF6AC32C22817F3D007A8D69 /* entity-LabelInSchematics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6AC32A22817F3D007A8D69 /* entity-LabelInSchematics.swift */; };
 		CF6B32E221C8F75000E3B985 /* entity-PackageGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B32DE21C8F75000E3B985 /* entity-PackageGuide.swift */; };
 		CF6B32E321C8F75000E3B985 /* entity-PackageGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B32DE21C8F75000E3B985 /* entity-PackageGuide.swift */; };
 		CF6B32E421C8F75000E3B985 /* transient-PackageGuide-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B32DF21C8F75000E3B985 /* transient-PackageGuide-objectDisplay.swift */; };
@@ -1986,6 +1988,7 @@
 		CF69ABD521A6D91B00F5E49A /* extension-SymbolPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SymbolPin.swift"; sourceTree = "<group>"; };
 		CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSegmentedControl.swift; sourceTree = "<group>"; };
 		CF6A96F91BF1FB3D00CE1911 /* EBSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBSlider.swift; sourceTree = "<group>"; };
+		CF6AC32A22817F3D007A8D69 /* entity-LabelInSchematics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-LabelInSchematics.swift"; sourceTree = "<group>"; };
 		CF6B32DE21C8F75000E3B985 /* entity-PackageGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PackageGuide.swift"; sourceTree = "<group>"; };
 		CF6B32DF21C8F75000E3B985 /* transient-PackageGuide-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageGuide-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF6B32E021C8F75000E3B985 /* transient-PackageGuide-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageGuide-issues.swift"; sourceTree = "<group>"; };
@@ -2677,6 +2680,7 @@
 				CF64AFAD225B83FC00E40C83 /* entity-DeviceSymbolInstanceInProject.swift */,
 				CF64AFAE225B83FC00E40C83 /* entity-DeviceSymbolTypeInProject.swift */,
 				CFD733812258B784009B2614 /* entity-FontInProject.swift */,
+				CF6AC32A22817F3D007A8D69 /* entity-LabelInSchematics.swift */,
 				CFA15BC2227EDCE300E6B0D9 /* entity-NCInSchematics.swift */,
 				CF1356F622722C15005FD84C /* entity-NetClassInProject.swift */,
 				CF682264227327F500FBA679 /* entity-NetInProject.swift */,
@@ -3876,6 +3880,7 @@
 				CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CF001F6A21F8AAE10091518E /* func-sha1.swift in Sources */,
 				CF3086531B4008F5005D3BCE /* EBTableView.swift in Sources */,
+				CF6AC32B22817F3D007A8D69 /* entity-LabelInSchematics.swift in Sources */,
 				CF12885C20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift in Sources */,
 				CF3EA65D21C29D300059392B /* EBScrollView-placards.swift in Sources */,
 				CFBAFCE51DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */,
@@ -4988,6 +4993,7 @@
 				CF7AA01721BDB72900AC0FC7 /* extension-UInt32.swift in Sources */,
 				CF3D745121A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */,
 				CF00845221C42A91003627E9 /* transient-PackageOval-issues.swift in Sources */,
+				CF6AC32C22817F3D007A8D69 /* entity-LabelInSchematics.swift in Sources */,
 				CF8A0A912231A94300A17B92 /* view-AddSymbolInstancePullDownButton.swift in Sources */,
 				CF5C4D45219F04D600EAC52A /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */,
 				CF5C4D47219F04D600EAC52A /* library-utilities.swift in Sources */,

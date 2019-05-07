@@ -35,25 +35,6 @@ class NetInProject : EBManagedObject,
   var mNetName_property_selection : EBSelection <String> { return self.mNetName_property.prop }
 
   //····················································································································
-  //   To many property: mWires
-  //····················································································································
-
-  let mWires_property = StoredArrayOf_WireInSchematics ()
-
-  //····················································································································
-
-  var mWires_property_selection : EBSelection < [WireInSchematics] > {
-    return self.mWires_property.prop
-  }
-
-  //····················································································································
-
-  var mWires : [WireInSchematics] {
-    get { return self.mWires_property.propval }
-    set { self.mWires_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mPoints
   //····················································································································
 
@@ -109,11 +90,6 @@ class NetInProject : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mNetName
     self.mNetName_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mWires (has opposite relationship)
-    self.mWires_property.ebUndoManager = self.ebUndoManager
-    self.mWires_property.setOppositeRelationship = { [weak self] (_ inManagedObject :WireInSchematics?) in
-      inManagedObject?.mNet_property.setProp (self)
-    }
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PointInSchematics?) in
@@ -122,14 +98,6 @@ class NetInProject : EBManagedObject,
   //--- To one property: mNetClass
     self.mNetClass_property.owner = self
   //--- Install undoers and opposite setter for relationships
-    self.mWires_property.setOppositeRelationship = { [weak self] (_ inManagedObject : WireInSchematics) in
-      if let me = self {
-        inManagedObject.mNet_property.setProp (me)
-      }
-    }
-    self.mWires_property.resetOppositeRelationship = { (_ inManagedObject : WireInSchematics) in
-      inManagedObject.mNet_property.setProp (nil)
-    }
     self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
       if let me = self {
         inManagedObject.mNet_property.setProp (me)
@@ -146,7 +114,6 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
- //   self.mWires_property.setOppositeRelationship = nil
  //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -173,13 +140,6 @@ class NetInProject : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
-      "mWires",
-      idx:mWires_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mWires_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
       "mPoints",
       idx:mPoints_property.ebObjectIndex,
       y: &y,
@@ -205,8 +165,6 @@ class NetInProject : EBManagedObject,
   //--- Atomic property: mNetName
     self.mNetName_property.mObserverExplorer = nil
     self.mNetName_property.mValueExplorer = nil
-  //--- To many property: mWires
-    self.mWires_property.mValueExplorer = nil
   //--- To many property: mPoints
     self.mPoints_property.mValueExplorer = nil
   //--- To one property: mNetClass
@@ -221,7 +179,6 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mWires_property.setProp ([])
     self.mPoints_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -245,12 +202,6 @@ class NetInProject : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mNetName
     self.mNetName_property.storeIn (dictionary: ioDictionary, forKey:"mNetName")
-  //--- To many property: mWires
-    self.store (
-      managedObjectArray: self.mWires_property.propval,
-      relationshipName: "mWires",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval,
@@ -266,12 +217,6 @@ class NetInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mWires
-    self.mWires_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mWires",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematics])
   //--- To many property: mPoints
     self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
@@ -307,10 +252,6 @@ class NetInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mWires
-    for managedObject in self.mWires_property.propval {
-      objects.append (managedObject)
-    }
   //--- To many property: mPoints
     for managedObject in self.mPoints_property.propval {
       objects.append (managedObject)
@@ -327,10 +268,6 @@ class NetInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mWires
-    for managedObject in self.mWires_property.propval {
-      objects.append (managedObject)
-    }
   //--- To many property: mPoints
     for managedObject in self.mPoints_property.propval {
       objects.append (managedObject)

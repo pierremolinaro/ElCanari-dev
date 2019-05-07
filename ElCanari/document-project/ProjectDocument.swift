@@ -864,7 +864,7 @@ import Cocoa
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
-    self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicsSelectionController.mRotation_property, file: #file, line: #line)
+    self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicsSelectionController.mOrientation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicsSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
     self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)

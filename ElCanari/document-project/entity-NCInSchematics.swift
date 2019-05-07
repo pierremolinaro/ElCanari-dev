@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NCInSchematics_mRotation : class {
-  var mRotation : QuadrantRotation { get }
+protocol NCInSchematics_mOrientation : class {
+  var mOrientation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -27,26 +27,26 @@ protocol NCInSchematics_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class NCInSchematics : SchematicsObject,
-         NCInSchematics_mRotation,
+         NCInSchematics_mOrientation,
          NCInSchematics_objectDisplay,
          NCInSchematics_selectionDisplay {
 
   //····················································································································
-  //   Atomic property: mRotation
+  //   Atomic property: mOrientation
   //····················································································································
 
-  let mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
+  let mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
-  var mRotation : QuadrantRotation {
-    get { return self.mRotation_property.propval }
-    set { self.mRotation_property.setProp (newValue) }
+  var mOrientation : QuadrantRotation {
+    get { return self.mOrientation_property.propval }
+    set { self.mOrientation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
+  var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.prop }
 
   //····················································································································
   //   To one property: mPoint
@@ -83,15 +83,15 @@ class NCInSchematics : SchematicsObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mRotation
-    self.mRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint
     self.mPoint_property.owner = self
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -99,7 +99,7 @@ class NCInSchematics : SchematicsObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_NCInSchematics_objectDisplay (v0, v1, v2))
           default :
@@ -111,13 +111,13 @@ class NCInSchematics : SchematicsObject,
       }
     }
     self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mRotation_property.addEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPoint_property.location_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -125,7 +125,7 @@ class NCInSchematics : SchematicsObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mRotation_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_NCInSchematics_selectionDisplay (v0, v1, v2))
           default :
@@ -137,7 +137,7 @@ class NCInSchematics : SchematicsObject,
       }
     }
     self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mRotation_property.addEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
@@ -149,10 +149,10 @@ class NCInSchematics : SchematicsObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
-    self.mRotation_property.removeEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.mRotation_property.removeEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
@@ -169,12 +169,12 @@ class NCInSchematics : SchematicsObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mRotation",
-      idx:self.mRotation_property.ebObjectIndex,
+      "mOrientation",
+      idx:self.mOrientation_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mRotation_property.mObserverExplorer,
-      valueExplorer:&self.mRotation_property.mValueExplorer
+      observerExplorer:&self.mOrientation_property.mObserverExplorer,
+      valueExplorer:&self.mOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -210,9 +210,9 @@ class NCInSchematics : SchematicsObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mRotation
-    self.mRotation_property.mObserverExplorer = nil
-    self.mRotation_property.mValueExplorer = nil
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.mObserverExplorer = nil
+    self.mOrientation_property.mValueExplorer = nil
   //--- To one property: mPoint
     self.mPoint_property.mObserverExplorer = nil
     self.mPoint_property.mValueExplorer = nil
@@ -245,8 +245,8 @@ class NCInSchematics : SchematicsObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mRotation
-    self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mOrientation")
   //--- To one property: mPoint // Opposite is toOne mNC
     self.store (managedObject:self.mPoint_property.propval,
       relationshipName: "mPoint",
@@ -279,8 +279,8 @@ class NCInSchematics : SchematicsObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mRotation
-    self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.readFrom (dictionary: inDictionary, forKey:"mOrientation")
   }
 
   //····················································································································
@@ -318,58 +318,58 @@ class NCInSchematics : SchematicsObject,
 class ReadOnlyArrayOf_NCInSchematics : ReadOnlyAbstractArrayProperty <NCInSchematics> {
 
   //····················································································································
-  //   Observers of 'mRotation' stored property
+  //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mRotation.insert (inObserver)
+    self.mObserversOf_mOrientation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRotation_property.addEBObserver (inObserver)
+        managedObject.mOrientation_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mRotation.remove (inObserver)
+    self.mObserversOf_mOrientation.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mRotation_property.removeEBObserver (inObserver)
+        managedObject.mOrientation_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : Set<NCInSchematics>) {
+  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<NCInSchematics>) {
     for managedObject in inSet {
-      self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
-        managedObject.mRotation_property.addEBObserver (observer)
+      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+        managedObject.mOrientation_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : Set<NCInSchematics>) {
-    self.mObserversOf_mRotation.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<NCInSchematics>) {
+    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mRotation_property.removeEBObserver (observer)
+        managedObject.mOrientation_property.removeEBObserver (observer)
       }
     }
   }
@@ -554,14 +554,14 @@ class TransientArrayOf_NCInSchematics : ReadOnlyArrayOf_NCInSchematics {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mRotation_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mRotation_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mOrientation_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
@@ -668,12 +668,12 @@ final class ProxyArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics {
       if self.mCurrentObjectSet != oldValue {
       //--- Add observers from removed objects
         let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedObjectSet) // Stored property
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_mOrientation_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
       }
@@ -810,10 +810,10 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.resetOppositeRelationship? (managedObject)
-            managedObject.mRotation_property.mSetterDelegate = nil
+            managedObject.mOrientation_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
-          self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mOrientation_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -824,10 +824,10 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
           for managedObject : NCInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties
-          self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mOrientation_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
@@ -1009,6 +1009,7 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
         oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
+        oldValue?.mLabels_property.removeEBObserversFrom (&self.mObserversOf_mLabels)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         oldValue?.mWiresP1s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP1s)
         oldValue?.mWiresP2s_property.removeEBObserversFrom (&self.mObserversOf_mWiresP2s)
@@ -1022,6 +1023,7 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
         self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
+        self.mValue?.mLabels_property.addEBObserversFrom (&self.mObserversOf_mLabels)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
         self.mValue?.mWiresP1s_property.addEBObserversFrom (&self.mObserversOf_mWiresP1s)
         self.mValue?.mWiresP2s_property.addEBObserversFrom (&self.mObserversOf_mWiresP2s)
@@ -1259,6 +1261,47 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
     self.mObserversOf_location.remove (inObserver)
     if let object = self.propval {
       object.location_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mLabels
+  //····················································································································
+
+  private var mObserversOf_mLabels = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mLabels_property_selection : EBSelection <[LabelInSchematics]> {
+    if let model = self.propval {
+      switch (model.mLabels_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mLabels (_ inObserver : EBEvent) {
+    self.mObserversOf_mLabels.insert (inObserver)
+    if let object = self.propval {
+      object.mLabels_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLabels (_ inObserver : EBEvent) {
+    self.mObserversOf_mLabels.remove (inObserver)
+    if let object = self.propval {
+      object.mLabels_property.removeEBObserver (inObserver)
     }
   }
 

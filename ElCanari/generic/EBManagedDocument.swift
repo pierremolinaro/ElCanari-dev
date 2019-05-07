@@ -405,7 +405,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
   //---
     super.removeWindowController (inWindowController)
-  //--- Horrible ack: run a method 5s in future in main thread, for preventing the document to deallocated in background thread
+  //--- Horrible hack: run a method 5s in future in main thread, for preventing the document to deallocated in background thread
     let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 5 * 1_000_000_000)
     DispatchQueue.main.asyncAfter (deadline: deadline) { self.nop () }
   }

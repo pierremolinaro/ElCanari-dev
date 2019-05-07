@@ -11,13 +11,13 @@ import Cocoa
 final class SelectionController_ProjectDocument_ncInSchematicsSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: mRotation
+  //   Selection observable property: mOrientation
   //····················································································································
 
-  let mRotation_property = EBPropertyProxy_QuadrantRotation ()
+  let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
 
-  var mRotation_property_selection : EBSelection <QuadrantRotation> {
-    return self.mRotation_property.prop
+  var mOrientation_property_selection : EBSelection <QuadrantRotation> {
+    return self.mOrientation_property.prop
   }
 
   //····················································································································
@@ -72,7 +72,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
       }
     }
     model.addEBObserver (self.mActualModel)
-    self.bind_property_mRotation (model: self.mActualModel)
+    self.bind_property_mOrientation (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
   }
@@ -84,11 +84,11 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
-  //--- mRotation
-    self.mRotation_property.mReadModelFunction = nil 
-    self.mRotation_property.mWriteModelFunction = nil 
-    self.mRotation_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mRotation (self.mRotation_property)
+  //--- mOrientation
+    self.mOrientation_property.mReadModelFunction = nil 
+    self.mOrientation_property.mWriteModelFunction = nil 
+    self.mOrientation_property.mValidateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_mOrientation (self.mOrientation_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -136,12 +136,12 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "mRotation",
-      idx:self.mRotation_property.ebObjectIndex,
+      "mOrientation",
+      idx:self.mOrientation_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mRotation_property.mObserverExplorer,
-      valueExplorer:&self.mRotation_property.mValueExplorer
+      observerExplorer:&self.mOrientation_property.mObserverExplorer,
+      valueExplorer:&self.mOrientation_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -197,9 +197,9 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
 
   //····················································································································
 
-  private final func bind_property_mRotation (model : TransientArrayOf_NCInSchematics) {
-    model.addEBObserverOf_mRotation (self.mRotation_property)
-    self.mRotation_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mOrientation (model : TransientArrayOf_NCInSchematics) {
+    model.addEBObserverOf_mOrientation (self.mOrientation_property)
+    self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -210,7 +210,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mRotation_property_selection {
+            switch object.mOrientation_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -233,26 +233,26 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
         return .empty
       }
     }
-    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
+    self.mOrientation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mRotation_property.setProp (inValue)
+            object.mOrientation_property.setProp (inValue)
           }
         }
       }
     }
-    self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
+    self.mOrientation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.mOrientation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

@@ -269,7 +269,7 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet CanariQuadrantSegmentedControl mNCRotationSegmentedControl
-     $quadrant #ncInSchematicsSelectionController.mRotation ;
+     $quadrant #ncInSchematicsSelectionController.mOrientation ;
 
 //--- Selected comment in schematic inspector
   outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
