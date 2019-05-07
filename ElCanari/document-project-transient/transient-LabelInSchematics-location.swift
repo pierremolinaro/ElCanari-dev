@@ -15,7 +15,7 @@ func transient_LabelInSchematics_location (
        _ self_mPoint_location : CanariPoint?
 ) -> CanariPoint {
 //--- START OF USER ZONE 2
-
+        return self_mPoint_location!
 //--- END OF USER ZONE 2
 }
 

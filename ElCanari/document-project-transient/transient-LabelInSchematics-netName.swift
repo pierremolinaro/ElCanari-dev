@@ -15,7 +15,7 @@ func transient_LabelInSchematics_netName (
        _ self_mPoint_netName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return self_mPoint_netName ?? "--"
 //--- END OF USER ZONE 2
 }
 
