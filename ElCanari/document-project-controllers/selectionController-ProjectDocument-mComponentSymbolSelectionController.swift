@@ -181,11 +181,17 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [ComponentSymbolInProject] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SchematicsObject? = nil
-   private var mActualModel = TransientArrayOf_ComponentSymbolInProject ()
+   private let mActualModel = TransientArrayOf_ComponentSymbolInProject ()
 
   //····················································································································
 

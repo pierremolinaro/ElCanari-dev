@@ -62,42 +62,60 @@ extension CustomizedProjectDocument {
       if idx >= 0 {
         let netInfo = netInfoTableView.object (at: idx)
         let netName = netInfo.netName
-        self.dialogFroRenamingNet (named: netName)
+        self.dialogForRenamingNet (named: netName)
       }
     }
+  }
+
+  //····················································································································
+
+  @IBAction func renameNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
+     let selectedLabels = self.mSchematicsLabelSelectionController.selectedArray
+     if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
+       self.dialogForRenaming (net: net)
+     }
   }
 
   //····················································································································
   //  Rename net dialog
   //····················································································································
 
-  internal func dialogFroRenamingNet (named inNetName : String) {
+  internal func dialogForRenamingNet (named inNetName : String) {
 //    NSLog ("inNetName \(inNetName)")
   //--- Find net from its name
-    self.mPossibleNetForRenamingOperation = nil
+    var possibleNetForRenamingOperation : NetInProject? = nil
     for netClass in self.rootObject.mNetClasses {
       for net in netClass.mNets {
         if net.mNetName == inNetName {
-          self.mPossibleNetForRenamingOperation = net
+          possibleNetForRenamingOperation = net
         }
       }
     }
   //--- Edit net
-    if let net = self.mPossibleNetForRenamingOperation, let window = self.windowForSheet, let panel = self.mRenameNetPanel {
-      self.mRenameNetTextField?.stringValue = net.mNetName
+    if let net = possibleNetForRenamingOperation {
+      self.dialogForRenaming (net: net)
+    }
+  }
+
+  //····················································································································
+
+  internal func dialogForRenaming (net inNet : NetInProject) {
+    if let window = self.windowForSheet, let panel = self.mRenameNetPanel {
+      self.mRenameNetTextField?.stringValue = inNet.mNetName
       self.mRenameNetErrorTextField?.stringValue = ""
     //---
+      self.mRenameNetTextField?.mUserInfo = inNet
       self.mRenameNetTextField?.target = self
       self.mRenameNetTextField?.action = #selector (CustomizedProjectDocument.newNameDidChange (_:))
       self.mRenameNetTextField?.setSendContinously (true)
       self.mRenameNetOkButton?.isEnabled = true
-      self.mRenameNetOkButton?.title = "Rename as '\(net.mNetName)'"
+      self.mRenameNetOkButton?.title = "Rename as '\(inNet.mNetName)'"
     //--- Dialog
       window.beginSheet (panel) { inResponse in
+        self.mRenameNetTextField?.mUserInfo = nil
         if inResponse == .stop {
-          self.performRenameNet ()
+          self.performRenameNet (inNet)
         }
-        self.mPossibleNetForRenamingOperation = nil
       }
     }
   }
@@ -105,7 +123,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc internal func newNameDidChange (_ inSender : NSTextField) {
-    if let netForRenamingOperation = self.mPossibleNetForRenamingOperation {
+    if let netForRenamingOperation = self.mRenameNetTextField?.mUserInfo as? NetInProject {
       let newNetName = inSender.stringValue
       if newNetName == "" {
         self.mRenameNetOkButton?.isEnabled = false
@@ -129,9 +147,9 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func performRenameNet () {
-    if let netForRenamingOperation = self.mPossibleNetForRenamingOperation, let newNetName = self.mRenameNetTextField?.stringValue {
-      netForRenamingOperation.mNetName = newNetName
+  internal func performRenameNet (_ inNet : NetInProject) {
+    if let newNetName = self.mRenameNetTextField?.stringValue {
+      inNet.mNetName = newNetName
     }
   }
 

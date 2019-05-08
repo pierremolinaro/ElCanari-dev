@@ -41,11 +41,17 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [NCInSchematics] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SchematicsObject? = nil
-   private var mActualModel = TransientArrayOf_NCInSchematics ()
+   private let mActualModel = TransientArrayOf_NCInSchematics ()
 
   //····················································································································
 

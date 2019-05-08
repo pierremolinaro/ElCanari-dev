@@ -211,11 +211,17 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [PackageBezier] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageBezier ()
+   private let mActualModel = TransientArrayOf_PackageBezier ()
 
   //····················································································································
 

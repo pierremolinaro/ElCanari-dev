@@ -181,11 +181,17 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [PackageDimension] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageDimension ()
+   private let mActualModel = TransientArrayOf_PackageDimension ()
 
   //····················································································································
 

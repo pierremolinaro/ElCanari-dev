@@ -36,12 +36,6 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
   internal var mPrintOperation : NSPrintOperation? = nil
 
   //····················································································································
-  //  Properties needed for renaming a net
-  //····················································································································
-
-  internal var mPossibleNetForRenamingOperation : NetInProject? = nil
-
-  //····················································································································
   //  Properties needed for renaming a component
   //····················································································································
 
@@ -86,6 +80,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
     self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
     self.mSchematicsObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematics")
     self.mSchematicsObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematics")
+    self.mSchematicsObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematics")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---

@@ -98,6 +98,9 @@
                 <outlet property="mSchematicsGridStylePopUpButton" destination="1243" id="3wD-oA-K3y"/>
                 <outlet property="mSchematicsHorizontalFlipSwitch" destination="15254" id="1IV-oc-fnR"/>
                 <outlet property="mSchematicsInspectorSegmentedControl" destination="15593" id="cpz-Ru-nMg"/>
+                <outlet property="mSchematicsLabelInspectorView" destination="EH4-2P-mtL" id="Dbh-DF-ukR"/>
+                <outlet property="mSchematicsLabelNetNameTextField" destination="NHk-cJ-b3T" id="pgC-aW-wpN"/>
+                <outlet property="mSchematicsLabelRotationSegmentedControl" destination="YxY-JJ-Hrb" id="mbl-hv-Hc8"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
                 <outlet property="mSchematicsScrollView" destination="3012" id="jfW-DZ-Cam"/>
                 <outlet property="mSchematicsSheetOrientationSegmentedControl" destination="7wK-un-j2g" id="l66-IA-39r"/>
@@ -8156,6 +8159,64 @@ Gw
                 </segmentedControl>
             </subviews>
             <point key="canvasLocation" x="-246" y="-359"/>
+        </customView>
+        <customView id="EH4-2P-mtL" userLabel="Schematics Inspector : label" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="m1O-At-UtD">
+                    <rect key="frame" x="65" y="121" width="120" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label Inspector" id="vqk-Ap-rk3">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" id="YxY-JJ-Hrb" customClass="CanariQuadrantSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="19" y="96" width="212" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="SSi-IN-7UJ">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment label="Right" width="52"/>
+                            <segment label="Above" width="52" selected="YES" tag="1"/>
+                            <segment label="Left" width="51"/>
+                            <segment label="Below" width="51"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jxz-xJ-OlT">
+                    <rect key="frame" x="18" y="63" width="60" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name" id="uIL-W7-LO4">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="NHk-cJ-b3T" customClass="EBTextObserverField">
+                    <rect key="frame" x="82" y="61" width="150" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="… net name …" id="6LP-su-R64">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="DSM-Fw-ljM">
+                    <rect key="frame" x="15" y="36" width="220" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Rename Net" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xLP-rB-g9D">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <connections>
+                            <action selector="renameNetFromSelectedLabelAction:" target="-2" id="5Zc-gH-NQ2"/>
+                        </connections>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="-246" y="-321"/>
         </customView>
     </objects>
     <resources>

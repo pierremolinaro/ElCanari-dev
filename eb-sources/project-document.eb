@@ -281,6 +281,19 @@ document ProjectDocument root ProjectRoot {
     $value #commentInSchematicsSelectionController.mComment {sendContinously : yes}
   ;
 
+//--- Selected label in schematic inspector
+  outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
+  selectionController LabelInSchematics #mSchematicsLabelSelectionController :
+    #mSchematicsObjectsController.selectedArray
+  ;
+
+  outlet CanariQuadrantSegmentedControl mSchematicsLabelRotationSegmentedControl
+     $quadrant #mSchematicsLabelSelectionController.mOrientation ;
+
+  outlet EBTextObserverField mSchematicsLabelNetNameTextField
+    $valueObserver #mSchematicsLabelSelectionController.netName
+  ;
+
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
   selectionController ComponentSymbolInProject #mComponentSymbolSelectionController :

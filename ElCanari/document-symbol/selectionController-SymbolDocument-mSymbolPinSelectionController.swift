@@ -161,11 +161,17 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [SymbolPin] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SymbolObject? = nil
-   private var mActualModel = TransientArrayOf_SymbolPin ()
+   private let mActualModel = TransientArrayOf_SymbolPin ()
 
   //····················································································································
 

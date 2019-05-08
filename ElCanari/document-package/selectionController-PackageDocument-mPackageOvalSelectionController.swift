@@ -131,11 +131,17 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [PackageOval] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageOval ()
+   private let mActualModel = TransientArrayOf_PackageOval ()
 
   //····················································································································
 

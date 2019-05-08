@@ -191,11 +191,17 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [PackageZone] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageZone ()
+   private let mActualModel = TransientArrayOf_PackageZone ()
 
   //····················································································································
 

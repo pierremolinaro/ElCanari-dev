@@ -61,11 +61,17 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [CommentInSchematics] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SchematicsObject? = nil
-   private var mActualModel = TransientArrayOf_CommentInSchematics ()
+   private let mActualModel = TransientArrayOf_CommentInSchematics ()
 
   //····················································································································
 

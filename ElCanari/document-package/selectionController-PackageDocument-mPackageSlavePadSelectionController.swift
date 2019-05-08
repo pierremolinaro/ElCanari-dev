@@ -211,11 +211,17 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
+  //   Selected array (not observable)
+  //····················································································································
+
+  var selectedArray : [PackageSlavePad] { return self.mActualModel.propval }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageSlavePad ()
+   private let mActualModel = TransientArrayOf_PackageSlavePad ()
 
   //····················································································································
 
