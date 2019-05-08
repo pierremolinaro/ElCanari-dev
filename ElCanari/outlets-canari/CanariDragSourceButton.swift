@@ -149,10 +149,6 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //   DRAW
   //····················································································································
 
- // fileprivate var mShape = EBShape ()
-  
-  //····················································································································
-
   override func draw (_ inDirtyRect : NSRect) {
     if self.mMouseWithin {
       let x : CGFloat = 0.75

@@ -259,7 +259,7 @@ entity DevicePadAssignmentInProject {
 entity NetClassInProject {
   toMany NetInProject mNets inverse toOne mNetClass ;
   property String mNetClassName default "Default" ;
-  property NSColor mNetClassColor default brown ;
+  property NSColor mNetClassColor default blue ;
 
   property Int mNetWidth default 45_720 ; // 20 mils
   property Int mNetWidthUnit default 2_286 ; // mil
@@ -290,6 +290,8 @@ entity NetInProject {
   toMany PointInSchematics mPoints inverse toOne mNet ;
   
   transient StringArray pinNames dependsFrom self.mPoints.all.mSymbolPinName ;
+  
+  transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -435,15 +437,20 @@ entity PointInSchematics {
   
   transient CanariPoint location dependsFrom
     self.mX, self.mY, self.mSymbolPinName,
-    self.mSymbol.one.symbolInfo, self.mSymbol.one.mSymbolInstanceName ;
+    self.mSymbol.one.symbolInfo,
+    self.mSymbol.one.mSymbolInstanceName ;
 
   transient String netName dependsFrom self.mNet.one.mNetName ;
 
+  transient Bool canMove dependsFrom self.mSymbol.none ;
+
   transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
 
-  override transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
+  transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
   
-  override transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
+  transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
+
+  transient NSColor wireColor dependsFrom self.mNet.one.wireColor ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -476,6 +483,20 @@ graphic entity WireInSchematics : SchematicsObject {
 
   toOne PointInSchematics mP1 inverse toMany mWiresP1s ;
   toOne PointInSchematics mP2 inverse toMany mWiresP2s ;  
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mP1.one.wireColor,
+    prefs.symbolDrawingWidthMultipliedByTen,
+    self.mP1.one.location,
+    self.mP2.one.location
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mP1.one.location,
+    self.mP1.one.canMove,
+    self.mP2.one.location,
+    self.mP2.one.canMove
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

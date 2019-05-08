@@ -67,7 +67,7 @@ extension EBView {
             }
           }else{ // Click outside an object : clear selection
             viewController.clearSelection ()
-            self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint ()
+            self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint
           }
         }
       }

@@ -27,7 +27,7 @@ func transient_PackagePad_padNumberDisplay (
       ]
       return EBTextShape (
         self_padName, // padString,
-        CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint (),
+        CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint,
         textAttributes,
         .center,
         .center

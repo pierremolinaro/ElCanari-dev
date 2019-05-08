@@ -17,7 +17,7 @@ func transient_NCInSchematics_objectDisplay (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var point = self_mPoint_location!.cocoaPoint ()
+        var point = self_mPoint_location!.cocoaPoint
         let horizontalAlignment : EBTextHorizontalAlignment
         let verticalAlignment : EBTextVerticalAlignment
         switch self_mOrientation {

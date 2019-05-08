@@ -351,6 +351,7 @@ import Cocoa
   @IBOutlet var mAddNetClassPanel : NSPanel?
   @IBOutlet var mAddNetClassTextField : EBTextField?
   @IBOutlet var mAddNetClassValidationButton : NSButton?
+  @IBOutlet var mAddWireButton : CanariDragSourceButton?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
@@ -374,8 +375,6 @@ import Cocoa
   @IBOutlet var mComponentSymbolValueTextField : EBTextField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
-  @IBOutlet var mConnexionErrorTextField : EBTextObserverField?
-  @IBOutlet var mConnexionWarningTextField : EBTextObserverField?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
@@ -572,6 +571,7 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -595,8 +595,6 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mConnexionErrorTextField, "mConnexionErrorTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mConnexionWarningTextField, "mConnexionWarningTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
@@ -967,8 +965,6 @@ import Cocoa
     self.mDeviceSymbolTableView?.bind_array (self.selectedDeviceSymbolNames_property, file: #file, line: #line)
     self.mPinPadAssignmentTableView?.bind_array (self.pinPadAssignments_property, file: #file, line: #line)
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
-    self.mConnexionErrorTextField?.bind_valueObserver (self.rootObject.connexionErrorString_property, file: #file, line: #line)
-    self.mConnexionWarningTextField?.bind_valueObserver (self.rootObject.connexionWarningString_property, file: #file, line: #line)
     self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
     self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
     self.mSchematicsHorizontalFlipSwitch?.bind_value (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
@@ -1274,8 +1270,6 @@ import Cocoa
     self.mDeviceSymbolTableView?.unbind_array ()
     self.mPinPadAssignmentTableView?.unbind_array ()
     self.mSchematicsInspectorSegmentedControl?.unbind_selectedPage ()
-    self.mConnexionErrorTextField?.unbind_valueObserver ()
-    self.mConnexionWarningTextField?.unbind_valueObserver ()
     self.mUnplacedSymbolsTableView?.unbind_models ()
     self.mUnplacedSymbolsTextField?.unbind_valueObserver ()
     self.mSchematicsHorizontalFlipSwitch?.unbind_value ()
@@ -1417,6 +1411,7 @@ import Cocoa
     self.mAddNetClassPanel?.ebCleanUp ()
     self.mAddNetClassTextField?.ebCleanUp ()
     self.mAddNetClassValidationButton?.ebCleanUp ()
+    self.mAddWireButton?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -1440,8 +1435,6 @@ import Cocoa
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
-    self.mConnexionErrorTextField?.ebCleanUp ()
-    self.mConnexionWarningTextField?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
@@ -1533,6 +1526,7 @@ import Cocoa
 //    self.mAddNetClassPanel = nil
 //    self.mAddNetClassTextField = nil
 //    self.mAddNetClassValidationButton = nil
+//    self.mAddWireButton = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardPageView = nil
 //    self.mChangeComponentValueComboxBox = nil
@@ -1556,8 +1550,6 @@ import Cocoa
 //    self.mComponentSymbolValueTextField = nil
 //    self.mComponentTableView = nil
 //    self.mComponentsPageView = nil
-//    self.mConnexionErrorTextField = nil
-//    self.mConnexionWarningTextField = nil
 //    self.mCurrentComponentNameTextField = nil
 //    self.mDeviceLibraryTableView = nil
 //    self.mDevicePackageTableView = nil

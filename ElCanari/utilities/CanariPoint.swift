@@ -40,7 +40,7 @@ struct CanariPoint : Equatable, Hashable {
   //   Cocoa Point
   //····················································································································
 
-  func cocoaPoint () -> NSPoint {
+  var cocoaPoint : NSPoint {
     return NSPoint (x: canariUnitToCocoa (self.x), y: canariUnitToCocoa (self.y))
   }
 

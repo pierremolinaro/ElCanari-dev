@@ -11,21 +11,23 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_CommentInSchematics_selectionDisplay (
-       _ self_mComment : String,                     
-       _ self_mX : Int,                              
-       _ self_mY : Int
+func transient_WireInSchematics_objectDisplay (
+       _ self_mP1_wireColor : NSColor?,        
+       _ prefs_symbolDrawingWidthMultipliedByTen : Int,
+       _ self_mP1_location : CanariPoint?,     
+       _ self_mP2_location : CanariPoint?
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-        return EBTextKnobShape (
-          (self_mComment == "") ? "Empty comment" : self_mComment,
-          p,
-          NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
-          .center,
-          .center,
-          0
-        )
+        let p1 = self_mP1_location ?? CanariPoint ()
+        let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
+      //---
+        let bp = NSBezierPath ()
+        bp.move (to: p1.cocoaPoint)
+        bp.line (to: p2.cocoaPoint)
+        bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        return EBStrokeBezierPathShape ([bp], self_mP1_wireColor ?? .black)
 //--- END OF USER ZONE 2
 }
 

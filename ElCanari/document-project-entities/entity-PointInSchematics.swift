@@ -36,6 +36,18 @@ protocol PointInSchematics_netName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematics_canMove : class {
+  var canMove : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PointInSchematics_wireColor : class {
+  var wireColor : NSColor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematics_isConnected : class {
   var isConnected : Bool? { get }
 }
@@ -62,6 +74,8 @@ class PointInSchematics : EBManagedObject,
          PointInSchematics_mY,
          PointInSchematics_location,
          PointInSchematics_netName,
+         PointInSchematics_canMove,
+         PointInSchematics_wireColor,
          PointInSchematics_isConnected,
          PointInSchematics_status,
          PointInSchematics_connectedPoints {
@@ -279,6 +293,52 @@ class PointInSchematics : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: canMove
+  //····················································································································
+
+  let canMove_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canMove_property_selection : EBSelection <Bool> {
+    return self.canMove_property.prop
+  }
+
+  //····················································································································
+
+  var canMove : Bool? {
+    switch self.canMove_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: wireColor
+  //····················································································································
+
+  let wireColor_property = EBTransientProperty_NSColor ()
+
+  //····················································································································
+
+  var wireColor_property_selection : EBSelection <NSColor> {
+    return self.wireColor_property.prop
+  }
+
+  //····················································································································
+
+  var wireColor : NSColor? {
+    switch self.wireColor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mNC
   //····················································································································
 
@@ -459,6 +519,50 @@ class PointInSchematics : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+  //--- Atomic property: canMove
+    self.canMove_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbol_none_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbol_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PointInSchematics_canMove (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbol_property.addEBObserver (self.canMove_property)
+  //--- Atomic property: wireColor
+    self.wireColor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.wireColor_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mNet_property.wireColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PointInSchematics_wireColor (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
   //--- To one property: mNC
     self.mNC_property.owner = self
   //--- Atomic property: isConnected
@@ -574,6 +678,8 @@ class PointInSchematics : EBManagedObject,
     self.mSymbol_property.removeEBObserverOf_symbolInfo (self.location_property)
     self.mSymbol_property.removeEBObserverOf_mSymbolInstanceName (self.location_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
+    self.mSymbol_property.removeEBObserver (self.canMove_property)
+    self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
     self.mWiresP2s_property.removeEBObserver (self.isConnected_property)
@@ -638,6 +744,22 @@ class PointInSchematics : EBManagedObject,
       view:view,
       observerExplorer:&self.netName_property.mObserverExplorer,
       valueExplorer:&self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "canMove",
+      idx:self.canMove_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.canMove_property.mObserverExplorer,
+      valueExplorer:&self.canMove_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "wireColor",
+      idx:self.wireColor_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.wireColor_property.mObserverExplorer,
+      valueExplorer:&self.wireColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",
@@ -1235,6 +1357,118 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
   }
 
   //····················································································································
+  //   Observers of 'canMove' transient property
+  //····················································································································
+
+  private var mObserversOf_canMove = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canMove.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canMove_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canMove.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canMove_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
+        managedObject.canMove_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
+        managedObject.canMove_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'wireColor' transient property
+  //····················································································································
+
+  private var mObserversOf_wireColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_wireColor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.wireColor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_wireColor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.wireColor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
+        managedObject.wireColor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
+        managedObject.wireColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
@@ -1476,6 +1710,8 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
     //--- Remove observers of transient properties
       self.removeEBObserversOf_location_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_netName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_canMove_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_wireColor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_status_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
@@ -1488,6 +1724,8 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
      //--- Add observers of transient properties
       self.addEBObserversOf_location_toElementsOfSet (addedSet)
       self.addEBObserversOf_netName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_canMove_toElementsOfSet (addedSet)
+      self.addEBObserversOf_wireColor_toElementsOfSet (addedSet)
       self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
       self.addEBObserversOf_status_toElementsOfSet (addedSet)
       self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
@@ -1599,6 +1837,8 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet) // Stored property
         self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_canMove_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_wireColor_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_status_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
@@ -1609,6 +1849,8 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet) // Stored property
         self.addEBObserversOf_location_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_canMove_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_wireColor_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_status_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
@@ -1757,6 +1999,8 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
         //--- Remove observers of transient properties
           self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_canMove_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_wireColor_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_status_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
@@ -1778,6 +2022,8 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
         //--- Add observers of transient properties
           self.addEBObserversOf_location_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_canMove_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_wireColor_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_status_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
@@ -2942,10 +3188,12 @@ final class ToOneRelationship_PointInSchematics_mNet : EBAbstractProperty {
         oldValue?.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName)
         oldValue?.mPoints_property.removeEBObserversFrom (&self.mObserversOf_mPoints)
         oldValue?.pinNames_property.removeEBObserversFrom (&self.mObserversOf_pinNames)
+        oldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor)
       //--- Add property observers to new object
         self.mValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName)
         self.mValue?.mPoints_property.addEBObserversFrom (&self.mObserversOf_mPoints)
         self.mValue?.pinNames_property.addEBObserversFrom (&self.mObserversOf_pinNames)
+        self.mValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor)
        //--- Notify observers
         self.postEvent ()
       }
@@ -3094,6 +3342,47 @@ final class ToOneRelationship_PointInSchematics_mNet : EBAbstractProperty {
     self.mObserversOf_pinNames.remove (inObserver)
     if let object = self.propval {
       object.pinNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: wireColor
+  //····················································································································
+
+  private var mObserversOf_wireColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var wireColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.wireColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.insert (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.remove (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.removeEBObserver (inObserver)
     }
   }
 

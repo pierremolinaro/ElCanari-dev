@@ -5,10 +5,24 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol WireInSchematics_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol WireInSchematics_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: WireInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class WireInSchematics : SchematicsObject {
+class WireInSchematics : SchematicsObject,
+         WireInSchematics_objectDisplay,
+         WireInSchematics_selectionDisplay {
 
   //····················································································································
   //   To one property: mP1
@@ -78,6 +92,62 @@ class WireInSchematics : SchematicsObject {
     self.mP1_property.owner = self
   //--- To one property: mP2
     self.mP2_property.owner = self
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP1_property.wireColor_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= unwSelf.mP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mP2_property.location_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mP1_property.wireColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_WireInSchematics_objectDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_wireColor (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.mP1_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mP2_property.addEBObserverOf_location (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP1_property.location_property_selection.kind ()
+        kind &= unwSelf.mP1_property.canMove_property_selection.kind ()
+        kind &= unwSelf.mP2_property.location_property_selection.kind ()
+        kind &= unwSelf.mP2_property.canMove_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mP1_property.location_property_selection, unwSelf.mP1_property.canMove_property_selection, unwSelf.mP2_property.location_property_selection, unwSelf.mP2_property.canMove_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_WireInSchematics_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mP1_property.addEBObserverOf_canMove (self.selectionDisplay_property)
+    self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -87,6 +157,14 @@ class WireInSchematics : SchematicsObject {
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mP1_property.removeEBObserverOf_wireColor (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    self.mP1_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.mP2_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.mP1_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mP1_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
+    self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -102,6 +180,22 @@ class WireInSchematics : SchematicsObject {
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
@@ -244,6 +338,118 @@ class WireInSchematics : SchematicsObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_WireInSchematics : ReadOnlyAbstractArrayProperty <WireInSchematics> {
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
 
   //····················································································································
 
@@ -410,6 +616,16 @@ final class ProxyArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics {
 
   private var mCurrentObjectSet = Set <WireInSchematics> () {
     didSet {
+      if self.mCurrentObjectSet != oldValue {
+      //--- Add observers from removed objects
+        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+      //--- Add observers to added objects
+        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+      }
     }
   }
 
@@ -546,6 +762,8 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -556,6 +774,8 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
           }
         //--- Add observers of stored properties
         //--- Add observers of transient properties
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()
@@ -729,6 +949,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mWiresP1s_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove)
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
@@ -740,7 +961,9 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
         oldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status)
+        oldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor)
       //--- Add property observers to new object
+        self.mValue?.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove)
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
@@ -752,6 +975,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
         self.mValue?.status_property.addEBObserversFrom (&self.mObserversOf_status)
+        self.mValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor)
        //--- Notify observers
         self.postEvent ()
       }
@@ -777,6 +1001,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
   func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: canMove
+  //····················································································································
+
+  private var mObserversOf_canMove = EBWeakEventSet ()
+
+  //····················································································································
+
+  var canMove_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.canMove_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.mObserversOf_canMove.insert (inObserver)
+    if let object = self.propval {
+      object.canMove_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.mObserversOf_canMove.remove (inObserver)
+    if let object = self.propval {
+      object.canMove_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1228,6 +1493,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
     self.mObserversOf_status.remove (inObserver)
     if let object = self.propval {
       object.status_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: wireColor
+  //····················································································································
+
+  private var mObserversOf_wireColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var wireColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.wireColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.insert (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.remove (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1284,6 +1590,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mWiresP2s_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove)
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
@@ -1295,7 +1602,9 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
         oldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status)
+        oldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor)
       //--- Add property observers to new object
+        self.mValue?.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove)
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
@@ -1307,6 +1616,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
         self.mValue?.status_property.addEBObserversFrom (&self.mObserversOf_status)
+        self.mValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor)
        //--- Notify observers
         self.postEvent ()
       }
@@ -1332,6 +1642,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
   func remove (_ object : PointInSchematics) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: canMove
+  //····················································································································
+
+  private var mObserversOf_canMove = EBWeakEventSet ()
+
+  //····················································································································
+
+  var canMove_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.canMove_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.mObserversOf_canMove.insert (inObserver)
+    if let object = self.propval {
+      object.canMove_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
+    self.mObserversOf_canMove.remove (inObserver)
+    if let object = self.propval {
+      object.canMove_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1783,6 +2134,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
     self.mObserversOf_status.remove (inObserver)
     if let object = self.propval {
       object.status_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: wireColor
+  //····················································································································
+
+  private var mObserversOf_wireColor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var wireColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.wireColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.insert (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
+    self.mObserversOf_wireColor.remove (inObserver)
+    if let object = self.propval {
+      object.wireColor_property.removeEBObserver (inObserver)
     }
   }
 

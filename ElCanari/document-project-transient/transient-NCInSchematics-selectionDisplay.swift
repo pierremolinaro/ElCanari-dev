@@ -17,7 +17,7 @@ func transient_NCInSchematics_selectionDisplay (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var point = self_mPoint_location!.cocoaPoint ()
+        var point = self_mPoint_location!.cocoaPoint
         let horizontalAlignment : EBTextHorizontalAlignment
         let verticalAlignment : EBTextVerticalAlignment
         switch self_mOrientation {
@@ -45,7 +45,7 @@ func transient_NCInSchematics_selectionDisplay (
       //--- Add line
         let frameBP = NSBezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
         let line = NSBezierPath ()
-        line.move (to: self_mPoint_location!.cocoaPoint ())
+        line.move (to: self_mPoint_location!.cocoaPoint)
         line.line (to: textShape.boundingBox.center)
         line.lineWidth = 0.5
         line.lineCapStyle = .round

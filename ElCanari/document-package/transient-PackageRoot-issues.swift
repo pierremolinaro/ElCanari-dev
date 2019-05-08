@@ -46,7 +46,7 @@ func transient_PackageRoot_issues (
      while idx < self_packageZones_zoneName.count {
        let zoneName = self_packageZones_zoneName [idx].zoneName
        if let c = nameDictionary [zoneName], c > 1 {
-         let p = CanariPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName).cocoaPoint ()
+         let p = CanariPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName).cocoaPoint
            let textAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_padZoneFont
          ]

@@ -6,6 +6,7 @@ import Cocoa
 
 fileprivate let kDragAndDropSymbolInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.symbol")
 fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.comment")
+fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.wire")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -74,7 +75,6 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
       self.mSchematicsSheetsInspectorView
     ]
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
-
   //--- Register schematics inspector views
     self.mSchematicsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
     self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
@@ -107,14 +107,21 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
   //---
     self.mSchematicsView?.mGridStepInCanariUnit = SCHEMATICS_GRID_IN_CANARI_UNIT
     self.mSchematicsView?.set (mouseGridInCanariUnit: SCHEMATICS_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.set (arrowKeyMagnitude : SCHEMATICS_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATICS_GRID_IN_CANARI_UNIT * 4)
     self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematics, kDragAndDropCommentInSchematics])
+    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematics, kDragAndDropCommentInSchematics, kDragAndDropWireInSchematics])
     self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematics)
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropCommentInSchematics,
       entityName: "CommentInSchematics",
+      scaleProvider: self.mSchematicsView
+    )
+    self.mAddWireButton?.register (
+      draggedType: kDragAndDropWireInSchematics,
+      entityName: "WireInSchematics",
       scaleProvider: self.mSchematicsView
     )
   //---
@@ -208,6 +215,9 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
         ok = true
       }else if let _ = pasteboard.availableType (from: [kDragAndDropCommentInSchematics]) {
         self.performAddCommentDragOperation (draggingLocationInDestinationView)
+        ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematics]) {
+        self.performAddWireDragOperation (draggingLocationInDestinationView)
         ok = true
       }
     }

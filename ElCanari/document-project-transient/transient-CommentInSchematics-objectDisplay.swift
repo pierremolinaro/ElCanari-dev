@@ -17,7 +17,7 @@ func transient_CommentInSchematics_objectDisplay (
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint ()
+        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
         ]

@@ -129,7 +129,7 @@ class NetClassInProject : EBManagedObject,
   //   Atomic property: mNetClassColor
   //····················································································································
 
-  let mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown)
+  let mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue)
 
   //····················································································································
 

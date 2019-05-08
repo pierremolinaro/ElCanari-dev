@@ -26,18 +26,13 @@ func transient_ComponentSymbolInProject_symbolInfo (
       //--- Device info
         let key = SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName)
         let deviceInfo = self_mComponent_deviceSymbolDictionary! [key]!
-      //--- Affine transformation for drawings
-        let tr = NSAffineTransform ()
-        tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
-        tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-        tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
       //--- Pin names and pad names
         let pinNameAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont
         ]
         var pins = [PinDescriptor] ()
         for pinPadAssignment in deviceInfo.assignments {
-          if let pin = pinPadAssignment.pin {
+          if let pin = pinPadAssignment.pin, pin.symbol.symbolInstanceName == self_mSymbolInstanceName {
             let pinTextShape = EBShape ()
           //--- Pin name
             if pin.pinNameIsDisplayedInSchematics {
@@ -76,12 +71,16 @@ func transient_ComponentSymbolInProject_symbolInfo (
             pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
             pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
             pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint ()).canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
-          //---
+            let pinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint).canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+         //---
             pins.append (PinDescriptor (symbolIdentifier: pin.symbol, pinName: pin.pinName, pinLocation: pinLocation, shape: pinTextShape))
           }
         }
-      //---
+      //--- Affine transformation for drawings
+        let tr = NSAffineTransform ()
+        tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+        tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
+        tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
         let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
         let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
         let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)

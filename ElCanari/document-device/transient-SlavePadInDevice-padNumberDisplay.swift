@@ -25,7 +25,7 @@ func transient_SlavePadInDevice_padNumberDisplay (
       ]
       return EBTextShape (
         "(\(self_mMasterPad_mName ?? ""))",
-        CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint (),
+        CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
         textAttributes,
         .center,
         .center

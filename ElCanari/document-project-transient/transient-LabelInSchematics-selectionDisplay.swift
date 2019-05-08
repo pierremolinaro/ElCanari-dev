@@ -19,7 +19,7 @@ func transient_LabelInSchematics_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let shape = EBShape ()
-        if let p = self_mPoint_location?.cocoaPoint () {
+        if let p = self_mPoint_location?.cocoaPoint {
           let bp = NSBezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATICS_LABEL_SIZE * 2.0, y: 0.0))

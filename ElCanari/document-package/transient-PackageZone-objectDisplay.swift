@@ -47,7 +47,7 @@ func transient_PackageZone_objectDisplay (
     shape.append (EBStrokeBezierPathShape ([bp], prefs_padZoneColor))
   //--- Name
     let text = (self_zoneName == "") ? "?" : self_zoneName
-    let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint ()
+    let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_padZoneFont,
       NSAttributedString.Key.foregroundColor : prefs_padZoneColor

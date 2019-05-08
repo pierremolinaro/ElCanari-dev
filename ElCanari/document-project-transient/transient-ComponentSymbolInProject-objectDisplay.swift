@@ -45,7 +45,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
           let componentNameShape = EBTextShape (
             self_symbolInfo.componentName,
-            componentNameCenter.cocoaPoint (),
+            componentNameCenter.cocoaPoint,
             componentNameTextAttributes,
             .center,
             .center
@@ -61,7 +61,7 @@ func transient_ComponentSymbolInProject_objectDisplay (
           let componentValueCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY)
           let componentValueShape = EBTextShape (
             value,
-            componentValueCenter.cocoaPoint (),
+            componentValueCenter.cocoaPoint,
             componentValueTextAttributes,
             .center,
             .center

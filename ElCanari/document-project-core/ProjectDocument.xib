@@ -16,6 +16,7 @@
                 <outlet property="mAddNetClassPanel" destination="kcL-Ff-sBD" id="wyW-Qj-fAI"/>
                 <outlet property="mAddNetClassTextField" destination="mIx-xD-rHB" id="yHy-cZ-o44"/>
                 <outlet property="mAddNetClassValidationButton" destination="S52-wH-h5H" id="0kI-yP-xf6"/>
+                <outlet property="mAddWireButton" destination="15596" id="oZ6-ug-Lc1"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
                 <outlet property="mBoardPageView" destination="3080" id="Gwf-Pt-3pr"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
@@ -39,8 +40,6 @@
                 <outlet property="mComponentSymbolValueTextField" destination="1695" id="eLz-qn-Lbr"/>
                 <outlet property="mComponentTableView" destination="2919" id="nfb-oR-9Fm"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
-                <outlet property="mConnexionErrorTextField" destination="3015" id="XoN-7D-DpN"/>
-                <outlet property="mConnexionWarningTextField" destination="3014" id="NbK-Eq-G0H"/>
                 <outlet property="mCurrentComponentNameTextField" destination="8pc-vo-3GG" id="vQY-lv-cXZ"/>
                 <outlet property="mDeviceLibraryTableView" destination="2957" id="Yl8-h9-pJb"/>
                 <outlet property="mDevicePackageTableView" destination="2946" id="TsV-YH-hdM"/>
@@ -4334,30 +4333,12 @@ Diameter</string>
             <rect key="frame" x="0.0" y="0.0" width="840" height="612"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField toolTip="Schematics Error Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3015" customClass="EBTextObserverField">
-                    <rect key="frame" x="168" y="591" width="76" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999 (999)" id="14720">
-                        <font key="font" metaFont="systemBold" size="12"/>
-                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField toolTip="Schematics Warning Count" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3014" customClass="EBTextObserverField">
-                    <rect key="frame" x="168" y="574" width="76" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999 (999)" id="14719">
-                        <font key="font" metaFont="systemBold" size="12"/>
-                        <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="3012" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="590" height="613"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="3013" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -4415,20 +4396,20 @@ Diameter</string>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Wire; Hint:   - alt + click starts a new wire." id="15596" customClass="EBButton">
-                    <rect key="frame" x="137" y="575" width="28" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                </button>
                 <button toolTip="Add Segment" id="ISn-xc-DLS" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="76" y="575" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="7UM-G5-8I7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="22"/>
+                    </buttonCell>
+                </button>
+                <button toolTip="Add Wire; hint: option click starts a new wire." id="15596" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="114" y="576" width="28" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
             </subviews>

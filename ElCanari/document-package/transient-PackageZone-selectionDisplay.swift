@@ -53,7 +53,7 @@ func transient_PackageZone_selectionDisplay (
     shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_ZONE_RIGHT, .circ, 2.0))
   //--- Zone
     let text = (self_zoneName == "") ? "?" : self_zoneName
-    let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint ()
+    let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
     shape.append (EBTextKnobShape (text, pText, prefs_padZoneFont, .center, .center, PACKAGE_ZONE_NAME))
   //---
     return shape

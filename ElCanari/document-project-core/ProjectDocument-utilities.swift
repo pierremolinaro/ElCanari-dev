@@ -32,6 +32,8 @@ let SCHEMATICS_HILITE_WIDTH : CGFloat = 0.5
 
 let SCHEMATICS_LABEL_SIZE : CGFloat = 3.6
 
+let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (400)
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct SymbolInProjectIdentifier : Hashable {

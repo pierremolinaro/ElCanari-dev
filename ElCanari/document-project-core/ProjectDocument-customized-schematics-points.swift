@@ -44,6 +44,56 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
+  internal func performAddWireDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+    let wire = WireInSchematics (self.ebUndoManager)
+    let p1 = CanariPoint (x: p.x, y: p.y)
+    let p2 = CanariPoint (x: p.x + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: p.y + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
+  //--- Find points at p1 and p2
+    let pointsAtP1 = self.pointsInSchematics (at: p1)
+    let pointsAtP2 = self.pointsInSchematics (at: p2)
+  //---
+    if (pointsAtP1.count == 1) && (pointsAtP2.count == 1) && (pointsAtP1 [0].mNet === pointsAtP2 [0].mNet) {
+      wire.mP1 = pointsAtP1 [0]
+      wire.mP2 = pointsAtP2 [0]
+    }else if pointsAtP1.count == 1 { // Use point at p1, create a point at p2
+      wire.mP1 = pointsAtP1 [0]
+      let point = PointInSchematics (self.ebUndoManager)
+      point.mX = p2.x
+      point.mY = p2.y
+      point.mNet = pointsAtP1 [0].mNet
+      wire.mP2 = point
+      self.rootObject.mSelectedSheet?.mPoints.append (point)
+    }else if pointsAtP2.count == 1 { // Use point at p2, create a point at p1
+      wire.mP2 = pointsAtP2 [0]
+      let point = PointInSchematics (self.ebUndoManager)
+      point.mX = p1.x
+      point.mY = p1.y
+      point.mNet = pointsAtP2 [0].mNet
+      wire.mP1 = point
+      self.rootObject.mSelectedSheet?.mPoints.append (point)
+    }else{
+      let net = self.newNetWithAutomaticName ()
+      let point1 = PointInSchematics (self.ebUndoManager)
+      point1.mX = p1.x
+      point1.mY = p1.y
+      point1.mNet = net
+      wire.mP1 = point1
+      self.rootObject.mSelectedSheet?.mPoints.append (point1)
+      let point2 = PointInSchematics (self.ebUndoManager)
+      point2.mX = p2.x
+      point2.mY = p2.y
+      point2.mNet = net
+      wire.mP2 = point2
+      self.rootObject.mSelectedSheet?.mPoints.append (point2)
+    }
+  //--- Enter wire and select it
+    self.rootObject.mSelectedSheet?.mObjects.append (wire)
+    self.mSchematicsObjectsController.setSelection ([wire])
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

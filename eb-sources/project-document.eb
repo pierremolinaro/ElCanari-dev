@@ -198,9 +198,10 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
 
   outlet CanariDragSourceButton mAddCommentButton ;
+  outlet CanariDragSourceButton mAddWireButton ;
 
-  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
-  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
+//  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
+//  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
 
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;

@@ -22,7 +22,7 @@ func transient_PackageArc_selectionDisplay (
        _ self_pathIsClosed : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint ()
+    let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint
     let radius = canariUnitToCocoa (self_radius)
     let startTangentLength = canariUnitToCocoa (self_startTangent)
     let endTangentLength = canariUnitToCocoa (self_endTangent)

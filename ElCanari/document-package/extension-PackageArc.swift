@@ -45,7 +45,7 @@ extension PackageArc {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint ()
+    let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint
     let radius = canariUnitToCocoa (self.radius)
     let startAngle = CGFloat (self.startAngle) / 1000.0
     let arcAngle = CGFloat (self.arcAngle) / 1000.0
