@@ -100,6 +100,7 @@
                 <outlet property="mSchematicsInspectorSegmentedControl" destination="15593" id="cpz-Ru-nMg"/>
                 <outlet property="mSchematicsLabelInspectorView" destination="EH4-2P-mtL" id="Dbh-DF-ukR"/>
                 <outlet property="mSchematicsLabelNetNameTextField" destination="NHk-cJ-b3T" id="pgC-aW-wpN"/>
+                <outlet property="mSchematicsLabelRenameNetButton" destination="DSM-Fw-ljM" id="Zxw-Ag-mGk"/>
                 <outlet property="mSchematicsLabelRotationSegmentedControl" destination="YxY-JJ-Hrb" id="mbl-hv-Hc8"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
                 <outlet property="mSchematicsScrollView" destination="3012" id="jfW-DZ-Cam"/>
@@ -8204,7 +8205,7 @@ Gw
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="DSM-Fw-ljM">
+                <button verticalHuggingPriority="750" id="DSM-Fw-ljM" customClass="EBButton">
                     <rect key="frame" x="15" y="36" width="220" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Rename Net" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xLP-rB-g9D">

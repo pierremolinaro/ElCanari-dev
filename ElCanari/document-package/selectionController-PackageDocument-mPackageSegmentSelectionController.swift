@@ -154,20 +154,20 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [PackageSegment] { return self.mActualModel.propval }
+  var selectedArray : [PackageSegment] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private let mActualModel = TransientArrayOf_PackageSegment ()
+   let selectedArray_property = TransientArrayOf_PackageSegment ()
 
   //····················································································································
 
   func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSegment] > in
+    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSegment] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -187,21 +187,21 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
         return .empty
       }
     }
-    model.addEBObserver (self.mActualModel)
-    self.bind_property_y1 (model: self.mActualModel)
-    self.bind_property_x2 (model: self.mActualModel)
-    self.bind_property_y2 (model: self.mActualModel)
-    self.bind_property_x1Unit (model: self.mActualModel)
-    self.bind_property_y1Unit (model: self.mActualModel)
-    self.bind_property_x2Unit (model: self.mActualModel)
-    self.bind_property_y2Unit (model: self.mActualModel)
-    self.bind_property_lengthUnit (model: self.mActualModel)
-    self.bind_property_x1 (model: self.mActualModel)
-    self.bind_property_strokeBezierPath (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_lengthInCanariUnit (model: self.mActualModel)
+    model.addEBObserver (self.selectedArray_property)
+    self.bind_property_y1 (model: self.selectedArray_property)
+    self.bind_property_x2 (model: self.selectedArray_property)
+    self.bind_property_y2 (model: self.selectedArray_property)
+    self.bind_property_x1Unit (model: self.selectedArray_property)
+    self.bind_property_y1Unit (model: self.selectedArray_property)
+    self.bind_property_x2Unit (model: self.selectedArray_property)
+    self.bind_property_y2Unit (model: self.selectedArray_property)
+    self.bind_property_lengthUnit (model: self.selectedArray_property)
+    self.bind_property_x1 (model: self.selectedArray_property)
+    self.bind_property_strokeBezierPath (model: self.selectedArray_property)
+    self.bind_property_objectDisplay (model: self.selectedArray_property)
+    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+    self.bind_property_issues (model: self.selectedArray_property)
+    self.bind_property_lengthInCanariUnit (model: self.selectedArray_property)
   }
 
   //····················································································································
@@ -209,68 +209,68 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.mReadModelFunction = nil
+    self.mModel?.removeEBObserver (self.selectedArray_property)
+    self.selectedArray_property.mReadModelFunction = nil
   //--- y1
     self.y1_property.mReadModelFunction = nil 
     self.y1_property.mWriteModelFunction = nil 
     self.y1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1 (self.y1_property)
+    self.selectedArray_property.removeEBObserverOf_y1 (self.y1_property)
   //--- x2
     self.x2_property.mReadModelFunction = nil 
     self.x2_property.mWriteModelFunction = nil 
     self.x2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2 (self.x2_property)
+    self.selectedArray_property.removeEBObserverOf_x2 (self.x2_property)
   //--- y2
     self.y2_property.mReadModelFunction = nil 
     self.y2_property.mWriteModelFunction = nil 
     self.y2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2 (self.y2_property)
+    self.selectedArray_property.removeEBObserverOf_y2 (self.y2_property)
   //--- x1Unit
     self.x1Unit_property.mReadModelFunction = nil 
     self.x1Unit_property.mWriteModelFunction = nil 
     self.x1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1Unit (self.x1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_x1Unit (self.x1Unit_property)
   //--- y1Unit
     self.y1Unit_property.mReadModelFunction = nil 
     self.y1Unit_property.mWriteModelFunction = nil 
     self.y1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1Unit (self.y1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_y1Unit (self.y1Unit_property)
   //--- x2Unit
     self.x2Unit_property.mReadModelFunction = nil 
     self.x2Unit_property.mWriteModelFunction = nil 
     self.x2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2Unit (self.x2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_x2Unit (self.x2Unit_property)
   //--- y2Unit
     self.y2Unit_property.mReadModelFunction = nil 
     self.y2Unit_property.mWriteModelFunction = nil 
     self.y2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2Unit (self.y2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_y2Unit (self.y2Unit_property)
   //--- lengthUnit
     self.lengthUnit_property.mReadModelFunction = nil 
     self.lengthUnit_property.mWriteModelFunction = nil 
     self.lengthUnit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_lengthUnit (self.lengthUnit_property)
+    self.selectedArray_property.removeEBObserverOf_lengthUnit (self.lengthUnit_property)
   //--- x1
     self.x1_property.mReadModelFunction = nil 
     self.x1_property.mWriteModelFunction = nil 
     self.x1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1 (self.x1_property)
+    self.selectedArray_property.removeEBObserverOf_x1 (self.x1_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //--- lengthInCanariUnit
     self.lengthInCanariUnit_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
+    self.selectedArray_property.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
   //---
     self.mModel = nil    
   }
@@ -440,7 +440,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_y1 (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -474,7 +474,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -486,7 +486,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -509,7 +509,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_x2 (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -543,7 +543,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -555,7 +555,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -578,7 +578,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_y2 (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -612,7 +612,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -624,7 +624,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -647,7 +647,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_x1Unit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -681,7 +681,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -693,7 +693,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -716,7 +716,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_y1Unit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -750,7 +750,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -762,7 +762,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -785,7 +785,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_x2Unit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -819,7 +819,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -831,7 +831,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -854,7 +854,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_y2Unit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -888,7 +888,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -900,7 +900,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -923,7 +923,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_lengthUnit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_lengthUnit (self.lengthUnit_property)
     self.lengthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -957,7 +957,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.lengthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -969,7 +969,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.lengthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -992,7 +992,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_x1 (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1026,7 +1026,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1038,7 +1038,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
       }
     }
     self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1061,7 +1061,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1100,7 +1100,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_objectDisplay (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1139,7 +1139,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1178,7 +1178,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_issues (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1217,7 +1217,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   private final func bind_property_lengthInCanariUnit (model : TransientArrayOf_PackageSegment) {
     model.addEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty

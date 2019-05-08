@@ -214,20 +214,20 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [PackageBezier] { return self.mActualModel.propval }
+  var selectedArray : [PackageBezier] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_PackageObject? = nil
-   private let mActualModel = TransientArrayOf_PackageBezier ()
+   let selectedArray_property = TransientArrayOf_PackageBezier ()
 
   //····················································································································
 
   func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageBezier] > in
+    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [PackageBezier] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -247,27 +247,27 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
         return .empty
       }
     }
-    model.addEBObserver (self.mActualModel)
-    self.bind_property_y1 (model: self.mActualModel)
-    self.bind_property_x2 (model: self.mActualModel)
-    self.bind_property_y2 (model: self.mActualModel)
-    self.bind_property_cpx1 (model: self.mActualModel)
-    self.bind_property_cpy1 (model: self.mActualModel)
-    self.bind_property_cpx2 (model: self.mActualModel)
-    self.bind_property_cpy2 (model: self.mActualModel)
-    self.bind_property_x1Unit (model: self.mActualModel)
-    self.bind_property_y1Unit (model: self.mActualModel)
-    self.bind_property_x2Unit (model: self.mActualModel)
-    self.bind_property_y2Unit (model: self.mActualModel)
-    self.bind_property_cpx1Unit (model: self.mActualModel)
-    self.bind_property_cpy1Unit (model: self.mActualModel)
-    self.bind_property_cpx2Unit (model: self.mActualModel)
-    self.bind_property_cpy2Unit (model: self.mActualModel)
-    self.bind_property_x1 (model: self.mActualModel)
-    self.bind_property_strokeBezierPath (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
+    model.addEBObserver (self.selectedArray_property)
+    self.bind_property_y1 (model: self.selectedArray_property)
+    self.bind_property_x2 (model: self.selectedArray_property)
+    self.bind_property_y2 (model: self.selectedArray_property)
+    self.bind_property_cpx1 (model: self.selectedArray_property)
+    self.bind_property_cpy1 (model: self.selectedArray_property)
+    self.bind_property_cpx2 (model: self.selectedArray_property)
+    self.bind_property_cpy2 (model: self.selectedArray_property)
+    self.bind_property_x1Unit (model: self.selectedArray_property)
+    self.bind_property_y1Unit (model: self.selectedArray_property)
+    self.bind_property_x2Unit (model: self.selectedArray_property)
+    self.bind_property_y2Unit (model: self.selectedArray_property)
+    self.bind_property_cpx1Unit (model: self.selectedArray_property)
+    self.bind_property_cpy1Unit (model: self.selectedArray_property)
+    self.bind_property_cpx2Unit (model: self.selectedArray_property)
+    self.bind_property_cpy2Unit (model: self.selectedArray_property)
+    self.bind_property_x1 (model: self.selectedArray_property)
+    self.bind_property_strokeBezierPath (model: self.selectedArray_property)
+    self.bind_property_objectDisplay (model: self.selectedArray_property)
+    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+    self.bind_property_issues (model: self.selectedArray_property)
   }
 
   //····················································································································
@@ -275,100 +275,100 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.mReadModelFunction = nil
+    self.mModel?.removeEBObserver (self.selectedArray_property)
+    self.selectedArray_property.mReadModelFunction = nil
   //--- y1
     self.y1_property.mReadModelFunction = nil 
     self.y1_property.mWriteModelFunction = nil 
     self.y1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1 (self.y1_property)
+    self.selectedArray_property.removeEBObserverOf_y1 (self.y1_property)
   //--- x2
     self.x2_property.mReadModelFunction = nil 
     self.x2_property.mWriteModelFunction = nil 
     self.x2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2 (self.x2_property)
+    self.selectedArray_property.removeEBObserverOf_x2 (self.x2_property)
   //--- y2
     self.y2_property.mReadModelFunction = nil 
     self.y2_property.mWriteModelFunction = nil 
     self.y2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2 (self.y2_property)
+    self.selectedArray_property.removeEBObserverOf_y2 (self.y2_property)
   //--- cpx1
     self.cpx1_property.mReadModelFunction = nil 
     self.cpx1_property.mWriteModelFunction = nil 
     self.cpx1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx1 (self.cpx1_property)
+    self.selectedArray_property.removeEBObserverOf_cpx1 (self.cpx1_property)
   //--- cpy1
     self.cpy1_property.mReadModelFunction = nil 
     self.cpy1_property.mWriteModelFunction = nil 
     self.cpy1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpy1 (self.cpy1_property)
+    self.selectedArray_property.removeEBObserverOf_cpy1 (self.cpy1_property)
   //--- cpx2
     self.cpx2_property.mReadModelFunction = nil 
     self.cpx2_property.mWriteModelFunction = nil 
     self.cpx2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx2 (self.cpx2_property)
+    self.selectedArray_property.removeEBObserverOf_cpx2 (self.cpx2_property)
   //--- cpy2
     self.cpy2_property.mReadModelFunction = nil 
     self.cpy2_property.mWriteModelFunction = nil 
     self.cpy2_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpy2 (self.cpy2_property)
+    self.selectedArray_property.removeEBObserverOf_cpy2 (self.cpy2_property)
   //--- x1Unit
     self.x1Unit_property.mReadModelFunction = nil 
     self.x1Unit_property.mWriteModelFunction = nil 
     self.x1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1Unit (self.x1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_x1Unit (self.x1Unit_property)
   //--- y1Unit
     self.y1Unit_property.mReadModelFunction = nil 
     self.y1Unit_property.mWriteModelFunction = nil 
     self.y1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y1Unit (self.y1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_y1Unit (self.y1Unit_property)
   //--- x2Unit
     self.x2Unit_property.mReadModelFunction = nil 
     self.x2Unit_property.mWriteModelFunction = nil 
     self.x2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x2Unit (self.x2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_x2Unit (self.x2Unit_property)
   //--- y2Unit
     self.y2Unit_property.mReadModelFunction = nil 
     self.y2Unit_property.mWriteModelFunction = nil 
     self.y2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_y2Unit (self.y2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_y2Unit (self.y2Unit_property)
   //--- cpx1Unit
     self.cpx1Unit_property.mReadModelFunction = nil 
     self.cpx1Unit_property.mWriteModelFunction = nil 
     self.cpx1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx1Unit (self.cpx1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_cpx1Unit (self.cpx1Unit_property)
   //--- cpy1Unit
     self.cpy1Unit_property.mReadModelFunction = nil 
     self.cpy1Unit_property.mWriteModelFunction = nil 
     self.cpy1Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpy1Unit (self.cpy1Unit_property)
+    self.selectedArray_property.removeEBObserverOf_cpy1Unit (self.cpy1Unit_property)
   //--- cpx2Unit
     self.cpx2Unit_property.mReadModelFunction = nil 
     self.cpx2Unit_property.mWriteModelFunction = nil 
     self.cpx2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpx2Unit (self.cpx2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_cpx2Unit (self.cpx2Unit_property)
   //--- cpy2Unit
     self.cpy2Unit_property.mReadModelFunction = nil 
     self.cpy2Unit_property.mWriteModelFunction = nil 
     self.cpy2Unit_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_cpy2Unit (self.cpy2Unit_property)
+    self.selectedArray_property.removeEBObserverOf_cpy2Unit (self.cpy2Unit_property)
   //--- x1
     self.x1_property.mReadModelFunction = nil 
     self.x1_property.mWriteModelFunction = nil 
     self.x1_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_x1 (self.x1_property)
+    self.selectedArray_property.removeEBObserverOf_x1 (self.x1_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //---
     self.mModel = nil    
   }
@@ -594,7 +594,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_y1 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -628,7 +628,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -640,7 +640,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -663,7 +663,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_x2 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -697,7 +697,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -709,7 +709,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -732,7 +732,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_y2 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -766,7 +766,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -778,7 +778,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -801,7 +801,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpx1 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx1 (self.cpx1_property)
     self.cpx1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -835,7 +835,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -847,7 +847,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -870,7 +870,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpy1 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy1 (self.cpy1_property)
     self.cpy1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -904,7 +904,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -916,7 +916,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -939,7 +939,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpx2 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx2 (self.cpx2_property)
     self.cpx2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -973,7 +973,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -985,7 +985,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1008,7 +1008,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpy2 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy2 (self.cpy2_property)
     self.cpy2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1042,7 +1042,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1054,7 +1054,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1077,7 +1077,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_x1Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1111,7 +1111,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1123,7 +1123,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1146,7 +1146,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_y1Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1180,7 +1180,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1192,7 +1192,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1215,7 +1215,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_x2Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1249,7 +1249,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1261,7 +1261,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1284,7 +1284,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_y2Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1318,7 +1318,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1330,7 +1330,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1353,7 +1353,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpx1Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx1Unit (self.cpx1Unit_property)
     self.cpx1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1387,7 +1387,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1399,7 +1399,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1422,7 +1422,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpy1Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy1Unit (self.cpy1Unit_property)
     self.cpy1Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1456,7 +1456,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1468,7 +1468,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1491,7 +1491,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpx2Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx2Unit (self.cpx2Unit_property)
     self.cpx2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1525,7 +1525,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1537,7 +1537,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpx2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1560,7 +1560,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_cpy2Unit (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy2Unit (self.cpy2Unit_property)
     self.cpy2Unit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1594,7 +1594,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1606,7 +1606,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.cpy2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1629,7 +1629,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_x1 (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1663,7 +1663,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1675,7 +1675,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
       }
     }
     self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1698,7 +1698,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1737,7 +1737,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_objectDisplay (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1776,7 +1776,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1815,7 +1815,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   private final func bind_property_issues (model : TransientArrayOf_PackageBezier) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty

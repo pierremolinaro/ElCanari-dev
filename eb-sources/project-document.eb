@@ -294,6 +294,9 @@ document ProjectDocument root ProjectRoot {
     $valueObserver #mSchematicsLabelSelectionController.netName
   ;
 
+  outlet EBButton mSchematicsLabelRenameNetButton // Action set in IB
+    $enabled #mSchematicsLabelSelectionController.selectedArray.count == 1
+  ;
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
   selectionController ComponentSymbolInProject #mComponentSymbolSelectionController :

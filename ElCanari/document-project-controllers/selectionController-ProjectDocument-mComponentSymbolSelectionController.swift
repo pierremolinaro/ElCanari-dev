@@ -184,20 +184,20 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [ComponentSymbolInProject] { return self.mActualModel.propval }
+  var selectedArray : [ComponentSymbolInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SchematicsObject? = nil
-   private let mActualModel = TransientArrayOf_ComponentSymbolInProject ()
+   let selectedArray_property = TransientArrayOf_ComponentSymbolInProject ()
 
   //····················································································································
 
   func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [ComponentSymbolInProject] > in
+    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [ComponentSymbolInProject] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -217,24 +217,24 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
         return .empty
       }
     }
-    model.addEBObserver (self.mActualModel)
-    self.bind_property_mCenterX (model: self.mActualModel)
-    self.bind_property_mCenterY (model: self.mActualModel)
-    self.bind_property_mRotation (model: self.mActualModel)
-    self.bind_property_mSymbolInstanceName (model: self.mActualModel)
-    self.bind_property_mSymbolTypeName (model: self.mActualModel)
-    self.bind_property_mDisplayComponentNameOffsetX (model: self.mActualModel)
-    self.bind_property_mDisplayComponentNameOffsetY (model: self.mActualModel)
-    self.bind_property_mDisplayComponentValue (model: self.mActualModel)
-    self.bind_property_mDisplayComponentValueOffsetX (model: self.mActualModel)
-    self.bind_property_mDisplayComponentValueOffsetY (model: self.mActualModel)
-    self.bind_property_componentValueProxy (model: self.mActualModel)
-    self.bind_property_componentName (model: self.mActualModel)
-    self.bind_property_deviceName (model: self.mActualModel)
-    self.bind_property_symbolInfo (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_symbolInSchematics (model: self.mActualModel)
+    model.addEBObserver (self.selectedArray_property)
+    self.bind_property_mCenterX (model: self.selectedArray_property)
+    self.bind_property_mCenterY (model: self.selectedArray_property)
+    self.bind_property_mRotation (model: self.selectedArray_property)
+    self.bind_property_mSymbolInstanceName (model: self.selectedArray_property)
+    self.bind_property_mSymbolTypeName (model: self.selectedArray_property)
+    self.bind_property_mDisplayComponentNameOffsetX (model: self.selectedArray_property)
+    self.bind_property_mDisplayComponentNameOffsetY (model: self.selectedArray_property)
+    self.bind_property_mDisplayComponentValue (model: self.selectedArray_property)
+    self.bind_property_mDisplayComponentValueOffsetX (model: self.selectedArray_property)
+    self.bind_property_mDisplayComponentValueOffsetY (model: self.selectedArray_property)
+    self.bind_property_componentValueProxy (model: self.selectedArray_property)
+    self.bind_property_componentName (model: self.selectedArray_property)
+    self.bind_property_deviceName (model: self.selectedArray_property)
+    self.bind_property_symbolInfo (model: self.selectedArray_property)
+    self.bind_property_objectDisplay (model: self.selectedArray_property)
+    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+    self.bind_property_symbolInSchematics (model: self.selectedArray_property)
   }
 
   //····················································································································
@@ -242,76 +242,76 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.mReadModelFunction = nil
+    self.mModel?.removeEBObserver (self.selectedArray_property)
+    self.selectedArray_property.mReadModelFunction = nil
   //--- mCenterX
     self.mCenterX_property.mReadModelFunction = nil 
     self.mCenterX_property.mWriteModelFunction = nil 
     self.mCenterX_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mCenterX (self.mCenterX_property)
+    self.selectedArray_property.removeEBObserverOf_mCenterX (self.mCenterX_property)
   //--- mCenterY
     self.mCenterY_property.mReadModelFunction = nil 
     self.mCenterY_property.mWriteModelFunction = nil 
     self.mCenterY_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mCenterY (self.mCenterY_property)
+    self.selectedArray_property.removeEBObserverOf_mCenterY (self.mCenterY_property)
   //--- mRotation
     self.mRotation_property.mReadModelFunction = nil 
     self.mRotation_property.mWriteModelFunction = nil 
     self.mRotation_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mRotation (self.mRotation_property)
+    self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
   //--- mSymbolInstanceName
     self.mSymbolInstanceName_property.mReadModelFunction = nil 
     self.mSymbolInstanceName_property.mWriteModelFunction = nil 
     self.mSymbolInstanceName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property)
+    self.selectedArray_property.removeEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property)
   //--- mSymbolTypeName
     self.mSymbolTypeName_property.mReadModelFunction = nil 
     self.mSymbolTypeName_property.mWriteModelFunction = nil 
     self.mSymbolTypeName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property)
+    self.selectedArray_property.removeEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property)
   //--- mDisplayComponentNameOffsetX
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = nil 
     self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = nil 
     self.mDisplayComponentNameOffsetX_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property)
+    self.selectedArray_property.removeEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property)
   //--- mDisplayComponentNameOffsetY
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = nil 
     self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = nil 
     self.mDisplayComponentNameOffsetY_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property)
+    self.selectedArray_property.removeEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property)
   //--- mDisplayComponentValue
     self.mDisplayComponentValue_property.mReadModelFunction = nil 
     self.mDisplayComponentValue_property.mWriteModelFunction = nil 
     self.mDisplayComponentValue_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property)
+    self.selectedArray_property.removeEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property)
   //--- mDisplayComponentValueOffsetX
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = nil 
     self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = nil 
     self.mDisplayComponentValueOffsetX_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property)
+    self.selectedArray_property.removeEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property)
   //--- mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = nil 
     self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = nil 
     self.mDisplayComponentValueOffsetY_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property)
+    self.selectedArray_property.removeEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property)
   //--- componentName
     self.componentName_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_componentName (self.componentName_property)
+    self.selectedArray_property.removeEBObserverOf_componentName (self.componentName_property)
   //--- deviceName
     self.deviceName_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_deviceName (self.deviceName_property)
+    self.selectedArray_property.removeEBObserverOf_deviceName (self.deviceName_property)
   //--- symbolInfo
     self.symbolInfo_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_symbolInfo (self.symbolInfo_property)
+    self.selectedArray_property.removeEBObserverOf_symbolInfo (self.symbolInfo_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- symbolInSchematics
     self.symbolInSchematics_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_symbolInSchematics (self.symbolInSchematics_property)
+    self.selectedArray_property.removeEBObserverOf_symbolInSchematics (self.symbolInSchematics_property)
   //---
     self.mModel = nil    
   }
@@ -489,7 +489,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mCenterX (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mCenterX (self.mCenterX_property)
     self.mCenterX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -523,7 +523,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -535,7 +535,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mCenterX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -558,7 +558,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mCenterY (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mCenterY (self.mCenterY_property)
     self.mCenterY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -592,7 +592,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -604,7 +604,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mCenterY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -627,7 +627,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mRotation (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mRotation (self.mRotation_property)
     self.mRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -661,7 +661,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -673,7 +673,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mRotation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -696,7 +696,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mSymbolInstanceName (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mSymbolInstanceName (self.mSymbolInstanceName_property)
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -730,7 +730,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mSymbolInstanceName_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -742,7 +742,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mSymbolInstanceName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -765,7 +765,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mSymbolTypeName (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mSymbolTypeName (self.mSymbolTypeName_property)
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -799,7 +799,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mSymbolTypeName_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -811,7 +811,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mSymbolTypeName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -834,7 +834,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mDisplayComponentNameOffsetX (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mDisplayComponentNameOffsetX (self.mDisplayComponentNameOffsetX_property)
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -868,7 +868,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -880,7 +880,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentNameOffsetX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -903,7 +903,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mDisplayComponentNameOffsetY (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mDisplayComponentNameOffsetY (self.mDisplayComponentNameOffsetY_property)
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -937,7 +937,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -949,7 +949,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentNameOffsetY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -972,7 +972,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mDisplayComponentValue (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mDisplayComponentValue (self.mDisplayComponentValue_property)
     self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1006,7 +1006,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValue_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1018,7 +1018,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValue_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1041,7 +1041,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mDisplayComponentValueOffsetX (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mDisplayComponentValueOffsetX (self.mDisplayComponentValueOffsetX_property)
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1075,7 +1075,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1087,7 +1087,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValueOffsetX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1110,7 +1110,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_mDisplayComponentValueOffsetY (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_mDisplayComponentValueOffsetY (self.mDisplayComponentValueOffsetY_property)
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1144,7 +1144,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1156,7 +1156,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.mDisplayComponentValueOffsetY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1179,7 +1179,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_componentValueProxy (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_componentValueProxy (self.componentValueProxy_property)
     self.componentValueProxy_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1213,7 +1213,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.componentValueProxy_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1225,7 +1225,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       }
     }
     self.componentValueProxy_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1248,7 +1248,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_componentName (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_componentName (self.componentName_property)
     self.componentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1287,7 +1287,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_deviceName (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_deviceName (self.deviceName_property)
     self.deviceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1326,7 +1326,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_symbolInfo (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_symbolInfo (self.symbolInfo_property)
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1365,7 +1365,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_objectDisplay (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1404,7 +1404,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_selectionDisplay (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1443,7 +1443,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   private final func bind_property_symbolInSchematics (model : TransientArrayOf_ComponentSymbolInProject) {
     model.addEBObserverOf_symbolInSchematics (self.symbolInSchematics_property)
     self.symbolInSchematics_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty

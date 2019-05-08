@@ -435,6 +435,7 @@ import Cocoa
   @IBOutlet var mSchematicsInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSchematicsLabelInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSchematicsLabelNetNameTextField : EBTextObserverField?
+  @IBOutlet var mSchematicsLabelRenameNetButton : EBButton?
   @IBOutlet var mSchematicsLabelRotationSegmentedControl : CanariQuadrantSegmentedControl?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
   @IBOutlet var mSchematicsScrollView : EBScrollView?
@@ -480,6 +481,7 @@ import Cocoa
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSchematicsLabelRenameNetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentFromComponentSymbolButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameNetInNetTabButton_enabled : MultipleBindingController_enabled? = nil
 
@@ -654,6 +656,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsInspectorSegmentedControl, "mSchematicsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsLabelInspectorView, "mSchematicsLabelInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsLabelNetNameTextField, "mSchematicsLabelNetNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mSchematicsLabelRenameNetButton, "mSchematicsLabelRenameNetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsLabelRotationSegmentedControl, "mSchematicsLabelRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
@@ -1172,6 +1175,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.mSchematicsLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mSchematicsLabelRenameNetButton
+      )
+      self.mSchematicsLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mSchematicsLabelRenameNetButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mSchematicsObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentFromComponentSymbolButton
@@ -1330,6 +1343,8 @@ import Cocoa
     self.mController_mUpdateDeviceButton_enabled = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
+    self.mSchematicsLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
+    self.mController_mSchematicsLabelRenameNetButton_enabled = nil
     self.mSchematicsObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
     self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
@@ -1486,6 +1501,7 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.ebCleanUp ()
     self.mSchematicsLabelInspectorView?.ebCleanUp ()
     self.mSchematicsLabelNetNameTextField?.ebCleanUp ()
+    self.mSchematicsLabelRenameNetButton?.ebCleanUp ()
     self.mSchematicsLabelRotationSegmentedControl?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
     self.mSchematicsScrollView?.ebCleanUp ()
@@ -1601,6 +1617,7 @@ import Cocoa
 //    self.mSchematicsInspectorSegmentedControl = nil
 //    self.mSchematicsLabelInspectorView = nil
 //    self.mSchematicsLabelNetNameTextField = nil
+//    self.mSchematicsLabelRenameNetButton = nil
 //    self.mSchematicsLabelRotationSegmentedControl = nil
 //    self.mSchematicsPageView = nil
 //    self.mSchematicsScrollView = nil

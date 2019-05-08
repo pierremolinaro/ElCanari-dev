@@ -164,20 +164,20 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [SymbolPin] { return self.mActualModel.propval }
+  var selectedArray : [SymbolPin] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SymbolObject? = nil
-   private let mActualModel = TransientArrayOf_SymbolPin ()
+   let selectedArray_property = TransientArrayOf_SymbolPin ()
 
   //····················································································································
 
   func bind_selection (model : TransientArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
+    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -197,22 +197,22 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    model.addEBObserver (self.mActualModel)
-    self.bind_property_yPin (model: self.mActualModel)
-    self.bind_property_xName (model: self.mActualModel)
-    self.bind_property_yName (model: self.mActualModel)
-    self.bind_property_xNumber (model: self.mActualModel)
-    self.bind_property_yNumber (model: self.mActualModel)
-    self.bind_property_name (model: self.mActualModel)
-    self.bind_property_nameHorizontalAlignment (model: self.mActualModel)
-    self.bind_property_numberHorizontalAlignment (model: self.mActualModel)
-    self.bind_property_pinNameIsDisplayedInSchematics (model: self.mActualModel)
-    self.bind_property_xPin (model: self.mActualModel)
-    self.bind_property_filledBezierPath (model: self.mActualModel)
-    self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_nameRect (model: self.mActualModel)
+    model.addEBObserver (self.selectedArray_property)
+    self.bind_property_yPin (model: self.selectedArray_property)
+    self.bind_property_xName (model: self.selectedArray_property)
+    self.bind_property_yName (model: self.selectedArray_property)
+    self.bind_property_xNumber (model: self.selectedArray_property)
+    self.bind_property_yNumber (model: self.selectedArray_property)
+    self.bind_property_name (model: self.selectedArray_property)
+    self.bind_property_nameHorizontalAlignment (model: self.selectedArray_property)
+    self.bind_property_numberHorizontalAlignment (model: self.selectedArray_property)
+    self.bind_property_pinNameIsDisplayedInSchematics (model: self.selectedArray_property)
+    self.bind_property_xPin (model: self.selectedArray_property)
+    self.bind_property_filledBezierPath (model: self.selectedArray_property)
+    self.bind_property_objectDisplay (model: self.selectedArray_property)
+    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+    self.bind_property_issues (model: self.selectedArray_property)
+    self.bind_property_nameRect (model: self.selectedArray_property)
   }
 
   //····················································································································
@@ -220,73 +220,73 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.mReadModelFunction = nil
+    self.mModel?.removeEBObserver (self.selectedArray_property)
+    self.selectedArray_property.mReadModelFunction = nil
   //--- yPin
     self.yPin_property.mReadModelFunction = nil 
     self.yPin_property.mWriteModelFunction = nil 
     self.yPin_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yPin (self.yPin_property)
+    self.selectedArray_property.removeEBObserverOf_yPin (self.yPin_property)
   //--- xName
     self.xName_property.mReadModelFunction = nil 
     self.xName_property.mWriteModelFunction = nil 
     self.xName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
+    self.selectedArray_property.removeEBObserverOf_xName (self.xName_property)
   //--- yName
     self.yName_property.mReadModelFunction = nil 
     self.yName_property.mWriteModelFunction = nil 
     self.yName_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
+    self.selectedArray_property.removeEBObserverOf_yName (self.yName_property)
   //--- xNumber
     self.xNumber_property.mReadModelFunction = nil 
     self.xNumber_property.mWriteModelFunction = nil 
     self.xNumber_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xNumber (self.xNumber_property)
+    self.selectedArray_property.removeEBObserverOf_xNumber (self.xNumber_property)
   //--- yNumber
     self.yNumber_property.mReadModelFunction = nil 
     self.yNumber_property.mWriteModelFunction = nil 
     self.yNumber_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yNumber (self.yNumber_property)
+    self.selectedArray_property.removeEBObserverOf_yNumber (self.yNumber_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
     self.name_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_name (self.name_property)
+    self.selectedArray_property.removeEBObserverOf_name (self.name_property)
   //--- nameHorizontalAlignment
     self.nameHorizontalAlignment_property.mReadModelFunction = nil 
     self.nameHorizontalAlignment_property.mWriteModelFunction = nil 
     self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+    self.selectedArray_property.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mReadModelFunction = nil 
     self.numberHorizontalAlignment_property.mWriteModelFunction = nil 
     self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
+    self.selectedArray_property.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
   //--- pinNameIsDisplayedInSchematics
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
+    self.selectedArray_property.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
   //--- xPin
     self.xPin_property.mReadModelFunction = nil 
     self.xPin_property.mWriteModelFunction = nil 
     self.xPin_property.mValidateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xPin (self.xPin_property)
+    self.selectedArray_property.removeEBObserverOf_xPin (self.xPin_property)
   //--- filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+    self.selectedArray_property.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //--- nameRect
     self.nameRect_property.mReadModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_nameRect (self.nameRect_property)
+    self.selectedArray_property.removeEBObserverOf_nameRect (self.nameRect_property)
   //---
     self.mModel = nil    
   }
@@ -464,7 +464,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_yPin (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_yPin (self.yPin_property)
     self.yPin_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -498,7 +498,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -510,7 +510,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -533,7 +533,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_xName (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_xName (self.xName_property)
     self.xName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -567,7 +567,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -579,7 +579,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -602,7 +602,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_yName (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_yName (self.yName_property)
     self.yName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -636,7 +636,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -648,7 +648,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -671,7 +671,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_xNumber (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_xNumber (self.xNumber_property)
     self.xNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -705,7 +705,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -717,7 +717,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -740,7 +740,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_yNumber (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_yNumber (self.yNumber_property)
     self.yNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -774,7 +774,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -786,7 +786,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.yNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -809,7 +809,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_name (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_name (self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -843,7 +843,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.name_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -855,7 +855,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -878,7 +878,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_nameHorizontalAlignment (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
     self.nameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -912,7 +912,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.nameHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -924,7 +924,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -947,7 +947,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_numberHorizontalAlignment (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
     self.numberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -981,7 +981,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.numberHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -993,7 +993,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1016,7 +1016,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_pinNameIsDisplayedInSchematics (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1050,7 +1050,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1062,7 +1062,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1085,7 +1085,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_xPin (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_xPin (self.xPin_property)
     self.xPin_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1119,7 +1119,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1131,7 +1131,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     self.xPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1154,7 +1154,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_filledBezierPath (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_filledBezierPath (self.filledBezierPath_property)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1193,7 +1193,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_objectDisplay (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1232,7 +1232,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_selectionDisplay (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1271,7 +1271,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_issues (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
@@ -1310,7 +1310,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   private final func bind_property_nameRect (model : TransientArrayOf_SymbolPin) {
     model.addEBObserverOf_nameRect (self.nameRect_property)
     self.nameRect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
+      if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
           return .empty
