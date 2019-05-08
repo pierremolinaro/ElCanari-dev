@@ -228,7 +228,7 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_issues (self.issues_property)
+    self.mPoints_property.addEBObserverOf_status (self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -312,7 +312,7 @@ class SheetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mPoints_property.removeEBObserverOf_issues (self.issues_property)
+    self.mPoints_property.removeEBObserverOf_status (self.issues_property)
     self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)

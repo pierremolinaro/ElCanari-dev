@@ -367,7 +367,7 @@ entity SheetInProject {
 
   property String mSheetTitle default "" ;
   
-  transient CanariIssueArray issues dependsFrom self.mPoints.all.issues ;
+  transient CanariIssueArray issues dependsFrom self.mPoints.all.status ;
 
   transient EBShape connectedPoints dependsFrom self.mPoints.all.connectedPoints ;
   
@@ -441,7 +441,7 @@ entity PointInSchematics {
 
   transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
 
-  override transient CanariIssueArray issues dependsFrom self.location, self.isConnected ;
+  override transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
   
   override transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
 }

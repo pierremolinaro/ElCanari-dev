@@ -26,10 +26,10 @@ func transient_DeviceRoot_issues (
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
        if self_mTitle == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath (), representativeValue: 0))
        }
        if self_mPrefix == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath ()))
+         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath (), representativeValue: 0))
        }else{
          var ok = true
          for unicodeChar in self_mPrefix.unicodeArray {

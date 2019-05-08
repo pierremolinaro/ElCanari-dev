@@ -15,7 +15,7 @@ import Cocoa
 // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Button/Articles/MakingaButtontheDefaultButton.html
 // The style of the button should be "Push" (set it in interface builder)
 // Key equivalent should be "carriage return" (set it in interface builder)
-// If sheet has text field(s), their "Action" dshould be "Sent on End Editing"
+// If sheet has text field(s), their "Action" should be "Sent on End Editing"
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CanariOkButtonForSheet : EBButton {

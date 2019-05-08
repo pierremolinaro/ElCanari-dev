@@ -17,7 +17,7 @@ func transient_SheetInProject_connexionErrors (
 //--- START OF USER ZONE 2
         var n = 0
         for issue in self_issues {
-          if issue.mKind == .error {
+          if issue.kind == .error {
             n += 1
           }
         }

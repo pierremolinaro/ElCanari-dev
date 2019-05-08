@@ -38,11 +38,11 @@ func transient_DeviceDocument_mStatusMessage (
   }
   for issue in root_issues {
     s += "\n"
-    switch issue.mKind {
+    switch issue.kind {
     case .error   : s += "Error"
     case .warning : s += "Warning"
     }
-    s += ": " + issue.mMessage
+    s += ": " + issue.message
   }
   return s
 //--- END OF USER ZONE 2

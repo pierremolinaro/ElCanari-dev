@@ -26,7 +26,7 @@ extension Array where Element == CanariIssue {
   var errorCount : Int {
     var n = 0
     for issue in self {
-      switch issue.mKind {
+      switch issue.kind {
       case .error :
         n += 1
       case .warning :
@@ -43,7 +43,7 @@ extension Array where Element == CanariIssue {
   var warningCount : Int {
     var n = 0
     for issue in self {
-      switch issue.mKind {
+      switch issue.kind {
       case .error :
         ()
       case .warning :

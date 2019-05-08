@@ -12,13 +12,39 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_issues (
-       _ self_mPoints_issues : [PointInSchematics_issues]
+       _ self_mPoints_status : [PointInSchematics_status]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
+        var pointDictionary = [CanariPoint : [SchematicPointStatus]] ()
+        for object in self_mPoints_status {
+          if let status = object.status {
+            if let array = pointDictionary [status.location] {
+              pointDictionary [status.location] = array + [status]
+            }else{
+              pointDictionary [status.location] = [status]
+            }
+          }
+        }
         var issues = CanariIssueArray ()
-        for object in self_mPoints_issues {
-          if let objectIssues = object.issues {
-            issues += objectIssues
+        for (location, statusArray) in pointDictionary {
+          if statusArray.count > 1 {
+            let r = NSRect (
+              x: canariUnitToCocoa (location.x) - SCHEMATICS_GRID_IN_COCOA_UNIT,
+              y: canariUnitToCocoa (location.y) - SCHEMATICS_GRID_IN_COCOA_UNIT,
+              width: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0,
+              height: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0
+            )
+            let path = NSBezierPath (ovalIn: r)
+            issues.append (CanariIssue (kind: .error, message: "\(statusArray.count) points at the same location", path: path))
+          }else if !statusArray [0].connected {
+            let r = NSRect (
+              x: canariUnitToCocoa (location.x) - SCHEMATICS_GRID_IN_COCOA_UNIT,
+              y: canariUnitToCocoa (location.y) - SCHEMATICS_GRID_IN_COCOA_UNIT,
+              width: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0,
+              height: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0
+            )
+            let path = NSBezierPath (ovalIn: r)
+            issues.append (CanariIssue (kind: .warning, message: "Unconnected pin", path: path))
           }
         }
         return issues

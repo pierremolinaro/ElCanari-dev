@@ -42,8 +42,8 @@ protocol PointInSchematics_isConnected : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_issues : class {
-  var issues : CanariIssueArray? { get }
+protocol PointInSchematics_status : class {
+  var status : SchematicPointStatus? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -63,7 +63,7 @@ class PointInSchematics : EBManagedObject,
          PointInSchematics_location,
          PointInSchematics_netName,
          PointInSchematics_isConnected,
-         PointInSchematics_issues,
+         PointInSchematics_status,
          PointInSchematics_connectedPoints {
 
   //····················································································································
@@ -331,21 +331,21 @@ class PointInSchematics : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: issues
+  //   Transient property: status
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  let status_property = EBTransientProperty_SchematicPointStatus ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
+  var status_property_selection : EBSelection <SchematicPointStatus> {
+    return self.status_property.prop
   }
 
   //····················································································································
 
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+  var status : SchematicPointStatus? {
+    switch self.status_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -487,8 +487,8 @@ class PointInSchematics : EBManagedObject,
     self.mNC_property.addEBObserver (self.isConnected_property)
     self.mWiresP1s_property.addEBObserver (self.isConnected_property)
     self.mWiresP2s_property.addEBObserver (self.isConnected_property)
-  //--- Atomic property: issues
-    self.issues_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: status
+    self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.location_property_selection.kind ()
         kind &= unwSelf.isConnected_property_selection.kind ()
@@ -500,7 +500,7 @@ class PointInSchematics : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.location_property_selection, unwSelf.isConnected_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PointInSchematics_issues (v0, v1))
+            return .single (transient_PointInSchematics_status (v0, v1))
           default :
             return .empty
           }
@@ -509,8 +509,8 @@ class PointInSchematics : EBManagedObject,
         return .empty
       }
     }
-    self.location_property.addEBObserver (self.issues_property)
-    self.isConnected_property.addEBObserver (self.issues_property)
+    self.location_property.addEBObserver (self.status_property)
+    self.isConnected_property.addEBObserver (self.status_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -577,8 +577,8 @@ class PointInSchematics : EBManagedObject,
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
     self.mWiresP2s_property.removeEBObserver (self.isConnected_property)
-    self.location_property.removeEBObserver (self.issues_property)
-    self.isConnected_property.removeEBObserver (self.issues_property)
+    self.location_property.removeEBObserver (self.status_property)
+    self.isConnected_property.removeEBObserver (self.status_property)
     self.location_property.removeEBObserver (self.connectedPoints_property)
     self.isConnected_property.removeEBObserver (self.connectedPoints_property)
  //   self.mWiresP2s_property.setOppositeRelationship = nil
@@ -648,12 +648,12 @@ class PointInSchematics : EBManagedObject,
       valueExplorer:&self.isConnected_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "issues",
-      idx:self.issues_property.ebObjectIndex,
+      "status",
+      idx:self.status_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      observerExplorer:&self.status_property.mObserverExplorer,
+      valueExplorer:&self.status_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connectedPoints",
@@ -1291,57 +1291,57 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
   }
 
   //····················································································································
-  //   Observers of 'issues' transient property
+  //   Observers of 'status' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private var mObserversOf_status = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func addEBObserverOf_status (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_status.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.status_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_status (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_status.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
+        managedObject.status_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
+      self.mObserversOf_status.apply { (_ observer : EBEvent) in
+        managedObject.status_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
     for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
+      self.mObserversOf_status.apply { (_ observer : EBEvent) in
+        managedObject.status_property.removeEBObserver (observer)
       }
     }
   }
@@ -1477,7 +1477,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
       self.removeEBObserversOf_location_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_netName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_status_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -1489,7 +1489,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
       self.addEBObserversOf_location_toElementsOfSet (addedSet)
       self.addEBObserversOf_netName_toElementsOfSet (addedSet)
       self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_status_toElementsOfSet (addedSet)
       self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -1600,7 +1600,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_status_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
@@ -1610,7 +1610,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
         self.addEBObserversOf_location_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_status_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
@@ -1758,7 +1758,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
           self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_status_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -1779,7 +1779,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
           self.addEBObserversOf_location_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_status_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

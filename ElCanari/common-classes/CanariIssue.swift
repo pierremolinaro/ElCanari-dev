@@ -32,10 +32,10 @@ struct CanariIssue : Hashable {
   //   Properties
   //····················································································································
 
-  let mMessage : String
-  let mKind : CanariIssueKind
-  let mPath : NSBezierPath
-  let mRepresentativeValue : Int
+  let kind : CanariIssueKind
+  let message : String
+  let path : NSBezierPath
+  let representativeValue : Int
 
   //····················································································································
   //   Init
@@ -45,29 +45,29 @@ struct CanariIssue : Hashable {
         message inMessage : String,
         path inBezierPath : NSBezierPath = NSBezierPath (),
         representativeValue inValue : Int = 0) {
-    mMessage = inMessage
-    mPath = inBezierPath
-    mKind = inKind
-    mRepresentativeValue = inValue
+    message = inMessage
+    path = inBezierPath
+    kind = inKind
+    representativeValue = inValue
   }
 
   //····················································································································
   //   Protocol Equatable
   //····················································································································
 
-  public static func == (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
-    return (lhs.mMessage == rhs.mMessage) && (lhs.mKind == rhs.mKind) && (lhs.mPath == rhs.mPath)
-  }
+//  public static func == (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
+//    return (lhs.mMessage == rhs.mMessage) && (lhs.mKind == rhs.mKind) && (lhs.mPath == rhs.mPath)
+//  }
 
   //····················································································································
   // Bezier path center point
   //····················································································································
 
   var center : NSPoint {
-    if self.mPath.elementCount == 0 {
+    if self.path.elementCount == 0 {
       return NSPoint ()
     }else{
-      return NSPoint (x: self.mPath.bounds.midX, y: self.mPath.bounds.midY)
+      return NSPoint (x: self.path.bounds.midX, y: self.path.bounds.midY)
     }
   }
 

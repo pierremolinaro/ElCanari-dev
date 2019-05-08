@@ -731,7 +731,6 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
-        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mLabels_property.removeEBObserversFrom (&self.mObserversOf_mLabels)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
@@ -740,10 +739,10 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
+        oldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
-        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mLabels_property.addEBObserversFrom (&self.mObserversOf_mLabels)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
@@ -752,6 +751,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
+        self.mValue?.status_property.addEBObserversFrom (&self.mObserversOf_status)
        //--- Notify observers
         self.postEvent ()
       }
@@ -859,47 +859,6 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
     self.mObserversOf_isConnected.remove (inObserver)
     if let object = self.propval {
       object.isConnected_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: issues
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.mObserversOf_issues.insert (inObserver)
-    if let object = self.propval {
-      object.issues_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.mObserversOf_issues.remove (inObserver)
-    if let object = self.propval {
-      object.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1228,6 +1187,47 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
     self.mObserversOf_netName.remove (inObserver)
     if let object = self.propval {
       object.netName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: status
+  //····················································································································
+
+  private var mObserversOf_status = EBWeakEventSet ()
+
+  //····················································································································
+
+  var status_property_selection : EBSelection <SchematicPointStatus?> {
+    if let model = self.propval {
+      switch (model.status_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_status (_ inObserver : EBEvent) {
+    self.mObserversOf_status.insert (inObserver)
+    if let object = self.propval {
+      object.status_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_status (_ inObserver : EBEvent) {
+    self.mObserversOf_status.remove (inObserver)
+    if let object = self.propval {
+      object.status_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1286,7 +1286,6 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
-        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mLabels_property.removeEBObserversFrom (&self.mObserversOf_mLabels)
         oldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName)
@@ -1295,10 +1294,10 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
+        oldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
-        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mLabels_property.addEBObserversFrom (&self.mObserversOf_mLabels)
         self.mValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName)
@@ -1307,6 +1306,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
+        self.mValue?.status_property.addEBObserversFrom (&self.mObserversOf_status)
        //--- Notify observers
         self.postEvent ()
       }
@@ -1414,47 +1414,6 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
     self.mObserversOf_isConnected.remove (inObserver)
     if let object = self.propval {
       object.isConnected_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: issues
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.mObserversOf_issues.insert (inObserver)
-    if let object = self.propval {
-      object.issues_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.mObserversOf_issues.remove (inObserver)
-    if let object = self.propval {
-      object.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1783,6 +1742,47 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
     self.mObserversOf_netName.remove (inObserver)
     if let object = self.propval {
       object.netName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: status
+  //····················································································································
+
+  private var mObserversOf_status = EBWeakEventSet ()
+
+  //····················································································································
+
+  var status_property_selection : EBSelection <SchematicPointStatus?> {
+    if let model = self.propval {
+      switch (model.status_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_status (_ inObserver : EBEvent) {
+    self.mObserversOf_status.insert (inObserver)
+    if let object = self.propval {
+      object.status_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_status (_ inObserver : EBEvent) {
+    self.mObserversOf_status.remove (inObserver)
+    if let object = self.propval {
+      object.status_property.removeEBObserver (inObserver)
     }
   }
 

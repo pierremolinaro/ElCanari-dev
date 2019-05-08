@@ -17,7 +17,7 @@ func transient_SheetInProject_connexionWarnings (
 //--- START OF USER ZONE 2
         var n = 0
         for issue in self_issues {
-          if issue.mKind == .warning {
+          if issue.kind == .warning {
             n += 1
           }
         }

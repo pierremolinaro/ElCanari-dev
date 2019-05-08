@@ -89,13 +89,13 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
       self.mHideIssueButton?.isEnabled = false
     }else{
       let selectedIssue = self.mModelArray [self.selectedRow]
-      self.mIssueDisplayView?.setIssue (selectedIssue.mPath, selectedIssue.mKind)
+      self.mIssueDisplayView?.setIssue (selectedIssue.path, selectedIssue.kind)
       self.mHideIssueButton?.isEnabled = true
     }
     var errorCount = 0
     var warningCount = 0
     for issue in self.mModelArray {
-      switch issue.mKind {
+      switch issue.kind {
       case .error :
         errorCount += 1
       case .warning :
@@ -154,14 +154,14 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
     var result : Any? = nil
     if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
-      switch self.mModelArray [row].mKind {
+      switch self.mModelArray [row].kind {
       case .warning :
         result = NSImage (named: warningStatusImageName)!
       case .error :
         result = NSImage (named: errorStatusImageName)!
       }
     }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
-      result = self.mModelArray [row].mMessage
+      result = self.mModelArray [row].message
     }
     return result
   }

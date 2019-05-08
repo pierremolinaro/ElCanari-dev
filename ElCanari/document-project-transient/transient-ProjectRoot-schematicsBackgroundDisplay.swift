@@ -150,11 +150,11 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         let warningPath = NSBezierPath ()
         let errorPath = NSBezierPath ()
         for issue in self_selectedSheetIssues {
-          switch issue.mKind {
+          switch issue.kind {
           case .warning :
-            warningPath.append (issue.mPath)
+            warningPath.append (issue.path)
           case .error :
-            errorPath.append (issue.mPath)
+            errorPath.append (issue.path)
           }
         }
         if warningPath.elementCount > 0 {

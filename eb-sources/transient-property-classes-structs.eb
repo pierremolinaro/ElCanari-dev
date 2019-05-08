@@ -6,6 +6,7 @@ transient property struct StringSet ;
 transient property class CanariRect ;
 transient property class CanariMenuItemListClass ; // Used for populating « Open in Library », « Reveal in Finder » menu items
 
+transient property struct SchematicPointStatus ;
 transient property struct NetInfoArray ;
 transient property struct NSPoint ;
 transient property struct CanariPoint ;

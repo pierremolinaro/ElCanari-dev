@@ -30,14 +30,14 @@ func transient_LabelInSchematics_selectionDisplay (
           bp.line (to: NSPoint (x: SCHEMATICS_LABEL_SIZE * 2.0, y: 0.0))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = 0.5
+          bp.lineWidth = SCHEMATICS_HILITE_WIDTH
         //---
           let af = NSAffineTransform ()
           af.translateX (by: p.x, yBy: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
           shape.append (EBStrokeBezierPathShape ([af.transform (bp)], .cyan))
-          shape.append (EBKnobShape (at: p, index: 0, .rect, 8.0))
+          shape.append (EBKnobShape (at: p, index: 0, .rect, SCHEMATICS_KNOB_SIZE))
         }
         return shape
 //--- END OF USER ZONE 2

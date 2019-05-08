@@ -11,23 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_issues (
+func transient_PointInSchematics_status (
        _ self_location : CanariPoint,    
        _ self_isConnected : Bool
-) -> CanariIssueArray {
+) -> SchematicPointStatus {
 //--- START OF USER ZONE 2
-        var array = CanariIssueArray ()
-        if !self_isConnected {
-          let r = NSRect (
-            x: canariUnitToCocoa (self_location.x) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-            y: canariUnitToCocoa (self_location.y) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-            width: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0,
-            height: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0
-          )
-          let path = NSBezierPath (ovalIn: r)
-          array.append (CanariIssue (kind: .warning, message: "Unconnected pin", path: path, representativeValue: 0))
-        }
-        return array
+         return SchematicPointStatus (location: self_location, connected: self_isConnected)
 //--- END OF USER ZONE 2
 }
 
