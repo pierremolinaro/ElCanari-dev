@@ -65,6 +65,25 @@ class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: mPoints
+  //····················································································································
+
+  let mPoints_property = StoredArrayOf_PointInSchematics ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
+    return self.mPoints_property.prop
+  }
+
+  //····················································································································
+
+  var mPoints : [PointInSchematics] {
+    get { return self.mPoints_property.propval }
+    set { self.mPoints_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mSheetTitle
   //····················································································································
 
@@ -184,19 +203,21 @@ class SheetInProject : EBManagedObject,
     self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SchematicsObject?) in
       inManagedObject?.mSheet_property.setProp (self)
     }
+  //--- To many property: mPoints (no option)
+    self.mPoints_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mObjects_property_selection.kind ()
+        let kind = unwSelf.mPoints_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mObjects_property_selection) {
+          switch (unwSelf.mPoints_property_selection) {
           case (.single (let v0)) :
             return .single (transient_SheetInProject_issues (v0))
           default :
@@ -207,18 +228,18 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mObjects_property.addEBObserverOf_issues (self.issues_property)
+    self.mPoints_property.addEBObserverOf_issues (self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mObjects_property_selection.kind ()
+        let kind = unwSelf.mPoints_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mObjects_property_selection) {
+          switch (unwSelf.mPoints_property_selection) {
           case (.single (let v0)) :
             return .single (transient_SheetInProject_connectedPoints (v0))
           default :
@@ -229,7 +250,7 @@ class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mObjects_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -291,8 +312,8 @@ class SheetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mObjects_property.removeEBObserverOf_issues (self.issues_property)
-    self.mObjects_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.mPoints_property.removeEBObserverOf_issues (self.issues_property)
+    self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)
  //   self.mObjects_property.setOppositeRelationship = nil
@@ -359,6 +380,13 @@ class SheetInProject : EBManagedObject,
       view: view,
       valueExplorer:&mObjects_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "mPoints",
+      idx:mPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPoints_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -370,6 +398,8 @@ class SheetInProject : EBManagedObject,
   override func clearObjectExplorer () {
   //--- To many property: mObjects
     self.mObjects_property.mValueExplorer = nil
+  //--- To many property: mPoints
+    self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.mObserverExplorer = nil
     self.mSheetTitle_property.mValueExplorer = nil
@@ -383,6 +413,7 @@ class SheetInProject : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mObjects_property.setProp ([])
+    self.mPoints_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -408,6 +439,12 @@ class SheetInProject : EBManagedObject,
       relationshipName: "mObjects",
       intoDictionary: ioDictionary
     )
+  //--- To many property: mPoints
+    self.store (
+      managedObjectArray: self.mPoints_property.propval,
+      relationshipName: "mPoints",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey:"mSheetTitle")
   }
@@ -425,6 +462,12 @@ class SheetInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SchematicsObject])
+  //--- To many property: mPoints
+    self.mPoints_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPoints",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PointInSchematics])
   }
 
   //····················································································································
@@ -447,6 +490,10 @@ class SheetInProject : EBManagedObject,
     for managedObject in self.mObjects_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: mPoints
+    for managedObject in self.mPoints_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -457,6 +504,10 @@ class SheetInProject : EBManagedObject,
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mObjects
     for managedObject in self.mObjects_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPoints
+    for managedObject in self.mPoints_property.propval {
       objects.append (managedObject)
     }
   }

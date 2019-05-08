@@ -1006,7 +1006,6 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints)
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
-        oldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location)
         oldValue?.mLabels_property.removeEBObserversFrom (&self.mObserversOf_mLabels)
@@ -1016,12 +1015,9 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
         oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
         oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
         oldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName)
-        oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
-        oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
-        self.mValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.location_property.addEBObserversFrom (&self.mObserversOf_location)
         self.mValue?.mLabels_property.addEBObserversFrom (&self.mObserversOf_mLabels)
@@ -1031,8 +1027,6 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
         self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
         self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
         self.mValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName)
-        self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
-        self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
        //--- Notify observers
         self.postEvent ()
       }
@@ -1140,47 +1134,6 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
     self.mObserversOf_isConnected.remove (inObserver)
     if let object = self.propval {
       object.isConnected_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: isPlacedInSchematics
-  //····················································································································
-
-  private var mObserversOf_isPlacedInSchematics = EBWeakEventSet ()
-
-  //····················································································································
-
-  var isPlacedInSchematics_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
-      switch (model.isPlacedInSchematics_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
-    self.mObserversOf_isPlacedInSchematics.insert (inObserver)
-    if let object = self.propval {
-      object.isPlacedInSchematics_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
-    self.mObserversOf_isPlacedInSchematics.remove (inObserver)
-    if let object = self.propval {
-      object.isPlacedInSchematics_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1550,88 +1503,6 @@ final class ToOneRelationship_NCInSchematics_mPoint : EBAbstractProperty {
     self.mObserversOf_netName.remove (inObserver)
     if let object = self.propval {
       object.netName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: objectDisplay
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    if let object = self.propval {
-      object.objectDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    if let object = self.propval {
-      object.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: selectionDisplay
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    if let object = self.propval {
-      object.selectionDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    if let object = self.propval {
-      object.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 

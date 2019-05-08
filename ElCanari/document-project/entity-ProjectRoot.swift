@@ -3422,6 +3422,7 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
         oldValue?.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mObjects_property.removeEBObserversFrom (&self.mObserversOf_mObjects)
+        oldValue?.mPoints_property.removeEBObserversFrom (&self.mObserversOf_mPoints)
         oldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle)
       //--- Add property observers to new object
         self.mValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints)
@@ -3429,6 +3430,7 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
         self.mValue?.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mObjects_property.addEBObserversFrom (&self.mObserversOf_mObjects)
+        self.mValue?.mPoints_property.addEBObserversFrom (&self.mObserversOf_mPoints)
         self.mValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle)
        //--- Notify observers
         self.postEvent ()
@@ -3660,6 +3662,47 @@ final class ToOneRelationship_ProjectRoot_mSelectedSheet : EBAbstractProperty {
     self.mObserversOf_mObjects.remove (inObserver)
     if let object = self.propval {
       object.mObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPoints
+  //····················································································································
+
+  private var mObserversOf_mPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+    if let model = self.propval {
+      switch (model.mPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.insert (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.remove (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.removeEBObserver (inObserver)
     }
   }
 

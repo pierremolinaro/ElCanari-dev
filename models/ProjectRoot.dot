@@ -3,13 +3,13 @@ digraph G {
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicsDate|Int mSchematicsGridDisplayFactor|GridStyle mSchematicsGridStyle|Bool mSchematicsHorizontalFlip|SchematicsSheetOrientation mSchematicsSheetOrientation|String mSchematicsTitle|String mSchematicsVersion|Bool mSchematicsVerticalFlip|Int mSchematicsZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicsObject] selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicsObject[label="<SchematicsObject>SchematicsObject|<mSheet>SheetInProject? mSheet"] ;
-  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicsObject] mObjects|String mSheetTitle"] ;
-  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>[NetInProject] mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
-  NetInProject[label="<NetInProject>NetInProject|<mNetClass>NetClassInProject? mNetClass|String mNetName|<mPoints>[PointInSchematics] mPoints"] ;
-  PointInSchematics[label="<PointInSchematics>PointInSchematics|<mLabels>[LabelInSchematics] mLabels|<mNC>NCInSchematics? mNC|<mNet>NetInProject? mNet|<mSheet>SheetInProject? mSheet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematics] mWiresP1s|<mWiresP2s>[WireInSchematics] mWiresP2s|Int mX|Int mY"] ;
+  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicsObject] mObjects|<mPoints>[PointInSchematics] mPoints|String mSheetTitle"] ;
+  PointInSchematics[label="<PointInSchematics>PointInSchematics|<mLabels>[LabelInSchematics] mLabels|<mNC>NCInSchematics? mNC|<mNet>NetInProject? mNet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematics] mWiresP1s|<mWiresP2s>[WireInSchematics] mWiresP2s|Int mX|Int mY"] ;
   WireInSchematics[label="<WireInSchematics>WireInSchematics|<mP1>PointInSchematics? mP1|<mP2>PointInSchematics? mP2|<mSheet>SheetInProject? mSheet"] ;
   NCInSchematics[label="<NCInSchematics>NCInSchematics|QuadrantRotation mOrientation|<mPoint>PointInSchematics? mPoint|<mSheet>SheetInProject? mSheet"] ;
   LabelInSchematics[label="<LabelInSchematics>LabelInSchematics|QuadrantRotation mOrientation|<mPoint>PointInSchematics? mPoint|<mSheet>SheetInProject? mSheet"] ;
+  NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>[NetInProject] mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
+  NetInProject[label="<NetInProject>NetInProject|<mNetClass>NetClassInProject? mNetClass|String mNetName|<mPoints>[PointInSchematics] mPoints"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
   DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>[ComponentInProject] mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>[DevicePackageInProject] mPackages|<mPadAssignments>[DevicePadAssignmentInProject] mPadAssignments|String mPrefix|<mSymbols>[DeviceSymbolInstanceInProject] mSymbols"] ;
   DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|String mSymbolInstanceName|<mSymbolType>DeviceSymbolTypeInProject? mSymbolType"] ;
@@ -29,9 +29,7 @@ digraph G {
   ProjectRoot:mSheets -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:selectedSheetObjects -> SchematicsObject:SchematicsObject [dir=both arrowtail=none arrowhead=vee] ;
   SheetInProject:mObjects -> SchematicsObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
-  NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
-  NetInProject:mPoints -> PointInSchematics:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
-  PointInSchematics -> SchematicsObject [arrowhead=dot] ;
+  SheetInProject:mPoints -> PointInSchematics:PointInSchematics [dir=both arrowtail=none arrowhead=vee] ;
   PointInSchematics:mLabels -> LabelInSchematics:mPoint [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematics:mWiresP1s -> WireInSchematics:mP1 [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematics:mWiresP2s -> WireInSchematics:mP2 [dir=both arrowtail=onormal arrowhead=vee] ;
@@ -39,6 +37,8 @@ digraph G {
   NCInSchematics -> SchematicsObject [arrowhead=dot] ;
   NCInSchematics:mPoint -> PointInSchematics:mNC [dir=both arrowtail=onormal arrowhead=onormal] ;
   LabelInSchematics -> SchematicsObject [arrowhead=dot] ;
+  NetClassInProject:mNets -> NetInProject:mNetClass [dir=both arrowtail=onormal arrowhead=vee] ;
+  NetInProject:mPoints -> PointInSchematics:mNet [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceInProject:mPadAssignments -> DevicePadAssignmentInProject:DevicePadAssignmentInProject [dir=both arrowtail=none arrowhead=vee] ;

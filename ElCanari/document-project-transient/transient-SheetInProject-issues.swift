@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_issues (
-       _ self_mObjects_issues : [SchematicsObject_issues]
+       _ self_mPoints_issues : [PointInSchematics_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
         var issues = CanariIssueArray ()
-        for object in self_mObjects_issues {
+        for object in self_mPoints_issues {
           if let objectIssues = object.issues {
             issues += objectIssues
           }

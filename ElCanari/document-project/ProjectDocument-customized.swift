@@ -116,6 +116,8 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
       entityName: "CommentInSchematics",
       scaleProvider: self.mSchematicsView
     )
+  //---
+    self.mSchematicsObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
   }
 
   //····················································································································
@@ -128,6 +130,16 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mSchematicsObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+  }
+
+  //····················································································································
+  //    Update points and net
+  //····················································································································
+
+  internal func updateSchematicsPointsAndNets () {
+    self.removeUnusedSchematicsPoints ()
+    self.removeUnusedNets ()
   }
 
   //····················································································································
@@ -227,7 +239,7 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
         let point = PointInSchematics (self.ebUndoManager)
         point.mSymbol = inSymbol
         point.mSymbolPinName = pin.pinName
-        self.rootObject.mSelectedSheet?.mObjects.append (point)
+        self.rootObject.mSelectedSheet?.mPoints.append (point)
       }
     }
   //--- Enter symbol

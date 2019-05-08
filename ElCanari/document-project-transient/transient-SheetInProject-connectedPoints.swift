@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_connectedPoints (
-       _ self_mObjects_connectedPoints : [SchematicsObject_connectedPoints]
+       _ self_mPoints_connectedPoints : [PointInSchematics_connectedPoints]
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let bp = NSBezierPath ()
-        for object in self_mObjects_connectedPoints {
+        for object in self_mPoints_connectedPoints {
           if let a = object.connectedPoints {
             for point in a {
               let p = point.cocoaPoint ()

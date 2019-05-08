@@ -15,20 +15,17 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func populateContextualClickOnSchematics (_ inMouseDownPoint : CanariPoint) -> NSMenu {
+    let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
     let menu = NSMenu ()
   //--- Add NC ?
-     for object in self.rootObject.mSelectedSheet?.mObjects ?? [] {
-       if let point = object as? PointInSchematics {
-         if point.mNC == nil,
-            point.mWiresP1s.count == 0,
-            point.mWiresP2s.count == 0,
-            let location = point.location,
-            inMouseDownPoint == location {
-           let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPin (_:)), keyEquivalent: "")
-           menuItem.target = self
-           menuItem.representedObject = point
-           menu.addItem (menuItem)
-         }
+     let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
+     if points.count == 1 {
+       let point = points [0]
+       if point.mNC == nil, point.mLabels.count == 0, point.mWiresP1s.count == 0, point.mWiresP2s.count == 0 {
+         let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPin (_:)), keyEquivalent: "")
+         menuItem.target = self
+         menuItem.representedObject = point
+         menu.addItem (menuItem)
        }
      }
   //--- Add Labels
@@ -75,16 +72,17 @@ extension CustomizedProjectDocument {
 
   @objc internal func addLabelInSchematics (_ inSender : NSMenuItem) {
     if let mouseLocation = inSender.representedObject as? CanariPoint {
-      let canariMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
-      let points = self.pointInSchematics (at: canariMouseDownLocation)
+      let canariAlignedMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+      let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
       var possiblePoint : PointInSchematics? = nil
       if points.count == 1 {
         possiblePoint = points [0]
       }else if points.count == 0 {
         let point = PointInSchematics (self.ebUndoManager)
-        point.mX = canariMouseDownLocation.x
-        point.mY = canariMouseDownLocation.y
-        self.rootObject.mSelectedSheet?.mObjects.append (point)
+        point.mX = canariAlignedMouseDownLocation.x
+        point.mY = canariAlignedMouseDownLocation.y
+        point.mNet = self.newNetWithAutomaticName ()
+        self.rootObject.mSelectedSheet?.mPoints.append (point)
         possiblePoint = point
       }
       if let point = possiblePoint {
@@ -144,18 +142,6 @@ extension CustomizedProjectDocument {
     }else{
       return .rotation0
     }
-  }
-
-  //····················································································································
-
-  internal func pointInSchematics (at inPoint : CanariPoint) -> [PointInSchematics] {
-     var result = [PointInSchematics] ()
-     for object in self.rootObject.mSelectedSheet?.mObjects ?? [] {
-       if let point = object as? PointInSchematics, let location = point.location, inPoint == location {
-         result.append (point)
-       }
-     }
-     return result
   }
 
   //····················································································································

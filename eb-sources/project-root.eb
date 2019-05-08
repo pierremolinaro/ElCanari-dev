@@ -358,12 +358,13 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
 
 entity SheetInProject {
   toMany SchematicsObject mObjects inverse toOne mSheet ;
+  toMany PointInSchematics mPoints ;
 
   property String mSheetTitle default "" ;
   
-  transient CanariIssueArray issues dependsFrom self.mObjects.all.issues ;
+  transient CanariIssueArray issues dependsFrom self.mPoints.all.issues ;
 
-  transient EBShape connectedPoints dependsFrom self.mObjects.all.connectedPoints ;
+  transient EBShape connectedPoints dependsFrom self.mPoints.all.connectedPoints ;
   
   transient Int connexionWarnings dependsFrom self.issues ;
   
@@ -411,7 +412,7 @@ graphic entity CommentInSchematics : SchematicsObject {
 //   PointInSchematics
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity PointInSchematics : SchematicsObject {
+entity PointInSchematics {
   toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
   property String mSymbolPinName default "" ;
 
@@ -467,7 +468,6 @@ graphic entity NCInSchematics : SchematicsObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity WireInSchematics : SchematicsObject {
-//  toOne NetInProject mNet inverse toMany mWires ;
 
   toOne PointInSchematics mP1 inverse toMany mWiresP1s ;
   toOne PointInSchematics mP2 inverse toMany mWiresP2s ;  
@@ -478,7 +478,6 @@ graphic entity WireInSchematics : SchematicsObject {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity LabelInSchematics : SchematicsObject {
-//  toOne NetInProject mNet inverse toMany mWires ;
   toOne PointInSchematics mPoint inverse toMany mLabels ;
 
   property QuadrantRotation mOrientation default rotation0 ;

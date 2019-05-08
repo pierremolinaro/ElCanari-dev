@@ -56,7 +56,7 @@ protocol PointInSchematics_connectedPoints : class {
 //    Entity: PointInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class PointInSchematics : SchematicsObject,
+class PointInSchematics : EBManagedObject,
          PointInSchematics_mSymbolPinName,
          PointInSchematics_mX,
          PointInSchematics_mY,
@@ -323,6 +323,52 @@ class PointInSchematics : SchematicsObject,
 
   var isConnected : Bool? {
     switch self.isConnected_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: connectedPoints
+  //····················································································································
+
+  let connectedPoints_property = EBTransientProperty_CanariPointArray ()
+
+  //····················································································································
+
+  var connectedPoints_property_selection : EBSelection <CanariPointArray> {
+    return self.connectedPoints_property.prop
+  }
+
+  //····················································································································
+
+  var connectedPoints : CanariPointArray? {
+    switch self.connectedPoints_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
