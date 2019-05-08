@@ -80,6 +80,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: netCount
+  //····················································································································
+
+  let netCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netCount_property_selection : EBSelection <Int> {
+    return self.netCount_property.prop
+  }
+
+  //····················································································································
+
+  var netCount : Int? {
+    switch self.netCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -241,6 +264,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: netCountString
+  //····················································································································
+
+  let netCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netCountString_property_selection : EBSelection <String> {
+    return self.netCountString_property.prop
+  }
+
+  //····················································································································
+
+  var netCountString : String? {
+    switch self.netCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canChangePackage
   //····················································································································
 
@@ -348,6 +394,8 @@ import Cocoa
   @IBOutlet var mNetClassWidthDimensionTextField : CanariDimensionTextField?
   @IBOutlet var mNetClassWidthUnitPopUpButton : EBPopUpButton?
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
+  @IBOutlet var mNetCountTextField : EBTextObserverField?
+  @IBOutlet var mNetInfoTableView : CanariNetInfoTableView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
   @IBOutlet var mNewSheetButton : EBButton?
@@ -367,6 +415,11 @@ import Cocoa
   @IBOutlet var mRenameComponentPanel : NSPanel?
   @IBOutlet var mRenameComponentPrefixComboxBox : CanariComboBox?
   @IBOutlet var mRenameComponentValidationButton : NSButton?
+  @IBOutlet var mRenameNetErrorTextField : EBTextField?
+  @IBOutlet var mRenameNetInNetTabButton : EBButton?
+  @IBOutlet var mRenameNetOkButton : EBButton?
+  @IBOutlet var mRenameNetPanel : NSPanel?
+  @IBOutlet var mRenameNetTextField : EBTextField?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsDatePicker : NSDatePicker?
@@ -419,6 +472,7 @@ import Cocoa
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentFromComponentSymbolButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRenameNetInNetTabButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -554,6 +608,8 @@ import Cocoa
     checkOutletConnection (self.mNetClassWidthDimensionTextField, "mNetClassWidthDimensionTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mNetClassWidthUnitPopUpButton, "mNetClassWidthUnitPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mNetCountTextField, "mNetCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mNetInfoTableView, "mNetInfoTableView", CanariNetInfoTableView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
@@ -573,6 +629,11 @@ import Cocoa
     checkOutletConnection (self.mRenameComponentPanel, "mRenameComponentPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mRenameComponentPrefixComboxBox, "mRenameComponentPrefixComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mRenameComponentValidationButton, "mRenameComponentValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mRenameNetErrorTextField, "mRenameNetErrorTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mRenameNetInNetTabButton, "mRenameNetInNetTabButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRenameNetOkButton, "mRenameNetOkButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRenameNetPanel, "mRenameNetPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
@@ -650,6 +711,28 @@ import Cocoa
       }
     }
     self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+  //--- Atomic property: netCount
+    self.netCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.netsDescription_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_netCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -784,6 +867,28 @@ import Cocoa
       }
     }
     self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
+  //--- Atomic property: netCountString
+    self.netCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.netsDescription_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_netCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -873,6 +978,8 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
     self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
     self.mSymbolRotationSegmentedControl?.bind_quadrant (self.mComponentSymbolSelectionController.mRotation_property, file: #file, line: #line)
+    self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
+    self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1054,6 +1161,16 @@ import Cocoa
       self.mSchematicsObjectsController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentFromComponentSymbolButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.netCount_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRenameNetInNetTabButton
+      )
+      self.netCount_property.addEBObserver (controller)
+      self.mController_mRenameNetInNetTabButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -1156,6 +1273,8 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolInstanceNameTextField?.unbind_valueObserver ()
     self.mSymbolRotationSegmentedControl?.unbind_quadrant ()
+    self.mNetInfoTableView?.unbind_netInfo ()
+    self.mNetCountTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1193,6 +1312,8 @@ import Cocoa
     self.mController_mRemoveSheetButton_enabled = nil
     self.mSchematicsObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
+    self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
+    self.mController_mRenameNetInNetTabButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mComponentController.unbind_tableView (self.mComponentTableView)
     self.mNetClassController.unbind_tableView (self.mNetClassTableView)
@@ -1216,6 +1337,7 @@ import Cocoa
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
     self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
@@ -1223,6 +1345,7 @@ import Cocoa
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
+    self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
     self.mComponentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
@@ -1306,6 +1429,8 @@ import Cocoa
     self.mNetClassWidthDimensionTextField?.ebCleanUp ()
     self.mNetClassWidthUnitPopUpButton?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
+    self.mNetCountTextField?.ebCleanUp ()
+    self.mNetInfoTableView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mNewSheetButton?.ebCleanUp ()
@@ -1325,6 +1450,11 @@ import Cocoa
     self.mRenameComponentPanel?.ebCleanUp ()
     self.mRenameComponentPrefixComboxBox?.ebCleanUp ()
     self.mRenameComponentValidationButton?.ebCleanUp ()
+    self.mRenameNetErrorTextField?.ebCleanUp ()
+    self.mRenameNetInNetTabButton?.ebCleanUp ()
+    self.mRenameNetOkButton?.ebCleanUp ()
+    self.mRenameNetPanel?.ebCleanUp ()
+    self.mRenameNetTextField?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsDatePicker?.ebCleanUp ()
@@ -1411,6 +1541,8 @@ import Cocoa
 //    self.mNetClassWidthDimensionTextField = nil
 //    self.mNetClassWidthUnitPopUpButton = nil
 //    self.mNetClassesPageView = nil
+//    self.mNetCountTextField = nil
+//    self.mNetInfoTableView = nil
 //    self.mNetListPageView = nil
 //    self.mNewComponentFromDevicePullDownButton = nil
 //    self.mNewSheetButton = nil
@@ -1430,6 +1562,11 @@ import Cocoa
 //    self.mRenameComponentPanel = nil
 //    self.mRenameComponentPrefixComboxBox = nil
 //    self.mRenameComponentValidationButton = nil
+//    self.mRenameNetErrorTextField = nil
+//    self.mRenameNetInNetTabButton = nil
+//    self.mRenameNetOkButton = nil
+//    self.mRenameNetPanel = nil
+//    self.mRenameNetTextField = nil
 //    self.mResetDeviceVersionButton = nil
 //    self.mResetFontVersionButton = nil
 //    self.mSchematicsDatePicker = nil

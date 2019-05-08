@@ -2941,9 +2941,11 @@ final class ToOneRelationship_PointInSchematics_mNet : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName)
         oldValue?.mPoints_property.removeEBObserversFrom (&self.mObserversOf_mPoints)
+        oldValue?.pinNames_property.removeEBObserversFrom (&self.mObserversOf_pinNames)
       //--- Add property observers to new object
         self.mValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName)
         self.mValue?.mPoints_property.addEBObserversFrom (&self.mObserversOf_mPoints)
+        self.mValue?.pinNames_property.addEBObserversFrom (&self.mObserversOf_pinNames)
        //--- Notify observers
         self.postEvent ()
       }
@@ -3051,6 +3053,47 @@ final class ToOneRelationship_PointInSchematics_mNet : EBAbstractProperty {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
       object.mPoints_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: pinNames
+  //····················································································································
+
+  private var mObserversOf_pinNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.pinNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinNames (_ inObserver : EBEvent) {
+    self.mObserversOf_pinNames.insert (inObserver)
+    if let object = self.propval {
+      object.pinNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinNames (_ inObserver : EBEvent) {
+    self.mObserversOf_pinNames.remove (inObserver)
+    if let object = self.propval {
+      object.pinNames_property.removeEBObserver (inObserver)
     }
   }
 

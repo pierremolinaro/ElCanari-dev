@@ -36,6 +36,12 @@ fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (r
   internal var mPrintOperation : NSPrintOperation? = nil
 
   //····················································································································
+  //  Properties needed for renaming a net
+  //····················································································································
+
+  internal var mPossibleNetForRenamingOperation : NetInProject? = nil
+
+  //····················································································································
   //  Properties needed for renaming a component
   //····················································································································
 

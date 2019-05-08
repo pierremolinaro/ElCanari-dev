@@ -115,12 +115,15 @@ extern outlet class DeviceDroppableImageView ;
 binding DeviceDroppableImageView $imageData : property Data ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Cocoa Outlets
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 extern outlet class NSBox : NSView ;
 extern outlet class NSTextView  : NSView ;
 extern outlet class NSPopUpButton  : NSView ;
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariNetInfoTableView ;
+binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

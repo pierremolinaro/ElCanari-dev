@@ -1,18 +1,18 @@
 //
-//  view-TwoStringArrayTableView.swift
+//  view-CanariNetInfoTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 09/04/2019.
+//  Created by Pierre Molinaro on 08/04/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: TwoStringArrayTableView is view based
+// NOTE: CanariNetInfoTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -49,10 +49,12 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
       if !reuseTableViewCells () {
         result?.identifier = nil // So result cannot be reused, will be freed
       }
-      if columnIdentifier.rawValue == "left" {
-        result?.textField?.stringValue = self.mDataSource [inRowIndex].mLeft
-      }else if columnIdentifier.rawValue == "right" {
-        result?.textField?.stringValue = self.mDataSource [inRowIndex].mRight
+      if columnIdentifier.rawValue == "netname" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].netName
+      }else if columnIdentifier.rawValue == "netclass" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
+      }else if columnIdentifier.rawValue == "pincount" {
+        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pins.count)"
       }
     }
     return result
@@ -62,13 +64,13 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
   //  DATA SOURCE
   //····················································································································
 
-  private var mDataSource = TwoStringArray ()
+  private var mDataSource = NetInfoArray ()
 
   //····················································································································
 
-  func reloadDataSource (_ inDataSource : TwoStringArray) {
+  func reloadDataSource (_ inDataSource : NetInfoArray) {
   //--- Note selected rows
-    var selectedRowContents = Set <TwoStrings> ()
+    var selectedRowContents = Set <NetInfo> ()
     let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mDataSource.count {
@@ -79,10 +81,24 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
     self.mDataSource = inDataSource
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
-        if key == "left" {
-          self.mDataSource.sort () { s.ascending ? ($0.mLeft < $1.mLeft) : ($0.mLeft > $1.mLeft) }
-        }else if key == "right" {
-          self.mDataSource.sort () { s.ascending ? ($0.mRight < $1.mRight) : ($0.mRight > $1.mRight) }
+        if key == "netname" {
+          if s.ascending {
+            self.mDataSource.sort { $0.netName < $1.netName }
+          }else{
+            self.mDataSource.sort { $0.netName > $1.netName }
+          }
+        }else if key == "netclass" {
+          if s.ascending {
+            self.mDataSource.sort { $0.netClassName < $1.netClassName }
+          }else{
+            self.mDataSource.sort { $0.netClassName > $1.netClassName }
+          }
+        }else if key == "pincount" {
+          if s.ascending {
+            self.mDataSource.sort { $0.pins.count < $1.pins.count }
+          }else{
+            self.mDataSource.sort { $0.pins.count > $1.pins.count }
+          }
         }else{
           NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
         }
@@ -114,7 +130,7 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
 
   //····················································································································
 
-  func update (from inModel : EBReadOnlyProperty_TwoStringArray) {
+  func update (from inModel : EBReadOnlyProperty_NetInfoArray) {
     switch inModel.prop {
     case .empty, .multiple :
       self.reloadDataSource ([])
@@ -124,14 +140,20 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
   }
 
   //····················································································································
-  //  $array binding
+
+  func object (at inIndex : Int) -> NetInfo {
+    return self.mDataSource [inIndex]
+  }
+
+  //····················································································································
+  //  $netInfo binding
   //····················································································································
 
   private var mController : EBSimpleController? = nil
 
   //····················································································································
 
-  func bind_array (_ model : EBReadOnlyProperty_TwoStringArray, file : String, line : Int) {
+  func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray, file : String, line : Int) {
     self.mController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -140,7 +162,7 @@ class TwoStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewD
 
   //····················································································································
 
-  func unbind_array () {
+  func unbind_netInfo () {
     self.mController?.unregister ()
     self.mController = nil
   }

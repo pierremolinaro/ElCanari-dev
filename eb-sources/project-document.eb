@@ -317,6 +317,19 @@ document ProjectDocument root ProjectRoot {
   outlet CanariQuadrantSegmentedControl mSymbolRotationSegmentedControl
      $quadrant #mComponentSymbolSelectionController.mRotation ;
 
+//---------------------- Net Tab
+  outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription ;
+
+  transient String netCountString dependsFrom root.netsDescription ;
+  outlet EBTextObserverField mNetCountTextField $valueObserver self.netCountString ;
+  
+  transient Int netCount dependsFrom root.netsDescription ;
+  
+  outlet EBButton mRenameNetInNetTabButton $enabled self.netCount > 0 ; // Action set in IB
+  outlet NSPanel mRenameNetPanel ;
+  outlet EBTextField mRenameNetTextField ;
+  outlet EBTextField mRenameNetErrorTextField ;
+  outlet EBButton mRenameNetOkButton ;
 }
 
 //----------------------------------------------------------------------------*

@@ -96,6 +96,12 @@ protocol ProjectRoot_unplacedSymbols : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_netsDescription : class {
+  var netsDescription : NetInfoArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_deviceNames : class {
   var deviceNames : StringArray? { get }
 }
@@ -150,6 +156,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
          ProjectRoot_unplacedSymbols,
+         ProjectRoot_netsDescription,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicsBackgroundDisplay,
          ProjectRoot_connexionWarningString,
@@ -596,6 +603,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netsDescription
+  //····················································································································
+
+  let netsDescription_property = EBTransientProperty_NetInfoArray ()
+
+  //····················································································································
+
+  var netsDescription_property_selection : EBSelection <NetInfoArray> {
+    return self.netsDescription_property.prop
+  }
+
+  //····················································································································
+
+  var netsDescription : NetInfoArray? {
+    switch self.netsDescription_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceNames
   //····················································································································
 
@@ -875,6 +905,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mComponents_property.addEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+  //--- Atomic property: netsDescription
+    self.netsDescription_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNetClasses_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mNetClasses_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_netsDescription (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClasses_property.addEBObserverOf_netsDescription (self.netsDescription_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1051,6 +1103,7 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
+    self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicsTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicsVersion_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
@@ -1194,6 +1247,14 @@ class ProjectRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.unplacedSymbols_property.mObserverExplorer,
       valueExplorer:&self.unplacedSymbols_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netsDescription",
+      idx:self.netsDescription_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netsDescription_property.mObserverExplorer,
+      valueExplorer:&self.netsDescription_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceNames",
@@ -2446,6 +2507,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'netsDescription' transient property
+  //····················································································································
+
+  private var mObserversOf_netsDescription = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netsDescription.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netsDescription_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netsDescription.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netsDescription_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+        managedObject.netsDescription_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+        managedObject.netsDescription_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'deviceNames' transient property
   //····················································································································
 
@@ -2864,6 +2981,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedSet)
@@ -2888,6 +3006,7 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
       self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedSet)
       self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
       self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
+      self.addEBObserversOf_netsDescription_toElementsOfSet (addedSet)
       self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedSet)
@@ -3011,6 +3130,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
         self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet) // Transient property
@@ -3033,6 +3153,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
         self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet) // Transient property
@@ -3201,6 +3322,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet)
@@ -3242,6 +3364,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet)

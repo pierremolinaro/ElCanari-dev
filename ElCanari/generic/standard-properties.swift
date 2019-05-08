@@ -1910,6 +1910,12 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property NetInfoArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NetInfoArray  = EBReadOnlyValueProperty <NetInfoArray>
+typealias EBTransientProperty_NetInfoArray = EBTransientValueProperty <NetInfoArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property NSPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -59,6 +59,8 @@ entity ProjectRoot {
     self.mSheets.all.connexionWarnings,
     self.mSheets.all.connexionErrors
   ;
+ 
+   transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -273,6 +275,8 @@ entity NetClassInProject {
   transient String netWidth dependsFrom self.mNetWidth, self.mNetWidthUnit ;
   transient String viaHoleDiameter dependsFrom self.mViaHoleDiameter, self.mViaHoleDiameterUnit ;
   transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
+  
+  transient NetInfoArray netsDescription dependsFrom self.mNets.all.pinNames, self.mNets.all.mNetName, self.mNetClassName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -283,8 +287,9 @@ entity NetInProject {
   property String mNetName default "" ;
   toOne NetClassInProject mNetClass inverse toMany mNets ;
 
-//  toMany WireInSchematics mWires inverse toOne mNet ;
   toMany PointInSchematics mPoints inverse toOne mNet ;
+  
+  transient StringArray pinNames dependsFrom self.mPoints.all.mSymbolPinName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -414,7 +419,7 @@ graphic entity CommentInSchematics : SchematicsObject {
 
 entity PointInSchematics {
   toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
-  property String mSymbolPinName default "" ;
+  property String mSymbolPinName default "" ; // Used only if mSymbol is not nil
 
   toOne NetInProject mNet inverse toMany mPoints ;
 

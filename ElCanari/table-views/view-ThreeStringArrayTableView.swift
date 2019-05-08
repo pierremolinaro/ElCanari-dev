@@ -82,11 +82,13 @@ class ThreeStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableVie
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "left" {
-          self.mDataSource.sort () { $0.mLeft < $1.mLeft }
+          self.mDataSource.sort () { s.ascending ? ($0.mLeft < $1.mLeft) : ($0.mLeft > $1.mLeft) }
         }else if key == "center" {
-          self.mDataSource.sort () { $0.mCenter < $1.mCenter }
+          self.mDataSource.sort () { s.ascending ? ($0.mCenter < $1.mCenter) : ($0.mCenter > $1.mCenter) }
         }else if key == "right" {
-          self.mDataSource.sort () { $0.mRight < $1.mRight }
+          self.mDataSource.sort () { s.ascending ? ($0.mRight < $1.mRight) : ($0.mRight > $1.mRight) }
+        }else{
+          NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
         }
       }
     }

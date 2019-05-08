@@ -83,6 +83,12 @@ protocol NetClassInProject_netUsage : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_netsDescription : class {
+  var netsDescription : NetInfoArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -99,7 +105,8 @@ class NetClassInProject : EBManagedObject,
          NetClassInProject_viaHoleDiameter,
          NetClassInProject_viaPadDiameter,
          NetClassInProject_canRemove,
-         NetClassInProject_netUsage {
+         NetClassInProject_netUsage,
+         NetClassInProject_netsDescription {
 
   //····················································································································
   //   Atomic property: mNetClassName
@@ -372,6 +379,29 @@ class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netsDescription
+  //····················································································································
+
+  let netsDescription_property = EBTransientProperty_NetInfoArray ()
+
+  //····················································································································
+
+  var netsDescription_property_selection : EBSelection <NetInfoArray> {
+    return self.netsDescription_property.prop
+  }
+
+  //····················································································································
+
+  var netsDescription : NetInfoArray? {
+    switch self.netsDescription_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -514,6 +544,32 @@ class NetClassInProject : EBManagedObject,
       }
     }
     self.mNets_property.addEBObserver (self.netUsage_property)
+  //--- Atomic property: netsDescription
+    self.netsDescription_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mNets_property_selection.kind ()
+        kind &= unwSelf.mNets_property_selection.kind ()
+        kind &= unwSelf.mNetClassName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_NetClassInProject_netsDescription (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNets_property.addEBObserverOf_pinNames (self.netsDescription_property)
+    self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
+    self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject : NetInProject) in
       if let me = self {
@@ -539,6 +595,9 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
     self.mNets_property.removeEBObserver (self.canRemove_property)
     self.mNets_property.removeEBObserver (self.netUsage_property)
+    self.mNets_property.removeEBObserverOf_pinNames (self.netsDescription_property)
+    self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
+    self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
  //   self.mNets_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -658,6 +717,14 @@ class NetClassInProject : EBManagedObject,
       view:view,
       observerExplorer:&self.netUsage_property.mObserverExplorer,
       valueExplorer:&self.netUsage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netsDescription",
+      idx:self.netsDescription_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netsDescription_property.mObserverExplorer,
+      valueExplorer:&self.netsDescription_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1565,6 +1632,62 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   }
 
   //····················································································································
+  //   Observers of 'netsDescription' transient property
+  //····················································································································
+
+  private var mObserversOf_netsDescription = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netsDescription.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netsDescription_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netsDescription.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netsDescription_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+        managedObject.netsDescription_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
+        managedObject.netsDescription_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1646,6 +1769,7 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
       self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_netUsage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1663,6 +1787,7 @@ class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
       self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedSet)
       self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
       self.addEBObserversOf_netUsage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_netsDescription_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1779,6 +1904,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
         self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet) // Stored property
@@ -1794,6 +1920,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
         self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
   }
@@ -1952,6 +2079,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1983,6 +2111,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()

@@ -88,11 +88,11 @@ extension CustomizedProjectDocument {
       if let point = possiblePoint {
         let label = LabelInSchematics (self.ebUndoManager)
         label.mPoint = point
-        if inSender.tag == 0 {
+        if inSender.tag == 1 {
           label.mOrientation = .rotation90
-        }else if inSender.tag == 1 {
-          label.mOrientation = .rotation180
         }else if inSender.tag == 2 {
+          label.mOrientation = .rotation180
+        }else if inSender.tag == 3 {
           label.mOrientation = .rotation270
         }else{
           label.mOrientation = .rotation0

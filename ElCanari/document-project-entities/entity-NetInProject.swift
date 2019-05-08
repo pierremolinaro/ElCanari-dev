@@ -11,11 +11,18 @@ protocol NetInProject_mNetName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetInProject_pinNames : class {
+  var pinNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class NetInProject : EBManagedObject,
-         NetInProject_mNetName {
+         NetInProject_mNetName,
+         NetInProject_pinNames {
 
   //····················································································································
   //   Atomic property: mNetName
@@ -83,6 +90,29 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: pinNames
+  //····················································································································
+
+  let pinNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var pinNames_property_selection : EBSelection <StringArray> {
+    return self.pinNames_property.prop
+  }
+
+  //····················································································································
+
+  var pinNames : StringArray? {
+    switch self.pinNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -97,6 +127,28 @@ class NetInProject : EBManagedObject,
     }
   //--- To one property: mNetClass
     self.mNetClass_property.owner = self
+  //--- Atomic property: pinNames
+    self.pinNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoints_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPoints_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_pinNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoints_property.addEBObserverOf_mSymbolPinName (self.pinNames_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
       if let me = self {
@@ -114,6 +166,7 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mPoints_property.removeEBObserverOf_mSymbolPinName (self.pinNames_property)
  //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
@@ -138,6 +191,14 @@ class NetInProject : EBManagedObject,
       valueExplorer:&self.mNetName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "pinNames",
+      idx:self.pinNames_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.pinNames_property.mObserverExplorer,
+      valueExplorer:&self.pinNames_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "mPoints",
@@ -346,6 +407,62 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   }
 
   //····················································································································
+  //   Observers of 'pinNames' transient property
+  //····················································································································
+
+  private var mObserversOf_pinNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinNames_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNames.apply { (_ observer : EBEvent) in
+        managedObject.pinNames_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinNames_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNames.apply { (_ observer : EBEvent) in
+        managedObject.pinNames_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -415,11 +532,13 @@ class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mNetName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_pinNames_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_mNetName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_pinNames_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -524,9 +643,11 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
       //--- Add observers from removed objects
         let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
         self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet) // Stored property
+        self.removeEBObserversOf_pinNames_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet) // Stored property
+        self.addEBObserversOf_pinNames_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
   }
@@ -666,6 +787,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
         //--- Remove observers of stored properties
           self.removeEBObserversOf_mNetName_fromElementsOfSet (removedObjectSet)
         //--- Remove observers of transient properties
+          self.removeEBObserversOf_pinNames_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -678,6 +800,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
         //--- Add observers of stored properties
           self.addEBObserversOf_mNetName_toElementsOfSet (addedObjectSet)
         //--- Add observers of transient properties
+          self.addEBObserversOf_pinNames_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()
@@ -863,6 +986,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         oldValue?.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
         oldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage)
         oldValue?.netWidth_property.removeEBObserversFrom (&self.mObserversOf_netWidth)
+        oldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription)
         oldValue?.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
         oldValue?.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter)
       //--- Add property observers to new object
@@ -878,6 +1002,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
         self.mValue?.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit)
         self.mValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage)
         self.mValue?.netWidth_property.addEBObserversFrom (&self.mObserversOf_netWidth)
+        self.mValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription)
         self.mValue?.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter)
         self.mValue?.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter)
        //--- Notify observers
@@ -1397,6 +1522,47 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
     self.mObserversOf_netWidth.remove (inObserver)
     if let object = self.propval {
       object.netWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable atomic property: netsDescription
+  //····················································································································
+
+  private var mObserversOf_netsDescription = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netsDescription_property_selection : EBSelection <NetInfoArray?> {
+    if let model = self.propval {
+      switch (model.netsDescription_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.mObserversOf_netsDescription.insert (inObserver)
+    if let object = self.propval {
+      object.netsDescription_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
+    self.mObserversOf_netsDescription.remove (inObserver)
+    if let object = self.propval {
+      object.netsDescription_property.removeEBObserver (inObserver)
     }
   }
 

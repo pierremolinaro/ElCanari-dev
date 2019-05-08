@@ -79,6 +79,11 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
       if let key = s.key {
         if key == "value" {
           self.mDataSource.sort ()
+          if !s.ascending {
+            self.mDataSource.reverse ()
+          }
+        }else{
+          NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
         }
       }
     }
