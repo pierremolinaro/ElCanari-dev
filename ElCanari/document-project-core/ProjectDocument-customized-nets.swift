@@ -13,9 +13,10 @@ import Cocoa
 extension CustomizedProjectDocument {
 
   //····················································································································
+  //  Find a new unique name
+  //····················································································································
 
-  internal func newNetWithAutomaticName () -> NetInProject {
-  //--- Find a new net name
+  internal func findUniqueNetName () -> String {
     var newNetName = ""
     var idx = 1
     while newNetName == "" {
@@ -34,6 +35,17 @@ extension CustomizedProjectDocument {
         idx += 1
       }
     }
+  //---
+    return newNetName
+  }
+
+  //····················································································································
+  // Create a new net with automatic name
+  //····················································································································
+
+  internal func newNetWithAutomaticName () -> NetInProject {
+  //--- Find a new net name
+    let newNetName = self.findUniqueNetName ()
   //--- Create new
     let newNet = NetInProject (self.ebUndoManager)
     newNet.mNetName = newNetName
@@ -42,6 +54,8 @@ extension CustomizedProjectDocument {
     return newNet
   }
 
+  //····················································································································
+  // Remove unused nets
   //····················································································································
 
   internal func removeUnusedNets () {
@@ -54,6 +68,8 @@ extension CustomizedProjectDocument {
     }
   }
 
+  //····················································································································
+  //  User actions
   //····················································································································
 
   @IBAction func renameNetAction (_ sender : NSObject?) { // Bound in IB
@@ -73,6 +89,20 @@ extension CustomizedProjectDocument {
      let selectedLabels = self.mSchematicsLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
+     }
+  }
+
+  //····················································································································
+
+  @IBAction func newAutomaticNetNameFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
+     var netSet = Set <NetInProject> ()
+     for label in self.mSchematicsLabelSelectionController.selectedArray {
+       if let net = label.mPoint?.mNet {
+         netSet.insert (net)
+       }
+     }
+     for net in netSet {
+       net.mNetName = self.findUniqueNetName ()
      }
   }
 
