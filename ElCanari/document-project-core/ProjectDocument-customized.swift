@@ -147,7 +147,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
   //····················································································································
 
   internal func updateSchematicsPointsAndNets () {
-    self.removeUnusedSchematicsPoints ()
+    self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints ()
     self.removeUnusedNets ()
   }
 
@@ -208,7 +208,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
   override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     let pasteboard = sender.draggingPasteboard
     var ok = false
-    if let documentView = destinationScrollView.documentView {
+    if let documentView = destinationScrollView.documentView, let selectedSheet = self.rootObject.mSelectedSheet {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
       if let _ = pasteboard.data (forType: kDragAndDropSymbolInSchematics), let symbol = self.mPossibleDraggedSymbol {
@@ -218,7 +218,8 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
         self.performAddCommentDragOperation (draggingLocationInDestinationView)
         ok = true
       }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematics]) {
-        self.performAddWireDragOperation (draggingLocationInDestinationView)
+        let newWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.createNetWithAutomaticName)
+        self.mSchematicsObjectsController.setSelection ([newWire])
         ok = true
       }
     }

@@ -15,77 +15,79 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func populateContextualClickOnSchematics (_ inMouseDownPoint : CanariPoint) -> NSMenu {
-    let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
     let menu = NSMenu ()
-  //--- Add NC ?
-     let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
-     if points.count == 1 {
-       let point = points [0]
-       if point.mNC == nil, point.mLabels.count == 0, point.mWiresP1s.count == 0, point.mWiresP2s.count == 0 {
-         let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPin (_:)), keyEquivalent: "")
-         menuItem.target = self
-         menuItem.representedObject = point
-         menu.addItem (menuItem)
-       }
-     }
-  //--- Add Connect ? (only if no NC)
-     if points.count > 1 {
-       var hasNC = false
-       var pinCount = 0
-       for p in points {
-         if p.mNC != nil {
-           hasNC = true
-         }
-         if p.mSymbol != nil {
-           pinCount += 1
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+    //--- Add NC ?
+       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+       if points.count == 1 {
+         let point = points [0]
+         if point.mNC == nil, point.mLabels.count == 0, point.mWiresP1s.count == 0, point.mWiresP2s.count == 0 {
+           let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPin (_:)), keyEquivalent: "")
+           menuItem.target = self
+           menuItem.representedObject = point
+           menu.addItem (menuItem)
          }
        }
-       if !hasNC && (pinCount <= 1) {
+    //--- Add Connect ? (only if no NC)
+       if points.count > 1 {
+         var hasNC = false
+         var pinCount = 0
+         for p in points {
+           if p.mNC != nil {
+             hasNC = true
+           }
+           if p.mSymbol != nil {
+             pinCount += 1
+           }
+         }
+         if !hasNC && (pinCount <= 1) {
+           if menu.numberOfItems > 0 {
+             menu.addItem (.separator ())
+           }
+           let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connect (_:)), keyEquivalent: "")
+           menuItem.target = self
+           menuItem.representedObject = points
+           menu.addItem (menuItem)
+         }
+      }
+    //--- Add Point to wire ?
+      let wires = self.rootObject.mSelectedSheet!.wiresAt (point: canariAlignedMouseDownLocation)
+      if wires.count == 1 {
          if menu.numberOfItems > 0 {
            menu.addItem (.separator ())
          }
-         let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connect (_:)), keyEquivalent: "")
+         let menuItem = NSMenuItem (title: "Add Point to Wire…", action: #selector (CustomizedProjectDocument.addPointToWireAction (_:)), keyEquivalent: "")
          menuItem.target = self
-         menuItem.representedObject = points
+         menuItem.representedObject = canariAlignedMouseDownLocation
          menu.addItem (menuItem)
-       }
-    }
-  //--- Add Point to wire ?
-    let wires = self.wiresAt (point: canariAlignedMouseDownLocation)
-    if wires.count == 1 {
+
+      }
+    //--- Add Labels
        if menu.numberOfItems > 0 {
          menu.addItem (.separator ())
        }
-       let menuItem = NSMenuItem (title: "Add Point to Wire…", action: #selector (CustomizedProjectDocument.addPointToWire (_:)), keyEquivalent: "")
+       var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
        menuItem.target = self
-       menuItem.representedObject = canariAlignedMouseDownLocation
+       menuItem.tag = 0 // Right
+       menuItem.representedObject = inMouseDownPoint
        menu.addItem (menuItem)
-
-    }
-  //--- Add Labels
-     if menu.numberOfItems > 0 {
-       menu.addItem (.separator ())
+       menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+       menuItem.target = self
+       menuItem.tag = 1 // Top
+       menuItem.representedObject = inMouseDownPoint
+       menu.addItem (menuItem)
+       menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+       menuItem.target = self
+       menuItem.tag = 2 // Left
+       menuItem.representedObject = inMouseDownPoint
+       menu.addItem (menuItem)
+       menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+       menuItem.target = self
+       menuItem.tag = 3 // Bottom
+       menuItem.representedObject = inMouseDownPoint
+       menu.addItem (menuItem)
      }
-     var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 0 // Right
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 1 // Top
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 2 // Left
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 3 // Bottom
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
   //---
     return menu
   }
@@ -156,10 +158,18 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
+  @objc internal func addPointToWireAction (_ inSender : NSMenuItem) {
+    if let location = inSender.representedObject as? CanariPoint, let selectedSheet = self.rootObject.mSelectedSheet {
+      selectedSheet.addPointToWire (at: location)
+    }
+  }
+
+  //····················································································································
+
   @objc internal func addLabelInSchematics (_ inSender : NSMenuItem) {
-    if let mouseLocation = inSender.representedObject as? CanariPoint {
+    if let mouseLocation = inSender.representedObject as? CanariPoint, let selectedSheet = self.rootObject.mSelectedSheet {
       let canariAlignedMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
-      let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
+      let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       var possiblePoint : PointInSchematics? = nil
       if points.count == 1 {
         possiblePoint = points [0]
