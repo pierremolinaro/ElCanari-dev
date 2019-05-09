@@ -17,12 +17,19 @@ protocol WireInSchematics_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol WireInSchematics_netName : class {
+  var netName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: WireInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class WireInSchematics : SchematicsObject,
          WireInSchematics_objectDisplay,
-         WireInSchematics_selectionDisplay {
+         WireInSchematics_selectionDisplay,
+         WireInSchematics_netName {
 
   //····················································································································
   //   To one property: mP1
@@ -80,6 +87,29 @@ class WireInSchematics : SchematicsObject,
 
   var mP2_none_selection : EBSelection <Bool> {
     return .single (self.mP2_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -148,6 +178,28 @@ class WireInSchematics : SchematicsObject,
     self.mP1_property.addEBObserverOf_canMove (self.selectionDisplay_property)
     self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property)
     self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mP1_property.netName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mP1_property.netName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_WireInSchematics_netName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_netName (self.netName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -165,6 +217,7 @@ class WireInSchematics : SchematicsObject,
     self.mP1_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
+    self.mP1_property.removeEBObserverOf_netName (self.netName_property)
   //--- Unregister properties for handling signature
   }
 
@@ -195,6 +248,14 @@ class WireInSchematics : SchematicsObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netName",
+      idx:self.netName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.netName_property.mObserverExplorer,
+      valueExplorer:&self.netName_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -452,6 +513,62 @@ class ReadOnlyArrayOf_WireInSchematics : ReadOnlyAbstractArrayProperty <WireInSc
   }
 
   //····················································································································
+  //   Observers of 'netName' transient property
+  //····················································································································
+
+  private var mObserversOf_netName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -621,10 +738,12 @@ final class ProxyArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics {
         let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
+        self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet) // Transient property
       //--- Add observers to added objects
         let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
+        self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet) // Transient property
       }
     }
   }
@@ -764,6 +883,7 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
         //--- Remove observers of transient properties
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -776,6 +896,7 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
         //--- Add observers of transient properties
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.propagateProxyUpdate ()

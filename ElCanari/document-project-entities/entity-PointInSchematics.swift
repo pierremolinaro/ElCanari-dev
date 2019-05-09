@@ -569,6 +569,7 @@ class PointInSchematics : EBManagedObject,
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mNC_none_selection.kind ()
+        kind &= unwSelf.mSymbol_none_selection.kind ()
         kind &= unwSelf.mWiresP1s_property.count_property_selection.kind ()
         kind &= unwSelf.mWiresP2s_property.count_property_selection.kind ()
         kind &= unwSelf.mLabels_property.count_property_selection.kind ()
@@ -578,9 +579,9 @@ class PointInSchematics : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mNC_none_selection, unwSelf.mWiresP1s_property.count_property_selection, unwSelf.mWiresP2s_property.count_property_selection, unwSelf.mLabels_property.count_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PointInSchematics_isConnected (v0, v1, v2, v3))
+          switch (unwSelf.mNC_none_selection, unwSelf.mSymbol_none_selection, unwSelf.mWiresP1s_property.count_property_selection, unwSelf.mWiresP2s_property.count_property_selection, unwSelf.mLabels_property.count_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_PointInSchematics_isConnected (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -590,6 +591,7 @@ class PointInSchematics : EBManagedObject,
       }
     }
     self.mNC_property.addEBObserver (self.isConnected_property)
+    self.mSymbol_property.addEBObserver (self.isConnected_property)
     self.mWiresP1s_property.addEBObserver (self.isConnected_property)
     self.mWiresP2s_property.addEBObserver (self.isConnected_property)
     self.mLabels_property.addEBObserver (self.isConnected_property)
@@ -683,6 +685,7 @@ class PointInSchematics : EBManagedObject,
     self.mSymbol_property.removeEBObserver (self.canMove_property)
     self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
+    self.mSymbol_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
     self.mWiresP2s_property.removeEBObserver (self.isConnected_property)
     self.mLabels_property.removeEBObserver (self.isConnected_property)

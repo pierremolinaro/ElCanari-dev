@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_ProjectDocument_ncInSchematicsSelectionController                                            *
+//    Derived selection controller ProjectDocument ncInSchematicsSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class SelectionController_ProjectDocument_ncInSchematicsSelectionController : EBObject {
@@ -122,7 +122,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
+    let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
@@ -136,25 +136,25 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
 
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "mOrientation",
-      idx:self.mOrientation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mOrientation_property.mObserverExplorer,
-      valueExplorer:&self.mOrientation_property.mValueExplorer
+      idx: self.mOrientation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mOrientation_property.mObserverExplorer,
+      valueExplorer: &self.mOrientation_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -163,8 +163,8 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     self.mExplorerWindow!.contentView = sw
@@ -178,7 +178,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     if self.mExplorerWindow == nil {
       self.buildExplorerWindow ()
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
   
   //····················································································································

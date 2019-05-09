@@ -60,34 +60,44 @@ extension CustomizedProjectDocument {
     if (pointsAtP1.count == 1) && (pointsAtP2.count == 1) && (pointsAtP1 [0].mNet === pointsAtP2 [0].mNet) {
       wire.mP1 = pointsAtP1 [0]
       wire.mP2 = pointsAtP2 [0]
+      if pointsAtP1 [0].mNet == nil {
+        let newNet = self.newNetWithAutomaticName ()
+        wire.mP1?.mNet = newNet
+        wire.mP2?.mNet = newNet
+      }
     }else if pointsAtP1.count == 1 { // Use point at p1, create a point at p2
       wire.mP1 = pointsAtP1 [0]
+      if pointsAtP1 [0].mNet == nil {
+        let newNet = self.newNetWithAutomaticName ()
+        wire.mP1?.mNet = newNet
+      }
       let point = PointInSchematics (self.ebUndoManager)
       point.mX = p2.x
       point.mY = p2.y
-      point.mNet = pointsAtP1 [0].mNet
+      point.mNet = wire.mP1?.mNet
       wire.mP2 = point
       self.rootObject.mSelectedSheet?.mPoints.append (point)
     }else if pointsAtP2.count == 1 { // Use point at p2, create a point at p1
       wire.mP2 = pointsAtP2 [0]
+      if pointsAtP2 [0].mNet == nil {
+        let newNet = self.newNetWithAutomaticName ()
+        wire.mP2?.mNet = newNet
+      }
       let point = PointInSchematics (self.ebUndoManager)
       point.mX = p1.x
       point.mY = p1.y
-      point.mNet = pointsAtP2 [0].mNet
+      point.mNet = wire.mP2?.mNet
       wire.mP1 = point
       self.rootObject.mSelectedSheet?.mPoints.append (point)
-    }else{
-      let net = self.newNetWithAutomaticName ()
+    }else{ // Assign no net
       let point1 = PointInSchematics (self.ebUndoManager)
       point1.mX = p1.x
       point1.mY = p1.y
-      point1.mNet = net
       wire.mP1 = point1
       self.rootObject.mSelectedSheet?.mPoints.append (point1)
       let point2 = PointInSchematics (self.ebUndoManager)
       point2.mX = p2.x
       point2.mY = p2.y
-      point2.mNet = net
       wire.mP2 = point2
       self.rootObject.mSelectedSheet?.mPoints.append (point2)
     }

@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_ProjectDocument_mComponentSymbolSelectionController                                          *
+//    Derived selection controller ProjectDocument mComponentSymbolSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class SelectionController_ProjectDocument_mComponentSymbolSelectionController : EBObject {
@@ -333,7 +333,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
+    let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
@@ -347,97 +347,97 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
 
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "mCenterX",
-      idx:self.mCenterX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterX_property.mObserverExplorer,
-      valueExplorer:&self.mCenterX_property.mValueExplorer
+      idx: self.mCenterX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterX_property.mObserverExplorer,
+      valueExplorer: &self.mCenterX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mCenterY",
-      idx:self.mCenterY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterY_property.mObserverExplorer,
-      valueExplorer:&self.mCenterY_property.mValueExplorer
+      idx: self.mCenterY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterY_property.mObserverExplorer,
+      valueExplorer: &self.mCenterY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mRotation",
-      idx:self.mRotation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mRotation_property.mObserverExplorer,
-      valueExplorer:&self.mRotation_property.mValueExplorer
+      idx: self.mRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRotation_property.mObserverExplorer,
+      valueExplorer: &self.mRotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
-      idx:self.mSymbolInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
+      idx: self.mSymbolInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolTypeName",
-      idx:self.mSymbolTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
+      idx: self.mSymbolTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentNameOffsetX",
-      idx:self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentNameOffsetX_property.mValueExplorer
+      idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentNameOffsetX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentNameOffsetY",
-      idx:self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentNameOffsetY_property.mValueExplorer
+      idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentNameOffsetY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValue",
-      idx:self.mDisplayComponentValue_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValue_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValue_property.mValueExplorer
+      idx: self.mDisplayComponentValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValue_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValueOffsetX",
-      idx:self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValueOffsetX_property.mValueExplorer
+      idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValueOffsetX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValueOffsetY",
-      idx:self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValueOffsetY_property.mValueExplorer
+      idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValueOffsetY_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -446,8 +446,8 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     self.mExplorerWindow!.contentView = sw
@@ -461,7 +461,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     if self.mExplorerWindow == nil {
       self.buildExplorerWindow ()
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
   
   //····················································································································

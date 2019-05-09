@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PackageDocument_mPackageGuideSelectionController                                             *
+//    Derived selection controller PackageDocument mPackageGuideSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class SelectionController_PackageDocument_mPackageGuideSelectionController : EBObject {
@@ -248,7 +248,7 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
+    let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
@@ -262,81 +262,81 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
 
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
+      idx: self.y1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1_property.mObserverExplorer,
+      valueExplorer: &self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
+      idx: self.x2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2_property.mObserverExplorer,
+      valueExplorer: &self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
+      idx: self.y2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2_property.mObserverExplorer,
+      valueExplorer: &self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1Unit_property.mObserverExplorer,
-      valueExplorer:&self.x1Unit_property.mValueExplorer
+      idx: self.x1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1Unit_property.mObserverExplorer,
+      valueExplorer: &self.x1Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1Unit_property.mObserverExplorer,
-      valueExplorer:&self.y1Unit_property.mValueExplorer
+      idx: self.y1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1Unit_property.mObserverExplorer,
+      valueExplorer: &self.y1Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2Unit_property.mObserverExplorer,
-      valueExplorer:&self.x2Unit_property.mValueExplorer
+      idx: self.x2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2Unit_property.mObserverExplorer,
+      valueExplorer: &self.x2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2Unit_property.mObserverExplorer,
-      valueExplorer:&self.y2Unit_property.mValueExplorer
+      idx: self.y2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2Unit_property.mObserverExplorer,
+      valueExplorer: &self.y2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1_property.mObserverExplorer,
-      valueExplorer:&self.x1_property.mValueExplorer
+      idx: self.x1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1_property.mObserverExplorer,
+      valueExplorer: &self.x1_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -345,8 +345,8 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     self.mExplorerWindow!.contentView = sw
@@ -360,7 +360,7 @@ final class SelectionController_PackageDocument_mPackageGuideSelectionController
     if self.mExplorerWindow == nil {
       self.buildExplorerWindow ()
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
   
   //····················································································································

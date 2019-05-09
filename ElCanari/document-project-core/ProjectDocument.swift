@@ -39,6 +39,12 @@ import Cocoa
   var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
 
   //····················································································································
+  //   Selection controller: wireInSchematicsSelectionController
+  //····················································································································
+
+  var wireInSchematicsSelectionController = SelectionController_ProjectDocument_wireInSchematicsSelectionController ()
+
+  //····················································································································
   //   Selection controller: ncInSchematicsSelectionController
   //····················································································································
 
@@ -445,6 +451,7 @@ import Cocoa
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mSchematicsView : EBView?
+  @IBOutlet var mSchematicsWireInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
   @IBOutlet var mSetDatePanel : NSPanel?
@@ -458,6 +465,7 @@ import Cocoa
   @IBOutlet var mUnplacedSymbolsTextField : EBTextObserverField?
   @IBOutlet var mUpdateDeviceButton : EBButton?
   @IBOutlet var mUpdateFontButton : EBButton?
+  @IBOutlet var mWireNetNameTextField : EBTextObserverField?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -524,6 +532,8 @@ import Cocoa
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
+  //--- Selection controller property: wireInSchematicsSelectionController
+    self.wireInSchematicsSelectionController.addExplorer (name: "wireInSchematicsSelectionController", y:&y, view:view)
   //--- Selection controller property: ncInSchematicsSelectionController
     self.ncInSchematicsSelectionController.addExplorer (name: "ncInSchematicsSelectionController", y:&y, view:view)
   //--- Selection controller property: commentInSchematicsSelectionController
@@ -665,6 +675,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSetDatePanel, "mSetDatePanel", NSPanel.self, #file, #line)
@@ -678,6 +689,7 @@ import Cocoa
     checkOutletConnection (self.mUnplacedSymbolsTextField, "mUnplacedSymbolsTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
    }
   
   //····················································································································
@@ -698,6 +710,8 @@ import Cocoa
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+  //--- Selection controller property: wireInSchematicsSelectionController
+    self.wireInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: ncInSchematicsSelectionController
     self.ncInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: commentInSchematicsSelectionController
@@ -984,6 +998,7 @@ import Cocoa
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
+    self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicsSelectionController.netName_property, file: #file, line: #line)
     self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicsSelectionController.mOrientation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicsSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.mSchematicsLabelSelectionController.mOrientation_property, file: #file, line: #line)
@@ -1289,6 +1304,7 @@ import Cocoa
     self.mSchematicsView?.unbind_gridLineColor ()
     self.mSchematicsView?.unbind_gridCrossColor ()
     self.mSchematicsView?.unbind_zoom ()
+    self.mWireNetNameTextField?.unbind_valueObserver ()
     self.mNCRotationSegmentedControl?.unbind_quadrant ()
     self.mCommentInSchematicsTextField?.unbind_value ()
     self.mSchematicsLabelRotationSegmentedControl?.unbind_quadrant ()
@@ -1359,6 +1375,8 @@ import Cocoa
     self.mProjectDeviceController.unbind_model ()
   //--- Array controller property: mSchematicsObjectsController
     self.mSchematicsObjectsController.unbind_model ()
+  //--- Selection controller property: wireInSchematicsSelectionController
+    self.wireInSchematicsSelectionController.unbind_selection ()
   //--- Selection controller property: ncInSchematicsSelectionController
     self.ncInSchematicsSelectionController.unbind_selection ()
   //--- Selection controller property: commentInSchematicsSelectionController
@@ -1505,6 +1523,7 @@ import Cocoa
     self.mSchematicsVersionTextField?.ebCleanUp ()
     self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()
     self.mSchematicsView?.ebCleanUp ()
+    self.mSchematicsWireInspectorView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
     self.mSetDatePanel?.ebCleanUp ()
@@ -1518,6 +1537,7 @@ import Cocoa
     self.mUnplacedSymbolsTextField?.ebCleanUp ()
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
+    self.mWireNetNameTextField?.ebCleanUp ()
 //    self.mAddCommentButton = nil
 //    self.mAddComponentButton = nil
 //    self.mAddFontButton = nil
@@ -1620,6 +1640,7 @@ import Cocoa
 //    self.mSchematicsVersionTextField = nil
 //    self.mSchematicsVerticalFlipSwitch = nil
 //    self.mSchematicsView = nil
+//    self.mSchematicsWireInspectorView = nil
 //    self.mSelectedObjectsSchematicsInspectorView = nil
 //    self.mSelectedSheetTitleTextField = nil
 //    self.mSetDatePanel = nil
@@ -1633,6 +1654,7 @@ import Cocoa
 //    self.mUnplacedSymbolsTextField = nil
 //    self.mUpdateDeviceButton = nil
 //    self.mUpdateFontButton = nil
+//    self.mWireNetNameTextField = nil
   }
 
   //····················································································································

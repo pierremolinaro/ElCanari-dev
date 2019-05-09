@@ -444,7 +444,13 @@ entity PointInSchematics {
 
   transient Bool canMove dependsFrom self.mSymbol.none ;
 
-  transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count, self.mLabels.count ;
+  transient Bool isConnected dependsFrom
+    self.mNC.none,
+    self.mSymbol.none,
+    self.mWiresP1s.count,
+    self.mWiresP2s.count,
+    self.mLabels.count
+  ;
 
   transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
   
@@ -497,6 +503,8 @@ graphic entity WireInSchematics : SchematicsObject {
     self.mP2.one.location,
     self.mP2.one.canMove
   ;
+  
+  transient String netName dependsFrom self.mP1.one.netName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

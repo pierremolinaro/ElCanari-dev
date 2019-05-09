@@ -263,6 +263,16 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBScrollView mSchematicsScrollView ;
 
+//--- Selected Wire In schematics
+  outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
+  selectionController WireInSchematics #wireInSchematicsSelectionController :
+    #mSchematicsObjectsController.selectedArray
+  ;
+
+  outlet EBTextObserverField mWireNetNameTextField
+    $valueObserver #wireInSchematicsSelectionController.netName
+  ;
+
 //--- Selected NC In schematics
   outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
   selectionController NCInSchematics #ncInSchematicsSelectionController :

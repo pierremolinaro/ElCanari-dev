@@ -11,16 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_isConnected (
-       _ self_mNC_none : Bool,                
-       _ self_mSymbol_none : Bool,            
-       _ self_mWiresP1s_count : Int,          
-       _ self_mWiresP2s_count : Int,          
-       _ self_mLabels_count : Int
-) -> Bool {
+func transient_WireInSchematics_netName (
+       _ self_mP1_netName : String?
+) -> String {
 //--- START OF USER ZONE 2
-       let symbolCount = self_mSymbol_none ? 0 : 1
-       return !self_mNC_none || ((symbolCount + self_mWiresP1s_count + self_mWiresP2s_count + self_mLabels_count) > 1)
+        return self_mP1_netName ?? "?"
 //--- END OF USER ZONE 2
 }
 

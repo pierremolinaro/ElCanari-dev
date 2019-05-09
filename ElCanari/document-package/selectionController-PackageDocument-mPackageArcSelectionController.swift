@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PackageDocument_mPackageArcSelectionController                                               *
+//    Derived selection controller PackageDocument mPackageArcSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class SelectionController_PackageDocument_mPackageArcSelectionController : EBObject {
@@ -342,7 +342,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
+    let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
@@ -356,121 +356,121 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenter_property.mObserverExplorer,
-      valueExplorer:&self.yCenter_property.mValueExplorer
+      idx: self.yCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenter_property.mObserverExplorer,
+      valueExplorer: &self.yCenter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "radius",
-      idx:self.radius_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.radius_property.mObserverExplorer,
-      valueExplorer:&self.radius_property.mValueExplorer
+      idx: self.radius_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.radius_property.mObserverExplorer,
+      valueExplorer: &self.radius_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startAngle",
-      idx:self.startAngle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startAngle_property.mObserverExplorer,
-      valueExplorer:&self.startAngle_property.mValueExplorer
+      idx: self.startAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startAngle_property.mObserverExplorer,
+      valueExplorer: &self.startAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "arcAngle",
-      idx:self.arcAngle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.arcAngle_property.mObserverExplorer,
-      valueExplorer:&self.arcAngle_property.mValueExplorer
+      idx: self.arcAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.arcAngle_property.mObserverExplorer,
+      valueExplorer: &self.arcAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startTangent",
-      idx:self.startTangent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startTangent_property.mObserverExplorer,
-      valueExplorer:&self.startTangent_property.mValueExplorer
+      idx: self.startTangent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startTangent_property.mObserverExplorer,
+      valueExplorer: &self.startTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "endTangent",
-      idx:self.endTangent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangent_property.mObserverExplorer,
-      valueExplorer:&self.endTangent_property.mValueExplorer
+      idx: self.endTangent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.endTangent_property.mObserverExplorer,
+      valueExplorer: &self.endTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
-      idx:self.pathIsClosed_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
-      valueExplorer:&self.pathIsClosed_property.mValueExplorer
+      idx: self.pathIsClosed_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
+      valueExplorer: &self.pathIsClosed_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.xCenterUnit_property.mValueExplorer
+      idx: self.xCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.xCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.yCenterUnit_property.mValueExplorer
+      idx: self.yCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.yCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "radiusUnit",
-      idx:self.radiusUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.radiusUnit_property.mObserverExplorer,
-      valueExplorer:&self.radiusUnit_property.mValueExplorer
+      idx: self.radiusUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.radiusUnit_property.mObserverExplorer,
+      valueExplorer: &self.radiusUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startTangentUnit",
-      idx:self.startTangentUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.startTangentUnit_property.mValueExplorer
+      idx: self.startTangentUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
+      valueExplorer: &self.startTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "endTangentUnit",
-      idx:self.endTangentUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.endTangentUnit_property.mValueExplorer
+      idx: self.endTangentUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
+      valueExplorer: &self.endTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenter_property.mObserverExplorer,
-      valueExplorer:&self.xCenter_property.mValueExplorer
+      idx: self.xCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenter_property.mObserverExplorer,
+      valueExplorer: &self.xCenter_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -479,8 +479,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     self.mExplorerWindow!.contentView = sw
@@ -494,7 +494,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     if self.mExplorerWindow == nil {
       self.buildExplorerWindow ()
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
   
   //····················································································································

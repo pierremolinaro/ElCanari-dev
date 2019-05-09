@@ -110,6 +110,7 @@
                 <outlet property="mSchematicsVersionTextField" destination="15313" id="pnO-CQ-g0E"/>
                 <outlet property="mSchematicsVerticalFlipSwitch" destination="15253" id="T0g-kp-mW0"/>
                 <outlet property="mSchematicsView" destination="3013" id="JHC-ji-qbQ"/>
+                <outlet property="mSchematicsWireInspectorView" destination="15762" id="GWE-9G-fnI"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mSelectedSheetTitleTextField" destination="15310" id="EIV-hz-EDO"/>
                 <outlet property="mSetDatePanel" destination="9r6-bV-Bde" id="Mpv-wB-AtM"/>
@@ -123,6 +124,7 @@
                 <outlet property="mUnplacedSymbolsTextField" destination="15601" id="eUO-n5-Svc"/>
                 <outlet property="mUpdateDeviceButton" destination="2952" id="OwT-m6-V6F"/>
                 <outlet property="mUpdateFontButton" destination="2976" id="YXq-m9-y5B"/>
+                <outlet property="mWireNetNameTextField" destination="15769" id="HIS-BO-PPh"/>
                 <outlet property="window" destination="5" id="14924"/>
             </connections>
         </customObject>
@@ -3254,7 +3256,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="86" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="86.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3268,11 +3270,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="86" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="86.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3287,7 +3289,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="241.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="241" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3301,11 +3303,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="557.5" y="1" width="241.5" height="17"/>
+                                                <rect key="frame" x="558" y="1" width="241" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="241.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="241" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -7068,7 +7070,7 @@ TW: Track Width</string>
                 </subviews>
             </view>
         </window>
-        <customView id="15762" userLabel="wireInspector">
+        <customView id="15762" userLabel="Schematics Inspector : Wire" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="214"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -7098,7 +7100,7 @@ TW: Track Width</string>
                     <rect key="frame" x="20" y="48" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15769">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15769" customClass="EBTextObserverField">
                     <rect key="frame" x="86" y="153" width="147" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Net Name…" id="15789">

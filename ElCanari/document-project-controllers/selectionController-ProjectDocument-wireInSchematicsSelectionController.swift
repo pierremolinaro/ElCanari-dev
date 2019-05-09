@@ -5,40 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument commentInSchematicsSelectionController
+//    Derived selection controller ProjectDocument wireInSchematicsSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_commentInSchematicsSelectionController : EBObject {
-
-  //····················································································································
-  //   Selection observable property: mX
-  //····················································································································
-
-  let mX_property = EBPropertyProxy_Int ()
-
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: mY
-  //····················································································································
-
-  let mY_property = EBPropertyProxy_Int ()
-
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
-  }
-
-  //····················································································································
-  //   Selection observable property: mComment
-  //····················································································································
-
-  let mComment_property = EBPropertyProxy_String ()
-
-  var mComment_property_selection : EBSelection <String> {
-    return self.mComment_property.prop
-  }
+final class SelectionController_ProjectDocument_wireInSchematicsSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -61,23 +31,33 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
 
   //····················································································································
+  //   Selection observable property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [CommentInSchematics] { return self.selectedArray_property.propval }
+  var selectedArray : [WireInSchematics] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : TransientArrayOf_SchematicsObject? = nil
-   let selectedArray_property = TransientArrayOf_CommentInSchematics ()
+   let selectedArray_property = TransientArrayOf_WireInSchematics ()
 
   //····················································································································
 
   func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
     self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [CommentInSchematics] > in
+    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [WireInSchematics] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -85,9 +65,9 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = [CommentInSchematics] ()
+          var s = [WireInSchematics] ()
           for baseObject in v {
-            if let object = baseObject as? CommentInSchematics {
+            if let object = baseObject as? WireInSchematics {
               s.append (object)
             }
           }
@@ -98,11 +78,9 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
       }
     }
     model.addEBObserver (self.selectedArray_property)
-    self.bind_property_mX (model: self.selectedArray_property)
-    self.bind_property_mY (model: self.selectedArray_property)
-    self.bind_property_mComment (model: self.selectedArray_property)
     self.bind_property_objectDisplay (model: self.selectedArray_property)
     self.bind_property_selectionDisplay (model: self.selectedArray_property)
+    self.bind_property_netName (model: self.selectedArray_property)
   }
 
   //····················································································································
@@ -112,27 +90,15 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.selectedArray_property)
     self.selectedArray_property.mReadModelFunction = nil
-  //--- mX
-    self.mX_property.mReadModelFunction = nil 
-    self.mX_property.mWriteModelFunction = nil 
-    self.mX_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
-  //--- mY
-    self.mY_property.mReadModelFunction = nil 
-    self.mY_property.mWriteModelFunction = nil 
-    self.mY_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
-  //--- mComment
-    self.mComment_property.mReadModelFunction = nil 
-    self.mComment_property.mWriteModelFunction = nil 
-    self.mComment_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mComment (self.mComment_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- netName
+    self.netName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
   //---
     self.mModel = nil    
   }
@@ -158,7 +124,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_commentInSchematicsSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_wireInSchematicsSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -172,31 +138,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
     let view = NSView (frame: r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComment",
-      idx: self.mComment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComment_property.mObserverExplorer,
-      valueExplorer: &self.mComment_property.mValueExplorer
-    )
+    let y : CGFloat = 0.0
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
     let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
@@ -206,7 +148,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_commentInSchematicsSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_wireInSchematicsSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
@@ -251,214 +193,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
 
   //····················································································································
 
-  private final func bind_property_mX (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mX (self.mX_property)
-    self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mX_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mX_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_mY (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mY (self.mY_property)
-    self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mY_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mY_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_mComment (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mComment (self.mComment_property)
-    self.mComment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mComment_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mComment_property.mWriteModelFunction = { [weak self] (inValue : String) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mComment_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.mComment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self?.selectedArray_property {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.mComment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_objectDisplay (model : TransientArrayOf_CommentInSchematics) {
+  private final func bind_property_objectDisplay (model : TransientArrayOf_WireInSchematics) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
@@ -497,7 +232,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_CommentInSchematics) {
+  private final func bind_property_selectionDisplay (model : TransientArrayOf_WireInSchematics) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
@@ -511,6 +246,45 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netName (model : TransientArrayOf_WireInSchematics) {
+    model.addEBObserverOf_netName (self.netName_property)
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netName_property_selection {
             case .empty :
               return .empty
             case .multiple :

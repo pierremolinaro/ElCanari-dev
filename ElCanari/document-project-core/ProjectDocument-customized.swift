@@ -81,6 +81,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     self.mSchematicsObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematics")
     self.mSchematicsObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematics")
     self.mSchematicsObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematics")
+    self.mSchematicsObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematics")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---

@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_SymbolDocument_mSymbolTextSelectionController                                                *
+//    Derived selection controller SymbolDocument mSymbolTextSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class SelectionController_SymbolDocument_mSymbolTextSelectionController : EBObject {
@@ -184,7 +184,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     tf.stringValue = name
     tf.font = font
     view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
+    let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
@@ -198,49 +198,49 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "text",
-      idx:self.text_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.text_property.mObserverExplorer,
-      valueExplorer:&self.text_property.mValueExplorer
+      idx: self.text_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.text_property.mObserverExplorer,
+      valueExplorer: &self.text_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalAlignment",
-      idx:self.horizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.horizontalAlignment_property.mValueExplorer
+      idx: self.horizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.horizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -249,8 +249,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     self.mExplorerWindow!.contentView = sw
@@ -264,7 +264,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     if self.mExplorerWindow == nil {
       self.buildExplorerWindow ()
     }
-    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
   
   //····················································································································

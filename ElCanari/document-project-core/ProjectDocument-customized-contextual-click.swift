@@ -31,12 +31,16 @@ extension CustomizedProjectDocument {
   //--- Add Connect ? (only if no NC)
      if points.count > 1 {
        var hasNC = false
+       var pinCount = 0
        for p in points {
          if p.mNC != nil {
            hasNC = true
          }
+         if p.mSymbol != nil {
+           pinCount += 1
+         }
        }
-       if !hasNC {
+       if !hasNC && (pinCount <= 1) {
          if menu.numberOfItems > 0 {
            menu.addItem (.separator ())
          }
@@ -45,6 +49,18 @@ extension CustomizedProjectDocument {
          menuItem.representedObject = points
          menu.addItem (menuItem)
        }
+    }
+  //--- Add Point to wire ?
+    let wires = self.wiresAt (point: canariAlignedMouseDownLocation)
+    if wires.count == 1 {
+       if menu.numberOfItems > 0 {
+         menu.addItem (.separator ())
+       }
+       let menuItem = NSMenuItem (title: "Add Point to Wire…", action: #selector (CustomizedProjectDocument.addPointToWire (_:)), keyEquivalent: "")
+       menuItem.target = self
+       menuItem.representedObject = canariAlignedMouseDownLocation
+       menu.addItem (menuItem)
+
     }
   //--- Add Labels
      if menu.numberOfItems > 0 {
