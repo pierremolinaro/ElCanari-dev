@@ -195,37 +195,28 @@ extension CustomizedProjectDocument {
   //--- Find the rectangle of all pins of current symbol
     let symbol = inPoint.mSymbol!
     let symbolInfo = symbol.symbolInfo!
-    var xMin = Int.max
-    var yMin = Int.max
-    var xMax = Int.min
-    var yMax = Int.min
-    for pin in symbolInfo.pins {
-      if pin.pinName == inPoint.mSymbolPinName {
-        if xMin > pin.pinLocation.x {
-          xMin = pin.pinLocation.x
-        }
-        if yMin > pin.pinLocation.y {
-          yMin = pin.pinLocation.y
-        }
-        if xMax < pin.pinLocation.x {
-          xMax = pin.pinLocation.x
-        }
-        if yMax < pin.pinLocation.y {
-          yMax = pin.pinLocation.y
-        }
-      }
-    }
+//    var symbolPinLocationArray = [CanariPoint] ()
+//    for pin in symbolInfo.pins {
+//      symbolPinLocationArray.append (pin.pinLocation)
+//    }
   //---
-    let pinLocation = inPoint.location!
-    if pinLocation.x == xMin {
-      return .rotation180
-    }else if pinLocation.x == xMax {
-      return .rotation0
-    }else if pinLocation.y == yMin {
-      return .rotation270
-    }else if pinLocation.y == yMax {
+    var cocoaRect = NSRect.null
+    if !symbolInfo.strokeBezierPath.isEmpty {
+      cocoaRect = cocoaRect.union (symbolInfo.strokeBezierPath.bounds)
+    }
+    if !symbolInfo.filledBezierPath.isEmpty {
+      cocoaRect = cocoaRect.union (symbolInfo.filledBezierPath.bounds)
+    }
+   // let symbolPinRect = CanariRect (points: symbolPinLocationArray)
+    let relativeLocation = cocoaRect.relativeLocation (of: inPoint.location!.cocoaPoint)
+    switch relativeLocation {
+    case .above :
       return .rotation90
-    }else{
+    case .left :
+      return .rotation180
+    case .below :
+      return .rotation270
+    case .right :
       return .rotation0
     }
   }

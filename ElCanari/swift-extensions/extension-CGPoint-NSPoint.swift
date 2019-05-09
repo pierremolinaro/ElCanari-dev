@@ -8,7 +8,7 @@ import Foundation
 //   EXTENSION CGPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension CGPoint {
+extension CGPoint : Hashable {
 
   //····················································································································
 
@@ -75,6 +75,18 @@ extension CGPoint {
 
   static func angleInDegrees (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
     return self.angleInRadian (p1, p2) * 180.0 / CGFloat.pi
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  public func hash (into hasher: inout Hasher) {
+    self.x.hash (into: &hasher)
+    self.y.hash (into: &hasher)
   }
 
   //····················································································································

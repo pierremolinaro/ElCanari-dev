@@ -1233,6 +1233,8 @@
 		CFA0DF5321C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */; };
 		CFA0E4EF21BBE87300E4D471 /* EBView-dragging-source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */; };
 		CFA0E4F021BBE87300E4D471 /* EBView-dragging-source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */; };
+		CFA0F3722284870500237022 /* extension-CGSize-NSSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */; };
+		CFA0F3732284870500237022 /* extension-CGSize-NSSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */; };
 		CFA16304222821C400C07267 /* action-DeviceDocument-showDocAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA16303222821C400C07267 /* action-DeviceDocument-showDocAction.swift */; };
 		CFA16305222821C400C07267 /* action-DeviceDocument-showDocAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA16303222821C400C07267 /* action-DeviceDocument-showDocAction.swift */; };
 		CFA1AA1422325FA60023928C /* selectionController-DeviceDocument-mSymbolInstanceSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA1AA1322325FA60023928C /* selectionController-DeviceDocument-mSymbolInstanceSelection.swift */; };
@@ -2261,6 +2263,7 @@
 		CFA085E921A17A6B00DFD00B /* Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
 		CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolRoot-noIssue.swift"; sourceTree = "<group>"; };
 		CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-dragging-source.swift"; sourceTree = "<group>"; };
+		CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGSize-NSSize.swift"; sourceTree = "<group>"; };
 		CFA16303222821C400C07267 /* action-DeviceDocument-showDocAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-showDocAction.swift"; sourceTree = "<group>"; };
 		CFA1AA1322325FA60023928C /* selectionController-DeviceDocument-mSymbolInstanceSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-DeviceDocument-mSymbolInstanceSelection.swift"; sourceTree = "<group>"; };
 		CFA1AA16223265E20023928C /* entity-SymbolPinTypeInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolPinTypeInDevice.swift"; sourceTree = "<group>"; };
@@ -2721,6 +2724,7 @@
 				CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */,
 				CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */,
 				CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */,
+				CFA0F3712284870500237022 /* extension-CGSize-NSSize.swift */,
 				CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */,
 				CF30969822397B5E00507740 /* extension-Int.swift */,
 				CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */,
@@ -4603,6 +4607,7 @@
 				CFCD3AD621FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */,
 				CF001F7021F8AE730091518E /* run-shell-command.swift in Sources */,
 				CF116B82224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */,
+				CFA0F3722284870500237022 /* extension-CGSize-NSSize.swift in Sources */,
 				CF30CDE521C5709800CFE9CC /* transient-PackagePad-objectDisplay.swift in Sources */,
 				CFFA7B4B2274821A00E2D69A /* view-ThreeStringArrayTableView.swift in Sources */,
 				CFDEC6DD21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,
@@ -5297,6 +5302,7 @@
 				CF5C4D79219F04D600EAC52A /* selectionController-FontDocument-mCharacterSelection.swift in Sources */,
 				CFF2A1F421B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */,
 				CF00843C21C41B8D003627E9 /* transient-PackageBezier-issues.swift in Sources */,
+				CFA0F3732284870500237022 /* extension-CGSize-NSSize.swift in Sources */,
 				CF5C4D7A219F04D600EAC52A /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF6B32F921C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
 				CF9D4BAD227F79A9006E2035 /* transient-NetClassInProject-netWidth.swift in Sources */,

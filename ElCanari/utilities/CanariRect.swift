@@ -56,6 +56,36 @@ struct CanariRect : Equatable, Hashable {
 
   //····················································································································
 
+  init (points inPoints : [CanariPoint]) {
+    if inPoints.count == 0 {
+      origin = CanariPoint ()
+      size = CanariSize ()
+    }else{
+      var xMin = Int.max
+      var yMin = Int.max
+      var xMax = Int.min
+      var yMax = Int.min
+      for p in inPoints {
+        if xMin > p.x {
+          xMin = p.x
+        }
+        if yMin > p.y {
+          yMin = p.y
+        }
+        if xMax < p.x {
+          xMax = p.x
+        }
+        if yMax < p.y {
+          yMax = p.y
+        }
+      }
+      origin = CanariPoint (x: xMin, y: yMin)
+      size = CanariSize (width: xMax - xMin, height: yMax - yMin)
+    }
+  }
+
+  //····················································································································
+
   init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
     if (inWidth > 0) && (inHeight > 0) {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
@@ -193,6 +223,62 @@ struct CanariRect : Equatable, Hashable {
       result |= CohenSutherlandOutcodeTOP
     }
     return result
+  }
+
+  //····················································································································
+  // Relative location of a point from rectangle center
+  //
+  //    *———————————————*
+  //    |\             /|
+  //    | \   above   / |
+  //    |  \         /  |
+  //    |   \       /   |
+  //    |    \     /    |
+  //    |     \   /     |
+  //    |      \ /      |
+  //    | left  * right |
+  //    |      / \      |
+  //    |     /   \     |
+  //    |    /     \    |
+  //    |   /       \   |
+  //    |  /         \  |
+  //    | /   below   \ |
+  //    |/             \|
+  //    *———————————————*
+  //
+  //····················································································································
+
+  enum RelativeLocation { case right ; case above ; case left ; case below}
+
+  //····················································································································
+
+  func relativeLocation (of inPoint : CanariPoint) -> RelativeLocation {
+    if self.isEmpty {
+      return .left
+    }else{
+      let dx = inPoint.x - self.origin.x
+      let dy = inPoint.y - self.origin.y
+      if (dx == 0) && (dy == 0) {
+        return .left
+      }else{
+         let underAscendingDiagonal  = (self.size.width * dy) < (self.size.height * dx)
+         let descendingDiagonalX = self.size.width
+         let descendingDiagonalY = -self.size.height
+         let dxFromTopLeft = dx
+         let dyFromTopLeft = inPoint.y - self.origin.y - self.size.height
+         let underDescendingDiagonal = (descendingDiagonalX * dyFromTopLeft) < (descendingDiagonalY * dxFromTopLeft)
+         switch (underAscendingDiagonal, underDescendingDiagonal) {
+         case (false, false) :
+           return .above
+         case (false, true) :
+           return .left
+         case (true, false) :
+           return .right
+         case (true, true) :
+           return .below
+         }
+      }
+    }
   }
 
   //····················································································································

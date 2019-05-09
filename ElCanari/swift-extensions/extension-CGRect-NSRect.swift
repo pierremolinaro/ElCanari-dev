@@ -174,14 +174,68 @@ extension CGRect : Hashable {
   }
 
   //····················································································································
-  //   Protocol Hashable: hashValue
+  //   Protocol Hashable
   //····················································································································
 
   public func hash (into hasher : inout Hasher) {
-    self.origin.x.hash (into: &hasher)
-    self.origin.y.hash (into: &hasher)
-    self.size.width.hash (into: &hasher)
-    self.size.height.hash (into: &hasher)
+    self.origin.hash (into: &hasher)
+    self.size.hash (into: &hasher)
+  }
+
+  //····················································································································
+  // Relative location of a point from rectangle center
+  //
+  //    *———————————————*
+  //    |\             /|
+  //    | \   above   / |
+  //    |  \         /  |
+  //    |   \       /   |
+  //    |    \     /    |
+  //    |     \   /     |
+  //    |      \ /      |
+  //    | left  * right |
+  //    |      / \      |
+  //    |     /   \     |
+  //    |    /     \    |
+  //    |   /       \   |
+  //    |  /         \  |
+  //    | /   below   \ |
+  //    |/             \|
+  //    *———————————————*
+  //
+  //····················································································································
+
+  enum RelativeLocation { case right ; case above ; case left ; case below}
+
+  //····················································································································
+
+  func relativeLocation (of inPoint : NSPoint) -> RelativeLocation {
+    if self.isEmpty {
+      return .left
+    }else{
+      let dx = inPoint.x - self.origin.x
+      let dy = inPoint.y - self.origin.y
+      if (dx == 0) && (dy == 0) {
+        return .left
+      }else{
+         let underAscendingDiagonal  = (self.size.width * dy) < (self.size.height * dx)
+         let descendingDiagonalX = self.size.width
+         let descendingDiagonalY = -self.size.height
+         let dxFromTopLeft = dx
+         let dyFromTopLeft = inPoint.y - self.origin.y - self.size.height
+         let underDescendingDiagonal = (descendingDiagonalX * dyFromTopLeft) < (descendingDiagonalY * dxFromTopLeft)
+         switch (underAscendingDiagonal, underDescendingDiagonal) {
+         case (false, false) :
+           return .above
+         case (false, true) :
+           return .left
+         case (true, false) :
+           return .right
+         case (true, true) :
+           return .below
+         }
+      }
+    }
   }
 
   //····················································································································
