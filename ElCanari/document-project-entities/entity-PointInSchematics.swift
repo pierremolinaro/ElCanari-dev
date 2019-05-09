@@ -571,15 +571,16 @@ class PointInSchematics : EBManagedObject,
         var kind = unwSelf.mNC_none_selection.kind ()
         kind &= unwSelf.mWiresP1s_property.count_property_selection.kind ()
         kind &= unwSelf.mWiresP2s_property.count_property_selection.kind ()
+        kind &= unwSelf.mLabels_property.count_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mNC_none_selection, unwSelf.mWiresP1s_property.count_property_selection, unwSelf.mWiresP2s_property.count_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PointInSchematics_isConnected (v0, v1, v2))
+          switch (unwSelf.mNC_none_selection, unwSelf.mWiresP1s_property.count_property_selection, unwSelf.mWiresP2s_property.count_property_selection, unwSelf.mLabels_property.count_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_PointInSchematics_isConnected (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -591,6 +592,7 @@ class PointInSchematics : EBManagedObject,
     self.mNC_property.addEBObserver (self.isConnected_property)
     self.mWiresP1s_property.addEBObserver (self.isConnected_property)
     self.mWiresP2s_property.addEBObserver (self.isConnected_property)
+    self.mLabels_property.addEBObserver (self.isConnected_property)
   //--- Atomic property: status
     self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -683,6 +685,7 @@ class PointInSchematics : EBManagedObject,
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
     self.mWiresP2s_property.removeEBObserver (self.isConnected_property)
+    self.mLabels_property.removeEBObserver (self.isConnected_property)
     self.location_property.removeEBObserver (self.status_property)
     self.isConnected_property.removeEBObserver (self.status_property)
     self.location_property.removeEBObserver (self.connectedPoints_property)

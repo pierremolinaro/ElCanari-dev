@@ -3293,11 +3293,6 @@
 		CF9D4B46227F7979006E2035 /* document — project — transients */ = {
 			isa = PBXGroup;
 			children = (
-				CFB003492283300400399BDF /* transient-PointInSchematics-canMove.swift */,
-				CFB0034622832E9000399BDF /* transient-PointInSchematics-wireColor.swift */,
-				CFB0034322832E2800399BDF /* transient-NetInProject-wireColor.swift */,
-				CFB0033A228322CF00399BDF /* transient-WireInSchematics-objectDisplay.swift */,
-				CFB0033B228322CF00399BDF /* transient-WireInSchematics-selectionDisplay.swift */,
 				CF9D4B73227F79A7006E2035 /* transient-CommentInSchematics-objectDisplay.swift */,
 				CF9D4B7E227F79A8006E2035 /* transient-CommentInSchematics-selectionDisplay.swift */,
 				CF9D4B72227F79A7006E2035 /* transient-ComponentInProject-availablePackages.swift */,
@@ -3344,11 +3339,14 @@
 				CF9D4B5E227F79A6006E2035 /* transient-NetClassInProject-viaHoleDiameter.swift */,
 				CF9D4B7C227F79A8006E2035 /* transient-NetClassInProject-viaPadDiameter.swift */,
 				CFB1DB4D2282E098005F9811 /* transient-NetInProject-pinNames.swift */,
+				CFB0034322832E2800399BDF /* transient-NetInProject-wireColor.swift */,
+				CFB003492283300400399BDF /* transient-PointInSchematics-canMove.swift */,
 				CF9D4B51227F79A5006E2035 /* transient-PointInSchematics-connectedPoints.swift */,
 				CF9D4B76227F79A7006E2035 /* transient-PointInSchematics-isConnected.swift */,
 				CF9D4B87227F79A9006E2035 /* transient-PointInSchematics-location.swift */,
 				CF7E69F92282228B0024233A /* transient-PointInSchematics-netName.swift */,
 				CFB1DB5622830639005F9811 /* transient-PointInSchematics-status.swift */,
+				CFB0034622832E9000399BDF /* transient-PointInSchematics-wireColor.swift */,
 				CF9D4B6E227F79A7006E2035 /* transient-ProjectDocument-canChangePackage.swift */,
 				CF9D4B58227F79A5006E2035 /* transient-ProjectDocument-canRemoveNetClasses.swift */,
 				CF9D4B65227F79A6006E2035 /* transient-ProjectDocument-canRemoveSelectedDevices.swift */,
@@ -3375,6 +3373,8 @@
 				CF9D4B5C227F79A5006E2035 /* transient-SheetInProject-connexionErrors.swift */,
 				CF9D4B79227F79A8006E2035 /* transient-SheetInProject-connexionWarnings.swift */,
 				CF9D4B81227F79A8006E2035 /* transient-SheetInProject-issues.swift */,
+				CFB0033A228322CF00399BDF /* transient-WireInSchematics-objectDisplay.swift */,
+				CFB0033B228322CF00399BDF /* transient-WireInSchematics-selectionDisplay.swift */,
 			);
 			name = "document — project — transients";
 			path = "ElCanari/document-project-transient";

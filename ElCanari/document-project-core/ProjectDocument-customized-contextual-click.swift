@@ -28,6 +28,24 @@ extension CustomizedProjectDocument {
          menu.addItem (menuItem)
        }
      }
+  //--- Add Connect ? (only if no NC)
+     if points.count > 1 {
+       var hasNC = false
+       for p in points {
+         if p.mNC != nil {
+           hasNC = true
+         }
+       }
+       if !hasNC {
+         if menu.numberOfItems > 0 {
+           menu.addItem (.separator ())
+         }
+         let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connect (_:)), keyEquivalent: "")
+         menuItem.target = self
+         menuItem.representedObject = points
+         menu.addItem (menuItem)
+       }
+    }
   //--- Add Labels
      if menu.numberOfItems > 0 {
        menu.addItem (.separator ())
@@ -54,6 +72,58 @@ extension CustomizedProjectDocument {
      menu.addItem (menuItem)
   //---
     return menu
+  }
+
+  //····················································································································
+
+  @objc internal func connect (_ inSender : NSMenuItem) {
+    if let points = inSender.representedObject as? [PointInSchematics], let window = self.windowForSheet {
+      var netSet = Set <NetInProject> ()
+      for point in points {
+        if let net = point.mNet {
+          netSet.insert (net)
+        }
+      }
+    //---
+      let netArray = Array (netSet).sorted { $0.mNetName > $1.mNetName }
+      if netArray.count == 1 {
+        self.propagateAndMerge (net: netArray [0], to: points)
+      }else if netArray.count == 2 {
+        let alert = NSAlert ()
+        alert.messageText = "Performing connection will merge two nets."
+        for net in netArray {
+          alert.addButton (withTitle: net.mNetName)
+        }
+        alert.addButton (withTitle: "Cancel")
+        alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+          self.handleAlertResponseForMergingNets (response, points, netArray)
+        }
+      }else if netArray.count == 3 {
+        let alert = NSAlert ()
+        alert.messageText = "Performing connection will merge three nets."
+        for net in netArray {
+          alert.addButton (withTitle: net.mNetName)
+        }
+        alert.addButton (withTitle: "Cancel")
+        alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+          self.handleAlertResponseForMergingNets (response, points, netArray)
+        }
+      }else if netArray.count > 3 {
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal func handleAlertResponseForMergingNets (_ inResponse : NSApplication.ModalResponse,
+                                                   _ inPoints : [PointInSchematics],
+                                                   _ inNetArray : [NetInProject]) {
+    let responseIndex = inResponse.rawValue - NSApplication.ModalResponse.alertFirstButtonReturn.rawValue
+    if responseIndex < inNetArray.count {
+      // NSLog ("responseIndex \(responseIndex)")
+      let newNet = inNetArray [responseIndex]
+      self.propagateAndMerge (net: newNet, to: inPoints)
+    }
   }
 
   //····················································································································

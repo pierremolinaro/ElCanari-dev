@@ -45,7 +45,7 @@ extension CGPoint {
 
   //····················································································································
 
-  func canariPoint () -> CanariPoint {
+  var canariPoint : CanariPoint {
     return CanariPoint (x: cocoaToCanariUnit (self.x), y: cocoaToCanariUnit (self.y))
   }
 

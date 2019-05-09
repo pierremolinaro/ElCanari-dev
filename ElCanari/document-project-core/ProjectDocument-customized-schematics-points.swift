@@ -31,7 +31,11 @@ extension CustomizedProjectDocument {
       var idx = 0
       while idx < selectedSheet.mPoints.count {
         let point = selectedSheet.mPoints [idx]
-        let unused = (point.mLabels.count == 0) && (point.mNC == nil) && (point.mWiresP1s.count == 0) && (point.mWiresP2s.count == 0)
+        let unused = (point.mLabels.count == 0)
+          && (point.mNC == nil)
+          && (point.mWiresP1s.count == 0)
+          && (point.mWiresP2s.count == 0)
+          && (point.mSymbol == nil)
         if unused {
           point.mNet = nil
           selectedSheet.mPoints.remove (at: idx)

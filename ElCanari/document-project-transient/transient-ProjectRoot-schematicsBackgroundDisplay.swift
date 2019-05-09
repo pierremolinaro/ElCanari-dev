@@ -158,7 +158,9 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
           }
         }
         if warningPath.elementCount > 0 {
-          shape.append (EBFilledBezierPathShape ([warningPath], .orange))
+          // Color is F6C050
+          let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
+          shape.append (EBFilledBezierPathShape ([warningPath], myOrange))
         }
         if errorPath.elementCount > 0 {
           shape.append (EBFilledBezierPathShape ([errorPath], .red))

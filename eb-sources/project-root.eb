@@ -444,7 +444,7 @@ entity PointInSchematics {
 
   transient Bool canMove dependsFrom self.mSymbol.none ;
 
-  transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count ;
+  transient Bool isConnected dependsFrom self.mNC.none, self.mWiresP1s.count, self.mWiresP2s.count, self.mLabels.count ;
 
   transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
   

@@ -184,6 +184,92 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
+  //  Propagate and merge net
+  //····················································································································
+
+  internal func propagateAndMerge (net inNet : NetInProject, to inPoints : [PointInSchematics]) {
+  //--- All points should be at the same location
+  //    Only one point should be bound to a symbol pin
+    if inPoints.count == 1 {
+      inPoints [0].mNet = inNet
+      self.propagateNet (fromPoint: inPoints [0])
+    }else if inPoints.count > 1 {
+      var symbol : ComponentSymbolInProject? = nil
+      var symbolPinName = ""
+      let location = inPoints [0].location!
+      var ok = true
+      for point in inPoints {
+        if point.mNC != nil {
+          ok = false
+        }else if point.location! != location {
+          ok = false
+        }else if let sp = point.mSymbol {
+          if symbol != nil {
+            ok = false
+          }
+          symbol = sp
+          symbolPinName = point.mSymbolPinName
+        }
+      }
+      if ok {
+        let newPoint = PointInSchematics (self.ebUndoManager)
+        newPoint.mSymbol = symbol
+        newPoint.mSymbolPinName = symbolPinName
+        newPoint.mNet = inNet
+        newPoint.mX = location.x
+        newPoint.mY = location.y
+        for point in inPoints {
+          //NSLog ("Ex point \(point.mWiresP1s.count) \(point.mWiresP2s.count) \(point.mLabels.count)")
+          let wireP1s = point.mWiresP1s
+          point.mWiresP1s = []
+          newPoint.mWiresP1s += wireP1s
+          let wireP2s = point.mWiresP2s
+          point.mWiresP2s = []
+          newPoint.mWiresP2s += wireP2s
+          let labels = point.mLabels
+          point.mLabels = []
+          newPoint.mLabels += labels
+          point.mNet = nil
+        }
+        //NSLog ("New point \(newPoint.mWiresP1s.count) \(newPoint.mWiresP2s.count) \(newPoint.mLabels.count)")
+        for point in inPoints {
+          let idx = self.rootObject.mSelectedSheet!.mPoints.firstIndex (of: point)!
+          self.rootObject.mSelectedSheet?.mPoints.remove (at: idx)
+          // NSLog ("Wires \(idx) \(point.mWiresP1s.count) \(point.mWiresP2s.count) \(point.mLabels.count)")
+        }
+        self.rootObject.mSelectedSheet?.mPoints.append (newPoint)
+        self.propagateNet (fromPoint: newPoint)
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal func propagateNet (fromPoint inPoint : PointInSchematics) {
+    var reachedPointSet = Set <PointInSchematics> ()
+    reachedPointSet.insert (inPoint)
+    var exploreArray = [inPoint]
+    while let point = exploreArray.last {
+      exploreArray.removeLast ()
+      for wire in point.mWiresP1s + point.mWiresP2s {
+        let p1 = wire.mP1!
+        if !reachedPointSet.contains (p1) {
+          reachedPointSet.insert (p1)
+          exploreArray.append (p1)
+          p1.mNet = inPoint.mNet
+        }
+        let p2 = wire.mP2!
+        if !reachedPointSet.contains (p2) {
+          reachedPointSet.insert (p2)
+          exploreArray.append (p2)
+          p2.mNet = inPoint.mNet
+        }
+      }
+    }
+    self.updateSchematicsPointsAndNets ()
+  }
+
+  //····················································································································
 
 }
 
