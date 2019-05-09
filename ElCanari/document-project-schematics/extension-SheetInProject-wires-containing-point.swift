@@ -14,7 +14,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func wiresAt (point inPoint : CanariPoint) -> [WireInSchematics] {
+  internal func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematics] {
     let width = cocoaToCanariUnit (CGFloat (g_Preferences!.symbolDrawingWidthMultipliedByTen) / 5.0)
     var result = [WireInSchematics]  ()
     for object in self.mObjects {
