@@ -43,7 +43,7 @@ extension CustomizedProjectDocument {
   // Create a new net with automatic name
   //····················································································································
 
-  internal func newNetWithAutomaticName () -> NetInProject {
+  internal func createNetWithAutomaticName () -> NetInProject {
   //--- Find a new net name
     let newNetName = self.findUniqueNetName ()
   //--- Create new
@@ -218,26 +218,32 @@ extension CustomizedProjectDocument {
         newPoint.mNet = inNet
         newPoint.mX = location.x
         newPoint.mY = location.y
+        self.rootObject.mSelectedSheet?.mPoints.append (newPoint)
+        var newWiresP1s = [WireInSchematics] ()
+        var newWiresP2s = [WireInSchematics] ()
+        var newLabels = [LabelInSchematics] ()
         for point in inPoints {
           //NSLog ("Ex point \(point.mWiresP1s.count) \(point.mWiresP2s.count) \(point.mLabels.count)")
           let wireP1s = point.mWiresP1s
           point.mWiresP1s = []
-          newPoint.mWiresP1s += wireP1s
+          newWiresP1s += wireP1s
           let wireP2s = point.mWiresP2s
           point.mWiresP2s = []
-          newPoint.mWiresP2s += wireP2s
+          newWiresP2s += wireP2s
           let labels = point.mLabels
           point.mLabels = []
-          newPoint.mLabels += labels
+          newLabels += labels
           point.mNet = nil
         }
+        newPoint.mWiresP1s = newWiresP1s
+        newPoint.mWiresP2s = newWiresP2s
+        newPoint.mLabels = newLabels
         //NSLog ("New point \(newPoint.mWiresP1s.count) \(newPoint.mWiresP2s.count) \(newPoint.mLabels.count)")
         for point in inPoints {
           let idx = self.rootObject.mSelectedSheet!.mPoints.firstIndex (of: point)!
           self.rootObject.mSelectedSheet?.mPoints.remove (at: idx)
           // NSLog ("Wires \(idx) \(point.mWiresP1s.count) \(point.mWiresP2s.count) \(point.mLabels.count)")
         }
-        self.rootObject.mSelectedSheet?.mPoints.append (newPoint)
         self.propagateNet (fromPoint: newPoint)
       }
     }
@@ -246,20 +252,21 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func propagateNet (fromPoint inPoint : PointInSchematics) {
-    var reachedPointSet = Set <PointInSchematics> ()
-    reachedPointSet.insert (inPoint)
+    var reachedPointSet = Set <PointInSchematics> ([inPoint])
     var exploreArray = [inPoint]
     while let point = exploreArray.last {
       exploreArray.removeLast ()
       for wire in point.mWiresP1s + point.mWiresP2s {
         let p1 = wire.mP1!
         if !reachedPointSet.contains (p1) {
+          NSLog ("ADD \(p1)")
           reachedPointSet.insert (p1)
           exploreArray.append (p1)
           p1.mNet = inPoint.mNet
         }
         let p2 = wire.mP2!
         if !reachedPointSet.contains (p2) {
+          NSLog ("ADD \(p2)")
           reachedPointSet.insert (p2)
           exploreArray.append (p2)
           p2.mNet = inPoint.mNet

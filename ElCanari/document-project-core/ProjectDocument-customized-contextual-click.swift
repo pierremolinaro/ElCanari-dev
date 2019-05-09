@@ -167,7 +167,7 @@ extension CustomizedProjectDocument {
         let point = PointInSchematics (self.ebUndoManager)
         point.mX = canariAlignedMouseDownLocation.x
         point.mY = canariAlignedMouseDownLocation.y
-        point.mNet = self.newNetWithAutomaticName ()
+        point.mNet = self.createNetWithAutomaticName ()
         self.rootObject.mSelectedSheet?.mPoints.append (point)
         possiblePoint = point
       }
