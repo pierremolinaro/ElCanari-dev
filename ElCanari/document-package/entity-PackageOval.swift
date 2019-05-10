@@ -1652,10 +1652,20 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageOval) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageOval) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageOval) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1731,7 +1741,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
             managedObject.height_property.mSetterDelegate = nil
@@ -1761,7 +1771,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
         if addedObjectSet.count > 0 {
           for managedObject : PackageOval in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -869,10 +869,20 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
 final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchematics, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -948,7 +958,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
             managedObject.mComment_property.mSetterDelegate = nil
@@ -966,7 +976,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
         if addedObjectSet.count > 0 {
           for managedObject : CommentInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mComment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

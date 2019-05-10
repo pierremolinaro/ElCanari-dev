@@ -998,10 +998,20 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
 final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SegmentForFontCharacter) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SegmentForFontCharacter) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1077,7 +1087,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.x1_property.mSetterDelegate = nil
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
@@ -1097,7 +1107,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         if addedObjectSet.count > 0 {
           for managedObject : SegmentForFontCharacter in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

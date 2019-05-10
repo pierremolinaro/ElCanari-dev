@@ -903,10 +903,20 @@ final class ProxyArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : FontInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -982,7 +992,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mFontName_property.mSetterDelegate = nil
             managedObject.mFontVersion_property.mSetterDelegate = nil
             managedObject.mDescriptiveString_property.mSetterDelegate = nil
@@ -1000,7 +1010,7 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
         if addedObjectSet.count > 0 {
           for managedObject : FontInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mFontName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFontVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDescriptiveString_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

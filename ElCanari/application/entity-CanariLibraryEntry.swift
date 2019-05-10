@@ -886,10 +886,20 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -965,7 +975,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mPath_property.mSetterDelegate = nil
             managedObject.mUses_property.mSetterDelegate = nil
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
@@ -984,7 +994,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
         if addedObjectSet.count > 0 {
           for managedObject : CanariLibraryEntry in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

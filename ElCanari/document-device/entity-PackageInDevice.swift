@@ -1849,10 +1849,20 @@ final class ProxyArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
 final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1928,7 +1938,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mFileData_property.mSetterDelegate = nil
             managedObject.mName_property.mSetterDelegate = nil
             managedObject.mVersion_property.mSetterDelegate = nil
@@ -1956,7 +1966,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
         if addedObjectSet.count > 0 {
           for managedObject : PackageInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -2216,10 +2216,20 @@ final class ProxyArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
 final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageDimension) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageDimension) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2295,7 +2305,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil
@@ -2335,7 +2345,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
         if addedObjectSet.count > 0 {
           for managedObject : PackageDimension in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

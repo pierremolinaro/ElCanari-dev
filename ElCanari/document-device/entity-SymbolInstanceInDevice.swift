@@ -242,9 +242,10 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     super.init (ebUndoManager)
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
-    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolPinInstanceInDevice?) in
-      inManagedObject?.mSymbolInstance_property.setProp (self)
-    }
+    self.mPinInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
+      resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
+    )
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX
@@ -396,14 +397,10 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice) in
-      if let me = self {
-        inManagedObject.mSymbolInstance_property.setProp (me)
-      }
-    }
-    self.mPinInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolPinInstanceInDevice) in
-      inManagedObject.mSymbolInstance_property.setProp (nil)
-    }
+    self.mPinInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
+      resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mX_property.setSignatureObserver (observer: self)
@@ -1410,10 +1407,20 @@ final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanc
 final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1489,7 +1496,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mInstanceName_property.mSetterDelegate = nil
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
@@ -1510,7 +1517,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
         if addedObjectSet.count > 0 {
           for managedObject : SymbolInstanceInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

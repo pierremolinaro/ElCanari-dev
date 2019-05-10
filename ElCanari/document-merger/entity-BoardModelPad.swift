@@ -967,10 +967,20 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelPad) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : BoardModelPad) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1046,7 +1056,7 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
             managedObject.height_property.mSetterDelegate = nil
@@ -1068,7 +1078,7 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
         if addedObjectSet.count > 0 {
           for managedObject : BoardModelPad in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

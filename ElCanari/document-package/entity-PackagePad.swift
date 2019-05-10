@@ -691,9 +691,10 @@ class PackagePad : PackageObject,
     self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.ebUndoManager = self.ebUndoManager
-    self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageSlavePad?) in
-      inManagedObject?.master_property.setProp (self)
-    }
+    self.slaves_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
+      resetter: { inObject in inObject.master_property.setProp (nil) }
+    )
   //--- To one property: zone
     self.zone_property.owner = self
   //--- Atomic property: selectionDisplay
@@ -989,14 +990,10 @@ class PackagePad : PackageObject,
     g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padName_property.addEBObserver (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageSlavePad) in
-      if let me = self {
-        inManagedObject.master_property.setProp (me)
-      }
-    }
-    self.slaves_property.resetOppositeRelationship = { (_ inManagedObject : PackageSlavePad) in
-      inManagedObject.master_property.setProp (nil)
-    }
+    self.slaves_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
+      resetter: { inObject in inObject.master_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
     self.height_property.setSignatureObserver (observer: self)
@@ -3299,10 +3296,20 @@ final class ProxyArrayOf_PackagePad : ReadWriteArrayOf_PackagePad {
 final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackagePad) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackagePad) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -3378,7 +3385,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = nil
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
@@ -3427,7 +3434,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : PackagePad in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.yCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

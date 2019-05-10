@@ -450,19 +450,22 @@ class PointInSchematics : EBManagedObject,
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mWiresP2s (has opposite relationship)
     self.mWiresP2s_property.ebUndoManager = self.ebUndoManager
-    self.mWiresP2s_property.setOppositeRelationship = { [weak self] (_ inManagedObject :WireInSchematics?) in
-      inManagedObject?.mP2_property.setProp (self)
-    }
+    self.mWiresP2s_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mP2_property.setProp (nil) }
+    )
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
-    self.mLabels_property.setOppositeRelationship = { [weak self] (_ inManagedObject :LabelInSchematics?) in
-      inManagedObject?.mPoint_property.setProp (self)
-    }
+    self.mLabels_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
+      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
+    )
   //--- To many property: mWiresP1s (has opposite relationship)
     self.mWiresP1s_property.ebUndoManager = self.ebUndoManager
-    self.mWiresP1s_property.setOppositeRelationship = { [weak self] (_ inManagedObject :WireInSchematics?) in
-      inManagedObject?.mP1_property.setProp (self)
-    }
+    self.mWiresP1s_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mP1_property.setProp (nil) }
+    )
   //--- To one property: mSymbol
     self.mSymbol_property.owner = self
   //--- To one property: mNet
@@ -644,30 +647,18 @@ class PointInSchematics : EBManagedObject,
     self.location_property.addEBObserver (self.connectedPoints_property)
     self.isConnected_property.addEBObserver (self.connectedPoints_property)
   //--- Install undoers and opposite setter for relationships
-    self.mWiresP2s_property.setOppositeRelationship = { [weak self] (_ inManagedObject : WireInSchematics) in
-      if let me = self {
-        inManagedObject.mP2_property.setProp (me)
-      }
-    }
-    self.mWiresP2s_property.resetOppositeRelationship = { (_ inManagedObject : WireInSchematics) in
-      inManagedObject.mP2_property.setProp (nil)
-    }
-    self.mLabels_property.setOppositeRelationship = { [weak self] (_ inManagedObject : LabelInSchematics) in
-      if let me = self {
-        inManagedObject.mPoint_property.setProp (me)
-      }
-    }
-    self.mLabels_property.resetOppositeRelationship = { (_ inManagedObject : LabelInSchematics) in
-      inManagedObject.mPoint_property.setProp (nil)
-    }
-    self.mWiresP1s_property.setOppositeRelationship = { [weak self] (_ inManagedObject : WireInSchematics) in
-      if let me = self {
-        inManagedObject.mP1_property.setProp (me)
-      }
-    }
-    self.mWiresP1s_property.resetOppositeRelationship = { (_ inManagedObject : WireInSchematics) in
-      inManagedObject.mP1_property.setProp (nil)
-    }
+    self.mWiresP2s_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mP2_property.setProp (nil) }
+    )
+    self.mLabels_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
+      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
+    )
+    self.mWiresP1s_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
+      resetter: { inObject in inObject.mP1_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1914,10 +1905,20 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
 final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematics) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematics) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1993,7 +1994,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mSymbolPinName_property.mSetterDelegate = nil
             managedObject.mX_property.mSetterDelegate = nil
             managedObject.mY_property.mSetterDelegate = nil
@@ -2016,7 +2017,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
         if addedObjectSet.count > 0 {
           for managedObject : PointInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mSymbolPinName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

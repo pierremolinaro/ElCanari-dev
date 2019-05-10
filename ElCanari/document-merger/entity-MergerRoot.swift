@@ -747,9 +747,10 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)
     self.boardInstances_property.ebUndoManager = self.ebUndoManager
-    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
-      inManagedObject?.myRoot_property.setProp (self)
-    }
+    self.boardInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.myRoot_property.setProp (nil) }
+    )
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
@@ -941,14 +942,10 @@ class MergerRoot : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance) in
-      if let me = self {
-        inManagedObject.myRoot_property.setProp (me)
-      }
-    }
-    self.boardInstances_property.resetOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
-      inManagedObject.myRoot_property.setProp (nil)
-    }
+    self.boardInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.myRoot_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -3324,10 +3321,20 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerRoot) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : MergerRoot) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -3403,7 +3410,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
             managedObject.zoom_property.mSetterDelegate = nil
             managedObject.automaticBoardSize_property.mSetterDelegate = nil
@@ -3459,7 +3466,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : MergerRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.automaticBoardSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

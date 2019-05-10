@@ -1857,10 +1857,20 @@ final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProjec
 final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1936,7 +1946,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
             managedObject.mSymbolTypeName_property.mSetterDelegate = nil
             managedObject.mPinX_property.mSetterDelegate = nil
@@ -1972,7 +1982,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
         if addedObjectSet.count > 0 {
           for managedObject : DevicePinInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPinX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

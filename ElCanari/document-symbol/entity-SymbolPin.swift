@@ -2037,10 +2037,20 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
 final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPin) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolPin) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2116,7 +2126,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.yPin_property.mSetterDelegate = nil
             managedObject.xName_property.mSetterDelegate = nil
             managedObject.yName_property.mSetterDelegate = nil
@@ -2151,7 +2161,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         if addedObjectSet.count > 0 {
           for managedObject : SymbolPin in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.yPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

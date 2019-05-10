@@ -730,10 +730,20 @@ final class ProxyArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics {
 final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : NCInSchematics) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NCInSchematics) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : NCInSchematics) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -809,7 +819,7 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mOrientation_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
@@ -823,7 +833,7 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
         if addedObjectSet.count > 0 {
           for managedObject : NCInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties

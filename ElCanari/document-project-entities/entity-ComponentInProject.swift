@@ -383,9 +383,10 @@ class ComponentInProject : EBManagedObject,
     self.mComponentValue_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
-    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject :ComponentSymbolInProject?) in
-      inManagedObject?.mComponent_property.setProp (self)
-    }
+    self.mSymbols_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
+      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
+    )
   //--- To one property: mDevice
     self.mDevice_property.owner = self
   //--- To one property: mSelectedPackage
@@ -555,14 +556,10 @@ class ComponentInProject : EBManagedObject,
     }
     self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
   //--- Install undoers and opposite setter for relationships
-    self.mSymbols_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentSymbolInProject) in
-      if let me = self {
-        inManagedObject.mComponent_property.setProp (me)
-      }
-    }
-    self.mSymbols_property.resetOppositeRelationship = { (_ inManagedObject : ComponentSymbolInProject) in
-      inManagedObject.mComponent_property.setProp (nil)
-    }
+    self.mSymbols_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
+      resetter: { inObject in inObject.mComponent_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1712,10 +1709,20 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1791,7 +1798,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mNamePrefix_property.mSetterDelegate = nil
             managedObject.mNameIndex_property.mSetterDelegate = nil
             managedObject.mComponentValue_property.mSetterDelegate = nil
@@ -1814,7 +1821,7 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
         if addedObjectSet.count > 0 {
           for managedObject : ComponentInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mNamePrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

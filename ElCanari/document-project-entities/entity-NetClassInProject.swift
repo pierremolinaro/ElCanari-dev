@@ -425,9 +425,10 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameterUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
-    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject :NetInProject?) in
-      inManagedObject?.mNetClass_property.setProp (self)
-    }
+    self.mNets_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
+      resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
+    )
   //--- Atomic property: netWidth
     self.netWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -571,14 +572,10 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
   //--- Install undoers and opposite setter for relationships
-    self.mNets_property.setOppositeRelationship = { [weak self] (_ inManagedObject : NetInProject) in
-      if let me = self {
-        inManagedObject.mNetClass_property.setProp (me)
-      }
-    }
-    self.mNets_property.resetOppositeRelationship = { (_ inManagedObject : NetInProject) in
-      inManagedObject.mNetClass_property.setProp (nil)
-    }
+    self.mNets_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
+      resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1975,10 +1972,20 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
 final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NetClassInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : NetClassInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2054,7 +2061,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mNetClassName_property.mSetterDelegate = nil
             managedObject.mNetClassColor_property.mSetterDelegate = nil
             managedObject.mNetWidth_property.mSetterDelegate = nil
@@ -2086,7 +2093,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
         if addedObjectSet.count > 0 {
           for managedObject : NetClassInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mNetClassName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNetClassColor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNetWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

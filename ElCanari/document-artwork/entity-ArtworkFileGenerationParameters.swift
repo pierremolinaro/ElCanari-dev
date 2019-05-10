@@ -2779,10 +2779,20 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
 final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2858,7 +2868,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.drawBoardLimits_property.mSetterDelegate = nil
             managedObject.drawInternalBoardLimits_property.mSetterDelegate = nil
             managedObject.drawComponentNamesTopSide_property.mSetterDelegate = nil
@@ -2914,7 +2924,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         if addedObjectSet.count > 0 {
           for managedObject : ArtworkFileGenerationParameters in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.drawBoardLimits_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.drawInternalBoardLimits_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.drawComponentNamesTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -2640,10 +2640,20 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
 final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2719,7 +2729,7 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = nil
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
@@ -2762,7 +2772,7 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
         if addedObjectSet.count > 0 {
           for managedObject : PackageSlavePad in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.xCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.yCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

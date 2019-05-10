@@ -152,9 +152,10 @@ class NetInProject : EBManagedObject,
     self.mNetName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PointInSchematics?) in
-      inManagedObject?.mNet_property.setProp (self)
-    }
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
+      resetter: { inObject in inObject.mNet_property.setProp (nil) }
+    )
   //--- To one property: mNetClass
     self.mNetClass_property.owner = self
   //--- Atomic property: wireColor
@@ -202,14 +203,10 @@ class NetInProject : EBManagedObject,
     }
     self.mPoints_property.addEBObserverOf_mSymbolPinName (self.pinNames_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
-      if let me = self {
-        inManagedObject.mNet_property.setProp (me)
-      }
-    }
-    self.mPoints_property.resetOppositeRelationship = { (_ inManagedObject : PointInSchematics) in
-      inManagedObject.mNet_property.setProp (nil)
-    }
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
+      resetter: { inObject in inObject.mNet_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -823,10 +820,20 @@ final class ProxyArrayOf_NetInProject : ReadWriteArrayOf_NetInProject {
 final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NetInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : NetInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -902,7 +909,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mNetName_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
@@ -916,7 +923,7 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
         if addedObjectSet.count > 0 {
           for managedObject : NetInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mNetName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties

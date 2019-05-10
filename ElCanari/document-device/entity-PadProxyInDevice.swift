@@ -1005,10 +1005,20 @@ final class ProxyArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice {
 final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1084,7 +1094,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mPadName_property.mSetterDelegate = nil
             managedObject.mIsNC_property.mSetterDelegate = nil
           }
@@ -1101,7 +1111,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
         if addedObjectSet.count > 0 {
           for managedObject : PadProxyInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mIsNC_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }

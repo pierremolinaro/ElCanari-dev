@@ -865,10 +865,20 @@ final class ProxyArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject {
 final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SchematicsObject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SchematicsObject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SchematicsObject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -944,7 +954,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
@@ -959,7 +969,7 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
         if addedObjectSet.count > 0 {
           for managedObject : SchematicsObject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
           }
         //--- Add observers of stored properties
         //--- Add observers of transient properties

@@ -1241,10 +1241,20 @@ final class ProxyArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment {
 final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolSegment) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolSegment) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1320,7 +1330,7 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil
@@ -1342,7 +1352,7 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
         if addedObjectSet.count > 0 {
           for managedObject : SymbolSegment in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

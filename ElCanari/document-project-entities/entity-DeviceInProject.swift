@@ -438,9 +438,10 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (has opposite relationship)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
-    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject :ComponentInProject?) in
-      inManagedObject?.mDevice_property.setProp (self)
-    }
+    self.mComponents_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
+      resetter: { inObject in inObject.mDevice_property.setProp (nil) }
+    )
   //--- To many property: mPackages (no option)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)
@@ -630,14 +631,10 @@ class DeviceInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
   //--- Install undoers and opposite setter for relationships
-    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject) in
-      if let me = self {
-        inManagedObject.mDevice_property.setProp (me)
-      }
-    }
-    self.mComponents_property.resetOppositeRelationship = { (_ inManagedObject : ComponentInProject) in
-      inManagedObject.mDevice_property.setProp (nil)
-    }
+    self.mComponents_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
+      resetter: { inObject in inObject.mDevice_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1956,10 +1953,20 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
 final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : DeviceInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2035,7 +2042,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mDeviceName_property.mSetterDelegate = nil
             managedObject.mPrefix_property.mSetterDelegate = nil
             managedObject.mDeviceVersion_property.mSetterDelegate = nil
@@ -2061,7 +2068,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
         if addedObjectSet.count > 0 {
           for managedObject : DeviceInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mDeviceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

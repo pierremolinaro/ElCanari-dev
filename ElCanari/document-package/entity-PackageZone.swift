@@ -2321,10 +2321,20 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageZone) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageZone) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2400,7 +2410,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.x_property.mSetterDelegate = nil
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
@@ -2442,7 +2452,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         if addedObjectSet.count > 0 {
           for managedObject : PackageZone in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

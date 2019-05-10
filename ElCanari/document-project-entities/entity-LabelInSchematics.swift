@@ -980,10 +980,20 @@ final class ProxyArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics 
 final class StoredArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematics) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematics) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematics) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematics) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : LabelInSchematics) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1059,7 +1069,7 @@ final class StoredArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mOrientation_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
@@ -1075,7 +1085,7 @@ final class StoredArrayOf_LabelInSchematics : ReadWriteArrayOf_LabelInSchematics
         if addedObjectSet.count > 0 {
           for managedObject : LabelInSchematics in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties

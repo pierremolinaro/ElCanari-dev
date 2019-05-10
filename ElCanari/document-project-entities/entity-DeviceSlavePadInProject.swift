@@ -1069,10 +1069,20 @@ final class ProxyArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlaveP
 final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSlavePadInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceSlavePadInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceSlavePadInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceSlavePadInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceSlavePadInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : DeviceSlavePadInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1148,7 +1158,7 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mWidth_property.mSetterDelegate = nil
@@ -1172,7 +1182,7 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
         if addedObjectSet.count > 0 {
           for managedObject : DeviceSlavePadInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -475,9 +475,10 @@ class ComponentSymbolInProject : SchematicsObject,
     super.init (ebUndoManager)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PointInSchematics?) in
-      inManagedObject?.mSymbol_property.setProp (self)
-    }
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
+      resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
+    )
   //--- Atomic property: mCenterX
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
@@ -694,14 +695,10 @@ class ComponentSymbolInProject : SchematicsObject,
     }
     self.isPlacedInSchematics_property.addEBObserver (self.symbolInSchematics_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPoints_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PointInSchematics) in
-      if let me = self {
-        inManagedObject.mSymbol_property.setProp (me)
-      }
-    }
-    self.mPoints_property.resetOppositeRelationship = { (_ inManagedObject : PointInSchematics) in
-      inManagedObject.mSymbol_property.setProp (nil)
-    }
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
+      resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -2363,10 +2360,20 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
 final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2442,7 +2449,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mRotation_property.mSetterDelegate = nil
@@ -2478,7 +2485,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
         if addedObjectSet.count > 0 {
           for managedObject : ComponentSymbolInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -327,9 +327,10 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mNumberHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolPinInstanceInDevice?) in
-      inManagedObject?.mType_property.setProp (self)
-    }
+    self.mInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
+      resetter: { inObject in inObject.mType_property.setProp (nil) }
+    )
   //--- Atomic property: nameShape
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -363,14 +364,10 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.nameShape_property)
   //--- Install undoers and opposite setter for relationships
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice) in
-      if let me = self {
-        inManagedObject.mType_property.setProp (me)
-      }
-    }
-    self.mInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolPinInstanceInDevice) in
-      inManagedObject.mType_property.setProp (nil)
-    }
+    self.mInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
+      resetter: { inObject in inObject.mType_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.mName_property.setSignatureObserver (observer: self)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: self)
@@ -1613,10 +1610,20 @@ final class ProxyArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeI
 final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1692,7 +1699,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mPinX_property.mSetterDelegate = nil
             managedObject.mPinY_property.mSetterDelegate = nil
             managedObject.mXName_property.mSetterDelegate = nil
@@ -1723,7 +1730,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
         if addedObjectSet.count > 0 {
           for managedObject : SymbolPinTypeInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mPinX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPinY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mXName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

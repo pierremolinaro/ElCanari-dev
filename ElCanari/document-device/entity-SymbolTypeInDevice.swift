@@ -266,9 +266,10 @@ class SymbolTypeInDevice : EBManagedObject,
     super.init (ebUndoManager)
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolInstanceInDevice?) in
-      inManagedObject?.mType_property.setProp (self)
-    }
+    self.mInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
+      resetter: { inObject in inObject.mType_property.setProp (nil) }
+    )
   //--- Atomic property: mTypeName
     self.mTypeName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mVersion
@@ -348,14 +349,10 @@ class SymbolTypeInDevice : EBManagedObject,
     }
     self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
-    self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice) in
-      if let me = self {
-        inManagedObject.mType_property.setProp (me)
-      }
-    }
-    self.mInstances_property.resetOppositeRelationship = { (_ inManagedObject : SymbolInstanceInDevice) in
-      inManagedObject.mType_property.setProp (nil)
-    }
+    self.mInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
+      resetter: { inObject in inObject.mType_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFilledBezierPath_property.setSignatureObserver (observer: self)
@@ -1372,10 +1369,20 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolTypeInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolTypeInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1451,7 +1458,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mTypeName_property.mSetterDelegate = nil
             managedObject.mVersion_property.mSetterDelegate = nil
             managedObject.mFileData_property.mSetterDelegate = nil
@@ -1474,7 +1481,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
         if addedObjectSet.count > 0 {
           for managedObject : SymbolTypeInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

@@ -335,9 +335,10 @@ class MasterPadInDevice : EBManagedObject,
     self.mName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSlavePads (has opposite relationship)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
-    self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SlavePadInDevice?) in
-      inManagedObject?.mMasterPad_property.setProp (self)
-    }
+    self.mSlavePads_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mMasterPad_property.setProp (me) } },
+      resetter: { inObject in inObject.mMasterPad_property.setProp (nil) }
+    )
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -441,14 +442,10 @@ class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
   //--- Install undoers and opposite setter for relationships
-    self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SlavePadInDevice) in
-      if let me = self {
-        inManagedObject.mMasterPad_property.setProp (me)
-      }
-    }
-    self.mSlavePads_property.resetOppositeRelationship = { (_ inManagedObject : SlavePadInDevice) in
-      inManagedObject.mMasterPad_property.setProp (nil)
-    }
+    self.mSlavePads_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mMasterPad_property.setProp (me) } },
+      resetter: { inObject in inObject.mMasterPad_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
     self.mCenterY_property.setSignatureObserver (observer: self)
@@ -1687,10 +1684,20 @@ final class ProxyArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice 
 final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : MasterPadInDevice) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MasterPadInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : MasterPadInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1766,7 +1773,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = nil
             managedObject.mCenterY_property.mSetterDelegate = nil
             managedObject.mWidth_property.mSetterDelegate = nil
@@ -1795,7 +1802,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
         if addedObjectSet.count > 0 {
           for managedObject : MasterPadInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

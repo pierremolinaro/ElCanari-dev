@@ -805,9 +805,10 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolInstances_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPackages (has opposite relationship)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
-    self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageInDevice?) in
-      inManagedObject?.mRoot_property.setProp (self)
-    }
+    self.mPackages_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- To many property: mSymbolTypes (no option)
     self.mSymbolTypes_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mImageData
@@ -1063,14 +1064,10 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-    self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice) in
-      if let me = self {
-        inManagedObject.mRoot_property.setProp (me)
-      }
-    }
-    self.mPackages_property.resetOppositeRelationship = { (_ inManagedObject : PackageInDevice) in
-      inManagedObject.mRoot_property.setProp (nil)
-    }
+    self.mPackages_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.mComments_property.setSignatureObserver (observer: self)
     self.mDocs_property.setSignatureObserver (observer: self)
@@ -3470,10 +3467,20 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceRoot) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : DeviceRoot) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -3549,7 +3556,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
             managedObject.mTitle_property.mSetterDelegate = nil
             managedObject.mPrefix_property.mSetterDelegate = nil
@@ -3599,7 +3606,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : DeviceRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

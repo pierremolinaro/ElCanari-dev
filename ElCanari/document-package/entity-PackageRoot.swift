@@ -732,7 +732,6 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
-    self.packageObjects_property.addEBObserver (self.packagePads_property)
     self.packagePads_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
@@ -753,7 +752,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserver (self.packageSlavePads_property)
+    self.packageObjects_property.addEBObserver (self.packagePads_property)
     self.packageSlavePads_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
@@ -774,7 +773,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserver (self.packageZones_property)
+    self.packageObjects_property.addEBObserver (self.packageSlavePads_property)
     self.packageZones_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
@@ -795,6 +794,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.packageObjects_property.addEBObserver (self.packageZones_property)
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.packageObjects_property.setSignatureObserver (observer: self)
@@ -2640,10 +2640,20 @@ final class ProxyArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot {
 final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageRoot) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageRoot) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2719,7 +2729,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = nil
             managedObject.selectedInspector_property.mSetterDelegate = nil
             managedObject.comments_property.mSetterDelegate = nil
@@ -2762,7 +2772,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         if addedObjectSet.count > 0 {
           for managedObject : PackageRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

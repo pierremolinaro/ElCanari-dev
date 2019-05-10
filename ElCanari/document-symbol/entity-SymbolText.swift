@@ -1111,10 +1111,20 @@ final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
 final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolText) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolText) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolText) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolText) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolText) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolText) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1190,7 +1200,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.text_property.mSetterDelegate = nil
             managedObject.horizontalAlignment_property.mSetterDelegate = nil
@@ -1211,7 +1221,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : SymbolText in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.text_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.horizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

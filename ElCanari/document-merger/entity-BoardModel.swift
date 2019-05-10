@@ -1960,9 +1960,10 @@ class BoardModel : EBManagedObject,
     self.artworkName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: myInstances (has opposite relationship)
     self.myInstances_property.ebUndoManager = self.ebUndoManager
-    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
-      inManagedObject?.myModel_property.setProp (self)
-    }
+    self.myInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
+      resetter: { inObject in inObject.myModel_property.setProp (nil) }
+    )
   //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3316,14 +3317,10 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
   //--- Install undoers and opposite setter for relationships
-    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance) in
-      if let me = self {
-        inManagedObject.myModel_property.setProp (me)
-      }
-    }
-    self.myInstances_property.resetOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
-      inManagedObject.myModel_property.setProp (nil)
-    }
+    self.myInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
+      resetter: { inObject in inObject.myModel_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -8117,10 +8114,20 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModel) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : BoardModel) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -8196,7 +8203,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.name_property.mSetterDelegate = nil
             managedObject.modelWidth_property.mSetterDelegate = nil
             managedObject.modelWidthUnit_property.mSetterDelegate = nil
@@ -8267,7 +8274,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : BoardModel in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.modelWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.modelWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

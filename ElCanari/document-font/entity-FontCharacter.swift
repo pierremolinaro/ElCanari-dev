@@ -1343,10 +1343,20 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontCharacter) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : FontCharacter) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1422,7 +1432,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.codePoint_property.mSetterDelegate = nil
             managedObject.advance_property.mSetterDelegate = nil
             managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = nil
@@ -1444,7 +1454,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         if addedObjectSet.count > 0 {
           for managedObject : FontCharacter in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

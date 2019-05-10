@@ -589,10 +589,20 @@ final class ProxyArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
 final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolObject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolObject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolObject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolObject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolObject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolObject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -668,7 +678,7 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
           }
         //--- Remove observers of stored properties
         //--- Remove observers of transient properties
@@ -681,7 +691,7 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
         if addedObjectSet.count > 0 {
           for managedObject : SymbolObject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
           }
         //--- Add observers of stored properties
         //--- Add observers of transient properties

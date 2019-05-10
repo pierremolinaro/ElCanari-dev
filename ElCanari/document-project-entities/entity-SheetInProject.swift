@@ -200,9 +200,10 @@ class SheetInProject : EBManagedObject,
     super.init (ebUndoManager)
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
-    self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SchematicsObject?) in
-      inManagedObject?.mSheet_property.setProp (self)
-    }
+    self.mObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
+      resetter: { inObject in inObject.mSheet_property.setProp (nil) }
+    )
   //--- To many property: mPoints (no option)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSheetTitle
@@ -296,14 +297,10 @@ class SheetInProject : EBManagedObject,
     }
     self.issues_property.addEBObserver (self.connexionErrors_property)
   //--- Install undoers and opposite setter for relationships
-    self.mObjects_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SchematicsObject) in
-      if let me = self {
-        inManagedObject.mSheet_property.setProp (me)
-      }
-    }
-    self.mObjects_property.resetOppositeRelationship = { (_ inManagedObject : SchematicsObject) in
-      inManagedObject.mSheet_property.setProp (nil)
-    }
+    self.mObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
+      resetter: { inObject in inObject.mSheet_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1055,10 +1052,20 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SheetInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SheetInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1134,7 +1141,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mSheetTitle_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
@@ -1150,7 +1157,7 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
         if addedObjectSet.count > 0 {
           for managedObject : SheetInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mSheetTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties

@@ -1525,10 +1525,20 @@ final class ProxyArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
 final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageGuide) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageGuide) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageGuide) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageGuide) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageGuide) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageGuide) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1604,7 +1614,7 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil
@@ -1633,7 +1643,7 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
         if addedObjectSet.count > 0 {
           for managedObject : PackageGuide in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

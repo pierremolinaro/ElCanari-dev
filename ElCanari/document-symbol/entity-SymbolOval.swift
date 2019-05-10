@@ -1241,10 +1241,20 @@ final class ProxyArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
 final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolOval) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolOval) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolOval) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolOval) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolOval) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolOval) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1320,7 +1330,7 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = nil
             managedObject.width_property.mSetterDelegate = nil
             managedObject.height_property.mSetterDelegate = nil
@@ -1342,7 +1352,7 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : SymbolOval in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

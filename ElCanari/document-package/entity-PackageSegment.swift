@@ -1887,10 +1887,20 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSegment) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageSegment) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1966,7 +1976,7 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = nil
             managedObject.x2_property.mSetterDelegate = nil
             managedObject.y2_property.mSetterDelegate = nil
@@ -1999,7 +2009,7 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         if addedObjectSet.count > 0 {
           for managedObject : PackageSegment in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

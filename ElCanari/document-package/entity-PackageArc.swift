@@ -2207,10 +2207,20 @@ final class ProxyArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
 final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageArc) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageArc) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -2286,7 +2296,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.yCenter_property.mSetterDelegate = nil
             managedObject.radius_property.mSetterDelegate = nil
             managedObject.startAngle_property.mSetterDelegate = nil
@@ -2326,7 +2336,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : PackageArc in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.yCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.radius_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.startAngle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

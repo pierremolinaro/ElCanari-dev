@@ -1012,10 +1012,20 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
 final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1091,7 +1101,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
           }
         //--- Remove observers of stored properties
@@ -1107,7 +1117,7 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
         if addedObjectSet.count > 0 {
           for managedObject : DeviceSymbolInstanceInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
         //--- Add observers of stored properties

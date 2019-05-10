@@ -1369,10 +1369,20 @@ final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInsta
 final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1448,7 +1458,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.x_property.mSetterDelegate = nil
             managedObject.y_property.mSetterDelegate = nil
             managedObject.instanceRotation_property.mSetterDelegate = nil
@@ -1469,7 +1479,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
         if addedObjectSet.count > 0 {
           for managedObject : MergerBoardInstance in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.instanceRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }

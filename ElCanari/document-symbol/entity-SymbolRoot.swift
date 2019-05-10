@@ -428,7 +428,6 @@ class SymbolRoot : EBManagedObject,
     }
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
-    self.symbolObjects_property.addEBObserver (self.symbolPins_property)
     self.symbolPins_property.mReadModelFunction =  { [weak self] in
       if let model = self?.symbolObjects_property {
         switch model.prop {
@@ -449,6 +448,7 @@ class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
+    self.symbolObjects_property.addEBObserver (self.symbolPins_property)
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.symbolObjects_property.setSignatureObserver (observer: self)
@@ -1752,10 +1752,20 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
 final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Opposite relationship management
+  //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
-  var resetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
 
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolRoot) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolRoot) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
   //····················································································································
 
   private var mPrefKey : String? = nil
@@ -1831,7 +1841,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
-            self.resetOppositeRelationship? (managedObject)
+            self.mResetOppositeRelationship? (managedObject)
             managedObject.selectedInspector_property.mSetterDelegate = nil
             managedObject.comments_property.mSetterDelegate = nil
             managedObject.horizontalFlip_property.mSetterDelegate = nil
@@ -1863,7 +1873,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         if addedObjectSet.count > 0 {
           for managedObject : SymbolRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
-            self.setOppositeRelationship? (managedObject)
+            self.mSetOppositeRelationship? (managedObject)
             managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.horizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
