@@ -579,10 +579,24 @@ func defaultValidationFunction <T> (_ currentValue : T, proposedValue : T) -> EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   PropertyKind
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum PropertyKind { case empty ; case single ; case multiple }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum EBSelection <T> : Equatable where T : Equatable {
+
+  //····················································································································
+
+  case empty
+  case multiple
+  case single (T)
+
+  //····················································································································
 
   static func == (lhs : EBSelection <T>, rhs : EBSelection <T>) -> Bool {
     switch (lhs, rhs) {
@@ -597,43 +611,33 @@ enum EBSelection <T> : Equatable where T : Equatable {
     }
   }
 
-  case empty
-  case multiple
-  case single (T)
+  //····················································································································
 
-  func kind () -> EBPropertyKind {
+  func kind () -> PropertyKind {
     switch self {
-    case .empty : return .noSelectionKind
-    case .multiple : return .multipleSelectionKind
-    case .single : return .singleSelectionKind
+    case .empty : return .empty
+    case .multiple : return .multiple
+    case .single : return .single
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBPropertyKind {
-  case noSelectionKind
-  case multipleSelectionKind
-  case singleSelectionKind
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func &= (left : inout EBPropertyKind, right : EBPropertyKind) {
+func &= (left : inout PropertyKind, right : PropertyKind) {
   switch left {
-  case .noSelectionKind : break
-  case .multipleSelectionKind :
-    if right == .noSelectionKind {
-      left = .noSelectionKind
+  case .empty : break
+  case .multiple :
+    if right == .empty {
+      left = .empty
     }
-  case .singleSelectionKind :
+  case .single :
     switch right {
-    case .noSelectionKind :
-      left = .noSelectionKind
-    case .multipleSelectionKind :
-      left = .multipleSelectionKind
-    case .singleSelectionKind :
+    case .empty :
+      left = .empty
+    case .multiple :
+      left = .multiple
+    case .single :
       break
     }
   }
@@ -668,45 +672,45 @@ fileprivate func compareIntProperties (left : EBSelection <Int>,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func > (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+func > (left : EBSelection <Int>, right : EBSelection <Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 > $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func >= (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+func >= (left : EBSelection <Int>, right : EBSelection <Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 >= $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func < (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+func < (left : EBSelection <Int>, right : EBSelection <Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 < $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func <= (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+func <= (left : EBSelection <Int>, right : EBSelection<Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 <= $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func == (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
+func == (left : EBSelection <Int>, right : EBSelection <Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 == $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func != (left : EBSelection<Int>, right : EBSelection<Int>) -> EBSelection<Bool> {
+func != (left : EBSelection <Int>, right : EBSelection <Int>) -> EBSelection <Bool> {
   return compareIntProperties (left: left, right: right) {$0 != $1}
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func combineBoolProperties (left : EBSelection<Bool>,
-                                        right : EBSelection<Bool>,
-                                        function : (Bool, Bool) -> Bool) -> EBSelection<Bool> {
+fileprivate func combineBoolProperties (left : EBSelection <Bool>,
+                                        right : EBSelection <Bool>,
+                                        function : (Bool, Bool) -> Bool) -> EBSelection <Bool> {
   switch left {
   case .empty :
     return .empty
@@ -731,25 +735,25 @@ fileprivate func combineBoolProperties (left : EBSelection<Bool>,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func && (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+func && (left : EBSelection <Bool>, right : EBSelection <Bool>) -> EBSelection <Bool> {
   return combineBoolProperties (left: left, right: right, function: {$0 && $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func || (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+func || (left : EBSelection <Bool>, right : EBSelection <Bool>) -> EBSelection <Bool> {
   return combineBoolProperties (left: left, right: right, function: {$0 || $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func ^ (left : EBSelection<Bool>, right : EBSelection<Bool>) -> EBSelection<Bool> {
+func ^ (left : EBSelection <Bool>, right : EBSelection <Bool>) -> EBSelection <Bool> {
   return combineBoolProperties (left: left, right: right, function: {$0 != $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-prefix func ! (operand : EBSelection<Bool>) -> EBSelection<Bool> {
+prefix func ! (operand : EBSelection <Bool>) -> EBSelection <Bool> {
   switch operand {
   case .empty :
     return .empty
@@ -761,18 +765,59 @@ prefix func ! (operand : EBSelection<Bool>) -> EBSelection<Bool> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyAbstractGenericArrayProperty
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyAbstractGenericArrayProperty : EBAbstractProperty {
+
+  //····················································································································
+  //  Data clients
+  //····················································································································
+
+  private var mClients = Set <ReadOnlyAbstractGenericArrayProperty> ()
+
+  //····················································································································
+
+  final func attachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+    self.mClients.insert (inClient)
+    inClient.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  final func detachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+    self.mClients.remove (inClient)
+  }
+
+  //····················································································································
+
+  internal func notifyModelDidChange () {
+    for client in self.mClients {
+      client.notifyModelDidChange ()
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
+class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericArrayProperty {
 
   //····················································································································
-
-  var prop : EBSelection < [T] > { get { return .empty } }
-
+  //   Undo manager
   //····················································································································
 
   weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
+  // Abstract methods
+  //····················································································································
+
+  var prop : EBSelection < [T] > { get { return .empty } }  // Abstract method
 
   //····················································································································
 
@@ -780,18 +825,55 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
 
   //····················································································································
 
-  var propset : Set <T> { return Set () } // Abstract method (requires T to be hashable)
+  final var propset : Set <T> { return self.mInternalSetValue } // § Useful ???
 
+  //····················································································································
+  //  Internal value
+  //····················································································································
+
+  private var mInternalSetValue = Set <T> () // Requires T to be hashable
+
+  internal var mInternalArrayValue = [T] () {
+    didSet {
+      if self.mInternalArrayValue != oldValue {
+        if self.mInternalArrayValue.count != oldValue.count {
+          self.count_property.postEvent ()
+        }
+        self.postEvent ()
+        self.notifyModelDidChangeFrom (oldValue: oldValue)
+        self.notifyModelDidChange ()
+        let newSet = Set (self.mInternalArrayValue)
+        if self.mInternalSetValue != newSet {
+          let oldSet = Set (self.mInternalSetValue)
+          self.mInternalSetValue = newSet
+          let removedSet = oldSet.subtracting (newSet)
+          let addedSet = newSet.subtracting (oldSet)
+          self.updateObservers (removedSet: removedSet, addedSet: addedSet)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal func notifyModelDidChangeFrom (oldValue inOldValue : [T]) {
+  }
+
+  //····················································································································
+
+  internal func updateObservers (removedSet inRemovedSet : Set <T>, addedSet inAddedSet : Set <T>) {
+  }
+
+  //····················································································································
+  //  count property
   //····················································································································
 
   final var count_property = EBTransientProperty_Int ()
 
-  var count_property_selection : EBSelection <Int> {
-    get {
-      return self.count_property.prop
-    }
-  }
+  final var count_property_selection : EBSelection <Int> { return self.count_property.prop }
 
+  //····················································································································
+  //  init
   //····················································································································
 
   override init () {
@@ -810,13 +892,6 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
         return .empty
       }
     }
-  }
-
-  //····················································································································
-
-  override func postEvent () {
-    self.count_property.postEvent ()
-    super.postEvent ()
   }
 
   //····················································································································

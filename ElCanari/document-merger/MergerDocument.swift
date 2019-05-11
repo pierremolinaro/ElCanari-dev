@@ -630,11 +630,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
@@ -652,11 +652,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_documentIsUnnamed (v0))
@@ -674,11 +674,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.artworkName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
@@ -700,11 +700,11 @@ import Cocoa
         kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
         kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.overlapingArrangment_property_selection, unwSelf.rootObject.boardRect_property_selection, unwSelf.rootObject.boardDisplayRect_property_selection, unwSelf.rootObject.boardInstances_property_selection, unwSelf.rootObject.boardInstances_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_MergerDocument_issues (v0, v1, v2, v3, v4))
@@ -726,11 +726,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_mStatusImage (v0))
@@ -748,11 +748,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_mStatusMessage (v0))
@@ -770,11 +770,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerDocument_documentFileNameOk (v0))

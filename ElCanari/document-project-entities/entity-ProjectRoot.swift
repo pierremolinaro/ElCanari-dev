@@ -844,11 +844,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSelectedSheet_property.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSelectedSheet_property.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_selectedSheetIssues (v0))
@@ -866,11 +866,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSelectedSheet_property.connectedPoints_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSelectedSheet_property.connectedPoints_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_connectedPoints (v0))
@@ -888,11 +888,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mComponents_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mComponents_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_unplacedSymbols (v0))
@@ -910,11 +910,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mNetClasses_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mNetClasses_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_netsDescription (v0))
@@ -932,11 +932,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mDevices_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mDevices_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_deviceNames (v0))
@@ -961,11 +961,11 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSchematicsDate_property_selection.kind ()
         kind &= unwSelf.selectedSheetIssues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSchematicsTitle_property_selection, unwSelf.mSchematicsVersion_property_selection, unwSelf.mSchematicsSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicsDate_property_selection, unwSelf.selectedSheetIssues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
@@ -990,11 +990,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSheets_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSheets_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_connexionWarningString (v0))
@@ -1012,11 +1012,11 @@ class ProjectRoot : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSheets_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSheets_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectRoot_connexionErrorString (v0))
@@ -1036,11 +1036,11 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_ProjectRoot_mSchematicsStatusMessage (v0, v1, v2))
@@ -1062,11 +1062,11 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_ProjectRoot_mSchematicsStatusImage (v0, v1, v2))
@@ -1653,6 +1653,56 @@ class ProjectRoot : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ProjectRoot>, addedSet inAddedSet : Set <ProjectRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsDate_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_connexionWarningString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -2903,137 +2953,142 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectRoot
+//    TransientArrayOf ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_ProjectRoot? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_ProjectRoot?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [ProjectRoot] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ProjectRoot] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [ProjectRoot] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [ProjectRoot] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf ProjectRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_ProjectRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_ProjectRoot {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <ProjectRoot> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [ProjectRoot] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <ProjectRoot>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <ProjectRoot> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [ProjectRoot] ()
+    for superObject in newModelArray {
+      if let object = superObject as? ProjectRoot {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedSet)
-      self.addEBObserversOf_connectedPoints_toElementsOfSet (addedSet)
-      self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedSet)
-      self.addEBObserversOf_netsDescription_toElementsOfSet (addedSet)
-      self.addEBObserversOf_deviceNames_toElementsOfSet (addedSet)
-      self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedSet)
-      self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [ProjectRoot] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [ProjectRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3049,35 +3104,6 @@ class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
  
   func setProp (_ value :  [ProjectRoot]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_ProjectRoot] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_ProjectRoot) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_ProjectRoot) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -3088,119 +3114,54 @@ class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
 final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_ProjectRoot? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [ProjectRoot] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_ProjectRoot) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <ProjectRoot> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_ProjectRoot) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [ProjectRoot]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [ProjectRoot]) {
+  override func setProp (_ inArrayValue : [ProjectRoot]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ProjectRoot] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -3248,25 +3209,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -3284,14 +3227,67 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
-  private var mValue = [ProjectRoot] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [ProjectRoot]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [ProjectRoot]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ProjectRoot>, addedSet inAddedSet : Set <ProjectRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <ProjectRoot> ()
+  /* private var mValue = [ProjectRoot] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -3299,7 +3295,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -3341,7 +3337,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : ProjectRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -3383,21 +3379,33 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [ProjectRoot]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [ProjectRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -3409,44 +3417,21 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [ProjectRoot]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [ProjectRoot] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <ProjectRoot> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [ProjectRoot]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : ProjectRoot) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : ProjectRoot) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -3464,7 +3449,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -3486,7 +3471,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

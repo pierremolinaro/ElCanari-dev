@@ -656,6 +656,36 @@ class ArtworkRoot : EBManagedObject,
 class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> {
 
   //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
+  //--- Add observers to added objects
+    self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
+  }
+
+  //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
@@ -1287,117 +1317,142 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ArtworkRoot
+//    TransientArrayOf ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_ArtworkRoot? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <ArtworkRoot> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_ArtworkRoot?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [ArtworkRoot] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [ArtworkRoot] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf ArtworkRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_ArtworkRoot {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <ArtworkRoot> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [ArtworkRoot] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <ArtworkRoot>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <ArtworkRoot> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [ArtworkRoot] ()
+    for superObject in newModelArray {
+      if let object = superObject as? ArtworkRoot {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
-      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedSet)
-      self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [ArtworkRoot] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1413,35 +1468,6 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
  
   func setProp (_ value :  [ArtworkRoot]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_ArtworkRoot] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_ArtworkRoot) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_ArtworkRoot) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -1452,99 +1478,54 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
 final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_ArtworkRoot? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [ArtworkRoot] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_ArtworkRoot) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <ArtworkRoot> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet) // Stored property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet) // Stored property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_ArtworkRoot) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [ArtworkRoot]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [ArtworkRoot]) {
+  override func setProp (_ inArrayValue : [ArtworkRoot]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -1592,25 +1573,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -1628,14 +1591,67 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <ArtworkRoot> ()
-  private var mValue = [ArtworkRoot] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [ArtworkRoot]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [ArtworkRoot]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <ArtworkRoot> ()
+  /* private var mValue = [ArtworkRoot] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1643,7 +1659,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -1675,7 +1691,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         //--- Remove observers of transient properties
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : ArtworkRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -1707,21 +1723,33 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         //--- Add observers of transient properties
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [ArtworkRoot] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [ArtworkRoot]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -1733,44 +1761,21 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ArtworkRoot] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [ArtworkRoot]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [ArtworkRoot] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <ArtworkRoot> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [ArtworkRoot]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : ArtworkRoot) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : ArtworkRoot) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -1788,7 +1793,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -1810,7 +1815,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

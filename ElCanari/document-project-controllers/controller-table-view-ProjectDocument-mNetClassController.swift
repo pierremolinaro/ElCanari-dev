@@ -9,30 +9,20 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Table View Controller ProjectDocument mNetClassController
+//    Table View Controller + ProjectDocument mNetClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
-  //    init
+  //    Constant properties
   //····················································································································
 
-  override init () {
-    mSelectedSet = SelectedSet_ProjectDocument_mNetClassController (
-      allowsEmptySelection: allowsEmptySelection,
-      allowsMultipleSelection: allowsMultipleSelection,
-      sortedArray: self.sortedArray_property
-    )
-    super.init ()
-  //--- Set selected array compute function
-    self.setSelectedArrayComputeFunction ()
-  //--- Set sorted array compute function
-    self.setFilterAndSortFunction ()
-  }
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
 
   //····················································································································
-  //    Sort Array
+  //   Sorted Array
   //····················································································································
 
   let sortedArray_property = TransientArrayOf_NetClassInProject ()
@@ -62,13 +52,6 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
   }
 
   //····················································································································
-  //    Attributes
-  //····················································································································
-
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
-  
-  //····················································································································
   //    Model
   //····················································································································
 
@@ -85,29 +68,43 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
 
   func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject) {
     self.mModel = inModel
-    inModel.addEBObserver (self.sortedArray_property)
-    self.sortedArray_property.addEBObserver (mSelectedSet)
-    self.mSelectedSet.addEBObserver (self.selectedArray_property)
+    self.sortedArray_property.setDataProvider (inModel)
+    inModel.attachClient (self)
   //--- Add observed properties (for filtering and sorting)
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.mModel?.removeEBObserver (self.sortedArray_property)
-    self.sortedArray_property.removeEBObserver (mSelectedSet)
-    self.mSelectedSet.removeEBObserver (self.selectedArray_property)
+    self.sortedArray_property.setDataProvider (nil)
+    self.mModel?.detachClient (self)
   //--- Remove observed properties (for filtering and sorting)
-    for tvc in mTableViewDataSourceControllerArray {
+    for tvc in self.mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
-    for tvc in mTableViewSelectionControllerArray {
-      self.mSelectedSet.removeEBObserver (tvc)
+    for tvc in self.mTableViewSelectionControllerArray {
+      self.mInternalSelectedArrayProperty.removeEBObserver (tvc)
     }
   //---
-    self.mSelectedSet.mSet = Set ()
     self.mModel = nil
  }
+
+  //····················································································································
+  //    Observing model change
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    super.notifyModelDidChange ()
+    // NSLog ("self.sortedArray \(self.sortedArray.count)")
+    let oldSelectionSet = self.selectedSet
+    var newSelectedArray = [NetClassInProject] ()
+    for object in self.sortedArray {
+      if oldSelectionSet.contains (object) {
+        newSelectedArray.append (object)
+      }
+    }
+    self.mInternalSelectedArrayProperty.setProp (newSelectedArray)
+  }
 
   //····················································································································
   //    Undo manager
@@ -118,10 +115,14 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
   }
 
   //····················································································································
-  //   SELECTION
+  //   Selected Array
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_NetClassInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_NetClassInProject ()
+
+  //····················································································································
+
+  var selectedArray_property : ReadOnlyArrayOf_NetClassInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
@@ -133,11 +134,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
  
   //····················································································································
 
-  private let mSelectedSet : SelectedSet_ProjectDocument_mNetClassController
-
-  //····················································································································
-
-  var selectedSet : Set <NetClassInProject> { return self.mSelectedSet.mSet }
+  var selectedSet : Set <NetClassInProject> { return Set (self.selectedArray) }
 
   //····················································································································
 
@@ -145,7 +142,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.mSelectedSet.mSet.contains (object) {
+      if self.selectedSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -156,12 +153,12 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
   //····················································································································
 
   func setSelection (_ inObjects : [NetClassInProject]) {
-    self.mSelectedSet.mSet = Set (inObjects)
+    self.mInternalSelectedArrayProperty.setProp (inObjects)
   }
 
   //····················································································································
 
-  private final func setSelectedArrayComputeFunction () {
+/*  private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.mReadModelFunction = { [weak self] in
       if let me = self {
         switch me.sortedArray_property.prop {
@@ -183,10 +180,10 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
       }
     }
   }
-
+*/
   //····················································································································
 
-  private final func setFilterAndSortFunction () {
+/*  private final func setFilterAndSortFunction () {
     self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
         switch model.prop {
@@ -202,7 +199,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
       }
     }
   }
-
+*/
   //····················································································································
   //    Explorer
   //····················································································································
@@ -235,7 +232,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
       self.mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
     //--- Set table view selection controller
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-      self.mSelectedSet.addEBObserver (selectionTableViewController)
+      self.mInternalSelectedArrayProperty.addEBObserver (selectionTableViewController)
       self.mTableViewSelectionControllerArray.append (selectionTableViewController)
     //--- Check 'name' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
@@ -291,7 +288,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
     }
     if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
-      self.mSelectedSet.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
+      self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
       self.mTableViewArray.remove (at: idx)
       self.mTableViewDataSourceControllerArray.remove (at: idx)
       self.mTableViewSelectionControllerArray.remove (at: idx)
@@ -311,7 +308,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in self.mSelectedSet.mSet {
+      for object in self.selectedSet {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -349,11 +346,11 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <NetClassInProject> ()
+      var newSelectedObjects = [NetClassInProject] ()
       for index in tableView.selectedRowIndexes {
-        newSelectedObjectSet.insert (v [index])
+        newSelectedObjects.append (v [index])
       }
-      self.mSelectedSet.mSet = newSelectedObjectSet
+      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
     }
   }
 
@@ -446,7 +443,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
   }
  
   //····················································································································
-  //    select
+  //   Select a single object
   //····················································································································
 
   func select (object inObject: NetClassInProject) {
@@ -456,9 +453,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <NetClassInProject> ()
-          newSelectedObjectSet.insert (inObject)
-          self.mSelectedSet.mSet = newSelectedObjectSet
+          self.mInternalSelectedArrayProperty.setProp ([inObject])
         }
       }
     }
@@ -480,11 +475,9 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
         let newObject = NetClassInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
-      //--- New object is the selection
-        var newSelectedObjectSet = Set <NetClassInProject> ()
-        newSelectedObjectSet.insert (newObject)
-        self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
+      //--- New object is the selection
+        self.mInternalSelectedArrayProperty.setProp ([newObject])
       }
     }
   }
@@ -513,7 +506,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.mSelectedSet.mSet {
+          for object in self.selectedSet {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -542,7 +535,7 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in self.mSelectedSet.mSet {
+          for object in self.selectedSet {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)
@@ -555,14 +548,14 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
           for index in selectedObjectIndexArray {
             newObjectArray.remove (at: index)
           }
-        //----------------------------------------- Set new selection
-          var newSelectionSet = Set <NetClassInProject> ()
-          if let object = newSelectedObject {
-            newSelectionSet.insert (object)
-          }
-          self.mSelectedSet.mSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
+        //----------------------------------------- Set new selection
+          if let object = newSelectedObject {
+            self.mInternalSelectedArrayProperty.setProp ([object])
+          }else{
+            self.mInternalSelectedArrayProperty.setProp ([])
+          }
         }
       }
     }
@@ -573,60 +566,3 @@ final class Controller_ProjectDocument_mNetClassController : EBObject, EBTableVi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_ProjectDocument_mNetClassController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class SelectedSet_ProjectDocument_mNetClassController : EBAbstractProperty {
-  private let mAllowsEmptySelection : Bool
-  private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_NetClassInProject
- 
-  //····················································································································
-
-  init (allowsEmptySelection : Bool,
-        allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_NetClassInProject) {
-    mAllowsMultipleSelection = allowsMultipleSelection
-    mAllowsEmptySelection = allowsEmptySelection
-    mSortedArray = sortedArray
-    super.init ()
-  }
-
-  //····················································································································
-
-  private var mPrivateSet = Set<NetClassInProject> () {
-    didSet {
-      if self.mPrivateSet != oldValue {
-        self.postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mSet : Set<NetClassInProject> {
-    set {
-      var newSelectedSet = newValue
-      switch self.mSortedArray.prop {
-      case .empty, .multiple :
-        break ;
-      case .single (let sortedArray) :
-        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
-          newSelectedSet = Set (arrayLiteral: sortedArray [0])
-        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
-          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
-        }
-      }
-      self.mPrivateSet = newSelectedSet
-    }
-    get {
-      return self.mPrivateSet
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

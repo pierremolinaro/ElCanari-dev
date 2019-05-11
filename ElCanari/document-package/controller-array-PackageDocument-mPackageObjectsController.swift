@@ -8,11 +8,10 @@ import Cocoa
 //    Array controller PackageDocument mPackageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBViewControllerProtocol {
+final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
  
   //····················································································································
-  // MARK: -
-  // Models
+  // Model
   //····················································································································
  
    private var mModel : ReadWriteArrayOf_PackageObject? = nil
@@ -46,19 +45,19 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
   private var mPrivateSelectedSet = Set <PackageObject> () {
     didSet {
       self.selectedArray_property.postEvent ()
+      self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
     }
   }
 
   //····················································································································
-  // MARK: -
-  // Observable properties
+  // Selected Array
   //····················································································································
 
-  let objectArray_property = TransientArrayOf_PackageObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageObject ()
 
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_PackageObject ()
+  var selectedArray_property : ReadOnlyArrayOf_PackageObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
@@ -69,7 +68,7 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
   var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.prop }
  
   //····················································································································
-  // MARK: -
+  //   Init
   //····················································································································
 
   override init () {
@@ -146,46 +145,9 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
       }
     }
     self.selectedArray_property.addEBObserver (self.canRotate90CounterClockwise_property)
-  //--- Install object array read function
-    self.objectArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          return .single (modelArray)
-        }
-      }else{
-        return .empty
-      }
-    }
-   //--- Install selected object array read function
-    self.selectedArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          let selectedObjects = self?.mPrivateSelectedSet ?? Set ()
-          var selectedArray = [PackageObject] ()
-          for object in modelArray {
-            if selectedObjects.contains (object) {
-              selectedArray.append (object)
-            }
-          }
-          return .single (selectedArray)
-        }
-      }else{
-        return .empty
-      }
-    }
- }
+  }
 
-   //····················································································································
+  //····················································································································
 
   var objectCount : Int {
     let objects = self.mModel?.propval ?? []
@@ -196,7 +158,7 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
 
   func bind_model (_ inModel : ReadWriteArrayOf_PackageObject) {
     self.mModel = inModel
-    inModel.addEBObserver (self.objectArray_property)
+    inModel.attachClient (self)
     self.startObservingObjectShape ()
     self.startObservingSelectionShape ()
     self.inspectorViewManagerStartsObservingSelection ()
@@ -208,8 +170,7 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()
-    self.mModel?.removeEBObserver (self.objectArray_property)
-  //---
+    self.mModel?.detachClient (self)
     self.selectedSet = Set ()
     self.mModel = nil
  }
@@ -350,13 +311,13 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
   // EBViews
   //····················································································································
 
-  private var mEBViews = [EBView] ()
+  private var mEBViews = Set <EBView> ()
 
   //····················································································································
 
   func bind_ebView (_ inEBView : EBView?) {
     if let ebView = inEBView {
-      self.mEBViews.append (ebView)
+      self.mEBViews.insert (ebView)
       ebView.set (controller: self)
     }
   }
@@ -364,10 +325,10 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
   //····················································································································
 
   func unbind_ebView (_ inEBView : EBView?) {
-    if let ebView = inEBView, let idx = self.mEBViews.firstIndex (of: ebView) {
+    if let ebView = inEBView {
       ebView.updateObjectDisplay ([])
       ebView.updateSelectionShape ([])
-      self.mEBViews.remove (at: idx)
+      self.mEBViews.remove (ebView)
     }
   }
 
@@ -382,23 +343,15 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
   //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    switch self.objectArray_property.prop {
-    case .empty, .multiple :
-       return NSIndexSet ()
-    case .single (let v) :
-    //--- Dictionary of object indexes
-      var objectDictionary = [PackageObject : Int] ()
-      for (index, object) in v.enumerated () {
-        objectDictionary [object] = index
+    let modelObjects = self.mModel?.propval ?? []
+    let selectedObjects = self.selectedArray_property.propset
+    let indexSet = NSMutableIndexSet ()
+    for object in selectedObjects {
+      if let index = modelObjects.firstIndex(of: object) {
+        indexSet.add (index)
       }
-      let indexSet = NSMutableIndexSet ()
-      for object in self.selectedArray_property.propset {
-        if let index = objectDictionary [object] {
-          indexSet.add (index)
-        }
-      }
-      return indexSet
     }
+    return indexSet
   }
 
   //····················································································································
@@ -448,68 +401,63 @@ final class Controller_PackageDocument_mPackageObjectsController : EBObject, EBV
       case .empty, .multiple :
         break
       case .single (let model_prop) :
-        switch self.objectArray_property.prop {
-        case .empty, .multiple :
-          break
-        case .single (let sortedArray_prop) :
-        //------------- Find the object to be selected after selected object removing
-        //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [PackageObject : Int] ()
-          for (index, object) in sortedArray_prop.enumerated () {
-            sortedObjectDictionary [object] = index
-          }
-          var indexArrayOfSelectedObjects = [Int] ()
-          for object in self.selectedArray_property.propset {
-            let index = sortedObjectDictionary [object]
-            if let idx = index {
-              indexArrayOfSelectedObjects.append (idx)
-            }
-          }
-        //--- Sort
-          indexArrayOfSelectedObjects.sort { $0 < $1 }
-        //--- Find the first index of a non selected object
-          var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
-          for index in indexArrayOfSelectedObjects {
-            if newSelectionIndex < index {
-              break
-            }else{
-              newSelectionIndex = index + 1
-            }
-          }
-          var newSelectedObject : PackageObject? = nil
-          if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
-            newSelectedObject = sortedArray_prop [newSelectionIndex]
-          }
-        //----------------------------------------- Remove selected object
-        //--- Dictionary of object absolute indexes
-          var objectDictionary = [PackageObject : Int] ()
-          for (index, object) in model_prop.enumerated () {
-            objectDictionary [object] = index
-          }
-        //--- Build selected objects index array
-          var selectedObjectIndexArray = [Int] ()
-          for object in self.selectedArray_property.propset {
-            let index = objectDictionary [object]
-            if let idx = index {
-              selectedObjectIndexArray.append (idx)
-            }
-          }
-        //--- Sort in reverse order
-          selectedObjectIndexArray.sort { $1 < $0 }
-        //--- Remove objects, in reverse of order of their index
-          var newObjectArray = model_prop
-          for index in selectedObjectIndexArray {
-            newObjectArray.remove (at: index)
-          }
-        //----------------------------------------- Set new selection
-          var newSelectionSet = Set <PackageObject> ()
-          if let object = newSelectedObject {
-            newSelectionSet.insert (object)
-          }
-          self.selectedSet = newSelectionSet
-        //----------------------------------------- Set new object array
-          model.setProp (newObjectArray)
+      //------------- Find the object to be selected after selected object removing
+      //--- Dictionary of object sorted indexes
+        var sortedObjectDictionary = [PackageObject : Int] ()
+        for (index, object) in model_prop.enumerated () {
+          sortedObjectDictionary [object] = index
         }
+        var indexArrayOfSelectedObjects = [Int] ()
+        for object in self.selectedArray_property.propset {
+          let index = sortedObjectDictionary [object]
+          if let idx = index {
+            indexArrayOfSelectedObjects.append (idx)
+          }
+        }
+      //--- Sort
+        indexArrayOfSelectedObjects.sort { $0 < $1 }
+      //--- Find the first index of a non selected object
+        var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
+        for index in indexArrayOfSelectedObjects {
+          if newSelectionIndex < index {
+            break
+          }else{
+            newSelectionIndex = index + 1
+          }
+        }
+        var newSelectedObject : PackageObject? = nil
+        if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
+          newSelectedObject = model_prop [newSelectionIndex]
+        }
+      //----------------------------------------- Remove selected object
+      //--- Dictionary of object absolute indexes
+        var objectDictionary = [PackageObject : Int] ()
+        for (index, object) in model_prop.enumerated () {
+          objectDictionary [object] = index
+        }
+      //--- Build selected objects index array
+        var selectedObjectIndexArray = [Int] ()
+        for object in self.selectedArray_property.propset {
+          let index = objectDictionary [object]
+          if let idx = index {
+            selectedObjectIndexArray.append (idx)
+          }
+        }
+      //--- Sort in reverse order
+        selectedObjectIndexArray.sort { $1 < $0 }
+      //--- Remove objects, in reverse of order of their index
+        var newObjectArray = model_prop
+        for index in selectedObjectIndexArray {
+          newObjectArray.remove (at: index)
+        }
+      //----------------------------------------- Set new selection
+        var newSelectionSet = Set <PackageObject> ()
+        if let object = newSelectedObject {
+          newSelectionSet.insert (object)
+        }
+        self.selectedSet = newSelectionSet
+      //----------------------------------------- Set new object array
+        model.setProp (newObjectArray)
       }
     }
   }

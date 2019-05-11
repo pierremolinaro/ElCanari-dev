@@ -521,11 +521,11 @@ class ComponentSymbolInProject : SchematicsObject,
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mComponent_property.componentName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ComponentSymbolInProject_componentName (v0))
@@ -543,11 +543,11 @@ class ComponentSymbolInProject : SchematicsObject,
       if let unwSelf = self {
         let kind = unwSelf.mComponent_property.deviceName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mComponent_property.deviceName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ComponentSymbolInProject_deviceName (v0))
@@ -573,11 +573,11 @@ class ComponentSymbolInProject : SchematicsObject,
         kind &= unwSelf.mCenterY_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
             return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8))
@@ -612,11 +612,11 @@ class ComponentSymbolInProject : SchematicsObject,
         kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (g_Preferences!.pinNameFont_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, g_Preferences!.symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
             return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
@@ -649,11 +649,11 @@ class ComponentSymbolInProject : SchematicsObject,
         kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
         kind &= unwSelf.symbolInfo_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (g_Preferences!.pinNameFont_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
             return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
@@ -677,11 +677,11 @@ class ComponentSymbolInProject : SchematicsObject,
       if let unwSelf = self {
         let kind = unwSelf.isPlacedInSchematics_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.isPlacedInSchematics_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ComponentSymbolInProject_symbolInSchematics (v0))
@@ -1100,6 +1100,46 @@ class ComponentSymbolInProject : SchematicsObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <ComponentSymbolInProject> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_componentName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_deviceName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolInfo_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_componentName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_deviceName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolInfo_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolInSchematics_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -2069,127 +2109,142 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ComponentSymbolInProject
+//    TransientArrayOf ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ComponentSymbolInProject] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_ComponentSymbolInProject? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <ComponentSymbolInProject> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_ComponentSymbolInProject?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [ComponentSymbolInProject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [ComponentSymbolInProject] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf ComponentSymbolInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_ComponentSymbolInProject {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <ComponentSymbolInProject> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [ComponentSymbolInProject] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <ComponentSymbolInProject>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <ComponentSymbolInProject> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [ComponentSymbolInProject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? ComponentSymbolInProject {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mRotation_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_componentName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_deviceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mCenterX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mCenterY_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mRotation_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_componentName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_deviceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolInfo_toElementsOfSet (addedSet)
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [ComponentSymbolInProject] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2205,35 +2260,6 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
  
   func setProp (_ value :  [ComponentSymbolInProject]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_ComponentSymbolInProject] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_ComponentSymbolInProject) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_ComponentSymbolInProject) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -2244,109 +2270,54 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 
 final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_ComponentSymbolInProject? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [ComponentSymbolInProject] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_ComponentSymbolInProject) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <ComponentSymbolInProject> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_ComponentSymbolInProject) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [ComponentSymbolInProject]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [ComponentSymbolInProject]) {
+  override func setProp (_ inArrayValue : [ComponentSymbolInProject]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -2394,25 +2365,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -2430,14 +2383,67 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <ComponentSymbolInProject> ()
-  private var mValue = [ComponentSymbolInProject] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [ComponentSymbolInProject]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [ComponentSymbolInProject]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <ComponentSymbolInProject> ()
+  /* private var mValue = [ComponentSymbolInProject] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -2445,7 +2451,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -2481,7 +2487,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : ComponentSymbolInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -2517,21 +2523,33 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
           self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [ComponentSymbolInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -2543,44 +2561,21 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
 
   //····················································································································
 
-  override var prop : EBSelection < [ComponentSymbolInProject] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [ComponentSymbolInProject]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [ComponentSymbolInProject] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <ComponentSymbolInProject> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [ComponentSymbolInProject]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : ComponentSymbolInProject) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : ComponentSymbolInProject) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -2598,7 +2593,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -2620,7 +2615,7 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

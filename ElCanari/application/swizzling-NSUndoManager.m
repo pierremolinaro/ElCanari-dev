@@ -1,8 +1,8 @@
 //
-//  NSObject+swizzling_NSDocumentController.m
-//  ElCanari
+//  swizzling-NSUndoManager.m
+//  ElCanari-Debug
 //
-//  Created by Pierre Molinaro on 07/05/2019.
+//  Created by Pierre Molinaro on 11/05/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -11,27 +11,50 @@
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@interface NSDocumentController (MySwizzlingNSDocumentController)
+@interface NSUndoManager (MySwizzlingNSUndoManager)
 
 @end
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@implementation NSDocumentController (MySwizzlingNSDocumentController)
+@implementation NSUndoManager (MySwizzlingNSUndoManager)
 
   //····················································································································
 
-  - (void) removeDocument_swizzling: (NSDocument *) document {
-    NSLog (@"RemoveDocument: %@", self) ;
-    [self removeDocument_swizzling: document] ;
+  - (void) swizzling_disableUndoRegistration {
+    NSLog (@"swizzling_disableUndoRegistration") ;
+    [self swizzling_disableUndoRegistration] ;
+  }
+
+  //····················································································································
+
+  - (void) swizzling_enableUndoRegistration {
+    NSLog (@"swizzling_enableUndoRegistration") ;
+    [self swizzling_enableUndoRegistration] ;
+  }
+
+  //····················································································································
+
+  - (void) swizzling_registerUndoWithTarget:(id) target selector:(SEL) selector object:(id) anObject {
+    NSLog (@"registerUndoWithTarget: %@ %@", target, NSStringFromSelector (selector)) ;
+    [self swizzling_registerUndoWithTarget: target selector: selector object: anObject] ;
   }
 
   //····················································································································
 
   + (void) load {
-    NSLog (@"MySwizzlingNSDocumentController load") ;
-    Method original = class_getInstanceMethod (self, @selector (removeDocument:));
-    Method swizzled = class_getInstanceMethod (self, @selector (removeDocument_swizzling:));
+    NSLog (@"MySwizzlingNSUndoManager load") ;
+  //---
+    Method original = class_getInstanceMethod (self, @selector (swizzling_disableUndoRegistration));
+    Method swizzled = class_getInstanceMethod (self, @selector (disableUndoRegistration));
+    method_exchangeImplementations (original, swizzled) ;
+  //---
+    original = class_getInstanceMethod (self, @selector (swizzling_enableUndoRegistration));
+    swizzled = class_getInstanceMethod (self, @selector (enableUndoRegistration));
+    method_exchangeImplementations (original, swizzled) ;
+  //--
+    original = class_getInstanceMethod (self, @selector (swizzling_registerUndoWithTarget:selector:object:));
+    swizzled = class_getInstanceMethod (self, @selector (registerUndoWithTarget:selector:object:));
     method_exchangeImplementations (original, swizzled) ;
   }
 

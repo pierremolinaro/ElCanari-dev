@@ -70,39 +70,17 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_SchematicsObject? = nil
-   let selectedArray_property = TransientArrayOf_LabelInSchematics ()
+   let selectedArray_property = TransientArrayOfSuperOf_LabelInSchematics <SchematicsObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [LabelInSchematics] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [LabelInSchematics] ()
-          for baseObject in v {
-            if let object = baseObject as? LabelInSchematics {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_mOrientation (model: self.selectedArray_property)
-    self.bind_property_location (model: self.selectedArray_property)
-    self.bind_property_netName (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_mOrientation ()
+    self.bind_property_location ()
+    self.bind_property_netName ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -110,8 +88,7 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
     self.mOrientation_property.mWriteModelFunction = nil 
@@ -130,7 +107,6 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -231,8 +207,8 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
 
   //····················································································································
 
-  private final func bind_property_mOrientation (model : TransientArrayOf_LabelInSchematics) {
-    model.addEBObserverOf_mOrientation (self.mOrientation_property)
+  private final func bind_property_mOrientation () {
+    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -300,8 +276,8 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_location (model : TransientArrayOf_LabelInSchematics) {
-    model.addEBObserverOf_location (self.location_property)
+  private final func bind_property_location () {
+    self.selectedArray_property.addEBObserverOf_location (self.location_property)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -339,8 +315,8 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_netName (model : TransientArrayOf_LabelInSchematics) {
-    model.addEBObserverOf_netName (self.netName_property)
+  private final func bind_property_netName () {
+    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -378,8 +354,8 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_LabelInSchematics) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -417,8 +393,8 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_LabelInSchematics) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

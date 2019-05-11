@@ -725,11 +725,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_componentCount (v0))
@@ -747,11 +747,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.netsDescription_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_netCount (v0))
@@ -770,11 +770,11 @@ import Cocoa
         var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
         kind &= unwSelf.mNetClassController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.mNetClassController.selectedArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
@@ -793,11 +793,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
@@ -815,11 +815,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
@@ -837,11 +837,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_pinPadAssignments (v0))
@@ -859,11 +859,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unplacedSymbols_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.unplacedSymbols_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
@@ -881,11 +881,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.unplacedSymbolsCount_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.unplacedSymbolsCount_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
@@ -903,11 +903,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.netsDescription_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_netCountString (v0))
@@ -925,11 +925,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mComponentController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mComponentController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_canChangePackage (v0))
@@ -947,11 +947,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))

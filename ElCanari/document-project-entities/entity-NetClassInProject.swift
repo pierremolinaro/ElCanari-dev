@@ -435,11 +435,11 @@ class NetClassInProject : EBManagedObject,
         var kind = unwSelf.mNetWidth_property_selection.kind ()
         kind &= unwSelf.mNetWidthUnit_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mNetWidth_property_selection, unwSelf.mNetWidthUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_NetClassInProject_netWidth (v0, v1))
@@ -459,11 +459,11 @@ class NetClassInProject : EBManagedObject,
         var kind = unwSelf.mViaHoleDiameter_property_selection.kind ()
         kind &= unwSelf.mViaHoleDiameterUnit_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mViaHoleDiameter_property_selection, unwSelf.mViaHoleDiameterUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
@@ -483,11 +483,11 @@ class NetClassInProject : EBManagedObject,
         var kind = unwSelf.mViaPadDiameter_property_selection.kind ()
         kind &= unwSelf.mViaPadDiameterUnit_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mViaPadDiameter_property_selection, unwSelf.mViaPadDiameterUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
@@ -506,11 +506,11 @@ class NetClassInProject : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mNets_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (transient_NetClassInProject_canRemove (v0))
@@ -528,11 +528,11 @@ class NetClassInProject : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mNets_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mNets_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (transient_NetClassInProject_netUsage (v0))
@@ -552,11 +552,11 @@ class NetClassInProject : EBManagedObject,
         kind &= unwSelf.mNets_property_selection.kind ()
         kind &= unwSelf.mNetClassName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_NetClassInProject_netsDescription (v0, v1, v2))
@@ -891,6 +891,42 @@ class NetClassInProject : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClassInProject> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mNetClassName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNetWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_netWidth_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netUsage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mNetClassName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNetClassColor_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNetWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_netWidth_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_viaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netUsage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mNetClassName' stored property
@@ -1689,123 +1725,142 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_NetClassInProject
+//    TransientArrayOf NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [NetClassInProject] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_NetClassInProject? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <NetClassInProject> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_NetClassInProject?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [NetClassInProject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NetClassInProject] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [NetClassInProject] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [NetClassInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf NetClassInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_NetClassInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_NetClassInProject {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <NetClassInProject> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [NetClassInProject] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <NetClassInProject>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <NetClassInProject> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [NetClassInProject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? NetClassInProject {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_netWidth_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_netUsage_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mNetClassName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNetWidth_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_netWidth_toElementsOfSet (addedSet)
-      self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedSet)
-      self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedSet)
-      self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
-      self.addEBObserversOf_netUsage_toElementsOfSet (addedSet)
-      self.addEBObserversOf_netsDescription_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [NetClassInProject] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [NetClassInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1821,35 +1876,6 @@ class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
  
   func setProp (_ value :  [NetClassInProject]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_NetClassInProject] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_NetClassInProject) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_NetClassInProject) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -1860,105 +1886,54 @@ class ReadWriteArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProject {
 
 final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [NetClassInProject] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_NetClassInProject) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <NetClassInProject> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mNetClassName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mNetClassColor_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mNetWidth_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mNetWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mViaHoleDiameter_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mViaHoleDiameterUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mViaPadDiameter_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_netWidth_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_netUsage_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mNetClassName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mNetClassColor_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mNetWidth_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mNetWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mViaHoleDiameter_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mViaHoleDiameterUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mViaPadDiameter_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_netWidth_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_viaPadDiameter_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_netUsage_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_NetClassInProject) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [NetClassInProject]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [NetClassInProject]) {
+  override func setProp (_ inArrayValue : [NetClassInProject]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [NetClassInProject] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -2006,25 +1981,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -2042,14 +1999,67 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <NetClassInProject> ()
-  private var mValue = [NetClassInProject] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [NetClassInProject]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [NetClassInProject]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <NetClassInProject> ()
+  /* private var mValue = [NetClassInProject] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -2057,7 +2067,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -2089,7 +2099,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : NetClassInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -2121,21 +2131,33 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
           self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [NetClassInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [NetClassInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [NetClassInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -2147,44 +2169,21 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   //····················································································································
 
-  override var prop : EBSelection < [NetClassInProject] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [NetClassInProject]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [NetClassInProject] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <NetClassInProject> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [NetClassInProject]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : NetClassInProject) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : NetClassInProject) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -2202,7 +2201,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -2224,7 +2223,7 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

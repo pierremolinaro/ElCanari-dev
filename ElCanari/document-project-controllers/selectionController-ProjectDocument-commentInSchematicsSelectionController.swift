@@ -70,39 +70,17 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_SchematicsObject? = nil
-   let selectedArray_property = TransientArrayOf_CommentInSchematics ()
+   let selectedArray_property = TransientArrayOfSuperOf_CommentInSchematics <SchematicsObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [CommentInSchematics] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [CommentInSchematics] ()
-          for baseObject in v {
-            if let object = baseObject as? CommentInSchematics {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_mX (model: self.selectedArray_property)
-    self.bind_property_mY (model: self.selectedArray_property)
-    self.bind_property_mComment (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_mX ()
+    self.bind_property_mY ()
+    self.bind_property_mComment ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -110,8 +88,7 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -134,7 +111,6 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -251,8 +227,8 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
 
   //····················································································································
 
-  private final func bind_property_mX (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mX (self.mX_property)
+  private final func bind_property_mX () {
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -320,8 +296,8 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
   //····················································································································
 
-  private final func bind_property_mY (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mY (self.mY_property)
+  private final func bind_property_mY () {
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -389,8 +365,8 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
   //····················································································································
 
-  private final func bind_property_mComment (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_mComment (self.mComment_property)
+  private final func bind_property_mComment () {
+    self.selectedArray_property.addEBObserverOf_mComment (self.mComment_property)
     self.mComment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -458,8 +434,8 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -497,8 +473,8 @@ final class SelectionController_ProjectDocument_commentInSchematicsSelectionCont
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_CommentInSchematics) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

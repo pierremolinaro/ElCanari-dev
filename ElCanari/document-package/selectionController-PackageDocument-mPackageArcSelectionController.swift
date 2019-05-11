@@ -190,51 +190,29 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_PackageObject? = nil
-   let selectedArray_property = TransientArrayOf_PackageArc ()
+   let selectedArray_property = TransientArrayOfSuperOf_PackageArc <PackageObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [PackageArc] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [PackageArc] ()
-          for baseObject in v {
-            if let object = baseObject as? PackageArc {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_yCenter (model: self.selectedArray_property)
-    self.bind_property_radius (model: self.selectedArray_property)
-    self.bind_property_startAngle (model: self.selectedArray_property)
-    self.bind_property_arcAngle (model: self.selectedArray_property)
-    self.bind_property_startTangent (model: self.selectedArray_property)
-    self.bind_property_endTangent (model: self.selectedArray_property)
-    self.bind_property_pathIsClosed (model: self.selectedArray_property)
-    self.bind_property_xCenterUnit (model: self.selectedArray_property)
-    self.bind_property_yCenterUnit (model: self.selectedArray_property)
-    self.bind_property_radiusUnit (model: self.selectedArray_property)
-    self.bind_property_startTangentUnit (model: self.selectedArray_property)
-    self.bind_property_endTangentUnit (model: self.selectedArray_property)
-    self.bind_property_xCenter (model: self.selectedArray_property)
-    self.bind_property_strokeBezierPath (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
-    self.bind_property_issues (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_yCenter ()
+    self.bind_property_radius ()
+    self.bind_property_startAngle ()
+    self.bind_property_arcAngle ()
+    self.bind_property_startTangent ()
+    self.bind_property_endTangent ()
+    self.bind_property_pathIsClosed ()
+    self.bind_property_xCenterUnit ()
+    self.bind_property_yCenterUnit ()
+    self.bind_property_radiusUnit ()
+    self.bind_property_startTangentUnit ()
+    self.bind_property_endTangentUnit ()
+    self.bind_property_xCenter ()
+    self.bind_property_strokeBezierPath ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
+    self.bind_property_issues ()
   }
 
   //····················································································································
@@ -242,8 +220,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
@@ -322,7 +299,6 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -519,8 +495,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   //····················································································································
 
-  private final func bind_property_yCenter (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_yCenter (self.yCenter_property)
+  private final func bind_property_yCenter () {
+    self.selectedArray_property.addEBObserverOf_yCenter (self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -588,8 +564,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_radius (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_radius (self.radius_property)
+  private final func bind_property_radius () {
+    self.selectedArray_property.addEBObserverOf_radius (self.radius_property)
     self.radius_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -657,8 +633,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_startAngle (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_startAngle (self.startAngle_property)
+  private final func bind_property_startAngle () {
+    self.selectedArray_property.addEBObserverOf_startAngle (self.startAngle_property)
     self.startAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -726,8 +702,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_arcAngle (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_arcAngle (self.arcAngle_property)
+  private final func bind_property_arcAngle () {
+    self.selectedArray_property.addEBObserverOf_arcAngle (self.arcAngle_property)
     self.arcAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -795,8 +771,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_startTangent (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangent (self.startTangent_property)
+  private final func bind_property_startTangent () {
+    self.selectedArray_property.addEBObserverOf_startTangent (self.startTangent_property)
     self.startTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -864,8 +840,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_endTangent (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangent (self.endTangent_property)
+  private final func bind_property_endTangent () {
+    self.selectedArray_property.addEBObserverOf_endTangent (self.endTangent_property)
     self.endTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -933,8 +909,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_pathIsClosed (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
+  private final func bind_property_pathIsClosed () {
+    self.selectedArray_property.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
     self.pathIsClosed_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1002,8 +978,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_xCenterUnit (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+  private final func bind_property_xCenterUnit () {
+    self.selectedArray_property.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1071,8 +1047,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_yCenterUnit (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+  private final func bind_property_yCenterUnit () {
+    self.selectedArray_property.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1140,8 +1116,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_radiusUnit (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_radiusUnit (self.radiusUnit_property)
+  private final func bind_property_radiusUnit () {
+    self.selectedArray_property.addEBObserverOf_radiusUnit (self.radiusUnit_property)
     self.radiusUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1209,8 +1185,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_startTangentUnit (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+  private final func bind_property_startTangentUnit () {
+    self.selectedArray_property.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
     self.startTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1278,8 +1254,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_endTangentUnit (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+  private final func bind_property_endTangentUnit () {
+    self.selectedArray_property.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
     self.endTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1347,8 +1323,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_xCenter (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_xCenter (self.xCenter_property)
+  private final func bind_property_xCenter () {
+    self.selectedArray_property.addEBObserverOf_xCenter (self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1416,8 +1392,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+  private final func bind_property_strokeBezierPath () {
+    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1455,8 +1431,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1494,8 +1470,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1533,8 +1509,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
   //····················································································································
 
-  private final func bind_property_issues (model : TransientArrayOf_PackageArc) {
-    model.addEBObserverOf_issues (self.issues_property)
+  private final func bind_property_issues () {
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

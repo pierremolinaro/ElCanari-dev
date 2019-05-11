@@ -90,41 +90,19 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_SymbolObject? = nil
-   let selectedArray_property = TransientArrayOf_SymbolText ()
+   let selectedArray_property = TransientArrayOfSuperOf_SymbolText <SymbolObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_SymbolObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolText] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [SymbolText] ()
-          for baseObject in v {
-            if let object = baseObject as? SymbolText {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_y (model: self.selectedArray_property)
-    self.bind_property_text (model: self.selectedArray_property)
-    self.bind_property_horizontalAlignment (model: self.selectedArray_property)
-    self.bind_property_x (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
-    self.bind_property_issues (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_y ()
+    self.bind_property_text ()
+    self.bind_property_horizontalAlignment ()
+    self.bind_property_x ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
+    self.bind_property_issues ()
   }
 
   //····················································································································
@@ -132,8 +110,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- y
     self.y_property.mReadModelFunction = nil 
     self.y_property.mWriteModelFunction = nil 
@@ -164,7 +141,6 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -289,8 +265,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   //····················································································································
 
-  private final func bind_property_y (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_y (self.y_property)
+  private final func bind_property_y () {
+    self.selectedArray_property.addEBObserverOf_y (self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -358,8 +334,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_text (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_text (self.text_property)
+  private final func bind_property_text () {
+    self.selectedArray_property.addEBObserverOf_text (self.text_property)
     self.text_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -427,8 +403,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_horizontalAlignment (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
+  private final func bind_property_horizontalAlignment () {
+    self.selectedArray_property.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
     self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -496,8 +472,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_x (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_x (self.x_property)
+  private final func bind_property_x () {
+    self.selectedArray_property.addEBObserverOf_x (self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -565,8 +541,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -604,8 +580,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -643,8 +619,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   }
   //····················································································································
 
-  private final func bind_property_issues (model : TransientArrayOf_SymbolText) {
-    model.addEBObserverOf_issues (self.issues_property)
+  private final func bind_property_issues () {
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

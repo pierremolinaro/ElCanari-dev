@@ -269,11 +269,11 @@ class FontCharacter : EBManagedObject,
         kind &= unwSelf.segments_property_selection.kind ()
         kind &= unwSelf.segments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
@@ -294,11 +294,11 @@ class FontCharacter : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.segmentArrayForDrawing_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontCharacter_gerberCode (v0))
@@ -316,11 +316,11 @@ class FontCharacter : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.gerberCode_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.gerberCode_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
@@ -342,11 +342,11 @@ class FontCharacter : EBManagedObject,
         kind &= unwSelf.mWarnsWhenAdvanceIsZero_property_selection.kind ()
         kind &= unwSelf.segments_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.codePoint_property_selection, unwSelf.advance_property_selection, unwSelf.mWarnsWhenNoSegment_property_selection, unwSelf.mWarnsWhenAdvanceIsZero_property_selection, unwSelf.segments_property.count_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_FontCharacter_issues (v0, v1, v2, v3, v4))
@@ -626,6 +626,30 @@ class FontCharacter : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <FontCharacter>, addedSet inAddedSet : Set <FontCharacter>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_codePoint_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_advance_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_gerberCode_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_codePoint_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_advance_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_gerberCode_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'codePoint' stored property
@@ -1084,111 +1108,142 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontCharacter
+//    TransientArrayOf FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_FontCharacter? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <FontCharacter> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_FontCharacter?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [FontCharacter] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [FontCharacter] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [FontCharacter] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf FontCharacter
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : ReadOnlyArrayOf_FontCharacter {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <FontCharacter> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [FontCharacter] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <FontCharacter>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <FontCharacter> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [FontCharacter] ()
+    for superObject in newModelArray {
+      if let object = superObject as? FontCharacter {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_codePoint_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_advance_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_codePoint_toElementsOfSet (addedSet)
-      self.addEBObserversOf_advance_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [FontCharacter] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [FontCharacter] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1204,35 +1259,6 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
  
   func setProp (_ value :  [FontCharacter]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_FontCharacter] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_FontCharacter) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_FontCharacter) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -1243,93 +1269,54 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
 final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_FontCharacter? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [FontCharacter] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_FontCharacter) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <FontCharacter> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_FontCharacter) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [FontCharacter]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [FontCharacter]) {
+  override func setProp (_ inArrayValue : [FontCharacter]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -1377,25 +1364,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -1413,14 +1382,67 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <FontCharacter> ()
-  private var mValue = [FontCharacter] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [FontCharacter]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [FontCharacter]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <FontCharacter>, addedSet inAddedSet : Set <FontCharacter>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <FontCharacter> ()
+  /* private var mValue = [FontCharacter] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1428,7 +1450,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -1450,7 +1472,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : FontCharacter in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -1472,21 +1494,33 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [FontCharacter] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [FontCharacter]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [FontCharacter] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -1498,44 +1532,21 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < [FontCharacter] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [FontCharacter]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [FontCharacter] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <FontCharacter> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [FontCharacter]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : FontCharacter) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : FontCharacter) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -1553,7 +1564,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -1575,7 +1586,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

@@ -821,11 +821,11 @@ class DeviceRoot : EBGraphicManagedObject,
         var kind = unwSelf.mPackages_property_selection.kind ()
         kind &= unwSelf.mPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
@@ -844,11 +844,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSymbolInstances_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSymbolInstances_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
@@ -866,11 +866,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSymbolInstances_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSymbolInstances_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_unconnectedPins (v0))
@@ -888,11 +888,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mImageData_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mImageData_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_imageIsValid (v0))
@@ -910,11 +910,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPackages_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_packagePadNameSetsAreConsistent (v0))
@@ -932,11 +932,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_symbolNameAreConsistent (v0))
@@ -954,11 +954,11 @@ class DeviceRoot : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mSymbolTypes_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSymbolTypes_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceRoot_symbolTypeNames (v0))
@@ -977,11 +977,11 @@ class DeviceRoot : EBGraphicManagedObject,
         var kind = unwSelf.mPadProxies_property_selection.kind ()
         kind &= unwSelf.mPadProxies_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_DeviceRoot_unconnectedPads (v0, v1))
@@ -1003,11 +1003,11 @@ class DeviceRoot : EBGraphicManagedObject,
         kind &= unwSelf.mPadProxies_property_selection.kind ()
         kind &= unwSelf.mPadProxies_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_DeviceRoot_assignedPadProxies (v0, v1, v2, v3))
@@ -1037,11 +1037,11 @@ class DeviceRoot : EBGraphicManagedObject,
         kind &= unwSelf.mSymbolTypes_property_selection.kind ()
         kind &= unwSelf.mSymbolTypes_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection, unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
             return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
@@ -1719,6 +1719,64 @@ class DeviceRoot : EBGraphicManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceRoot>, addedSet inAddedSet : Set <DeviceRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mTitle_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mComments_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mShowPackages_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mImageData_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_imageIsValid_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mTitle_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mComments_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mShowPackages_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mImageData_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_imageIsValid_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolTypeNames_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unconnectedPads_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_assignedPadProxies_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -3140,145 +3198,142 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceRoot
+//    TransientArrayOf DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_DeviceRoot? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <DeviceRoot> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_DeviceRoot?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [DeviceRoot] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceRoot] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [DeviceRoot] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf DeviceRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadOnlyArrayOf_DeviceRoot {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <DeviceRoot> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [DeviceRoot] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <DeviceRoot>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <DeviceRoot> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [DeviceRoot] ()
+    for superObject in newModelArray {
+      if let object = superObject as? DeviceRoot {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mTitle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mComments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mImageData_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mTitle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPrefix_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mComments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mShowPackages_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mImageData_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedSet)
-      self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedSet)
-      self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
-      self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
-      self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedSet)
-      self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedSet)
-      self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedSet)
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [DeviceRoot] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -3294,35 +3349,6 @@ class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
  
   func setProp (_ value :  [DeviceRoot]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_DeviceRoot] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_DeviceRoot) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_DeviceRoot) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -3333,127 +3359,54 @@ class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
 final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_DeviceRoot? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [DeviceRoot] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_DeviceRoot) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <DeviceRoot> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mTitle_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mComments_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolDisplayZoom_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mImageData_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_assignedPadProxies_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mTitle_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mComments_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolDisplayZoom_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mImageData_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_assignedPadProxies_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_DeviceRoot) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [DeviceRoot]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [DeviceRoot]) {
+  override func setProp (_ inArrayValue : [DeviceRoot]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DeviceRoot] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -3501,25 +3454,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -3537,14 +3472,67 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <DeviceRoot> ()
-  private var mValue = [DeviceRoot] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [DeviceRoot]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [DeviceRoot]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceRoot>, addedSet inAddedSet : Set <DeviceRoot>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <DeviceRoot> ()
+  /* private var mValue = [DeviceRoot] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -3552,7 +3540,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -3602,7 +3590,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : DeviceRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -3652,21 +3640,33 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [DeviceRoot]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -3678,44 +3678,21 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceRoot] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [DeviceRoot]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [DeviceRoot] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <DeviceRoot> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [DeviceRoot]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : DeviceRoot) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : DeviceRoot) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -3733,7 +3710,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -3755,7 +3732,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

@@ -3242,11 +3242,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
@@ -3268,11 +3268,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
@@ -3294,11 +3294,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
@@ -3320,11 +3320,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
@@ -3346,11 +3346,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))

@@ -160,48 +160,26 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_PackageObject? = nil
-   let selectedArray_property = TransientArrayOf_PackageSegment ()
+   let selectedArray_property = TransientArrayOfSuperOf_PackageSegment <PackageObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSegment] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [PackageSegment] ()
-          for baseObject in v {
-            if let object = baseObject as? PackageSegment {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_y1 (model: self.selectedArray_property)
-    self.bind_property_x2 (model: self.selectedArray_property)
-    self.bind_property_y2 (model: self.selectedArray_property)
-    self.bind_property_x1Unit (model: self.selectedArray_property)
-    self.bind_property_y1Unit (model: self.selectedArray_property)
-    self.bind_property_x2Unit (model: self.selectedArray_property)
-    self.bind_property_y2Unit (model: self.selectedArray_property)
-    self.bind_property_lengthUnit (model: self.selectedArray_property)
-    self.bind_property_x1 (model: self.selectedArray_property)
-    self.bind_property_strokeBezierPath (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
-    self.bind_property_issues (model: self.selectedArray_property)
-    self.bind_property_lengthInCanariUnit (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_y1 ()
+    self.bind_property_x2 ()
+    self.bind_property_y2 ()
+    self.bind_property_x1Unit ()
+    self.bind_property_y1Unit ()
+    self.bind_property_x2Unit ()
+    self.bind_property_y2Unit ()
+    self.bind_property_lengthUnit ()
+    self.bind_property_x1 ()
+    self.bind_property_strokeBezierPath ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
+    self.bind_property_issues ()
+    self.bind_property_lengthInCanariUnit ()
   }
 
   //····················································································································
@@ -209,8 +187,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- y1
     self.y1_property.mReadModelFunction = nil 
     self.y1_property.mWriteModelFunction = nil 
@@ -272,7 +249,6 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     self.lengthInCanariUnit_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -437,8 +413,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
 
   //····················································································································
 
-  private final func bind_property_y1 (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_y1 (self.y1_property)
+  private final func bind_property_y1 () {
+    self.selectedArray_property.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -506,8 +482,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_x2 (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_x2 (self.x2_property)
+  private final func bind_property_x2 () {
+    self.selectedArray_property.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -575,8 +551,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_y2 (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_y2 (self.y2_property)
+  private final func bind_property_y2 () {
+    self.selectedArray_property.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -644,8 +620,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_x1Unit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_x1Unit (self.x1Unit_property)
+  private final func bind_property_x1Unit () {
+    self.selectedArray_property.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -713,8 +689,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_y1Unit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_y1Unit (self.y1Unit_property)
+  private final func bind_property_y1Unit () {
+    self.selectedArray_property.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -782,8 +758,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_x2Unit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_x2Unit (self.x2Unit_property)
+  private final func bind_property_x2Unit () {
+    self.selectedArray_property.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -851,8 +827,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_y2Unit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_y2Unit (self.y2Unit_property)
+  private final func bind_property_y2Unit () {
+    self.selectedArray_property.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -920,8 +896,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_lengthUnit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_lengthUnit (self.lengthUnit_property)
+  private final func bind_property_lengthUnit () {
+    self.selectedArray_property.addEBObserverOf_lengthUnit (self.lengthUnit_property)
     self.lengthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -989,8 +965,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_x1 (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_x1 (self.x1_property)
+  private final func bind_property_x1 () {
+    self.selectedArray_property.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1058,8 +1034,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_strokeBezierPath (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+  private final func bind_property_strokeBezierPath () {
+    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1097,8 +1073,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1136,8 +1112,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1175,8 +1151,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_issues (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_issues (self.issues_property)
+  private final func bind_property_issues () {
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1214,8 +1190,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_lengthInCanariUnit (model : TransientArrayOf_PackageSegment) {
-    model.addEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
+  private final func bind_property_lengthInCanariUnit () {
+    self.selectedArray_property.addEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

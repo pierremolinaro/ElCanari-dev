@@ -220,54 +220,32 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_PackageObject? = nil
-   let selectedArray_property = TransientArrayOf_PackageSlavePad ()
+   let selectedArray_property = TransientArrayOfSuperOf_PackageSlavePad <PackageObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_PackageObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSlavePad] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [PackageSlavePad] ()
-          for baseObject in v {
-            if let object = baseObject as? PackageSlavePad {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_xCenter (model: self.selectedArray_property)
-    self.bind_property_yCenter (model: self.selectedArray_property)
-    self.bind_property_width (model: self.selectedArray_property)
-    self.bind_property_height (model: self.selectedArray_property)
-    self.bind_property_holeDiameter (model: self.selectedArray_property)
-    self.bind_property_padShape (model: self.selectedArray_property)
-    self.bind_property_padStyle (model: self.selectedArray_property)
-    self.bind_property_xCenterUnit (model: self.selectedArray_property)
-    self.bind_property_yCenterUnit (model: self.selectedArray_property)
-    self.bind_property_widthUnit (model: self.selectedArray_property)
-    self.bind_property_heightUnit (model: self.selectedArray_property)
-    self.bind_property_holeDiameterUnit (model: self.selectedArray_property)
-    self.bind_property_annularRingUnit (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
-    self.bind_property_issues (model: self.selectedArray_property)
-    self.bind_property_padIsTraversing (model: self.selectedArray_property)
-    self.bind_property_annularRing (model: self.selectedArray_property)
-    self.bind_property_padName (model: self.selectedArray_property)
-    self.bind_property_padNumberDisplay (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_xCenter ()
+    self.bind_property_yCenter ()
+    self.bind_property_width ()
+    self.bind_property_height ()
+    self.bind_property_holeDiameter ()
+    self.bind_property_padShape ()
+    self.bind_property_padStyle ()
+    self.bind_property_xCenterUnit ()
+    self.bind_property_yCenterUnit ()
+    self.bind_property_widthUnit ()
+    self.bind_property_heightUnit ()
+    self.bind_property_holeDiameterUnit ()
+    self.bind_property_annularRingUnit ()
+    self.bind_property_selectionDisplay ()
+    self.bind_property_issues ()
+    self.bind_property_padIsTraversing ()
+    self.bind_property_annularRing ()
+    self.bind_property_padName ()
+    self.bind_property_padNumberDisplay ()
+    self.bind_property_objectDisplay ()
   }
 
   //····················································································································
@@ -275,8 +253,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
     self.xCenter_property.mWriteModelFunction = nil 
@@ -364,7 +341,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -561,8 +537,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   //····················································································································
 
-  private final func bind_property_xCenter (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_xCenter (self.xCenter_property)
+  private final func bind_property_xCenter () {
+    self.selectedArray_property.addEBObserverOf_xCenter (self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -630,8 +606,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_yCenter (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_yCenter (self.yCenter_property)
+  private final func bind_property_yCenter () {
+    self.selectedArray_property.addEBObserverOf_yCenter (self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -699,8 +675,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_width (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_width (self.width_property)
+  private final func bind_property_width () {
+    self.selectedArray_property.addEBObserverOf_width (self.width_property)
     self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -768,8 +744,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_height (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_height (self.height_property)
+  private final func bind_property_height () {
+    self.selectedArray_property.addEBObserverOf_height (self.height_property)
     self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -837,8 +813,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_holeDiameter (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_holeDiameter (self.holeDiameter_property)
+  private final func bind_property_holeDiameter () {
+    self.selectedArray_property.addEBObserverOf_holeDiameter (self.holeDiameter_property)
     self.holeDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -906,8 +882,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padShape (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_padShape (self.padShape_property)
+  private final func bind_property_padShape () {
+    self.selectedArray_property.addEBObserverOf_padShape (self.padShape_property)
     self.padShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -975,8 +951,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padStyle (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_padStyle (self.padStyle_property)
+  private final func bind_property_padStyle () {
+    self.selectedArray_property.addEBObserverOf_padStyle (self.padStyle_property)
     self.padStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1044,8 +1020,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_xCenterUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+  private final func bind_property_xCenterUnit () {
+    self.selectedArray_property.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1113,8 +1089,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_yCenterUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+  private final func bind_property_yCenterUnit () {
+    self.selectedArray_property.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1182,8 +1158,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_widthUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_widthUnit (self.widthUnit_property)
+  private final func bind_property_widthUnit () {
+    self.selectedArray_property.addEBObserverOf_widthUnit (self.widthUnit_property)
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1251,8 +1227,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_heightUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_heightUnit (self.heightUnit_property)
+  private final func bind_property_heightUnit () {
+    self.selectedArray_property.addEBObserverOf_heightUnit (self.heightUnit_property)
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1320,8 +1296,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_holeDiameterUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
+  private final func bind_property_holeDiameterUnit () {
+    self.selectedArray_property.addEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
     self.holeDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1389,8 +1365,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_annularRingUnit (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
+  private final func bind_property_annularRingUnit () {
+    self.selectedArray_property.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1458,8 +1434,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1497,8 +1473,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_issues (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_issues (self.issues_property)
+  private final func bind_property_issues () {
+    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1536,8 +1512,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padIsTraversing (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
+  private final func bind_property_padIsTraversing () {
+    self.selectedArray_property.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1575,8 +1551,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_annularRing (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_annularRing (self.annularRing_property)
+  private final func bind_property_annularRing () {
+    self.selectedArray_property.addEBObserverOf_annularRing (self.annularRing_property)
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1614,8 +1590,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padName (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_padName (self.padName_property)
+  private final func bind_property_padName () {
+    self.selectedArray_property.addEBObserverOf_padName (self.padName_property)
     self.padName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1653,8 +1629,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_padNumberDisplay (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+  private final func bind_property_padNumberDisplay () {
+    self.selectedArray_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -1692,8 +1668,8 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

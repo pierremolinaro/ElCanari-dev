@@ -307,11 +307,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ArtworkDocument_mGeneratedFileCountString (v0))
@@ -330,11 +330,11 @@ import Cocoa
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_ArtworkDocument_mStatusImage (v0, v1))
@@ -354,11 +354,11 @@ import Cocoa
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_ArtworkDocument_mStatusMessage (v0, v1))

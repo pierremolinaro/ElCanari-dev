@@ -195,11 +195,11 @@ class PadProxyInDevice : EBManagedObject,
         var kind = unwSelf.mIsNC_property_selection.kind ()
         kind &= unwSelf.mPinInstance_none_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_none_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_PadProxyInDevice_isConnected (v0, v1))
@@ -218,11 +218,11 @@ class PadProxyInDevice : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mPinInstance_property.pinName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPinInstance_property.pinName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_PadProxyInDevice_pinInstanceName (v0))
@@ -240,11 +240,11 @@ class PadProxyInDevice : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mPinInstance_property.symbolName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPinInstance_property.symbolName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_PadProxyInDevice_symbolName (v0))
@@ -470,6 +470,24 @@ class PadProxyInDevice : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <PadProxyInDevice>, addedSet inAddedSet : Set <PadProxyInDevice>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mIsNC_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolName_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mIsNC_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_pinInstanceName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolName_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mPadName' stored property
@@ -758,105 +776,142 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PadProxyInDevice
+//    TransientArrayOf PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [PadProxyInDevice] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_PadProxyInDevice? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <PadProxyInDevice> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_PadProxyInDevice?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [PadProxyInDevice] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PadProxyInDevice] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [PadProxyInDevice] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf PadProxyInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_PadProxyInDevice <SUPER : EBManagedObject> : ReadOnlyArrayOf_PadProxyInDevice {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <PadProxyInDevice> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [PadProxyInDevice] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <PadProxyInDevice>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <PadProxyInDevice> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [PadProxyInDevice] ()
+    for superObject in newModelArray {
+      if let object = superObject as? PadProxyInDevice {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mPadName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolName_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mPadName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mIsNC_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
-      self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolName_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [PadProxyInDevice] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -872,35 +927,6 @@ class ReadWriteArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
  
   func setProp (_ value :  [PadProxyInDevice]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_PadProxyInDevice] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_PadProxyInDevice) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_PadProxyInDevice) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -911,87 +937,54 @@ class ReadWriteArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
 
 final class ProxyArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_PadProxyInDevice? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [PadProxyInDevice] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_PadProxyInDevice) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <PadProxyInDevice> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mIsNC_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_PadProxyInDevice) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [PadProxyInDevice]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [PadProxyInDevice]) {
+  override func setProp (_ inArrayValue : [PadProxyInDevice]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [PadProxyInDevice] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -1039,25 +1032,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -1075,14 +1050,67 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <PadProxyInDevice> ()
-  private var mValue = [PadProxyInDevice] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [PadProxyInDevice]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [PadProxyInDevice]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <PadProxyInDevice>, addedSet inAddedSet : Set <PadProxyInDevice>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <PadProxyInDevice> ()
+  /* private var mValue = [PadProxyInDevice] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1090,7 +1118,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -1107,7 +1135,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : PadProxyInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -1124,21 +1152,33 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [PadProxyInDevice] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [PadProxyInDevice]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -1150,44 +1190,21 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
   //····················································································································
 
-  override var prop : EBSelection < [PadProxyInDevice] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [PadProxyInDevice]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [PadProxyInDevice] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <PadProxyInDevice> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [PadProxyInDevice]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : PadProxyInDevice) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : PadProxyInDevice) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -1205,7 +1222,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -1227,7 +1244,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

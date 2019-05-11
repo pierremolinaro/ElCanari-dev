@@ -503,11 +503,11 @@ import Cocoa
         var kind = unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
         kind &= unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
@@ -526,11 +526,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unconnectedPins_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.unconnectedPins_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
@@ -548,11 +548,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_mStatusMessage (v0))
@@ -570,11 +570,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_mMetadataStatus (v0))
@@ -592,11 +592,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.unconnectedPads_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.unconnectedPads_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
@@ -614,11 +614,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.assignedPadProxies_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.assignedPadProxies_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
@@ -636,11 +636,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_DeviceDocument_mStatusImage (v0))

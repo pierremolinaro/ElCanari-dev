@@ -394,11 +394,11 @@ class DevicePinInProject : EBManagedObject,
         var kind = unwSelf.mSymbolInstanceName_property_selection.kind ()
         kind &= unwSelf.mPinName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mSymbolInstanceName_property_selection, unwSelf.mPinName_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_DevicePinInProject_pinQualifiedName (v0, v1))
@@ -428,11 +428,11 @@ class DevicePinInProject : EBManagedObject,
         kind &= unwSelf.mYNumber_property_selection.kind ()
         kind &= unwSelf.mNumberHorizontalAlignment_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPinName_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mPinX_property_selection, unwSelf.mPinY_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, unwSelf.mXNumber_property_selection, unwSelf.mYNumber_property_selection, unwSelf.mNumberHorizontalAlignment_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
             return .single (transient_DevicePinInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
@@ -772,6 +772,42 @@ class DevicePinInProject : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <DevicePinInProject> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePinInProject>, addedSet inAddedSet : Set <DevicePinInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPinX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPinY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mXName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mYName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mXNumber_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mYNumber_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mPinName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPinX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPinY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mXName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mYName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mXNumber_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mYNumber_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mPinName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_pinQualifiedName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
@@ -1574,123 +1610,142 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DevicePinInProject
+//    TransientArrayOf DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [DevicePinInProject] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_DevicePinInProject? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <DevicePinInProject> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_DevicePinInProject?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [DevicePinInProject] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePinInProject] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [DevicePinInProject] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf DevicePinInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DevicePinInProject {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <DevicePinInProject> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [DevicePinInProject] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <DevicePinInProject>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <DevicePinInProject> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [DevicePinInProject] ()
+    for superObject in newModelArray {
+      if let object = superObject as? DevicePinInProject {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPinX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPinY_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mXName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mYName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mPinName_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_descriptor_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPinX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPinY_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mXName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mYName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mXNumber_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mYNumber_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mPinName_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_descriptor_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [DevicePinInProject] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1706,35 +1761,6 @@ class ReadWriteArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
  
   func setProp (_ value :  [DevicePinInProject]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_DevicePinInProject] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_DevicePinInProject) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_DevicePinInProject) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -1745,105 +1771,54 @@ class ReadWriteArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInProject {
 
 final class ProxyArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_DevicePinInProject? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [DevicePinInProject] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_DevicePinInProject) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <DevicePinInProject> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPinX_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPinY_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mYName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mPinName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_descriptor_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPinX_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPinY_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mYName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mXNumber_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mYNumber_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mPinName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_descriptor_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_DevicePinInProject) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [DevicePinInProject]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [DevicePinInProject]) {
+  override func setProp (_ inArrayValue : [DevicePinInProject]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [DevicePinInProject] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -1891,25 +1866,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -1927,14 +1884,67 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <DevicePinInProject> ()
-  private var mValue = [DevicePinInProject] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [DevicePinInProject]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [DevicePinInProject]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePinInProject>, addedSet inAddedSet : Set <DevicePinInProject>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <DevicePinInProject> ()
+  /* private var mValue = [DevicePinInProject] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1942,7 +1952,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -1978,7 +1988,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
           self.removeEBObserversOf_descriptor_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : DevicePinInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -2014,21 +2024,33 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
           self.addEBObserversOf_descriptor_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [DevicePinInProject]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -2040,44 +2062,21 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
 
   //····················································································································
 
-  override var prop : EBSelection < [DevicePinInProject] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [DevicePinInProject]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [DevicePinInProject] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <DevicePinInProject> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [DevicePinInProject]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : DevicePinInProject) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : DevicePinInProject) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -2095,7 +2094,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -2117,7 +2116,7 @@ final class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProje
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

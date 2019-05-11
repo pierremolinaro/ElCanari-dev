@@ -50,37 +50,15 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_SchematicsObject? = nil
-   let selectedArray_property = TransientArrayOf_WireInSchematics ()
+   let selectedArray_property = TransientArrayOfSuperOf_WireInSchematics <SchematicsObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [WireInSchematics] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [WireInSchematics] ()
-          for baseObject in v {
-            if let object = baseObject as? WireInSchematics {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
-    self.bind_property_netName (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
+    self.bind_property_netName ()
   }
 
   //····················································································································
@@ -88,8 +66,7 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -100,7 +77,6 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
     self.netName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -193,8 +169,8 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
 
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_WireInSchematics) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -232,8 +208,8 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_WireInSchematics) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -271,8 +247,8 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_netName (model : TransientArrayOf_WireInSchematics) {
-    model.addEBObserverOf_netName (self.netName_property)
+  private final func bind_property_netName () {
+    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

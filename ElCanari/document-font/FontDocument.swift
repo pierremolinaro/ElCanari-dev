@@ -339,11 +339,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.definedCharacters_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.definedCharacters_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontDocument_canDeleteCurrentCharacter (v0))
@@ -361,11 +361,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontDocument_noIssue (v0))
@@ -383,11 +383,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontDocument_mStatusImage (v0))
@@ -405,11 +405,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontDocument_mStatusMessage (v0))
@@ -427,11 +427,11 @@ import Cocoa
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontDocument_mMetadataStatus (v0))

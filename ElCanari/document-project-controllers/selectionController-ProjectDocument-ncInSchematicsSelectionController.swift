@@ -50,37 +50,15 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   //   BIND SELECTION
   //····················································································································
 
-   private var mModel : TransientArrayOf_SchematicsObject? = nil
-   let selectedArray_property = TransientArrayOf_NCInSchematics ()
+   let selectedArray_property = TransientArrayOfSuperOf_NCInSchematics <SchematicsObject> ()
 
   //····················································································································
 
-  func bind_selection (model : TransientArrayOf_SchematicsObject, file : String, line : Int) {
-    self.mModel = model
-    self.selectedArray_property.mReadModelFunction = { [weak self] () -> EBSelection < [NCInSchematics] > in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = [NCInSchematics] ()
-          for baseObject in v {
-            if let object = baseObject as? NCInSchematics {
-              s.append (object)
-            }
-          }
-          return .single (s)
-        }
-      }else{
-        return .empty
-      }
-    }
-    model.addEBObserver (self.selectedArray_property)
-    self.bind_property_mOrientation (model: self.selectedArray_property)
-    self.bind_property_objectDisplay (model: self.selectedArray_property)
-    self.bind_property_selectionDisplay (model: self.selectedArray_property)
+  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+    self.selectedArray_property.setDataProvider (model)
+    self.bind_property_mOrientation ()
+    self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -88,8 +66,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   //····················································································································
 
   func unbind_selection () {
-    self.mModel?.removeEBObserver (self.selectedArray_property)
-    self.selectedArray_property.mReadModelFunction = nil
+    self.selectedArray_property.setDataProvider (nil)
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
     self.mOrientation_property.mWriteModelFunction = nil 
@@ -102,7 +79,6 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //---
-    self.mModel = nil    
   }
 
   //····················································································································
@@ -203,8 +179,8 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
 
   //····················································································································
 
-  private final func bind_property_mOrientation (model : TransientArrayOf_NCInSchematics) {
-    model.addEBObserverOf_mOrientation (self.mOrientation_property)
+  private final func bind_property_mOrientation () {
+    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -272,8 +248,8 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay (model : TransientArrayOf_NCInSchematics) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
@@ -311,8 +287,8 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay (model : TransientArrayOf_NCInSchematics) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {

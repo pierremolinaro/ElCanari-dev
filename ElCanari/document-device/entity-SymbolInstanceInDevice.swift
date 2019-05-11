@@ -260,11 +260,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         var kind = unwSelf.mInstanceName_property_selection.kind ()
         kind &= unwSelf.mType_property.mTypeName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mInstanceName_property_selection, unwSelf.mType_property.mTypeName_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_SymbolInstanceInDevice_symbolQualifiedName (v0, v1))
@@ -283,11 +283,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.mType_property.mTypeName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mType_property.mTypeName_property_selection) {
           case (.single (let v0)) :
             return .single (transient_SymbolInstanceInDevice_symbolTypeName (v0))
@@ -310,11 +310,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.symbolQualifiedName_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5))
@@ -339,11 +339,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.mPinInstances_property_selection.kind ()
         kind &= unwSelf.mInstanceName_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mPinInstances_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.mInstanceName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_SymbolInstanceInDevice_unconnectedPins (v0, v1, v2))
@@ -371,11 +371,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         kind &= g_Preferences!.symbolColor_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
             return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
@@ -691,6 +691,30 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolInstanceInDevice> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolInstanceInDevice>, addedSet inAddedSet : Set <SymbolInstanceInDevice>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_mInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_mInstanceName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_symbolTypeName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_unconnectedPins_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'mInstanceName' stored property
@@ -1148,111 +1172,142 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolInstanceInDevice
+//    TransientArrayOf SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceInDevice {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [SymbolInstanceInDevice] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_SymbolInstanceInDevice? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <SymbolInstanceInDevice> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_SymbolInstanceInDevice?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [SymbolInstanceInDevice] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolInstanceInDevice] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [SymbolInstanceInDevice] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf SymbolInstanceInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_SymbolInstanceInDevice <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolInstanceInDevice {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <SymbolInstanceInDevice> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [SymbolInstanceInDevice] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <SymbolInstanceInDevice>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <SymbolInstanceInDevice> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [SymbolInstanceInDevice] ()
+    for superObject in newModelArray {
+      if let object = superObject as? SymbolInstanceInDevice {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_mInstanceName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mY_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolInstanceInDevice] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1268,35 +1323,6 @@ class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
  
   func setProp (_ value :  [SymbolInstanceInDevice]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_SymbolInstanceInDevice] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_SymbolInstanceInDevice) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_SymbolInstanceInDevice) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -1307,93 +1333,54 @@ class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
 
 final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_SymbolInstanceInDevice? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [SymbolInstanceInDevice] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_SymbolInstanceInDevice) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <SymbolInstanceInDevice> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_symbolQualifiedName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_SymbolInstanceInDevice) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [SymbolInstanceInDevice]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [SymbolInstanceInDevice]) {
+  override func setProp (_ inArrayValue : [SymbolInstanceInDevice]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [SymbolInstanceInDevice] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -1441,25 +1428,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -1477,14 +1446,67 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <SymbolInstanceInDevice> ()
-  private var mValue = [SymbolInstanceInDevice] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [SymbolInstanceInDevice]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [SymbolInstanceInDevice]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolInstanceInDevice>, addedSet inAddedSet : Set <SymbolInstanceInDevice>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <SymbolInstanceInDevice> ()
+  /* private var mValue = [SymbolInstanceInDevice] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1492,7 +1514,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -1513,7 +1535,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : SymbolInstanceInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -1534,21 +1556,33 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [SymbolInstanceInDevice]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -1560,44 +1594,21 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [SymbolInstanceInDevice]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [SymbolInstanceInDevice] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <SymbolInstanceInDevice> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [SymbolInstanceInDevice]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : SymbolInstanceInDevice) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : SymbolInstanceInDevice) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -1615,7 +1626,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -1637,7 +1648,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

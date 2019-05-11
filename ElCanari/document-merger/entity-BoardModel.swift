@@ -1973,11 +1973,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontLegendLines_property_selection.kind ()
         kind &= unwSelf.frontLegendLines_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontLegendLinesSegments (v0, v1, v2, v3, v4))
@@ -2003,11 +2003,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backLegendLines_property_selection.kind ()
         kind &= unwSelf.backLegendLines_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backLegendLinesSegments (v0, v1, v2, v3, v4))
@@ -2029,11 +2029,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backLegendLinesSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2055,11 +2055,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontLegendTexts_property_selection.kind ()
         kind &= unwSelf.frontLegendTexts_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontLegendTextsSegments (v0, v1, v2, v3, v4))
@@ -2081,11 +2081,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontLegendTextsSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2107,11 +2107,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontLayoutTexts_property_selection.kind ()
         kind &= unwSelf.frontLayoutTexts_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
@@ -2133,11 +2133,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontLayoutTextsSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2159,11 +2159,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backLegendTexts_property_selection.kind ()
         kind &= unwSelf.backLegendTexts_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backLegendTextsSegments (v0, v1, v2, v3, v4))
@@ -2185,11 +2185,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backLegendTextsSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2211,11 +2211,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backLayoutTexts_property_selection.kind ()
         kind &= unwSelf.backLayoutTexts_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backLayoutTextsSegments (v0, v1, v2, v3, v4))
@@ -2237,11 +2237,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backLayoutTextsSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2263,11 +2263,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
         kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_internalBoardsLimitsSegments (v0, v1, v2, v3, v4))
@@ -2289,11 +2289,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.internalBoardsLimitsSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.internalBoardsLimitsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2315,11 +2315,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.drills_property_selection.kind ()
         kind &= unwSelf.drills_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_drillSegments (v0, v1, v2, v3, v4))
@@ -2341,11 +2341,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.drillSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.drillSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2365,11 +2365,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.vias_property_selection.kind ()
         kind &= unwSelf.vias_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_BoardModel_viaShapes (v0, v1, v2))
@@ -2389,11 +2389,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.viaShapes_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.viaShapes_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_viasBezierPaths (v0))
@@ -2416,11 +2416,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontPads_property_selection.kind ()
         kind &= unwSelf.frontPads_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_BoardModel_frontPadArray (v0, v1, v2, v3, v4, v5))
@@ -2443,11 +2443,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontPadArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontPadArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_frontPadsBezierPaths (v0))
@@ -2470,11 +2470,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backPads_property_selection.kind ()
         kind &= unwSelf.backPads_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
             return .single (transient_BoardModel_backPadArray (v0, v1, v2, v3, v4, v5))
@@ -2497,11 +2497,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backPadArray_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backPadArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_backPadsBezierPaths (v0))
@@ -2522,11 +2522,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.modelLimitWidth_property_selection.kind ()
         kind &= g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (transient_BoardModel_boardLimits (v0, v1, v2, v3))
@@ -2549,11 +2549,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.modelHeight_property_selection.kind ()
         kind &= unwSelf.modelLimitWidth_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (transient_BoardModel_boardLimitsBezierPaths (v0, v1, v2))
@@ -2577,11 +2577,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backComponentNames_property_selection.kind ()
         kind &= unwSelf.backComponentNames_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backComponentNameSegments (v0, v1, v2, v3, v4))
@@ -2603,11 +2603,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backComponentNameSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2629,11 +2629,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontComponentNames_property_selection.kind ()
         kind &= unwSelf.frontComponentNames_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontComponentNameSegments (v0, v1, v2, v3, v4))
@@ -2655,11 +2655,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontComponentNameSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2681,11 +2681,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontComponentValues_property_selection.kind ()
         kind &= unwSelf.frontComponentValues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontComponentValueSegments (v0, v1, v2, v3, v4))
@@ -2707,11 +2707,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontComponentValueSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2733,11 +2733,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backComponentValues_property_selection.kind ()
         kind &= unwSelf.backComponentValues_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backComponentValueSegments (v0, v1, v2, v3, v4))
@@ -2759,11 +2759,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backComponentValueSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2785,11 +2785,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backTracks_property_selection.kind ()
         kind &= unwSelf.backTracks_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backTrackSegments (v0, v1, v2, v3, v4))
@@ -2811,11 +2811,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backTrackSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2837,11 +2837,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontTracks_property_selection.kind ()
         kind &= unwSelf.frontTracks_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4))
@@ -2863,11 +2863,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontTrackSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2889,11 +2889,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontPackages_property_selection.kind ()
         kind &= unwSelf.frontPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_frontPackagesSegments (v0, v1, v2, v3, v4))
@@ -2915,11 +2915,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontPackagesSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2941,11 +2941,11 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backPackages_property_selection.kind ()
         kind &= unwSelf.backPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_BoardModel_backPackagesSegments (v0, v1, v2, v3, v4))
@@ -2967,11 +2967,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.backPackagesSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -2989,11 +2989,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.myInstances_property.count_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.myInstances_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_instanceCount (v0))
@@ -3011,11 +3011,11 @@ class BoardModel : EBManagedObject,
       if let unwSelf = self {
         let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (unwSelf.frontLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
@@ -3095,11 +3095,11 @@ class BoardModel : EBManagedObject,
         kind &= g_Preferences!.mergerModelViewDisplayBackPackages_property_selection.kind ()
         kind &= g_Preferences!.mergerColorBackPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, unwSelf.internalBoardsLimitsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayInternalBoardsLimits_property_selection, g_Preferences!.mergerColorInternalBoardsLimits_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60), .single (let v61), .single (let v62)) :
             return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62))
@@ -3239,11 +3239,11 @@ class BoardModel : EBManagedObject,
         kind &= g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection.kind ()
         kind &= g_Preferences!.mergerColorBackPackages_property_selection.kind ()
         switch kind {
-        case .noSelectionKind :
+        case .empty :
           return .empty
-        case .multipleSelectionKind :
+        case .multiple :
           return .multiple
-        case .singleSelectionKind :
+        case .single :
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.internalBoardsLimitsBezierPaths_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardsLimits_property_selection, g_Preferences!.mergerColorInternalBoardsLimits_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60)) :
             return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60))
@@ -4752,6 +4752,118 @@ class BoardModel : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
+
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModel>, addedSet inAddedSet : Set <BoardModel>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //--- Remove observers from removed objects
+    self.removeEBObserversOf_name_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelHeight_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_zoom_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_artworkName_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_drillSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_viaShapes_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontPadArray_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backPadArray_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardLimits_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_instanceCount_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_imageForModel_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_imageForInstances_fromElementsOfSet (inRemovedSet) // Transient property
+  //--- Add observers to added objects
+    self.addEBObserversOf_name_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelHeight_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelHeightUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_zoom_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelLimitWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_artworkName_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_drillSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_holesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_viaShapes_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_viasBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontPadArray_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backPadArray_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardLimits_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backTrackSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontTrackSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backPackagesSegments_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_instanceCount_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_imageForModel_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_imageForInstances_toElementsOfSet (inAddedSet) // Transient property
+  }
 
   //····················································································································
   //   Observers of 'name' stored property
@@ -7679,199 +7791,142 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModel
+//    TransientArrayOf BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
+  //   Data provider
+  //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [BoardModel] > > = nil
+  private var mDataProvider : ReadOnlyArrayOf_BoardModel? = nil
+  private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  override var propset : Set <BoardModel> {
-    self.computeArrayAndSet ()
-    return self.mSet
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_BoardModel?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [BoardModel] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardModel] > {
-    self.computeArrayAndSet ()
-    return self.mCachedValue!  
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
   }
- 
+
   //····················································································································
 
-  override var propval : [BoardModel] {
-    self.computeArrayAndSet ()
-    if let value = self.mCachedValue {
-      switch value {
-      case .empty, .multiple :
-        return []
+  override var propval : [BoardModel] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf BoardModel
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_BoardModel <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardModel {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    var newModelArray : [SUPER] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newModelArray = []
+        self.mTransientKind = .empty
       case .single (let v) :
-        return v
+        newModelArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      return []
+      newModelArray = []
+      self.mTransientKind = .empty
     }
-  }
-
-  //····················································································································
-
-  private var mSet = Set <BoardModel> ()
-
-  //····················································································································
-
-  private var mCachedValue : EBSelection < [BoardModel] >? = nil
-
-  //····················································································································
-
-  private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      let cachedValue = unwrappedComputeFunction ()
-      self.mCachedValue = cachedValue
-      let newSet : Set <BoardModel>
-      switch cachedValue {
-      case .multiple, .empty :
-        newSet = Set <BoardModel> ()
-      case .single (let array) :
-        newSet = Set (array)
+    var newArray = [BoardModel] ()
+    for superObject in newModelArray {
+      if let object = superObject as? BoardModel {
+        newArray.append (object)
       }
-    //--- Removed object set
-      let removedSet = self.mSet.subtracting (newSet)
-    //--- Remove observers of stored properties
-      self.removeEBObserversOf_name_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelHeight_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
-    //--- Remove observers of transient properties
-      self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_drillSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontPadArray_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backPadArray_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_boardLimits_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
-    //--- Added object set
-      let addedSet = newSet.subtracting (self.mSet)
-     //--- Add observers of stored properties
-      self.addEBObserversOf_name_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelWidth_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelWidthUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelHeight_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelHeightUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelLimitWidth_toElementsOfSet (addedSet)
-      self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_artworkName_toElementsOfSet (addedSet)
-     //--- Add observers of transient properties
-      self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_drillSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_holesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
-      self.addEBObserversOf_viasBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontPadArray_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backPadArray_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_boardLimits_toElementsOfSet (addedSet)
-      self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backTrackSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontTrackSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedSet)
-      self.addEBObserversOf_imageForModel_toElementsOfSet (addedSet)
-      self.addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
-    //--- Update object set
-      self.mSet = newSet
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardModel] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
     }
   }
 
   //····················································································································
 
-  override func postEvent () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
-      }
-      super.postEvent ()
-    }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
-    }
-  }
+  override var propval : [BoardModel] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -7887,35 +7942,6 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
  
   func setProp (_ value :  [BoardModel]) { } // Abstract method
   
- //····················································································································
-
-  private var mProxyArray = [ProxyArrayOf_BoardModel] ()
-
-  //····················································································································
-
-  func attachProxy (_ inProxy : ProxyArrayOf_BoardModel) {
-    self.mProxyArray.append (inProxy)
-    inProxy.updateProxy ()
-    self.postEvent ()
-  }
-
-  //····················································································································
-
-  func detachProxy (_ inProxy : ProxyArrayOf_BoardModel) {
-    if let idx = self.mProxyArray.firstIndex(of: inProxy) {
-      self.mProxyArray.remove (at: idx)
-      self.postEvent ()
-    }
-  }
-
-  //····················································································································
-
-  internal func propagateProxyUpdate () {
-    for proxy in self.mProxyArray {
-      proxy.updateProxy ()
-    }
-  }
-
   //····················································································································
 
 }
@@ -7926,181 +7952,54 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
 final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
-   //····················································································································
+  //····················································································································
 
   private var mModel : ReadWriteArrayOf_BoardModel? = nil
 
   //····················································································································
 
-  private var mInternalValue : EBSelection < [BoardModel] > = .empty {
-    didSet {
-      if self.mInternalValue != oldValue {
-        switch self.mInternalValue {
-        case .empty, .multiple :
-          self.mCurrentObjectSet = []
-        case .single (let v) :
-          self.mCurrentObjectSet = Set (v)
-        }
-        self.propagateProxyUpdate ()
-        self.postEvent ()
-      }
+  func setModel (_ inModel : ReadWriteArrayOf_BoardModel) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
     }
   }
 
   //····················································································································
 
-  private var mCurrentObjectSet = Set <BoardModel> () {
-    didSet {
-      if self.mCurrentObjectSet != oldValue {
-      //--- Add observers from removed objects
-        let removedObjectSet = oldValue.subtracting (self.mCurrentObjectSet)
-        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet) // Stored property
-        self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet) // Transient property
-        self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet) // Transient property
-      //--- Add observers to added objects
-        let addedObjectSet = self.mCurrentObjectSet.subtracting (oldValue)
-        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet) // Stored property
-        self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet) // Transient property
-        self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet) // Transient property
-      }
-    }
-  }
-
-  //····················································································································
-
-  func bind (_ inModel : ReadWriteArrayOf_BoardModel) {
-    self.unbind ()
-    self.mModel = inModel
-    inModel.attachProxy (self)
-  }
-
-  //····················································································································
-
-  func unbind () {
+  override func notifyModelDidChange () {
+    let newModelArray : [BoardModel]
     if let model = self.mModel {
-      model.detachProxy (self)
-      self.mModel = nil
-    }
-  }
-
-  //····················································································································
-
-  func updateProxy () {
-    if let model = self.mModel {
-      self.mInternalValue = model.prop
+      switch model.prop {
+      case .empty :
+        newModelArray = []
+      case .single (let v) :
+        newModelArray = v
+       case .multiple :
+        newModelArray = []
+      }
     }else{
-      self.mInternalValue = .empty
+      newModelArray = []
     }
+    self.mInternalArrayValue = newModelArray
+    super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inArrayValue :  [BoardModel]) {
+  override func setProp (_ inArrayValue : [BoardModel]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection < [BoardModel] > {
-    return self.mInternalValue
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
   }
 
   //····················································································································
@@ -8148,25 +8047,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   }
 
   //····················································································································
-
-  override init () {
-    super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v.count)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
+  //  Init
   //····················································································································
 
   convenience init (prefKey : String) {
@@ -8184,14 +8065,67 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
     }
   }
 
- //····················································································································
+  //····················································································································
+  // Model will change 
+  //····················································································································
 
-  private var mSet = Set <BoardModel> ()
-  private var mValue = [BoardModel] () {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [BoardModel]) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [BoardModel]) {
+    self.mInternalArrayValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+  // Update observers 
+  //····················································································································
+
+  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModel>, addedSet inAddedSet : Set <BoardModel>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+  //---
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  }
+ 
+  //····················································································································
+ 
+  // private var mSet = Set <BoardModel> ()
+  /* private var mValue = [BoardModel] () {
     didSet {
       if oldValue != self.mValue {
-        let oldSet = self.mSet
-        self.mSet = Set (self.mValue)
+        let oldSet = Set (oldValue)
+        let newSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8199,7 +8133,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (self.mSet)
+        let removedObjectSet = oldSet.subtracting (newSet)
         if removedObjectSet.count > 0 {
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
@@ -8270,7 +8204,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
-        let addedObjectSet = self.mSet.subtracting (oldSet)
+        let addedObjectSet = newSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
           for managedObject : BoardModel in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
@@ -8341,21 +8275,33 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
-        self.propagateProxyUpdate ()
+        // self.propagateProxyUpdate ()
         self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
       }
     }
-  }
+  } */
+
+  //····················································································································
+
+  override var prop : EBSelection < [BoardModel] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [BoardModel]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [BoardModel] { return self.mInternalArrayValue }
 
   //····················································································································
 
   private func writeInPreferences () {
     if let prefKey = self.mPrefKey {
       var dictionaryArray = [NSDictionary] ()
-      for object in self.mValue {
+      for object in self.mInternalArrayValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
         d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
@@ -8367,44 +8313,21 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModel] > { return .single (self.mValue) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : [BoardModel]) { self.mValue = inValue }
-
-  //····················································································································
-
-  override var propval : [BoardModel] { return self.mValue }
-
-  //····················································································································
-
-  override var propset : Set <BoardModel> { return self.mSet }
-
- //····················································································································
-
-  @objc func performUndo (_ oldValue : [BoardModel]) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
   func remove (_ object : BoardModel) {
-    if self.mSet.contains (object) {
-      var array = self.mValue
-      let idx = array.firstIndex (of: object)
-      array.remove (at: idx!)
-      self.mValue = array
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      var array = self.mInternalArrayValue
+      array.remove (at: idx)
+      self.mInternalArrayValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : BoardModel) {
-    if !self.mSet.contains (object) {
-      var array = self.mValue
+    if self.mInternalArrayValue.firstIndex (of: object) == nil {
+      var array = self.mInternalArrayValue
       array.append (object)
-      self.mValue = array
+      self.mInternalArrayValue = array
     }
   }
   
@@ -8422,7 +8345,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       object.setSignatureObserver (observer: observer)
     }
   }
@@ -8444,7 +8367,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in self.mValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

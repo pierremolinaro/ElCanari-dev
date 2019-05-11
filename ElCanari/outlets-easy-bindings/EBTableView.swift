@@ -5,26 +5,22 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let DEBUG_EVENT = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBTableView) class EBTableView : NSTableView, EBUserClassNameProtocol {
+class EBTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
   
@@ -36,17 +32,10 @@ private let DEBUG_EVENT = false
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTableViewDataSource
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(EBTableViewDataSource) protocol EBTableViewDataSource : NSTableViewDataSource {
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBTableViewDelegate
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBTableViewDelegate) protocol EBTableViewDelegate : NSTableViewDelegate {
+protocol EBTableViewDelegate : NSTableViewDelegate {
   func selectedObjectIndexSet () -> NSIndexSet
 }
 
@@ -54,7 +43,7 @@ private let DEBUG_EVENT = false
 //   Controller DataSource_EBTableView_controller
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(DataSource_EBTableView_controller) final class DataSource_EBTableView_controller : EBOutletEvent {
+final class DataSource_EBTableView_controller : EBOutletEvent {
 
   private let mDelegate : EBTableViewDelegate
   private let mTableView : EBTableView
@@ -63,7 +52,7 @@ private let DEBUG_EVENT = false
   //   When init is called, table view delegate and data source are set
   //····················································································································
   
-  init (delegate:EBTableViewDelegate, tableView:EBTableView) {
+  init (delegate : EBTableViewDelegate, tableView : EBTableView) {
     mTableView = tableView
     mDelegate = delegate
     super.init ()
@@ -73,16 +62,13 @@ private let DEBUG_EVENT = false
   //····················································································································
   
   private func updateOutlet () {
-    if DEBUG_EVENT {
-      print ("DataSource_EBTableView_controller::\(#function)")
-    }
   //---------------- Get current selection, as reloadData may change it
     let newTableViewSelectionIndexSet = self.mDelegate.selectedObjectIndexSet ()
   //---------------- Reload data
-    mTableView.reloadData ()
+    self.mTableView.reloadData ()
   //---------------- Update table view selection
-    if !newTableViewSelectionIndexSet.isEqual (to: mTableView.selectedRowIndexes) {
-      mTableView.selectRowIndexes (newTableViewSelectionIndexSet as IndexSet, byExtendingSelection:false)
+    if !newTableViewSelectionIndexSet.isEqual (to: self.mTableView.selectedRowIndexes) {
+      self.mTableView.selectRowIndexes (newTableViewSelectionIndexSet as IndexSet, byExtendingSelection:false)
     }
   //---------------- Scroll first selected row to visible
     if newTableViewSelectionIndexSet.count > 0 {
@@ -97,7 +83,7 @@ private let DEBUG_EVENT = false
 //   Controller Selection_EBTableView_controller
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Selection_EBTableView_controller) final class Selection_EBTableView_controller : EBOutletEvent {
+final class Selection_EBTableView_controller : EBOutletEvent {
 
   private let mDelegate : EBTableViewDelegate
   private let mTableView : EBTableView
@@ -106,7 +92,7 @@ private let DEBUG_EVENT = false
   //   When init is called, table view delegate and data source are set
   //····················································································································
   
-  init (delegate:EBTableViewDelegate, tableView:EBTableView) {
+  init (delegate : EBTableViewDelegate, tableView : EBTableView) {
     mTableView = tableView
     mDelegate = delegate
     super.init ()
@@ -116,13 +102,10 @@ private let DEBUG_EVENT = false
   //····················································································································
   
   private func updateOutlet () {
-    if DEBUG_EVENT {
-      print ("Selection_EBTableView_controller::\(#function)")
-    }
-  //---------------- Update table view selection
+ //---------------- Update table view selection
     let newTableViewSelectionIndexSet = self.mDelegate.selectedObjectIndexSet ()
-    if !newTableViewSelectionIndexSet.isEqual (to: mTableView.selectedRowIndexes) {
-      mTableView.selectRowIndexes (newTableViewSelectionIndexSet as IndexSet, byExtendingSelection:false)
+    if !newTableViewSelectionIndexSet.isEqual (to: self.mTableView.selectedRowIndexes) {
+      self.mTableView.selectRowIndexes (newTableViewSelectionIndexSet as IndexSet, byExtendingSelection: false)
     }
   //---------------- Scroll first selected row to visible
     if newTableViewSelectionIndexSet.count > 0 {
