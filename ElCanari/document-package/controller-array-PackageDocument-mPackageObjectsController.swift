@@ -176,6 +176,16 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
  }
 
   //····················································································································
+
+  override func notifyModelDidChange () {
+    super.notifyModelDidChange ()
+    let currentSelectedSet = self.selectedSet
+    let objectArray = self.mModel?.propval ?? []
+    let newSelectedSet = currentSelectedSet.intersection (objectArray)
+    self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
+  }
+
+  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -615,7 +625,6 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
       let objectsToRemove = self.selectedArray_property.propset
       for object in objectsToRemove {
         object.operationBeforeRemoving ()
-       // flushOutletEvents () // § Temporary !!!
         var objects = model.propval
         if let idx = objects.firstIndex (of: object) {
           objects.remove (at: idx)
