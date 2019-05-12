@@ -1877,7 +1877,7 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_DeviceInProject) {
+  func setModel (_ inModel : ReadWriteArrayOf_DeviceInProject?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1918,6 +1918,21 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [DeviceInProject] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2038,82 +2053,6 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
   }
  
   //····················································································································
- 
-  // private var mSet = Set <DeviceInProject> ()
-  /* private var mValue = [DeviceInProject] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mDeviceName_property.mSetterDelegate = nil
-            managedObject.mPrefix_property.mSetterDelegate = nil
-            managedObject.mDeviceVersion_property.mSetterDelegate = nil
-            managedObject.mDeviceFileData_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mPrefix_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_packageNames_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : DeviceInProject in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mDeviceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mPrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDeviceFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mPrefix_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_packageNames_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pinPadAssignments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [DeviceInProject] > { return .single (self.mInternalArrayValue) }
 
@@ -2144,19 +2083,15 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
 
   func remove (_ object : DeviceInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : DeviceInProject) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

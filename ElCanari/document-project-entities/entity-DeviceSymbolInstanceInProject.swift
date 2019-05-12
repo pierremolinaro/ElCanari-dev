@@ -950,7 +950,7 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_DeviceSymbolInstanceInProject) {
+  func setModel (_ inModel : ReadWriteArrayOf_DeviceSymbolInstanceInProject?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -991,6 +991,21 @@ final class ProxyArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Device
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [DeviceSymbolInstanceInProject] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1111,62 +1126,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
   }
  
   //····················································································································
- 
-  // private var mSet = Set <DeviceSymbolInstanceInProject> ()
-  /* private var mValue = [DeviceSymbolInstanceInProject] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : DeviceSymbolInstanceInProject in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_symbolAndTypeName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
 
@@ -1197,19 +1156,15 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
 
   func remove (_ object : DeviceSymbolInstanceInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : DeviceSymbolInstanceInProject) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

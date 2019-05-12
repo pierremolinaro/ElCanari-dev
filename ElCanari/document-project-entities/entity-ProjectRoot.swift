@@ -479,8 +479,8 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var selectedSheetObjects_modelDidChangeController : EBSimpleController? = nil
-  var selectedSheetObjects_boundObjectDidChangeController : EBSimpleController? = nil
-  let selectedSheetObjects_property = StoredArrayOf_SchematicsObject ()
+  // var selectedSheetObjects_boundObjectDidChangeController : EBSimpleController? = nil
+  let selectedSheetObjects_property = ProxyArrayOf_SchematicsObject ()
 
   //····················································································································
 
@@ -821,22 +821,14 @@ class ProjectRoot : EBManagedObject,
       let controller = EBSimpleController (
         observedObjects: [self.mSelectedSheet_property],
         callBack: { [weak self] in
-          if let objects = self?.mSelectedSheet?.mObjects {
-            self?.selectedSheetObjects = objects
+          if let me = self, let model = me.mSelectedSheet {
+            me.selectedSheetObjects_property.setModel (model.mObjects_property)
           }
         }
       )
       self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
-    self.selectedSheetObjects_boundObjectDidChangeController = EBSimpleController (
-      observedObjects: [self.selectedSheetObjects_property],
-      callBack: { [weak self] in
-        if let objects = self?.selectedSheetObjects {
-          self?.mSelectedSheet?.mObjects = objects
-        }
-      }
-    )
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.owner = self
   //--- Atomic property: selectedSheetIssues
@@ -1096,8 +1088,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = nil
     self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
-    self.selectedSheetObjects_boundObjectDidChangeController?.unregister ()
-    self.selectedSheetObjects_boundObjectDidChangeController = nil
+    self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
@@ -1404,7 +1395,6 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mValueExplorer = nil
   //--- ToMany proxy: selectedSheetObjects
     self.selectedSheetObjects_property.mObserverExplorer = nil
-    self.selectedSheetObjects_property.mValueExplorer = nil
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.mObserverExplorer = nil
     self.mSelectedSheet_property.mValueExplorer = nil
@@ -3120,7 +3110,7 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_ProjectRoot) {
+  func setModel (_ inModel : ReadWriteArrayOf_ProjectRoot?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -3161,6 +3151,21 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [ProjectRoot] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -3281,114 +3286,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   }
  
   //····················································································································
- 
-  // private var mSet = Set <ProjectRoot> ()
-  /* private var mValue = [ProjectRoot] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
-            managedObject.mSelectedSchematicsInspector_property.mSetterDelegate = nil
-            managedObject.mSchematicsTitle_property.mSetterDelegate = nil
-            managedObject.mSchematicsVersion_property.mSetterDelegate = nil
-            managedObject.mSchematicsDate_property.mSetterDelegate = nil
-            managedObject.mSchematicsHorizontalFlip_property.mSetterDelegate = nil
-            managedObject.mSchematicsVerticalFlip_property.mSetterDelegate = nil
-            managedObject.mSchematicsZoom_property.mSetterDelegate = nil
-            managedObject.mSchematicsGridStyle_property.mSetterDelegate = nil
-            managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = nil
-            managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsTitle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsVersion_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsDate_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsHorizontalFlip_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsVerticalFlip_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsZoom_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsGridStyle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsGridDisplayFactor_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsSheetOrientation_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_netsDescription_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_deviceNames_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsStatusMessage_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSchematicsStatusImage_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : ProjectRoot in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSelectedSchematicsInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsTitle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsDate_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsHorizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsZoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsGridStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsGridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSchematicsSheetOrientation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsTitle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsVersion_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsDate_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsHorizontalFlip_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsVerticalFlip_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsZoom_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsGridStyle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsGridDisplayFactor_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsSheetOrientation_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_selectedSheetIssues_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_netsDescription_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_deviceNames_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_connexionWarningString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_connexionErrorString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsStatusMessage_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSchematicsStatusImage_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [ProjectRoot] > { return .single (self.mInternalArrayValue) }
 
@@ -3419,19 +3316,15 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   func remove (_ object : ProjectRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : ProjectRoot) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

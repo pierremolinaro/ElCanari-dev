@@ -1045,7 +1045,7 @@ final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_SymbolText) {
+  func setModel (_ inModel : ReadWriteArrayOf_SymbolText?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1086,6 +1086,21 @@ final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [SymbolText] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1206,72 +1221,6 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   }
  
   //····················································································································
- 
-  // private var mSet = Set <SymbolText> ()
-  /* private var mValue = [SymbolText] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.y_property.mSetterDelegate = nil
-            managedObject.text_property.mSetterDelegate = nil
-            managedObject.horizontalAlignment_property.mSetterDelegate = nil
-            managedObject.x_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : SymbolText in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.text_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.horizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_text_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [SymbolText] > { return .single (self.mInternalArrayValue) }
 
@@ -1302,19 +1251,15 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
 
   func remove (_ object : SymbolText) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : SymbolText) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

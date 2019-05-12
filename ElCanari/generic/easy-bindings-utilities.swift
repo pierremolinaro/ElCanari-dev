@@ -127,7 +127,6 @@ class EBAbstractProperty : EBEvent {
   final func removeEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
     inObserverSet.apply {(_ observer : EBEvent) in
       self.mObservers.remove (observer)
-      // observer.postEvent () §
     }
     self.updateObserverExplorer ()
   }
@@ -309,7 +308,6 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
       self.mUnbindFunction? ()
     }else{
       DispatchQueue.main.async { self.mUnbindFunction? () }
-      // presentErrorWindow (#file, #line, "removeFromSuperview not in main thread")
     }
   }
 
@@ -321,7 +319,6 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
       self.mUnbindFunction? ()
     }else{
       DispatchQueue.main.async { self.mUnbindFunction? () }
-      // presentErrorWindow (#file, #line, "removeFromSuperviewWithoutNeedingDisplay not in main thread")
     }
   }
 
@@ -778,14 +775,14 @@ class ReadOnlyAbstractGenericArrayProperty : EBAbstractProperty {
 
   //····················································································································
 
-  final func attachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+  final internal func attachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
     self.mClients.insert (inClient)
     inClient.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  final func detachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+  final internal func detachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
     self.mClients.remove (inClient)
   }
 
@@ -830,6 +827,8 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericArra
   //····················································································································
   //  Internal value
   //····················································································································
+
+  var internalSetValue : Set <T> { return self.mInternalSetValue }
 
   private var mInternalSetValue = Set <T> () // Requires T to be hashable
 

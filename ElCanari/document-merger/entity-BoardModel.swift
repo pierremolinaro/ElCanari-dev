@@ -7958,7 +7958,7 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_BoardModel) {
+  func setModel (_ inModel : ReadWriteArrayOf_BoardModel?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -7999,6 +7999,21 @@ final class ProxyArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [BoardModel] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -8119,172 +8134,6 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   }
  
   //····················································································································
- 
-  // private var mSet = Set <BoardModel> ()
-  /* private var mValue = [BoardModel] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.name_property.mSetterDelegate = nil
-            managedObject.modelWidth_property.mSetterDelegate = nil
-            managedObject.modelWidthUnit_property.mSetterDelegate = nil
-            managedObject.modelHeight_property.mSetterDelegate = nil
-            managedObject.modelHeightUnit_property.mSetterDelegate = nil
-            managedObject.zoom_property.mSetterDelegate = nil
-            managedObject.modelLimitWidth_property.mSetterDelegate = nil
-            managedObject.modelLimitWidthUnit_property.mSetterDelegate = nil
-            managedObject.artworkName_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : BoardModel in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.modelLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [BoardModel] > { return .single (self.mInternalArrayValue) }
 
@@ -8315,19 +8164,15 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   func remove (_ object : BoardModel) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : BoardModel) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

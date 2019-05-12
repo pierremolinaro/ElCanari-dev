@@ -14,9 +14,9 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
   // Model
   //····················································································································
  
-   private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
+  private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
 
-   //····················································································································
+  //····················································································································
 
   var selectedSet : Set <SchematicsObject> {
     set (newValue) {
@@ -610,15 +610,16 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
   //····················································································································
 
   func deleteSelectedObjects () {
-    if self.canDelete () {
+    if self.canDelete (), let model = self.mModel {
     //--- Remove selected objects
-      for object in self.selectedArray_property.propset {
+      let objectsToRemove = self.selectedArray_property.propset
+      for object in objectsToRemove {
         object.operationBeforeRemoving ()
-        flushOutletEvents () // § Temporary !!!
-        var objects = self.mModel?.propval ?? []
+       // flushOutletEvents () // § Temporary !!!
+        var objects = model.propval
         if let idx = objects.firstIndex (of: object) {
           objects.remove (at: idx)
-          self.mModel?.setProp (objects)
+          model.setProp (objects)
         }
       }
     //---

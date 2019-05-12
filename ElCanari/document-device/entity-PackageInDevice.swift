@@ -1773,7 +1773,7 @@ final class ProxyArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PackageInDevice) {
+  func setModel (_ inModel : ReadWriteArrayOf_PackageInDevice?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1814,6 +1814,21 @@ final class ProxyArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PackageInDevice] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1934,86 +1949,6 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PackageInDevice> ()
-  /* private var mValue = [PackageInDevice] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mFileData_property.mSetterDelegate = nil
-            managedObject.mName_property.mSetterDelegate = nil
-            managedObject.mVersion_property.mSetterDelegate = nil
-            managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
-            managedObject.mX_property.mSetterDelegate = nil
-            managedObject.mY_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padNameSet_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PackageInDevice in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padNameSet_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PackageInDevice] > { return .single (self.mInternalArrayValue) }
 
@@ -2044,19 +1979,15 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
 
   func remove (_ object : PackageInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PackageInDevice) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

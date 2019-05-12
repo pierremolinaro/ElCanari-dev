@@ -1728,7 +1728,7 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_FontRoot) {
+  func setModel (_ inModel : ReadWriteArrayOf_FontRoot?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1769,6 +1769,21 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [FontRoot] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1889,84 +1904,6 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   }
  
   //····················································································································
- 
-  // private var mSet = Set <FontRoot> ()
-  /* private var mValue = [FontRoot] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.comments_property.mSetterDelegate = nil
-            managedObject.nominalSize_property.mSetterDelegate = nil
-            managedObject.selectedTab_property.mSetterDelegate = nil
-            managedObject.selectedInspector_property.mSetterDelegate = nil
-            managedObject.currentCharacterCodePoint_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_definedCharacters_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : FontRoot in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.nominalSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.currentCharacterCodePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_definedCharacters_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [FontRoot] > { return .single (self.mInternalArrayValue) }
 
@@ -1997,19 +1934,15 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
 
   func remove (_ object : FontRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : FontRoot) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

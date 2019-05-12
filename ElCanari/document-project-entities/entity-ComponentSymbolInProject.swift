@@ -2276,7 +2276,7 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_ComponentSymbolInProject) {
+  func setModel (_ inModel : ReadWriteArrayOf_ComponentSymbolInProject?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -2317,6 +2317,21 @@ final class ProxyArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSy
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [ComponentSymbolInProject] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2437,102 +2452,6 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
   }
  
   //····················································································································
- 
-  // private var mSet = Set <ComponentSymbolInProject> ()
-  /* private var mValue = [ComponentSymbolInProject] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mCenterX_property.mSetterDelegate = nil
-            managedObject.mCenterY_property.mSetterDelegate = nil
-            managedObject.mRotation_property.mSetterDelegate = nil
-            managedObject.mSymbolInstanceName_property.mSetterDelegate = nil
-            managedObject.mSymbolTypeName_property.mSetterDelegate = nil
-            managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = nil
-            managedObject.mDisplayComponentNameOffsetY_property.mSetterDelegate = nil
-            managedObject.mDisplayComponentValue_property.mSetterDelegate = nil
-            managedObject.mDisplayComponentValueOffsetX_property.mSetterDelegate = nil
-            managedObject.mDisplayComponentValueOffsetY_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mRotation_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDisplayComponentNameOffsetY_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDisplayComponentValue_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDisplayComponentValueOffsetX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mDisplayComponentValueOffsetY_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolInfo_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolInSchematics_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : ComponentSymbolInProject in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSymbolInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mSymbolTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDisplayComponentNameOffsetX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDisplayComponentNameOffsetY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDisplayComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDisplayComponentValueOffsetX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mDisplayComponentValueOffsetY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mRotation_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDisplayComponentNameOffsetY_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDisplayComponentValue_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDisplayComponentValueOffsetX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mDisplayComponentValueOffsetY_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolInfo_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolInSchematics_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue) }
 
@@ -2563,19 +2482,15 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
 
   func remove (_ object : ComponentSymbolInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : ComponentSymbolInProject) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

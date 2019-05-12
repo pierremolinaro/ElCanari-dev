@@ -1484,7 +1484,7 @@ final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_ArtworkRoot) {
+  func setModel (_ inModel : ReadWriteArrayOf_ArtworkRoot?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1525,6 +1525,21 @@ final class ProxyArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [ArtworkRoot] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1645,94 +1660,6 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   }
  
   //····················································································································
- 
-  // private var mSet = Set <ArtworkRoot> ()
-  /* private var mValue = [ArtworkRoot] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.selectedTab_property.mSetterDelegate = nil
-            managedObject.comments_property.mSetterDelegate = nil
-            managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = nil
-            managedObject.minPPTPTTTW_property.mSetterDelegate = nil
-            managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = nil
-            managedObject.minValueForOARinEBUnit_property.mSetterDelegate = nil
-            managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = nil
-            managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = nil
-            managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = nil
-            managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = nil
-            managedObject.drillDataFileExtension_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : ArtworkRoot in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minPPTPTTTW_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForOARinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.drillDataFileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > { return .single (self.mInternalArrayValue) }
 
@@ -1763,19 +1690,15 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   func remove (_ object : ArtworkRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : ArtworkRoot) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

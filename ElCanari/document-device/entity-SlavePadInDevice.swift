@@ -1499,7 +1499,7 @@ final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_SlavePadInDevice) {
+  func setModel (_ inModel : ReadWriteArrayOf_SlavePadInDevice?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1540,6 +1540,21 @@ final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [SlavePadInDevice] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1660,84 +1675,6 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
   }
  
   //····················································································································
- 
-  // private var mSet = Set <SlavePadInDevice> ()
-  /* private var mValue = [SlavePadInDevice] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mCenterX_property.mSetterDelegate = nil
-            managedObject.mCenterY_property.mSetterDelegate = nil
-            managedObject.mWidth_property.mSetterDelegate = nil
-            managedObject.mHeight_property.mSetterDelegate = nil
-            managedObject.mHoleDiameter_property.mSetterDelegate = nil
-            managedObject.mShape_property.mSetterDelegate = nil
-            managedObject.mStyle_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mCenterX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mCenterY_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mHeight_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mHoleDiameter_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mShape_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mStyle_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : SlavePadInDevice in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mCenterY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mHoleDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mCenterX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mCenterY_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mHeight_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mHoleDiameter_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mShape_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mStyle_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [SlavePadInDevice] > { return .single (self.mInternalArrayValue) }
 
@@ -1768,19 +1705,15 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
 
   func remove (_ object : SlavePadInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : SlavePadInDevice) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

@@ -2548,7 +2548,7 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PackageSlavePad) {
+  func setModel (_ inModel : ReadWriteArrayOf_PackageSlavePad?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -2589,6 +2589,21 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PackageSlavePad] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2709,116 +2724,6 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PackageSlavePad> ()
-  /* private var mValue = [PackageSlavePad] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.xCenter_property.mSetterDelegate = nil
-            managedObject.yCenter_property.mSetterDelegate = nil
-            managedObject.width_property.mSetterDelegate = nil
-            managedObject.height_property.mSetterDelegate = nil
-            managedObject.holeDiameter_property.mSetterDelegate = nil
-            managedObject.padShape_property.mSetterDelegate = nil
-            managedObject.padStyle_property.mSetterDelegate = nil
-            managedObject.xCenterUnit_property.mSetterDelegate = nil
-            managedObject.yCenterUnit_property.mSetterDelegate = nil
-            managedObject.widthUnit_property.mSetterDelegate = nil
-            managedObject.heightUnit_property.mSetterDelegate = nil
-            managedObject.holeDiameterUnit_property.mSetterDelegate = nil
-            managedObject.annularRingUnit_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padShape_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padStyle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PackageSlavePad in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.xCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.holeDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.padShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.padStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xCenterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yCenterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.widthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.heightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.holeDiameterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.annularRingUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padShape_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padStyle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PackageSlavePad] > { return .single (self.mInternalArrayValue) }
 
@@ -2849,19 +2754,15 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
 
   func remove (_ object : PackageSlavePad) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PackageSlavePad) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

@@ -1833,7 +1833,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PointInSchematics) {
+  func setModel (_ inModel : ReadWriteArrayOf_PointInSchematics?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1874,6 +1874,21 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PointInSchematics] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1994,76 +2009,6 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PointInSchematics> ()
-  /* private var mValue = [PointInSchematics] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mSymbolPinName_property.mSetterDelegate = nil
-            managedObject.mX_property.mSetterDelegate = nil
-            managedObject.mY_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mSymbolPinName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_location_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_netName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_canMove_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_wireColor_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_status_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_connectedPoints_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PointInSchematics in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mSymbolPinName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mSymbolPinName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_location_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_netName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_canMove_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_wireColor_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_status_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_connectedPoints_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PointInSchematics] > { return .single (self.mInternalArrayValue) }
 
@@ -2094,19 +2039,15 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
 
   func remove (_ object : PointInSchematics) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PointInSchematics) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

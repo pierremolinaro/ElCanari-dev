@@ -2130,7 +2130,7 @@ final class ProxyArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PackageDimension) {
+  func setModel (_ inModel : ReadWriteArrayOf_PackageDimension?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -2171,6 +2171,21 @@ final class ProxyArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PackageDimension] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2291,110 +2306,6 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PackageDimension> ()
-  /* private var mValue = [PackageDimension] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.y1_property.mSetterDelegate = nil
-            managedObject.x2_property.mSetterDelegate = nil
-            managedObject.y2_property.mSetterDelegate = nil
-            managedObject.xDimension_property.mSetterDelegate = nil
-            managedObject.yDimension_property.mSetterDelegate = nil
-            managedObject.x1Unit_property.mSetterDelegate = nil
-            managedObject.y1Unit_property.mSetterDelegate = nil
-            managedObject.x2Unit_property.mSetterDelegate = nil
-            managedObject.y2Unit_property.mSetterDelegate = nil
-            managedObject.xDimensionUnit_property.mSetterDelegate = nil
-            managedObject.yDimensionUnit_property.mSetterDelegate = nil
-            managedObject.distanceUnit_property.mSetterDelegate = nil
-            managedObject.x1_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xDimension_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yDimension_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xDimensionUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yDimensionUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_distanceUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_distanceInCanariUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PackageDimension in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xDimension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yDimension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.y1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.y2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xDimensionUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yDimensionUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.distanceUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xDimension_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yDimension_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xDimensionUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yDimensionUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_distanceUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_distanceInCanariUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PackageDimension] > { return .single (self.mInternalArrayValue) }
 
@@ -2425,19 +2336,15 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
 
   func remove (_ object : PackageDimension) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PackageDimension) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

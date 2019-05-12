@@ -824,7 +824,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_CanariLibraryEntry) {
+  func setModel (_ inModel : ReadWriteArrayOf_CanariLibraryEntry?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -865,6 +865,21 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [CanariLibraryEntry] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -985,68 +1000,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   }
  
   //····················································································································
- 
-  // private var mSet = Set <CanariLibraryEntry> ()
-  /* private var mValue = [CanariLibraryEntry] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mPath_property.mSetterDelegate = nil
-            managedObject.mUses_property.mSetterDelegate = nil
-            managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
-            managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : CanariLibraryEntry in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
 
@@ -1077,19 +1030,15 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
 
   func remove (_ object : CanariLibraryEntry) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : CanariLibraryEntry) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

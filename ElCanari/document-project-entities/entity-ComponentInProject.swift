@@ -1637,7 +1637,7 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_ComponentInProject) {
+  func setModel (_ inModel : ReadWriteArrayOf_ComponentInProject?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1678,6 +1678,21 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [ComponentInProject] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1798,76 +1813,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   }
  
   //····················································································································
- 
-  // private var mSet = Set <ComponentInProject> ()
-  /* private var mValue = [ComponentInProject] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mNamePrefix_property.mSetterDelegate = nil
-            managedObject.mNameIndex_property.mSetterDelegate = nil
-            managedObject.mComponentValue_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mNamePrefix_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mNameIndex_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mComponentValue_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_componentName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_deviceName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedPackageName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_availablePackages_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_placementInSchematics_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : ComponentInProject in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mNamePrefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mNameIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mComponentValue_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mNamePrefix_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mNameIndex_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mComponentValue_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_componentName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_deviceName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedPackageName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_availablePackages_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_unplacedSymbols_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_placementInSchematics_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [ComponentInProject] > { return .single (self.mInternalArrayValue) }
 
@@ -1898,19 +1843,15 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
 
   func remove (_ object : ComponentInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : ComponentInProject) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

@@ -140,7 +140,6 @@ extension ComponentSymbolInProject {
       point.mNC = nil // Detach from pin
       if (point.mWiresP1s.count == 0) && (point.mWiresP1s.count == 0) {
         point.mNet = nil // Remove from net
-    //    point.mSheet = nil // Remove from sheet
       }else{ // Define point location from pin
         let pinLocation = point.location!
         point.mX = pinLocation.x

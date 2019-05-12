@@ -3217,7 +3217,7 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_MergerRoot) {
+  func setModel (_ inModel : ReadWriteArrayOf_MergerRoot?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -3258,6 +3258,21 @@ final class ProxyArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [MergerRoot] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -3378,142 +3393,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   }
  
   //····················································································································
- 
-  // private var mSet = Set <MergerRoot> ()
-  /* private var mValue = [MergerRoot] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.selectedPageIndex_property.mSetterDelegate = nil
-            managedObject.zoom_property.mSetterDelegate = nil
-            managedObject.automaticBoardSize_property.mSetterDelegate = nil
-            managedObject.boardManualWidth_property.mSetterDelegate = nil
-            managedObject.boardManualHeight_property.mSetterDelegate = nil
-            managedObject.boardWidthUnit_property.mSetterDelegate = nil
-            managedObject.boardHeightUnit_property.mSetterDelegate = nil
-            managedObject.overlapingArrangment_property.mSetterDelegate = nil
-            managedObject.selectedBoardXUnit_property.mSetterDelegate = nil
-            managedObject.selectedBoardYUnit_property.mSetterDelegate = nil
-            managedObject.boardLimitWidth_property.mSetterDelegate = nil
-            managedObject.boardLimitWidthUnit_property.mSetterDelegate = nil
-            managedObject.arrowMagnitude_property.mSetterDelegate = nil
-            managedObject.arrowMagnitudeUnit_property.mSetterDelegate = nil
-            managedObject.shiftArrowMagnitude_property.mSetterDelegate = nil
-            managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = nil
-            managedObject.artworkName_property.mSetterDelegate = nil
-            managedObject.generateGerberProductFile_property.mSetterDelegate = nil
-            managedObject.generatePDFProductFile_property.mSetterDelegate = nil
-            managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : MergerRoot in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.automaticBoardSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardManualWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardManualHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.overlapingArrangment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.selectedBoardXUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.selectedBoardYUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.boardLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.arrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.arrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.shiftArrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.generateGerberProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.generatePDFProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > { return .single (self.mInternalArrayValue) }
 
@@ -3544,19 +3423,15 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   func remove (_ object : MergerRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : MergerRoot) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

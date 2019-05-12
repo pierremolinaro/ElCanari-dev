@@ -807,7 +807,7 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_CommentInSchematics) {
+  func setModel (_ inModel : ReadWriteArrayOf_CommentInSchematics?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -848,6 +848,21 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [CommentInSchematics] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -968,66 +983,6 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
   }
  
   //····················································································································
- 
-  // private var mSet = Set <CommentInSchematics> ()
-  /* private var mValue = [CommentInSchematics] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mX_property.mSetterDelegate = nil
-            managedObject.mY_property.mSetterDelegate = nil
-            managedObject.mComment_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mComment_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : CommentInSchematics in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mComment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mComment_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [CommentInSchematics] > { return .single (self.mInternalArrayValue) }
 
@@ -1058,19 +1013,15 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
 
   func remove (_ object : CommentInSchematics) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : CommentInSchematics) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

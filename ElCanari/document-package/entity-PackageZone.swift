@@ -2233,7 +2233,7 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PackageZone) {
+  func setModel (_ inModel : ReadWriteArrayOf_PackageZone?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -2274,6 +2274,21 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PackageZone] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2394,114 +2409,6 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PackageZone> ()
-  /* private var mValue = [PackageZone] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.x_property.mSetterDelegate = nil
-            managedObject.y_property.mSetterDelegate = nil
-            managedObject.width_property.mSetterDelegate = nil
-            managedObject.height_property.mSetterDelegate = nil
-            managedObject.xUnit_property.mSetterDelegate = nil
-            managedObject.yUnit_property.mSetterDelegate = nil
-            managedObject.widthUnit_property.mSetterDelegate = nil
-            managedObject.heightUnit_property.mSetterDelegate = nil
-            managedObject.zoneName_property.mSetterDelegate = nil
-            managedObject.xName_property.mSetterDelegate = nil
-            managedObject.yName_property.mSetterDelegate = nil
-            managedObject.xNameUnit_property.mSetterDelegate = nil
-            managedObject.yNameUnit_property.mSetterDelegate = nil
-            managedObject.zoneNumbering_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_rect_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PackageZone in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.widthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.heightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.zoneName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.zoneNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PackageZone] > { return .single (self.mInternalArrayValue) }
 
@@ -2532,19 +2439,15 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
 
   func remove (_ object : PackageZone) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PackageZone) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

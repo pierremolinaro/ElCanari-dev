@@ -2121,7 +2121,7 @@ final class ProxyArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PackageArc) {
+  func setModel (_ inModel : ReadWriteArrayOf_PackageArc?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -2162,6 +2162,21 @@ final class ProxyArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [PackageArc] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2282,110 +2297,6 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
   }
  
   //····················································································································
- 
-  // private var mSet = Set <PackageArc> ()
-  /* private var mValue = [PackageArc] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.yCenter_property.mSetterDelegate = nil
-            managedObject.radius_property.mSetterDelegate = nil
-            managedObject.startAngle_property.mSetterDelegate = nil
-            managedObject.arcAngle_property.mSetterDelegate = nil
-            managedObject.startTangent_property.mSetterDelegate = nil
-            managedObject.endTangent_property.mSetterDelegate = nil
-            managedObject.pathIsClosed_property.mSetterDelegate = nil
-            managedObject.xCenterUnit_property.mSetterDelegate = nil
-            managedObject.yCenterUnit_property.mSetterDelegate = nil
-            managedObject.radiusUnit_property.mSetterDelegate = nil
-            managedObject.startTangentUnit_property.mSetterDelegate = nil
-            managedObject.endTangentUnit_property.mSetterDelegate = nil
-            managedObject.xCenter_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_radius_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_startAngle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_arcAngle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_startTangent_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_endTangent_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_radiusUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : PackageArc in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.yCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.radius_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.startAngle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.arcAngle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.startTangent_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.endTangent_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.pathIsClosed_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xCenterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yCenterUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.radiusUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.startTangentUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.endTangentUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xCenter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_radius_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_startAngle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_arcAngle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_startTangent_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_endTangent_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pathIsClosed_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_radiusUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_startTangentUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_endTangentUnit_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [PackageArc] > { return .single (self.mInternalArrayValue) }
 
@@ -2416,19 +2327,15 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
 
   func remove (_ object : PackageArc) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : PackageArc) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

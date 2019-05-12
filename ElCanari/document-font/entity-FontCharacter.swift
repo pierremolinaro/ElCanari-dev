@@ -1275,7 +1275,7 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_FontCharacter) {
+  func setModel (_ inModel : ReadWriteArrayOf_FontCharacter?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1316,6 +1316,21 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [FontCharacter] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1436,74 +1451,6 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   }
  
   //····················································································································
- 
-  // private var mSet = Set <FontCharacter> ()
-  /* private var mValue = [FontCharacter] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.codePoint_property.mSetterDelegate = nil
-            managedObject.advance_property.mSetterDelegate = nil
-            managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = nil
-            managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : FontCharacter in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > { return .single (self.mInternalArrayValue) }
 
@@ -1534,19 +1481,15 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   func remove (_ object : FontCharacter) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : FontCharacter) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

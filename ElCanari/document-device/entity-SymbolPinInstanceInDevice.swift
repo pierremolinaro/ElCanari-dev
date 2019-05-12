@@ -1100,7 +1100,7 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_SymbolPinInstanceInDevice) {
+  func setModel (_ inModel : ReadWriteArrayOf_SymbolPinInstanceInDevice?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1141,6 +1141,21 @@ final class ProxyArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinI
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [SymbolPinInstanceInDevice] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1261,60 +1276,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   }
  
   //····················································································································
- 
-  // private var mSet = Set <SymbolPinInstanceInDevice> ()
-  /* private var mValue = [SymbolPinInstanceInDevice] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-          }
-        //--- Remove observers of stored properties
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pinQualifiedName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_numberShape_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : SymbolPinInstanceInDevice in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-          }
-        //--- Add observers of stored properties
-        //--- Add observers of transient properties
-          self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pinQualifiedName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [SymbolPinInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
@@ -1345,19 +1306,15 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
 
   func remove (_ object : SymbolPinInstanceInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : SymbolPinInstanceInDevice) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

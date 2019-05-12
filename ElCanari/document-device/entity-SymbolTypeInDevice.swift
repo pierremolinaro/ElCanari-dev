@@ -1301,7 +1301,7 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice) {
+  func setModel (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1342,6 +1342,21 @@ final class ProxyArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevic
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [SymbolTypeInDevice] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -1462,76 +1477,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   }
  
   //····················································································································
- 
-  // private var mSet = Set <SymbolTypeInDevice> ()
-  /* private var mValue = [SymbolTypeInDevice] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.mTypeName_property.mSetterDelegate = nil
-            managedObject.mVersion_property.mSetterDelegate = nil
-            managedObject.mFileData_property.mSetterDelegate = nil
-            managedObject.mStrokeBezierPath_property.mSetterDelegate = nil
-            managedObject.mFilledBezierPath_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_mTypeName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : SymbolTypeInDevice in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.mTypeName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mStrokeBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mFilledBezierPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_mTypeName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pinNameShape_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [SymbolTypeInDevice] > { return .single (self.mInternalArrayValue) }
 
@@ -1562,19 +1507,15 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
 
   func remove (_ object : SymbolTypeInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : SymbolTypeInDevice) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   

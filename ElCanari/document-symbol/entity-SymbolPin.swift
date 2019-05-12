@@ -1955,7 +1955,7 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_SymbolPin) {
+  func setModel (_ inModel : ReadWriteArrayOf_SymbolPin?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1996,6 +1996,21 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
       return model.prop
     }else{
       return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [SymbolPin] {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
     }
   }
 
@@ -2116,100 +2131,6 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   }
  
   //····················································································································
- 
-  // private var mSet = Set <SymbolPin> ()
-  /* private var mValue = [SymbolPin] () {
-    didSet {
-      if oldValue != self.mValue {
-        let oldSet = Set (oldValue)
-        let newSet = Set (self.mValue)
-      //--- Register old value in undo manager
-        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let valueExplorer = self.mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
-        }
-      //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (newSet)
-        if removedObjectSet.count > 0 {
-          for managedObject in removedObjectSet {
-            managedObject.setSignatureObserver (observer: nil)
-            self.mResetOppositeRelationship? (managedObject)
-            managedObject.yPin_property.mSetterDelegate = nil
-            managedObject.xName_property.mSetterDelegate = nil
-            managedObject.yName_property.mSetterDelegate = nil
-            managedObject.xNumber_property.mSetterDelegate = nil
-            managedObject.yNumber_property.mSetterDelegate = nil
-            managedObject.name_property.mSetterDelegate = nil
-            managedObject.nameHorizontalAlignment_property.mSetterDelegate = nil
-            managedObject.numberHorizontalAlignment_property.mSetterDelegate = nil
-            managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
-            managedObject.xPin_property.mSetterDelegate = nil
-          }
-        //--- Remove observers of stored properties
-          self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
-        //--- Remove observers of transient properties
-          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
-        }
-       //--- Added object set
-        let addedObjectSet = newSet.subtracting (oldSet)
-        if addedObjectSet.count > 0 {
-          for managedObject : SymbolPin in addedObjectSet {
-            managedObject.setSignatureObserver (observer: self)
-            self.mSetOppositeRelationship? (managedObject)
-            managedObject.yPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.yNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.nameHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.numberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.xPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          }
-        //--- Add observers of stored properties
-          self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
-        //--- Add observers of transient properties
-          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
-        }
-      //--- Notify observers
-        // self.propagateProxyUpdate ()
-        self.postEvent ()
-        self.clearSignatureCache ()
-      //--- Write in preferences ?
-        self.writeInPreferences ()
-      }
-    }
-  } */
-
-  //····················································································································
 
   override var prop : EBSelection < [SymbolPin] > { return .single (self.mInternalArrayValue) }
 
@@ -2240,19 +2161,15 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   func remove (_ object : SymbolPin) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      var array = self.mInternalArrayValue
-      array.remove (at: idx)
-      self.mInternalArrayValue = array
+      self.mInternalArrayValue.remove (at: idx)
     }
   }
   
   //····················································································································
 
   func add (_ object : SymbolPin) {
-    if self.mInternalArrayValue.firstIndex (of: object) == nil {
-      var array = self.mInternalArrayValue
-      array.append (object)
-      self.mInternalArrayValue = array
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
     }
   }
   
