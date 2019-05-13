@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + ProjectDocument mProjectFontController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + Preferences additionnalLibraryArrayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

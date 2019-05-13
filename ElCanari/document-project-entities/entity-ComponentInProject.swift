@@ -1911,6 +1911,913 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyObject_ComponentInProject 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <ComponentInProject> {
+
+  //····················································································································
+
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ComponentInProject?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  //--- Remove observers from removed objects
+    inOldValue?.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
+    inOldValue?.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
+    inOldValue?.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+    inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    inOldValue?.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+    inOldValue?.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
+    inOldValue?.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
+    inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+    inOldValue?.placementInSchematics_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematics) // Transient property
+  //--- Add observers to added objects
+    self.mInternalValue?.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
+    self.mInternalValue?.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
+    self.mInternalValue?.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+    self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+    self.mInternalValue?.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+    self.mInternalValue?.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
+    self.mInternalValue?.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
+    self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+    self.mInternalValue?.placementInSchematics_property.addEBObserversFrom (&self.mObserversOf_placementInSchematics) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mNamePrefix' stored property
+  //····················································································································
+
+  private var mObserversOf_mNamePrefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNamePrefix.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mNamePrefix_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNamePrefix.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mNamePrefix_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNamePrefix_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNamePrefix.apply { (_ observer : EBEvent) in
+        managedObject.mNamePrefix_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNamePrefix_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNamePrefix.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNamePrefix_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mNameIndex' stored property
+  //····················································································································
+
+  private var mObserversOf_mNameIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNameIndex.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mNameIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNameIndex.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mNameIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNameIndex_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNameIndex.apply { (_ observer : EBEvent) in
+        managedObject.mNameIndex_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNameIndex_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mNameIndex.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNameIndex_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mComponentValue' stored property
+  //····················································································································
+
+  private var mObserversOf_mComponentValue = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mComponentValue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mComponentValue_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mComponentValue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mComponentValue_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mComponentValue_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
+        managedObject.mComponentValue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    self.mObserversOf_mComponentValue.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mComponentValue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'componentName' transient property
+  //····················································································································
+
+  private var mObserversOf_componentName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_componentName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.componentName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_componentName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.componentName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+        managedObject.componentName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
+        managedObject.componentName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'deviceName' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.deviceName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.deviceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
+        managedObject.deviceName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceName.apply { (_ observer : EBEvent) in
+        managedObject.deviceName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectedPackageName' transient property
+  //····················································································································
+
+  private var mObserversOf_selectedPackageName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectedPackageName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectedPackageName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectedPackageName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectedPackageName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectedPackageName_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectedPackageName.apply { (_ observer : EBEvent) in
+        managedObject.selectedPackageName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectedPackageName_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectedPackageName.apply { (_ observer : EBEvent) in
+        managedObject.selectedPackageName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'availablePackages' transient property
+  //····················································································································
+
+  private var mObserversOf_availablePackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_availablePackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.availablePackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_availablePackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_availablePackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.availablePackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_availablePackages_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_availablePackages.apply { (_ observer : EBEvent) in
+        managedObject.availablePackages_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_availablePackages_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_availablePackages.apply { (_ observer : EBEvent) in
+        managedObject.availablePackages_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'deviceSymbolDictionary' transient property
+  //····················································································································
+
+  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.deviceSymbolDictionary_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.deviceSymbolDictionary_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_deviceSymbolDictionary.apply { (_ observer : EBEvent) in
+        managedObject.deviceSymbolDictionary_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'unplacedSymbols' transient property
+  //····················································································································
+
+  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unplacedSymbols.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.unplacedSymbols_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unplacedSymbols.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.unplacedSymbols_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
+        managedObject.unplacedSymbols_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'placementInSchematics' transient property
+  //····················································································································
+
+  private var mObserversOf_placementInSchematics = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_placementInSchematics.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.placementInSchematics_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_placementInSchematics.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.placementInSchematics_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_placementInSchematics_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematics_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_placementInSchematics_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematics_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientObject ComponentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientObject_ComponentInProject : ReadOnlyObject_ComponentInProject {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyObject_ComponentInProject? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_ComponentInProject?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : ComponentInProject? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ComponentInProject > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
+      }else{
+        return .empty
+      }
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : ComponentInProject? { return self.mInternalValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadWriteObject_ComponentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadWriteObject_ComponentInProject : ReadOnlyObject_ComponentInProject {
+
+  //····················································································································
+ 
+  func setProp (_ inValue : ComponentInProject?) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyObject_ComponentInProject
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyObject_ComponentInProject : ReadWriteObject_ComponentInProject {
+
+  //····················································································································
+
+  private var mModel : ReadWriteObject_ComponentInProject? = nil
+
+  //····················································································································
+
+  func setModel (_ inModel : ReadWriteObject_ComponentInProject?) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newModel : ComponentInProject?
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty :
+        newModel = nil
+      case .single (let v) :
+        newModel = v
+       case .multiple :
+        newModel = nil
+      }
+    }else{
+      newModel = nil
+    }
+    self.mInternalValue = newModel
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : ComponentInProject?) {
+    self.mModel?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ComponentInProject > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : ComponentInProject? {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StoredObject_ComponentInProject 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject, EBSignatureObserverProtocol {
+
+  //····················································································································
+  //   Opposite relationship management
+  //····················································································································
+
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch self.prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+ /* convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ComponentInProject] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentInProject") as? ComponentInProject {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  //····················································································································
+  // Model will change 
+  //····················································································································
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : ComponentInProject?) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : ComponentInProject?) {
+    self.mInternalValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ComponentInProject > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : ComponentInProject?) { self.mInternalValue = inValue }
+
+  //····················································································································
+
+  override var propval : ComponentInProject? { return self.mInternalValue }
+
+  //····················································································································
+
+  func remove (_ object : ComponentInProject) {
+    if object === self.mInternalValue {
+      self.mInternalValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ComponentInProject) {
+    if object !== self.mInternalValue {
+      self.mInternalValue = object
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = observer
+    self.mInternalValue?.setSignatureObserver (observer: observer)
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    if let object = self.mInternalValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: mDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1952,7 +2859,7 @@ final class ToOneRelationship_ComponentInProject_mDevice : EBAbstractProperty {
         unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button: unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
         oldValue?.mComponents_property.remove (unwrappedOwner)
@@ -2722,7 +3629,7 @@ final class ToOneRelationship_ComponentInProject_mSelectedPackage : EBAbstractPr
         unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button: unwrappedExplorer)
         }
       //--- Remove property observers of old object
         oldValue?.mMasterPads_property.removeEBObserversFrom (&self.mObserversOf_mMasterPads)

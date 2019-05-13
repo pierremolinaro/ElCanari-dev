@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller DeviceDocument mPackageDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
+final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
  
   //····················································································································
   // Model

@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller DeviceDocument mSymbolDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
+final class Controller_DeviceDocument_mSymbolDisplayController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
  
   //····················································································································
   // Model

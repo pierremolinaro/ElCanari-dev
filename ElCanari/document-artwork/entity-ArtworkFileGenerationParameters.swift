@@ -2955,3 +2955,1632 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyObject_ArtworkFileGenerationParameters 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectProperty <ArtworkFileGenerationParameters> {
+
+  //····················································································································
+
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkFileGenerationParameters?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  //--- Remove observers from removed objects
+    inOldValue?.drawBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
+    inOldValue?.drawInternalBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
+    inOldValue?.drawComponentNamesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
+    inOldValue?.drawComponentNamesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
+    inOldValue?.drawComponentValuesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
+    inOldValue?.drawComponentValuesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
+    inOldValue?.drawPackageLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
+    inOldValue?.drawPackageLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
+    inOldValue?.drawPadHolesInPDF_property.removeEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
+    inOldValue?.drawPadsTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
+    inOldValue?.drawPadsBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
+    inOldValue?.drawTextsLayoutTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
+    inOldValue?.drawTextsLayoutBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
+    inOldValue?.drawTextsLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
+    inOldValue?.drawTextsLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
+    inOldValue?.drawTracksTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
+    inOldValue?.drawTracksBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
+    inOldValue?.drawVias_property.removeEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
+    inOldValue?.fileExtension_property.removeEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
+    inOldValue?.horizontalMirror_property.removeEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
+    inOldValue?.name_property.removeEBObserversFrom (&self.mObserversOf_name) // Stored property
+    inOldValue?.measurementUnitForPadHoleInPDF_property.removeEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
+    inOldValue?.padHoleDiameterInPDF_property.removeEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+  //--- Add observers to added objects
+    self.mInternalValue?.drawBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
+    self.mInternalValue?.drawInternalBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
+    self.mInternalValue?.drawComponentNamesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
+    self.mInternalValue?.drawComponentNamesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
+    self.mInternalValue?.drawComponentValuesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
+    self.mInternalValue?.drawComponentValuesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
+    self.mInternalValue?.drawPackageLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
+    self.mInternalValue?.drawPackageLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
+    self.mInternalValue?.drawPadHolesInPDF_property.addEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
+    self.mInternalValue?.drawPadsTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
+    self.mInternalValue?.drawPadsBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
+    self.mInternalValue?.drawTextsLayoutTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
+    self.mInternalValue?.drawTextsLayoutBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
+    self.mInternalValue?.drawTextsLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
+    self.mInternalValue?.drawTextsLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
+    self.mInternalValue?.drawTracksTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
+    self.mInternalValue?.drawTracksBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
+    self.mInternalValue?.drawVias_property.addEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
+    self.mInternalValue?.fileExtension_property.addEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
+    self.mInternalValue?.horizontalMirror_property.addEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
+    self.mInternalValue?.name_property.addEBObserversFrom (&self.mObserversOf_name) // Stored property
+    self.mInternalValue?.measurementUnitForPadHoleInPDF_property.addEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
+    self.mInternalValue?.padHoleDiameterInPDF_property.addEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+  }
+
+  //····················································································································
+  //   Observers of 'drawBoardLimits' stored property
+  //····················································································································
+
+  private var mObserversOf_drawBoardLimits = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawBoardLimits.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawBoardLimits_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawBoardLimits.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawBoardLimits_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawBoardLimits.apply { (_ observer : EBEvent) in
+        managedObject.drawBoardLimits_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawBoardLimits.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawBoardLimits_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawInternalBoardLimits' stored property
+  //····················································································································
+
+  private var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawInternalBoardLimits_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawInternalBoardLimits.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawInternalBoardLimits_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawInternalBoardLimits.apply { (_ observer : EBEvent) in
+        managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawInternalBoardLimits.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawComponentNamesTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawComponentNamesTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawComponentNamesTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawComponentNamesTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawComponentNamesTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawComponentNamesTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawComponentNamesBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawComponentNamesBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawComponentNamesBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawComponentNamesBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawComponentValuesTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawComponentValuesTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawComponentValuesTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawComponentValuesTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawComponentValuesTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawComponentValuesTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawComponentValuesBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawComponentValuesBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawComponentValuesBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawComponentValuesBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawPackageLegendTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawPackageLegendTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawPackageLegendTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawPackageLegendTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawPackageLegendTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawPackageLegendTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawPackageLegendBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawPackageLegendBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawPackageLegendBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawPackageLegendBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawPadHolesInPDF' stored property
+  //····················································································································
+
+  private var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawPadHolesInPDF_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawPadHolesInPDF.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawPadHolesInPDF_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawPadHolesInPDF.apply { (_ observer : EBEvent) in
+        managedObject.drawPadHolesInPDF_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawPadHolesInPDF.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawPadsTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawPadsTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawPadsTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawPadsTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawPadsTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawPadsTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawPadsTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawPadsTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawPadsTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawPadsTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawPadsBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawPadsBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawPadsBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawPadsBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawPadsBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawPadsBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawPadsBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawPadsBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawPadsBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTextsLayoutTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTextsLayoutTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTextsLayoutTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTextsLayoutTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTextsLayoutBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTextsLayoutBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTextsLayoutBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTextsLayoutBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTextsLegendTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTextsLegendTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTextsLegendTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTextsLegendTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTextsLegendTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTextsLegendTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTextsLegendBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTextsLegendBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTextsLegendBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTextsLegendBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksTopSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksTopSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTracksTopSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksTopSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTracksTopSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTracksTopSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTracksTopSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksTopSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksBottomSide' stored property
+  //····················································································································
+
+  private var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksBottomSide.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawTracksBottomSide_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksBottomSide.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawTracksBottomSide_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawTracksBottomSide.apply { (_ observer : EBEvent) in
+        managedObject.drawTracksBottomSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksBottomSide.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawVias' stored property
+  //····················································································································
+
+  private var mObserversOf_drawVias = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawVias.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.drawVias_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawVias.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.drawVias_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawVias_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawVias.apply { (_ observer : EBEvent) in
+        managedObject.drawVias_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawVias_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawVias.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawVias_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'fileExtension' stored property
+  //····················································································································
+
+  private var mObserversOf_fileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_fileExtension.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.fileExtension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_fileExtension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_fileExtension.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.fileExtension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_fileExtension_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_fileExtension.apply { (_ observer : EBEvent) in
+        managedObject.fileExtension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_fileExtension_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_fileExtension.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.fileExtension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'horizontalMirror' stored property
+  //····················································································································
+
+  private var mObserversOf_horizontalMirror = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_horizontalMirror.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.horizontalMirror_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_horizontalMirror.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.horizontalMirror_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_horizontalMirror_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_horizontalMirror.apply { (_ observer : EBEvent) in
+        managedObject.horizontalMirror_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_horizontalMirror_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_horizontalMirror.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.horizontalMirror_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'name' stored property
+  //····················································································································
+
+  private var mObserversOf_name = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_name (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_name.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.name_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_name.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.name_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_name.apply { (_ observer : EBEvent) in
+        managedObject.name_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_name.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.name_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'measurementUnitForPadHoleInPDF' stored property
+  //····················································································································
+
+  private var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_measurementUnitForPadHoleInPDF.apply { (_ observer : EBEvent) in
+        managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_measurementUnitForPadHoleInPDF.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padHoleDiameterInPDF' stored property
+  //····················································································································
+
+  private var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.padHoleDiameterInPDF_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padHoleDiameterInPDF.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_padHoleDiameterInPDF.apply { (_ observer : EBEvent) in
+        managedObject.padHoleDiameterInPDF_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    self.mObserversOf_padHoleDiameterInPDF.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientObject ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientObject_ArtworkFileGenerationParameters : ReadOnlyObject_ArtworkFileGenerationParameters {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyObject_ArtworkFileGenerationParameters? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_ArtworkFileGenerationParameters?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : ArtworkFileGenerationParameters? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
+      }else{
+        return .empty
+      }
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : ArtworkFileGenerationParameters? { return self.mInternalValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadWriteObject_ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadWriteObject_ArtworkFileGenerationParameters : ReadOnlyObject_ArtworkFileGenerationParameters {
+
+  //····················································································································
+ 
+  func setProp (_ inValue : ArtworkFileGenerationParameters?) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyObject_ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyObject_ArtworkFileGenerationParameters : ReadWriteObject_ArtworkFileGenerationParameters {
+
+  //····················································································································
+
+  private var mModel : ReadWriteObject_ArtworkFileGenerationParameters? = nil
+
+  //····················································································································
+
+  func setModel (_ inModel : ReadWriteObject_ArtworkFileGenerationParameters?) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newModel : ArtworkFileGenerationParameters?
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty :
+        newModel = nil
+      case .single (let v) :
+        newModel = v
+       case .multiple :
+        newModel = nil
+      }
+    }else{
+      newModel = nil
+    }
+    self.mInternalValue = newModel
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : ArtworkFileGenerationParameters?) {
+    self.mModel?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : ArtworkFileGenerationParameters? {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StoredObject_ArtworkFileGenerationParameters 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
+
+  //····················································································································
+  //   Opposite relationship management
+  //····················································································································
+
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch self.prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+ /* convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ArtworkFileGenerationParameters] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ArtworkFileGenerationParameters") as? ArtworkFileGenerationParameters {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  //····················································································································
+  // Model will change 
+  //····················································································································
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkFileGenerationParameters?) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : ArtworkFileGenerationParameters?) {
+    self.mInternalValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : ArtworkFileGenerationParameters?) { self.mInternalValue = inValue }
+
+  //····················································································································
+
+  override var propval : ArtworkFileGenerationParameters? { return self.mInternalValue }
+
+  //····················································································································
+
+  func remove (_ object : ArtworkFileGenerationParameters) {
+    if object === self.mInternalValue {
+      self.mInternalValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ArtworkFileGenerationParameters) {
+    if object !== self.mInternalValue {
+      self.mInternalValue = object
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = observer
+    self.mInternalValue?.setSignatureObserver (observer: observer)
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    if let object = self.mInternalValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

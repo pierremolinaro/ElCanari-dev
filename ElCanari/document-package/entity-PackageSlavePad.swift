@@ -2822,6 +2822,1463 @@ final class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyObject_PackageSlavePad 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSlavePad> {
+
+  //····················································································································
+
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageSlavePad?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  //--- Remove observers from removed objects
+    inOldValue?.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+    inOldValue?.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+    inOldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
+    inOldValue?.holeDiameter_property.removeEBObserversFrom (&self.mObserversOf_holeDiameter) // Stored property
+    inOldValue?.padShape_property.removeEBObserversFrom (&self.mObserversOf_padShape) // Stored property
+    inOldValue?.padStyle_property.removeEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
+    inOldValue?.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+    inOldValue?.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+    inOldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+    inOldValue?.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+    inOldValue?.holeDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_holeDiameterUnit) // Stored property
+    inOldValue?.annularRingUnit_property.removeEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    inOldValue?.padIsTraversing_property.removeEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
+    inOldValue?.annularRing_property.removeEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
+    inOldValue?.padName_property.removeEBObserversFrom (&self.mObserversOf_padName) // Transient property
+    inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+  //--- Add observers to added objects
+    self.mInternalValue?.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+    self.mInternalValue?.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+    self.mInternalValue?.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
+    self.mInternalValue?.holeDiameter_property.addEBObserversFrom (&self.mObserversOf_holeDiameter) // Stored property
+    self.mInternalValue?.padShape_property.addEBObserversFrom (&self.mObserversOf_padShape) // Stored property
+    self.mInternalValue?.padStyle_property.addEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
+    self.mInternalValue?.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+    self.mInternalValue?.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+    self.mInternalValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+    self.mInternalValue?.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+    self.mInternalValue?.holeDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_holeDiameterUnit) // Stored property
+    self.mInternalValue?.annularRingUnit_property.addEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    self.mInternalValue?.padIsTraversing_property.addEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
+    self.mInternalValue?.annularRing_property.addEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
+    self.mInternalValue?.padName_property.addEBObserversFrom (&self.mObserversOf_padName) // Transient property
+    self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'xCenter' stored property
+  //····················································································································
+
+  private var mObserversOf_xCenter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xCenter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.xCenter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xCenter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.xCenter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
+        managedObject.xCenter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xCenter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yCenter' stored property
+  //····················································································································
+
+  private var mObserversOf_yCenter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yCenter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.yCenter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yCenter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yCenter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.yCenter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
+        managedObject.yCenter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yCenter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'width' stored property
+  //····················································································································
+
+  private var mObserversOf_width = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_width.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.width_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_width.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.width_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_width.apply { (_ observer : EBEvent) in
+        managedObject.width_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_width.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.width_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'height' stored property
+  //····················································································································
+
+  private var mObserversOf_height = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_height.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.height_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_height.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.height_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_height.apply { (_ observer : EBEvent) in
+        managedObject.height_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_height.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.height_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holeDiameter' stored property
+  //····················································································································
+
+  private var mObserversOf_holeDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_holeDiameter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.holeDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_holeDiameter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.holeDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_holeDiameter.apply { (_ observer : EBEvent) in
+        managedObject.holeDiameter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeDiameter.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.holeDiameter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padShape' stored property
+  //····················································································································
+
+  private var mObserversOf_padShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.padShape_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padShape_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
+        managedObject.padShape_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padShape_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padStyle' stored property
+  //····················································································································
+
+  private var mObserversOf_padStyle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padStyle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padStyle.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.padStyle_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padStyle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padStyle.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padStyle_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
+        managedObject.padStyle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padStyle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'xCenterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xCenterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xCenterUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.xCenterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xCenterUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.xCenterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
+        managedObject.xCenterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xCenterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yCenterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yCenterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yCenterUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.yCenterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yCenterUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.yCenterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
+        managedObject.yCenterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yCenterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'widthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_widthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_widthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.widthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_widthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.widthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
+        managedObject.widthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.widthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'heightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_heightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_heightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.heightUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_heightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.heightUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
+        managedObject.heightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.heightUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holeDiameterUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_holeDiameterUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_holeDiameterUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.holeDiameterUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_holeDiameterUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.holeDiameterUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holeDiameterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_holeDiameterUnit.apply { (_ observer : EBEvent) in
+        managedObject.holeDiameterUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_holeDiameterUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.holeDiameterUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'annularRingUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_annularRingUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_annularRingUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.annularRingUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_annularRingUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.annularRingUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
+        managedObject.annularRingUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.annularRingUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padIsTraversing' transient property
+  //····················································································································
+
+  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padIsTraversing.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padIsTraversing_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padIsTraversing.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padIsTraversing_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
+        managedObject.padIsTraversing_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
+        managedObject.padIsTraversing_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'annularRing' transient property
+  //····················································································································
+
+  private var mObserversOf_annularRing = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_annularRing (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_annularRing.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.annularRing_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_annularRing (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_annularRing.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.annularRing_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
+        managedObject.annularRing_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
+        managedObject.annularRing_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padName' transient property
+  //····················································································································
+
+  private var mObserversOf_padName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padName_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padName.apply { (_ observer : EBEvent) in
+        managedObject.padName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padName_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padName.apply { (_ observer : EBEvent) in
+        managedObject.padName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padNumberDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNumberDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padNumberDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNumberDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.padNumberDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
+        managedObject.padNumberDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
+        managedObject.padNumberDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientObject PackageSlavePad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientObject_PackageSlavePad : ReadOnlyObject_PackageSlavePad {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyObject_PackageSlavePad? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_PackageSlavePad?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : PackageSlavePad? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageSlavePad > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
+      }else{
+        return .empty
+      }
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : PackageSlavePad? { return self.mInternalValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadWriteObject_PackageSlavePad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadWriteObject_PackageSlavePad : ReadOnlyObject_PackageSlavePad {
+
+  //····················································································································
+ 
+  func setProp (_ inValue : PackageSlavePad?) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyObject_PackageSlavePad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyObject_PackageSlavePad : ReadWriteObject_PackageSlavePad {
+
+  //····················································································································
+
+  private var mModel : ReadWriteObject_PackageSlavePad? = nil
+
+  //····················································································································
+
+  func setModel (_ inModel : ReadWriteObject_PackageSlavePad?) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newModel : PackageSlavePad?
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty :
+        newModel = nil
+      case .single (let v) :
+        newModel = v
+       case .multiple :
+        newModel = nil
+      }
+    }else{
+      newModel = nil
+    }
+    self.mInternalValue = newModel
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : PackageSlavePad?) {
+    self.mModel?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageSlavePad > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : PackageSlavePad? {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StoredObject_PackageSlavePad 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSignatureObserverProtocol {
+
+  //····················································································································
+  //   Opposite relationship management
+  //····················································································································
+
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch self.prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+ /* convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [PackageSlavePad] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageSlavePad") as? PackageSlavePad {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  //····················································································································
+  // Model will change 
+  //····················································································································
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageSlavePad?) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : PackageSlavePad?) {
+    self.mInternalValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageSlavePad > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : PackageSlavePad?) { self.mInternalValue = inValue }
+
+  //····················································································································
+
+  override var propval : PackageSlavePad? { return self.mInternalValue }
+
+  //····················································································································
+
+  func remove (_ object : PackageSlavePad) {
+    if object === self.mInternalValue {
+      self.mInternalValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : PackageSlavePad) {
+    if object !== self.mInternalValue {
+      self.mInternalValue = object
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = observer
+    self.mInternalValue?.setSignatureObserver (observer: observer)
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    if let object = self.mInternalValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: master
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -2863,7 +4320,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
         unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button: unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
         oldValue?.slaves_property.remove (unwrappedOwner)

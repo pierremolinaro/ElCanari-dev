@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + FontDocument mSelectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + MergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

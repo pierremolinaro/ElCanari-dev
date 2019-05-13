@@ -1575,3 +1575,804 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyObject_SymbolTypeInDevice 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <SymbolTypeInDevice> {
+
+  //····················································································································
+
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolTypeInDevice?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  //--- Remove observers from removed objects
+    inOldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+    inOldValue?.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+    inOldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+    inOldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+    inOldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+    inOldValue?.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+  //--- Add observers to added objects
+    self.mInternalValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+    self.mInternalValue?.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+    self.mInternalValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+    self.mInternalValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+    self.mInternalValue?.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+    self.mInternalValue?.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mTypeName' stored property
+  //····················································································································
+
+  private var mObserversOf_mTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mTypeName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mTypeName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mTypeName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mTypeName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mTypeName_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mTypeName.apply { (_ observer : EBEvent) in
+        managedObject.mTypeName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    self.mObserversOf_mTypeName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mTypeName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mVersion' stored property
+  //····················································································································
+
+  private var mObserversOf_mVersion = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mVersion.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mVersion_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mVersion.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mVersion_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
+        managedObject.mVersion_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    self.mObserversOf_mVersion.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mVersion_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mFileData' stored property
+  //····················································································································
+
+  private var mObserversOf_mFileData = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mFileData.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mFileData_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mFileData.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mFileData_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
+        managedObject.mFileData_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    self.mObserversOf_mFileData.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mFileData_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mStrokeBezierPath' stored property
+  //····················································································································
+
+  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mStrokeBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mStrokeBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mFilledBezierPath' stored property
+  //····················································································································
+
+  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mFilledBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.mFilledBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mFilledBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.mFilledBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
+        managedObject.mFilledBezierPath_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mFilledBezierPath_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'versionString' transient property
+  //····················································································································
+
+  private var mObserversOf_versionString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_versionString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.versionString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_versionString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.versionString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
+        managedObject.versionString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
+        managedObject.versionString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'instanceCount' transient property
+  //····················································································································
+
+  private var mObserversOf_instanceCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_instanceCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.instanceCount_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_instanceCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.instanceCount_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
+        managedObject.instanceCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
+        managedObject.instanceCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'pinNameShape' transient property
+  //····················································································································
+
+  private var mObserversOf_pinNameShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinNameShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.pinNameShape_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinNameShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.pinNameShape_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinNameShape_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNameShape.apply { (_ observer : EBEvent) in
+        managedObject.pinNameShape_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinNameShape_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNameShape.apply { (_ observer : EBEvent) in
+        managedObject.pinNameShape_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientObject SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyObject_SymbolTypeInDevice? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_SymbolTypeInDevice?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : SymbolTypeInDevice? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < SymbolTypeInDevice > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
+      }else{
+        return .empty
+      }
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : SymbolTypeInDevice? { return self.mInternalValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadWriteObject_SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadWriteObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice {
+
+  //····················································································································
+ 
+  func setProp (_ inValue : SymbolTypeInDevice?) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyObject_SymbolTypeInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice {
+
+  //····················································································································
+
+  private var mModel : ReadWriteObject_SymbolTypeInDevice? = nil
+
+  //····················································································································
+
+  func setModel (_ inModel : ReadWriteObject_SymbolTypeInDevice?) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newModel : SymbolTypeInDevice?
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty :
+        newModel = nil
+      case .single (let v) :
+        newModel = v
+       case .multiple :
+        newModel = nil
+      }
+    }else{
+      newModel = nil
+    }
+    self.mInternalValue = newModel
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : SymbolTypeInDevice?) {
+    self.mModel?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < SymbolTypeInDevice > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : SymbolTypeInDevice? {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StoredObject_SymbolTypeInDevice 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice, EBSignatureObserverProtocol {
+
+  //····················································································································
+  //   Opposite relationship management
+  //····················································································································
+
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolTypeInDevice) -> Void > = nil
+
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolTypeInDevice) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : SymbolTypeInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch self.prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+ /* convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolTypeInDevice] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  //····················································································································
+  // Model will change 
+  //····················································································································
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolTypeInDevice?) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : SymbolTypeInDevice?) {
+    self.mInternalValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < SymbolTypeInDevice > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : SymbolTypeInDevice?) { self.mInternalValue = inValue }
+
+  //····················································································································
+
+  override var propval : SymbolTypeInDevice? { return self.mInternalValue }
+
+  //····················································································································
+
+  func remove (_ object : SymbolTypeInDevice) {
+    if object === self.mInternalValue {
+      self.mInternalValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : SymbolTypeInDevice) {
+    if object !== self.mInternalValue {
+      self.mInternalValue = object
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = observer
+    self.mInternalValue?.setSignatureObserver (observer: observer)
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    if let object = self.mInternalValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

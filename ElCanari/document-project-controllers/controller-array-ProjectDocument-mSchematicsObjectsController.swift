@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller ProjectDocument mSchematicsObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
+final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
  
   //····················································································································
   // Model

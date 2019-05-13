@@ -2404,3 +2404,1298 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyObject_PackageDimension 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageDimension> {
+
+  //····················································································································
+
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageDimension?) {
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  //--- Remove observers from removed objects
+    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+    inOldValue?.xDimension_property.removeEBObserversFrom (&self.mObserversOf_xDimension) // Stored property
+    inOldValue?.yDimension_property.removeEBObserversFrom (&self.mObserversOf_yDimension) // Stored property
+    inOldValue?.x1Unit_property.removeEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+    inOldValue?.y1Unit_property.removeEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+    inOldValue?.x2Unit_property.removeEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+    inOldValue?.y2Unit_property.removeEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+    inOldValue?.xDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
+    inOldValue?.yDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
+    inOldValue?.distanceUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
+    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    inOldValue?.distanceInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
+    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+  //--- Add observers to added objects
+    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+    self.mInternalValue?.xDimension_property.addEBObserversFrom (&self.mObserversOf_xDimension) // Stored property
+    self.mInternalValue?.yDimension_property.addEBObserversFrom (&self.mObserversOf_yDimension) // Stored property
+    self.mInternalValue?.x1Unit_property.addEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+    self.mInternalValue?.y1Unit_property.addEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+    self.mInternalValue?.x2Unit_property.addEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+    self.mInternalValue?.y2Unit_property.addEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+    self.mInternalValue?.xDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
+    self.mInternalValue?.yDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
+    self.mInternalValue?.distanceUnit_property.addEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
+    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    self.mInternalValue?.distanceInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
+    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'y1' stored property
+  //····················································································································
+
+  private var mObserversOf_y1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.y1_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.y1_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+        managedObject.y1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x2' stored property
+  //····················································································································
+
+  private var mObserversOf_x2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.x2_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.x2_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+        managedObject.x2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y2' stored property
+  //····················································································································
+
+  private var mObserversOf_y2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.y2_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.y2_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+        managedObject.y2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'xDimension' stored property
+  //····················································································································
+
+  private var mObserversOf_xDimension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xDimension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xDimension.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.xDimension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xDimension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xDimension.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.xDimension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xDimension_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_xDimension.apply { (_ observer : EBEvent) in
+        managedObject.xDimension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xDimension_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_xDimension.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xDimension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yDimension' stored property
+  //····················································································································
+
+  private var mObserversOf_yDimension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yDimension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yDimension.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.yDimension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yDimension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yDimension.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.yDimension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yDimension_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_yDimension.apply { (_ observer : EBEvent) in
+        managedObject.yDimension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yDimension_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_yDimension.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yDimension_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x1Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_x1Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x1Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.x1Unit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x1Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.x1Unit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
+        managedObject.x1Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x1Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y1Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_y1Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y1Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.y1Unit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y1Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.y1Unit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
+        managedObject.y1Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y1Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x2Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_x2Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x2Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.x2Unit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x2Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.x2Unit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
+        managedObject.x2Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x2Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y2Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_y2Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_y2Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.y2Unit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_y2Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.y2Unit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
+        managedObject.y2Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y2Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'xDimensionUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xDimensionUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xDimensionUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.xDimensionUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xDimensionUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.xDimensionUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xDimensionUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_xDimensionUnit.apply { (_ observer : EBEvent) in
+        managedObject.xDimensionUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xDimensionUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_xDimensionUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xDimensionUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yDimensionUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yDimensionUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yDimensionUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.yDimensionUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yDimensionUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.yDimensionUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yDimensionUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_yDimensionUnit.apply { (_ observer : EBEvent) in
+        managedObject.yDimensionUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yDimensionUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_yDimensionUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yDimensionUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'distanceUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_distanceUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_distanceUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.distanceUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_distanceUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.distanceUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_distanceUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_distanceUnit.apply { (_ observer : EBEvent) in
+        managedObject.distanceUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_distanceUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_distanceUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.distanceUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x1' stored property
+  //····················································································································
+
+  private var mObserversOf_x1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_x1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v.x1_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_x1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.x1_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+        managedObject.x1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'distanceInCanariUnit' transient property
+  //····················································································································
+
+  private var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_distanceInCanariUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.distanceInCanariUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_distanceInCanariUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.distanceInCanariUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_distanceInCanariUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_distanceInCanariUnit.apply { (_ observer : EBEvent) in
+        managedObject.distanceInCanariUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_distanceInCanariUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_distanceInCanariUnit.apply { (_ observer : EBEvent) in
+        managedObject.distanceInCanariUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientObject PackageDimension
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientObject_PackageDimension : ReadOnlyObject_PackageDimension {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyObject_PackageDimension? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyObject_PackageDimension?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newObject : PackageDimension? 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newObject = nil
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newObject = v
+        self.mTransientKind = .single
+       case .multiple :
+        newObject = nil
+        self.mTransientKind = .empty
+      }
+    }else{
+      newObject = nil
+      self.mTransientKind = .empty
+    }
+    self.mInternalValue = newObject
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageDimension > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      if let internalValue = self.mInternalValue {
+        return .single (internalValue)
+      }else{
+        return .empty
+      }
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : PackageDimension? { return self.mInternalValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadWriteObject_PackageDimension
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadWriteObject_PackageDimension : ReadOnlyObject_PackageDimension {
+
+  //····················································································································
+ 
+  func setProp (_ inValue : PackageDimension?) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Proxy: ProxyObject_PackageDimension
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ProxyObject_PackageDimension : ReadWriteObject_PackageDimension {
+
+  //····················································································································
+
+  private var mModel : ReadWriteObject_PackageDimension? = nil
+
+  //····················································································································
+
+  func setModel (_ inModel : ReadWriteObject_PackageDimension?) {
+    if self.mModel !== inModel {
+      self.mModel?.detachClient (self)
+      self.mModel = inModel
+      self.mModel?.attachClient (self)
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newModel : PackageDimension?
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty :
+        newModel = nil
+      case .single (let v) :
+        newModel = v
+       case .multiple :
+        newModel = nil
+      }
+    }else{
+      newModel = nil
+    }
+    self.mInternalValue = newModel
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : PackageDimension?) {
+    self.mModel?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageDimension > {
+    if let model = self.mModel {
+      return model.prop
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override var propval : PackageDimension? {
+    if let model = self.mModel {
+      switch model.prop {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StoredObject_PackageDimension 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EBSignatureObserverProtocol {
+
+  //····················································································································
+  //   Opposite relationship management
+  //····················································································································
+
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+
+  //····················································································································
+
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageDimension) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PackageDimension) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  }
+  
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch self.prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+ /* convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [PackageDimension] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageDimension") as? PackageDimension {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  //····················································································································
+  // Model will change 
+  //····················································································································
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PackageDimension?) {
+  //--- Register old value in undo manager
+    self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
+  //---
+    if let object = inOldValue {
+      object.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (object)
+    }
+  //---
+    if let object = self.mInternalValue {
+      object.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (object)
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+ 
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : PackageDimension?) {
+    self.mInternalValue = oldValue
+  }
+ 
+  //····················································································································
+  // Model did change 
+  //····················································································································
+
+  override func notifyModelDidChange () {
+  //--- Update explorer
+    if let valueExplorer = self.mValueExplorer {
+      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+    }
+  //--- Notify observers
+    self.postEvent ()
+    self.clearSignatureCache ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < PackageDimension > {
+    if let object = self.mInternalValue {
+      return .single (object)
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : PackageDimension?) { self.mInternalValue = inValue }
+
+  //····················································································································
+
+  override var propval : PackageDimension? { return self.mInternalValue }
+
+  //····················································································································
+
+  func remove (_ object : PackageDimension) {
+    if object === self.mInternalValue {
+      self.mInternalValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : PackageDimension) {
+    if object !== self.mInternalValue {
+      self.mInternalValue = object
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    self.mSignatureObserver = observer
+    self.mInternalValue?.setSignatureObserver (observer: observer)
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    if let object = self.mInternalValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

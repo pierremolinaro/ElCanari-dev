@@ -762,27 +762,27 @@ prefix func ! (operand : EBSelection <Bool>) -> EBSelection <Bool> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyAbstractGenericArrayProperty
+//    ReadOnlyAbstractGenericRelationshipProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractGenericArrayProperty : EBAbstractProperty {
+class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
 
   //····················································································································
   //  Data clients
   //····················································································································
 
-  private var mClients = Set <ReadOnlyAbstractGenericArrayProperty> ()
+  private var mClients = Set <ReadOnlyAbstractGenericRelationshipProperty> ()
 
   //····················································································································
 
-  final internal func attachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+  final internal func attachClient (_ inClient : ReadOnlyAbstractGenericRelationshipProperty) {
     self.mClients.insert (inClient)
     inClient.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  final internal func detachClient (_ inClient : ReadOnlyAbstractGenericArrayProperty) {
+  final internal func detachClient (_ inClient : ReadOnlyAbstractGenericRelationshipProperty) {
     self.mClients.remove (inClient)
   }
 
@@ -799,10 +799,88 @@ class ReadOnlyAbstractGenericArrayProperty : EBAbstractProperty {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    ReadOnlyAbstractObjectProperty
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
+
+  //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
+  // Abstract methods
+  //····················································································································
+
+  var prop : EBSelection < T > { get { return .empty } }  // Abstract method
+
+  //····················································································································
+
+  var propval : T? { return nil } // Abstract method
+
+  //····················································································································
+  //  Internal value
+  //····················································································································
+
+  internal var mInternalValue : T? = nil {
+    didSet {
+      if self.mInternalValue != oldValue {
+        if (self.mInternalValue == nil) != (oldValue == nil) {
+          self.none_property.postEvent ()
+        }
+        self.postEvent ()
+        self.notifyModelDidChangeFrom (oldValue: oldValue)
+        self.notifyModelDidChange ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal func notifyModelDidChangeFrom (oldValue inOldValue : T?) {
+  }
+
+  //····················································································································
+  //  none property
+  //····················································································································
+
+  final var none_property = EBTransientProperty_Bool ()
+
+  final var none_property_selection : EBSelection <Bool> { return self.none_property.prop }
+
+  //····················································································································
+  //  init
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.none_property.mReadModelFunction = { [weak self] in
+      if let me = self {
+        switch me.prop {
+        case .empty :
+          return .single (false)
+        case .multiple :
+          return .multiple
+        case .single :
+          return .single (true)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericArrayProperty {
+class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   //   Undo manager

@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller MergerDocument mBoardInstanceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
+final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
  
   //····················································································································
   // Model

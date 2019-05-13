@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + ProjectDocument mProjectDeviceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

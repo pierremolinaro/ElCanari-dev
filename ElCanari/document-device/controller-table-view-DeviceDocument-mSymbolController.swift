@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + DeviceDocument mSymbolController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_DeviceDocument_mSymbolController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_DeviceDocument_mSymbolController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties

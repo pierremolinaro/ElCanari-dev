@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller PackageDocument mPackageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericArrayProperty, EBViewControllerProtocol {
+final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
  
   //····················································································································
   // Model

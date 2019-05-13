@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    Table View Controller + ArtworkDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGenericArrayProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties
