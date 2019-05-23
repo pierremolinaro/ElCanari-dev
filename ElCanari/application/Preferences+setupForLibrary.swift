@@ -2,15 +2,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gStream : FSEventStreamRef?
-private var gPreferences : Preferences?
+private var gStream : FSEventStreamRef? = nil
+private var gPreferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func callbackForFSEvent (_ streamRef : ConstFSEventStreamRef,
+func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
                          clientCallBackInfo : UnsafeMutableRawPointer?,
                          numEvents : Int,
                          eventPaths : UnsafeMutableRawPointer,
@@ -25,11 +25,9 @@ extension Preferences {
   
   //····················································································································
 
-  func setupForLibrary () {
+  internal func setupForLibrary () {
     gPreferences = self
     self.updateForLibrary ()
-  //--- Set update box title
-  //  mUpdateSystemLibraryBox?.title = "Updating " + systemLibraryPath ()
   //--- Use an FSEvent for tracking Canari System Library changes
     let pathsToWatch : [String] = [systemLibraryPath (), userLibraryPath ()]
   //--- Latency
@@ -38,12 +36,14 @@ extension Preferences {
     let callback: FSEventStreamCallback = {
       (streamRef, clientCallBackInfo, numEvents, eventPaths, eventFlags, eventIds) -> Void
     in
-      callbackForFSEvent (streamRef,
-                          clientCallBackInfo: clientCallBackInfo,
-                          numEvents: numEvents,
-                          eventPaths: eventPaths,
-                          eventFlags: eventFlags,
-                          eventIds: eventIds)
+      callbackForFSEvent (
+        streamRef: streamRef,
+        clientCallBackInfo: clientCallBackInfo,
+        numEvents: numEvents,
+        eventPaths: eventPaths,
+        eventFlags: eventFlags,
+        eventIds: eventIds
+      )
     }
   //--- Create the stream, passing in a callback
     gStream = FSEventStreamCreate (
@@ -70,16 +70,16 @@ extension Preferences {
 //      mRevealInFinderLibraryInSystemApplicationSupportButton?.toolTip = path
  //     mRevealInFinderLibraryInSystemApplicationSupportButton?.title = path
 //      mRevealInFinderLibraryInSystemApplicationSupportButton?.isEnabled = pathExists
-      mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
+      self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
     }
   //--- User Library
     do{
       let path = userLibraryPath ()
       let pathExists = fm.fileExists (atPath: path)
-      mRevealInFinderLibraryInUserApplicationSupportButton?.toolTip = path
-      mRevealInFinderLibraryInUserApplicationSupportButton?.title = path
-      mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
-      mUseLibraryInUserApplicationSupportPathCheckBox?.isEnabled = pathExists
+      self.mRevealInFinderLibraryInUserApplicationSupportButton?.toolTip = path
+      self.mRevealInFinderLibraryInUserApplicationSupportButton?.title = path
+      self.mRevealInFinderLibraryInUserApplicationSupportButton?.isEnabled = pathExists
+      self.mUseLibraryInUserApplicationSupportPathCheckBox?.isEnabled = pathExists
 //      mCreateLibraryInSystemApplicationSupportButton?.isEnabled = !pathExists
     }
   }
