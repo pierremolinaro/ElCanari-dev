@@ -350,7 +350,11 @@ class ComponentSymbolInProject : SchematicsObject,
   //   To one property: mComponent
   //····················································································································
 
-  let mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
+    #if NEWTOONE
+     let mComponent_property = StoredObject_ComponentInProject ()
+    #else
+      let mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
+    #endif
 
   //····················································································································
 
@@ -367,7 +371,11 @@ class ComponentSymbolInProject : SchematicsObject,
 
   //····················································································································
 
-  var mComponent_none : ToOneRelationship_ComponentSymbolInProject_mComponent { return self.mComponent_property }
+    #if NEWTOONE
+      var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+    #else
+      var mComponent_none : ToOneRelationship_ComponentSymbolInProject_mComponent { return self.mComponent_property }
+    #endif
 
   //····················································································································
 
@@ -514,8 +522,12 @@ class ComponentSymbolInProject : SchematicsObject,
       return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
-  //--- To one property: mComponent
-    self.mComponent_property.owner = self
+  //--- To one property: mComponent (has opposite to many relationship: mSymbols) §
+    #if !NEWTOONE
+      self.mComponent_property.owner = self
+    #else
+      self.mComponent_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2603,6 +2615,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mCenterX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCenterX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterX.insert (inObserver)
@@ -2610,7 +2639,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mCenterX_property.addEBObserver (inObserver)
+       v?.mCenterX_property.addEBObserver (inObserver)
     }
   }
 
@@ -2623,7 +2652,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mCenterX_property.removeEBObserver (inObserver)
+      v?.mCenterX_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2656,6 +2685,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mCenterY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mCenterY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mCenterY.insert (inObserver)
@@ -2663,7 +2709,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mCenterY_property.addEBObserver (inObserver)
+       v?.mCenterY_property.addEBObserver (inObserver)
     }
   }
 
@@ -2676,7 +2722,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mCenterY_property.removeEBObserver (inObserver)
+      v?.mCenterY_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2709,6 +2755,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mRotation_property_selection : EBSelection <QuadrantRotation?> {
+    if let model = self.propval {
+      switch (model.mRotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mRotation.insert (inObserver)
@@ -2716,7 +2779,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mRotation_property.addEBObserver (inObserver)
+       v?.mRotation_property.addEBObserver (inObserver)
     }
   }
 
@@ -2729,7 +2792,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mRotation_property.removeEBObserver (inObserver)
+      v?.mRotation_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2762,6 +2825,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mSymbolInstanceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSymbolInstanceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolInstanceName.insert (inObserver)
@@ -2769,7 +2849,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mSymbolInstanceName_property.addEBObserver (inObserver)
+       v?.mSymbolInstanceName_property.addEBObserver (inObserver)
     }
   }
 
@@ -2782,7 +2862,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mSymbolInstanceName_property.removeEBObserver (inObserver)
+      v?.mSymbolInstanceName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2815,6 +2895,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mSymbolTypeName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSymbolTypeName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
@@ -2822,7 +2919,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mSymbolTypeName_property.addEBObserver (inObserver)
+       v?.mSymbolTypeName_property.addEBObserver (inObserver)
     }
   }
 
@@ -2835,7 +2932,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mSymbolTypeName_property.removeEBObserver (inObserver)
+      v?.mSymbolTypeName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2868,6 +2965,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDisplayComponentNameOffsetX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
@@ -2875,7 +2989,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
+       v?.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
     }
   }
 
@@ -2888,7 +3002,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDisplayComponentNameOffsetX_property.removeEBObserver (inObserver)
+      v?.mDisplayComponentNameOffsetX_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2921,6 +3035,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDisplayComponentNameOffsetY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
@@ -2928,7 +3059,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
+       v?.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
     }
   }
 
@@ -2941,7 +3072,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
+      v?.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2974,6 +3105,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mDisplayComponentValue_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mDisplayComponentValue_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValue.insert (inObserver)
@@ -2981,7 +3129,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDisplayComponentValue_property.addEBObserver (inObserver)
+       v?.mDisplayComponentValue_property.addEBObserver (inObserver)
     }
   }
 
@@ -2994,7 +3142,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDisplayComponentValue_property.removeEBObserver (inObserver)
+      v?.mDisplayComponentValue_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3027,6 +3175,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDisplayComponentValueOffsetX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
@@ -3034,7 +3199,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
+       v?.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
     }
   }
 
@@ -3047,7 +3212,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
+      v?.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3080,6 +3245,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mDisplayComponentValueOffsetY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
@@ -3087,7 +3269,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
+       v?.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
     }
   }
 
@@ -3100,7 +3282,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDisplayComponentValueOffsetY_property.removeEBObserver (inObserver)
+      v?.mDisplayComponentValueOffsetY_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3133,6 +3315,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var componentValueProxy_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.componentValueProxy_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_componentValueProxy (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentValueProxy.insert (inObserver)
@@ -3140,7 +3339,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.componentValueProxy_property.addEBObserver (inObserver)
+      v?.componentValueProxy_property.addEBObserver (inObserver)
     }
   }
 
@@ -3153,7 +3352,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.componentValueProxy_property.removeEBObserver (inObserver)
+      v?.componentValueProxy_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3186,6 +3385,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var componentName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.componentName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_componentName.insert (inObserver)
@@ -3193,7 +3409,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.componentName_property.addEBObserver (inObserver)
+      v?.componentName_property.addEBObserver (inObserver)
     }
   }
 
@@ -3206,7 +3422,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.componentName_property.removeEBObserver (inObserver)
+      v?.componentName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3238,6 +3454,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var deviceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.deviceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_deviceName.insert (inObserver)
@@ -3245,7 +3478,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.deviceName_property.addEBObserver (inObserver)
+      v?.deviceName_property.addEBObserver (inObserver)
     }
   }
 
@@ -3258,7 +3491,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.deviceName_property.removeEBObserver (inObserver)
+      v?.deviceName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3290,6 +3523,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var symbolInfo_property_selection : EBSelection <ComponentSymbolInfo?> {
+    if let model = self.propval {
+      switch (model.symbolInfo_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInfo.insert (inObserver)
@@ -3297,7 +3547,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolInfo_property.addEBObserver (inObserver)
+      v?.symbolInfo_property.addEBObserver (inObserver)
     }
   }
 
@@ -3310,7 +3560,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolInfo_property.removeEBObserver (inObserver)
+      v?.symbolInfo_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3342,6 +3592,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -3349,7 +3616,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3362,7 +3629,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3394,6 +3661,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -3401,7 +3685,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3414,7 +3698,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3446,6 +3730,23 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
+  var symbolInSchematics_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.symbolInSchematics_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_symbolInSchematics (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolInSchematics.insert (inObserver)
@@ -3453,7 +3754,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolInSchematics_property.addEBObserver (inObserver)
+      v?.symbolInSchematics_property.addEBObserver (inObserver)
     }
   }
 
@@ -3466,7 +3767,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolInSchematics_property.removeEBObserver (inObserver)
+      v?.symbolInSchematics_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3487,6 +3788,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       self.mObserversOf_symbolInSchematics.apply { (_ observer : EBEvent) in
         managedObject.symbolInSchematics_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPoints
+  //····················································································································
+
+  private var mObserversOf_mPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+    if let model = self.propval {
+      switch (model.mPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.insert (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.remove (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3543,7 +3885,7 @@ class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolI
 
   //····················································································································
 
-  override var prop : EBSelection < ComponentSymbolInProject > {
+  override var prop : EBSelection < ComponentSymbolInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -3628,7 +3970,7 @@ final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymb
 
   //····················································································································
 
-  override var prop : EBSelection < ComponentSymbolInProject > {
+  override var prop : EBSelection < ComponentSymbolInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -3678,7 +4020,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -3691,26 +4033,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ComponentSymbolInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentSymbolInProject") as? ComponentSymbolInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -3755,7 +4078,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
   //····················································································································
 
-  override var prop : EBSelection < ComponentSymbolInProject > {
+  override var prop : EBSelection < ComponentSymbolInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -3844,6 +4167,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 //    To one relationship: mComponent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractProperty {
 
   //····················································································································
@@ -3868,7 +4192,7 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   weak var owner : ComponentSymbolInProject? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -4394,5 +4718,6 @@ final class ToOneRelationship_ComponentSymbolInProject_mComponent : EBAbstractPr
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

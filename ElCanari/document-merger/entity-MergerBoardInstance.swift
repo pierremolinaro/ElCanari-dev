@@ -121,7 +121,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-  let myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
+    #if NEWTOONE
+     let myModel_property = StoredObject_BoardModel ()
+    #else
+      let myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
+    #endif
 
   //····················································································································
 
@@ -138,7 +142,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  var myModel_none : ToOneRelationship_MergerBoardInstance_myModel { return self.myModel_property }
+    #if NEWTOONE
+      var myModel_none : StoredObject_BoardModel { return self.myModel_property }
+    #else
+      var myModel_none : ToOneRelationship_MergerBoardInstance_myModel { return self.myModel_property }
+    #endif
 
   //····················································································································
 
@@ -219,7 +227,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-  let myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
+    #if NEWTOONE
+     let myRoot_property = StoredObject_MergerRoot ()
+    #else
+      let myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
+    #endif
 
   //····················································································································
 
@@ -236,7 +248,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  var myRoot_none : ToOneRelationship_MergerBoardInstance_myRoot { return self.myRoot_property }
+    #if NEWTOONE
+      var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
+    #else
+      var myRoot_none : ToOneRelationship_MergerBoardInstance_myRoot { return self.myRoot_property }
+    #endif
 
   //····················································································································
 
@@ -256,8 +272,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: myModel
-    self.myModel_property.owner = self
+  //--- To one property: myModel (has opposite to many relationship: myInstances) §
+    #if !NEWTOONE
+      self.myModel_property.owner = self
+    #else
+      self.myModel_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -386,8 +406,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.myModel_property.addEBObserverOf_modelHeight (self.objectDisplay_property)
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
-  //--- To one property: myRoot
-    self.myRoot_property.owner = self
+  //--- To one property: myRoot (has opposite to many relationship: boardInstances) §
+    #if !NEWTOONE
+      self.myRoot_property.owner = self
+    #else
+      self.myRoot_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1612,6 +1636,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
@@ -1619,7 +1660,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -1632,7 +1673,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x_property.removeEBObserver (inObserver)
+      v?.x_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1665,6 +1706,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
@@ -1672,7 +1730,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -1685,7 +1743,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y_property.removeEBObserver (inObserver)
+      v?.y_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1718,6 +1776,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var instanceRotation_property_selection : EBSelection <QuadrantRotation?> {
+    if let model = self.propval {
+      switch (model.instanceRotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceRotation.insert (inObserver)
@@ -1725,7 +1800,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.instanceRotation_property.addEBObserver (inObserver)
+       v?.instanceRotation_property.addEBObserver (inObserver)
     }
   }
 
@@ -1738,7 +1813,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.instanceRotation_property.removeEBObserver (inObserver)
+      v?.instanceRotation_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1771,6 +1846,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var instanceRect_property_selection : EBSelection <CanariRect?> {
+    if let model = self.propval {
+      switch (model.instanceRect_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_instanceRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_instanceRect.insert (inObserver)
@@ -1778,7 +1870,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.instanceRect_property.addEBObserver (inObserver)
+      v?.instanceRect_property.addEBObserver (inObserver)
     }
   }
 
@@ -1791,7 +1883,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.instanceRect_property.removeEBObserver (inObserver)
+      v?.instanceRect_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1823,6 +1915,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var modelName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.modelName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_modelName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelName.insert (inObserver)
@@ -1830,7 +1939,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.modelName_property.addEBObserver (inObserver)
+      v?.modelName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1843,7 +1952,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.modelName_property.removeEBObserver (inObserver)
+      v?.modelName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1875,6 +1984,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var boardLimitWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardLimitWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
@@ -1882,7 +2008,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardLimitWidth_property.addEBObserver (inObserver)
+      v?.boardLimitWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -1895,7 +2021,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardLimitWidth_property.removeEBObserver (inObserver)
+      v?.boardLimitWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1927,6 +2053,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1934,7 +2077,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1947,7 +2090,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1979,6 +2122,23 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1986,7 +2146,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1999,7 +2159,7 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2076,7 +2236,7 @@ class TransientObject_MergerBoardInstance : ReadOnlyObject_MergerBoardInstance {
 
   //····················································································································
 
-  override var prop : EBSelection < MergerBoardInstance > {
+  override var prop : EBSelection < MergerBoardInstance? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -2161,7 +2321,7 @@ final class ProxyObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstanc
 
   //····················································································································
 
-  override var prop : EBSelection < MergerBoardInstance > {
+  override var prop : EBSelection < MergerBoardInstance? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -2211,7 +2371,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -2224,26 +2384,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [MergerBoardInstance] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerBoardInstance") as? MergerBoardInstance {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -2288,7 +2429,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
 
   //····················································································································
 
-  override var prop : EBSelection < MergerBoardInstance > {
+  override var prop : EBSelection < MergerBoardInstance? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -2377,6 +2518,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
 //    To one relationship: myModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
@@ -2401,7 +2543,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   weak var owner : MergerBoardInstance? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -5550,11 +5692,13 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
@@ -5579,7 +5723,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   weak var owner : MergerBoardInstance? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -6836,5 +6980,6 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -2047,6 +2047,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var comments_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.comments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_comments.insert (inObserver)
@@ -2054,7 +2071,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.comments_property.addEBObserver (inObserver)
+       v?.comments_property.addEBObserver (inObserver)
     }
   }
 
@@ -2067,7 +2084,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.comments_property.removeEBObserver (inObserver)
+      v?.comments_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2100,6 +2117,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var nominalSize_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.nominalSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_nominalSize.insert (inObserver)
@@ -2107,7 +2141,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.nominalSize_property.addEBObserver (inObserver)
+       v?.nominalSize_property.addEBObserver (inObserver)
     }
   }
 
@@ -2120,7 +2154,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.nominalSize_property.removeEBObserver (inObserver)
+      v?.nominalSize_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2153,6 +2187,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var selectedTab_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedTab_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedTab.insert (inObserver)
@@ -2160,7 +2211,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.selectedTab_property.addEBObserver (inObserver)
+       v?.selectedTab_property.addEBObserver (inObserver)
     }
   }
 
@@ -2173,7 +2224,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectedTab_property.removeEBObserver (inObserver)
+      v?.selectedTab_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2206,6 +2257,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var selectedInspector_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedInspector_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedInspector.insert (inObserver)
@@ -2213,7 +2281,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.selectedInspector_property.addEBObserver (inObserver)
+       v?.selectedInspector_property.addEBObserver (inObserver)
     }
   }
 
@@ -2226,7 +2294,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectedInspector_property.removeEBObserver (inObserver)
+      v?.selectedInspector_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2259,6 +2327,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var currentCharacterCodePoint_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.currentCharacterCodePoint_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
@@ -2266,7 +2351,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.currentCharacterCodePoint_property.addEBObserver (inObserver)
+       v?.currentCharacterCodePoint_property.addEBObserver (inObserver)
     }
   }
 
@@ -2279,7 +2364,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.currentCharacterCodePoint_property.removeEBObserver (inObserver)
+      v?.currentCharacterCodePoint_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2312,6 +2397,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var currentCharacterCodePointString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.currentCharacterCodePointString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
@@ -2319,7 +2421,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.currentCharacterCodePointString_property.addEBObserver (inObserver)
+      v?.currentCharacterCodePointString_property.addEBObserver (inObserver)
     }
   }
 
@@ -2332,7 +2434,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.currentCharacterCodePointString_property.removeEBObserver (inObserver)
+      v?.currentCharacterCodePointString_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2364,6 +2466,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.sampleStringBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPath.insert (inObserver)
@@ -2371,7 +2490,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPath_property.addEBObserver (inObserver)
+      v?.sampleStringBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -2384,7 +2503,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPath_property.removeEBObserver (inObserver)
+      v?.sampleStringBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2416,6 +2535,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var sampleStringBezierPathWidth_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.sampleStringBezierPathWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
@@ -2423,7 +2559,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
+      v?.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -2436,7 +2572,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
+      v?.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2468,6 +2604,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var sampleStringBezierPathAscent_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.sampleStringBezierPathAscent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
@@ -2475,7 +2628,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
+      v?.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
     }
   }
 
@@ -2488,7 +2641,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
+      v?.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2520,6 +2673,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var sampleStringBezierPathDescent_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.sampleStringBezierPathDescent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
@@ -2527,7 +2697,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
+      v?.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
     }
   }
 
@@ -2540,7 +2710,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
+      v?.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2572,6 +2742,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice?> {
+    if let model = self.propval {
+      switch (model.definedCharacters_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_definedCharacters.insert (inObserver)
@@ -2579,7 +2766,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.definedCharacters_property.addEBObserver (inObserver)
+      v?.definedCharacters_property.addEBObserver (inObserver)
     }
   }
 
@@ -2592,7 +2779,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.definedCharacters_property.removeEBObserver (inObserver)
+      v?.definedCharacters_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2624,6 +2811,23 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -2631,7 +2835,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -2644,7 +2848,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2665,6 +2869,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: characters
+  //····················································································································
+
+  private var mObserversOf_characters = EBWeakEventSet ()
+
+  //····················································································································
+
+  var characters_property_selection : EBSelection <[FontCharacter]> {
+    if let model = self.propval {
+      switch (model.characters_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_characters (_ inObserver : EBEvent) {
+    self.mObserversOf_characters.insert (inObserver)
+    if let object = self.propval {
+      object.characters_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_characters (_ inObserver : EBEvent) {
+    self.mObserversOf_characters.remove (inObserver)
+    if let object = self.propval {
+      object.characters_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2721,7 +2966,7 @@ class TransientObject_FontRoot : ReadOnlyObject_FontRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < FontRoot > {
+  override var prop : EBSelection < FontRoot? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -2806,7 +3051,7 @@ final class ProxyObject_FontRoot : ReadWriteObject_FontRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < FontRoot > {
+  override var prop : EBSelection < FontRoot? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -2856,7 +3101,7 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -2869,26 +3114,7 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [FontRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontRoot") as? FontRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -2933,7 +3159,7 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
 
   //····················································································································
 
-  override var prop : EBSelection < FontRoot > {
+  override var prop : EBSelection < FontRoot? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

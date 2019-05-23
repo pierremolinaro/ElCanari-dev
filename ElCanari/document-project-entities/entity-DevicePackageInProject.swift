@@ -751,6 +751,23 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
+  var mPackageName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPackageName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPackageName.insert (inObserver)
@@ -758,7 +775,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mPackageName_property.addEBObserver (inObserver)
+       v?.mPackageName_property.addEBObserver (inObserver)
     }
   }
 
@@ -771,7 +788,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mPackageName_property.removeEBObserver (inObserver)
+      v?.mPackageName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -793,6 +810,47 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       for managedObject in inSet {
         managedObject.mPackageName_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mMasterPads
+  //····················································································································
+
+  private var mObserversOf_mMasterPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mMasterPads_property_selection : EBSelection <[DeviceMasterPadInProject]> {
+    if let model = self.propval {
+      switch (model.mMasterPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mMasterPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mMasterPads.insert (inObserver)
+    if let object = self.propval {
+      object.mMasterPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mMasterPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mMasterPads.remove (inObserver)
+    if let object = self.propval {
+      object.mMasterPads_property.removeEBObserver (inObserver)
     }
   }
 
@@ -849,7 +907,7 @@ class TransientObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInPro
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePackageInProject > {
+  override var prop : EBSelection < DevicePackageInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -934,7 +992,7 @@ final class ProxyObject_DevicePackageInProject : ReadWriteObject_DevicePackageIn
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePackageInProject > {
+  override var prop : EBSelection < DevicePackageInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -984,7 +1042,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -997,26 +1055,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DevicePackageInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePackageInProject") as? DevicePackageInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1061,7 +1100,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePackageInProject > {
+  override var prop : EBSelection < DevicePackageInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

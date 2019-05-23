@@ -1484,6 +1484,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
@@ -1491,7 +1508,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -1504,7 +1521,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y_property.removeEBObserver (inObserver)
+      v?.y_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1537,6 +1554,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var width_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
@@ -1544,7 +1578,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.width_property.addEBObserver (inObserver)
+       v?.width_property.addEBObserver (inObserver)
     }
   }
 
@@ -1557,7 +1591,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.width_property.removeEBObserver (inObserver)
+      v?.width_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1590,6 +1624,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var height_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.height_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
@@ -1597,7 +1648,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.height_property.addEBObserver (inObserver)
+       v?.height_property.addEBObserver (inObserver)
     }
   }
 
@@ -1610,7 +1661,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.height_property.removeEBObserver (inObserver)
+      v?.height_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1643,6 +1694,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
@@ -1650,7 +1718,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -1663,7 +1731,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x_property.removeEBObserver (inObserver)
+      v?.x_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1696,6 +1764,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.filledBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
@@ -1703,7 +1788,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.filledBezierPath_property.addEBObserver (inObserver)
+      v?.filledBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -1716,7 +1801,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.filledBezierPath_property.removeEBObserver (inObserver)
+      v?.filledBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1748,6 +1833,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1755,7 +1857,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1768,7 +1870,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1800,6 +1902,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1807,7 +1926,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1820,7 +1939,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1852,6 +1971,23 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -1859,7 +1995,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -1872,7 +2008,7 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1949,7 +2085,7 @@ class TransientObject_SymbolSolidRect : ReadOnlyObject_SymbolSolidRect {
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolSolidRect > {
+  override var prop : EBSelection < SymbolSolidRect? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -2034,7 +2170,7 @@ final class ProxyObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect {
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolSolidRect > {
+  override var prop : EBSelection < SymbolSolidRect? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -2084,7 +2220,7 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -2097,26 +2233,7 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolSolidRect] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolSolidRect") as? SymbolSolidRect {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -2161,7 +2278,7 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolSolidRect > {
+  override var prop : EBSelection < SymbolSolidRect? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

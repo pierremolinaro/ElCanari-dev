@@ -71,7 +71,11 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  let mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
+    #if NEWTOONE
+     let mNetClass_property = StoredObject_NetClassInProject ()
+    #else
+      let mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
+    #endif
 
   //····················································································································
 
@@ -88,7 +92,11 @@ class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  var mNetClass_none : ToOneRelationship_NetInProject_mNetClass { return self.mNetClass_property }
+    #if NEWTOONE
+      var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
+    #else
+      var mNetClass_none : ToOneRelationship_NetInProject_mNetClass { return self.mNetClass_property }
+    #endif
 
   //····················································································································
 
@@ -156,8 +164,12 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
-  //--- To one property: mNetClass
-    self.mNetClass_property.owner = self
+  //--- To one property: mNetClass (has opposite to many relationship: mNets) §
+    #if !NEWTOONE
+      self.mNetClass_property.owner = self
+    #else
+      self.mNetClass_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1063,6 +1075,23 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
+  var mNetName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mNetName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetName.insert (inObserver)
@@ -1070,7 +1099,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mNetName_property.addEBObserver (inObserver)
+       v?.mNetName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1083,7 +1112,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mNetName_property.removeEBObserver (inObserver)
+      v?.mNetName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1116,6 +1145,23 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
+  var wireColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.wireColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
@@ -1123,7 +1169,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.wireColor_property.addEBObserver (inObserver)
+      v?.wireColor_property.addEBObserver (inObserver)
     }
   }
 
@@ -1136,7 +1182,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.wireColor_property.removeEBObserver (inObserver)
+      v?.wireColor_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1168,6 +1214,23 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
+  var pinNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.pinNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_pinNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinNames.insert (inObserver)
@@ -1175,7 +1238,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinNames_property.addEBObserver (inObserver)
+      v?.pinNames_property.addEBObserver (inObserver)
     }
   }
 
@@ -1188,7 +1251,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinNames_property.removeEBObserver (inObserver)
+      v?.pinNames_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1209,6 +1272,47 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       self.mObserversOf_pinNames.apply { (_ observer : EBEvent) in
         managedObject.pinNames_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPoints
+  //····················································································································
+
+  private var mObserversOf_mPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+    if let model = self.propval {
+      switch (model.mPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.insert (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.remove (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1265,7 +1369,7 @@ class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < NetInProject > {
+  override var prop : EBSelection < NetInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1350,7 +1454,7 @@ final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < NetInProject > {
+  override var prop : EBSelection < NetInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1400,7 +1504,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1413,26 +1517,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetInProject") as? NetInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1477,7 +1562,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < NetInProject > {
+  override var prop : EBSelection < NetInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1566,6 +1651,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
 //    To one relationship: mNetClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
 
   //····················································································································
@@ -1590,7 +1676,7 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   weak var owner : NetInProject? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2288,5 +2374,6 @@ final class ToOneRelationship_NetInProject_mNetClass : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

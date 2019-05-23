@@ -2215,6 +2215,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mNetClassName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mNetClassName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassName.insert (inObserver)
@@ -2222,7 +2239,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mNetClassName_property.addEBObserver (inObserver)
+       v?.mNetClassName_property.addEBObserver (inObserver)
     }
   }
 
@@ -2235,7 +2252,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mNetClassName_property.removeEBObserver (inObserver)
+      v?.mNetClassName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2268,6 +2285,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mNetClassColor_property_selection : EBSelection <NSColor?> {
+    if let model = self.propval {
+      switch (model.mNetClassColor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetClassColor.insert (inObserver)
@@ -2275,7 +2309,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mNetClassColor_property.addEBObserver (inObserver)
+       v?.mNetClassColor_property.addEBObserver (inObserver)
     }
   }
 
@@ -2288,7 +2322,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mNetClassColor_property.removeEBObserver (inObserver)
+      v?.mNetClassColor_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2321,6 +2355,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mNetWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNetWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mNetWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetWidth.insert (inObserver)
@@ -2328,7 +2379,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mNetWidth_property.addEBObserver (inObserver)
+       v?.mNetWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -2341,7 +2392,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mNetWidth_property.removeEBObserver (inObserver)
+      v?.mNetWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2374,6 +2425,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mNetWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mNetWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mNetWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mNetWidthUnit.insert (inObserver)
@@ -2381,7 +2449,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mNetWidthUnit_property.addEBObserver (inObserver)
+       v?.mNetWidthUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2394,7 +2462,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mNetWidthUnit_property.removeEBObserver (inObserver)
+      v?.mNetWidthUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2427,6 +2495,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mViaHoleDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameter.insert (inObserver)
@@ -2434,7 +2519,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mViaHoleDiameter_property.addEBObserver (inObserver)
+       v?.mViaHoleDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2447,7 +2532,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mViaHoleDiameter_property.removeEBObserver (inObserver)
+      v?.mViaHoleDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2480,6 +2565,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mViaHoleDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaHoleDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
@@ -2487,7 +2589,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+       v?.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2500,7 +2602,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+      v?.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2533,6 +2635,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mViaPadDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameter.insert (inObserver)
@@ -2540,7 +2659,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mViaPadDiameter_property.addEBObserver (inObserver)
+       v?.mViaPadDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2553,7 +2672,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mViaPadDiameter_property.removeEBObserver (inObserver)
+      v?.mViaPadDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2586,6 +2705,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var mViaPadDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mViaPadDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
@@ -2593,7 +2729,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+       v?.mViaPadDiameterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2606,7 +2742,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
+      v?.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2639,6 +2775,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var netWidth_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_netWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netWidth.insert (inObserver)
@@ -2646,7 +2799,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netWidth_property.addEBObserver (inObserver)
+      v?.netWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -2659,7 +2812,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netWidth_property.removeEBObserver (inObserver)
+      v?.netWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2691,6 +2844,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var viaHoleDiameter_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.viaHoleDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaHoleDiameter.insert (inObserver)
@@ -2698,7 +2868,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.viaHoleDiameter_property.addEBObserver (inObserver)
+      v?.viaHoleDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2711,7 +2881,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.viaHoleDiameter_property.removeEBObserver (inObserver)
+      v?.viaHoleDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2743,6 +2913,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var viaPadDiameter_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.viaPadDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_viaPadDiameter.insert (inObserver)
@@ -2750,7 +2937,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.viaPadDiameter_property.addEBObserver (inObserver)
+      v?.viaPadDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2763,7 +2950,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.viaPadDiameter_property.removeEBObserver (inObserver)
+      v?.viaPadDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2795,6 +2982,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var canRemove_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.canRemove_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
@@ -2802,7 +3006,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.canRemove_property.addEBObserver (inObserver)
+      v?.canRemove_property.addEBObserver (inObserver)
     }
   }
 
@@ -2815,7 +3019,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.canRemove_property.removeEBObserver (inObserver)
+      v?.canRemove_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2847,6 +3051,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var netUsage_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netUsage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netUsage.insert (inObserver)
@@ -2854,7 +3075,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netUsage_property.addEBObserver (inObserver)
+      v?.netUsage_property.addEBObserver (inObserver)
     }
   }
 
@@ -2867,7 +3088,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netUsage_property.removeEBObserver (inObserver)
+      v?.netUsage_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2899,6 +3120,23 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
+  var netsDescription_property_selection : EBSelection <NetInfoArray?> {
+    if let model = self.propval {
+      switch (model.netsDescription_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netsDescription.insert (inObserver)
@@ -2906,7 +3144,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netsDescription_property.addEBObserver (inObserver)
+      v?.netsDescription_property.addEBObserver (inObserver)
     }
   }
 
@@ -2919,7 +3157,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netsDescription_property.removeEBObserver (inObserver)
+      v?.netsDescription_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2940,6 +3178,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mNets
+  //····················································································································
+
+  private var mObserversOf_mNets = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mNets_property_selection : EBSelection <[NetInProject]> {
+    if let model = self.propval {
+      switch (model.mNets_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mNets (_ inObserver : EBEvent) {
+    self.mObserversOf_mNets.insert (inObserver)
+    if let object = self.propval {
+      object.mNets_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNets (_ inObserver : EBEvent) {
+    self.mObserversOf_mNets.remove (inObserver)
+    if let object = self.propval {
+      object.mNets_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2996,7 +3275,7 @@ class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < NetClassInProject > {
+  override var prop : EBSelection < NetClassInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -3081,7 +3360,7 @@ final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < NetClassInProject > {
+  override var prop : EBSelection < NetClassInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -3131,7 +3410,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -3144,26 +3423,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [NetClassInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "NetClassInProject") as? NetClassInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -3208,7 +3468,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
   //····················································································································
 
-  override var prop : EBSelection < NetClassInProject > {
+  override var prop : EBSelection < NetClassInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

@@ -904,6 +904,23 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
@@ -911,7 +928,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -924,7 +941,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y_property.removeEBObserver (inObserver)
+      v?.y_property.removeEBObserver (inObserver)
     }
   }
 
@@ -957,6 +974,23 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
+  var padDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.padDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padDiameter.insert (inObserver)
@@ -964,7 +998,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.padDiameter_property.addEBObserver (inObserver)
+       v?.padDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -977,7 +1011,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padDiameter_property.removeEBObserver (inObserver)
+      v?.padDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1010,6 +1044,23 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
@@ -1017,7 +1068,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -1030,7 +1081,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x_property.removeEBObserver (inObserver)
+      v?.x_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1108,7 +1159,7 @@ class TransientObject_BoardModelVia : ReadOnlyObject_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia > {
+  override var prop : EBSelection < BoardModelVia? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1193,7 +1244,7 @@ final class ProxyObject_BoardModelVia : ReadWriteObject_BoardModelVia {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia > {
+  override var prop : EBSelection < BoardModelVia? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1243,7 +1294,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1256,26 +1307,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [BoardModelVia] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardModelVia") as? BoardModelVia {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1320,7 +1352,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelVia > {
+  override var prop : EBSelection < BoardModelVia? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

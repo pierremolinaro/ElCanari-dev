@@ -375,7 +375,11 @@ class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-  let master_property = ToOneRelationship_PackageSlavePad_master ()
+    #if NEWTOONE
+     let master_property = StoredObject_PackagePad ()
+    #else
+      let master_property = ToOneRelationship_PackageSlavePad_master ()
+    #endif
 
   //····················································································································
 
@@ -392,7 +396,11 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  var master_none : ToOneRelationship_PackageSlavePad_master { return self.master_property }
+    #if NEWTOONE
+      var master_none : StoredObject_PackagePad { return self.master_property }
+    #else
+      var master_none : ToOneRelationship_PackageSlavePad_master { return self.master_property }
+    #endif
 
   //····················································································································
 
@@ -524,8 +532,12 @@ class PackageSlavePad : PackageObject,
     self.holeDiameterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: master
-    self.master_property.owner = self
+  //--- To one property: master (has opposite to many relationship: slaves) §
+    #if !NEWTOONE
+      self.master_property.owner = self
+    #else
+      self.master_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2883,6 +2895,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var xCenter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.xCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenter.insert (inObserver)
@@ -2890,7 +2919,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.xCenter_property.addEBObserver (inObserver)
+       v?.xCenter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2903,7 +2932,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.xCenter_property.removeEBObserver (inObserver)
+      v?.xCenter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2936,6 +2965,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var yCenter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.yCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenter.insert (inObserver)
@@ -2943,7 +2989,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.yCenter_property.addEBObserver (inObserver)
+       v?.yCenter_property.addEBObserver (inObserver)
     }
   }
 
@@ -2956,7 +3002,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.yCenter_property.removeEBObserver (inObserver)
+      v?.yCenter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2989,6 +3035,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var width_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
@@ -2996,7 +3059,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.width_property.addEBObserver (inObserver)
+       v?.width_property.addEBObserver (inObserver)
     }
   }
 
@@ -3009,7 +3072,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.width_property.removeEBObserver (inObserver)
+      v?.width_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3042,6 +3105,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var height_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.height_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
@@ -3049,7 +3129,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.height_property.addEBObserver (inObserver)
+       v?.height_property.addEBObserver (inObserver)
     }
   }
 
@@ -3062,7 +3142,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.height_property.removeEBObserver (inObserver)
+      v?.height_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3095,6 +3175,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var holeDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.holeDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeDiameter.insert (inObserver)
@@ -3102,7 +3199,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.holeDiameter_property.addEBObserver (inObserver)
+       v?.holeDiameter_property.addEBObserver (inObserver)
     }
   }
 
@@ -3115,7 +3212,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.holeDiameter_property.removeEBObserver (inObserver)
+      v?.holeDiameter_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3148,6 +3245,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var padShape_property_selection : EBSelection <PadShape?> {
+    if let model = self.propval {
+      switch (model.padShape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padShape.insert (inObserver)
@@ -3155,7 +3269,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.padShape_property.addEBObserver (inObserver)
+       v?.padShape_property.addEBObserver (inObserver)
     }
   }
 
@@ -3168,7 +3282,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padShape_property.removeEBObserver (inObserver)
+      v?.padShape_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3201,6 +3315,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var padStyle_property_selection : EBSelection <SlavePadStyle?> {
+    if let model = self.propval {
+      switch (model.padStyle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padStyle.insert (inObserver)
@@ -3208,7 +3339,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.padStyle_property.addEBObserver (inObserver)
+       v?.padStyle_property.addEBObserver (inObserver)
     }
   }
 
@@ -3221,7 +3352,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padStyle_property.removeEBObserver (inObserver)
+      v?.padStyle_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3254,6 +3385,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var xCenterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.xCenterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_xCenterUnit.insert (inObserver)
@@ -3261,7 +3409,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.xCenterUnit_property.addEBObserver (inObserver)
+       v?.xCenterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3274,7 +3422,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.xCenterUnit_property.removeEBObserver (inObserver)
+      v?.xCenterUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3307,6 +3455,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var yCenterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.yCenterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_yCenterUnit.insert (inObserver)
@@ -3314,7 +3479,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.yCenterUnit_property.addEBObserver (inObserver)
+       v?.yCenterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3327,7 +3492,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.yCenterUnit_property.removeEBObserver (inObserver)
+      v?.yCenterUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3360,6 +3525,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var widthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.widthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_widthUnit.insert (inObserver)
@@ -3367,7 +3549,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.widthUnit_property.addEBObserver (inObserver)
+       v?.widthUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3380,7 +3562,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.widthUnit_property.removeEBObserver (inObserver)
+      v?.widthUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3413,6 +3595,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var heightUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.heightUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_heightUnit.insert (inObserver)
@@ -3420,7 +3619,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.heightUnit_property.addEBObserver (inObserver)
+       v?.heightUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3433,7 +3632,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.heightUnit_property.removeEBObserver (inObserver)
+      v?.heightUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3466,6 +3665,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var holeDiameterUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.holeDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_holeDiameterUnit.insert (inObserver)
@@ -3473,7 +3689,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.holeDiameterUnit_property.addEBObserver (inObserver)
+       v?.holeDiameterUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3486,7 +3702,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.holeDiameterUnit_property.removeEBObserver (inObserver)
+      v?.holeDiameterUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3519,6 +3735,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var annularRingUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.annularRingUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_annularRingUnit.insert (inObserver)
@@ -3526,7 +3759,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.annularRingUnit_property.addEBObserver (inObserver)
+       v?.annularRingUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3539,7 +3772,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.annularRingUnit_property.removeEBObserver (inObserver)
+      v?.annularRingUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3572,6 +3805,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -3579,7 +3829,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3592,7 +3842,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3624,6 +3874,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -3631,7 +3898,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -3644,7 +3911,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3676,6 +3943,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var padIsTraversing_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.padIsTraversing_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padIsTraversing.insert (inObserver)
@@ -3683,7 +3967,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padIsTraversing_property.addEBObserver (inObserver)
+      v?.padIsTraversing_property.addEBObserver (inObserver)
     }
   }
 
@@ -3696,7 +3980,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padIsTraversing_property.removeEBObserver (inObserver)
+      v?.padIsTraversing_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3728,6 +4012,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var annularRing_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.annularRing_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_annularRing (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_annularRing.insert (inObserver)
@@ -3735,7 +4036,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.annularRing_property.addEBObserver (inObserver)
+      v?.annularRing_property.addEBObserver (inObserver)
     }
   }
 
@@ -3748,7 +4049,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.annularRing_property.removeEBObserver (inObserver)
+      v?.annularRing_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3780,6 +4081,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var padName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.padName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padName.insert (inObserver)
@@ -3787,7 +4105,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padName_property.addEBObserver (inObserver)
+      v?.padName_property.addEBObserver (inObserver)
     }
   }
 
@@ -3800,7 +4118,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padName_property.removeEBObserver (inObserver)
+      v?.padName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3832,6 +4150,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var padNumberDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.padNumberDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padNumberDisplay.insert (inObserver)
@@ -3839,7 +4174,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padNumberDisplay_property.addEBObserver (inObserver)
+      v?.padNumberDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3852,7 +4187,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padNumberDisplay_property.removeEBObserver (inObserver)
+      v?.padNumberDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3884,6 +4219,23 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -3891,7 +4243,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3904,7 +4256,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3981,7 +4333,7 @@ class TransientObject_PackageSlavePad : ReadOnlyObject_PackageSlavePad {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageSlavePad > {
+  override var prop : EBSelection < PackageSlavePad? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -4066,7 +4418,7 @@ final class ProxyObject_PackageSlavePad : ReadWriteObject_PackageSlavePad {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageSlavePad > {
+  override var prop : EBSelection < PackageSlavePad? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -4116,7 +4468,7 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -4129,26 +4481,7 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageSlavePad] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageSlavePad") as? PackageSlavePad {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -4193,7 +4526,7 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
 
   //····················································································································
 
-  override var prop : EBSelection < PackageSlavePad > {
+  override var prop : EBSelection < PackageSlavePad? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -4282,6 +4615,7 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
 //    To one relationship: master
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
 
   //····················································································································
@@ -4306,7 +4640,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   weak var owner : PackageSlavePad? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -5477,5 +5811,6 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

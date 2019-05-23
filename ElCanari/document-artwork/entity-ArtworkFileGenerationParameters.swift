@@ -3022,6 +3022,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawBoardLimits_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawBoardLimits_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
@@ -3029,7 +3046,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawBoardLimits_property.addEBObserver (inObserver)
+       v?.drawBoardLimits_property.addEBObserver (inObserver)
     }
   }
 
@@ -3042,7 +3059,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawBoardLimits_property.removeEBObserver (inObserver)
+      v?.drawBoardLimits_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3075,6 +3092,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawInternalBoardLimits_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawInternalBoardLimits_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
@@ -3082,7 +3116,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawInternalBoardLimits_property.addEBObserver (inObserver)
+       v?.drawInternalBoardLimits_property.addEBObserver (inObserver)
     }
   }
 
@@ -3095,7 +3129,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawInternalBoardLimits_property.removeEBObserver (inObserver)
+      v?.drawInternalBoardLimits_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3128,6 +3162,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawComponentNamesTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawComponentNamesTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
@@ -3135,7 +3186,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawComponentNamesTopSide_property.addEBObserver (inObserver)
+       v?.drawComponentNamesTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3148,7 +3199,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
+      v?.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3181,6 +3232,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawComponentNamesBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawComponentNamesBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
@@ -3188,7 +3256,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
+       v?.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3201,7 +3269,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
+      v?.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3234,6 +3302,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawComponentValuesTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawComponentValuesTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
@@ -3241,7 +3326,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawComponentValuesTopSide_property.addEBObserver (inObserver)
+       v?.drawComponentValuesTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3254,7 +3339,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
+      v?.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3287,6 +3372,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawComponentValuesBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawComponentValuesBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
@@ -3294,7 +3396,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
+       v?.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3307,7 +3409,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
+      v?.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3340,6 +3442,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawPackageLegendTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawPackageLegendTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
@@ -3347,7 +3466,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawPackageLegendTopSide_property.addEBObserver (inObserver)
+       v?.drawPackageLegendTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3360,7 +3479,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
+      v?.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3393,6 +3512,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawPackageLegendBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawPackageLegendBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
@@ -3400,7 +3536,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
+       v?.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3413,7 +3549,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
+      v?.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3446,6 +3582,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawPadHolesInPDF_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawPadHolesInPDF_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
@@ -3453,7 +3606,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawPadHolesInPDF_property.addEBObserver (inObserver)
+       v?.drawPadHolesInPDF_property.addEBObserver (inObserver)
     }
   }
 
@@ -3466,7 +3619,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawPadHolesInPDF_property.removeEBObserver (inObserver)
+      v?.drawPadHolesInPDF_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3499,6 +3652,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawPadsTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawPadsTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
@@ -3506,7 +3676,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawPadsTopSide_property.addEBObserver (inObserver)
+       v?.drawPadsTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3519,7 +3689,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawPadsTopSide_property.removeEBObserver (inObserver)
+      v?.drawPadsTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3552,6 +3722,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawPadsBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawPadsBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
@@ -3559,7 +3746,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawPadsBottomSide_property.addEBObserver (inObserver)
+       v?.drawPadsBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3572,7 +3759,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawPadsBottomSide_property.removeEBObserver (inObserver)
+      v?.drawPadsBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3605,6 +3792,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTextsLayoutTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTextsLayoutTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
@@ -3612,7 +3816,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
+       v?.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3625,7 +3829,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
+      v?.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3658,6 +3862,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTextsLayoutBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
@@ -3665,7 +3886,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
+       v?.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3678,7 +3899,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
+      v?.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3711,6 +3932,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTextsLegendTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTextsLegendTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
@@ -3718,7 +3956,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTextsLegendTopSide_property.addEBObserver (inObserver)
+       v?.drawTextsLegendTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3731,7 +3969,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
+      v?.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3764,6 +4002,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTextsLegendBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTextsLegendBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
@@ -3771,7 +4026,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
+       v?.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3784,7 +4039,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
+      v?.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3817,6 +4072,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTracksTopSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTracksTopSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
@@ -3824,7 +4096,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTracksTopSide_property.addEBObserver (inObserver)
+       v?.drawTracksTopSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3837,7 +4109,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTracksTopSide_property.removeEBObserver (inObserver)
+      v?.drawTracksTopSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3870,6 +4142,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawTracksBottomSide_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawTracksBottomSide_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
@@ -3877,7 +4166,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawTracksBottomSide_property.addEBObserver (inObserver)
+       v?.drawTracksBottomSide_property.addEBObserver (inObserver)
     }
   }
 
@@ -3890,7 +4179,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawTracksBottomSide_property.removeEBObserver (inObserver)
+      v?.drawTracksBottomSide_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3923,6 +4212,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var drawVias_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawVias_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_drawVias.insert (inObserver)
@@ -3930,7 +4236,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.drawVias_property.addEBObserver (inObserver)
+       v?.drawVias_property.addEBObserver (inObserver)
     }
   }
 
@@ -3943,7 +4249,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.drawVias_property.removeEBObserver (inObserver)
+      v?.drawVias_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3976,6 +4282,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var fileExtension_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.fileExtension_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileExtension.insert (inObserver)
@@ -3983,7 +4306,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.fileExtension_property.addEBObserver (inObserver)
+       v?.fileExtension_property.addEBObserver (inObserver)
     }
   }
 
@@ -3996,7 +4319,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.fileExtension_property.removeEBObserver (inObserver)
+      v?.fileExtension_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4029,6 +4352,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var horizontalMirror_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.horizontalMirror_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalMirror.insert (inObserver)
@@ -4036,7 +4376,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.horizontalMirror_property.addEBObserver (inObserver)
+       v?.horizontalMirror_property.addEBObserver (inObserver)
     }
   }
 
@@ -4049,7 +4389,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.horizontalMirror_property.removeEBObserver (inObserver)
+      v?.horizontalMirror_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4082,6 +4422,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var name_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.name_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_name.insert (inObserver)
@@ -4089,7 +4446,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.name_property.addEBObserver (inObserver)
+       v?.name_property.addEBObserver (inObserver)
     }
   }
 
@@ -4102,7 +4459,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.name_property.removeEBObserver (inObserver)
+      v?.name_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4135,6 +4492,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.measurementUnitForPadHoleInPDF_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
@@ -4142,7 +4516,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
+       v?.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
     }
   }
 
@@ -4155,7 +4529,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
+      v?.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4188,6 +4562,23 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
+  var padHoleDiameterInPDF_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.padHoleDiameterInPDF_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
@@ -4195,7 +4586,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.padHoleDiameterInPDF_property.addEBObserver (inObserver)
+       v?.padHoleDiameterInPDF_property.addEBObserver (inObserver)
     }
   }
 
@@ -4208,7 +4599,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
+      v?.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4286,7 +4677,7 @@ class TransientObject_ArtworkFileGenerationParameters : ReadOnlyObject_ArtworkFi
 
   //····················································································································
 
-  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+  override var prop : EBSelection < ArtworkFileGenerationParameters? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -4371,7 +4762,7 @@ final class ProxyObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwor
 
   //····················································································································
 
-  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+  override var prop : EBSelection < ArtworkFileGenerationParameters? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -4421,7 +4812,7 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -4434,26 +4825,7 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ArtworkFileGenerationParameters] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ArtworkFileGenerationParameters") as? ArtworkFileGenerationParameters {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -4498,7 +4870,7 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
 
   //····················································································································
 
-  override var prop : EBSelection < ArtworkFileGenerationParameters > {
+  override var prop : EBSelection < ArtworkFileGenerationParameters? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

@@ -1112,6 +1112,23 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mX.insert (inObserver)
@@ -1119,7 +1136,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mX_property.addEBObserver (inObserver)
+       v?.mX_property.addEBObserver (inObserver)
     }
   }
 
@@ -1132,7 +1149,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mX_property.removeEBObserver (inObserver)
+      v?.mX_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1165,6 +1182,23 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
+  var mY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mY.insert (inObserver)
@@ -1172,7 +1206,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mY_property.addEBObserver (inObserver)
+       v?.mY_property.addEBObserver (inObserver)
     }
   }
 
@@ -1185,7 +1219,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mY_property.removeEBObserver (inObserver)
+      v?.mY_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1218,6 +1252,23 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
+  var mComment_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mComment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mComment.insert (inObserver)
@@ -1225,7 +1276,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mComment_property.addEBObserver (inObserver)
+       v?.mComment_property.addEBObserver (inObserver)
     }
   }
 
@@ -1238,7 +1289,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mComment_property.removeEBObserver (inObserver)
+      v?.mComment_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1271,6 +1322,23 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1278,7 +1346,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1291,7 +1359,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1323,6 +1391,23 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1330,7 +1415,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1343,7 +1428,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1420,7 +1505,7 @@ class TransientObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics > {
+  override var prop : EBSelection < CommentInSchematics? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1505,7 +1590,7 @@ final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematic
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics > {
+  override var prop : EBSelection < CommentInSchematics? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1555,7 +1640,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1568,26 +1653,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CommentInSchematics] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CommentInSchematics") as? CommentInSchematics {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1632,7 +1698,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics > {
+  override var prop : EBSelection < CommentInSchematics? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

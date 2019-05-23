@@ -1354,6 +1354,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
@@ -1361,7 +1378,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -1374,7 +1391,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y_property.removeEBObserver (inObserver)
+      v?.y_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1407,6 +1424,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var text_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.text_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_text (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_text.insert (inObserver)
@@ -1414,7 +1448,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.text_property.addEBObserver (inObserver)
+       v?.text_property.addEBObserver (inObserver)
     }
   }
 
@@ -1427,7 +1461,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.text_property.removeEBObserver (inObserver)
+      v?.text_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1460,6 +1494,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+    if let model = self.propval {
+      switch (model.horizontalAlignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_horizontalAlignment.insert (inObserver)
@@ -1467,7 +1518,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.horizontalAlignment_property.addEBObserver (inObserver)
+       v?.horizontalAlignment_property.addEBObserver (inObserver)
     }
   }
 
@@ -1480,7 +1531,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.horizontalAlignment_property.removeEBObserver (inObserver)
+      v?.horizontalAlignment_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1513,6 +1564,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
@@ -1520,7 +1588,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -1533,7 +1601,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x_property.removeEBObserver (inObserver)
+      v?.x_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1566,6 +1634,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1573,7 +1658,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1586,7 +1671,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1618,6 +1703,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1625,7 +1727,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1638,7 +1740,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1670,6 +1772,23 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -1677,7 +1796,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -1690,7 +1809,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1767,7 +1886,7 @@ class TransientObject_SymbolText : ReadOnlyObject_SymbolText {
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolText > {
+  override var prop : EBSelection < SymbolText? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1852,7 +1971,7 @@ final class ProxyObject_SymbolText : ReadWriteObject_SymbolText {
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolText > {
+  override var prop : EBSelection < SymbolText? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1902,7 +2021,7 @@ final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObs
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1915,26 +2034,7 @@ final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObs
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolText] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolText") as? SymbolText {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1979,7 +2079,7 @@ final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObs
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolText > {
+  override var prop : EBSelection < SymbolText? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

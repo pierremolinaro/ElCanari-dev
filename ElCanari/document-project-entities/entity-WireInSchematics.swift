@@ -35,7 +35,11 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP1
   //····················································································································
 
-  let mP1_property = ToOneRelationship_WireInSchematics_mP1 ()
+    #if NEWTOONE
+     let mP1_property = StoredObject_PointInSchematics ()
+    #else
+      let mP1_property = ToOneRelationship_WireInSchematics_mP1 ()
+    #endif
 
   //····················································································································
 
@@ -52,7 +56,11 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  var mP1_none : ToOneRelationship_WireInSchematics_mP1 { return self.mP1_property }
+    #if NEWTOONE
+      var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
+    #else
+      var mP1_none : ToOneRelationship_WireInSchematics_mP1 { return self.mP1_property }
+    #endif
 
   //····················································································································
 
@@ -64,7 +72,11 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP2
   //····················································································································
 
-  let mP2_property = ToOneRelationship_WireInSchematics_mP2 ()
+    #if NEWTOONE
+     let mP2_property = StoredObject_PointInSchematics ()
+    #else
+      let mP2_property = ToOneRelationship_WireInSchematics_mP2 ()
+    #endif
 
   //····················································································································
 
@@ -81,7 +93,11 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  var mP2_none : ToOneRelationship_WireInSchematics_mP2 { return self.mP2_property }
+    #if NEWTOONE
+      var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
+    #else
+      var mP2_none : ToOneRelationship_WireInSchematics_mP2 { return self.mP2_property }
+    #endif
 
   //····················································································································
 
@@ -118,10 +134,18 @@ class WireInSchematics : SchematicsObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mP1
-    self.mP1_property.owner = self
-  //--- To one property: mP2
-    self.mP2_property.owner = self
+  //--- To one property: mP1 (has opposite to many relationship: mWiresP1s) §
+    #if !NEWTOONE
+      self.mP1_property.owner = self
+    #else
+      self.mP1_property.ebUndoManager = self.ebUndoManager
+    #endif
+  //--- To one property: mP2 (has opposite to many relationship: mWiresP2s) §
+    #if !NEWTOONE
+      self.mP2_property.owner = self
+    #else
+      self.mP2_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1055,6 +1079,23 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1062,7 +1103,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1075,7 +1116,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1107,6 +1148,23 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1114,7 +1172,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1127,7 +1185,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1159,6 +1217,23 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
+  var netName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
@@ -1166,7 +1241,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netName_property.addEBObserver (inObserver)
+      v?.netName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1179,7 +1254,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netName_property.removeEBObserver (inObserver)
+      v?.netName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1256,7 +1331,7 @@ class TransientObject_WireInSchematics : ReadOnlyObject_WireInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < WireInSchematics > {
+  override var prop : EBSelection < WireInSchematics? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1341,7 +1416,7 @@ final class ProxyObject_WireInSchematics : ReadWriteObject_WireInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < WireInSchematics > {
+  override var prop : EBSelection < WireInSchematics? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1391,7 +1466,7 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1404,26 +1479,7 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [WireInSchematics] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "WireInSchematics") as? WireInSchematics {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1468,7 +1524,7 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 
   //····················································································································
 
-  override var prop : EBSelection < WireInSchematics > {
+  override var prop : EBSelection < WireInSchematics? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1557,6 +1613,7 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 //    To one relationship: mP1
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
 
   //····················································································································
@@ -1581,7 +1638,7 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
   weak var owner : WireInSchematics? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2193,11 +2250,13 @@ final class ToOneRelationship_WireInSchematics_mP1 : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: mP2
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
 
   //····················································································································
@@ -2222,7 +2281,7 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
   weak var owner : WireInSchematics? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2834,5 +2893,6 @@ final class ToOneRelationship_WireInSchematics_mP2 : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

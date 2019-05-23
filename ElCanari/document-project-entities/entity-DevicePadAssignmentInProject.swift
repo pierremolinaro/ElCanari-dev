@@ -52,7 +52,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  let mPin_property = ToOneRelationship_DevicePadAssignmentInProject_mPin ()
+    #if NEWTOONE
+     let mPin_property = StoredObject_DevicePinInProject ()
+    #else
+      let mPin_property = ToOneRelationship_DevicePadAssignmentInProject_mPin ()
+    #endif
 
   //····················································································································
 
@@ -69,7 +73,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  var mPin_none : ToOneRelationship_DevicePadAssignmentInProject_mPin { return self.mPin_property }
+    #if NEWTOONE
+      var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
+    #else
+      var mPin_none : ToOneRelationship_DevicePadAssignmentInProject_mPin { return self.mPin_property }
+    #endif
 
   //····················································································································
 
@@ -132,7 +140,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin
-    self.mPin_property.owner = self
+    #if !NEWTOONE
+      self.mPin_property.owner = self
+    #else
+      self.mPin_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1016,6 +1028,23 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
+  var mPadName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPadName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
@@ -1023,7 +1052,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mPadName_property.addEBObserver (inObserver)
+       v?.mPadName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1036,7 +1065,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mPadName_property.removeEBObserver (inObserver)
+      v?.mPadName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1069,6 +1098,23 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
+  var pinPadAssignment_property_selection : EBSelection <ThreeStrings?> {
+    if let model = self.propval {
+      switch (model.pinPadAssignment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
@@ -1076,7 +1122,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinPadAssignment_property.addEBObserver (inObserver)
+      v?.pinPadAssignment_property.addEBObserver (inObserver)
     }
   }
 
@@ -1089,7 +1135,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinPadAssignment_property.removeEBObserver (inObserver)
+      v?.pinPadAssignment_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1121,6 +1167,23 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
+  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject?> {
+    if let model = self.propval {
+      switch (model.descriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
@@ -1128,7 +1191,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.descriptor_property.addEBObserver (inObserver)
+      v?.descriptor_property.addEBObserver (inObserver)
     }
   }
 
@@ -1141,7 +1204,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.descriptor_property.removeEBObserver (inObserver)
+      v?.descriptor_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1218,7 +1281,7 @@ class TransientObject_DevicePadAssignmentInProject : ReadOnlyObject_DevicePadAss
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject > {
+  override var prop : EBSelection < DevicePadAssignmentInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1303,7 +1366,7 @@ final class ProxyObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePad
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject > {
+  override var prop : EBSelection < DevicePadAssignmentInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1353,7 +1416,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1366,26 +1429,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DevicePadAssignmentInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePadAssignmentInProject") as? DevicePadAssignmentInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1430,7 +1474,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
 
   //····················································································································
 
-  override var prop : EBSelection < DevicePadAssignmentInProject > {
+  override var prop : EBSelection < DevicePadAssignmentInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1519,6 +1563,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
 //    To one relationship: mPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProperty {
 
   //····················································································································
@@ -1543,7 +1588,7 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   weak var owner : DevicePadAssignmentInProject? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2194,5 +2239,6 @@ final class ToOneRelationship_DevicePadAssignmentInProject_mPin : EBAbstractProp
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

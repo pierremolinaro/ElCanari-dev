@@ -1108,6 +1108,23 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
+  var y1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
@@ -1115,7 +1132,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y1_property.addEBObserver (inObserver)
+       v?.y1_property.addEBObserver (inObserver)
     }
   }
 
@@ -1128,7 +1145,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y1_property.removeEBObserver (inObserver)
+      v?.y1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1161,6 +1178,23 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
+  var x2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
@@ -1168,7 +1202,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x2_property.addEBObserver (inObserver)
+       v?.x2_property.addEBObserver (inObserver)
     }
   }
 
@@ -1181,7 +1215,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x2_property.removeEBObserver (inObserver)
+      v?.x2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1214,6 +1248,23 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
+  var y2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
@@ -1221,7 +1272,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y2_property.addEBObserver (inObserver)
+       v?.y2_property.addEBObserver (inObserver)
     }
   }
 
@@ -1234,7 +1285,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y2_property.removeEBObserver (inObserver)
+      v?.y2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1267,6 +1318,23 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
+  var width_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
@@ -1274,7 +1342,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.width_property.addEBObserver (inObserver)
+       v?.width_property.addEBObserver (inObserver)
     }
   }
 
@@ -1287,7 +1355,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.width_property.removeEBObserver (inObserver)
+      v?.width_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1320,6 +1388,23 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
+  var x1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
@@ -1327,7 +1412,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x1_property.addEBObserver (inObserver)
+       v?.x1_property.addEBObserver (inObserver)
     }
   }
 
@@ -1340,7 +1425,7 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x1_property.removeEBObserver (inObserver)
+      v?.x1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1418,7 +1503,7 @@ class TransientObject_SegmentEntity : ReadOnlyObject_SegmentEntity {
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentEntity > {
+  override var prop : EBSelection < SegmentEntity? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1503,7 +1588,7 @@ final class ProxyObject_SegmentEntity : ReadWriteObject_SegmentEntity {
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentEntity > {
+  override var prop : EBSelection < SegmentEntity? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1553,7 +1638,7 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1566,26 +1651,7 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SegmentEntity] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentEntity") as? SegmentEntity {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1630,7 +1696,7 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < SegmentEntity > {
+  override var prop : EBSelection < SegmentEntity? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

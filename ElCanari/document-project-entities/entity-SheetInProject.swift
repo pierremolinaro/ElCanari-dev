@@ -1295,6 +1295,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
+  var mSheetTitle_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSheetTitle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
@@ -1302,7 +1319,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mSheetTitle_property.addEBObserver (inObserver)
+       v?.mSheetTitle_property.addEBObserver (inObserver)
     }
   }
 
@@ -1315,7 +1332,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mSheetTitle_property.removeEBObserver (inObserver)
+      v?.mSheetTitle_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1348,6 +1365,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -1355,7 +1389,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -1368,7 +1402,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1400,6 +1434,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
+  var connectedPoints_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.connectedPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
@@ -1407,7 +1458,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connectedPoints_property.addEBObserver (inObserver)
+      v?.connectedPoints_property.addEBObserver (inObserver)
     }
   }
 
@@ -1420,7 +1471,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connectedPoints_property.removeEBObserver (inObserver)
+      v?.connectedPoints_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1452,6 +1503,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
+  var connexionWarnings_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionWarnings_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
@@ -1459,7 +1527,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connexionWarnings_property.addEBObserver (inObserver)
+      v?.connexionWarnings_property.addEBObserver (inObserver)
     }
   }
 
@@ -1472,7 +1540,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connexionWarnings_property.removeEBObserver (inObserver)
+      v?.connexionWarnings_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1504,6 +1572,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
+  var connexionErrors_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.connexionErrors_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
@@ -1511,7 +1596,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connexionErrors_property.addEBObserver (inObserver)
+      v?.connexionErrors_property.addEBObserver (inObserver)
     }
   }
 
@@ -1524,7 +1609,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.connexionErrors_property.removeEBObserver (inObserver)
+      v?.connexionErrors_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1545,6 +1630,88 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
         managedObject.connexionErrors_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mObjects
+  //····················································································································
+
+  private var mObserversOf_mObjects = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mObjects_property_selection : EBSelection <[SchematicsObject]> {
+    if let model = self.propval {
+      switch (model.mObjects_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.insert (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_mObjects.remove (inObserver)
+    if let object = self.propval {
+      object.mObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mPoints
+  //····················································································································
+
+  private var mObserversOf_mPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+    if let model = self.propval {
+      switch (model.mPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.insert (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mPoints.remove (inObserver)
+    if let object = self.propval {
+      object.mPoints_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1601,7 +1768,7 @@ class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < SheetInProject > {
+  override var prop : EBSelection < SheetInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1686,7 +1853,7 @@ final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < SheetInProject > {
+  override var prop : EBSelection < SheetInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1736,7 +1903,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1749,26 +1916,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SheetInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SheetInProject") as? SheetInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1813,7 +1961,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < SheetInProject > {
+  override var prop : EBSelection < SheetInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

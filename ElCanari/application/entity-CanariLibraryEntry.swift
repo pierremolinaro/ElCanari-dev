@@ -1129,6 +1129,23 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
+  var mPath_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPath.insert (inObserver)
@@ -1136,7 +1153,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mPath_property.addEBObserver (inObserver)
+       v?.mPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -1149,7 +1166,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mPath_property.removeEBObserver (inObserver)
+      v?.mPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1182,6 +1199,23 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
+  var mUses_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mUses_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUses.insert (inObserver)
@@ -1189,7 +1223,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mUses_property.addEBObserver (inObserver)
+       v?.mUses_property.addEBObserver (inObserver)
     }
   }
 
@@ -1202,7 +1236,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mUses_property.removeEBObserver (inObserver)
+      v?.mUses_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1235,6 +1269,23 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
+  var mLibraryRepositoryURL_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mLibraryRepositoryURL_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
@@ -1242,7 +1293,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mLibraryRepositoryURL_property.addEBObserver (inObserver)
+       v?.mLibraryRepositoryURL_property.addEBObserver (inObserver)
     }
   }
 
@@ -1255,7 +1306,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
+      v?.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1288,6 +1339,23 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
+  var mUserAndPasswordTag_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mUserAndPasswordTag_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
@@ -1295,7 +1363,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mUserAndPasswordTag_property.addEBObserver (inObserver)
+       v?.mUserAndPasswordTag_property.addEBObserver (inObserver)
     }
   }
 
@@ -1308,7 +1376,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mUserAndPasswordTag_property.removeEBObserver (inObserver)
+      v?.mUserAndPasswordTag_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1341,6 +1409,23 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
+  var mStatusImage_property_selection : EBSelection <NSImage?> {
+    if let model = self.propval {
+      switch (model.mStatusImage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStatusImage.insert (inObserver)
@@ -1348,7 +1433,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mStatusImage_property.addEBObserver (inObserver)
+      v?.mStatusImage_property.addEBObserver (inObserver)
     }
   }
 
@@ -1361,7 +1446,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mStatusImage_property.removeEBObserver (inObserver)
+      v?.mStatusImage_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1438,7 +1523,7 @@ class TransientObject_CanariLibraryEntry : ReadOnlyObject_CanariLibraryEntry {
 
   //····················································································································
 
-  override var prop : EBSelection < CanariLibraryEntry > {
+  override var prop : EBSelection < CanariLibraryEntry? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1523,7 +1608,7 @@ final class ProxyObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry 
 
   //····················································································································
 
-  override var prop : EBSelection < CanariLibraryEntry > {
+  override var prop : EBSelection < CanariLibraryEntry? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1573,7 +1658,7 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1586,26 +1671,7 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CanariLibraryEntry] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1650,7 +1716,7 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
 
   //····················································································································
 
-  override var prop : EBSelection < CanariLibraryEntry > {
+  override var prop : EBSelection < CanariLibraryEntry? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

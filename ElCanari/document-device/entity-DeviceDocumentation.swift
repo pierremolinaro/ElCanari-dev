@@ -938,6 +938,23 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
+  var mFileName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mFileName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
@@ -945,7 +962,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mFileName_property.addEBObserver (inObserver)
+       v?.mFileName_property.addEBObserver (inObserver)
     }
   }
 
@@ -958,7 +975,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mFileName_property.removeEBObserver (inObserver)
+      v?.mFileName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -991,6 +1008,23 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
+  var mFileData_property_selection : EBSelection <Data?> {
+    if let model = self.propval {
+      switch (model.mFileData_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
@@ -998,7 +1032,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mFileData_property.addEBObserver (inObserver)
+       v?.mFileData_property.addEBObserver (inObserver)
     }
   }
 
@@ -1011,7 +1045,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mFileData_property.removeEBObserver (inObserver)
+      v?.mFileData_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1044,6 +1078,23 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
+  var fileSize_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.fileSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
@@ -1051,7 +1102,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.fileSize_property.addEBObserver (inObserver)
+      v?.fileSize_property.addEBObserver (inObserver)
     }
   }
 
@@ -1064,7 +1115,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.fileSize_property.removeEBObserver (inObserver)
+      v?.fileSize_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1141,7 +1192,7 @@ class TransientObject_DeviceDocumentation : ReadOnlyObject_DeviceDocumentation {
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceDocumentation > {
+  override var prop : EBSelection < DeviceDocumentation? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1226,7 +1277,7 @@ final class ProxyObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentatio
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceDocumentation > {
+  override var prop : EBSelection < DeviceDocumentation? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1276,7 +1327,7 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1289,26 +1340,7 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DeviceDocumentation] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceDocumentation") as? DeviceDocumentation {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1353,7 +1385,7 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceDocumentation > {
+  override var prop : EBSelection < DeviceDocumentation? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

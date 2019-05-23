@@ -66,7 +66,11 @@ class LabelInSchematics : SchematicsObject,
   //   To one property: mPoint
   //····················································································································
 
-  let mPoint_property = ToOneRelationship_LabelInSchematics_mPoint ()
+    #if NEWTOONE
+     let mPoint_property = StoredObject_PointInSchematics ()
+    #else
+      let mPoint_property = ToOneRelationship_LabelInSchematics_mPoint ()
+    #endif
 
   //····················································································································
 
@@ -83,7 +87,11 @@ class LabelInSchematics : SchematicsObject,
 
   //····················································································································
 
-  var mPoint_none : ToOneRelationship_LabelInSchematics_mPoint { return self.mPoint_property }
+    #if NEWTOONE
+      var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
+    #else
+      var mPoint_none : ToOneRelationship_LabelInSchematics_mPoint { return self.mPoint_property }
+    #endif
 
   //····················································································································
 
@@ -145,8 +153,12 @@ class LabelInSchematics : SchematicsObject,
     super.init (ebUndoManager)
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPoint
-    self.mPoint_property.owner = self
+  //--- To one property: mPoint (has opposite to many relationship: mLabels) §
+    #if !NEWTOONE
+      self.mPoint_property.owner = self
+    #else
+      self.mPoint_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1223,6 +1235,23 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
 
   //····················································································································
 
+  var mOrientation_property_selection : EBSelection <QuadrantRotation?> {
+    if let model = self.propval {
+      switch (model.mOrientation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mOrientation.insert (inObserver)
@@ -1230,7 +1259,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mOrientation_property.addEBObserver (inObserver)
+       v?.mOrientation_property.addEBObserver (inObserver)
     }
   }
 
@@ -1243,7 +1272,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mOrientation_property.removeEBObserver (inObserver)
+      v?.mOrientation_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1276,6 +1305,23 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
 
   //····················································································································
 
+  var location_property_selection : EBSelection <CanariPoint?> {
+    if let model = self.propval {
+      switch (model.location_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_location.insert (inObserver)
@@ -1283,7 +1329,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.location_property.addEBObserver (inObserver)
+      v?.location_property.addEBObserver (inObserver)
     }
   }
 
@@ -1296,7 +1342,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.location_property.removeEBObserver (inObserver)
+      v?.location_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1328,6 +1374,23 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
 
   //····················································································································
 
+  var netName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
@@ -1335,7 +1398,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netName_property.addEBObserver (inObserver)
+      v?.netName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1348,7 +1411,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.netName_property.removeEBObserver (inObserver)
+      v?.netName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1380,6 +1443,23 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -1387,7 +1467,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1400,7 +1480,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1432,6 +1512,23 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -1439,7 +1536,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -1452,7 +1549,7 @@ class ReadOnlyObject_LabelInSchematics : ReadOnlyAbstractObjectProperty <LabelIn
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1529,7 +1626,7 @@ class TransientObject_LabelInSchematics : ReadOnlyObject_LabelInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < LabelInSchematics > {
+  override var prop : EBSelection < LabelInSchematics? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1614,7 +1711,7 @@ final class ProxyObject_LabelInSchematics : ReadWriteObject_LabelInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < LabelInSchematics > {
+  override var prop : EBSelection < LabelInSchematics? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1664,7 +1761,7 @@ final class StoredObject_LabelInSchematics : ReadWriteObject_LabelInSchematics, 
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1677,26 +1774,7 @@ final class StoredObject_LabelInSchematics : ReadWriteObject_LabelInSchematics, 
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [LabelInSchematics] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "LabelInSchematics") as? LabelInSchematics {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1741,7 +1819,7 @@ final class StoredObject_LabelInSchematics : ReadWriteObject_LabelInSchematics, 
 
   //····················································································································
 
-  override var prop : EBSelection < LabelInSchematics > {
+  override var prop : EBSelection < LabelInSchematics? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1830,6 +1908,7 @@ final class StoredObject_LabelInSchematics : ReadWriteObject_LabelInSchematics, 
 //    To one relationship: mPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
 
   //····················································································································
@@ -1854,7 +1933,7 @@ final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
   weak var owner : LabelInSchematics? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2466,5 +2545,6 @@ final class ToOneRelationship_LabelInSchematics_mPoint : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

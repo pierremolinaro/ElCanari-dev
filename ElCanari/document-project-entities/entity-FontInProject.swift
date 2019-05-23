@@ -1146,6 +1146,23 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
+  var mFontName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mFontName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontName.insert (inObserver)
@@ -1153,7 +1170,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mFontName_property.addEBObserver (inObserver)
+       v?.mFontName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1166,7 +1183,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mFontName_property.removeEBObserver (inObserver)
+      v?.mFontName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1199,6 +1216,23 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
+  var mFontVersion_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mFontVersion_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFontVersion.insert (inObserver)
@@ -1206,7 +1240,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mFontVersion_property.addEBObserver (inObserver)
+       v?.mFontVersion_property.addEBObserver (inObserver)
     }
   }
 
@@ -1219,7 +1253,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mFontVersion_property.removeEBObserver (inObserver)
+      v?.mFontVersion_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1252,6 +1286,23 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
+  var mDescriptiveString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mDescriptiveString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mDescriptiveString.insert (inObserver)
@@ -1259,7 +1310,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mDescriptiveString_property.addEBObserver (inObserver)
+       v?.mDescriptiveString_property.addEBObserver (inObserver)
     }
   }
 
@@ -1272,7 +1323,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mDescriptiveString_property.removeEBObserver (inObserver)
+      v?.mDescriptiveString_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1305,6 +1356,23 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
+  var versionString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.versionString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_versionString.insert (inObserver)
@@ -1312,7 +1380,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.versionString_property.addEBObserver (inObserver)
+      v?.versionString_property.addEBObserver (inObserver)
     }
   }
 
@@ -1325,7 +1393,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.versionString_property.removeEBObserver (inObserver)
+      v?.versionString_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1357,6 +1425,23 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
+  var sizeString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.sizeString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
@@ -1364,7 +1449,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sizeString_property.addEBObserver (inObserver)
+      v?.sizeString_property.addEBObserver (inObserver)
     }
   }
 
@@ -1377,7 +1462,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.sizeString_property.removeEBObserver (inObserver)
+      v?.sizeString_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1454,7 +1539,7 @@ class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < FontInProject > {
+  override var prop : EBSelection < FontInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1539,7 +1624,7 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 
   //····················································································································
 
-  override var prop : EBSelection < FontInProject > {
+  override var prop : EBSelection < FontInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1589,7 +1674,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1602,26 +1687,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [FontInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontInProject") as? FontInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1666,7 +1732,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < FontInProject > {
+  override var prop : EBSelection < FontInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

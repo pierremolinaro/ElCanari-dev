@@ -2771,6 +2771,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var y1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
@@ -2778,7 +2795,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y1_property.addEBObserver (inObserver)
+       v?.y1_property.addEBObserver (inObserver)
     }
   }
 
@@ -2791,7 +2808,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y1_property.removeEBObserver (inObserver)
+      v?.y1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2824,6 +2841,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var x2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
@@ -2831,7 +2865,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x2_property.addEBObserver (inObserver)
+       v?.x2_property.addEBObserver (inObserver)
     }
   }
 
@@ -2844,7 +2878,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x2_property.removeEBObserver (inObserver)
+      v?.x2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2877,6 +2911,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var y2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
@@ -2884,7 +2935,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y2_property.addEBObserver (inObserver)
+       v?.y2_property.addEBObserver (inObserver)
     }
   }
 
@@ -2897,7 +2948,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y2_property.removeEBObserver (inObserver)
+      v?.y2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2930,6 +2981,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpx1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpx1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx1.insert (inObserver)
@@ -2937,7 +3005,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpx1_property.addEBObserver (inObserver)
+       v?.cpx1_property.addEBObserver (inObserver)
     }
   }
 
@@ -2950,7 +3018,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpx1_property.removeEBObserver (inObserver)
+      v?.cpx1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2983,6 +3051,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpy1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpy1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy1.insert (inObserver)
@@ -2990,7 +3075,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpy1_property.addEBObserver (inObserver)
+       v?.cpy1_property.addEBObserver (inObserver)
     }
   }
 
@@ -3003,7 +3088,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpy1_property.removeEBObserver (inObserver)
+      v?.cpy1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3036,6 +3121,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpx2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpx2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx2.insert (inObserver)
@@ -3043,7 +3145,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpx2_property.addEBObserver (inObserver)
+       v?.cpx2_property.addEBObserver (inObserver)
     }
   }
 
@@ -3056,7 +3158,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpx2_property.removeEBObserver (inObserver)
+      v?.cpx2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3089,6 +3191,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpy2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpy2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy2.insert (inObserver)
@@ -3096,7 +3215,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpy2_property.addEBObserver (inObserver)
+       v?.cpy2_property.addEBObserver (inObserver)
     }
   }
 
@@ -3109,7 +3228,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpy2_property.removeEBObserver (inObserver)
+      v?.cpy2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3142,6 +3261,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var x1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
@@ -3149,7 +3285,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x1Unit_property.addEBObserver (inObserver)
+       v?.x1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3162,7 +3298,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x1Unit_property.removeEBObserver (inObserver)
+      v?.x1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3195,6 +3331,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var y1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
@@ -3202,7 +3355,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y1Unit_property.addEBObserver (inObserver)
+       v?.y1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3215,7 +3368,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y1Unit_property.removeEBObserver (inObserver)
+      v?.y1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3248,6 +3401,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var x2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
@@ -3255,7 +3425,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x2Unit_property.addEBObserver (inObserver)
+       v?.x2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3268,7 +3438,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x2Unit_property.removeEBObserver (inObserver)
+      v?.x2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3301,6 +3471,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var y2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
@@ -3308,7 +3495,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y2Unit_property.addEBObserver (inObserver)
+       v?.y2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3321,7 +3508,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y2Unit_property.removeEBObserver (inObserver)
+      v?.y2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3354,6 +3541,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpx1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpx1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpx1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx1Unit.insert (inObserver)
@@ -3361,7 +3565,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpx1Unit_property.addEBObserver (inObserver)
+       v?.cpx1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3374,7 +3578,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpx1Unit_property.removeEBObserver (inObserver)
+      v?.cpx1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3407,6 +3611,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpy1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpy1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpy1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy1Unit.insert (inObserver)
@@ -3414,7 +3635,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpy1Unit_property.addEBObserver (inObserver)
+       v?.cpy1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3427,7 +3648,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpy1Unit_property.removeEBObserver (inObserver)
+      v?.cpy1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3460,6 +3681,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpx2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpx2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpx2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpx2Unit.insert (inObserver)
@@ -3467,7 +3705,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpx2Unit_property.addEBObserver (inObserver)
+       v?.cpx2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3480,7 +3718,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpx2Unit_property.removeEBObserver (inObserver)
+      v?.cpx2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3513,6 +3751,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var cpy2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.cpy2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_cpy2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_cpy2Unit.insert (inObserver)
@@ -3520,7 +3775,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.cpy2Unit_property.addEBObserver (inObserver)
+       v?.cpy2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3533,7 +3788,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.cpy2Unit_property.removeEBObserver (inObserver)
+      v?.cpy2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3566,6 +3821,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var x1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
@@ -3573,7 +3845,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x1_property.addEBObserver (inObserver)
+       v?.x1_property.addEBObserver (inObserver)
     }
   }
 
@@ -3586,7 +3858,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x1_property.removeEBObserver (inObserver)
+      v?.x1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3619,6 +3891,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.strokeBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
@@ -3626,7 +3915,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.strokeBezierPath_property.addEBObserver (inObserver)
+      v?.strokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -3639,7 +3928,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.strokeBezierPath_property.removeEBObserver (inObserver)
+      v?.strokeBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3671,6 +3960,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -3678,7 +3984,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3691,7 +3997,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3723,6 +4029,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -3730,7 +4053,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -3743,7 +4066,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3775,6 +4098,23 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -3782,7 +4122,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -3795,7 +4135,7 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3872,7 +4212,7 @@ class TransientObject_PackageBezier : ReadOnlyObject_PackageBezier {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageBezier > {
+  override var prop : EBSelection < PackageBezier? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -3957,7 +4297,7 @@ final class ProxyObject_PackageBezier : ReadWriteObject_PackageBezier {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageBezier > {
+  override var prop : EBSelection < PackageBezier? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -4007,7 +4347,7 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -4020,26 +4360,7 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageBezier] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageBezier") as? PackageBezier {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -4084,7 +4405,7 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < PackageBezier > {
+  override var prop : EBSelection < PackageBezier? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

@@ -689,7 +689,11 @@ class MergerRoot : EBManagedObject,
   //   To one property: artwork
   //····················································································································
 
-  let artwork_property = ToOneRelationship_MergerRoot_artwork ()
+    #if NEWTOONE
+     let artwork_property = StoredObject_ArtworkRoot ()
+    #else
+      let artwork_property = ToOneRelationship_MergerRoot_artwork ()
+    #endif
 
   //····················································································································
 
@@ -706,7 +710,11 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  var artwork_none : ToOneRelationship_MergerRoot_artwork { return self.artwork_property }
+    #if NEWTOONE
+      var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
+    #else
+      var artwork_none : ToOneRelationship_MergerRoot_artwork { return self.artwork_property }
+    #endif
 
   //····················································································································
 
@@ -912,7 +920,11 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: artwork
-    self.artwork_property.owner = self
+    #if !NEWTOONE
+      self.artwork_property.owner = self
+    #else
+      self.artwork_property.ebUndoManager = self.ebUndoManager
+    #endif
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3564,6 +3576,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var selectedPageIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedPageIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedPageIndex.insert (inObserver)
@@ -3571,7 +3600,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.selectedPageIndex_property.addEBObserver (inObserver)
+       v?.selectedPageIndex_property.addEBObserver (inObserver)
     }
   }
 
@@ -3584,7 +3613,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectedPageIndex_property.removeEBObserver (inObserver)
+      v?.selectedPageIndex_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3617,6 +3646,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var zoom_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.zoom_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_zoom.insert (inObserver)
@@ -3624,7 +3670,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.zoom_property.addEBObserver (inObserver)
+       v?.zoom_property.addEBObserver (inObserver)
     }
   }
 
@@ -3637,7 +3683,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.zoom_property.removeEBObserver (inObserver)
+      v?.zoom_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3670,6 +3716,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var automaticBoardSize_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.automaticBoardSize_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_automaticBoardSize.insert (inObserver)
@@ -3677,7 +3740,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.automaticBoardSize_property.addEBObserver (inObserver)
+       v?.automaticBoardSize_property.addEBObserver (inObserver)
     }
   }
 
@@ -3690,7 +3753,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.automaticBoardSize_property.removeEBObserver (inObserver)
+      v?.automaticBoardSize_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3723,6 +3786,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardManualWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardManualWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardManualWidth.insert (inObserver)
@@ -3730,7 +3810,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardManualWidth_property.addEBObserver (inObserver)
+       v?.boardManualWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -3743,7 +3823,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardManualWidth_property.removeEBObserver (inObserver)
+      v?.boardManualWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3776,6 +3856,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardManualHeight_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardManualHeight_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardManualHeight.insert (inObserver)
@@ -3783,7 +3880,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardManualHeight_property.addEBObserver (inObserver)
+       v?.boardManualHeight_property.addEBObserver (inObserver)
     }
   }
 
@@ -3796,7 +3893,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardManualHeight_property.removeEBObserver (inObserver)
+      v?.boardManualHeight_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3829,6 +3926,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardWidthUnit.insert (inObserver)
@@ -3836,7 +3950,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardWidthUnit_property.addEBObserver (inObserver)
+       v?.boardWidthUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3849,7 +3963,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardWidthUnit_property.removeEBObserver (inObserver)
+      v?.boardWidthUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3882,6 +3996,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardHeightUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardHeightUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardHeightUnit.insert (inObserver)
@@ -3889,7 +4020,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardHeightUnit_property.addEBObserver (inObserver)
+       v?.boardHeightUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -3902,7 +4033,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardHeightUnit_property.removeEBObserver (inObserver)
+      v?.boardHeightUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3935,6 +4066,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var overlapingArrangment_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.overlapingArrangment_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_overlapingArrangment.insert (inObserver)
@@ -3942,7 +4090,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.overlapingArrangment_property.addEBObserver (inObserver)
+       v?.overlapingArrangment_property.addEBObserver (inObserver)
     }
   }
 
@@ -3955,7 +4103,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.overlapingArrangment_property.removeEBObserver (inObserver)
+      v?.overlapingArrangment_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3988,6 +4136,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var selectedBoardXUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedBoardXUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedBoardXUnit.insert (inObserver)
@@ -3995,7 +4160,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.selectedBoardXUnit_property.addEBObserver (inObserver)
+       v?.selectedBoardXUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -4008,7 +4173,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectedBoardXUnit_property.removeEBObserver (inObserver)
+      v?.selectedBoardXUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4041,6 +4206,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var selectedBoardYUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedBoardYUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectedBoardYUnit.insert (inObserver)
@@ -4048,7 +4230,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.selectedBoardYUnit_property.addEBObserver (inObserver)
+       v?.selectedBoardYUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -4061,7 +4243,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectedBoardYUnit_property.removeEBObserver (inObserver)
+      v?.selectedBoardYUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4094,6 +4276,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardLimitWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardLimitWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
@@ -4101,7 +4300,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardLimitWidth_property.addEBObserver (inObserver)
+       v?.boardLimitWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -4114,7 +4313,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardLimitWidth_property.removeEBObserver (inObserver)
+      v?.boardLimitWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4147,6 +4346,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardLimitWidthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardLimitWidthUnit.insert (inObserver)
@@ -4154,7 +4370,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.boardLimitWidthUnit_property.addEBObserver (inObserver)
+       v?.boardLimitWidthUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -4167,7 +4383,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardLimitWidthUnit_property.removeEBObserver (inObserver)
+      v?.boardLimitWidthUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4200,6 +4416,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var arrowMagnitude_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.arrowMagnitude_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_arrowMagnitude.insert (inObserver)
@@ -4207,7 +4440,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.arrowMagnitude_property.addEBObserver (inObserver)
+       v?.arrowMagnitude_property.addEBObserver (inObserver)
     }
   }
 
@@ -4220,7 +4453,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.arrowMagnitude_property.removeEBObserver (inObserver)
+      v?.arrowMagnitude_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4253,6 +4486,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.arrowMagnitudeUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_arrowMagnitudeUnit.insert (inObserver)
@@ -4260,7 +4510,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.arrowMagnitudeUnit_property.addEBObserver (inObserver)
+       v?.arrowMagnitudeUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -4273,7 +4523,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
+      v?.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4306,6 +4556,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.shiftArrowMagnitude_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shiftArrowMagnitude.insert (inObserver)
@@ -4313,7 +4580,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.shiftArrowMagnitude_property.addEBObserver (inObserver)
+       v?.shiftArrowMagnitude_property.addEBObserver (inObserver)
     }
   }
 
@@ -4326,7 +4593,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.shiftArrowMagnitude_property.removeEBObserver (inObserver)
+      v?.shiftArrowMagnitude_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4359,6 +4626,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.shiftArrowMagnitudeUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
@@ -4366,7 +4650,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
+       v?.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
     }
   }
 
@@ -4379,7 +4663,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
+      v?.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4412,6 +4696,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var artworkName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.artworkName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_artworkName.insert (inObserver)
@@ -4419,7 +4720,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.artworkName_property.addEBObserver (inObserver)
+       v?.artworkName_property.addEBObserver (inObserver)
     }
   }
 
@@ -4432,7 +4733,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.artworkName_property.removeEBObserver (inObserver)
+      v?.artworkName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4465,6 +4766,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var generateGerberProductFile_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.generateGerberProductFile_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generateGerberProductFile.insert (inObserver)
@@ -4472,7 +4790,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.generateGerberProductFile_property.addEBObserver (inObserver)
+       v?.generateGerberProductFile_property.addEBObserver (inObserver)
     }
   }
 
@@ -4485,7 +4803,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.generateGerberProductFile_property.removeEBObserver (inObserver)
+      v?.generateGerberProductFile_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4518,6 +4836,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var generatePDFProductFile_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.generatePDFProductFile_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generatePDFProductFile.insert (inObserver)
@@ -4525,7 +4860,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.generatePDFProductFile_property.addEBObserver (inObserver)
+       v?.generatePDFProductFile_property.addEBObserver (inObserver)
     }
   }
 
@@ -4538,7 +4873,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.generatePDFProductFile_property.removeEBObserver (inObserver)
+      v?.generatePDFProductFile_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4571,6 +4906,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat?> {
+    if let model = self.propval {
+      switch (model.generatedBoardArchiveFormat_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
@@ -4578,7 +4930,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
+       v?.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
     }
   }
 
@@ -4591,7 +4943,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
+      v?.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4624,6 +4976,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var modelNames_property_selection : EBSelection <StringTagArray?> {
+    if let model = self.propval {
+      switch (model.modelNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_modelNames.insert (inObserver)
@@ -4631,7 +5000,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.modelNames_property.addEBObserver (inObserver)
+      v?.modelNames_property.addEBObserver (inObserver)
     }
   }
 
@@ -4644,7 +5013,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.modelNames_property.removeEBObserver (inObserver)
+      v?.modelNames_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4676,6 +5045,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardRect_property_selection : EBSelection <CanariRect?> {
+    if let model = self.propval {
+      switch (model.boardRect_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardRect.insert (inObserver)
@@ -4683,7 +5069,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardRect_property.addEBObserver (inObserver)
+      v?.boardRect_property.addEBObserver (inObserver)
     }
   }
 
@@ -4696,7 +5082,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardRect_property.removeEBObserver (inObserver)
+      v?.boardRect_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4728,6 +5114,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardDisplayRect_property_selection : EBSelection <CanariRect?> {
+    if let model = self.propval {
+      switch (model.boardDisplayRect_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardDisplayRect.insert (inObserver)
@@ -4735,7 +5138,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardDisplayRect_property.addEBObserver (inObserver)
+      v?.boardDisplayRect_property.addEBObserver (inObserver)
     }
   }
 
@@ -4748,7 +5151,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardDisplayRect_property.removeEBObserver (inObserver)
+      v?.boardDisplayRect_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4780,6 +5183,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardWidth_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardWidth.insert (inObserver)
@@ -4787,7 +5207,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardWidth_property.addEBObserver (inObserver)
+      v?.boardWidth_property.addEBObserver (inObserver)
     }
   }
 
@@ -4800,7 +5220,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardWidth_property.removeEBObserver (inObserver)
+      v?.boardWidth_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4832,6 +5252,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardHeight_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.boardHeight_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardHeight.insert (inObserver)
@@ -4839,7 +5276,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardHeight_property.addEBObserver (inObserver)
+      v?.boardHeight_property.addEBObserver (inObserver)
     }
   }
 
@@ -4852,7 +5289,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardHeight_property.removeEBObserver (inObserver)
+      v?.boardHeight_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4884,6 +5321,23 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
+  var boardOutlineRectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.boardOutlineRectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_boardOutlineRectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_boardOutlineRectDisplay.insert (inObserver)
@@ -4891,7 +5345,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardOutlineRectDisplay_property.addEBObserver (inObserver)
+      v?.boardOutlineRectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -4904,7 +5358,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.boardOutlineRectDisplay_property.removeEBObserver (inObserver)
+      v?.boardOutlineRectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4925,6 +5379,88 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       self.mObserversOf_boardOutlineRectDisplay.apply { (_ observer : EBEvent) in
         managedObject.boardOutlineRectDisplay_property.removeEBObserver (observer)
       }
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: boardModels
+  //····················································································································
+
+  private var mObserversOf_boardModels = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardModels_property_selection : EBSelection <[BoardModel]> {
+    if let model = self.propval {
+      switch (model.boardModels_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardModels (_ inObserver : EBEvent) {
+    self.mObserversOf_boardModels.insert (inObserver)
+    if let object = self.propval {
+      object.boardModels_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardModels (_ inObserver : EBEvent) {
+    self.mObserversOf_boardModels.remove (inObserver)
+    if let object = self.propval {
+      object.boardModels_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: boardInstances
+  //····················································································································
+
+  private var mObserversOf_boardInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardInstances_property_selection : EBSelection <[MergerBoardInstance]> {
+    if let model = self.propval {
+      switch (model.boardInstances_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_boardInstances.insert (inObserver)
+    if let object = self.propval {
+      object.boardInstances_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardInstances (_ inObserver : EBEvent) {
+    self.mObserversOf_boardInstances.remove (inObserver)
+    if let object = self.propval {
+      object.boardInstances_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4981,7 +5517,7 @@ class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < MergerRoot > {
+  override var prop : EBSelection < MergerRoot? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -5066,7 +5602,7 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 
   //····················································································································
 
-  override var prop : EBSelection < MergerRoot > {
+  override var prop : EBSelection < MergerRoot? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -5116,7 +5652,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -5129,26 +5665,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [MergerRoot] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerRoot") as? MergerRoot {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -5193,7 +5710,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
   //····················································································································
 
-  override var prop : EBSelection < MergerRoot > {
+  override var prop : EBSelection < MergerRoot? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -5282,6 +5799,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 //    To one relationship: artwork
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
 
   //····················································································································
@@ -5306,7 +5824,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   weak var owner : MergerRoot? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -5871,5 +6389,6 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

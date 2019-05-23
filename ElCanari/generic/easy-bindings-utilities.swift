@@ -814,7 +814,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
   // Abstract methods
   //····················································································································
 
-  var prop : EBSelection < T > { get { return .empty } }  // Abstract method
+  var prop : EBSelection < T? > { get { return .empty } }  // Abstract method
 
   //····················································································································
 

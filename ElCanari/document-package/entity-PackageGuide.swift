@@ -1768,6 +1768,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var y1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1.insert (inObserver)
@@ -1775,7 +1792,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y1_property.addEBObserver (inObserver)
+       v?.y1_property.addEBObserver (inObserver)
     }
   }
 
@@ -1788,7 +1805,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y1_property.removeEBObserver (inObserver)
+      v?.y1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1821,6 +1838,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var x2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2.insert (inObserver)
@@ -1828,7 +1862,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x2_property.addEBObserver (inObserver)
+       v?.x2_property.addEBObserver (inObserver)
     }
   }
 
@@ -1841,7 +1875,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x2_property.removeEBObserver (inObserver)
+      v?.x2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1874,6 +1908,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var y2_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2.insert (inObserver)
@@ -1881,7 +1932,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y2_property.addEBObserver (inObserver)
+       v?.y2_property.addEBObserver (inObserver)
     }
   }
 
@@ -1894,7 +1945,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y2_property.removeEBObserver (inObserver)
+      v?.y2_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1927,6 +1978,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var x1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1Unit.insert (inObserver)
@@ -1934,7 +2002,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x1Unit_property.addEBObserver (inObserver)
+       v?.x1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -1947,7 +2015,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x1Unit_property.removeEBObserver (inObserver)
+      v?.x1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1980,6 +2048,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var y1Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y1Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y1Unit.insert (inObserver)
@@ -1987,7 +2072,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y1Unit_property.addEBObserver (inObserver)
+       v?.y1Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2000,7 +2085,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y1Unit_property.removeEBObserver (inObserver)
+      v?.y1Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2033,6 +2118,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var x2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x2Unit.insert (inObserver)
@@ -2040,7 +2142,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x2Unit_property.addEBObserver (inObserver)
+       v?.x2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2053,7 +2155,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x2Unit_property.removeEBObserver (inObserver)
+      v?.x2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2086,6 +2188,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var y2Unit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y2Unit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y2Unit.insert (inObserver)
@@ -2093,7 +2212,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y2Unit_property.addEBObserver (inObserver)
+       v?.y2Unit_property.addEBObserver (inObserver)
     }
   }
 
@@ -2106,7 +2225,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y2Unit_property.removeEBObserver (inObserver)
+      v?.y2Unit_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2139,6 +2258,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var x1_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x1_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x1.insert (inObserver)
@@ -2146,7 +2282,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x1_property.addEBObserver (inObserver)
+       v?.x1_property.addEBObserver (inObserver)
     }
   }
 
@@ -2159,7 +2295,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x1_property.removeEBObserver (inObserver)
+      v?.x1_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2192,6 +2328,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -2199,7 +2352,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.addEBObserver (inObserver)
+      v?.objectDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -2212,7 +2365,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.objectDisplay_property.removeEBObserver (inObserver)
+      v?.objectDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2244,6 +2397,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -2251,7 +2421,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.addEBObserver (inObserver)
+      v?.selectionDisplay_property.addEBObserver (inObserver)
     }
   }
 
@@ -2264,7 +2434,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.selectionDisplay_property.removeEBObserver (inObserver)
+      v?.selectionDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2296,6 +2466,23 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
 
   //····················································································································
 
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_issues.insert (inObserver)
@@ -2303,7 +2490,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.addEBObserver (inObserver)
+      v?.issues_property.addEBObserver (inObserver)
     }
   }
 
@@ -2316,7 +2503,7 @@ class ReadOnlyObject_PackageGuide : ReadOnlyAbstractObjectProperty <PackageGuide
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.issues_property.removeEBObserver (inObserver)
+      v?.issues_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2393,7 +2580,7 @@ class TransientObject_PackageGuide : ReadOnlyObject_PackageGuide {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageGuide > {
+  override var prop : EBSelection < PackageGuide? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -2478,7 +2665,7 @@ final class ProxyObject_PackageGuide : ReadWriteObject_PackageGuide {
 
   //····················································································································
 
-  override var prop : EBSelection < PackageGuide > {
+  override var prop : EBSelection < PackageGuide? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -2528,7 +2715,7 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -2541,26 +2728,7 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageGuide] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageGuide") as? PackageGuide {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -2605,7 +2773,7 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < PackageGuide > {
+  override var prop : EBSelection < PackageGuide? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

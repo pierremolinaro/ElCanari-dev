@@ -83,7 +83,11 @@ class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  let mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
+    #if NEWTOONE
+     let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice ()
+    #else
+      let mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
+    #endif
 
   //····················································································································
 
@@ -100,7 +104,11 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mPinInstance_none : ToOneRelationship_PadProxyInDevice_mPinInstance { return self.mPinInstance_property }
+    #if NEWTOONE
+      var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
+    #else
+      var mPinInstance_none : ToOneRelationship_PadProxyInDevice_mPinInstance { return self.mPinInstance_property }
+    #endif
 
   //····················································································································
 
@@ -187,8 +195,16 @@ class PadProxyInDevice : EBManagedObject,
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsNC
     self.mIsNC_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPinInstance
-    self.mPinInstance_property.owner = self
+  //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy) §
+    #if !NEWTOONE
+      self.mPinInstance_property.owner = self
+    #else
+      self.mPinInstance_property.ebUndoManager = self.ebUndoManager
+      self.mPinInstance_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },
+        resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }
+      )
+    #endif
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1248,6 +1264,23 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
+  var mPadName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPadName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
@@ -1255,7 +1288,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mPadName_property.addEBObserver (inObserver)
+       v?.mPadName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1268,7 +1301,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mPadName_property.removeEBObserver (inObserver)
+      v?.mPadName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1301,6 +1334,23 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
+  var mIsNC_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mIsNC_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mIsNC.insert (inObserver)
@@ -1308,7 +1358,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mIsNC_property.addEBObserver (inObserver)
+       v?.mIsNC_property.addEBObserver (inObserver)
     }
   }
 
@@ -1321,7 +1371,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mIsNC_property.removeEBObserver (inObserver)
+      v?.mIsNC_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1354,6 +1404,23 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
@@ -1361,7 +1428,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.isConnected_property.addEBObserver (inObserver)
+      v?.isConnected_property.addEBObserver (inObserver)
     }
   }
 
@@ -1374,7 +1441,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.isConnected_property.removeEBObserver (inObserver)
+      v?.isConnected_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1406,6 +1473,23 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
+  var pinInstanceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.pinInstanceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_pinInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinInstanceName.insert (inObserver)
@@ -1413,7 +1497,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinInstanceName_property.addEBObserver (inObserver)
+      v?.pinInstanceName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1426,7 +1510,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinInstanceName_property.removeEBObserver (inObserver)
+      v?.pinInstanceName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1458,6 +1542,23 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
+  var symbolName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.symbolName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
@@ -1465,7 +1566,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolName_property.addEBObserver (inObserver)
+      v?.symbolName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1478,7 +1579,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolName_property.removeEBObserver (inObserver)
+      v?.symbolName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1555,7 +1656,7 @@ class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
   //····················································································································
 
-  override var prop : EBSelection < PadProxyInDevice > {
+  override var prop : EBSelection < PadProxyInDevice? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1640,7 +1741,7 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 
   //····················································································································
 
-  override var prop : EBSelection < PadProxyInDevice > {
+  override var prop : EBSelection < PadProxyInDevice? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1690,7 +1791,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1703,26 +1804,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PadProxyInDevice] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PadProxyInDevice") as? PadProxyInDevice {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1767,7 +1849,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   //····················································································································
 
-  override var prop : EBSelection < PadProxyInDevice > {
+  override var prop : EBSelection < PadProxyInDevice? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1856,6 +1938,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 //    To one relationship: mPinInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty {
 
   //····················································································································
@@ -1880,7 +1963,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   weak var owner : PadProxyInDevice? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2148,5 +2231,6 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

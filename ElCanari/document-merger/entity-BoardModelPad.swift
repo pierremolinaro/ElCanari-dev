@@ -1210,6 +1210,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var y_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.y_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_y.insert (inObserver)
@@ -1217,7 +1234,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.y_property.addEBObserver (inObserver)
+       v?.y_property.addEBObserver (inObserver)
     }
   }
 
@@ -1230,7 +1247,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.y_property.removeEBObserver (inObserver)
+      v?.y_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1263,6 +1280,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var width_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_width.insert (inObserver)
@@ -1270,7 +1304,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.width_property.addEBObserver (inObserver)
+       v?.width_property.addEBObserver (inObserver)
     }
   }
 
@@ -1283,7 +1317,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.width_property.removeEBObserver (inObserver)
+      v?.width_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1316,6 +1350,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var height_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.height_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_height.insert (inObserver)
@@ -1323,7 +1374,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.height_property.addEBObserver (inObserver)
+       v?.height_property.addEBObserver (inObserver)
     }
   }
 
@@ -1336,7 +1387,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.height_property.removeEBObserver (inObserver)
+      v?.height_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1369,6 +1420,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var shape_property_selection : EBSelection <PadShape?> {
+    if let model = self.propval {
+      switch (model.shape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_shape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_shape.insert (inObserver)
@@ -1376,7 +1444,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.shape_property.addEBObserver (inObserver)
+       v?.shape_property.addEBObserver (inObserver)
     }
   }
 
@@ -1389,7 +1457,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.shape_property.removeEBObserver (inObserver)
+      v?.shape_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1422,6 +1490,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var rotation_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.rotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_rotation.insert (inObserver)
@@ -1429,7 +1514,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.rotation_property.addEBObserver (inObserver)
+       v?.rotation_property.addEBObserver (inObserver)
     }
   }
 
@@ -1442,7 +1527,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.rotation_property.removeEBObserver (inObserver)
+      v?.rotation_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1475,6 +1560,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
+  var x_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.x_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_x.insert (inObserver)
@@ -1482,7 +1584,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.x_property.addEBObserver (inObserver)
+       v?.x_property.addEBObserver (inObserver)
     }
   }
 
@@ -1495,7 +1597,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.x_property.removeEBObserver (inObserver)
+      v?.x_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1573,7 +1675,7 @@ class TransientObject_BoardModelPad : ReadOnlyObject_BoardModelPad {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelPad > {
+  override var prop : EBSelection < BoardModelPad? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1658,7 +1760,7 @@ final class ProxyObject_BoardModelPad : ReadWriteObject_BoardModelPad {
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelPad > {
+  override var prop : EBSelection < BoardModelPad? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1708,7 +1810,7 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1721,26 +1823,7 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [BoardModelPad] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardModelPad") as? BoardModelPad {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1785,7 +1868,7 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
 
   //····················································································································
 
-  override var prop : EBSelection < BoardModelPad > {
+  override var prop : EBSelection < BoardModelPad? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{

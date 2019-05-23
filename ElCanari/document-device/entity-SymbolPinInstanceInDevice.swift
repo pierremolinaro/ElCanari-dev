@@ -49,7 +49,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-  let mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
+    #if NEWTOONE
+     let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice ()
+    #else
+      let mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
+    #endif
 
   //····················································································································
 
@@ -66,7 +70,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mSymbolInstance_none : ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance { return self.mSymbolInstance_property }
+    #if NEWTOONE
+      var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
+    #else
+      var mSymbolInstance_none : ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance { return self.mSymbolInstance_property }
+    #endif
 
   //····················································································································
 
@@ -78,7 +86,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mType
   //····················································································································
 
-  let mType_property = ToOneRelationship_SymbolPinInstanceInDevice_mType ()
+    #if NEWTOONE
+     let mType_property = StoredObject_SymbolPinTypeInDevice ()
+    #else
+      let mType_property = ToOneRelationship_SymbolPinInstanceInDevice_mType ()
+    #endif
 
   //····················································································································
 
@@ -95,7 +107,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mType_none : ToOneRelationship_SymbolPinInstanceInDevice_mType { return self.mType_property }
+    #if NEWTOONE
+      var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
+    #else
+      var mType_none : ToOneRelationship_SymbolPinInstanceInDevice_mType { return self.mType_property }
+    #endif
 
   //····················································································································
 
@@ -107,7 +123,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mPadProxy
   //····················································································································
 
-  let mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
+    #if NEWTOONE
+     let mPadProxy_property = StoredObject_PadProxyInDevice ()
+    #else
+      let mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
+    #endif
 
   //····················································································································
 
@@ -124,7 +144,11 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  var mPadProxy_none : ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy { return self.mPadProxy_property }
+    #if NEWTOONE
+      var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
+    #else
+      var mPadProxy_none : ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy { return self.mPadProxy_property }
+    #endif
 
   //····················································································································
 
@@ -253,12 +277,28 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mSymbolInstance
-    self.mSymbolInstance_property.owner = self
-  //--- To one property: mType
-    self.mType_property.owner = self
-  //--- To one property: mPadProxy
-    self.mPadProxy_property.owner = self
+  //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances) §
+    #if !NEWTOONE
+      self.mSymbolInstance_property.owner = self
+    #else
+      self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
+    #endif
+  //--- To one property: mType (has opposite to many relationship: mInstances) §
+    #if !NEWTOONE
+      self.mType_property.owner = self
+    #else
+      self.mType_property.ebUndoManager = self.ebUndoManager
+    #endif
+  //--- To one property: mPadProxy (has opposite to one relationship: mPinInstance) §
+    #if !NEWTOONE
+      self.mPadProxy_property.owner = self
+    #else
+      self.mPadProxy_property.ebUndoManager = self.ebUndoManager
+      self.mPadProxy_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPinInstance_property.setProp (me) } },
+        resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }
+      )
+    #endif
   //--- Atomic property: pinName
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1405,6 +1445,23 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var pinName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.pinName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinName.insert (inObserver)
@@ -1412,7 +1469,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinName_property.addEBObserver (inObserver)
+      v?.pinName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1425,7 +1482,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinName_property.removeEBObserver (inObserver)
+      v?.pinName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1457,6 +1514,23 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var symbolName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.symbolName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
@@ -1464,7 +1538,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolName_property.addEBObserver (inObserver)
+      v?.symbolName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1477,7 +1551,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.symbolName_property.removeEBObserver (inObserver)
+      v?.symbolName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1509,6 +1583,23 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
+    if let model = self.propval {
+      switch (model.pinQualifiedName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
@@ -1516,7 +1607,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinQualifiedName_property.addEBObserver (inObserver)
+      v?.pinQualifiedName_property.addEBObserver (inObserver)
     }
   }
 
@@ -1529,7 +1620,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.pinQualifiedName_property.removeEBObserver (inObserver)
+      v?.pinQualifiedName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1561,6 +1652,23 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
@@ -1568,7 +1676,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.isConnected_property.addEBObserver (inObserver)
+      v?.isConnected_property.addEBObserver (inObserver)
     }
   }
 
@@ -1581,7 +1689,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.isConnected_property.removeEBObserver (inObserver)
+      v?.isConnected_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1613,6 +1721,23 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var numberShape_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.numberShape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_numberShape.insert (inObserver)
@@ -1620,7 +1745,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.numberShape_property.addEBObserver (inObserver)
+      v?.numberShape_property.addEBObserver (inObserver)
     }
   }
 
@@ -1633,7 +1758,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.numberShape_property.removeEBObserver (inObserver)
+      v?.numberShape_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1710,7 +1835,7 @@ class TransientObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinInstan
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolPinInstanceInDevice > {
+  override var prop : EBSelection < SymbolPinInstanceInDevice? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1795,7 +1920,7 @@ final class ProxyObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIns
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolPinInstanceInDevice > {
+  override var prop : EBSelection < SymbolPinInstanceInDevice? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1845,7 +1970,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1858,26 +1983,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolPinInstanceInDevice] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolPinInstanceInDevice") as? SymbolPinInstanceInDevice {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1922,7 +2028,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
 
   //····················································································································
 
-  override var prop : EBSelection < SymbolPinInstanceInDevice > {
+  override var prop : EBSelection < SymbolPinInstanceInDevice? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -2011,6 +2117,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
 //    To one relationship: mSymbolInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbstractProperty {
 
   //····················································································································
@@ -2035,7 +2142,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   weak var owner : SymbolPinInstanceInDevice? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -2475,11 +2582,13 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbst
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: mType
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProperty {
 
   //····················································································································
@@ -2504,7 +2613,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   weak var owner : SymbolPinInstanceInDevice? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -3073,11 +3182,13 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: mPadProxy
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#if !NEWTOONE
 final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractProperty {
 
   //····················································································································
@@ -3102,7 +3213,7 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   weak var owner : SymbolPinInstanceInDevice? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
       }
     }
   }
@@ -3370,5 +3481,6 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   //····················································································································
 
 }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

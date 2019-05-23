@@ -904,6 +904,23 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var mSymbolTypeName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mSymbolTypeName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mSymbolTypeName.insert (inObserver)
@@ -911,7 +928,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mSymbolTypeName_property.addEBObserver (inObserver)
+       v?.mSymbolTypeName_property.addEBObserver (inObserver)
     }
   }
 
@@ -924,7 +941,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mSymbolTypeName_property.removeEBObserver (inObserver)
+      v?.mSymbolTypeName_property.removeEBObserver (inObserver)
     }
   }
 
@@ -957,6 +974,23 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.mStrokeBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
@@ -964,7 +998,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mStrokeBezierPath_property.addEBObserver (inObserver)
+       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -977,7 +1011,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mStrokeBezierPath_property.removeEBObserver (inObserver)
+      v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1010,6 +1044,23 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
+  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.mFilledBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
   final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_mFilledBezierPath.insert (inObserver)
@@ -1017,7 +1068,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-       v.mFilledBezierPath_property.addEBObserver (inObserver)
+       v?.mFilledBezierPath_property.addEBObserver (inObserver)
     }
   }
 
@@ -1030,7 +1081,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     case .empty, .multiple :
       break
     case .single (let v) :
-      v.mFilledBezierPath_property.removeEBObserver (inObserver)
+      v?.mFilledBezierPath_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1108,7 +1159,7 @@ class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTyp
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceSymbolTypeInProject > {
+  override var prop : EBSelection < DeviceSymbolTypeInProject? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1193,7 +1244,7 @@ final class ProxyObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbol
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceSymbolTypeInProject > {
+  override var prop : EBSelection < DeviceSymbolTypeInProject? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1243,7 +1294,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.prop {
@@ -1256,26 +1307,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
     }
   }
 
-  //····················································································································
-  //  Init
-  //····················································································································
-
- /* convenience init (prefKey : String) {
-    self.init ()
-    self.mPrefKey = prefKey
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DeviceSymbolTypeInProject] ()
-      for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceSymbolTypeInProject") as? DeviceSymbolTypeInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
-      }
-      self.setProp (objectArray)
-    }
-  } */
-
-  //····················································································································
+ //····················································································································
   // Model will change 
   //····················································································································
 
@@ -1320,7 +1352,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
   //····················································································································
 
-  override var prop : EBSelection < DeviceSymbolTypeInProject > {
+  override var prop : EBSelection < DeviceSymbolTypeInProject? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
