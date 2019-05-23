@@ -66,11 +66,11 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-    #if NEWTOONE
+  //  #if NEWTOONE
      let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject ()
-    #else
-      let mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
-    #endif
+  //  #else
+  //    let mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
+  //  #endif
 
   //····················································································································
 
@@ -87,11 +87,11 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-    #if NEWTOONE
+  //  #if NEWTOONE
       var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
-    #else
-      var mSymbolType_none : ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType { return self.mSymbolType_property }
-    #endif
+  //  #else
+  //    var mSymbolType_none : ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType { return self.mSymbolType_property }
+  //  #endif
 
   //····················································································································
 
@@ -200,11 +200,11 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
-    #if !NEWTOONE
-      self.mSymbolType_property.owner = self
-    #else
+  //  #if !NEWTOONE
+  //    self.mSymbolType_property.owner = self
+  //  #else
       self.mSymbolType_property.ebUndoManager = self.ebUndoManager
-    #endif
+  //  #endif
   //--- Atomic property: symbolAndTypeName
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1935,214 +1935,5 @@ final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceS
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: mSymbolType
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#if !NEWTOONE
-final class ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType : EBAbstractProperty {
-
-  //····················································································································
-  //   Value explorer
-  //····················································································································
-
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = self.mValueExplorer {
-        switch prop {
-        case .empty, .multiple :
-          break ;
-        case .single (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  //····················································································································
-
-  weak var owner : DeviceSymbolInstanceInProject? { // SOULD BE WEAK
-    didSet {
-      if let unwrappedExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button: unwrappedExplorer)
-      }
-    }
-  }
- 
-  //····················································································································
-
-  private var mValue : DeviceSymbolTypeInProject? {
-    didSet {
-      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = self.mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button: unwrappedExplorer)
-        }
-      //--- Remove property observers of old object
-        oldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
-        oldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
-        oldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
-      //--- Add property observers to new object
-        self.mValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
-        self.mValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
-        self.mValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName)
-       //--- Notify observers
-        self.postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  var propval : DeviceSymbolTypeInProject? { return self.mValue }
-
-  var prop : EBSelection <DeviceSymbolTypeInProject?> { return .single (self.mValue) }
-
-  func setProp (_ value : DeviceSymbolTypeInProject?) { self.mValue = value }
-
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : DeviceSymbolTypeInProject?) {
-    self.mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : DeviceSymbolTypeInProject) {
-    if self.mValue === object {
-      self.mValue = nil
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: mFilledBezierPath
-  //····················································································································
-
-  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
-      switch (model.mFilledBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mObserversOf_mFilledBezierPath.insert (inObserver)
-    if let object = self.propval {
-      object.mFilledBezierPath_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mObserversOf_mFilledBezierPath.remove (inObserver)
-    if let object = self.propval {
-      object.mFilledBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: mStrokeBezierPath
-  //····················································································································
-
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
-      switch (model.mStrokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    if let object = self.propval {
-      object.mStrokeBezierPath_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    if let object = self.propval {
-      object.mStrokeBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable atomic property: mSymbolTypeName
-  //····················································································································
-
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mSymbolTypeName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mSymbolTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.mObserversOf_mSymbolTypeName.insert (inObserver)
-    if let object = self.propval {
-      object.mSymbolTypeName_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.mObserversOf_mSymbolTypeName.remove (inObserver)
-    if let object = self.propval {
-      object.mSymbolTypeName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-}
-#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

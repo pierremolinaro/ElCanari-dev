@@ -14,8 +14,8 @@ func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
                          clientCallBackInfo : UnsafeMutableRawPointer?,
                          numEvents : Int,
                          eventPaths : UnsafeMutableRawPointer,
-                         eventFlags : UnsafePointer<FSEventStreamEventFlags>?,
-                         eventIds : UnsafePointer<FSEventStreamEventId>?) {
+                         eventFlags : UnsafePointer <FSEventStreamEventFlags>?,
+                         eventIds : UnsafePointer <FSEventStreamEventId>?) {
   gPreferences?.updateForLibrary ()
 }
 
