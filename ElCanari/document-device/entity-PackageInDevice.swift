@@ -369,6 +369,10 @@ class PackageInDevice : EBGraphicManagedObject,
   //    self.mRoot_property.owner = self
   //  #else
       self.mRoot_property.ebUndoManager = self.ebUndoManager
+      self.mRoot_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in

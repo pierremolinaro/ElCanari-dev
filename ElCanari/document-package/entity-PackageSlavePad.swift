@@ -537,6 +537,10 @@ class PackageSlavePad : PackageObject,
   //    self.master_property.owner = self
   //  #else
       self.master_property.ebUndoManager = self.ebUndoManager
+      self.master_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.slaves_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in

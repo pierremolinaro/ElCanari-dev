@@ -408,6 +408,10 @@ class ComponentInProject : EBManagedObject,
   //    self.mDevice_property.owner = self
   //  #else
       self.mDevice_property.ebUndoManager = self.ebUndoManager
+      self.mDevice_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
+      )
   //  #endif
   //--- To one property: mSelectedPackage
   //  #if !NEWTOONE

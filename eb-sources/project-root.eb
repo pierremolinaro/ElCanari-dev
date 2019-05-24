@@ -307,6 +307,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
   property Int mCenterX default 0 ;
   property Int mCenterY default 0 ;
   property QuadrantRotation mRotation default rotation0 ;
+  property Bool mMirror default no ;
 
   property String mSymbolInstanceName default "" ;
   property String mSymbolTypeName default "" ;
@@ -323,6 +324,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
 
   transient ComponentSymbolInfo symbolInfo dependsFrom
     self.mRotation,
+    self.mMirror,
     self.componentName,
     self.mComponent.one.mComponentValue,
     self.mComponent.one.deviceSymbolDictionary,

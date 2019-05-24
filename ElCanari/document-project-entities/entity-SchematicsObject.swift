@@ -162,6 +162,10 @@ class SchematicsObject : EBGraphicManagedObject,
   //    self.mSheet_property.owner = self
   //  #else
       self.mSheet_property.ebUndoManager = self.ebUndoManager
+      self.mSheet_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: isPlacedInSchematics
     self.isPlacedInSchematics_property.mReadModelFunction = { [weak self] in

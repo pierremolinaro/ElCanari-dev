@@ -41,6 +41,16 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: mMirror
+  //····················································································································
+
+  let mMirror_property = EBPropertyProxy_Bool ()
+
+  var mMirror_property_selection : EBSelection <Bool> {
+    return self.mMirror_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: mSymbolInstanceName
   //····················································································································
 
@@ -199,6 +209,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.bind_property_mCenterX ()
     self.bind_property_mCenterY ()
     self.bind_property_mRotation ()
+    self.bind_property_mMirror ()
     self.bind_property_mSymbolInstanceName ()
     self.bind_property_mSymbolTypeName ()
     self.bind_property_mDisplayComponentNameOffsetX ()
@@ -236,6 +247,11 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.mRotation_property.mWriteModelFunction = nil 
     self.mRotation_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
+  //--- mMirror
+    self.mMirror_property.mReadModelFunction = nil 
+    self.mMirror_property.mWriteModelFunction = nil 
+    self.mMirror_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mMirror (self.mMirror_property)
   //--- mSymbolInstanceName
     self.mSymbolInstanceName_property.mReadModelFunction = nil 
     self.mSymbolInstanceName_property.mWriteModelFunction = nil 
@@ -351,6 +367,14 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
       view: view,
       observerExplorer: &self.mRotation_property.mObserverExplorer,
       valueExplorer: &self.mRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mMirror",
+      idx: self.mMirror_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mMirror_property.mObserverExplorer,
+      valueExplorer: &self.mMirror_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
@@ -656,6 +680,75 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
         case .single (let v) :
           for object in v {
             let result = object.mRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mMirror () {
+    self.selectedArray_property.addEBObserverOf_mMirror (self.mMirror_property)
+    self.mMirror_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mMirror_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mMirror_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mMirror_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mMirror_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mMirror_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

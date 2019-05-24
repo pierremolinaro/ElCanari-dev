@@ -139,12 +139,20 @@ class WireInSchematics : SchematicsObject,
   //    self.mP1_property.owner = self
   //  #else
       self.mP1_property.ebUndoManager = self.ebUndoManager
+      self.mP1_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
+      )
   //  #endif
   //--- To one property: mP2 (has opposite to many relationship: mWiresP2s) §
   //  #if !NEWTOONE
   //    self.mP2_property.owner = self
   //  #else
       self.mP2_property.ebUndoManager = self.ebUndoManager
+      self.mP2_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in

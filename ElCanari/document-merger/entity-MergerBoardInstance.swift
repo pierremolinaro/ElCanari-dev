@@ -277,6 +277,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    self.myModel_property.owner = self
   //  #else
       self.myModel_property.ebUndoManager = self.ebUndoManager
+      self.myModel_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
@@ -411,6 +415,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    self.myRoot_property.owner = self
   //  #else
       self.myRoot_property.ebUndoManager = self.ebUndoManager
+      self.myRoot_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
+      )
   //  #endif
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

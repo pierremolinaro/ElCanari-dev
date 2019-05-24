@@ -158,6 +158,10 @@ class LabelInSchematics : SchematicsObject,
   //    self.mPoint_property.owner = self
   //  #else
       self.mPoint_property.ebUndoManager = self.ebUndoManager
+      self.mPoint_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in

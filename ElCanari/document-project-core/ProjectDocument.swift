@@ -459,6 +459,7 @@ import Cocoa
   @IBOutlet var mSheetDownButton : EBButton?
   @IBOutlet var mSheetPopUpButton : EBPopUpButton?
   @IBOutlet var mSheetUpButton : EBButton?
+  @IBOutlet var mSymbolMirrorSwitch : EBSwitch?
   @IBOutlet var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl?
   @IBOutlet var mUnplacedSymbolsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mUnplacedSymbolsTableView : CanariDragSourceTableView?
@@ -683,6 +684,7 @@ import Cocoa
     checkOutletConnection (self.mSheetDownButton, "mSheetDownButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSheetPopUpButton, "mSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSheetUpButton, "mSheetUpButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsSchematicsInspectorView, "mUnplacedSymbolsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mUnplacedSymbolsTableView, "mUnplacedSymbolsTableView", CanariDragSourceTableView.self, #file, #line)
@@ -1010,6 +1012,7 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
     self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
     self.mSymbolRotationSegmentedControl?.bind_quadrant (self.mComponentSymbolSelectionController.mRotation_property, file: #file, line: #line)
+    self.mSymbolMirrorSwitch?.bind_value (self.mComponentSymbolSelectionController.mMirror_property, file: #file, line: #line)
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1316,6 +1319,7 @@ import Cocoa
     self.mComponentSymbolTypeNameTextField?.unbind_valueObserver ()
     self.mComponentSymbolInstanceNameTextField?.unbind_valueObserver ()
     self.mSymbolRotationSegmentedControl?.unbind_quadrant ()
+    self.mSymbolMirrorSwitch?.unbind_value ()
     self.mNetInfoTableView?.unbind_netInfo ()
     self.mNetCountTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
@@ -1531,6 +1535,7 @@ import Cocoa
     self.mSheetDownButton?.ebCleanUp ()
     self.mSheetPopUpButton?.ebCleanUp ()
     self.mSheetUpButton?.ebCleanUp ()
+    self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
     self.mUnplacedSymbolsSchematicsInspectorView?.ebCleanUp ()
     self.mUnplacedSymbolsTableView?.ebCleanUp ()
@@ -1648,6 +1653,7 @@ import Cocoa
 //    self.mSheetDownButton = nil
 //    self.mSheetPopUpButton = nil
 //    self.mSheetUpButton = nil
+//    self.mSymbolMirrorSwitch = nil
 //    self.mSymbolRotationSegmentedControl = nil
 //    self.mUnplacedSymbolsSchematicsInspectorView = nil
 //    self.mUnplacedSymbolsTableView = nil

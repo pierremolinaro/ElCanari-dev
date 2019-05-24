@@ -330,6 +330,10 @@ class SlavePadInDevice : EBManagedObject,
   //    self.mMasterPad_property.owner = self
   //  #else
       self.mMasterPad_property.ebUndoManager = self.ebUndoManager
+      self.mMasterPad_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: frontSideFilledBezierPath
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in

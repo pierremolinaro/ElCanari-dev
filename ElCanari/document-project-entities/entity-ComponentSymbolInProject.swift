@@ -24,6 +24,12 @@ protocol ComponentSymbolInProject_mRotation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ComponentSymbolInProject_mMirror : class {
+  var mMirror : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ComponentSymbolInProject_mSymbolInstanceName : class {
   var mSymbolInstanceName : String { get }
 }
@@ -114,6 +120,7 @@ class ComponentSymbolInProject : SchematicsObject,
          ComponentSymbolInProject_mCenterX,
          ComponentSymbolInProject_mCenterY,
          ComponentSymbolInProject_mRotation,
+         ComponentSymbolInProject_mMirror,
          ComponentSymbolInProject_mSymbolInstanceName,
          ComponentSymbolInProject_mSymbolTypeName,
          ComponentSymbolInProject_mDisplayComponentNameOffsetX,
@@ -198,6 +205,23 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   var mRotation_property_selection : EBSelection <QuadrantRotation> { return self.mRotation_property.prop }
+
+  //····················································································································
+  //   Atomic property: mMirror
+  //····················································································································
+
+  let mMirror_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mMirror : Bool {
+    get { return self.mMirror_property.propval }
+    set { self.mMirror_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mMirror_property_selection : EBSelection <Bool> { return self.mMirror_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -493,6 +517,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterY_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mRotation
     self.mRotation_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mMirror
+    self.mMirror_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolTypeName
@@ -527,6 +553,10 @@ class ComponentSymbolInProject : SchematicsObject,
   //    self.mComponent_property.owner = self
   //  #else
       self.mComponent_property.ebUndoManager = self.ebUndoManager
+      self.mComponent_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
@@ -576,6 +606,7 @@ class ComponentSymbolInProject : SchematicsObject,
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mRotation_property_selection.kind ()
+        kind &= unwSelf.mMirror_property_selection.kind ()
         kind &= unwSelf.componentName_property_selection.kind ()
         kind &= unwSelf.mComponent_property.mComponentValue_property_selection.kind ()
         kind &= unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
@@ -590,9 +621,9 @@ class ComponentSymbolInProject : SchematicsObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRotation_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -602,6 +633,7 @@ class ComponentSymbolInProject : SchematicsObject,
       }
     }
     self.mRotation_property.addEBObserver (self.symbolInfo_property)
+    self.mMirror_property.addEBObserver (self.symbolInfo_property)
     self.componentName_property.addEBObserver (self.symbolInfo_property)
     self.mComponent_property.addEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.addEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
@@ -727,6 +759,7 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mComponent_property.removeEBObserverOf_componentName (self.componentName_property)
     self.mComponent_property.removeEBObserverOf_deviceName (self.deviceName_property)
     self.mRotation_property.removeEBObserver (self.symbolInfo_property)
+    self.mMirror_property.removeEBObserver (self.symbolInfo_property)
     self.componentName_property.removeEBObserver (self.symbolInfo_property)
     self.mComponent_property.removeEBObserverOf_mComponentValue (self.symbolInfo_property)
     self.mComponent_property.removeEBObserverOf_deviceSymbolDictionary (self.symbolInfo_property)
@@ -791,6 +824,14 @@ class ComponentSymbolInProject : SchematicsObject,
       view:view,
       observerExplorer:&self.mRotation_property.mObserverExplorer,
       valueExplorer:&self.mRotation_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mMirror",
+      idx:self.mMirror_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mMirror_property.mObserverExplorer,
+      valueExplorer:&self.mMirror_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
@@ -932,6 +973,9 @@ class ComponentSymbolInProject : SchematicsObject,
   //--- Atomic property: mRotation
     self.mRotation_property.mObserverExplorer = nil
     self.mRotation_property.mValueExplorer = nil
+  //--- Atomic property: mMirror
+    self.mMirror_property.mObserverExplorer = nil
+    self.mMirror_property.mValueExplorer = nil
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
@@ -1001,6 +1045,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey:"mCenterY")
   //--- Atomic property: mRotation
     self.mRotation_property.storeIn (dictionary: ioDictionary, forKey:"mRotation")
+  //--- Atomic property: mMirror
+    self.mMirror_property.storeIn (dictionary: ioDictionary, forKey:"mMirror")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -1055,6 +1101,8 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mCenterY_property.readFrom (dictionary: inDictionary, forKey:"mCenterY")
   //--- Atomic property: mRotation
     self.mRotation_property.readFrom (dictionary: inDictionary, forKey:"mRotation")
+  //--- Atomic property: mMirror
+    self.mMirror_property.readFrom (dictionary: inDictionary, forKey:"mMirror")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -1121,6 +1169,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
     self.removeEBObserversOf_mCenterX_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCenterY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mRotation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mMirror_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDisplayComponentNameOffsetX_fromElementsOfSet (inRemovedSet) // Stored property
@@ -1138,6 +1187,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
     self.addEBObserversOf_mCenterX_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCenterY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mRotation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mMirror_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSymbolInstanceName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSymbolTypeName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDisplayComponentNameOffsetX_toElementsOfSet (inAddedSet) // Stored property
@@ -1320,6 +1370,63 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mMirror' stored property
+  //····················································································································
+
+  private var mObserversOf_mMirror = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mMirror.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mMirror_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mMirror (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mMirror.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mMirror_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mMirror_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
+        managedObject.mMirror_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mMirror_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mMirror_property.removeEBObserver (observer)
       }
     }
   }
@@ -2575,6 +2682,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     inOldValue?.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
     inOldValue?.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
     inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+    inOldValue?.mMirror_property.removeEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
     inOldValue?.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
     inOldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
     inOldValue?.mDisplayComponentNameOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
@@ -2592,6 +2700,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     self.mInternalValue?.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
     self.mInternalValue?.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
     self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+    self.mInternalValue?.mMirror_property.addEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
     self.mInternalValue?.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
     self.mInternalValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
     self.mInternalValue?.mDisplayComponentNameOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
@@ -2813,6 +2922,76 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mRotation_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mMirror' stored property
+  //····················································································································
+
+  private var mObserversOf_mMirror = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mMirror_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mMirror_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mMirror.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mMirror_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mMirror (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mMirror.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mMirror_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mMirror_toElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
+        managedObject.mMirror_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mMirror_fromElementsOfSet (_ inSet : Set<ComponentSymbolInProject>) {
+    self.mObserversOf_mMirror.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mMirror_property.removeEBObserver (observer)
       }
     }
   }

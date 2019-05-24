@@ -344,6 +344,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariQuadrantSegmentedControl mSymbolRotationSegmentedControl
      $quadrant #mComponentSymbolSelectionController.mRotation ;
 
+  outlet EBSwitch mSymbolMirrorSwitch $value #mComponentSymbolSelectionController.mMirror ;
+
 //---------------------- Net Tab
   outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription ;
 

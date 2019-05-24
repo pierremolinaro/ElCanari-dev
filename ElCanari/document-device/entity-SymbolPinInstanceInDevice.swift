@@ -282,12 +282,20 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //    self.mSymbolInstance_property.owner = self
   //  #else
       self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
+      self.mSymbolInstance_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.remove (me) } }
+      )
   //  #endif
   //--- To one property: mType (has opposite to many relationship: mInstances) §
   //  #if !NEWTOONE
   //    self.mType_property.owner = self
   //  #else
       self.mType_property.ebUndoManager = self.ebUndoManager
+      self.mType_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
+      )
   //  #endif
   //--- To one property: mPadProxy (has opposite to one relationship: mPinInstance) §
   //  #if !NEWTOONE

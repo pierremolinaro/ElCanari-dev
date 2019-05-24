@@ -169,6 +169,10 @@ class NetInProject : EBManagedObject,
   //    self.mNetClass_property.owner = self
   //  #else
       self.mNetClass_property.ebUndoManager = self.ebUndoManager
+      self.mNetClass_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in

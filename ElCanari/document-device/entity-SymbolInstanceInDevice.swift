@@ -265,6 +265,10 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    self.mType_property.owner = self
   //  #else
       self.mType_property.ebUndoManager = self.ebUndoManager
+      self.mType_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: symbolQualifiedName
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in

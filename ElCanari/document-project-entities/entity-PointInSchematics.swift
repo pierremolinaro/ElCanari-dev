@@ -495,12 +495,20 @@ class PointInSchematics : EBManagedObject,
   //    self.mSymbol_property.owner = self
   //  #else
       self.mSymbol_property.ebUndoManager = self.ebUndoManager
+      self.mSymbol_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+      )
   //  #endif
   //--- To one property: mNet (has opposite to many relationship: mPoints) §
   //  #if !NEWTOONE
   //    self.mNet_property.owner = self
   //  #else
       self.mNet_property.ebUndoManager = self.ebUndoManager
+      self.mNet_property.setOppositeRelationShipFunctions (
+        setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
+        resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+      )
   //  #endif
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
