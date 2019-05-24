@@ -2047,3 +2047,4 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

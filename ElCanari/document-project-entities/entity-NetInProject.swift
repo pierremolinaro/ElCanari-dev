@@ -71,11 +71,7 @@ class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  //  #if NEWTOONE
-     let mNetClass_property = StoredObject_NetClassInProject ()
-  //  #else
-  //    let mNetClass_property = ToOneRelationship_NetInProject_mNetClass ()
-  //  #endif
+   let mNetClass_property = StoredObject_NetClassInProject ()
 
   //····················································································································
 
@@ -92,11 +88,7 @@ class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
-  //  #else
-  //    var mNetClass_none : ToOneRelationship_NetInProject_mNetClass { return self.mNetClass_property }
-  //  #endif
+    var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
 
   //····················································································································
 
@@ -165,15 +157,11 @@ class NetInProject : EBManagedObject,
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
   //--- To one property: mNetClass (has opposite to many relationship: mNets) §
-  //  #if !NEWTOONE
-  //    self.mNetClass_property.owner = self
-  //  #else
-      self.mNetClass_property.ebUndoManager = self.ebUndoManager
-      self.mNetClass_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
-      )
-  //  #endif
+    self.mNetClass_property.ebUndoManager = self.ebUndoManager
+    self.mNetClass_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
+    )
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1652,3 +1640,4 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

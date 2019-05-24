@@ -2987,3 +2987,4 @@ final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeIn
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

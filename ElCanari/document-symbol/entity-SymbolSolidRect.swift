@@ -2364,3 +2364,4 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

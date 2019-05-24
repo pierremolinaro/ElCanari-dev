@@ -52,11 +52,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  //  #if NEWTOONE
-     let mPin_property = StoredObject_DevicePinInProject ()
-  //  #else
-  //    let mPin_property = ToOneRelationship_DevicePadAssignmentInProject_mPin ()
-  //  #endif
+   let mPin_property = StoredObject_DevicePinInProject ()
 
   //····················································································································
 
@@ -73,11 +69,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
-  //  #else
-  //    var mPin_none : ToOneRelationship_DevicePadAssignmentInProject_mPin { return self.mPin_property }
-  //  #endif
+    var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
 
   //····················································································································
 
@@ -140,11 +132,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin
-  //  #if !NEWTOONE
-  //    self.mPin_property.owner = self
-  //  #else
       self.mPin_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1560,3 +1548,4 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

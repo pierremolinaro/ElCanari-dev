@@ -1377,3 +1377,4 @@ final class StoredObject_PackageObject : ReadWriteObject_PackageObject, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -140,11 +140,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mType
   //····················································································································
 
-  //  #if NEWTOONE
-     let mType_property = StoredObject_SymbolTypeInDevice ()
-  //  #else
-  //    let mType_property = ToOneRelationship_SymbolInstanceInDevice_mType ()
-  //  #endif
+   let mType_property = StoredObject_SymbolTypeInDevice ()
 
   //····················································································································
 
@@ -161,11 +157,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mType_none : StoredObject_SymbolTypeInDevice { return self.mType_property }
-  //  #else
-  //    var mType_none : ToOneRelationship_SymbolInstanceInDevice_mType { return self.mType_property }
-  //  #endif
+    var mType_none : StoredObject_SymbolTypeInDevice { return self.mType_property }
 
   //····················································································································
 
@@ -261,15 +253,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: mY
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mType (has opposite to many relationship: mInstances) §
-  //  #if !NEWTOONE
-  //    self.mType_property.owner = self
-  //  #else
-      self.mType_property.ebUndoManager = self.ebUndoManager
-      self.mType_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
-      )
-  //  #endif
+    self.mType_property.ebUndoManager = self.ebUndoManager
+    self.mType_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
+    )
   //--- Atomic property: symbolQualifiedName
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2586,3 +2574,4 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

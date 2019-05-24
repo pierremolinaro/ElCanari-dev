@@ -2361,3 +2361,4 @@ final class StoredObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval, EBSi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

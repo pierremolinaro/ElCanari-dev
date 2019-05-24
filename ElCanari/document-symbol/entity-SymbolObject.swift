@@ -1377,3 +1377,4 @@ final class StoredObject_SymbolObject : ReadWriteObject_SymbolObject, EBSignatur
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

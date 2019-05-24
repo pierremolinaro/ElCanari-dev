@@ -1438,3 +1438,4 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

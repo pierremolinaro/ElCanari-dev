@@ -2390,3 +2390,4 @@ final class StoredObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMaster
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

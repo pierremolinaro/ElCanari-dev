@@ -1983,3 +1983,4 @@ final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFon
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

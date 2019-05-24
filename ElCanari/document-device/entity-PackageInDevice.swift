@@ -219,11 +219,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  //  #if NEWTOONE
-     let mRoot_property = StoredObject_DeviceRoot ()
-  //  #else
-  //    let mRoot_property = ToOneRelationship_PackageInDevice_mRoot ()
-  //  #endif
+   let mRoot_property = StoredObject_DeviceRoot ()
 
   //····················································································································
 
@@ -240,11 +236,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mRoot_none : StoredObject_DeviceRoot { return self.mRoot_property }
-  //  #else
-  //    var mRoot_none : ToOneRelationship_PackageInDevice_mRoot { return self.mRoot_property }
-  //  #endif
+    var mRoot_none : StoredObject_DeviceRoot { return self.mRoot_property }
 
   //····················································································································
 
@@ -365,15 +357,11 @@ class PackageInDevice : EBGraphicManagedObject,
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages) §
-  //  #if !NEWTOONE
-  //    self.mRoot_property.owner = self
-  //  #else
-      self.mRoot_property.ebUndoManager = self.ebUndoManager
-      self.mRoot_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }
-      )
-  //  #endif
+    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }
+    )
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3307,3 +3295,4 @@ final class StoredObject_PackageInDevice : ReadWriteObject_PackageInDevice, EBSi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

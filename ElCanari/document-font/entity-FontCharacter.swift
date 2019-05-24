@@ -2507,3 +2507,4 @@ final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

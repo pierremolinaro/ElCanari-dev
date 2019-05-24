@@ -3649,3 +3649,4 @@ final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObser
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

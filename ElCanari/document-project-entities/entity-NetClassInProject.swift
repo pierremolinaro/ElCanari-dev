@@ -3554,3 +3554,4 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

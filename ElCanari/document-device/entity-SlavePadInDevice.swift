@@ -203,11 +203,7 @@ class SlavePadInDevice : EBManagedObject,
   //   To one property: mMasterPad
   //····················································································································
 
-  //  #if NEWTOONE
-     let mMasterPad_property = StoredObject_MasterPadInDevice ()
-  //  #else
-  //    let mMasterPad_property = ToOneRelationship_SlavePadInDevice_mMasterPad ()
-  //  #endif
+   let mMasterPad_property = StoredObject_MasterPadInDevice ()
 
   //····················································································································
 
@@ -224,11 +220,7 @@ class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mMasterPad_none : StoredObject_MasterPadInDevice { return self.mMasterPad_property }
-  //  #else
-  //    var mMasterPad_none : ToOneRelationship_SlavePadInDevice_mMasterPad { return self.mMasterPad_property }
-  //  #endif
+    var mMasterPad_none : StoredObject_MasterPadInDevice { return self.mMasterPad_property }
 
   //····················································································································
 
@@ -326,15 +318,11 @@ class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: mStyle
     self.mStyle_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads) §
-  //  #if !NEWTOONE
-  //    self.mMasterPad_property.owner = self
-  //  #else
-      self.mMasterPad_property.ebUndoManager = self.ebUndoManager
-      self.mMasterPad_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.remove (me) } }
-      )
-  //  #endif
+    self.mMasterPad_property.ebUndoManager = self.ebUndoManager
+    self.mMasterPad_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.remove (me) } }
+    )
   //--- Atomic property: frontSideFilledBezierPath
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2851,3 +2839,4 @@ final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

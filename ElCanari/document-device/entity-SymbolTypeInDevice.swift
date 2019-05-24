@@ -2575,3 +2575,4 @@ final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -689,11 +689,7 @@ class MergerRoot : EBManagedObject,
   //   To one property: artwork
   //····················································································································
 
-  //  #if NEWTOONE
-     let artwork_property = StoredObject_ArtworkRoot ()
-  //  #else
-  //    let artwork_property = ToOneRelationship_MergerRoot_artwork ()
-  //  #endif
+   let artwork_property = StoredObject_ArtworkRoot ()
 
   //····················································································································
 
@@ -710,11 +706,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
-  //  #else
-  //    var artwork_none : ToOneRelationship_MergerRoot_artwork { return self.artwork_property }
-  //  #endif
+    var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
 
   //····················································································································
 
@@ -920,11 +912,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: artwork
-  //  #if !NEWTOONE
-  //    self.artwork_property.owner = self
-  //  #else
       self.artwork_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5796,3 +5784,4 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

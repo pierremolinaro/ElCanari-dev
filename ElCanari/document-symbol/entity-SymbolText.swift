@@ -2165,3 +2165,4 @@ final class StoredObject_SymbolText : ReadWriteObject_SymbolText, EBSignatureObs
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

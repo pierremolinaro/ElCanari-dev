@@ -83,11 +83,7 @@ class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  //  #if NEWTOONE
-     let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice ()
-  //  #else
-  //    let mPinInstance_property = ToOneRelationship_PadProxyInDevice_mPinInstance ()
-  //  #endif
+   let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice ()
 
   //····················································································································
 
@@ -104,11 +100,7 @@ class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
-  //  #else
-  //    var mPinInstance_none : ToOneRelationship_PadProxyInDevice_mPinInstance { return self.mPinInstance_property }
-  //  #endif
+    var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
 
   //····················································································································
 
@@ -196,15 +188,11 @@ class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: mIsNC
     self.mIsNC_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy) §
-  //  #if !NEWTOONE
-  //    self.mPinInstance_property.owner = self
-  //  #else
-      self.mPinInstance_property.ebUndoManager = self.ebUndoManager
-      self.mPinInstance_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },
-        resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }
-      )
-    // #endif
+    self.mPinInstance_property.ebUndoManager = self.ebUndoManager
+    self.mPinInstance_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },
+      resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }
+    )
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1935,3 +1923,4 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

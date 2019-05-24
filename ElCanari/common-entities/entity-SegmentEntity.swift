@@ -1782,3 +1782,4 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

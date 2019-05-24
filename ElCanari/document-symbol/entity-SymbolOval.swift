@@ -2364,3 +2364,4 @@ final class StoredObject_SymbolOval : ReadWriteObject_SymbolOval, EBSignatureObs
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

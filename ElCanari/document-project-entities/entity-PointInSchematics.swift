@@ -192,11 +192,7 @@ class PointInSchematics : EBManagedObject,
   //   To one property: mSymbol
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSymbol_property = StoredObject_ComponentSymbolInProject ()
-  //  #else
-  //    let mSymbol_property = ToOneRelationship_PointInSchematics_mSymbol ()
-  //  #endif
+   let mSymbol_property = StoredObject_ComponentSymbolInProject ()
 
   //····················································································································
 
@@ -213,11 +209,7 @@ class PointInSchematics : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSymbol_none : StoredObject_ComponentSymbolInProject { return self.mSymbol_property }
-  //  #else
-  //    var mSymbol_none : ToOneRelationship_PointInSchematics_mSymbol { return self.mSymbol_property }
-  //  #endif
+    var mSymbol_none : StoredObject_ComponentSymbolInProject { return self.mSymbol_property }
 
   //····················································································································
 
@@ -229,11 +221,7 @@ class PointInSchematics : EBManagedObject,
   //   To one property: mNet
   //····················································································································
 
-  //  #if NEWTOONE
-     let mNet_property = StoredObject_NetInProject ()
-  //  #else
-  //    let mNet_property = ToOneRelationship_PointInSchematics_mNet ()
-  //  #endif
+   let mNet_property = StoredObject_NetInProject ()
 
   //····················································································································
 
@@ -250,11 +238,7 @@ class PointInSchematics : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mNet_none : StoredObject_NetInProject { return self.mNet_property }
-  //  #else
-  //    var mNet_none : ToOneRelationship_PointInSchematics_mNet { return self.mNet_property }
-  //  #endif
+    var mNet_none : StoredObject_NetInProject { return self.mNet_property }
 
   //····················································································································
 
@@ -358,11 +342,7 @@ class PointInSchematics : EBManagedObject,
   //   To one property: mNC
   //····················································································································
 
-  //  #if NEWTOONE
-     let mNC_property = StoredObject_NCInSchematics ()
-  //  #else
-  //    let mNC_property = ToOneRelationship_PointInSchematics_mNC ()
-  //  #endif
+   let mNC_property = StoredObject_NCInSchematics ()
 
   //····················································································································
 
@@ -379,11 +359,7 @@ class PointInSchematics : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mNC_none : StoredObject_NCInSchematics { return self.mNC_property }
-  //  #else
-  //    var mNC_none : ToOneRelationship_PointInSchematics_mNC { return self.mNC_property }
-  //  #endif
+    var mNC_none : StoredObject_NCInSchematics { return self.mNC_property }
 
   //····················································································································
 
@@ -491,25 +467,17 @@ class PointInSchematics : EBManagedObject,
       resetter: { inObject in inObject.mP1_property.setProp (nil) }
     )
   //--- To one property: mSymbol (has opposite to many relationship: mPoints) §
-  //  #if !NEWTOONE
-  //    self.mSymbol_property.owner = self
-  //  #else
-      self.mSymbol_property.ebUndoManager = self.ebUndoManager
-      self.mSymbol_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
-      )
-  //  #endif
+    self.mSymbol_property.ebUndoManager = self.ebUndoManager
+    self.mSymbol_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+    )
   //--- To one property: mNet (has opposite to many relationship: mPoints) §
-  //  #if !NEWTOONE
-  //    self.mNet_property.owner = self
-  //  #else
-      self.mNet_property.ebUndoManager = self.ebUndoManager
-      self.mNet_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
-      )
-  //  #endif
+    self.mNet_property.ebUndoManager = self.ebUndoManager
+    self.mNet_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+    )
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -607,15 +575,11 @@ class PointInSchematics : EBManagedObject,
     }
     self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
   //--- To one property: mNC (has opposite to one relationship: mPoint) §
-  //  #if !NEWTOONE
-  //    self.mNC_property.owner = self
-  //  #else
-      self.mNC_property.ebUndoManager = self.ebUndoManager
-      self.mNC_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
-        resetter: { inObject in inObject.mPoint_property.setProp (nil) }
-      )
-    // #endif
+    self.mNC_property.ebUndoManager = self.ebUndoManager
+    self.mNC_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
+      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
+    )
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3336,3 +3300,4 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

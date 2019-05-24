@@ -66,11 +66,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject ()
-  //  #else
-  //    let mSymbolType_property = ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType ()
-  //  #endif
+   let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject ()
 
   //····················································································································
 
@@ -87,11 +83,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
-  //  #else
-  //    var mSymbolType_none : ToOneRelationship_DeviceSymbolInstanceInProject_mSymbolType { return self.mSymbolType_property }
-  //  #endif
+    var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
 
   //····················································································································
 
@@ -200,11 +192,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
-  //  #if !NEWTOONE
-  //    self.mSymbolType_property.owner = self
-  //  #else
       self.mSymbolType_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: symbolAndTypeName
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1937,3 +1925,4 @@ final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceS
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

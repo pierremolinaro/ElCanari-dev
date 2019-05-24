@@ -1438,3 +1438,4 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

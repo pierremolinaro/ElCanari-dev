@@ -374,11 +374,7 @@ class ComponentSymbolInProject : SchematicsObject,
   //   To one property: mComponent
   //····················································································································
 
-  //  #if NEWTOONE
-     let mComponent_property = StoredObject_ComponentInProject ()
-  //  #else
-  //    let mComponent_property = ToOneRelationship_ComponentSymbolInProject_mComponent ()
-  //  #endif
+   let mComponent_property = StoredObject_ComponentInProject ()
 
   //····················································································································
 
@@ -395,11 +391,7 @@ class ComponentSymbolInProject : SchematicsObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
-  //  #else
-  //    var mComponent_none : ToOneRelationship_ComponentSymbolInProject_mComponent { return self.mComponent_property }
-  //  #endif
+    var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
 
   //····················································································································
 
@@ -549,15 +541,11 @@ class ComponentSymbolInProject : SchematicsObject,
     }
     self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols) §
-  //  #if !NEWTOONE
-  //    self.mComponent_property.owner = self
-  //  #else
-      self.mComponent_property.ebUndoManager = self.ebUndoManager
-      self.mComponent_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
-      )
-  //  #endif
+    self.mComponent_property.ebUndoManager = self.ebUndoManager
+    self.mComponent_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
+    )
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4343,3 +4331,4 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

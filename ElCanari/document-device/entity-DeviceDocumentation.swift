@@ -1471,3 +1471,4 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

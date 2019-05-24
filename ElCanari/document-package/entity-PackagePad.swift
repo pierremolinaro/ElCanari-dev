@@ -446,11 +446,7 @@ class PackagePad : PackageObject,
   //   To one property: zone
   //····················································································································
 
-  //  #if NEWTOONE
-     let zone_property = StoredObject_PackageZone ()
-  //  #else
-  //    let zone_property = ToOneRelationship_PackagePad_zone ()
-  //  #endif
+   let zone_property = StoredObject_PackageZone ()
 
   //····················································································································
 
@@ -467,11 +463,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var zone_none : StoredObject_PackageZone { return self.zone_property }
-  //  #else
-  //    var zone_none : ToOneRelationship_PackagePad_zone { return self.zone_property }
-  //  #endif
+    var zone_none : StoredObject_PackageZone { return self.zone_property }
 
   //····················································································································
 
@@ -704,11 +696,7 @@ class PackagePad : PackageObject,
       resetter: { inObject in inObject.master_property.setProp (nil) }
     )
   //--- To one property: zone
-  //  #if !NEWTOONE
-  //    self.zone_property.owner = self
-  //  #else
       self.zone_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5655,3 +5643,4 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -52,11 +52,7 @@ class NCInSchematics : SchematicsObject,
   //   To one property: mPoint
   //····················································································································
 
-  //  #if NEWTOONE
-     let mPoint_property = StoredObject_PointInSchematics ()
-  //  #else
-  //    let mPoint_property = ToOneRelationship_NCInSchematics_mPoint ()
-  //  #endif
+   let mPoint_property = StoredObject_PointInSchematics ()
 
   //····················································································································
 
@@ -73,11 +69,7 @@ class NCInSchematics : SchematicsObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
-  //  #else
-  //    var mPoint_none : ToOneRelationship_NCInSchematics_mPoint { return self.mPoint_property }
-  //  #endif
+    var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
 
   //····················································································································
 
@@ -94,15 +86,11 @@ class NCInSchematics : SchematicsObject,
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint (has opposite to one relationship: mNC) §
-  //  #if !NEWTOONE
-  //    self.mPoint_property.owner = self
-  //  #else
-      self.mPoint_property.ebUndoManager = self.ebUndoManager
-      self.mPoint_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mNC_property.setProp (me) } },
-        resetter: { inObject in inObject.mNC_property.setProp (nil) }
-      )
-    // #endif
+    self.mPoint_property.ebUndoManager = self.ebUndoManager
+    self.mPoint_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNC_property.setProp (me) } },
+      resetter: { inObject in inObject.mNC_property.setProp (nil) }
+    )
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1521,3 +1509,4 @@ final class StoredObject_NCInSchematics : ReadWriteObject_NCInSchematics, EBSign
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

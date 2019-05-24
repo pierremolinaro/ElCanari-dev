@@ -66,11 +66,7 @@ class LabelInSchematics : SchematicsObject,
   //   To one property: mPoint
   //····················································································································
 
-  //  #if NEWTOONE
-     let mPoint_property = StoredObject_PointInSchematics ()
-  //  #else
-  //    let mPoint_property = ToOneRelationship_LabelInSchematics_mPoint ()
-  //  #endif
+   let mPoint_property = StoredObject_PointInSchematics ()
 
   //····················································································································
 
@@ -87,11 +83,7 @@ class LabelInSchematics : SchematicsObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
-  //  #else
-  //    var mPoint_none : ToOneRelationship_LabelInSchematics_mPoint { return self.mPoint_property }
-  //  #endif
+    var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
 
   //····················································································································
 
@@ -154,15 +146,11 @@ class LabelInSchematics : SchematicsObject,
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPoint (has opposite to many relationship: mLabels) §
-  //  #if !NEWTOONE
-  //    self.mPoint_property.owner = self
-  //  #else
-      self.mPoint_property.ebUndoManager = self.ebUndoManager
-      self.mPoint_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }
-      )
-  //  #endif
+    self.mPoint_property.ebUndoManager = self.ebUndoManager
+    self.mPoint_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }
+    )
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1909,3 +1897,4 @@ final class StoredObject_LabelInSchematics : ReadWriteObject_LabelInSchematics, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

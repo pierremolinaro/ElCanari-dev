@@ -49,11 +49,7 @@ class SchematicsObject : EBGraphicManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSheet_property = StoredObject_SheetInProject ()
-  //  #else
-  //    let mSheet_property = ToOneRelationship_SchematicsObject_mSheet ()
-  //  #endif
+   let mSheet_property = StoredObject_SheetInProject ()
 
   //····················································································································
 
@@ -70,11 +66,7 @@ class SchematicsObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
-  //  #else
-  //    var mSheet_none : ToOneRelationship_SchematicsObject_mSheet { return self.mSheet_property }
-  //  #endif
+    var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
 
   //····················································································································
 
@@ -158,15 +150,11 @@ class SchematicsObject : EBGraphicManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
   //--- To one property: mSheet (has opposite to many relationship: mObjects) §
-  //  #if !NEWTOONE
-  //    self.mSheet_property.owner = self
-  //  #else
-      self.mSheet_property.ebUndoManager = self.ebUndoManager
-      self.mSheet_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
-      )
-  //  #endif
+    self.mSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSheet_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
+    )
   //--- Atomic property: isPlacedInSchematics
     self.isPlacedInSchematics_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1811,3 +1799,4 @@ final class StoredObject_SchematicsObject : ReadWriteObject_SchematicsObject, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -121,11 +121,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-  //  #if NEWTOONE
-     let myModel_property = StoredObject_BoardModel ()
-  //  #else
-  //    let myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
-  //  #endif
+   let myModel_property = StoredObject_BoardModel ()
 
   //····················································································································
 
@@ -142,11 +138,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var myModel_none : StoredObject_BoardModel { return self.myModel_property }
-  //  #else
-  //    var myModel_none : ToOneRelationship_MergerBoardInstance_myModel { return self.myModel_property }
-  //  #endif
+    var myModel_none : StoredObject_BoardModel { return self.myModel_property }
 
   //····················································································································
 
@@ -227,11 +219,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-  //  #if NEWTOONE
-     let myRoot_property = StoredObject_MergerRoot ()
-  //  #else
-  //    let myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
-  //  #endif
+   let myRoot_property = StoredObject_MergerRoot ()
 
   //····················································································································
 
@@ -248,11 +236,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
-  //  #else
-  //    var myRoot_none : ToOneRelationship_MergerBoardInstance_myRoot { return self.myRoot_property }
-  //  #endif
+    var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
 
   //····················································································································
 
@@ -273,15 +257,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: myModel (has opposite to many relationship: myInstances) §
-  //  #if !NEWTOONE
-  //    self.myModel_property.owner = self
-  //  #else
-      self.myModel_property.ebUndoManager = self.ebUndoManager
-      self.myModel_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
-      )
-  //  #endif
+    self.myModel_property.ebUndoManager = self.ebUndoManager
+    self.myModel_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
+    )
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -411,15 +391,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
   //--- To one property: myRoot (has opposite to many relationship: boardInstances) §
-  //  #if !NEWTOONE
-  //    self.myRoot_property.owner = self
-  //  #else
-      self.myRoot_property.ebUndoManager = self.ebUndoManager
-      self.myRoot_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
-      )
-  //  #endif
+    self.myRoot_property.ebUndoManager = self.ebUndoManager
+    self.myRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
+    )
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -2523,3 +2499,4 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

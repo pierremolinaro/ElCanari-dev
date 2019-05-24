@@ -35,11 +35,7 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP1
   //····················································································································
 
-  //  #if NEWTOONE
-     let mP1_property = StoredObject_PointInSchematics ()
-  //  #else
-  //    let mP1_property = ToOneRelationship_WireInSchematics_mP1 ()
-  //  #endif
+   let mP1_property = StoredObject_PointInSchematics ()
 
   //····················································································································
 
@@ -56,11 +52,7 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
-  //  #else
-  //    var mP1_none : ToOneRelationship_WireInSchematics_mP1 { return self.mP1_property }
-  //  #endif
+    var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
 
   //····················································································································
 
@@ -72,11 +64,7 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP2
   //····················································································································
 
-  //  #if NEWTOONE
-     let mP2_property = StoredObject_PointInSchematics ()
-  //  #else
-  //    let mP2_property = ToOneRelationship_WireInSchematics_mP2 ()
-  //  #endif
+   let mP2_property = StoredObject_PointInSchematics ()
 
   //····················································································································
 
@@ -93,11 +81,7 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
-  //  #else
-  //    var mP2_none : ToOneRelationship_WireInSchematics_mP2 { return self.mP2_property }
-  //  #endif
+    var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
 
   //····················································································································
 
@@ -135,25 +119,17 @@ class WireInSchematics : SchematicsObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s) §
-  //  #if !NEWTOONE
-  //    self.mP1_property.owner = self
-  //  #else
-      self.mP1_property.ebUndoManager = self.ebUndoManager
-      self.mP1_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
-      )
-  //  #endif
+    self.mP1_property.ebUndoManager = self.ebUndoManager
+    self.mP1_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
+    )
   //--- To one property: mP2 (has opposite to many relationship: mWiresP2s) §
-  //  #if !NEWTOONE
-  //    self.mP2_property.owner = self
-  //  #else
-      self.mP2_property.ebUndoManager = self.ebUndoManager
-      self.mP2_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
-      )
-  //  #endif
+    self.mP2_property.ebUndoManager = self.ebUndoManager
+    self.mP2_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
+    )
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1618,3 +1594,4 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

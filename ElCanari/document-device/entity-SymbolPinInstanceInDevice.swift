@@ -49,11 +49,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice ()
-  //  #else
-  //    let mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
-  //  #endif
+   let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice ()
 
   //····················································································································
 
@@ -70,11 +66,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
-  //  #else
-  //    var mSymbolInstance_none : ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance { return self.mSymbolInstance_property }
-  //  #endif
+    var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
 
   //····················································································································
 
@@ -86,11 +78,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mType
   //····················································································································
 
-  //  #if NEWTOONE
-     let mType_property = StoredObject_SymbolPinTypeInDevice ()
-  //  #else
-  //    let mType_property = ToOneRelationship_SymbolPinInstanceInDevice_mType ()
-  //  #endif
+   let mType_property = StoredObject_SymbolPinTypeInDevice ()
 
   //····················································································································
 
@@ -107,11 +95,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
-  //  #else
-  //    var mType_none : ToOneRelationship_SymbolPinInstanceInDevice_mType { return self.mType_property }
-  //  #endif
+    var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
 
   //····················································································································
 
@@ -123,11 +107,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mPadProxy
   //····················································································································
 
-  //  #if NEWTOONE
-     let mPadProxy_property = StoredObject_PadProxyInDevice ()
-  //  #else
-  //    let mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
-  //  #endif
+   let mPadProxy_property = StoredObject_PadProxyInDevice ()
 
   //····················································································································
 
@@ -144,11 +124,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
-  //  #else
-  //    var mPadProxy_none : ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy { return self.mPadProxy_property }
-  //  #endif
+    var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
 
   //····················································································································
 
@@ -278,35 +254,23 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances) §
-  //  #if !NEWTOONE
-  //    self.mSymbolInstance_property.owner = self
-  //  #else
-      self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
-      self.mSymbolInstance_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.remove (me) } }
-      )
-  //  #endif
+    self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolInstance_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.remove (me) } }
+    )
   //--- To one property: mType (has opposite to many relationship: mInstances) §
-  //  #if !NEWTOONE
-  //    self.mType_property.owner = self
-  //  #else
-      self.mType_property.ebUndoManager = self.ebUndoManager
-      self.mType_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
-      )
-  //  #endif
+    self.mType_property.ebUndoManager = self.ebUndoManager
+    self.mType_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
+    )
   //--- To one property: mPadProxy (has opposite to one relationship: mPinInstance) §
-  //  #if !NEWTOONE
-  //    self.mPadProxy_property.owner = self
-  //  #else
-      self.mPadProxy_property.ebUndoManager = self.ebUndoManager
-      self.mPadProxy_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mPinInstance_property.setProp (me) } },
-        resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }
-      )
-    // #endif
+    self.mPadProxy_property.ebUndoManager = self.ebUndoManager
+    self.mPadProxy_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPinInstance_property.setProp (me) } },
+      resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }
+    )
   //--- Atomic property: pinName
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2122,3 +2086,4 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

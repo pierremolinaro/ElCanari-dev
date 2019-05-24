@@ -154,11 +154,7 @@ class ComponentInProject : EBManagedObject,
   //   To one property: mDevice
   //····················································································································
 
-  //  #if NEWTOONE
-     let mDevice_property = StoredObject_DeviceInProject ()
-  //  #else
-  //    let mDevice_property = ToOneRelationship_ComponentInProject_mDevice ()
-  //  #endif
+   let mDevice_property = StoredObject_DeviceInProject ()
 
   //····················································································································
 
@@ -175,11 +171,7 @@ class ComponentInProject : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mDevice_none : StoredObject_DeviceInProject { return self.mDevice_property }
-  //  #else
-  //    var mDevice_none : ToOneRelationship_ComponentInProject_mDevice { return self.mDevice_property }
-  //  #endif
+    var mDevice_none : StoredObject_DeviceInProject { return self.mDevice_property }
 
   //····················································································································
 
@@ -191,11 +183,7 @@ class ComponentInProject : EBManagedObject,
   //   To one property: mSelectedPackage
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSelectedPackage_property = StoredObject_DevicePackageInProject ()
-  //  #else
-  //    let mSelectedPackage_property = ToOneRelationship_ComponentInProject_mSelectedPackage ()
-  //  #endif
+   let mSelectedPackage_property = StoredObject_DevicePackageInProject ()
 
   //····················································································································
 
@@ -212,11 +200,7 @@ class ComponentInProject : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSelectedPackage_none : StoredObject_DevicePackageInProject { return self.mSelectedPackage_property }
-  //  #else
-  //    var mSelectedPackage_none : ToOneRelationship_ComponentInProject_mSelectedPackage { return self.mSelectedPackage_property }
-  //  #endif
+    var mSelectedPackage_none : StoredObject_DevicePackageInProject { return self.mSelectedPackage_property }
 
   //····················································································································
 
@@ -404,21 +388,13 @@ class ComponentInProject : EBManagedObject,
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
   //--- To one property: mDevice (has opposite to many relationship: mComponents) §
-  //  #if !NEWTOONE
-  //    self.mDevice_property.owner = self
-  //  #else
-      self.mDevice_property.ebUndoManager = self.ebUndoManager
-      self.mDevice_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
-      )
-  //  #endif
+    self.mDevice_property.ebUndoManager = self.ebUndoManager
+    self.mDevice_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
+    )
   //--- To one property: mSelectedPackage
-  //  #if !NEWTOONE
-  //    self.mSelectedPackage_property.owner = self
-  //  #else
       self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3038,3 +3014,4 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

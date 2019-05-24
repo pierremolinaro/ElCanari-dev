@@ -4491,3 +4491,4 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

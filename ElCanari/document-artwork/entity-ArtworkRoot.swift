@@ -2936,3 +2936,4 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

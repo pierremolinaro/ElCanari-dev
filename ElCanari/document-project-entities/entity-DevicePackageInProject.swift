@@ -1186,3 +1186,4 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

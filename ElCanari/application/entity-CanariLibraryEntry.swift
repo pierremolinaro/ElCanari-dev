@@ -1802,3 +1802,4 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

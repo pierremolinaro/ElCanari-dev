@@ -3402,3 +3402,4 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

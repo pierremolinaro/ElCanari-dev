@@ -4956,3 +4956,4 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

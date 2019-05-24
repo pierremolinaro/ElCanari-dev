@@ -3059,3 +3059,4 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

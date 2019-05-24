@@ -3112,3 +3112,4 @@ final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

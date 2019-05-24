@@ -375,11 +375,7 @@ class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-  //  #if NEWTOONE
-     let master_property = StoredObject_PackagePad ()
-  //  #else
-  //    let master_property = ToOneRelationship_PackageSlavePad_master ()
-  //  #endif
+   let master_property = StoredObject_PackagePad ()
 
   //····················································································································
 
@@ -396,11 +392,7 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var master_none : StoredObject_PackagePad { return self.master_property }
-  //  #else
-  //    var master_none : ToOneRelationship_PackageSlavePad_master { return self.master_property }
-  //  #endif
+    var master_none : StoredObject_PackagePad { return self.master_property }
 
   //····················································································································
 
@@ -533,15 +525,11 @@ class PackageSlavePad : PackageObject,
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
   //--- To one property: master (has opposite to many relationship: slaves) §
-  //  #if !NEWTOONE
-  //    self.master_property.owner = self
-  //  #else
-      self.master_property.ebUndoManager = self.ebUndoManager
-      self.master_property.setOppositeRelationShipFunctions (
-        setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },
-        resetter: { [weak self] inObject in if let me = self { inObject.slaves_property.remove (me) } }
-      )
-  //  #endif
+    self.master_property.ebUndoManager = self.ebUndoManager
+    self.master_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.slaves_property.remove (me) } }
+    )
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4616,3 +4604,4 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

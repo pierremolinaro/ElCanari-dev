@@ -508,11 +508,7 @@ class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-  //  #if NEWTOONE
-     let mSelectedSheet_property = StoredObject_SheetInProject ()
-  //  #else
-  //    let mSelectedSheet_property = ToOneRelationship_ProjectRoot_mSelectedSheet ()
-  //  #endif
+   let mSelectedSheet_property = StoredObject_SheetInProject ()
 
   //····················································································································
 
@@ -529,11 +525,7 @@ class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //  #if NEWTOONE
-      var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
-  //  #else
-  //    var mSelectedSheet_none : ToOneRelationship_ProjectRoot_mSelectedSheet { return self.mSelectedSheet_property }
-  //  #endif
+    var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
 
   //····················································································································
 
@@ -838,11 +830,7 @@ class ProjectRoot : EBManagedObject,
       self.selectedSheetObjects_modelDidChangeController = controller
     }
   //--- To one property: mSelectedSheet
-  //  #if !NEWTOONE
-  //    self.mSelectedSheet_property.owner = self
-  //  #else
       self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
-  //  #endif
   //--- Atomic property: selectedSheetIssues
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5518,3 +5506,4 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
