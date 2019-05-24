@@ -150,19 +150,19 @@ class DeviceDocumentation : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mFileName",
-      idx:self.mFileName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFileName_property.mObserverExplorer,
-      valueExplorer:&self.mFileName_property.mValueExplorer
+      idx: self.mFileName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFileName_property.mObserverExplorer,
+      valueExplorer: &self.mFileName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFileData",
-      idx:self.mFileData_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFileData_property.mObserverExplorer,
-      valueExplorer:&self.mFileData_property.mValueExplorer
+      idx: self.mFileData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFileData_property.mObserverExplorer,
+      valueExplorer: &self.mFileData_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -799,8 +799,6 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceDocumentation>, addedSet inAddedSet : Set <DeviceDocumentation>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -810,7 +808,9 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

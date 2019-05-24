@@ -620,107 +620,107 @@ class PackageDimension : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
+      idx: self.y1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1_property.mObserverExplorer,
+      valueExplorer: &self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
+      idx: self.x2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2_property.mObserverExplorer,
+      valueExplorer: &self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
+      idx: self.y2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2_property.mObserverExplorer,
+      valueExplorer: &self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xDimension",
-      idx:self.xDimension_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xDimension_property.mObserverExplorer,
-      valueExplorer:&self.xDimension_property.mValueExplorer
+      idx: self.xDimension_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xDimension_property.mObserverExplorer,
+      valueExplorer: &self.xDimension_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yDimension",
-      idx:self.yDimension_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yDimension_property.mObserverExplorer,
-      valueExplorer:&self.yDimension_property.mValueExplorer
+      idx: self.yDimension_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yDimension_property.mObserverExplorer,
+      valueExplorer: &self.yDimension_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1Unit_property.mObserverExplorer,
-      valueExplorer:&self.x1Unit_property.mValueExplorer
+      idx: self.x1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1Unit_property.mObserverExplorer,
+      valueExplorer: &self.x1Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1Unit_property.mObserverExplorer,
-      valueExplorer:&self.y1Unit_property.mValueExplorer
+      idx: self.y1Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1Unit_property.mObserverExplorer,
+      valueExplorer: &self.y1Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2Unit_property.mObserverExplorer,
-      valueExplorer:&self.x2Unit_property.mValueExplorer
+      idx: self.x2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2Unit_property.mObserverExplorer,
+      valueExplorer: &self.x2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2Unit_property.mObserverExplorer,
-      valueExplorer:&self.y2Unit_property.mValueExplorer
+      idx: self.y2Unit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2Unit_property.mObserverExplorer,
+      valueExplorer: &self.y2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xDimensionUnit",
-      idx:self.xDimensionUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xDimensionUnit_property.mObserverExplorer,
-      valueExplorer:&self.xDimensionUnit_property.mValueExplorer
+      idx: self.xDimensionUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xDimensionUnit_property.mObserverExplorer,
+      valueExplorer: &self.xDimensionUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yDimensionUnit",
-      idx:self.yDimensionUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yDimensionUnit_property.mObserverExplorer,
-      valueExplorer:&self.yDimensionUnit_property.mValueExplorer
+      idx: self.yDimensionUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yDimensionUnit_property.mObserverExplorer,
+      valueExplorer: &self.yDimensionUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "distanceUnit",
-      idx:self.distanceUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.distanceUnit_property.mObserverExplorer,
-      valueExplorer:&self.distanceUnit_property.mValueExplorer
+      idx: self.distanceUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.distanceUnit_property.mObserverExplorer,
+      valueExplorer: &self.distanceUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1_property.mObserverExplorer,
-      valueExplorer:&self.x1_property.mValueExplorer
+      idx: self.x1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1_property.mObserverExplorer,
+      valueExplorer: &self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2292,8 +2292,6 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageDimension>, addedSet inAddedSet : Set <PackageDimension>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2303,7 +2301,9 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

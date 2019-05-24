@@ -338,35 +338,35 @@ class SymbolOval : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      idx: self.width_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.width_property.mObserverExplorer,
+      valueExplorer: &self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
+      idx: self.height_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.height_property.mObserverExplorer,
+      valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1335,8 +1335,6 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolOval>, addedSet inAddedSet : Set <SymbolOval>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1346,7 +1344,9 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

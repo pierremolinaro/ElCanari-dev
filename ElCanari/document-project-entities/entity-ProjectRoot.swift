@@ -519,13 +519,22 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mSelectedSheet : SheetInProject? {
-    get { return self.mSelectedSheet_property.propval }
-    set { self.mSelectedSheet_property.setProp (newValue) }
+    get {
+      return self.mSelectedSheet_property.propval
+    }
+    set {
+      if self.mSelectedSheet_property.propval != nil {
+        self.mSelectedSheet_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSelectedSheet_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
+  var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
 
   //····················································································································
 
@@ -830,7 +839,7 @@ class ProjectRoot : EBManagedObject,
       self.selectedSheetObjects_modelDidChangeController = controller
     }
   //--- To one property: mSelectedSheet
-      self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedSheetIssues
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1128,91 +1137,91 @@ class ProjectRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mSelectedPageIndex",
-      idx:self.mSelectedPageIndex_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSelectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
+      idx: self.mSelectedPageIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSelectedPageIndex_property.mObserverExplorer,
+      valueExplorer: &self.mSelectedPageIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSelectedSchematicsInspector",
-      idx:self.mSelectedSchematicsInspector_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSelectedSchematicsInspector_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedSchematicsInspector_property.mValueExplorer
+      idx: self.mSelectedSchematicsInspector_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSelectedSchematicsInspector_property.mObserverExplorer,
+      valueExplorer: &self.mSelectedSchematicsInspector_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsTitle",
-      idx:self.mSchematicsTitle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsTitle_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsTitle_property.mValueExplorer
+      idx: self.mSchematicsTitle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsTitle_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsTitle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsVersion",
-      idx:self.mSchematicsVersion_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsVersion_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsVersion_property.mValueExplorer
+      idx: self.mSchematicsVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsVersion_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsDate",
-      idx:self.mSchematicsDate_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsDate_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsDate_property.mValueExplorer
+      idx: self.mSchematicsDate_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsDate_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsDate_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsHorizontalFlip",
-      idx:self.mSchematicsHorizontalFlip_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsHorizontalFlip_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsHorizontalFlip_property.mValueExplorer
+      idx: self.mSchematicsHorizontalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsHorizontalFlip_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsHorizontalFlip_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsVerticalFlip",
-      idx:self.mSchematicsVerticalFlip_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsVerticalFlip_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsVerticalFlip_property.mValueExplorer
+      idx: self.mSchematicsVerticalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsVerticalFlip_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsVerticalFlip_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsZoom",
-      idx:self.mSchematicsZoom_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsZoom_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsZoom_property.mValueExplorer
+      idx: self.mSchematicsZoom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsZoom_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsZoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsGridStyle",
-      idx:self.mSchematicsGridStyle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsGridStyle_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsGridStyle_property.mValueExplorer
+      idx: self.mSchematicsGridStyle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsGridStyle_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsGridStyle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsGridDisplayFactor",
-      idx:self.mSchematicsGridDisplayFactor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsGridDisplayFactor_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsGridDisplayFactor_property.mValueExplorer
+      idx: self.mSchematicsGridDisplayFactor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsGridDisplayFactor_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsGridDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsSheetOrientation",
-      idx:self.mSchematicsSheetOrientation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsSheetOrientation_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsSheetOrientation_property.mValueExplorer
+      idx: self.mSchematicsSheetOrientation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsSheetOrientation_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsSheetOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -3272,8 +3281,6 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ProjectRoot>, addedSet inAddedSet : Set <ProjectRoot>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -3283,7 +3290,9 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

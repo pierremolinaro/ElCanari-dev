@@ -60,13 +60,22 @@ class SchematicsObject : EBGraphicManagedObject,
   //····················································································································
 
   var mSheet : SheetInProject? {
-    get { return self.mSheet_property.propval }
-    set { self.mSheet_property.setProp (newValue) }
+    get {
+      return self.mSheet_property.propval
+    }
+    set {
+      if self.mSheet_property.propval != nil {
+        self.mSheet_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSheet_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
+  var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
 
   //····················································································································
 
@@ -987,8 +996,6 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SchematicsObject>, addedSet inAddedSet : Set <SchematicsObject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -998,7 +1005,9 @@ final class StoredArrayOf_SchematicsObject : ReadWriteArrayOf_SchematicsObject, 
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

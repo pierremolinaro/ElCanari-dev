@@ -590,43 +590,43 @@ class FontRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments_property.mObserverExplorer,
-      valueExplorer:&self.comments_property.mValueExplorer
+      idx: self.comments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.comments_property.mObserverExplorer,
+      valueExplorer: &self.comments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "nominalSize",
-      idx:self.nominalSize_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.nominalSize_property.mObserverExplorer,
-      valueExplorer:&self.nominalSize_property.mValueExplorer
+      idx: self.nominalSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.nominalSize_property.mObserverExplorer,
+      valueExplorer: &self.nominalSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedTab",
-      idx:self.selectedTab_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedTab_property.mObserverExplorer,
-      valueExplorer:&self.selectedTab_property.mValueExplorer
+      idx: self.selectedTab_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedTab_property.mObserverExplorer,
+      valueExplorer: &self.selectedTab_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedInspector",
-      idx:self.selectedInspector_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedInspector_property.mObserverExplorer,
-      valueExplorer:&self.selectedInspector_property.mValueExplorer
+      idx: self.selectedInspector_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedInspector_property.mObserverExplorer,
+      valueExplorer: &self.selectedInspector_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "currentCharacterCodePoint",
-      idx:self.currentCharacterCodePoint_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.currentCharacterCodePoint_property.mObserverExplorer,
-      valueExplorer:&self.currentCharacterCodePoint_property.mValueExplorer
+      idx: self.currentCharacterCodePoint_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.currentCharacterCodePoint_property.mObserverExplorer,
+      valueExplorer: &self.currentCharacterCodePoint_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1890,8 +1890,6 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <FontRoot>, addedSet inAddedSet : Set <FontRoot>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1901,7 +1899,9 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

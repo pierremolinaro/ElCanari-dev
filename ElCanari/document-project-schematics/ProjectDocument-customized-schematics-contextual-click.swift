@@ -21,6 +21,8 @@ extension CustomizedProjectDocument {
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
+    //--- Add Remove point from wire ?
+      self.appendRemovePointFromWireItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
     //--- Add Point to wire ?
@@ -68,6 +70,36 @@ extension CustomizedProjectDocument {
        let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet {
       selectedSheet.connect (points: points, window)
+      self.updateSchematicsPointsAndNets ()
+    }
+  }
+
+  //····················································································································
+  // Remove Point From Wire
+  //····················································································································
+
+  private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematics]) {
+    if inPoints.count == 1 {
+      let point = inPoints [0]
+      if point.mNC == nil, point.mLabels.count == 0, (point.mWiresP1s.count + point.mWiresP2s.count) == 2 {
+        if menu.numberOfItems > 0 {
+          menu.addItem (.separator ())
+        }
+        let menuItem = NSMenuItem (title: "Remove Point from Wire", action: #selector (CustomizedProjectDocument.removePointFromWireAction (_:)), keyEquivalent: "")
+        menuItem.target = self
+        menuItem.representedObject = point
+        menu.addItem (menuItem)
+      }
+    }
+  }
+
+  //····················································································································
+
+  @objc private func removePointFromWireAction (_ inSender : NSMenuItem) {
+    if let point = inSender.representedObject as? PointInSchematics,
+       let selectedSheet = self.rootObject.mSelectedSheet,
+       let window = self.windowForSheet {
+      selectedSheet.removeFromWire (point: point, window)
       self.updateSchematicsPointsAndNets ()
     }
   }

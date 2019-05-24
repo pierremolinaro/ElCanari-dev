@@ -88,11 +88,11 @@ class DevicePackageInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPackageName",
-      idx:self.mPackageName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPackageName_property.mObserverExplorer,
-      valueExplorer:&self.mPackageName_property.mValueExplorer
+      idx: self.mPackageName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPackageName_property.mObserverExplorer,
+      valueExplorer: &self.mPackageName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -616,8 +616,6 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DevicePackageInProject>, addedSet inAddedSet : Set <DevicePackageInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -627,7 +625,9 @@ final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackag
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

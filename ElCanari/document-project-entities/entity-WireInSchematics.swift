@@ -46,13 +46,22 @@ class WireInSchematics : SchematicsObject,
   //····················································································································
 
   var mP1 : PointInSchematics? {
-    get { return self.mP1_property.propval }
-    set { self.mP1_property.setProp (newValue) }
+    get {
+      return self.mP1_property.propval
+    }
+    set {
+      if self.mP1_property.propval != nil {
+        self.mP1_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mP1_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
+  var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
 
   //····················································································································
 
@@ -75,13 +84,22 @@ class WireInSchematics : SchematicsObject,
   //····················································································································
 
   var mP2 : PointInSchematics? {
-    get { return self.mP2_property.propval }
-    set { self.mP2_property.setProp (newValue) }
+    get {
+      return self.mP2_property.propval
+    }
+    set {
+      if self.mP2_property.propval != nil {
+        self.mP2_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mP2_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
+  var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
 
   //····················································································································
 
@@ -924,8 +942,6 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <WireInSchematics>, addedSet inAddedSet : Set <WireInSchematics>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -935,7 +951,9 @@ final class StoredArrayOf_WireInSchematics : ReadWriteArrayOf_WireInSchematics, 
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

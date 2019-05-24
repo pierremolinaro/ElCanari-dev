@@ -595,7 +595,6 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.removeEBObserverOf_pinNames (self.netsDescription_property)
     self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
     self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
- //   self.mNets_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -612,67 +611,67 @@ class NetClassInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mNetClassName",
-      idx:self.mNetClassName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetClassName_property.mObserverExplorer,
-      valueExplorer:&self.mNetClassName_property.mValueExplorer
+      idx: self.mNetClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNetClassName_property.mObserverExplorer,
+      valueExplorer: &self.mNetClassName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNetClassColor",
-      idx:self.mNetClassColor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetClassColor_property.mObserverExplorer,
-      valueExplorer:&self.mNetClassColor_property.mValueExplorer
+      idx: self.mNetClassColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNetClassColor_property.mObserverExplorer,
+      valueExplorer: &self.mNetClassColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNetWidth",
-      idx:self.mNetWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetWidth_property.mObserverExplorer,
-      valueExplorer:&self.mNetWidth_property.mValueExplorer
+      idx: self.mNetWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNetWidth_property.mObserverExplorer,
+      valueExplorer: &self.mNetWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNetWidthUnit",
-      idx:self.mNetWidthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.mNetWidthUnit_property.mValueExplorer
+      idx: self.mNetWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNetWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mNetWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mViaHoleDiameter",
-      idx:self.mViaHoleDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mViaHoleDiameter_property.mObserverExplorer,
-      valueExplorer:&self.mViaHoleDiameter_property.mValueExplorer
+      idx: self.mViaHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mViaHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mViaHoleDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mViaHoleDiameterUnit",
-      idx:self.mViaHoleDiameterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mViaHoleDiameterUnit_property.mObserverExplorer,
-      valueExplorer:&self.mViaHoleDiameterUnit_property.mValueExplorer
+      idx: self.mViaHoleDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mViaHoleDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mViaHoleDiameterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mViaPadDiameter",
-      idx:self.mViaPadDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mViaPadDiameter_property.mObserverExplorer,
-      valueExplorer:&self.mViaPadDiameter_property.mValueExplorer
+      idx: self.mViaPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mViaPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mViaPadDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mViaPadDiameterUnit",
-      idx:self.mViaPadDiameterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mViaPadDiameterUnit_property.mObserverExplorer,
-      valueExplorer:&self.mViaPadDiameterUnit_property.mValueExplorer
+      idx: self.mViaPadDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.mViaPadDiameterUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2054,8 +2053,6 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2065,7 +2062,9 @@ final class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

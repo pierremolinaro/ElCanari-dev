@@ -611,107 +611,107 @@ class PackageArc : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenter_property.mObserverExplorer,
-      valueExplorer:&self.yCenter_property.mValueExplorer
+      idx: self.yCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenter_property.mObserverExplorer,
+      valueExplorer: &self.yCenter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "radius",
-      idx:self.radius_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.radius_property.mObserverExplorer,
-      valueExplorer:&self.radius_property.mValueExplorer
+      idx: self.radius_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.radius_property.mObserverExplorer,
+      valueExplorer: &self.radius_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startAngle",
-      idx:self.startAngle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startAngle_property.mObserverExplorer,
-      valueExplorer:&self.startAngle_property.mValueExplorer
+      idx: self.startAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startAngle_property.mObserverExplorer,
+      valueExplorer: &self.startAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "arcAngle",
-      idx:self.arcAngle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.arcAngle_property.mObserverExplorer,
-      valueExplorer:&self.arcAngle_property.mValueExplorer
+      idx: self.arcAngle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.arcAngle_property.mObserverExplorer,
+      valueExplorer: &self.arcAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startTangent",
-      idx:self.startTangent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startTangent_property.mObserverExplorer,
-      valueExplorer:&self.startTangent_property.mValueExplorer
+      idx: self.startTangent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startTangent_property.mObserverExplorer,
+      valueExplorer: &self.startTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "endTangent",
-      idx:self.endTangent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangent_property.mObserverExplorer,
-      valueExplorer:&self.endTangent_property.mValueExplorer
+      idx: self.endTangent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.endTangent_property.mObserverExplorer,
+      valueExplorer: &self.endTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
-      idx:self.pathIsClosed_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
-      valueExplorer:&self.pathIsClosed_property.mValueExplorer
+      idx: self.pathIsClosed_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pathIsClosed_property.mObserverExplorer,
+      valueExplorer: &self.pathIsClosed_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.xCenterUnit_property.mValueExplorer
+      idx: self.xCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.xCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.yCenterUnit_property.mValueExplorer
+      idx: self.yCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.yCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "radiusUnit",
-      idx:self.radiusUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.radiusUnit_property.mObserverExplorer,
-      valueExplorer:&self.radiusUnit_property.mValueExplorer
+      idx: self.radiusUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.radiusUnit_property.mObserverExplorer,
+      valueExplorer: &self.radiusUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "startTangentUnit",
-      idx:self.startTangentUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.startTangentUnit_property.mValueExplorer
+      idx: self.startTangentUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.startTangentUnit_property.mObserverExplorer,
+      valueExplorer: &self.startTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "endTangentUnit",
-      idx:self.endTangentUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
-      valueExplorer:&self.endTangentUnit_property.mValueExplorer
+      idx: self.endTangentUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.endTangentUnit_property.mObserverExplorer,
+      valueExplorer: &self.endTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenter_property.mObserverExplorer,
-      valueExplorer:&self.xCenter_property.mValueExplorer
+      idx: self.xCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenter_property.mObserverExplorer,
+      valueExplorer: &self.xCenter_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2283,8 +2283,6 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageArc>, addedSet inAddedSet : Set <PackageArc>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2294,7 +2292,9 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

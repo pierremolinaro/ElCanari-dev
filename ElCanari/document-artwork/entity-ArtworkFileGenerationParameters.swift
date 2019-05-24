@@ -685,187 +685,187 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "drawBoardLimits",
-      idx:self.drawBoardLimits_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawBoardLimits_property.mObserverExplorer,
-      valueExplorer:&self.drawBoardLimits_property.mValueExplorer
+      idx: self.drawBoardLimits_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawBoardLimits_property.mObserverExplorer,
+      valueExplorer: &self.drawBoardLimits_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawInternalBoardLimits",
-      idx:self.drawInternalBoardLimits_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawInternalBoardLimits_property.mObserverExplorer,
-      valueExplorer:&self.drawInternalBoardLimits_property.mValueExplorer
+      idx: self.drawInternalBoardLimits_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawInternalBoardLimits_property.mObserverExplorer,
+      valueExplorer: &self.drawInternalBoardLimits_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentNamesTopSide",
-      idx:self.drawComponentNamesTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentNamesTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawComponentNamesTopSide_property.mValueExplorer
+      idx: self.drawComponentNamesTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawComponentNamesTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawComponentNamesTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentNamesBottomSide",
-      idx:self.drawComponentNamesBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentNamesBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawComponentNamesBottomSide_property.mValueExplorer
+      idx: self.drawComponentNamesBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawComponentNamesBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawComponentNamesBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentValuesTopSide",
-      idx:self.drawComponentValuesTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentValuesTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawComponentValuesTopSide_property.mValueExplorer
+      idx: self.drawComponentValuesTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawComponentValuesTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawComponentValuesTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentValuesBottomSide",
-      idx:self.drawComponentValuesBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentValuesBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawComponentValuesBottomSide_property.mValueExplorer
+      idx: self.drawComponentValuesBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawComponentValuesBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawComponentValuesBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPackageLegendTopSide",
-      idx:self.drawPackageLegendTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPackageLegendTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawPackageLegendTopSide_property.mValueExplorer
+      idx: self.drawPackageLegendTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawPackageLegendTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawPackageLegendTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPackageLegendBottomSide",
-      idx:self.drawPackageLegendBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPackageLegendBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawPackageLegendBottomSide_property.mValueExplorer
+      idx: self.drawPackageLegendBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawPackageLegendBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawPackageLegendBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadHolesInPDF",
-      idx:self.drawPadHolesInPDF_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadHolesInPDF_property.mObserverExplorer,
-      valueExplorer:&self.drawPadHolesInPDF_property.mValueExplorer
+      idx: self.drawPadHolesInPDF_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawPadHolesInPDF_property.mObserverExplorer,
+      valueExplorer: &self.drawPadHolesInPDF_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadsTopSide",
-      idx:self.drawPadsTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadsTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawPadsTopSide_property.mValueExplorer
+      idx: self.drawPadsTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawPadsTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawPadsTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadsBottomSide",
-      idx:self.drawPadsBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadsBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawPadsBottomSide_property.mValueExplorer
+      idx: self.drawPadsBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawPadsBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawPadsBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutTopSide",
-      idx:self.drawTextsLayoutTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLayoutTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTextsLayoutTopSide_property.mValueExplorer
+      idx: self.drawTextsLayoutTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTextsLayoutTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTextsLayoutTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutBottomSide",
-      idx:self.drawTextsLayoutBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLayoutBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTextsLayoutBottomSide_property.mValueExplorer
+      idx: self.drawTextsLayoutBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTextsLayoutBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTextsLayoutBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLegendTopSide",
-      idx:self.drawTextsLegendTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLegendTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTextsLegendTopSide_property.mValueExplorer
+      idx: self.drawTextsLegendTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTextsLegendTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTextsLegendTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLegendBottomSide",
-      idx:self.drawTextsLegendBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLegendBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTextsLegendBottomSide_property.mValueExplorer
+      idx: self.drawTextsLegendBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTextsLegendBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTextsLegendBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTracksTopSide",
-      idx:self.drawTracksTopSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTracksTopSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTracksTopSide_property.mValueExplorer
+      idx: self.drawTracksTopSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTracksBottomSide",
-      idx:self.drawTracksBottomSide_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTracksBottomSide_property.mObserverExplorer,
-      valueExplorer:&self.drawTracksBottomSide_property.mValueExplorer
+      idx: self.drawTracksBottomSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawVias",
-      idx:self.drawVias_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawVias_property.mObserverExplorer,
-      valueExplorer:&self.drawVias_property.mValueExplorer
+      idx: self.drawVias_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawVias_property.mObserverExplorer,
+      valueExplorer: &self.drawVias_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "fileExtension",
-      idx:self.fileExtension_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.fileExtension_property.mObserverExplorer,
-      valueExplorer:&self.fileExtension_property.mValueExplorer
+      idx: self.fileExtension_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.fileExtension_property.mObserverExplorer,
+      valueExplorer: &self.fileExtension_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalMirror",
-      idx:self.horizontalMirror_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.horizontalMirror_property.mObserverExplorer,
-      valueExplorer:&self.horizontalMirror_property.mValueExplorer
+      idx: self.horizontalMirror_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.horizontalMirror_property.mObserverExplorer,
+      valueExplorer: &self.horizontalMirror_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name_property.mObserverExplorer,
-      valueExplorer:&self.name_property.mValueExplorer
+      idx: self.name_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.name_property.mObserverExplorer,
+      valueExplorer: &self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "measurementUnitForPadHoleInPDF",
-      idx:self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
-      valueExplorer:&self.measurementUnitForPadHoleInPDF_property.mValueExplorer
+      idx: self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
+      valueExplorer: &self.measurementUnitForPadHoleInPDF_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padHoleDiameterInPDF",
-      idx:self.padHoleDiameterInPDF_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padHoleDiameterInPDF_property.mObserverExplorer,
-      valueExplorer:&self.padHoleDiameterInPDF_property.mValueExplorer
+      idx: self.padHoleDiameterInPDF_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
+      valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -2843,8 +2843,6 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkFileGenerationParameters>, addedSet inAddedSet : Set <ArtworkFileGenerationParameters>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2854,7 +2852,9 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

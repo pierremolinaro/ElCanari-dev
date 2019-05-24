@@ -654,7 +654,6 @@ class DeviceInProject : EBManagedObject,
     self.mSymbols_property.removeEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
- //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -671,35 +670,35 @@ class DeviceInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mDeviceName",
-      idx:self.mDeviceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDeviceName_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceName_property.mValueExplorer
+      idx: self.mDeviceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDeviceName_property.mObserverExplorer,
+      valueExplorer: &self.mDeviceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPrefix",
-      idx:self.mPrefix_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPrefix_property.mObserverExplorer,
-      valueExplorer:&self.mPrefix_property.mValueExplorer
+      idx: self.mPrefix_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPrefix_property.mObserverExplorer,
+      valueExplorer: &self.mPrefix_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDeviceVersion",
-      idx:self.mDeviceVersion_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDeviceVersion_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceVersion_property.mValueExplorer
+      idx: self.mDeviceVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDeviceVersion_property.mObserverExplorer,
+      valueExplorer: &self.mDeviceVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDeviceFileData",
-      idx:self.mDeviceFileData_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDeviceFileData_property.mObserverExplorer,
-      valueExplorer:&self.mDeviceFileData_property.mValueExplorer
+      idx: self.mDeviceFileData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDeviceFileData_property.mObserverExplorer,
+      valueExplorer: &self.mDeviceFileData_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2039,8 +2038,6 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceInProject>, addedSet inAddedSet : Set <DeviceInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2050,7 +2047,9 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

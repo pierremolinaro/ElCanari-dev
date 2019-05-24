@@ -165,13 +165,22 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   var mDevice : DeviceInProject? {
-    get { return self.mDevice_property.propval }
-    set { self.mDevice_property.setProp (newValue) }
+    get {
+      return self.mDevice_property.propval
+    }
+    set {
+      if self.mDevice_property.propval != nil {
+        self.mDevice_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mDevice_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mDevice_none : StoredObject_DeviceInProject { return self.mDevice_property }
+  var mDevice_none : StoredObject_DeviceInProject { return self.mDevice_property }
 
   //····················································································································
 
@@ -194,13 +203,22 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   var mSelectedPackage : DevicePackageInProject? {
-    get { return self.mSelectedPackage_property.propval }
-    set { self.mSelectedPackage_property.setProp (newValue) }
+    get {
+      return self.mSelectedPackage_property.propval
+    }
+    set {
+      if self.mSelectedPackage_property.propval != nil {
+        self.mSelectedPackage_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSelectedPackage_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSelectedPackage_none : StoredObject_DevicePackageInProject { return self.mSelectedPackage_property }
+  var mSelectedPackage_none : StoredObject_DevicePackageInProject { return self.mSelectedPackage_property }
 
   //····················································································································
 
@@ -394,7 +412,7 @@ class ComponentInProject : EBManagedObject,
       resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
     )
   //--- To one property: mSelectedPackage
-      self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
+    self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -584,7 +602,6 @@ class ComponentInProject : EBManagedObject,
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
- //   self.mSymbols_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -601,27 +618,27 @@ class ComponentInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mNamePrefix",
-      idx:self.mNamePrefix_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNamePrefix_property.mObserverExplorer,
-      valueExplorer:&self.mNamePrefix_property.mValueExplorer
+      idx: self.mNamePrefix_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNamePrefix_property.mObserverExplorer,
+      valueExplorer: &self.mNamePrefix_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNameIndex",
-      idx:self.mNameIndex_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNameIndex_property.mObserverExplorer,
-      valueExplorer:&self.mNameIndex_property.mValueExplorer
+      idx: self.mNameIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNameIndex_property.mObserverExplorer,
+      valueExplorer: &self.mNameIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mComponentValue",
-      idx:self.mComponentValue_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mComponentValue_property.mObserverExplorer,
-      valueExplorer:&self.mComponentValue_property.mValueExplorer
+      idx: self.mComponentValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mComponentValue_property.mObserverExplorer,
+      valueExplorer: &self.mComponentValue_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1803,8 +1820,6 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ComponentInProject>, addedSet inAddedSet : Set <ComponentInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1814,7 +1829,9 @@ final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProje
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -498,67 +498,67 @@ class SymbolBezierCurve : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
+      idx: self.y1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1_property.mObserverExplorer,
+      valueExplorer: &self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
+      idx: self.x2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2_property.mObserverExplorer,
+      valueExplorer: &self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
+      idx: self.y2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2_property.mObserverExplorer,
+      valueExplorer: &self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpx1",
-      idx:self.cpx1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpx1_property.mObserverExplorer,
-      valueExplorer:&self.cpx1_property.mValueExplorer
+      idx: self.cpx1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cpx1_property.mObserverExplorer,
+      valueExplorer: &self.cpx1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpy1",
-      idx:self.cpy1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpy1_property.mObserverExplorer,
-      valueExplorer:&self.cpy1_property.mValueExplorer
+      idx: self.cpy1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cpy1_property.mObserverExplorer,
+      valueExplorer: &self.cpy1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpx2",
-      idx:self.cpx2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpx2_property.mObserverExplorer,
-      valueExplorer:&self.cpx2_property.mValueExplorer
+      idx: self.cpx2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cpx2_property.mObserverExplorer,
+      valueExplorer: &self.cpx2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "cpy2",
-      idx:self.cpy2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.cpy2_property.mObserverExplorer,
-      valueExplorer:&self.cpy2_property.mValueExplorer
+      idx: self.cpy2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cpy2_property.mObserverExplorer,
+      valueExplorer: &self.cpy2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1_property.mObserverExplorer,
-      valueExplorer:&self.x1_property.mValueExplorer
+      idx: self.x1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1_property.mObserverExplorer,
+      valueExplorer: &self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1795,8 +1795,6 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolBezierCurve>, addedSet inAddedSet : Set <SymbolBezierCurve>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1806,7 +1804,9 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

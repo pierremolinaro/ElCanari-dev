@@ -151,13 +151,22 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mType : SymbolTypeInDevice? {
-    get { return self.mType_property.propval }
-    set { self.mType_property.setProp (newValue) }
+    get {
+      return self.mType_property.propval
+    }
+    set {
+      if self.mType_property.propval != nil {
+        self.mType_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mType_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mType_none : StoredObject_SymbolTypeInDevice { return self.mType_property }
+  var mType_none : StoredObject_SymbolTypeInDevice { return self.mType_property }
 
   //····················································································································
 
@@ -437,7 +446,6 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
- //   self.mPinInstances_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: nil)
     self.mX_property.setSignatureObserver (observer: nil)
@@ -457,27 +465,27 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mInstanceName",
-      idx:self.mInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.mInstanceName_property.mValueExplorer
+      idx: self.mInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
-      idx:self.mX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mY",
-      idx:self.mY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1505,8 +1513,6 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolInstanceInDevice>, addedSet inAddedSet : Set <SymbolInstanceInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1516,7 +1522,9 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -707,8 +707,6 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageObject>, addedSet inAddedSet : Set <PackageObject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -718,7 +716,9 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

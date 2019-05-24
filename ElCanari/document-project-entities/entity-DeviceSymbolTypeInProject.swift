@@ -119,27 +119,27 @@ class DeviceSymbolTypeInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mSymbolTypeName",
-      idx:self.mSymbolTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
+      idx: self.mSymbolTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mStrokeBezierPath",
-      idx:self.mStrokeBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.mStrokeBezierPath_property.mValueExplorer
+      idx: self.mStrokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFilledBezierPath",
-      idx:self.mFilledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFilledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.mFilledBezierPath_property.mValueExplorer
+      idx: self.mFilledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -765,8 +765,6 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolTypeInProject>, addedSet inAddedSet : Set <DeviceSymbolTypeInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -776,7 +774,9 @@ final class StoredArrayOf_DeviceSymbolTypeInProject : ReadWriteArrayOf_DeviceSym
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

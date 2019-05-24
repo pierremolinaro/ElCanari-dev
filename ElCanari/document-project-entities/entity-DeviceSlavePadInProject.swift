@@ -223,59 +223,59 @@ class DeviceSlavePadInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mCenterX",
-      idx:self.mCenterX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterX_property.mObserverExplorer,
-      valueExplorer:&self.mCenterX_property.mValueExplorer
+      idx: self.mCenterX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterX_property.mObserverExplorer,
+      valueExplorer: &self.mCenterX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mCenterY",
-      idx:self.mCenterY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterY_property.mObserverExplorer,
-      valueExplorer:&self.mCenterY_property.mValueExplorer
+      idx: self.mCenterY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterY_property.mObserverExplorer,
+      valueExplorer: &self.mCenterY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mWidth",
-      idx:self.mWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mWidth_property.mObserverExplorer,
-      valueExplorer:&self.mWidth_property.mValueExplorer
+      idx: self.mWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWidth_property.mObserverExplorer,
+      valueExplorer: &self.mWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mHeight",
-      idx:self.mHeight_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mHeight_property.mObserverExplorer,
-      valueExplorer:&self.mHeight_property.mValueExplorer
+      idx: self.mHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHeight_property.mObserverExplorer,
+      valueExplorer: &self.mHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mHoleDiameter",
-      idx:self.mHoleDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mHoleDiameter_property.mObserverExplorer,
-      valueExplorer:&self.mHoleDiameter_property.mValueExplorer
+      idx: self.mHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.mHoleDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mShape",
-      idx:self.mShape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mShape_property.mObserverExplorer,
-      valueExplorer:&self.mShape_property.mValueExplorer
+      idx: self.mShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mShape_property.mObserverExplorer,
+      valueExplorer: &self.mShape_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mStyle",
-      idx:self.mStyle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mStyle_property.mObserverExplorer,
-      valueExplorer:&self.mStyle_property.mValueExplorer
+      idx: self.mStyle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStyle_property.mObserverExplorer,
+      valueExplorer: &self.mStyle_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -1165,8 +1165,6 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceSlavePadInProject>, addedSet inAddedSet : Set <DeviceSlavePadInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1176,7 +1174,9 @@ final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlave
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

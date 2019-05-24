@@ -191,27 +191,27 @@ class CommentInSchematics : SchematicsObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mX",
-      idx:self.mX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mY",
-      idx:self.mY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mComment",
-      idx:self.mComment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mComment_property.mObserverExplorer,
-      valueExplorer:&self.mComment_property.mValueExplorer
+      idx: self.mComment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mComment_property.mObserverExplorer,
+      valueExplorer: &self.mComment_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -969,8 +969,6 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <CommentInSchematics>, addedSet inAddedSet : Set <CommentInSchematics>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -980,7 +978,9 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

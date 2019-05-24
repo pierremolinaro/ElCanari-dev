@@ -409,35 +409,35 @@ class FontCharacter : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "codePoint",
-      idx:self.codePoint_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.codePoint_property.mObserverExplorer,
-      valueExplorer:&self.codePoint_property.mValueExplorer
+      idx: self.codePoint_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.codePoint_property.mObserverExplorer,
+      valueExplorer: &self.codePoint_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "advance",
-      idx:self.advance_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.advance_property.mObserverExplorer,
-      valueExplorer:&self.advance_property.mValueExplorer
+      idx: self.advance_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.advance_property.mObserverExplorer,
+      valueExplorer: &self.advance_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mWarnsWhenNoSegment",
-      idx:self.mWarnsWhenNoSegment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mWarnsWhenNoSegment_property.mObserverExplorer,
-      valueExplorer:&self.mWarnsWhenNoSegment_property.mValueExplorer
+      idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
+      valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mWarnsWhenAdvanceIsZero",
-      idx:self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
-      valueExplorer:&self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+      idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+      valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1437,8 +1437,6 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <FontCharacter>, addedSet inAddedSet : Set <FontCharacter>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1448,7 +1446,9 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

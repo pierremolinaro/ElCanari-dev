@@ -60,13 +60,22 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   var mSymbolInstance : SymbolInstanceInDevice? {
-    get { return self.mSymbolInstance_property.propval }
-    set { self.mSymbolInstance_property.setProp (newValue) }
+    get {
+      return self.mSymbolInstance_property.propval
+    }
+    set {
+      if self.mSymbolInstance_property.propval != nil {
+        self.mSymbolInstance_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSymbolInstance_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
+  var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
 
   //····················································································································
 
@@ -89,13 +98,22 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   var mType : SymbolPinTypeInDevice? {
-    get { return self.mType_property.propval }
-    set { self.mType_property.setProp (newValue) }
+    get {
+      return self.mType_property.propval
+    }
+    set {
+      if self.mType_property.propval != nil {
+        self.mType_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mType_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
+  var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
 
   //····················································································································
 
@@ -118,13 +136,22 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   var mPadProxy : PadProxyInDevice? {
-    get { return self.mPadProxy_property.propval }
-    set { self.mPadProxy_property.setProp (newValue) }
+    get {
+      return self.mPadProxy_property.propval
+    }
+    set {
+      if self.mPadProxy_property.propval != nil {
+        self.mPadProxy_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPadProxy_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
+  var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
 
   //····················································································································
 
@@ -1274,8 +1301,6 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPinInstanceInDevice>, addedSet inAddedSet : Set <SymbolPinInstanceInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1285,7 +1310,9 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

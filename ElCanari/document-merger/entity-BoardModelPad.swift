@@ -197,51 +197,51 @@ class BoardModelPad : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      idx: self.width_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.width_property.mObserverExplorer,
+      valueExplorer: &self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
+      idx: self.height_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.height_property.mObserverExplorer,
+      valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "shape",
-      idx:self.shape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.shape_property.mObserverExplorer,
-      valueExplorer:&self.shape_property.mValueExplorer
+      idx: self.shape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.shape_property.mObserverExplorer,
+      valueExplorer: &self.shape_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "rotation",
-      idx:self.rotation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.rotation_property.mObserverExplorer,
-      valueExplorer:&self.rotation_property.mValueExplorer
+      idx: self.rotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.rotation_property.mObserverExplorer,
+      valueExplorer: &self.rotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -1065,8 +1065,6 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <BoardModelPad>, addedSet inAddedSet : Set <BoardModelPad>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1076,7 +1074,9 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -6,6 +6,33 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+func string (_ inManagedObject : EBManagedObject?) -> String {
+  if let object = inManagedObject {
+    return "\(object.ebObjectIndex)"
+  }else{
+    return "nil"
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func string (_ inManagedObjects : [EBManagedObject]) -> String {
+  var s = "["
+  var first = true
+  for object in inManagedObjects {
+    if first {
+      first = false
+    }else{
+      s += ", "
+    }
+    s += string (object)
+  }
+  s += "]"
+  return s
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol EBManagedObject_alloc_index_protocol : class {
   var ebObjectIndex : Int { get }
 }

@@ -276,35 +276,35 @@ class SymbolText : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "text",
-      idx:self.text_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.text_property.mObserverExplorer,
-      valueExplorer:&self.text_property.mValueExplorer
+      idx: self.text_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.text_property.mObserverExplorer,
+      valueExplorer: &self.text_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalAlignment",
-      idx:self.horizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.horizontalAlignment_property.mValueExplorer
+      idx: self.horizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.horizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.horizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1207,8 +1207,6 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolText>, addedSet inAddedSet : Set <SymbolText>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1218,7 +1216,9 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

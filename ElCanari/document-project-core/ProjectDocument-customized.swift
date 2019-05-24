@@ -149,6 +149,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
   internal func updateSchematicsPointsAndNets () {
     self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints ()
     self.removeUnusedNets ()
+    self.removeUnusedWires ()
   }
 
   //····················································································································

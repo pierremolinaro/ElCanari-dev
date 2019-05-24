@@ -385,13 +385,22 @@ class ComponentSymbolInProject : SchematicsObject,
   //····················································································································
 
   var mComponent : ComponentInProject? {
-    get { return self.mComponent_property.propval }
-    set { self.mComponent_property.setProp (newValue) }
+    get {
+      return self.mComponent_property.propval
+    }
+    set {
+      if self.mComponent_property.propval != nil {
+        self.mComponent_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mComponent_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+  var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
 
   //····················································································································
 
@@ -774,7 +783,6 @@ class ComponentSymbolInProject : SchematicsObject,
     self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
     self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
- //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -791,91 +799,91 @@ class ComponentSymbolInProject : SchematicsObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mCenterX",
-      idx:self.mCenterX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterX_property.mObserverExplorer,
-      valueExplorer:&self.mCenterX_property.mValueExplorer
+      idx: self.mCenterX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterX_property.mObserverExplorer,
+      valueExplorer: &self.mCenterX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mCenterY",
-      idx:self.mCenterY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mCenterY_property.mObserverExplorer,
-      valueExplorer:&self.mCenterY_property.mValueExplorer
+      idx: self.mCenterY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCenterY_property.mObserverExplorer,
+      valueExplorer: &self.mCenterY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mRotation",
-      idx:self.mRotation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mRotation_property.mObserverExplorer,
-      valueExplorer:&self.mRotation_property.mValueExplorer
+      idx: self.mRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mRotation_property.mObserverExplorer,
+      valueExplorer: &self.mRotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mMirror",
-      idx:self.mMirror_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mMirror_property.mObserverExplorer,
-      valueExplorer:&self.mMirror_property.mValueExplorer
+      idx: self.mMirror_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mMirror_property.mObserverExplorer,
+      valueExplorer: &self.mMirror_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
-      idx:self.mSymbolInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
+      idx: self.mSymbolInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSymbolTypeName",
-      idx:self.mSymbolTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolTypeName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolTypeName_property.mValueExplorer
+      idx: self.mSymbolTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentNameOffsetX",
-      idx:self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentNameOffsetX_property.mValueExplorer
+      idx: self.mDisplayComponentNameOffsetX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentNameOffsetX_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentNameOffsetX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentNameOffsetY",
-      idx:self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentNameOffsetY_property.mValueExplorer
+      idx: self.mDisplayComponentNameOffsetY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentNameOffsetY_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentNameOffsetY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValue",
-      idx:self.mDisplayComponentValue_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValue_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValue_property.mValueExplorer
+      idx: self.mDisplayComponentValue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValue_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValue_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValueOffsetX",
-      idx:self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValueOffsetX_property.mValueExplorer
+      idx: self.mDisplayComponentValueOffsetX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValueOffsetX_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValueOffsetX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDisplayComponentValueOffsetY",
-      idx:self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
-      valueExplorer:&self.mDisplayComponentValueOffsetY_property.mValueExplorer
+      idx: self.mDisplayComponentValueOffsetY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
+      valueExplorer: &self.mDisplayComponentValueOffsetY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2545,8 +2553,6 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2556,7 +2562,9 @@ final class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentS
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

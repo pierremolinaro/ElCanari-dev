@@ -14,6 +14,36 @@ extension SheetInProject {
 
   //····················································································································
 
+  func removeFromWire (point inPoint : PointInSchematics, _ inWindow : NSWindow) {
+    if inPoint.mNC == nil, inPoint.mLabels.count == 0, (inPoint.mWiresP1s.count + inPoint.mWiresP2s.count) == 2 {
+      if inPoint.mWiresP1s.count == 2 {
+        let removedWire = inPoint.mWiresP1s [0]
+        let conservedWire = inPoint.mWiresP1s [1]
+        // Swift.print ("1-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
+        conservedWire.mP1 = removedWire.mP2
+        // Swift.print ("2-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
+        removedWire.mP1 = nil
+        //Swift.print ("3-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
+        removedWire.mP2 = nil
+        //Swift.print ("4-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
+      }else if inPoint.mWiresP2s.count == 2 {
+        let removedWire = inPoint.mWiresP2s [0]
+        let conservedWire = inPoint.mWiresP2s [1]
+        conservedWire.mP2 = removedWire.mP1
+        removedWire.mP1 = nil
+        removedWire.mP2 = nil
+      }else{
+        let removedWire = inPoint.mWiresP1s [0]
+        let conservedWire = inPoint.mWiresP2s [0]
+        conservedWire.mP1 = removedWire.mP1
+        removedWire.mP1 = nil
+        removedWire.mP2 = nil
+      }
+    }
+  }
+  
+  //····················································································································
+
   func connect (points inPoints : [PointInSchematics], _ inWindow : NSWindow) {
     var netSet = Set <NetInProject> ()
     for point in inPoints {

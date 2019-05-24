@@ -63,13 +63,22 @@ class NCInSchematics : SchematicsObject,
   //····················································································································
 
   var mPoint : PointInSchematics? {
-    get { return self.mPoint_property.propval }
-    set { self.mPoint_property.setProp (newValue) }
+    get {
+      return self.mPoint_property.propval
+    }
+    set {
+      if self.mPoint_property.propval != nil {
+        self.mPoint_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPoint_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
+  var mPoint_none : StoredObject_PointInSchematics { return self.mPoint_property }
 
   //····················································································································
 
@@ -174,11 +183,11 @@ class NCInSchematics : SchematicsObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mOrientation",
-      idx:self.mOrientation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mOrientation_property.mObserverExplorer,
-      valueExplorer:&self.mOrientation_property.mValueExplorer
+      idx: self.mOrientation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mOrientation_property.mObserverExplorer,
+      valueExplorer: &self.mOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -838,8 +847,6 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <NCInSchematics>, addedSet inAddedSet : Set <NCInSchematics>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -849,7 +856,9 @@ final class StoredArrayOf_NCInSchematics : ReadWriteArrayOf_NCInSchematics, EBSi
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

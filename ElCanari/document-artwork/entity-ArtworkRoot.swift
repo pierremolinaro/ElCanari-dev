@@ -362,91 +362,91 @@ class ArtworkRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedTab",
-      idx:self.selectedTab_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedTab_property.mObserverExplorer,
-      valueExplorer:&self.selectedTab_property.mValueExplorer
+      idx: self.selectedTab_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedTab_property.mObserverExplorer,
+      valueExplorer: &self.selectedTab_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments_property.mObserverExplorer,
-      valueExplorer:&self.comments_property.mValueExplorer
+      idx: self.comments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.comments_property.mObserverExplorer,
+      valueExplorer: &self.comments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minPPTPTTTWdisplayUnit",
-      idx:self.minPPTPTTTWdisplayUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minPPTPTTTWdisplayUnit_property.mObserverExplorer,
-      valueExplorer:&self.minPPTPTTTWdisplayUnit_property.mValueExplorer
+      idx: self.minPPTPTTTWdisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minPPTPTTTWdisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.minPPTPTTTWdisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minPPTPTTTW",
-      idx:self.minPPTPTTTW_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minPPTPTTTW_property.mObserverExplorer,
-      valueExplorer:&self.minPPTPTTTW_property.mValueExplorer
+      idx: self.minPPTPTTTW_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minPPTPTTTW_property.mObserverExplorer,
+      valueExplorer: &self.minPPTPTTTW_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForOARdisplayUnit",
-      idx:self.minValueForOARdisplayUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForOARdisplayUnit_property.mObserverExplorer,
-      valueExplorer:&self.minValueForOARdisplayUnit_property.mValueExplorer
+      idx: self.minValueForOARdisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForOARdisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.minValueForOARdisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForOARinEBUnit",
-      idx:self.minValueForOARinEBUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForOARinEBUnit_property.mObserverExplorer,
-      valueExplorer:&self.minValueForOARinEBUnit_property.mValueExplorer
+      idx: self.minValueForOARinEBUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForOARinEBUnit_property.mObserverExplorer,
+      valueExplorer: &self.minValueForOARinEBUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForPHDdisplayUnit",
-      idx:self.minValueForPHDdisplayUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForPHDdisplayUnit_property.mObserverExplorer,
-      valueExplorer:&self.minValueForPHDdisplayUnit_property.mValueExplorer
+      idx: self.minValueForPHDdisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForPHDdisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.minValueForPHDdisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForPHDinEBUnit",
-      idx:self.minValueForPHDinEBUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForPHDinEBUnit_property.mObserverExplorer,
-      valueExplorer:&self.minValueForPHDinEBUnit_property.mValueExplorer
+      idx: self.minValueForPHDinEBUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForPHDinEBUnit_property.mObserverExplorer,
+      valueExplorer: &self.minValueForPHDinEBUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForBoardLimitWidthDisplayUnit",
-      idx:self.minValueForBoardLimitWidthDisplayUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer,
-      valueExplorer:&self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer
+      idx: self.minValueForBoardLimitWidthDisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForBoardLimitWidth",
-      idx:self.minValueForBoardLimitWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForBoardLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.minValueForBoardLimitWidth_property.mValueExplorer
+      idx: self.minValueForBoardLimitWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.minValueForBoardLimitWidth_property.mObserverExplorer,
+      valueExplorer: &self.minValueForBoardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drillDataFileExtension",
-      idx:self.drillDataFileExtension_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillDataFileExtension_property.mObserverExplorer,
-      valueExplorer:&self.drillDataFileExtension_property.mValueExplorer
+      idx: self.drillDataFileExtension_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drillDataFileExtension_property.mObserverExplorer,
+      valueExplorer: &self.drillDataFileExtension_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -1646,8 +1646,6 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1657,7 +1655,9 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

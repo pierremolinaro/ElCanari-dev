@@ -392,7 +392,6 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.nameShape_property)
- //   self.mInstances_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
     self.mName_property.setSignatureObserver (observer: nil)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: nil)
@@ -419,83 +418,83 @@ class SymbolPinTypeInDevice : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPinX",
-      idx:self.mPinX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPinX_property.mObserverExplorer,
-      valueExplorer:&self.mPinX_property.mValueExplorer
+      idx: self.mPinX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPinX_property.mObserverExplorer,
+      valueExplorer: &self.mPinX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPinY",
-      idx:self.mPinY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPinY_property.mObserverExplorer,
-      valueExplorer:&self.mPinY_property.mValueExplorer
+      idx: self.mPinY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPinY_property.mObserverExplorer,
+      valueExplorer: &self.mPinY_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mXName",
-      idx:self.mXName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mXName_property.mObserverExplorer,
-      valueExplorer:&self.mXName_property.mValueExplorer
+      idx: self.mXName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mXName_property.mObserverExplorer,
+      valueExplorer: &self.mXName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mYName",
-      idx:self.mYName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mYName_property.mObserverExplorer,
-      valueExplorer:&self.mYName_property.mValueExplorer
+      idx: self.mYName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mYName_property.mObserverExplorer,
+      valueExplorer: &self.mYName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mName",
-      idx:self.mName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mName_property.mObserverExplorer,
-      valueExplorer:&self.mName_property.mValueExplorer
+      idx: self.mName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mName_property.mObserverExplorer,
+      valueExplorer: &self.mName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNameHorizontalAlignment",
-      idx:self.mNameHorizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNameHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.mNameHorizontalAlignment_property.mValueExplorer
+      idx: self.mNameHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNameHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mNameHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mPinNameIsDisplayedInSchematics",
-      idx:self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
+      idx: self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
+      valueExplorer: &self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mXNumber",
-      idx:self.mXNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mXNumber_property.mObserverExplorer,
-      valueExplorer:&self.mXNumber_property.mValueExplorer
+      idx: self.mXNumber_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mXNumber_property.mObserverExplorer,
+      valueExplorer: &self.mXNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mYNumber",
-      idx:self.mYNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mYNumber_property.mObserverExplorer,
-      valueExplorer:&self.mYNumber_property.mValueExplorer
+      idx: self.mYNumber_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mYNumber_property.mObserverExplorer,
+      valueExplorer: &self.mYNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mNumberHorizontalAlignment",
-      idx:self.mNumberHorizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNumberHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.mNumberHorizontalAlignment_property.mValueExplorer
+      idx: self.mNumberHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.mNumberHorizontalAlignment_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1698,8 +1697,6 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPinTypeInDevice>, addedSet inAddedSet : Set <SymbolPinTypeInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1709,7 +1706,9 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

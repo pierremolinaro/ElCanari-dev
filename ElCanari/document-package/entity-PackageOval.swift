@@ -441,67 +441,67 @@ class PackageOval : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      idx: self.width_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.width_property.mObserverExplorer,
+      valueExplorer: &self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
+      idx: self.height_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.height_property.mObserverExplorer,
+      valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xUnit",
-      idx:self.xUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xUnit_property.mObserverExplorer,
-      valueExplorer:&self.xUnit_property.mValueExplorer
+      idx: self.xUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xUnit_property.mObserverExplorer,
+      valueExplorer: &self.xUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yUnit",
-      idx:self.yUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yUnit_property.mObserverExplorer,
-      valueExplorer:&self.yUnit_property.mValueExplorer
+      idx: self.yUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yUnit_property.mObserverExplorer,
+      valueExplorer: &self.yUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "widthUnit",
-      idx:self.widthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.widthUnit_property.mObserverExplorer,
-      valueExplorer:&self.widthUnit_property.mValueExplorer
+      idx: self.widthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.widthUnit_property.mObserverExplorer,
+      valueExplorer: &self.widthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "heightUnit",
-      idx:self.heightUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.heightUnit_property.mObserverExplorer,
-      valueExplorer:&self.heightUnit_property.mValueExplorer
+      idx: self.heightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.heightUnit_property.mObserverExplorer,
+      valueExplorer: &self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1738,8 +1738,6 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageOval>, addedSet inAddedSet : Set <PackageOval>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1749,7 +1747,9 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

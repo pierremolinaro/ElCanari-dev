@@ -604,83 +604,83 @@ class SymbolPin : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "yPin",
-      idx:self.yPin_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yPin_property.mObserverExplorer,
-      valueExplorer:&self.yPin_property.mValueExplorer
+      idx: self.yPin_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yPin_property.mObserverExplorer,
+      valueExplorer: &self.yPin_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xName",
-      idx:self.xName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xName_property.mObserverExplorer,
-      valueExplorer:&self.xName_property.mValueExplorer
+      idx: self.xName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xName_property.mObserverExplorer,
+      valueExplorer: &self.xName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yName",
-      idx:self.yName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yName_property.mObserverExplorer,
-      valueExplorer:&self.yName_property.mValueExplorer
+      idx: self.yName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yName_property.mObserverExplorer,
+      valueExplorer: &self.yName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xNumber",
-      idx:self.xNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xNumber_property.mObserverExplorer,
-      valueExplorer:&self.xNumber_property.mValueExplorer
+      idx: self.xNumber_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xNumber_property.mObserverExplorer,
+      valueExplorer: &self.xNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yNumber",
-      idx:self.yNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yNumber_property.mObserverExplorer,
-      valueExplorer:&self.yNumber_property.mValueExplorer
+      idx: self.yNumber_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yNumber_property.mObserverExplorer,
+      valueExplorer: &self.yNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name_property.mObserverExplorer,
-      valueExplorer:&self.name_property.mValueExplorer
+      idx: self.name_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.name_property.mObserverExplorer,
+      valueExplorer: &self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "nameHorizontalAlignment",
-      idx:self.nameHorizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.nameHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.nameHorizontalAlignment_property.mValueExplorer
+      idx: self.nameHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.nameHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.nameHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "numberHorizontalAlignment",
-      idx:self.numberHorizontalAlignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.numberHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.numberHorizontalAlignment_property.mValueExplorer
+      idx: self.numberHorizontalAlignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.numberHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer: &self.numberHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinNameIsDisplayedInSchematics",
-      idx:self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.pinNameIsDisplayedInSchematics_property.mValueExplorer
+      idx: self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
+      valueExplorer: &self.pinNameIsDisplayedInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xPin",
-      idx:self.xPin_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xPin_property.mObserverExplorer,
-      valueExplorer:&self.xPin_property.mValueExplorer
+      idx: self.xPin_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xPin_property.mObserverExplorer,
+      valueExplorer: &self.xPin_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2117,8 +2117,6 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPin>, addedSet inAddedSet : Set <SymbolPin>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2128,7 +2126,9 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -338,35 +338,35 @@ class SymbolSegment : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1_property.mObserverExplorer,
-      valueExplorer:&self.y1_property.mValueExplorer
+      idx: self.y1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y1_property.mObserverExplorer,
+      valueExplorer: &self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2_property.mObserverExplorer,
-      valueExplorer:&self.x2_property.mValueExplorer
+      idx: self.x2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x2_property.mObserverExplorer,
+      valueExplorer: &self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2_property.mObserverExplorer,
-      valueExplorer:&self.y2_property.mValueExplorer
+      idx: self.y2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y2_property.mObserverExplorer,
+      valueExplorer: &self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1_property.mObserverExplorer,
-      valueExplorer:&self.x1_property.mValueExplorer
+      idx: self.x1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x1_property.mObserverExplorer,
+      valueExplorer: &self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1335,8 +1335,6 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolSegment>, addedSet inAddedSet : Set <SymbolSegment>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1346,7 +1344,9 @@ final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSign
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -63,13 +63,22 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   var mPin : DevicePinInProject? {
-    get { return self.mPin_property.propval }
-    set { self.mPin_property.setProp (newValue) }
+    get {
+      return self.mPin_property.propval
+    }
+    set {
+      if self.mPin_property.propval != nil {
+        self.mPin_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPin_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
+  var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
 
   //····················································································································
 
@@ -132,7 +141,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: mPadName
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPin
-      self.mPin_property.ebUndoManager = self.ebUndoManager
+    self.mPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -213,11 +222,11 @@ class DevicePadAssignmentInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPadName",
-      idx:self.mPadName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPadName_property.mObserverExplorer,
-      valueExplorer:&self.mPadName_property.mValueExplorer
+      idx: self.mPadName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPadName_property.mObserverExplorer,
+      valueExplorer: &self.mPadName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -877,8 +886,6 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DevicePadAssignmentInProject>, addedSet inAddedSet : Set <DevicePadAssignmentInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -888,7 +895,9 @@ final class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_Device
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

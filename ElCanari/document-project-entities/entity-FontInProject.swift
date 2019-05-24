@@ -225,27 +225,27 @@ class FontInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mFontName",
-      idx:self.mFontName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFontName_property.mObserverExplorer,
-      valueExplorer:&self.mFontName_property.mValueExplorer
+      idx: self.mFontName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFontName_property.mObserverExplorer,
+      valueExplorer: &self.mFontName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFontVersion",
-      idx:self.mFontVersion_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFontVersion_property.mObserverExplorer,
-      valueExplorer:&self.mFontVersion_property.mValueExplorer
+      idx: self.mFontVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFontVersion_property.mObserverExplorer,
+      valueExplorer: &self.mFontVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mDescriptiveString",
-      idx:self.mDescriptiveString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mDescriptiveString_property.mObserverExplorer,
-      valueExplorer:&self.mDescriptiveString_property.mValueExplorer
+      idx: self.mDescriptiveString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
+      valueExplorer: &self.mDescriptiveString_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1003,8 +1003,6 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1014,7 +1012,9 @@ final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSign
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

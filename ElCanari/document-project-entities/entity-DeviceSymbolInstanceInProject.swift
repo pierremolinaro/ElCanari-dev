@@ -77,13 +77,22 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   var mSymbolType : DeviceSymbolTypeInProject? {
-    get { return self.mSymbolType_property.propval }
-    set { self.mSymbolType_property.setProp (newValue) }
+    get {
+      return self.mSymbolType_property.propval
+    }
+    set {
+      if self.mSymbolType_property.propval != nil {
+        self.mSymbolType_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSymbolType_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
+  var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
 
   //····················································································································
 
@@ -192,7 +201,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mSymbolType
-      self.mSymbolType_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -316,11 +325,11 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mSymbolInstanceName",
-      idx:self.mSymbolInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolInstanceName_property.mValueExplorer
+      idx: self.mSymbolInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1112,8 +1121,6 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolInstanceInProject>, addedSet inAddedSet : Set <DeviceSymbolInstanceInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1123,7 +1130,9 @@ final class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_Devic
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

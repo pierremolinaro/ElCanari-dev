@@ -82,13 +82,22 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   var mNetClass : NetClassInProject? {
-    get { return self.mNetClass_property.propval }
-    set { self.mNetClass_property.setProp (newValue) }
+    get {
+      return self.mNetClass_property.propval
+    }
+    set {
+      if self.mNetClass_property.propval != nil {
+        self.mNetClass_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mNetClass_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
+  var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
 
   //····················································································································
 
@@ -221,7 +230,6 @@ class NetInProject : EBManagedObject,
     super.removeAllObservers ()
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
     self.mPoints_property.removeEBObserverOf_mSymbolPinName (self.pinNames_property)
- //   self.mPoints_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -238,11 +246,11 @@ class NetInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mNetName",
-      idx:self.mNetName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mNetName_property.mObserverExplorer,
-      valueExplorer:&self.mNetName_property.mValueExplorer
+      idx: self.mNetName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mNetName_property.mObserverExplorer,
+      valueExplorer: &self.mNetName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -928,8 +936,6 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <NetInProject>, addedSet inAddedSet : Set <NetInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -939,7 +945,9 @@ final class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignat
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

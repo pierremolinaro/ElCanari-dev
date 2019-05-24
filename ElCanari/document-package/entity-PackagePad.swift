@@ -457,13 +457,22 @@ class PackagePad : PackageObject,
   //····················································································································
 
   var zone : PackageZone? {
-    get { return self.zone_property.propval }
-    set { self.zone_property.setProp (newValue) }
+    get {
+      return self.zone_property.propval
+    }
+    set {
+      if self.zone_property.propval != nil {
+        self.zone_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.zone_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var zone_none : StoredObject_PackageZone { return self.zone_property }
+  var zone_none : StoredObject_PackageZone { return self.zone_property }
 
   //····················································································································
 
@@ -696,7 +705,7 @@ class PackagePad : PackageObject,
       resetter: { inObject in inObject.master_property.setProp (nil) }
     )
   //--- To one property: zone
-      self.zone_property.ebUndoManager = self.ebUndoManager
+    self.zone_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1052,7 +1061,6 @@ class PackagePad : PackageObject,
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     self.padName_property.removeEBObserver (self.padNumberDisplay_property)
- //   self.slaves_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: nil)
     self.height_property.setSignatureObserver (observer: nil)
@@ -1083,115 +1091,115 @@ class PackagePad : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenter_property.mObserverExplorer,
-      valueExplorer:&self.xCenter_property.mValueExplorer
+      idx: self.xCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenter_property.mObserverExplorer,
+      valueExplorer: &self.xCenter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenter_property.mObserverExplorer,
-      valueExplorer:&self.yCenter_property.mValueExplorer
+      idx: self.yCenter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenter_property.mObserverExplorer,
+      valueExplorer: &self.yCenter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      idx: self.width_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.width_property.mObserverExplorer,
+      valueExplorer: &self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
+      idx: self.height_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.height_property.mObserverExplorer,
+      valueExplorer: &self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "holeDiameter",
-      idx:self.holeDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeDiameter_property.mObserverExplorer,
-      valueExplorer:&self.holeDiameter_property.mValueExplorer
+      idx: self.holeDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeDiameter_property.mObserverExplorer,
+      valueExplorer: &self.holeDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padShape",
-      idx:self.padShape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padShape_property.mObserverExplorer,
-      valueExplorer:&self.padShape_property.mValueExplorer
+      idx: self.padShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padShape_property.mObserverExplorer,
+      valueExplorer: &self.padShape_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padStyle",
-      idx:self.padStyle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padStyle_property.mObserverExplorer,
-      valueExplorer:&self.padStyle_property.mValueExplorer
+      idx: self.padStyle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padStyle_property.mObserverExplorer,
+      valueExplorer: &self.padStyle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumber",
-      idx:self.padNumber_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumber_property.mObserverExplorer,
-      valueExplorer:&self.padNumber_property.mValueExplorer
+      idx: self.padNumber_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNumber_property.mObserverExplorer,
+      valueExplorer: &self.padNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.xCenterUnit_property.mValueExplorer
+      idx: self.xCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.xCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
-      valueExplorer:&self.yCenterUnit_property.mValueExplorer
+      idx: self.yCenterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yCenterUnit_property.mObserverExplorer,
+      valueExplorer: &self.yCenterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "widthUnit",
-      idx:self.widthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.widthUnit_property.mObserverExplorer,
-      valueExplorer:&self.widthUnit_property.mValueExplorer
+      idx: self.widthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.widthUnit_property.mObserverExplorer,
+      valueExplorer: &self.widthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "heightUnit",
-      idx:self.heightUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.heightUnit_property.mObserverExplorer,
-      valueExplorer:&self.heightUnit_property.mValueExplorer
+      idx: self.heightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.heightUnit_property.mObserverExplorer,
+      valueExplorer: &self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "holeDiameterUnit",
-      idx:self.holeDiameterUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeDiameterUnit_property.mObserverExplorer,
-      valueExplorer:&self.holeDiameterUnit_property.mValueExplorer
+      idx: self.holeDiameterUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.holeDiameterUnit_property.mObserverExplorer,
+      valueExplorer: &self.holeDiameterUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "annularRingUnit",
-      idx:self.annularRingUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.annularRingUnit_property.mObserverExplorer,
-      valueExplorer:&self.annularRingUnit_property.mValueExplorer
+      idx: self.annularRingUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.annularRingUnit_property.mObserverExplorer,
+      valueExplorer: &self.annularRingUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -3356,8 +3364,6 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackagePad>, addedSet inAddedSet : Set <PackagePad>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -3367,7 +3373,9 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

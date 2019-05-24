@@ -313,7 +313,6 @@ class SheetInProject : EBManagedObject,
     self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)
- //   self.mObjects_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -330,11 +329,11 @@ class SheetInProject : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mSheetTitle",
-      idx:self.mSheetTitle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSheetTitle_property.mObserverExplorer,
-      valueExplorer:&self.mSheetTitle_property.mValueExplorer
+      idx: self.mSheetTitle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSheetTitle_property.mObserverExplorer,
+      valueExplorer: &self.mSheetTitle_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1152,8 +1151,6 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SheetInProject>, addedSet inAddedSet : Set <SheetInProject>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1163,7 +1160,9 @@ final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSi
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

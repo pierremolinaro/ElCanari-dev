@@ -203,13 +203,22 @@ class PointInSchematics : EBManagedObject,
   //····················································································································
 
   var mSymbol : ComponentSymbolInProject? {
-    get { return self.mSymbol_property.propval }
-    set { self.mSymbol_property.setProp (newValue) }
+    get {
+      return self.mSymbol_property.propval
+    }
+    set {
+      if self.mSymbol_property.propval != nil {
+        self.mSymbol_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSymbol_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mSymbol_none : StoredObject_ComponentSymbolInProject { return self.mSymbol_property }
+  var mSymbol_none : StoredObject_ComponentSymbolInProject { return self.mSymbol_property }
 
   //····················································································································
 
@@ -232,13 +241,22 @@ class PointInSchematics : EBManagedObject,
   //····················································································································
 
   var mNet : NetInProject? {
-    get { return self.mNet_property.propval }
-    set { self.mNet_property.setProp (newValue) }
+    get {
+      return self.mNet_property.propval
+    }
+    set {
+      if self.mNet_property.propval != nil {
+        self.mNet_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mNet_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mNet_none : StoredObject_NetInProject { return self.mNet_property }
+  var mNet_none : StoredObject_NetInProject { return self.mNet_property }
 
   //····················································································································
 
@@ -353,13 +371,22 @@ class PointInSchematics : EBManagedObject,
   //····················································································································
 
   var mNC : NCInSchematics? {
-    get { return self.mNC_property.propval }
-    set { self.mNC_property.setProp (newValue) }
+    get {
+      return self.mNC_property.propval
+    }
+    set {
+      if self.mNC_property.propval != nil {
+        self.mNC_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mNC_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mNC_none : StoredObject_NCInSchematics { return self.mNC_property }
+  var mNC_none : StoredObject_NCInSchematics { return self.mNC_property }
 
   //····················································································································
 
@@ -696,9 +723,6 @@ class PointInSchematics : EBManagedObject,
     self.isConnected_property.removeEBObserver (self.status_property)
     self.location_property.removeEBObserver (self.connectedPoints_property)
     self.isConnected_property.removeEBObserver (self.connectedPoints_property)
- //   self.mWiresP2s_property.setOppositeRelationship = nil
- //   self.mLabels_property.setOppositeRelationship = nil
- //   self.mWiresP1s_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -715,27 +739,27 @@ class PointInSchematics : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mSymbolPinName",
-      idx:self.mSymbolPinName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSymbolPinName_property.mObserverExplorer,
-      valueExplorer:&self.mSymbolPinName_property.mValueExplorer
+      idx: self.mSymbolPinName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSymbolPinName_property.mObserverExplorer,
+      valueExplorer: &self.mSymbolPinName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
-      idx:self.mX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mY",
-      idx:self.mY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2007,8 +2031,6 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematics>, addedSet inAddedSet : Set <PointInSchematics>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2018,7 +2040,9 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

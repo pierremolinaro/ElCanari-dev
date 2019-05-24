@@ -371,7 +371,6 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mInstances_property.removeEBObserver (self.instanceCount_property)
     self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
- //   self.mInstances_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: nil)
     self.mFilledBezierPath_property.setSignatureObserver (observer: nil)
@@ -395,43 +394,43 @@ class SymbolTypeInDevice : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mTypeName",
-      idx:self.mTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mTypeName_property.mObserverExplorer,
-      valueExplorer:&self.mTypeName_property.mValueExplorer
+      idx: self.mTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mTypeName_property.mObserverExplorer,
+      valueExplorer: &self.mTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mVersion",
-      idx:self.mVersion_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mVersion_property.mObserverExplorer,
-      valueExplorer:&self.mVersion_property.mValueExplorer
+      idx: self.mVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mVersion_property.mObserverExplorer,
+      valueExplorer: &self.mVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFileData",
-      idx:self.mFileData_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFileData_property.mObserverExplorer,
-      valueExplorer:&self.mFileData_property.mValueExplorer
+      idx: self.mFileData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFileData_property.mObserverExplorer,
+      valueExplorer: &self.mFileData_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mStrokeBezierPath",
-      idx:self.mStrokeBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.mStrokeBezierPath_property.mValueExplorer
+      idx: self.mStrokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mFilledBezierPath",
-      idx:self.mFilledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFilledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.mFilledBezierPath_property.mValueExplorer
+      idx: self.mFilledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1463,8 +1462,6 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <SymbolTypeInDevice>, addedSet inAddedSet : Set <SymbolTypeInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1474,7 +1471,9 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

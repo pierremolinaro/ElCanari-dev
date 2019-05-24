@@ -230,13 +230,22 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   var mRoot : DeviceRoot? {
-    get { return self.mRoot_property.propval }
-    set { self.mRoot_property.setProp (newValue) }
+    get {
+      return self.mRoot_property.propval
+    }
+    set {
+      if self.mRoot_property.propval != nil {
+        self.mRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mRoot_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mRoot_none : StoredObject_DeviceRoot { return self.mRoot_property }
+  var mRoot_none : StoredObject_DeviceRoot { return self.mRoot_property }
 
   //····················································································································
 
@@ -599,51 +608,51 @@ class PackageInDevice : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mFileData",
-      idx:self.mFileData_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mFileData_property.mObserverExplorer,
-      valueExplorer:&self.mFileData_property.mValueExplorer
+      idx: self.mFileData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFileData_property.mObserverExplorer,
+      valueExplorer: &self.mFileData_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mName",
-      idx:self.mName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mName_property.mObserverExplorer,
-      valueExplorer:&self.mName_property.mValueExplorer
+      idx: self.mName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mName_property.mObserverExplorer,
+      valueExplorer: &self.mName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mVersion",
-      idx:self.mVersion_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mVersion_property.mObserverExplorer,
-      valueExplorer:&self.mVersion_property.mValueExplorer
+      idx: self.mVersion_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mVersion_property.mObserverExplorer,
+      valueExplorer: &self.mVersion_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mStrokeBezierPath",
-      idx:self.mStrokeBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mStrokeBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.mStrokeBezierPath_property.mValueExplorer
+      idx: self.mStrokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
-      idx:self.mX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mY",
-      idx:self.mY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1939,8 +1948,6 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageInDevice>, addedSet inAddedSet : Set <PackageInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1950,7 +1957,9 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

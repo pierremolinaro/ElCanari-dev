@@ -200,35 +200,35 @@ class CanariLibraryEntry : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPath",
-      idx:self.mPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPath_property.mObserverExplorer,
-      valueExplorer:&self.mPath_property.mValueExplorer
+      idx: self.mPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPath_property.mObserverExplorer,
+      valueExplorer: &self.mPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mUses",
-      idx:self.mUses_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mUses_property.mObserverExplorer,
-      valueExplorer:&self.mUses_property.mValueExplorer
+      idx: self.mUses_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUses_property.mObserverExplorer,
+      valueExplorer: &self.mUses_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mLibraryRepositoryURL",
-      idx:self.mLibraryRepositoryURL_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mLibraryRepositoryURL_property.mObserverExplorer,
-      valueExplorer:&self.mLibraryRepositoryURL_property.mValueExplorer
+      idx: self.mLibraryRepositoryURL_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLibraryRepositoryURL_property.mObserverExplorer,
+      valueExplorer: &self.mLibraryRepositoryURL_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mUserAndPasswordTag",
-      idx:self.mUserAndPasswordTag_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mUserAndPasswordTag_property.mObserverExplorer,
-      valueExplorer:&self.mUserAndPasswordTag_property.mValueExplorer
+      idx: self.mUserAndPasswordTag_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mUserAndPasswordTag_property.mObserverExplorer,
+      valueExplorer: &self.mUserAndPasswordTag_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -986,8 +986,6 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <CanariLibraryEntry>, addedSet inAddedSet : Set <CanariLibraryEntry>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -997,7 +995,9 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

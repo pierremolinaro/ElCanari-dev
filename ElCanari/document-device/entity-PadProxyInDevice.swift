@@ -94,13 +94,22 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   var mPinInstance : SymbolPinInstanceInDevice? {
-    get { return self.mPinInstance_property.propval }
-    set { self.mPinInstance_property.setProp (newValue) }
+    get {
+      return self.mPinInstance_property.propval
+    }
+    set {
+      if self.mPinInstance_property.propval != nil {
+        self.mPinInstance_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPinInstance_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
+  var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
 
   //····················································································································
 
@@ -294,19 +303,19 @@ class PadProxyInDevice : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPadName",
-      idx:self.mPadName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPadName_property.mObserverExplorer,
-      valueExplorer:&self.mPadName_property.mValueExplorer
+      idx: self.mPadName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPadName_property.mObserverExplorer,
+      valueExplorer: &self.mPadName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mIsNC",
-      idx:self.mIsNC_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mIsNC_property.mObserverExplorer,
-      valueExplorer:&self.mIsNC_property.mValueExplorer
+      idx: self.mIsNC_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mIsNC_property.mObserverExplorer,
+      valueExplorer: &self.mIsNC_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1109,8 +1118,6 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PadProxyInDevice>, addedSet inAddedSet : Set <PadProxyInDevice>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1120,7 +1127,9 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

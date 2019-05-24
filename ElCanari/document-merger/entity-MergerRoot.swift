@@ -700,13 +700,22 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   var artwork : ArtworkRoot? {
-    get { return self.artwork_property.propval }
-    set { self.artwork_property.setProp (newValue) }
+    get {
+      return self.artwork_property.propval
+    }
+    set {
+      if self.artwork_property.propval != nil {
+        self.artwork_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.artwork_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
+  var artwork_none : StoredObject_ArtworkRoot { return self.artwork_property }
 
   //····················································································································
 
@@ -912,7 +921,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: artwork
-      self.artwork_property.ebUndoManager = self.ebUndoManager
+    self.artwork_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -968,7 +977,6 @@ class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
- //   self.boardInstances_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -985,163 +993,163 @@ class MergerRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      idx: self.selectedPageIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
+      valueExplorer: &self.selectedPageIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.zoom_property.mObserverExplorer,
-      valueExplorer:&self.zoom_property.mValueExplorer
+      idx: self.zoom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.zoom_property.mObserverExplorer,
+      valueExplorer: &self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "automaticBoardSize",
-      idx:self.automaticBoardSize_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.automaticBoardSize_property.mObserverExplorer,
-      valueExplorer:&self.automaticBoardSize_property.mValueExplorer
+      idx: self.automaticBoardSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.automaticBoardSize_property.mObserverExplorer,
+      valueExplorer: &self.automaticBoardSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardManualWidth",
-      idx:self.boardManualWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardManualWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardManualWidth_property.mValueExplorer
+      idx: self.boardManualWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardManualWidth_property.mObserverExplorer,
+      valueExplorer: &self.boardManualWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardManualHeight",
-      idx:self.boardManualHeight_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardManualHeight_property.mObserverExplorer,
-      valueExplorer:&self.boardManualHeight_property.mValueExplorer
+      idx: self.boardManualHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardManualHeight_property.mObserverExplorer,
+      valueExplorer: &self.boardManualHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidthUnit",
-      idx:self.boardWidthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardWidthUnit_property.mValueExplorer
+      idx: self.boardWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.boardWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeightUnit",
-      idx:self.boardHeightUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardHeightUnit_property.mValueExplorer
+      idx: self.boardHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.boardHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "overlapingArrangment",
-      idx:self.overlapingArrangment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.overlapingArrangment_property.mObserverExplorer,
-      valueExplorer:&self.overlapingArrangment_property.mValueExplorer
+      idx: self.overlapingArrangment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.overlapingArrangment_property.mObserverExplorer,
+      valueExplorer: &self.overlapingArrangment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedBoardXUnit",
-      idx:self.selectedBoardXUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedBoardXUnit_property.mObserverExplorer,
-      valueExplorer:&self.selectedBoardXUnit_property.mValueExplorer
+      idx: self.selectedBoardXUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedBoardXUnit_property.mObserverExplorer,
+      valueExplorer: &self.selectedBoardXUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedBoardYUnit",
-      idx:self.selectedBoardYUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedBoardYUnit_property.mObserverExplorer,
-      valueExplorer:&self.selectedBoardYUnit_property.mValueExplorer
+      idx: self.selectedBoardYUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedBoardYUnit_property.mObserverExplorer,
+      valueExplorer: &self.selectedBoardYUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidth",
-      idx:self.boardLimitWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidth_property.mValueExplorer
+      idx: self.boardLimitWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidthUnit",
-      idx:self.boardLimitWidthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
+      idx: self.boardLimitWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "arrowMagnitude",
-      idx:self.arrowMagnitude_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.arrowMagnitude_property.mObserverExplorer,
-      valueExplorer:&self.arrowMagnitude_property.mValueExplorer
+      idx: self.arrowMagnitude_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.arrowMagnitude_property.mObserverExplorer,
+      valueExplorer: &self.arrowMagnitude_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "arrowMagnitudeUnit",
-      idx:self.arrowMagnitudeUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.arrowMagnitudeUnit_property.mObserverExplorer,
-      valueExplorer:&self.arrowMagnitudeUnit_property.mValueExplorer
+      idx: self.arrowMagnitudeUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.arrowMagnitudeUnit_property.mObserverExplorer,
+      valueExplorer: &self.arrowMagnitudeUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "shiftArrowMagnitude",
-      idx:self.shiftArrowMagnitude_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.shiftArrowMagnitude_property.mObserverExplorer,
-      valueExplorer:&self.shiftArrowMagnitude_property.mValueExplorer
+      idx: self.shiftArrowMagnitude_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.shiftArrowMagnitude_property.mObserverExplorer,
+      valueExplorer: &self.shiftArrowMagnitude_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "shiftArrowMagnitudeUnit",
-      idx:self.shiftArrowMagnitudeUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
-      valueExplorer:&self.shiftArrowMagnitudeUnit_property.mValueExplorer
+      idx: self.shiftArrowMagnitudeUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
+      valueExplorer: &self.shiftArrowMagnitudeUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "artworkName",
-      idx:self.artworkName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.artworkName_property.mObserverExplorer,
-      valueExplorer:&self.artworkName_property.mValueExplorer
+      idx: self.artworkName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.artworkName_property.mObserverExplorer,
+      valueExplorer: &self.artworkName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "generateGerberProductFile",
-      idx:self.generateGerberProductFile_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.generateGerberProductFile_property.mObserverExplorer,
-      valueExplorer:&self.generateGerberProductFile_property.mValueExplorer
+      idx: self.generateGerberProductFile_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.generateGerberProductFile_property.mObserverExplorer,
+      valueExplorer: &self.generateGerberProductFile_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "generatePDFProductFile",
-      idx:self.generatePDFProductFile_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.generatePDFProductFile_property.mObserverExplorer,
-      valueExplorer:&self.generatePDFProductFile_property.mValueExplorer
+      idx: self.generatePDFProductFile_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.generatePDFProductFile_property.mObserverExplorer,
+      valueExplorer: &self.generatePDFProductFile_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "generatedBoardArchiveFormat",
-      idx:self.generatedBoardArchiveFormat_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.generatedBoardArchiveFormat_property.mObserverExplorer,
-      valueExplorer:&self.generatedBoardArchiveFormat_property.mValueExplorer
+      idx: self.generatedBoardArchiveFormat_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.generatedBoardArchiveFormat_property.mObserverExplorer,
+      valueExplorer: &self.generatedBoardArchiveFormat_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -3379,8 +3387,6 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <MergerRoot>, addedSet inAddedSet : Set <MergerRoot>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -3390,7 +3396,9 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -831,14 +831,8 @@ class PackageRoot : EBGraphicManagedObject,
     g_Preferences?.padZoneFont_property.removeEBObserver (self.issues_property)
     self.issues_property.removeEBObserver (self.noIssue_property)
     self.packagePads_property.setDataProvider (nil)
-    // self.packageObjects_property.removeEBObserver (self.packagePads_property)
-    // self.packagePads_property.mReadModelFunction = nil
     self.packageSlavePads_property.setDataProvider (nil)
-    // self.packageObjects_property.removeEBObserver (self.packageSlavePads_property)
-    // self.packageSlavePads_property.mReadModelFunction = nil
     self.packageZones_property.setDataProvider (nil)
-    // self.packageObjects_property.removeEBObserver (self.packageZones_property)
-    // self.packageZones_property.mReadModelFunction = nil
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)
     self.packageObjects_property.setSignatureObserver (observer: nil)
@@ -860,115 +854,115 @@ class PackageRoot : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      idx: self.selectedPageIndex_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
+      valueExplorer: &self.selectedPageIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedInspector",
-      idx:self.selectedInspector_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedInspector_property.mObserverExplorer,
-      valueExplorer:&self.selectedInspector_property.mValueExplorer
+      idx: self.selectedInspector_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedInspector_property.mObserverExplorer,
+      valueExplorer: &self.selectedInspector_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments_property.mObserverExplorer,
-      valueExplorer:&self.comments_property.mValueExplorer
+      idx: self.comments_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.comments_property.mObserverExplorer,
+      valueExplorer: &self.comments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "program",
-      idx:self.program_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.program_property.mObserverExplorer,
-      valueExplorer:&self.program_property.mValueExplorer
+      idx: self.program_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.program_property.mObserverExplorer,
+      valueExplorer: &self.program_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
-      idx:self.horizontalFlip_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.horizontalFlip_property.mObserverExplorer,
-      valueExplorer:&self.horizontalFlip_property.mValueExplorer
+      idx: self.horizontalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.horizontalFlip_property.mObserverExplorer,
+      valueExplorer: &self.horizontalFlip_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "verticalFlip",
-      idx:self.verticalFlip_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.verticalFlip_property.mObserverExplorer,
-      valueExplorer:&self.verticalFlip_property.mValueExplorer
+      idx: self.verticalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.verticalFlip_property.mObserverExplorer,
+      valueExplorer: &self.verticalFlip_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridStyle",
-      idx:self.gridStyle_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridStyle_property.mObserverExplorer,
-      valueExplorer:&self.gridStyle_property.mValueExplorer
+      idx: self.gridStyle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gridStyle_property.mObserverExplorer,
+      valueExplorer: &self.gridStyle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridStep",
-      idx:self.gridStep_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridStep_property.mObserverExplorer,
-      valueExplorer:&self.gridStep_property.mValueExplorer
+      idx: self.gridStep_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gridStep_property.mObserverExplorer,
+      valueExplorer: &self.gridStep_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridStepUnit",
-      idx:self.gridStepUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridStepUnit_property.mObserverExplorer,
-      valueExplorer:&self.gridStepUnit_property.mValueExplorer
+      idx: self.gridStepUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gridStepUnit_property.mObserverExplorer,
+      valueExplorer: &self.gridStepUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridDisplayFactor",
-      idx:self.gridDisplayFactor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridDisplayFactor_property.mObserverExplorer,
-      valueExplorer:&self.gridDisplayFactor_property.mValueExplorer
+      idx: self.gridDisplayFactor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gridDisplayFactor_property.mObserverExplorer,
+      valueExplorer: &self.gridDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.zoom_property.mObserverExplorer,
-      valueExplorer:&self.zoom_property.mValueExplorer
+      idx: self.zoom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.zoom_property.mObserverExplorer,
+      valueExplorer: &self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumbering",
-      idx:self.padNumbering_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumbering_property.mObserverExplorer,
-      valueExplorer:&self.padNumbering_property.mValueExplorer
+      idx: self.padNumbering_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNumbering_property.mObserverExplorer,
+      valueExplorer: &self.padNumbering_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xPlacardUnit",
-      idx:self.xPlacardUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xPlacardUnit_property.mObserverExplorer,
-      valueExplorer:&self.xPlacardUnit_property.mValueExplorer
+      idx: self.xPlacardUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.xPlacardUnit_property.mObserverExplorer,
+      valueExplorer: &self.xPlacardUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yPlacardUnit",
-      idx:self.yPlacardUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yPlacardUnit_property.mObserverExplorer,
-      valueExplorer:&self.yPlacardUnit_property.mValueExplorer
+      idx: self.yPlacardUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
+      valueExplorer: &self.yPlacardUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2718,8 +2712,6 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <PackageRoot>, addedSet inAddedSet : Set <PackageRoot>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2729,7 +2721,9 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 

@@ -132,13 +132,22 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   var myModel : BoardModel? {
-    get { return self.myModel_property.propval }
-    set { self.myModel_property.setProp (newValue) }
+    get {
+      return self.myModel_property.propval
+    }
+    set {
+      if self.myModel_property.propval != nil {
+        self.myModel_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.myModel_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var myModel_none : StoredObject_BoardModel { return self.myModel_property }
+  var myModel_none : StoredObject_BoardModel { return self.myModel_property }
 
   //····················································································································
 
@@ -230,13 +239,22 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   var myRoot : MergerRoot? {
-    get { return self.myRoot_property.propval }
-    set { self.myRoot_property.setProp (newValue) }
+    get {
+      return self.myRoot_property.propval
+    }
+    set {
+      if self.myRoot_property.propval != nil {
+        self.myRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.myRoot_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-    var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
+  var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
 
   //····················································································································
 
@@ -435,27 +453,27 @@ class MergerBoardInstance : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "instanceRotation",
-      idx:self.instanceRotation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.instanceRotation_property.mObserverExplorer,
-      valueExplorer:&self.instanceRotation_property.mValueExplorer
+      idx: self.instanceRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.instanceRotation_property.mObserverExplorer,
+      valueExplorer: &self.instanceRotation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1471,8 +1489,6 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //····················································································································
 
   internal override func updateObservers (removedSet inRemovedSet : Set <MergerBoardInstance>, addedSet inAddedSet : Set <MergerBoardInstance>) {
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
-  //---
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1482,7 +1498,9 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
       managedObject.setSignatureObserver (observer: self)
       self.mSetOppositeRelationship? (managedObject)
     }
-  }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
  
   //····················································································································
 
