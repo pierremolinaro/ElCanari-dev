@@ -451,49 +451,49 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "pinName",
-      idx:self.pinName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinName_property.mObserverExplorer,
-      valueExplorer:&self.pinName_property.mValueExplorer
+      idx: self.pinName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinName_property.mObserverExplorer,
+      valueExplorer: &self.pinName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolName",
-      idx:self.symbolName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolName_property.mObserverExplorer,
-      valueExplorer:&self.symbolName_property.mValueExplorer
+      idx: self.symbolName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolName_property.mObserverExplorer,
+      valueExplorer: &self.symbolName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinQualifiedName",
-      idx:self.pinQualifiedName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinQualifiedName_property.mObserverExplorer,
-      valueExplorer:&self.pinQualifiedName_property.mValueExplorer
+      idx: self.pinQualifiedName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
+      valueExplorer: &self.pinQualifiedName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",
-      idx:self.isConnected_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.isConnected_property.mObserverExplorer,
-      valueExplorer:&self.isConnected_property.mValueExplorer
+      idx: self.isConnected_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isConnected_property.mObserverExplorer,
+      valueExplorer: &self.isConnected_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "numberShape",
-      idx:self.numberShape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.numberShape_property.mObserverExplorer,
-      valueExplorer:&self.numberShape_property.mValueExplorer
+      idx: self.numberShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.numberShape_property.mObserverExplorer,
+      valueExplorer: &self.numberShape_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSymbolInstance",
       idx:self.mSymbolInstance_property.ebObjectIndex,
@@ -515,7 +515,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
       view: view,
       valueExplorer:&self.mPadProxy_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

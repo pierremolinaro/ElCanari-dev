@@ -761,64 +761,64 @@ class PointInSchematics : EBManagedObject,
       observerExplorer: &self.mY_property.mObserverExplorer,
       valueExplorer: &self.mY_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "location",
-      idx:self.location_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.location_property.mObserverExplorer,
-      valueExplorer:&self.location_property.mValueExplorer
+      idx: self.location_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.location_property.mObserverExplorer,
+      valueExplorer: &self.location_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netName",
-      idx:self.netName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netName_property.mObserverExplorer,
-      valueExplorer:&self.netName_property.mValueExplorer
+      idx: self.netName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netName_property.mObserverExplorer,
+      valueExplorer: &self.netName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canMove",
-      idx:self.canMove_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.canMove_property.mObserverExplorer,
-      valueExplorer:&self.canMove_property.mValueExplorer
+      idx: self.canMove_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.canMove_property.mObserverExplorer,
+      valueExplorer: &self.canMove_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "wireColor",
-      idx:self.wireColor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.wireColor_property.mObserverExplorer,
-      valueExplorer:&self.wireColor_property.mValueExplorer
+      idx: self.wireColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.wireColor_property.mObserverExplorer,
+      valueExplorer: &self.wireColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",
-      idx:self.isConnected_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.isConnected_property.mObserverExplorer,
-      valueExplorer:&self.isConnected_property.mValueExplorer
+      idx: self.isConnected_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isConnected_property.mObserverExplorer,
+      valueExplorer: &self.isConnected_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "status",
-      idx:self.status_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.status_property.mObserverExplorer,
-      valueExplorer:&self.status_property.mValueExplorer
+      idx: self.status_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.status_property.mObserverExplorer,
+      valueExplorer: &self.status_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connectedPoints",
-      idx:self.connectedPoints_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
-      valueExplorer:&self.connectedPoints_property.mValueExplorer
+      idx: self.connectedPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+      valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mWiresP2s",
       idx:mWiresP2s_property.ebObjectIndex,
@@ -840,7 +840,7 @@ class PointInSchematics : EBManagedObject,
       view: view,
       valueExplorer:&mWiresP1s_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSymbol",
       idx:self.mSymbol_property.ebObjectIndex,
@@ -862,7 +862,7 @@ class PointInSchematics : EBManagedObject,
       view: view,
       valueExplorer:&self.mNC_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

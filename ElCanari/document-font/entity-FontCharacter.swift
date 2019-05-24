@@ -439,40 +439,40 @@ class FontCharacter : EBManagedObject,
       observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
       valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "segmentArrayForDrawing",
-      idx:self.segmentArrayForDrawing_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.segmentArrayForDrawing_property.mObserverExplorer,
-      valueExplorer:&self.segmentArrayForDrawing_property.mValueExplorer
+      idx: self.segmentArrayForDrawing_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.segmentArrayForDrawing_property.mObserverExplorer,
+      valueExplorer: &self.segmentArrayForDrawing_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gerberCode",
-      idx:self.gerberCode_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCode_property.mObserverExplorer,
-      valueExplorer:&self.gerberCode_property.mValueExplorer
+      idx: self.gerberCode_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gerberCode_property.mObserverExplorer,
+      valueExplorer: &self.gerberCode_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gerberCodeInstructionCountMessage",
-      idx:self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
-      valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
+      idx: self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
+      valueExplorer: &self.gerberCodeInstructionCountMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "segments",
       idx:segments_property.ebObjectIndex,
@@ -480,8 +480,8 @@ class FontCharacter : EBManagedObject,
       view: view,
       valueExplorer:&segments_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

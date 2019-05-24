@@ -589,26 +589,26 @@ class DevicePinInProject : EBManagedObject,
       observerExplorer: &self.mPinName_property.mObserverExplorer,
       valueExplorer: &self.mPinName_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "pinQualifiedName",
-      idx:self.pinQualifiedName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinQualifiedName_property.mObserverExplorer,
-      valueExplorer:&self.pinQualifiedName_property.mValueExplorer
+      idx: self.pinQualifiedName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinQualifiedName_property.mObserverExplorer,
+      valueExplorer: &self.pinQualifiedName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "descriptor",
-      idx:self.descriptor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.descriptor_property.mObserverExplorer,
-      valueExplorer:&self.descriptor_property.mValueExplorer
+      idx: self.descriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.descriptor_property.mObserverExplorer,
+      valueExplorer: &self.descriptor_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

@@ -252,24 +252,24 @@ class NetInProject : EBManagedObject,
       observerExplorer: &self.mNetName_property.mObserverExplorer,
       valueExplorer: &self.mNetName_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "wireColor",
-      idx:self.wireColor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.wireColor_property.mObserverExplorer,
-      valueExplorer:&self.wireColor_property.mValueExplorer
+      idx: self.wireColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.wireColor_property.mObserverExplorer,
+      valueExplorer: &self.wireColor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinNames",
-      idx:self.pinNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinNames_property.mObserverExplorer,
-      valueExplorer:&self.pinNames_property.mValueExplorer
+      idx: self.pinNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinNames_property.mObserverExplorer,
+      valueExplorer: &self.pinNames_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mPoints",
       idx:mPoints_property.ebObjectIndex,
@@ -277,7 +277,7 @@ class NetInProject : EBManagedObject,
       view: view,
       valueExplorer:&mPoints_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mNetClass",
       idx:self.mNetClass_property.ebObjectIndex,
@@ -285,7 +285,7 @@ class NetInProject : EBManagedObject,
       view: view,
       valueExplorer:&self.mNetClass_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

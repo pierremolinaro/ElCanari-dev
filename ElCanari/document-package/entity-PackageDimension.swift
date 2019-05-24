@@ -722,42 +722,42 @@ class PackageDimension : PackageObject,
       observerExplorer: &self.x1_property.mObserverExplorer,
       valueExplorer: &self.x1_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "distanceInCanariUnit",
-      idx:self.distanceInCanariUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.distanceInCanariUnit_property.mObserverExplorer,
-      valueExplorer:&self.distanceInCanariUnit_property.mValueExplorer
+      idx: self.distanceInCanariUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.distanceInCanariUnit_property.mObserverExplorer,
+      valueExplorer: &self.distanceInCanariUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

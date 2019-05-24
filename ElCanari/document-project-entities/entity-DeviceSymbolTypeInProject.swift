@@ -141,10 +141,10 @@ class DeviceSymbolTypeInProject : EBManagedObject,
       observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
       valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

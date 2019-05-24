@@ -487,48 +487,48 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       observerExplorer: &self.mY_property.mObserverExplorer,
       valueExplorer: &self.mY_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "symbolQualifiedName",
-      idx:self.symbolQualifiedName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolQualifiedName_property.mObserverExplorer,
-      valueExplorer:&self.symbolQualifiedName_property.mValueExplorer
+      idx: self.symbolQualifiedName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolQualifiedName_property.mObserverExplorer,
+      valueExplorer: &self.symbolQualifiedName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeName",
-      idx:self.symbolTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolTypeName_property.mObserverExplorer,
-      valueExplorer:&self.symbolTypeName_property.mValueExplorer
+      idx: self.symbolTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
+      valueExplorer: &self.symbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unconnectedPins",
-      idx:self.unconnectedPins_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.unconnectedPins_property.mObserverExplorer,
-      valueExplorer:&self.unconnectedPins_property.mValueExplorer
+      idx: self.unconnectedPins_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
+      valueExplorer: &self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mPinInstances",
       idx:mPinInstances_property.ebObjectIndex,
@@ -536,7 +536,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       view: view,
       valueExplorer:&mPinInstances_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mType",
       idx:self.mType_property.ebObjectIndex,
@@ -544,7 +544,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       view: view,
       valueExplorer:&self.mType_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

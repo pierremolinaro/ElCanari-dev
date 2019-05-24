@@ -230,18 +230,18 @@ class CanariLibraryEntry : EBManagedObject,
       observerExplorer: &self.mUserAndPasswordTag_property.mObserverExplorer,
       valueExplorer: &self.mUserAndPasswordTag_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "mStatusImage",
-      idx:self.mStatusImage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mStatusImage_property.mObserverExplorer,
-      valueExplorer:&self.mStatusImage_property.mValueExplorer
+      idx: self.mStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.mStatusImage_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

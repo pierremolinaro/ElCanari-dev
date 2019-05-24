@@ -189,25 +189,25 @@ class NCInSchematics : SchematicsObject,
       observerExplorer: &self.mOrientation_property.mObserverExplorer,
       valueExplorer: &self.mOrientation_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mPoint",
       idx:self.mPoint_property.ebObjectIndex,
@@ -215,7 +215,7 @@ class NCInSchematics : SchematicsObject,
       view: view,
       valueExplorer:&self.mPoint_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

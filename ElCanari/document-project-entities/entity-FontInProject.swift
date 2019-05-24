@@ -247,26 +247,26 @@ class FontInProject : EBManagedObject,
       observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
       valueExplorer: &self.mDescriptiveString_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "versionString",
-      idx:self.versionString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.versionString_property.mObserverExplorer,
-      valueExplorer:&self.versionString_property.mValueExplorer
+      idx: self.versionString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.versionString_property.mObserverExplorer,
+      valueExplorer: &self.versionString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "sizeString",
-      idx:self.sizeString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sizeString_property.mObserverExplorer,
-      valueExplorer:&self.sizeString_property.mValueExplorer
+      idx: self.sizeString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sizeString_property.mObserverExplorer,
+      valueExplorer: &self.sizeString_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

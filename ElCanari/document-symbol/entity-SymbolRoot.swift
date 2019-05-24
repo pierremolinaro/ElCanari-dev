@@ -569,24 +569,24 @@ class SymbolRoot : EBManagedObject,
       observerExplorer: &self.selectedPageIndex_property.mObserverExplorer,
       valueExplorer: &self.selectedPageIndex_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "noIssue",
-      idx:self.noIssue_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.noIssue_property.mObserverExplorer,
-      valueExplorer:&self.noIssue_property.mValueExplorer
+      idx: self.noIssue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.noIssue_property.mObserverExplorer,
+      valueExplorer: &self.noIssue_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "symbolObjects",
       idx:symbolObjects_property.ebObjectIndex,
@@ -594,8 +594,8 @@ class SymbolRoot : EBManagedObject,
       view: view,
       valueExplorer:&symbolObjects_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

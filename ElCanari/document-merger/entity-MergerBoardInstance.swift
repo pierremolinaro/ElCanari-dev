@@ -475,49 +475,49 @@ class MergerBoardInstance : EBGraphicManagedObject,
       observerExplorer: &self.instanceRotation_property.mObserverExplorer,
       valueExplorer: &self.instanceRotation_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "instanceRect",
-      idx:self.instanceRect_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.instanceRect_property.mObserverExplorer,
-      valueExplorer:&self.instanceRect_property.mValueExplorer
+      idx: self.instanceRect_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.instanceRect_property.mObserverExplorer,
+      valueExplorer: &self.instanceRect_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelName",
-      idx:self.modelName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelName_property.mObserverExplorer,
-      valueExplorer:&self.modelName_property.mValueExplorer
+      idx: self.modelName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelName_property.mObserverExplorer,
+      valueExplorer: &self.modelName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidth",
-      idx:self.boardLimitWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidth_property.mValueExplorer
+      idx: self.boardLimitWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitWidth_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "myModel",
       idx:self.myModel_property.ebObjectIndex,
@@ -532,7 +532,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
       view: view,
       valueExplorer:&self.myRoot_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

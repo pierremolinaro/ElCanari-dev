@@ -964,48 +964,48 @@ class PackageRoot : EBGraphicManagedObject,
       observerExplorer: &self.yPlacardUnit_property.mObserverExplorer,
       valueExplorer: &self.yPlacardUnit_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "freePadNumbering",
-      idx:self.freePadNumbering_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.freePadNumbering_property.mObserverExplorer,
-      valueExplorer:&self.freePadNumbering_property.mValueExplorer
+      idx: self.freePadNumbering_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.freePadNumbering_property.mObserverExplorer,
+      valueExplorer: &self.freePadNumbering_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "gridStepMultipliedByDisplayFactor",
-      idx:self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
-      valueExplorer:&self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
+      idx: self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+      valueExplorer: &self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
-      idx:self.padNumberDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
-      valueExplorer:&self.padNumberDisplay_property.mValueExplorer
+      idx: self.padNumberDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
+      valueExplorer: &self.padNumberDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "noIssue",
-      idx:self.noIssue_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.noIssue_property.mObserverExplorer,
-      valueExplorer:&self.noIssue_property.mValueExplorer
+      idx: self.noIssue_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.noIssue_property.mObserverExplorer,
+      valueExplorer: &self.noIssue_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "packageObjects",
       idx:packageObjects_property.ebObjectIndex,
@@ -1013,8 +1013,8 @@ class PackageRoot : EBGraphicManagedObject,
       view: view,
       valueExplorer:&packageObjects_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

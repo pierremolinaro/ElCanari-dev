@@ -682,50 +682,50 @@ class SymbolPin : SymbolObject,
       observerExplorer: &self.xPin_property.mObserverExplorer,
       valueExplorer: &self.xPin_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "filledBezierPath",
-      idx:self.filledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.filledBezierPath_property.mValueExplorer
+      idx: self.filledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.filledBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "nameRect",
-      idx:self.nameRect_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.nameRect_property.mObserverExplorer,
-      valueExplorer:&self.nameRect_property.mValueExplorer
+      idx: self.nameRect_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.nameRect_property.mObserverExplorer,
+      valueExplorer: &self.nameRect_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

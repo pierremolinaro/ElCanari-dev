@@ -154,7 +154,7 @@ class EBAbstractProperty : EBEvent {
       observerExplorer.addItem (withTitle: String (observerCount))
       observerExplorer.isEnabled = observerCount > 0
       self.mObservers.apply ( {(_ observer : EBEvent) in
-        let stringValue = explorerIndexString (observer.ebObjectIndex) + observer.className
+        let stringValue = explorerIndexString (observer.ebObjectIndex) + " — " + observer.className
         observerExplorer.addItem (withTitle: stringValue)
       })
     }
@@ -403,25 +403,25 @@ let EXPLORER_ROW_WIDTH : CGFloat = FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH + TH
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func titleColumn (_ y : CGFloat) -> NSRect {
-  return NSRect (x:0.0, y:y, width:EXPLORER_ROW_WIDTH, height:EXPLORER_ROW_HEIGHT)
+  return NSRect (x: 0.0, y: y, width: EXPLORER_ROW_WIDTH, height: EXPLORER_ROW_HEIGHT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func firstColumn (_ y : CGFloat) -> NSRect {
-  return NSRect (x:0.0, y:y, width:FIRST_COLUMN_WIDTH, height:EXPLORER_ROW_HEIGHT)
+  return NSRect (x: 0.0, y: y, width: FIRST_COLUMN_WIDTH, height: EXPLORER_ROW_HEIGHT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func secondColumn (_ y : CGFloat) -> NSRect {
-  return NSRect (x:FIRST_COLUMN_WIDTH, y:y, width:SECOND_COLUMN_WIDTH, height:EXPLORER_ROW_HEIGHT)
+  return NSRect (x: FIRST_COLUMN_WIDTH, y: y, width: SECOND_COLUMN_WIDTH, height: EXPLORER_ROW_HEIGHT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func thirdColumn (_ y : CGFloat) -> NSRect {
-  return NSRect (x:FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH, y:y, width:THIRD_COLUMN_WIDTH, height:EXPLORER_ROW_HEIGHT)
+  return NSRect (x: FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH, y: y, width: THIRD_COLUMN_WIDTH, height: EXPLORER_ROW_HEIGHT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -432,7 +432,7 @@ private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K",
 func explorerIndexString (_ idx : Int) -> String {
   var result = String (idx % 10)
   var n = idx / 10
-  result += String (n % 10)
+  result += "\(n % 10)"
   n /= 10
   result += explorerLetters [n % explorerLetters.count]
   n /= explorerLetters.count
@@ -441,49 +441,51 @@ func explorerIndexString (_ idx : Int) -> String {
   result += explorerLetters [n % explorerLetters.count]
   n /= explorerLetters.count
   if n > 0 {
-    result += String (n)
+    result += "\(n)"
   }
-  return result + " — "
+  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func createEntryForPropertyNamed (_ attributeName : String,
                                   idx : Int,
-                                  y : inout CGFloat,
+                                  y ioY : inout CGFloat,
                                   view : NSView,
-                                  observerExplorer : inout NSPopUpButton?,
-                                  valueExplorer : inout NSTextField?) {
+                                  observerExplorer ioObserverExplorer : inout NSPopUpButton?,
+                                  valueExplorer ioValueExplorer : inout NSTextField?) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
 //--- Explorer popup button
-  observerExplorer = NSPopUpButton (frame:firstColumn (y), pullsDown:true)
-  observerExplorer?.font = font
-  view.addSubview (observerExplorer!)
+  let observerExplorer = NSPopUpButton (frame: firstColumn (ioY), pullsDown: true)
+  ioObserverExplorer = observerExplorer
+  observerExplorer.font = font
+  view.addSubview (observerExplorer)
 //--- Property textfield
-  let tf = NSTextField (frame:secondColumn (y))
+  let tf = NSTextField (frame: secondColumn (ioY))
   tf.isEnabled = true
   tf.isEditable = false
-  tf.stringValue = explorerIndexString (idx) + attributeName
+  tf.stringValue = explorerIndexString (idx) + " — " + attributeName
   tf.font = font
   view.addSubview (tf)
 //--- Value textfield
-  valueExplorer = NSTextField (frame:thirdColumn (y))
-  valueExplorer?.isEnabled = true
-  valueExplorer?.isEditable = false
-  valueExplorer?.font = font
-  view.addSubview (valueExplorer!)
+  let valueExplorer = NSTextField (frame: thirdColumn (ioY))
+  ioValueExplorer = valueExplorer
+  valueExplorer.isEnabled = true
+  valueExplorer.isEditable = false
+  valueExplorer.font = font
+  view.addSubview (valueExplorer)
 //--- Update rect origin
-  y += EXPLORER_ROW_HEIGHT
+  ioY += EXPLORER_ROW_HEIGHT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func createEntryForTitle (_ title : String,
-                          y : inout CGFloat,
+                          y ioY : inout CGFloat,
                           view : NSView) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
 //--- Title textfield
-  let tf = NSTextField (frame:titleColumn (y))
+  let tf = NSTextField (frame:titleColumn (ioY))
   tf.isEnabled = true
   tf.isEditable = false
   tf.stringValue = title
@@ -493,7 +495,7 @@ func createEntryForTitle (_ title : String,
   tf.isBordered = false
   view.addSubview (tf)
 //--- Update rect origin
-  y += EXPLORER_ROW_HEIGHT
+  ioY += EXPLORER_ROW_HEIGHT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -502,25 +504,25 @@ func createEntryForTitle (_ title : String,
 
 func createEntryForObjectNamed (_ name : String,
                                 object : EBObject,
-                                y : inout CGFloat,
+                                y ioY : inout CGFloat,
                                 view : NSView) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
 //--- Property textfield
-  let tf = NSTextField (frame:secondColumn (y))
+  let tf = NSTextField (frame:secondColumn (ioY))
   tf.isEnabled = true
   tf.isEditable = false
   tf.stringValue = name
   tf.font = font
   view.addSubview (tf)
 //--- Value textfield
-  let vtf = NSTextField (frame:thirdColumn (y))
+  let vtf = NSTextField (frame:thirdColumn (ioY))
   vtf.isEnabled = true
   vtf.isEditable = false
-  vtf.stringValue = explorerIndexString (object.ebObjectIndex) + String (describing: type(of: object))
+  vtf.stringValue = explorerIndexString (object.ebObjectIndex) + " — " + String (describing: type(of: object))
   vtf.font = font
   view.addSubview (vtf)
 //--- Update rect origin
-  y += EXPLORER_ROW_HEIGHT
+  ioY += EXPLORER_ROW_HEIGHT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -529,20 +531,21 @@ func createEntryForObjectNamed (_ name : String,
 
 func createEntryForToOneRelationshipNamed (_ relationshipName : String,
                                            idx : Int,
-                                           y : inout CGFloat,
+                                           y ioY : inout CGFloat,
                                            view : NSView,
-                                           valueExplorer : inout NSButton?) {
+                                           valueExplorer ioValueExplorer : inout NSButton?) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-  let tf = NSTextField (frame:secondColumn (y))
+  let tf = NSTextField (frame: secondColumn (ioY))
   tf.isEnabled = true
   tf.isEditable = false
-  tf.stringValue = explorerIndexString (idx) + relationshipName
+  tf.stringValue = explorerIndexString (idx) + " — " + relationshipName
   tf.font = font
   view.addSubview (tf)
-  valueExplorer = NSButton (frame:thirdColumn (y))
-  valueExplorer?.font = font
-  view.addSubview (valueExplorer!)
-  y += EXPLORER_ROW_HEIGHT
+  let valueExplorer = NSButton (frame: thirdColumn (ioY))
+  ioValueExplorer = valueExplorer
+  valueExplorer.font = font
+  view.addSubview (valueExplorer)
+  ioY += EXPLORER_ROW_HEIGHT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -551,20 +554,21 @@ func createEntryForToOneRelationshipNamed (_ relationshipName : String,
 
 func createEntryForToManyRelationshipNamed (_ relationshipName : String,
                                             idx : Int,
-                                            y : inout CGFloat,
+                                            y ioY : inout CGFloat,
                                             view : NSView,
-                                            valueExplorer : inout NSPopUpButton?) {
+                                            valueExplorer ioValueExplorer : inout NSPopUpButton?) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-  let tf = NSTextField (frame:secondColumn (y))
+  let tf = NSTextField (frame:secondColumn (ioY))
   tf.isEnabled = true
   tf.isEditable = false
-  tf.stringValue = explorerIndexString (idx) + relationshipName
+  tf.stringValue = explorerIndexString (idx) + " — " + relationshipName
   tf.font = font
   view.addSubview (tf)
-  valueExplorer = NSPopUpButton (frame:thirdColumn (y), pullsDown:true)
-  valueExplorer?.font = font
-  view.addSubview (valueExplorer!)
-  y += EXPLORER_ROW_HEIGHT
+  let valueExplorer = NSPopUpButton (frame: thirdColumn (ioY), pullsDown: true)
+  ioValueExplorer = valueExplorer
+  valueExplorer.font = font
+  view.addSubview (valueExplorer)
+  ioY += EXPLORER_ROW_HEIGHT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

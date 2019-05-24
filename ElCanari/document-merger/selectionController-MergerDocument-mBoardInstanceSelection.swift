@@ -195,27 +195,27 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "instanceRotation",
-      idx:self.instanceRotation_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.instanceRotation_property.mObserverExplorer,
-      valueExplorer:&self.instanceRotation_property.mValueExplorer
+      idx: self.instanceRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.instanceRotation_property.mObserverExplorer,
+      valueExplorer: &self.instanceRotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      idx: self.x_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.x_property.mObserverExplorer,
+      valueExplorer: &self.x_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      idx: self.y_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.y_property.mObserverExplorer,
+      valueExplorer: &self.y_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View

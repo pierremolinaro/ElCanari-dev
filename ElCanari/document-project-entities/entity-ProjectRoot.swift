@@ -1223,88 +1223,88 @@ class ProjectRoot : EBManagedObject,
       observerExplorer: &self.mSchematicsSheetOrientation_property.mObserverExplorer,
       valueExplorer: &self.mSchematicsSheetOrientation_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "selectedSheetIssues",
-      idx:self.selectedSheetIssues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedSheetIssues_property.mObserverExplorer,
-      valueExplorer:&self.selectedSheetIssues_property.mValueExplorer
+      idx: self.selectedSheetIssues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedSheetIssues_property.mObserverExplorer,
+      valueExplorer: &self.selectedSheetIssues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connectedPoints",
-      idx:self.connectedPoints_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
-      valueExplorer:&self.connectedPoints_property.mValueExplorer
+      idx: self.connectedPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+      valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",
-      idx:self.unplacedSymbols_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.unplacedSymbols_property.mObserverExplorer,
-      valueExplorer:&self.unplacedSymbols_property.mValueExplorer
+      idx: self.unplacedSymbols_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netsDescription",
-      idx:self.netsDescription_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netsDescription_property.mObserverExplorer,
-      valueExplorer:&self.netsDescription_property.mValueExplorer
+      idx: self.netsDescription_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netsDescription_property.mObserverExplorer,
+      valueExplorer: &self.netsDescription_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceNames",
-      idx:self.deviceNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceNames_property.mObserverExplorer,
-      valueExplorer:&self.deviceNames_property.mValueExplorer
+      idx: self.deviceNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceNames_property.mObserverExplorer,
+      valueExplorer: &self.deviceNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "schematicsBackgroundDisplay",
-      idx:self.schematicsBackgroundDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.schematicsBackgroundDisplay_property.mObserverExplorer,
-      valueExplorer:&self.schematicsBackgroundDisplay_property.mValueExplorer
+      idx: self.schematicsBackgroundDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.schematicsBackgroundDisplay_property.mObserverExplorer,
+      valueExplorer: &self.schematicsBackgroundDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connexionWarningString",
-      idx:self.connexionWarningString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connexionWarningString_property.mObserverExplorer,
-      valueExplorer:&self.connexionWarningString_property.mValueExplorer
+      idx: self.connexionWarningString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
+      valueExplorer: &self.connexionWarningString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connexionErrorString",
-      idx:self.connexionErrorString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connexionErrorString_property.mObserverExplorer,
-      valueExplorer:&self.connexionErrorString_property.mValueExplorer
+      idx: self.connexionErrorString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
+      valueExplorer: &self.connexionErrorString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsStatusMessage",
-      idx:self.mSchematicsStatusMessage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsStatusMessage_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsStatusMessage_property.mValueExplorer
+      idx: self.mSchematicsStatusMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsStatusMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicsStatusImage",
-      idx:self.mSchematicsStatusImage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mSchematicsStatusImage_property.mObserverExplorer,
-      valueExplorer:&self.mSchematicsStatusImage_property.mValueExplorer
+      idx: self.mSchematicsStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mSchematicsStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.mSchematicsStatusImage_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mComponents",
       idx:mComponents_property.ebObjectIndex,
@@ -1340,7 +1340,7 @@ class ProjectRoot : EBManagedObject,
       view: view,
       valueExplorer:&mSheets_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSelectedSheet",
       idx:self.mSelectedSheet_property.ebObjectIndex,
@@ -1348,7 +1348,7 @@ class ProjectRoot : EBManagedObject,
       view: view,
       valueExplorer:&self.mSelectedSheet_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

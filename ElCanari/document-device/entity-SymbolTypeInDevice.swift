@@ -432,32 +432,32 @@ class SymbolTypeInDevice : EBManagedObject,
       observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
       valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "versionString",
-      idx:self.versionString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.versionString_property.mObserverExplorer,
-      valueExplorer:&self.versionString_property.mValueExplorer
+      idx: self.versionString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.versionString_property.mObserverExplorer,
+      valueExplorer: &self.versionString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "instanceCount",
-      idx:self.instanceCount_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.instanceCount_property.mObserverExplorer,
-      valueExplorer:&self.instanceCount_property.mValueExplorer
+      idx: self.instanceCount_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.instanceCount_property.mObserverExplorer,
+      valueExplorer: &self.instanceCount_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinNameShape",
-      idx:self.pinNameShape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinNameShape_property.mObserverExplorer,
-      valueExplorer:&self.pinNameShape_property.mValueExplorer
+      idx: self.pinNameShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinNameShape_property.mObserverExplorer,
+      valueExplorer: &self.pinNameShape_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mInstances",
       idx:mInstances_property.ebObjectIndex,
@@ -472,8 +472,8 @@ class SymbolTypeInDevice : EBManagedObject,
       view: view,
       valueExplorer:&mPinTypes_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

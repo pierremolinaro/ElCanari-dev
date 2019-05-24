@@ -335,40 +335,40 @@ class SheetInProject : EBManagedObject,
       observerExplorer: &self.mSheetTitle_property.mObserverExplorer,
       valueExplorer: &self.mSheetTitle_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connectedPoints",
-      idx:self.connectedPoints_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connectedPoints_property.mObserverExplorer,
-      valueExplorer:&self.connectedPoints_property.mValueExplorer
+      idx: self.connectedPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connectedPoints_property.mObserverExplorer,
+      valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connexionWarnings",
-      idx:self.connexionWarnings_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connexionWarnings_property.mObserverExplorer,
-      valueExplorer:&self.connexionWarnings_property.mValueExplorer
+      idx: self.connexionWarnings_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionWarnings_property.mObserverExplorer,
+      valueExplorer: &self.connexionWarnings_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connexionErrors",
-      idx:self.connexionErrors_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.connexionErrors_property.mObserverExplorer,
-      valueExplorer:&self.connexionErrors_property.mValueExplorer
+      idx: self.connexionErrors_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionErrors_property.mObserverExplorer,
+      valueExplorer: &self.connexionErrors_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mObjects",
       idx:mObjects_property.ebObjectIndex,
@@ -383,8 +383,8 @@ class SheetInProject : EBManagedObject,
       view: view,
       valueExplorer:&mPoints_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

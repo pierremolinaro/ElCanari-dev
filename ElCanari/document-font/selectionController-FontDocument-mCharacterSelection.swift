@@ -193,35 +193,35 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "advance",
-      idx:self.advance_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.advance_property.mObserverExplorer,
-      valueExplorer:&self.advance_property.mValueExplorer
+      idx: self.advance_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.advance_property.mObserverExplorer,
+      valueExplorer: &self.advance_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "codePoint",
-      idx:self.codePoint_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.codePoint_property.mObserverExplorer,
-      valueExplorer:&self.codePoint_property.mValueExplorer
+      idx: self.codePoint_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.codePoint_property.mObserverExplorer,
+      valueExplorer: &self.codePoint_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mWarnsWhenAdvanceIsZero",
-      idx:self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
-      valueExplorer:&self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+      idx: self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+      valueExplorer: &self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mWarnsWhenNoSegment",
-      idx:self.mWarnsWhenNoSegment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mWarnsWhenNoSegment_property.mObserverExplorer,
-      valueExplorer:&self.mWarnsWhenNoSegment_property.mValueExplorer
+      idx: self.mWarnsWhenNoSegment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mWarnsWhenNoSegment_property.mObserverExplorer,
+      valueExplorer: &self.mWarnsWhenNoSegment_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View

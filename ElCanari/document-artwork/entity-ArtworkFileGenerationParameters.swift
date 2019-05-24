@@ -867,10 +867,10 @@ class ArtworkFileGenerationParameters : EBManagedObject,
       observerExplorer: &self.padHoleDiameterInPDF_property.mObserverExplorer,
       valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

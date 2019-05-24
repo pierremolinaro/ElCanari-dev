@@ -164,18 +164,18 @@ class DeviceDocumentation : EBManagedObject,
       observerExplorer: &self.mFileData_property.mObserverExplorer,
       valueExplorer: &self.mFileData_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "fileSize",
-      idx:self.fileSize_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.fileSize_property.mObserverExplorer,
-      valueExplorer:&self.fileSize_property.mValueExplorer
+      idx: self.fileSize_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.fileSize_property.mObserverExplorer,
+      valueExplorer: &self.fileSize_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

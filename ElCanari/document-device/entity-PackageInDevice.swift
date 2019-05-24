@@ -654,56 +654,56 @@ class PackageInDevice : EBGraphicManagedObject,
       observerExplorer: &self.mY_property.mObserverExplorer,
       valueExplorer: &self.mY_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "versionString",
-      idx:self.versionString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.versionString_property.mObserverExplorer,
-      valueExplorer:&self.versionString_property.mValueExplorer
+      idx: self.versionString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.versionString_property.mObserverExplorer,
+      valueExplorer: &self.versionString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontSidePadFilledBezierPathArray",
-      idx:self.frontSidePadFilledBezierPathArray_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontSidePadFilledBezierPathArray_property.mObserverExplorer,
-      valueExplorer:&self.frontSidePadFilledBezierPathArray_property.mValueExplorer
+      idx: self.frontSidePadFilledBezierPathArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.frontSidePadFilledBezierPathArray_property.mObserverExplorer,
+      valueExplorer: &self.frontSidePadFilledBezierPathArray_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backSidePadFilledBezierPathArray",
-      idx:self.backSidePadFilledBezierPathArray_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backSidePadFilledBezierPathArray_property.mObserverExplorer,
-      valueExplorer:&self.backSidePadFilledBezierPathArray_property.mValueExplorer
+      idx: self.backSidePadFilledBezierPathArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.backSidePadFilledBezierPathArray_property.mObserverExplorer,
+      valueExplorer: &self.backSidePadFilledBezierPathArray_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNameSet",
-      idx:self.padNameSet_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNameSet_property.mObserverExplorer,
-      valueExplorer:&self.padNameSet_property.mValueExplorer
+      idx: self.padNameSet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNameSet_property.mObserverExplorer,
+      valueExplorer: &self.padNameSet_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mMasterPads",
       idx:mMasterPads_property.ebObjectIndex,
@@ -711,7 +711,7 @@ class PackageInDevice : EBGraphicManagedObject,
       view: view,
       valueExplorer:&mMasterPads_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mRoot",
       idx:self.mRoot_property.ebObjectIndex,
@@ -719,7 +719,7 @@ class PackageInDevice : EBGraphicManagedObject,
       view: view,
       valueExplorer:&self.mRoot_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

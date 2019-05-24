@@ -496,16 +496,16 @@ class SymbolPinTypeInDevice : EBManagedObject,
       observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
       valueExplorer: &self.mNumberHorizontalAlignment_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "nameShape",
-      idx:self.nameShape_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.nameShape_property.mObserverExplorer,
-      valueExplorer:&self.nameShape_property.mValueExplorer
+      idx: self.nameShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.nameShape_property.mObserverExplorer,
+      valueExplorer: &self.nameShape_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mInstances",
       idx:mInstances_property.ebObjectIndex,
@@ -513,8 +513,8 @@ class SymbolPinTypeInDevice : EBManagedObject,
       view: view,
       valueExplorer:&mInstances_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

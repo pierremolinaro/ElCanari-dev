@@ -8,7 +8,7 @@ import Cocoa
 
 func string (_ inManagedObject : EBManagedObject?) -> String {
   if let object = inManagedObject {
-    return "\(object.ebObjectIndex)"
+    return explorerIndexString (object.ebObjectIndex)
   }else{
     return "nil"
   }

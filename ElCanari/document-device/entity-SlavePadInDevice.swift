@@ -542,33 +542,33 @@ class SlavePadInDevice : EBManagedObject,
       observerExplorer: &self.mStyle_property.mObserverExplorer,
       valueExplorer: &self.mStyle_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "frontSideFilledBezierPath",
-      idx:self.frontSideFilledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontSideFilledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.frontSideFilledBezierPath_property.mValueExplorer
+      idx: self.frontSideFilledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.frontSideFilledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.frontSideFilledBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backSideFilledBezierPath",
-      idx:self.backSideFilledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backSideFilledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.backSideFilledBezierPath_property.mValueExplorer
+      idx: self.backSideFilledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.backSideFilledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.backSideFilledBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
-      idx:self.padNumberDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
-      valueExplorer:&self.padNumberDisplay_property.mValueExplorer
+      idx: self.padNumberDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
+      valueExplorer: &self.padNumberDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mMasterPad",
       idx:self.mMasterPad_property.ebObjectIndex,
@@ -576,7 +576,7 @@ class SlavePadInDevice : EBManagedObject,
       view: view,
       valueExplorer:&self.mMasterPad_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

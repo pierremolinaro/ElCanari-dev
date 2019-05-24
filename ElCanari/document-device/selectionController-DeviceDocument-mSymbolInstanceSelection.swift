@@ -195,27 +195,27 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "mInstanceName",
-      idx:self.mInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.mInstanceName_property.mValueExplorer
+      idx: self.mInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.mInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mX",
-      idx:self.mX_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      idx: self.mX_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mY",
-      idx:self.mY_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View

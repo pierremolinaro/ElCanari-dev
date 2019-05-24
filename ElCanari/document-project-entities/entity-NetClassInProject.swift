@@ -673,56 +673,56 @@ class NetClassInProject : EBManagedObject,
       observerExplorer: &self.mViaPadDiameterUnit_property.mObserverExplorer,
       valueExplorer: &self.mViaPadDiameterUnit_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "netWidth",
-      idx:self.netWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netWidth_property.mObserverExplorer,
-      valueExplorer:&self.netWidth_property.mValueExplorer
+      idx: self.netWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netWidth_property.mObserverExplorer,
+      valueExplorer: &self.netWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaHoleDiameter",
-      idx:self.viaHoleDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.viaHoleDiameter_property.mObserverExplorer,
-      valueExplorer:&self.viaHoleDiameter_property.mValueExplorer
+      idx: self.viaHoleDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.viaHoleDiameter_property.mObserverExplorer,
+      valueExplorer: &self.viaHoleDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaPadDiameter",
-      idx:self.viaPadDiameter_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.viaPadDiameter_property.mObserverExplorer,
-      valueExplorer:&self.viaPadDiameter_property.mValueExplorer
+      idx: self.viaPadDiameter_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.viaPadDiameter_property.mObserverExplorer,
+      valueExplorer: &self.viaPadDiameter_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canRemove",
-      idx:self.canRemove_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.canRemove_property.mObserverExplorer,
-      valueExplorer:&self.canRemove_property.mValueExplorer
+      idx: self.canRemove_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.canRemove_property.mObserverExplorer,
+      valueExplorer: &self.canRemove_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netUsage",
-      idx:self.netUsage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netUsage_property.mObserverExplorer,
-      valueExplorer:&self.netUsage_property.mValueExplorer
+      idx: self.netUsage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netUsage_property.mObserverExplorer,
+      valueExplorer: &self.netUsage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netsDescription",
-      idx:self.netsDescription_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netsDescription_property.mObserverExplorer,
-      valueExplorer:&self.netsDescription_property.mValueExplorer
+      idx: self.netsDescription_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netsDescription_property.mObserverExplorer,
+      valueExplorer: &self.netsDescription_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mNets",
       idx:mNets_property.ebObjectIndex,
@@ -730,8 +730,8 @@ class NetClassInProject : EBManagedObject,
       view: view,
       valueExplorer:&mNets_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

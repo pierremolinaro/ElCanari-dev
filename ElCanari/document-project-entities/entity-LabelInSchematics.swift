@@ -307,41 +307,41 @@ class LabelInSchematics : SchematicsObject,
       observerExplorer: &self.mOrientation_property.mObserverExplorer,
       valueExplorer: &self.mOrientation_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "location",
-      idx:self.location_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.location_property.mObserverExplorer,
-      valueExplorer:&self.location_property.mValueExplorer
+      idx: self.location_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.location_property.mObserverExplorer,
+      valueExplorer: &self.location_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "netName",
-      idx:self.netName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.netName_property.mObserverExplorer,
-      valueExplorer:&self.netName_property.mValueExplorer
+      idx: self.netName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netName_property.mObserverExplorer,
+      valueExplorer: &self.netName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mPoint",
       idx:self.mPoint_property.ebObjectIndex,
@@ -349,7 +349,7 @@ class LabelInSchematics : SchematicsObject,
       view: view,
       valueExplorer:&self.mPoint_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

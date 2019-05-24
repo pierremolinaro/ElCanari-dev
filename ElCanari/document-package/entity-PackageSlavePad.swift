@@ -925,65 +925,65 @@ class PackageSlavePad : PackageObject,
       observerExplorer: &self.annularRingUnit_property.mObserverExplorer,
       valueExplorer: &self.annularRingUnit_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padIsTraversing",
-      idx:self.padIsTraversing_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padIsTraversing_property.mObserverExplorer,
-      valueExplorer:&self.padIsTraversing_property.mValueExplorer
+      idx: self.padIsTraversing_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padIsTraversing_property.mObserverExplorer,
+      valueExplorer: &self.padIsTraversing_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "annularRing",
-      idx:self.annularRing_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.annularRing_property.mObserverExplorer,
-      valueExplorer:&self.annularRing_property.mValueExplorer
+      idx: self.annularRing_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.annularRing_property.mObserverExplorer,
+      valueExplorer: &self.annularRing_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padName",
-      idx:self.padName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padName_property.mObserverExplorer,
-      valueExplorer:&self.padName_property.mValueExplorer
+      idx: self.padName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padName_property.mObserverExplorer,
+      valueExplorer: &self.padName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
-      idx:self.padNumberDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
-      valueExplorer:&self.padNumberDisplay_property.mValueExplorer
+      idx: self.padNumberDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.padNumberDisplay_property.mObserverExplorer,
+      valueExplorer: &self.padNumberDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "master",
       idx:self.master_property.ebObjectIndex,
@@ -991,7 +991,7 @@ class PackageSlavePad : PackageObject,
       view: view,
       valueExplorer:&self.master_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

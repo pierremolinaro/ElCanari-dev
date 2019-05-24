@@ -895,75 +895,75 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "artworkName",
-      idx:self.artworkName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.artworkName_property.mObserverExplorer,
-      valueExplorer:&self.artworkName_property.mValueExplorer
+      idx: self.artworkName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.artworkName_property.mObserverExplorer,
+      valueExplorer: &self.artworkName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelHeight",
-      idx:self.modelHeight_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelHeight_property.mObserverExplorer,
-      valueExplorer:&self.modelHeight_property.mValueExplorer
+      idx: self.modelHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelHeight_property.mObserverExplorer,
+      valueExplorer: &self.modelHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelHeightUnit",
-      idx:self.modelHeightUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelHeightUnit_property.mValueExplorer
+      idx: self.modelHeightUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelHeightUnit_property.mObserverExplorer,
+      valueExplorer: &self.modelHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelLimitWidth",
-      idx:self.modelLimitWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.modelLimitWidth_property.mValueExplorer
+      idx: self.modelLimitWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelLimitWidth_property.mObserverExplorer,
+      valueExplorer: &self.modelLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelLimitWidthUnit",
-      idx:self.modelLimitWidthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelLimitWidthUnit_property.mValueExplorer
+      idx: self.modelLimitWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.modelLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelWidth",
-      idx:self.modelWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelWidth_property.mObserverExplorer,
-      valueExplorer:&self.modelWidth_property.mValueExplorer
+      idx: self.modelWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelWidth_property.mObserverExplorer,
+      valueExplorer: &self.modelWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelWidthUnit",
-      idx:self.modelWidthUnit_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelWidthUnit_property.mValueExplorer
+      idx: self.modelWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.modelWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name_property.mObserverExplorer,
-      valueExplorer:&self.name_property.mValueExplorer
+      idx: self.name_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.name_property.mObserverExplorer,
+      valueExplorer: &self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.zoom_property.mObserverExplorer,
-      valueExplorer:&self.zoom_property.mValueExplorer
+      idx: self.zoom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.zoom_property.mObserverExplorer,
+      valueExplorer: &self.zoom_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View

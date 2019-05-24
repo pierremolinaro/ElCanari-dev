@@ -317,33 +317,33 @@ class PadProxyInDevice : EBManagedObject,
       observerExplorer: &self.mIsNC_property.mObserverExplorer,
       valueExplorer: &self.mIsNC_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "isConnected",
-      idx:self.isConnected_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.isConnected_property.mObserverExplorer,
-      valueExplorer:&self.isConnected_property.mValueExplorer
+      idx: self.isConnected_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isConnected_property.mObserverExplorer,
+      valueExplorer: &self.isConnected_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pinInstanceName",
-      idx:self.pinInstanceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinInstanceName_property.mObserverExplorer,
-      valueExplorer:&self.pinInstanceName_property.mValueExplorer
+      idx: self.pinInstanceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinInstanceName_property.mObserverExplorer,
+      valueExplorer: &self.pinInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolName",
-      idx:self.symbolName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolName_property.mObserverExplorer,
-      valueExplorer:&self.symbolName_property.mValueExplorer
+      idx: self.symbolName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolName_property.mObserverExplorer,
+      valueExplorer: &self.symbolName_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mPinInstance",
       idx:self.mPinInstance_property.ebObjectIndex,
@@ -351,7 +351,7 @@ class PadProxyInDevice : EBManagedObject,
       view: view,
       valueExplorer:&self.mPinInstance_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

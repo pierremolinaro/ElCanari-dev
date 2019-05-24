@@ -331,41 +331,41 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       observerExplorer: &self.mSymbolInstanceName_property.mObserverExplorer,
       valueExplorer: &self.mSymbolInstanceName_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "symbolAndTypeName",
-      idx:self.symbolAndTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolAndTypeName_property.mObserverExplorer,
-      valueExplorer:&self.symbolAndTypeName_property.mValueExplorer
+      idx: self.symbolAndTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolAndTypeName_property.mObserverExplorer,
+      valueExplorer: &self.symbolAndTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeName",
-      idx:self.symbolTypeName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolTypeName_property.mObserverExplorer,
-      valueExplorer:&self.symbolTypeName_property.mValueExplorer
+      idx: self.symbolTypeName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolTypeName_property.mObserverExplorer,
+      valueExplorer: &self.symbolTypeName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "filledBezierPath",
-      idx:self.filledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.filledBezierPath_property.mValueExplorer
+      idx: self.filledBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.filledBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.filledBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "strokeBezierPath",
-      idx:self.strokeBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.strokeBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.strokeBezierPath_property.mValueExplorer
+      idx: self.strokeBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.strokeBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.strokeBezierPath_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSymbolType",
       idx:self.mSymbolType_property.ebObjectIndex,
@@ -373,7 +373,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
       view: view,
       valueExplorer:&self.mSymbolType_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

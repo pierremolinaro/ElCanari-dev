@@ -209,10 +209,10 @@ class SegmentEntity : EBManagedObject,
       observerExplorer: &self.x1_property.mObserverExplorer,
       valueExplorer: &self.x1_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

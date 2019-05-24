@@ -628,64 +628,64 @@ class FontRoot : EBManagedObject,
       observerExplorer: &self.currentCharacterCodePoint_property.mObserverExplorer,
       valueExplorer: &self.currentCharacterCodePoint_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "currentCharacterCodePointString",
-      idx:self.currentCharacterCodePointString_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.currentCharacterCodePointString_property.mObserverExplorer,
-      valueExplorer:&self.currentCharacterCodePointString_property.mValueExplorer
+      idx: self.currentCharacterCodePointString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.currentCharacterCodePointString_property.mObserverExplorer,
+      valueExplorer: &self.currentCharacterCodePointString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPath",
-      idx:self.sampleStringBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPath_property.mValueExplorer
+      idx: self.sampleStringBezierPath_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sampleStringBezierPath_property.mObserverExplorer,
+      valueExplorer: &self.sampleStringBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathWidth",
-      idx:self.sampleStringBezierPathWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathWidth_property.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathWidth_property.mValueExplorer
+      idx: self.sampleStringBezierPathWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sampleStringBezierPathWidth_property.mObserverExplorer,
+      valueExplorer: &self.sampleStringBezierPathWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathAscent",
-      idx:self.sampleStringBezierPathAscent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathAscent_property.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathAscent_property.mValueExplorer
+      idx: self.sampleStringBezierPathAscent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sampleStringBezierPathAscent_property.mObserverExplorer,
+      valueExplorer: &self.sampleStringBezierPathAscent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathDescent",
-      idx:self.sampleStringBezierPathDescent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathDescent_property.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathDescent_property.mValueExplorer
+      idx: self.sampleStringBezierPathDescent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sampleStringBezierPathDescent_property.mObserverExplorer,
+      valueExplorer: &self.sampleStringBezierPathDescent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "definedCharacters",
-      idx:self.definedCharacters_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.definedCharacters_property.mObserverExplorer,
-      valueExplorer:&self.definedCharacters_property.mValueExplorer
+      idx: self.definedCharacters_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.definedCharacters_property.mObserverExplorer,
+      valueExplorer: &self.definedCharacters_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "characters",
       idx:characters_property.ebObjectIndex,
@@ -693,8 +693,8 @@ class FontRoot : EBManagedObject,
       view: view,
       valueExplorer:&characters_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

@@ -94,8 +94,8 @@ class DevicePackageInProject : EBManagedObject,
       observerExplorer: &self.mPackageName_property.mObserverExplorer,
       valueExplorer: &self.mPackageName_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mMasterPads",
       idx:mMasterPads_property.ebObjectIndex,
@@ -103,8 +103,8 @@ class DevicePackageInProject : EBManagedObject,
       view: view,
       valueExplorer:&mMasterPads_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

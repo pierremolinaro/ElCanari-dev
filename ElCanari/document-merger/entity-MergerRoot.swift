@@ -1151,56 +1151,56 @@ class MergerRoot : EBManagedObject,
       observerExplorer: &self.generatedBoardArchiveFormat_property.mObserverExplorer,
       valueExplorer: &self.generatedBoardArchiveFormat_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "modelNames",
-      idx:self.modelNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelNames_property.mObserverExplorer,
-      valueExplorer:&self.modelNames_property.mValueExplorer
+      idx: self.modelNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.modelNames_property.mObserverExplorer,
+      valueExplorer: &self.modelNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardRect",
-      idx:self.boardRect_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardRect_property.mObserverExplorer,
-      valueExplorer:&self.boardRect_property.mValueExplorer
+      idx: self.boardRect_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardRect_property.mObserverExplorer,
+      valueExplorer: &self.boardRect_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardDisplayRect",
-      idx:self.boardDisplayRect_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardDisplayRect_property.mObserverExplorer,
-      valueExplorer:&self.boardDisplayRect_property.mValueExplorer
+      idx: self.boardDisplayRect_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardDisplayRect_property.mObserverExplorer,
+      valueExplorer: &self.boardDisplayRect_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidth",
-      idx:self.boardWidth_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardWidth_property.mValueExplorer
+      idx: self.boardWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardWidth_property.mObserverExplorer,
+      valueExplorer: &self.boardWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeight",
-      idx:self.boardHeight_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardHeight_property.mObserverExplorer,
-      valueExplorer:&self.boardHeight_property.mValueExplorer
+      idx: self.boardHeight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardHeight_property.mObserverExplorer,
+      valueExplorer: &self.boardHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardOutlineRectDisplay",
-      idx:self.boardOutlineRectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardOutlineRectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.boardOutlineRectDisplay_property.mValueExplorer
+      idx: self.boardOutlineRectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardOutlineRectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.boardOutlineRectDisplay_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "boardModels",
       idx:boardModels_property.ebObjectIndex,
@@ -1215,7 +1215,7 @@ class MergerRoot : EBManagedObject,
       view: view,
       valueExplorer:&boardInstances_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "artwork",
       idx:self.artwork_property.ebObjectIndex,
@@ -1223,7 +1223,7 @@ class MergerRoot : EBManagedObject,
       view: view,
       valueExplorer:&self.artwork_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

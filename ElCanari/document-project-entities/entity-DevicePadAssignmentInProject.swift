@@ -228,25 +228,25 @@ class DevicePadAssignmentInProject : EBManagedObject,
       observerExplorer: &self.mPadName_property.mObserverExplorer,
       valueExplorer: &self.mPadName_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "pinPadAssignment",
-      idx:self.pinPadAssignment_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.pinPadAssignment_property.mObserverExplorer,
-      valueExplorer:&self.pinPadAssignment_property.mValueExplorer
+      idx: self.pinPadAssignment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.pinPadAssignment_property.mObserverExplorer,
+      valueExplorer: &self.pinPadAssignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "descriptor",
-      idx:self.descriptor_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.descriptor_property.mObserverExplorer,
-      valueExplorer:&self.descriptor_property.mValueExplorer
+      idx: self.descriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.descriptor_property.mObserverExplorer,
+      valueExplorer: &self.descriptor_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mPin",
       idx:self.mPin_property.ebObjectIndex,
@@ -254,7 +254,7 @@ class DevicePadAssignmentInProject : EBManagedObject,
       view: view,
       valueExplorer:&self.mPin_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

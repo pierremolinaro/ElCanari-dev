@@ -1272,88 +1272,88 @@ class DeviceRoot : EBGraphicManagedObject,
       observerExplorer: &self.mImageData_property.mObserverExplorer,
       valueExplorer: &self.mImageData_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "inconsistentPackagePadNameSetsMessage",
-      idx:self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.inconsistentPackagePadNameSetsMessage_property.mObserverExplorer,
-      valueExplorer:&self.inconsistentPackagePadNameSetsMessage_property.mValueExplorer
+      idx: self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inconsistentPackagePadNameSetsMessage_property.mObserverExplorer,
+      valueExplorer: &self.inconsistentPackagePadNameSetsMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "inconsistentSymbolNameSetMessage",
-      idx:self.inconsistentSymbolNameSetMessage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.inconsistentSymbolNameSetMessage_property.mObserverExplorer,
-      valueExplorer:&self.inconsistentSymbolNameSetMessage_property.mValueExplorer
+      idx: self.inconsistentSymbolNameSetMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inconsistentSymbolNameSetMessage_property.mObserverExplorer,
+      valueExplorer: &self.inconsistentSymbolNameSetMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unconnectedPins",
-      idx:self.unconnectedPins_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.unconnectedPins_property.mObserverExplorer,
-      valueExplorer:&self.unconnectedPins_property.mValueExplorer
+      idx: self.unconnectedPins_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
+      valueExplorer: &self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "imageIsValid",
-      idx:self.imageIsValid_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.imageIsValid_property.mObserverExplorer,
-      valueExplorer:&self.imageIsValid_property.mValueExplorer
+      idx: self.imageIsValid_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.imageIsValid_property.mObserverExplorer,
+      valueExplorer: &self.imageIsValid_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "packagePadNameSetsAreConsistent",
-      idx:self.packagePadNameSetsAreConsistent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
-      valueExplorer:&self.packagePadNameSetsAreConsistent_property.mValueExplorer
+      idx: self.packagePadNameSetsAreConsistent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
+      valueExplorer: &self.packagePadNameSetsAreConsistent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolNameAreConsistent",
-      idx:self.symbolNameAreConsistent_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolNameAreConsistent_property.mObserverExplorer,
-      valueExplorer:&self.symbolNameAreConsistent_property.mValueExplorer
+      idx: self.symbolNameAreConsistent_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolNameAreConsistent_property.mObserverExplorer,
+      valueExplorer: &self.symbolNameAreConsistent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeNames",
-      idx:self.symbolTypeNames_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolTypeNames_property.mObserverExplorer,
-      valueExplorer:&self.symbolTypeNames_property.mValueExplorer
+      idx: self.symbolTypeNames_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolTypeNames_property.mObserverExplorer,
+      valueExplorer: &self.symbolTypeNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unconnectedPads",
-      idx:self.unconnectedPads_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.unconnectedPads_property.mObserverExplorer,
-      valueExplorer:&self.unconnectedPads_property.mValueExplorer
+      idx: self.unconnectedPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unconnectedPads_property.mObserverExplorer,
+      valueExplorer: &self.unconnectedPads_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "assignedPadProxies",
-      idx:self.assignedPadProxies_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.assignedPadProxies_property.mObserverExplorer,
-      valueExplorer:&self.assignedPadProxies_property.mValueExplorer
+      idx: self.assignedPadProxies_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.assignedPadProxies_property.mObserverExplorer,
+      valueExplorer: &self.assignedPadProxies_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
+      idx: self.issues_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.issues_property.mObserverExplorer,
+      valueExplorer: &self.issues_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mDocs",
       idx:mDocs_property.ebObjectIndex,
@@ -1389,8 +1389,8 @@ class DeviceRoot : EBGraphicManagedObject,
       view: view,
       valueExplorer:&mPadProxies_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

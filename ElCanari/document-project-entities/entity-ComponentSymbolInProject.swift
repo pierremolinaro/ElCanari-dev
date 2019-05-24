@@ -885,56 +885,56 @@ class ComponentSymbolInProject : SchematicsObject,
       observerExplorer: &self.mDisplayComponentValueOffsetY_property.mObserverExplorer,
       valueExplorer: &self.mDisplayComponentValueOffsetY_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "componentName",
-      idx:self.componentName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.componentName_property.mObserverExplorer,
-      valueExplorer:&self.componentName_property.mValueExplorer
+      idx: self.componentName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentName_property.mObserverExplorer,
+      valueExplorer: &self.componentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceName",
-      idx:self.deviceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceName_property.mObserverExplorer,
-      valueExplorer:&self.deviceName_property.mValueExplorer
+      idx: self.deviceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceName_property.mObserverExplorer,
+      valueExplorer: &self.deviceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolInfo",
-      idx:self.symbolInfo_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolInfo_property.mObserverExplorer,
-      valueExplorer:&self.symbolInfo_property.mValueExplorer
+      idx: self.symbolInfo_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolInfo_property.mObserverExplorer,
+      valueExplorer: &self.symbolInfo_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
-      valueExplorer:&self.objectDisplay_property.mValueExplorer
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
-      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+      idx: self.selectionDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolInSchematics",
-      idx:self.symbolInSchematics_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.symbolInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.symbolInSchematics_property.mValueExplorer
+      idx: self.symbolInSchematics_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolInSchematics_property.mObserverExplorer,
+      valueExplorer: &self.symbolInSchematics_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mPoints",
       idx:mPoints_property.ebObjectIndex,
@@ -942,7 +942,7 @@ class ComponentSymbolInProject : SchematicsObject,
       view: view,
       valueExplorer:&mPoints_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mComponent",
       idx:self.mComponent_property.ebObjectIndex,
@@ -950,7 +950,7 @@ class ComponentSymbolInProject : SchematicsObject,
       view: view,
       valueExplorer:&self.mComponent_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

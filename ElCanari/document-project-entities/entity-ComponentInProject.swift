@@ -640,64 +640,64 @@ class ComponentInProject : EBManagedObject,
       observerExplorer: &self.mComponentValue_property.mObserverExplorer,
       valueExplorer: &self.mComponentValue_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "componentName",
-      idx:self.componentName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.componentName_property.mObserverExplorer,
-      valueExplorer:&self.componentName_property.mValueExplorer
+      idx: self.componentName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.componentName_property.mObserverExplorer,
+      valueExplorer: &self.componentName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceName",
-      idx:self.deviceName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceName_property.mObserverExplorer,
-      valueExplorer:&self.deviceName_property.mValueExplorer
+      idx: self.deviceName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceName_property.mObserverExplorer,
+      valueExplorer: &self.deviceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedPackageName",
-      idx:self.selectedPackageName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedPackageName_property.mObserverExplorer,
-      valueExplorer:&self.selectedPackageName_property.mValueExplorer
+      idx: self.selectedPackageName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.selectedPackageName_property.mObserverExplorer,
+      valueExplorer: &self.selectedPackageName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "availablePackages",
-      idx:self.availablePackages_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.availablePackages_property.mObserverExplorer,
-      valueExplorer:&self.availablePackages_property.mValueExplorer
+      idx: self.availablePackages_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.availablePackages_property.mObserverExplorer,
+      valueExplorer: &self.availablePackages_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceSymbolDictionary",
-      idx:self.deviceSymbolDictionary_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.deviceSymbolDictionary_property.mObserverExplorer,
-      valueExplorer:&self.deviceSymbolDictionary_property.mValueExplorer
+      idx: self.deviceSymbolDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
+      valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",
-      idx:self.unplacedSymbols_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.unplacedSymbols_property.mObserverExplorer,
-      valueExplorer:&self.unplacedSymbols_property.mValueExplorer
+      idx: self.unplacedSymbols_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
+      valueExplorer: &self.unplacedSymbols_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "placementInSchematics",
-      idx:self.placementInSchematics_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.placementInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.placementInSchematics_property.mValueExplorer
+      idx: self.placementInSchematics_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.placementInSchematics_property.mObserverExplorer,
+      valueExplorer: &self.placementInSchematics_property.mValueExplorer
     )
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mSymbols",
       idx:mSymbols_property.ebObjectIndex,
@@ -705,7 +705,7 @@ class ComponentInProject : EBManagedObject,
       view: view,
       valueExplorer:&mSymbols_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mDevice",
       idx:self.mDevice_property.ebObjectIndex,
@@ -720,7 +720,7 @@ class ComponentInProject : EBManagedObject,
       view: view,
       valueExplorer:&self.mSelectedPackage_property.mValueExplorer
     )
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································

@@ -448,8 +448,8 @@ class ArtworkRoot : EBManagedObject,
       observerExplorer: &self.drillDataFileExtension_property.mObserverExplorer,
       valueExplorer: &self.drillDataFileExtension_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "fileGenerationParameterArray",
       idx:fileGenerationParameterArray_property.ebObjectIndex,
@@ -457,8 +457,8 @@ class ArtworkRoot : EBManagedObject,
       view: view,
       valueExplorer:&fileGenerationParameterArray_property.mValueExplorer
     )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
   //····················································································································
