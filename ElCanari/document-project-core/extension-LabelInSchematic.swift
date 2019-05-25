@@ -1,5 +1,5 @@
 //
-//  extension-LabelInSchematics.swift
+//  extension-LabelInSchematic.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 07/05/2019.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION LabelInSchematics
+//   EXTENSION LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension LabelInSchematics {
+extension LabelInSchematic {
 
   //····················································································································
 

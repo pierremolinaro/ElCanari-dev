@@ -6,95 +6,145 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_mX : class {
-  var mX : Int { get }
+protocol LabelInSchematic_mOrientation : class {
+  var mOrientation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_mY : class {
-  var mY : Int { get }
+protocol LabelInSchematic_location : class {
+  var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_mComment : class {
-  var mComment : String { get }
+protocol LabelInSchematic_netName : class {
+  var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_objectDisplay : class {
+protocol LabelInSchematic_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematics_selectionDisplay : class {
+protocol LabelInSchematic_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: CommentInSchematics
+//    Entity: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CommentInSchematics : SchematicsObject,
-         CommentInSchematics_mX,
-         CommentInSchematics_mY,
-         CommentInSchematics_mComment,
-         CommentInSchematics_objectDisplay,
-         CommentInSchematics_selectionDisplay {
+class LabelInSchematic : SchematicObject,
+         LabelInSchematic_mOrientation,
+         LabelInSchematic_location,
+         LabelInSchematic_netName,
+         LabelInSchematic_objectDisplay,
+         LabelInSchematic_selectionDisplay {
 
   //····················································································································
-  //   Atomic property: mX
+  //   Atomic property: mOrientation
   //····················································································································
 
-  let mX_property = EBStoredProperty_Int (defaultValue: 0)
+  let mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 
-  var mX : Int {
-    get { return self.mX_property.propval }
-    set { self.mX_property.setProp (newValue) }
+  var mOrientation : QuadrantRotation {
+    get { return self.mOrientation_property.propval }
+    set { self.mOrientation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> { return self.mX_property.prop }
+  var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.prop }
 
   //····················································································································
-  //   Atomic property: mY
+  //   To one property: mPoint
   //····················································································································
 
-  let mY_property = EBStoredProperty_Int (defaultValue: 0)
+   let mPoint_property = StoredObject_PointInSchematic ()
 
   //····················································································································
 
-  var mY : Int {
-    get { return self.mY_property.propval }
-    set { self.mY_property.setProp (newValue) }
+  var mPoint_property_selection : EBSelection <PointInSchematic?> {
+    return .single (self.mPoint_property.propval)
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> { return self.mY_property.prop }
-
-  //····················································································································
-  //   Atomic property: mComment
-  //····················································································································
-
-  let mComment_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mComment : String {
-    get { return self.mComment_property.propval }
-    set { self.mComment_property.setProp (newValue) }
+  var mPoint : PointInSchematic? {
+    get {
+      return self.mPoint_property.propval
+    }
+    set {
+      if self.mPoint_property.propval != nil {
+        self.mPoint_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPoint_property.setProp (newValue)
+      }
+    }
   }
 
   //····················································································································
 
-  var mComment_property_selection : EBSelection <String> { return self.mComment_property.prop }
+  var mPoint_none : StoredObject_PointInSchematic { return self.mPoint_property }
+
+  //····················································································································
+
+  var mPoint_none_selection : EBSelection <Bool> {
+    return .single (self.mPoint_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: location
+  //····················································································································
+
+  let location_property = EBTransientProperty_CanariPoint ()
+
+  //····················································································································
+
+  var location_property_selection : EBSelection <CanariPoint> {
+    return self.location_property.prop
+  }
+
+  //····················································································································
+
+  var location : CanariPoint? {
+    switch self.location_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netName
+  //····················································································································
+
+  let netName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netName_property_selection : EBSelection <String> {
+    return self.netName_property.prop
+  }
+
+  //····················································································································
+
+  var netName : String? {
+    switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //    init
@@ -102,27 +152,76 @@ class CommentInSchematics : SchematicsObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mX
-    self.mX_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mY
-    self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mComment
-    self.mComment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mPoint (has opposite to many relationship: mLabels) §
+    self.mPoint_property.ebUndoManager = self.ebUndoManager
+    self.mPoint_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }
+    )
+  //--- Atomic property: location
+    self.location_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPoint_property.location_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_LabelInSchematic_location (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.location_property)
+  //--- Atomic property: netName
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoint_property.netName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPoint_property.netName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_LabelInSchematic_netName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_netName (self.netName_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComment_property_selection.kind ()
-        kind &= unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
+        var kind = g_Preferences!.symbolColorForSchematic_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_CommentInSchematics_objectDisplay (v0, v1, v2))
+          switch (g_Preferences!.symbolColorForSchematic_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_LabelInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -131,24 +230,28 @@ class CommentInSchematics : SchematicsObject,
         return .empty
       }
     }
-    self.mComment_property.addEBObserver (self.objectDisplay_property)
-    self.mX_property.addEBObserver (self.objectDisplay_property)
-    self.mY_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.netName_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComment_property_selection.kind ()
-        kind &= unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
+        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_CommentInSchematics_selectionDisplay (v0, v1, v2))
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -157,9 +260,10 @@ class CommentInSchematics : SchematicsObject,
         return .empty
       }
     }
-    self.mComment_property.addEBObserver (self.selectionDisplay_property)
-    self.mX_property.addEBObserver (self.selectionDisplay_property)
-    self.mY_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -169,12 +273,18 @@ class CommentInSchematics : SchematicsObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mComment_property.removeEBObserver (self.objectDisplay_property)
-    self.mX_property.removeEBObserver (self.objectDisplay_property)
-    self.mY_property.removeEBObserver (self.objectDisplay_property)
-    self.mComment_property.removeEBObserver (self.selectionDisplay_property)
-    self.mX_property.removeEBObserver (self.selectionDisplay_property)
-    self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.location_property)
+    self.mPoint_property.removeEBObserverOf_netName (self.netName_property)
+    g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
+    self.netName_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
+    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -190,30 +300,30 @@ class CommentInSchematics : SchematicsObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mX",
-      idx: self.mX_property.ebObjectIndex,
+      "mOrientation",
+      idx: self.mOrientation_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mX_property.mObserverExplorer,
-      valueExplorer: &self.mX_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mY",
-      idx: self.mY_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mY_property.mObserverExplorer,
-      valueExplorer: &self.mY_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mComment",
-      idx: self.mComment_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mComment_property.mObserverExplorer,
-      valueExplorer: &self.mComment_property.mValueExplorer
+      observerExplorer: &self.mOrientation_property.mObserverExplorer,
+      valueExplorer: &self.mOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "location",
+      idx: self.location_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.location_property.mObserverExplorer,
+      valueExplorer: &self.location_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netName",
+      idx: self.netName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netName_property.mObserverExplorer,
+      valueExplorer: &self.netName_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx: self.objectDisplay_property.ebObjectIndex,
@@ -232,6 +342,13 @@ class CommentInSchematics : SchematicsObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mPoint",
+      idx:self.mPoint_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mPoint_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -240,15 +357,12 @@ class CommentInSchematics : SchematicsObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mX
-    self.mX_property.mObserverExplorer = nil
-    self.mX_property.mValueExplorer = nil
-  //--- Atomic property: mY
-    self.mY_property.mObserverExplorer = nil
-    self.mY_property.mValueExplorer = nil
-  //--- Atomic property: mComment
-    self.mComment_property.mObserverExplorer = nil
-    self.mComment_property.mValueExplorer = nil
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.mObserverExplorer = nil
+    self.mOrientation_property.mValueExplorer = nil
+  //--- To one property: mPoint
+    self.mPoint_property.mObserverExplorer = nil
+    self.mPoint_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -267,6 +381,7 @@ class CommentInSchematics : SchematicsObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mPoint_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -277,12 +392,8 @@ class CommentInSchematics : SchematicsObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
-  //--- Atomic property: mComment
-    self.mComment_property.storeIn (dictionary: ioDictionary, forKey:"mComment")
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mOrientation")
   }
 
   //····················································································································
@@ -292,6 +403,17 @@ class CommentInSchematics : SchematicsObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mPoint
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mPoint",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PointInSchematic {
+        self.mPoint_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -300,12 +422,8 @@ class CommentInSchematics : SchematicsObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
-  //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
-  //--- Atomic property: mComment
-    self.mComment_property.readFrom (dictionary: inDictionary, forKey:"mComment")
+  //--- Atomic property: mOrientation
+    self.mOrientation_property.readFrom (dictionary: inDictionary, forKey:"mOrientation")
   }
 
   //····················································································································
@@ -314,6 +432,10 @@ class CommentInSchematics : SchematicsObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mPoint
+    if let managedObject = self.mPoint_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -322,6 +444,10 @@ class CommentInSchematics : SchematicsObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mPoint
+    if let managedObject = self.mPoint_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -329,196 +455,194 @@ class CommentInSchematics : SchematicsObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_CommentInSchematics
+//    ReadOnlyArrayOf_LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <CommentInSchematics> {
+class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInSchematic> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <CommentInSchematics>, addedSet inAddedSet : Set <CommentInSchematics>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <LabelInSchematic>, addedSet inAddedSet : Set <LabelInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mComment_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mOrientation_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
-    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mComment_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mOrientation_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mX' stored property
+  //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mObserversOf_mOrientation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.addEBObserver (inObserver)
+        managedObject.mOrientation_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mObserversOf_mOrientation.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.removeEBObserver (inObserver)
+        managedObject.mOrientation_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+        managedObject.mOrientation_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
+        managedObject.mOrientation_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mY' stored property
+  //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mObserversOf_location.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.addEBObserver (inObserver)
+        managedObject.location_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mObserversOf_location.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.removeEBObserver (inObserver)
+        managedObject.location_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mComment' stored property
+  //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_mComment = EBWeakEventSet ()
+  private var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mComment.insert (inObserver)
+    self.mObserversOf_netName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mComment_property.addEBObserver (inObserver)
+        managedObject.netName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mComment (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mComment.remove (inObserver)
+    self.mObserversOf_netName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mComment_property.removeEBObserver (inObserver)
+        managedObject.netName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-        managedObject.mComment_property.addEBObserver (observer)
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mComment_property.removeEBObserver (observer)
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.removeEBObserver (observer)
       }
     }
   }
@@ -561,7 +685,7 @@ class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comme
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -571,7 +695,7 @@ class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comme
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -617,7 +741,7 @@ class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comme
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -627,7 +751,7 @@ class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comme
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -640,21 +764,21 @@ class ReadOnlyArrayOf_CommentInSchematics : ReadOnlyAbstractArrayProperty <Comme
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf CommentInSchematics
+//    TransientArrayOf LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics {
+class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_CommentInSchematics? = nil
+  private var mDataProvider : ReadOnlyArrayOf_LabelInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_CommentInSchematics?) {
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_LabelInSchematic?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -665,7 +789,7 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [CommentInSchematics] 
+    let newArray : [LabelInSchematic] 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -688,7 +812,7 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematics] > {
+  override var prop : EBSelection < [LabelInSchematic] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -701,17 +825,17 @@ class TransientArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics
 
   //····················································································································
 
-  override var propval : [CommentInSchematics] { return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf CommentInSchematics
+//    TransientArrayOfSuperOf LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_CommentInSchematics <SUPER : EBManagedObject> : ReadOnlyArrayOf_CommentInSchematics {
+class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
   //   Data provider
@@ -750,9 +874,9 @@ class TransientArrayOfSuperOf_CommentInSchematics <SUPER : EBManagedObject> : Re
       newModelArray = []
       self.mTransientKind = .empty
     }
-    var newArray = [CommentInSchematics] ()
+    var newArray = [LabelInSchematic] ()
     for superObject in newModelArray {
-      if let object = superObject as? CommentInSchematics {
+      if let object = superObject as? LabelInSchematic {
         newArray.append (object)
       }
     }
@@ -762,7 +886,7 @@ class TransientArrayOfSuperOf_CommentInSchematics <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematics] > {
+  override var prop : EBSelection < [LabelInSchematic] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -775,39 +899,39 @@ class TransientArrayOfSuperOf_CommentInSchematics <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [CommentInSchematics] { return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: CommentInSchematics
+//    To many relationship read write: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_CommentInSchematics : ReadOnlyArrayOf_CommentInSchematics {
+class ReadWriteArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
  
-  func setProp (_ value :  [CommentInSchematics]) { } // Abstract method
+  func setProp (_ value :  [LabelInSchematic]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_CommentInSchematics
+//    Proxy: ProxyArrayOf_LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchematics {
+final class ProxyArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_CommentInSchematics? = nil
+  private var mModel : ReadWriteArrayOf_LabelInSchematic? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_CommentInSchematics?) {
+  func setModel (_ inModel : ReadWriteArrayOf_LabelInSchematic?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -818,7 +942,7 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [CommentInSchematics]
+    let newModelArray : [LabelInSchematic]
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -837,13 +961,13 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [CommentInSchematics]) {
+  override func setProp (_ inArrayValue : [LabelInSchematic]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematics] > {
+  override var prop : EBSelection < [LabelInSchematic] > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -853,7 +977,7 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
 
   //····················································································································
 
-  override var propval : [CommentInSchematics] {
+  override var propval : [LabelInSchematic] {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -871,22 +995,22 @@ final class ProxyArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchemat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: CommentInSchematics
+//    To many relationship: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchematics, EBSignatureObserverProtocol {
+final class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -918,9 +1042,9 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [CommentInSchematics] ()
+      var objectArray = [LabelInSchematic] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CommentInSchematics") as? CommentInSchematics {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "LabelInSchematic") as? LabelInSchematic {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -933,7 +1057,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [CommentInSchematics]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [LabelInSchematic]) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -942,7 +1066,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [CommentInSchematics]) {
+  @objc func performUndo (_ oldValue : [LabelInSchematic]) {
     self.mInternalArrayValue = oldValue
   }
  
@@ -968,7 +1092,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <CommentInSchematics>, addedSet inAddedSet : Set <CommentInSchematics>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <LabelInSchematic>, addedSet inAddedSet : Set <LabelInSchematic>) {
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -984,15 +1108,15 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
  
   //····················································································································
 
-  override var prop : EBSelection < [CommentInSchematics] > { return .single (self.mInternalArrayValue) }
+  override var prop : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [CommentInSchematics]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : [LabelInSchematic]) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [CommentInSchematics] { return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1011,7 +1135,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
 
   //····················································································································
 
-  func remove (_ object : CommentInSchematics) {
+  func remove (_ object : LabelInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1019,7 +1143,7 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
   
   //····················································································································
 
-  func add (_ object : CommentInSchematics) {
+  func add (_ object : LabelInSchematic) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1081,40 +1205,40 @@ final class StoredArrayOf_CommentInSchematics : ReadWriteArrayOf_CommentInSchema
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyObject_CommentInSchematics 
+//    ReadOnlyObject_LabelInSchematic 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <CommentInSchematics> {
+class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInSchematic> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematics?) {
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
+    inOldValue?.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+    inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+    inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
+    self.mInternalValue?.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+    self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+    self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mX' stored property
+  //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  var mOrientation_property_selection : EBSelection <QuadrantRotation?> {
     if let model = self.propval {
-      switch (model.mX_property_selection) {
+      switch (model.mOrientation_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1129,62 +1253,62 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mObserversOf_mOrientation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
+       v?.mOrientation_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mObserversOf_mOrientation.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mX_property.removeEBObserver (inObserver)
+      v?.mOrientation_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+        managedObject.mOrientation_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
+        managedObject.mOrientation_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mY' stored property
+  //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
-      switch (model.mY_property_selection) {
+      switch (model.location_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1199,62 +1323,61 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mObserversOf_location.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
+      v?.location_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mObserversOf_location.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mY_property.removeEBObserver (inObserver)
+      v?.location_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_location.apply { (_ observer : EBEvent) in
+        managedObject.location_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mComment' stored property
+  //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_mComment = EBWeakEventSet ()
+  private var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComment_property_selection : EBSelection <String?> {
+  var netName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mComment_property_selection) {
+      switch (model.netName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1269,47 +1392,46 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mComment.insert (inObserver)
+    self.mObserversOf_netName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mComment_property.addEBObserver (inObserver)
+      v?.netName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mComment (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mComment.remove (inObserver)
+    self.mObserversOf_netName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mComment_property.removeEBObserver (inObserver)
+      v?.netName_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
-      self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-        managedObject.mComment_property.addEBObserver (observer)
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
-    self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mComment_property.removeEBObserver (observer)
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
+        managedObject.netName_property.removeEBObserver (observer)
       }
     }
   }
@@ -1365,7 +1487,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -1375,7 +1497,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -1434,7 +1556,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -1444,7 +1566,7 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematics>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -1457,21 +1579,21 @@ class ReadOnlyObject_CommentInSchematics : ReadOnlyAbstractObjectProperty <Comme
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientObject CommentInSchematics
+//    TransientObject LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
+class TransientObject_LabelInSchematic : ReadOnlyObject_LabelInSchematic {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_CommentInSchematics? = nil
+  private var mDataProvider : ReadOnlyObject_LabelInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyObject_CommentInSchematics?) {
+  func setDataProvider (_ inProvider : ReadOnlyObject_LabelInSchematic?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -1482,7 +1604,7 @@ class TransientObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newObject : CommentInSchematics? 
+    let newObject : LabelInSchematic? 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -1505,7 +1627,7 @@ class TransientObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics? > {
+  override var prop : EBSelection < LabelInSchematic? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1522,39 +1644,39 @@ class TransientObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
 
   //····················································································································
 
-  override var propval : CommentInSchematics? { return self.mInternalValue }
+  override var propval : LabelInSchematic? { return self.mInternalValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_CommentInSchematics
+//    ReadWriteObject_LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteObject_CommentInSchematics : ReadOnlyObject_CommentInSchematics {
+class ReadWriteObject_LabelInSchematic : ReadOnlyObject_LabelInSchematic {
 
   //····················································································································
  
-  func setProp (_ inValue : CommentInSchematics?) { } // Abstract method
+  func setProp (_ inValue : LabelInSchematic?) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_CommentInSchematics
+//    Proxy: ProxyObject_LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematics {
+final class ProxyObject_LabelInSchematic : ReadWriteObject_LabelInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_CommentInSchematics? = nil
+  private var mModel : ReadWriteObject_LabelInSchematic? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteObject_CommentInSchematics?) {
+  func setModel (_ inModel : ReadWriteObject_LabelInSchematic?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1565,7 +1687,7 @@ final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematic
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModel : CommentInSchematics?
+    let newModel : LabelInSchematic?
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -1584,13 +1706,13 @@ final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematic
 
   //····················································································································
 
-  override func setProp (_ inValue : CommentInSchematics?) {
+  override func setProp (_ inValue : LabelInSchematic?) {
     self.mModel?.setProp (inValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics? > {
+  override var prop : EBSelection < LabelInSchematic? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1600,7 +1722,7 @@ final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematic
 
   //····················································································································
 
-  override var propval : CommentInSchematics? {
+  override var propval : LabelInSchematic? {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -1618,22 +1740,22 @@ final class ProxyObject_CommentInSchematics : ReadWriteObject_CommentInSchematic
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StoredObject_CommentInSchematics 
+//    StoredObject_LabelInSchematic 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchematics, EBSignatureObserverProtocol {
+final class StoredObject_LabelInSchematic : ReadWriteObject_LabelInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : CommentInSchematics) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -1657,7 +1779,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematics?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -1676,7 +1798,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : CommentInSchematics?) {
+  @objc func performUndo (_ oldValue : LabelInSchematic?) {
     self.mInternalValue = oldValue
   }
  
@@ -1698,7 +1820,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
 
   //····················································································································
 
-  override var prop : EBSelection < CommentInSchematics? > {
+  override var prop : EBSelection < LabelInSchematic? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -1708,15 +1830,15 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
 
   //····················································································································
 
-  override func setProp (_ inValue : CommentInSchematics?) { self.mInternalValue = inValue }
+  override func setProp (_ inValue : LabelInSchematic?) { self.mInternalValue = inValue }
 
   //····················································································································
 
-  override var propval : CommentInSchematics? { return self.mInternalValue }
+  override var propval : LabelInSchematic? { return self.mInternalValue }
 
   //····················································································································
 
-  func remove (_ object : CommentInSchematics) {
+  func remove (_ object : LabelInSchematic) {
     if object === self.mInternalValue {
       self.mInternalValue = nil
     }
@@ -1724,7 +1846,7 @@ final class StoredObject_CommentInSchematics : ReadWriteObject_CommentInSchemati
   
   //····················································································································
 
-  func add (_ object : CommentInSchematics) {
+  func add (_ object : LabelInSchematic) {
     if object !== self.mInternalValue {
       self.mInternalValue = object
     }

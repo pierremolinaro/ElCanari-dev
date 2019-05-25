@@ -4,9 +4,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let kDragAndDropSymbolInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.symbol")
-fileprivate let kDragAndDropCommentInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.comment")
-fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematics.wire")
+fileprivate let kDragAndDropSymbolInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.symbol")
+fileprivate let kDragAndDropCommentInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.comment")
+fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.wire")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -76,12 +76,12 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     ]
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
   //--- Register schematics inspector views
-    self.mSchematicsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
-    self.mSchematicsObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
-    self.mSchematicsObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematics")
-    self.mSchematicsObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematics")
-    self.mSchematicsObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematics")
-    self.mSchematicsObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematics")
+    self.mSchematicObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
+    self.mSchematicObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
+    self.mSchematicObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematic")
+    self.mSchematicObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematic")
+    self.mSchematicObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematic")
+    self.mSchematicObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematic")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
@@ -106,27 +106,27 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
       sheetDown: self.mSheetDownButton
     )
   //---
-    self.mSchematicsView?.mGridStepInCanariUnit = SCHEMATICS_GRID_IN_CANARI_UNIT
-    self.mSchematicsView?.set (mouseGridInCanariUnit: SCHEMATICS_GRID_IN_CANARI_UNIT)
-    self.mSchematicsView?.set (arrowKeyMagnitude : SCHEMATICS_GRID_IN_CANARI_UNIT)
-    self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATICS_GRID_IN_CANARI_UNIT * 4)
+    self.mSchematicsView?.mGridStepInCanariUnit = SCHEMATIC_GRID_IN_CANARI_UNIT
+    self.mSchematicsView?.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
+    self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
     self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematics, kDragAndDropCommentInSchematics, kDragAndDropWireInSchematics])
-    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematics)
+    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematic, kDragAndDropCommentInSchematic, kDragAndDropWireInSchematic])
+    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematic)
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
-      draggedType: kDragAndDropCommentInSchematics,
+      draggedType: kDragAndDropCommentInSchematic,
       entityName: "CommentInSchematics",
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
-      draggedType: kDragAndDropWireInSchematics,
+      draggedType: kDragAndDropWireInSchematic,
       entityName: "WireInSchematics",
       scaleProvider: self.mSchematicsView
     )
   //---
-    self.mSchematicsObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
+    self.mSchematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
   }
 
   //····················································································································
@@ -139,7 +139,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mSchematicsObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+    self.mSchematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   }
 
   //····················································································································
@@ -147,9 +147,17 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
   //····················································································································
 
   internal func updateSchematicsPointsAndNets () {
-    self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints ()
+    var errorList = [String] ()
+    self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints (&errorList)
     self.removeUnusedNets ()
-    self.removeUnusedWires ()
+    self.removeUnusedWires (&errorList)
+    if errorList.count > 0,
+       let dialog = self.mInconsistentSchematicErrorPanel,
+       let window = self.windowForSheet {
+      let message = errorList.joined (separator: "\n")
+      self.mInconsistentSchematicErrorTextView?.string = message
+      window.beginSheet (dialog) { (inModalResponse) in }
+    }
   }
 
   //····················································································································
@@ -212,16 +220,18 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     if let documentView = destinationScrollView.documentView, let selectedSheet = self.rootObject.mSelectedSheet {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
-      if let _ = pasteboard.data (forType: kDragAndDropSymbolInSchematics), let symbol = self.mPossibleDraggedSymbol {
+      if let _ = pasteboard.data (forType: kDragAndDropSymbolInSchematic), let symbol = self.mPossibleDraggedSymbol {
         self.performAddSymbolDragOperation (symbol, draggingLocationInDestinationView)
         ok = true
-      }else if let _ = pasteboard.availableType (from: [kDragAndDropCommentInSchematics]) {
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropCommentInSchematic]) {
         self.performAddCommentDragOperation (draggingLocationInDestinationView)
         ok = true
-      }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematics]) {
-        let newWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.createNetWithAutomaticName)
-        self.mSchematicsObjectsController.setSelection ([newWire])
-        ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematic]) {
+        let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.createNetWithAutomaticName)
+        if let newWire = possibleNewWire {
+          self.mSchematicObjectsController.setSelection ([newWire])
+          ok = true
+        }
       }
     }
     return ok
@@ -230,12 +240,12 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
   //····················································································································
 
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
-    let comment = CommentInSchematics (self.ebUndoManager)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    let comment = CommentInSchematic (self.ebUndoManager)
     comment.mX = p.x
     comment.mY = p.y
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
-    self.mSchematicsObjectsController.setSelection ([comment])
+    self.mSchematicObjectsController.setSelection ([comment])
   }
 
   //····················································································································
@@ -250,7 +260,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     let symbolPins : [PinDescriptor] = symbolInfo.pins
     for pin in symbolPins {
       if pin.symbolIdentifier.symbolInstanceName == inSymbol.mSymbolInstanceName {
-        let point = PointInSchematics (self.ebUndoManager)
+        let point = PointInSchematic (self.ebUndoManager)
         point.mSymbol = inSymbol
         point.mSymbolPinName = pin.pinName
         self.rootObject.mSelectedSheet?.mPoints.append (point)
@@ -258,7 +268,7 @@ fileprivate let kDragAndDropWireInSchematics = NSPasteboard.PasteboardType (rawV
     }
   //--- Enter symbol
     self.rootObject.mSelectedSheet?.mObjects.append (inSymbol)
-    self.mSchematicsObjectsController.setSelection ([inSymbol])
+    self.mSchematicObjectsController.setSelection ([inSymbol])
   }
 
   //····················································································································

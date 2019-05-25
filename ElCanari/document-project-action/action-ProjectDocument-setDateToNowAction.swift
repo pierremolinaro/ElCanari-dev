@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func setDateToNowAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.rootObject.mSchematicsDate = Date ()
+        self.rootObject.mSchematicDate = Date ()
 //--- END OF USER ZONE 2
   }
 }

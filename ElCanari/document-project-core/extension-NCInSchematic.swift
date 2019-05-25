@@ -1,5 +1,5 @@
 //
-//  extension-NCInSchematics.swift
+//  extension-NCInSchematic.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 05/05/2019.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION NCInSchematics
+//   EXTENSION NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension NCInSchematics {
+extension NCInSchematic {
 
   //····················································································································
   //  ROTATE 90 CLOCKWISE

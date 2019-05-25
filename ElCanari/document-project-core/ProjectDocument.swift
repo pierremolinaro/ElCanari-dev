@@ -33,34 +33,34 @@ import Cocoa
   var mProjectDeviceController = Controller_ProjectDocument_mProjectDeviceController ()
 
   //····················································································································
-  //   Array controller: mSchematicsObjectsController
+  //   Array controller: mSchematicObjectsController
   //····················································································································
 
-  var mSchematicsObjectsController = Controller_ProjectDocument_mSchematicsObjectsController ()
+  var mSchematicObjectsController = Controller_ProjectDocument_mSchematicObjectsController ()
 
   //····················································································································
-  //   Selection controller: wireInSchematicsSelectionController
+  //   Selection controller: wireInSchematicSelectionController
   //····················································································································
 
-  var wireInSchematicsSelectionController = SelectionController_ProjectDocument_wireInSchematicsSelectionController ()
+  var wireInSchematicSelectionController = SelectionController_ProjectDocument_wireInSchematicSelectionController ()
 
   //····················································································································
-  //   Selection controller: ncInSchematicsSelectionController
+  //   Selection controller: ncInSchematicSelectionController
   //····················································································································
 
-  var ncInSchematicsSelectionController = SelectionController_ProjectDocument_ncInSchematicsSelectionController ()
+  var ncInSchematicSelectionController = SelectionController_ProjectDocument_ncInSchematicSelectionController ()
 
   //····················································································································
-  //   Selection controller: commentInSchematicsSelectionController
+  //   Selection controller: commentInSchematicSelectionController
   //····················································································································
 
-  var commentInSchematicsSelectionController = SelectionController_ProjectDocument_commentInSchematicsSelectionController ()
+  var commentInSchematicSelectionController = SelectionController_ProjectDocument_commentInSchematicSelectionController ()
 
   //····················································································································
-  //   Selection controller: mSchematicsLabelSelectionController
+  //   Selection controller: mSchematicLabelSelectionController
   //····················································································································
 
-  var mSchematicsLabelSelectionController = SelectionController_ProjectDocument_mSchematicsLabelSelectionController ()
+  var mSchematicLabelSelectionController = SelectionController_ProjectDocument_mSchematicLabelSelectionController ()
 
   //····················································································································
   //   Selection controller: mComponentSymbolSelectionController
@@ -392,6 +392,8 @@ import Cocoa
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel?
+  @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNCInSchematicsInspectorView : CanariViewWithKeyView?
@@ -433,6 +435,7 @@ import Cocoa
   @IBOutlet var mRenameNetTextField : EBTextField?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
+  @IBOutlet var mSchematicStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSchematicsDatePicker : NSDatePicker?
   @IBOutlet var mSchematicsGridDisplayFactorPopUpButton : EBPopUpButton?
   @IBOutlet var mSchematicsGridStylePopUpButton : EBPopUpButton?
@@ -446,7 +449,6 @@ import Cocoa
   @IBOutlet var mSchematicsScrollView : EBScrollView?
   @IBOutlet var mSchematicsSheetOrientationSegmentedControl : CanariEnumSegmentedControl?
   @IBOutlet var mSchematicsSheetsInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mSchematicsStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSchematicsTitleTextField : EBTextField?
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
@@ -531,16 +533,16 @@ import Cocoa
     self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
-  //--- Array controller property: mSchematicsObjectsController
-    self.mSchematicsObjectsController.addExplorer (name: "mSchematicsObjectsController", y:&y, view:view)
-  //--- Selection controller property: wireInSchematicsSelectionController
-    self.wireInSchematicsSelectionController.addExplorer (name: "wireInSchematicsSelectionController", y:&y, view:view)
-  //--- Selection controller property: ncInSchematicsSelectionController
-    self.ncInSchematicsSelectionController.addExplorer (name: "ncInSchematicsSelectionController", y:&y, view:view)
-  //--- Selection controller property: commentInSchematicsSelectionController
-    self.commentInSchematicsSelectionController.addExplorer (name: "commentInSchematicsSelectionController", y:&y, view:view)
-  //--- Selection controller property: mSchematicsLabelSelectionController
-    self.mSchematicsLabelSelectionController.addExplorer (name: "mSchematicsLabelSelectionController", y:&y, view:view)
+  //--- Array controller property: mSchematicObjectsController
+    self.mSchematicObjectsController.addExplorer (name: "mSchematicObjectsController", y:&y, view:view)
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
+  //--- Selection controller property: commentInSchematicSelectionController
+    self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
+  //--- Selection controller property: mSchematicLabelSelectionController
+    self.mSchematicLabelSelectionController.addExplorer (name: "mSchematicLabelSelectionController", y:&y, view:view)
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.addExplorer (name: "mComponentSymbolSelectionController", y:&y, view:view)
   //---
@@ -617,6 +619,8 @@ import Cocoa
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -658,6 +662,7 @@ import Cocoa
     checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicStatusImageViewInToolbar, "mSchematicStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridDisplayFactorPopUpButton, "mSchematicsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridStylePopUpButton, "mSchematicsGridStylePopUpButton", EBPopUpButton.self, #file, #line)
@@ -671,7 +676,6 @@ import Cocoa
     checkOutletConnection (self.mSchematicsScrollView, "mSchematicsScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetOrientationSegmentedControl, "mSchematicsSheetOrientationSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mSchematicsSheetsInspectorView, "mSchematicsSheetsInspectorView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mSchematicsStatusImageViewInToolbar, "mSchematicsStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
@@ -710,18 +714,18 @@ import Cocoa
     self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
-  //--- Array controller property: mSchematicsObjectsController
-    self.mSchematicsObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
-  //--- Selection controller property: wireInSchematicsSelectionController
-    self.wireInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: ncInSchematicsSelectionController
-    self.ncInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: commentInSchematicsSelectionController
-    self.commentInSchematicsSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: mSchematicsLabelSelectionController
-    self.mSchematicsLabelSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: mSchematicObjectsController
+    self.mSchematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: commentInSchematicSelectionController
+    self.commentInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mSchematicLabelSelectionController
+    self.mSchematicLabelSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mComponentSymbolSelectionController
-    self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicsObjectsController.selectedArray_property, file: #file, line: #line)
+    self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -970,11 +974,11 @@ import Cocoa
     self.mNetClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
     self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
-    self.mSchematicsObjectsController.bind_ebView (self.mSchematicsView)
+    self.mSchematicObjectsController.bind_ebView (self.mSchematicsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
-    self.mSchematicsStatusImageViewInToolbar?.bind_image (self.rootObject.mSchematicsStatusImage_property, file: #file, line: #line)
-    self.mSchematicsStatusImageViewInToolbar?.bind_tooltip (self.rootObject.mSchematicsStatusMessage_property, file: #file, line: #line)
+    self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.mSchematicStatusImage_property, file: #file, line: #line)
+    self.mSchematicStatusImageViewInToolbar?.bind_tooltip (self.rootObject.mSchematicStatusMessage_property, file: #file, line: #line)
     self.mNewComponentFromDevicePullDownButton?.bind_deviceNames (self.rootObject.deviceNames_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
     self.mDevicePackageTableView?.bind_array (self.selectedDevicePackageNames_property, file: #file, line: #line)
@@ -983,28 +987,28 @@ import Cocoa
     self.mSchematicsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedSchematicsInspector_property, file: #file, line: #line)
     self.mUnplacedSymbolsTableView?.bind_models (self.rootObject.unplacedSymbols_property, file: #file, line: #line)
     self.mUnplacedSymbolsTextField?.bind_valueObserver (self.unplacedSymbolsCountString_property, file: #file, line: #line)
-    self.mSchematicsHorizontalFlipSwitch?.bind_value (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
-    self.mSchematicsVerticalFlipSwitch?.bind_value (self.rootObject.mSchematicsVerticalFlip_property, file: #file, line: #line)
-    self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicsGridStyle_property, file: #file, line: #line)
-    self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicsGridDisplayFactor_property, file: #file, line: #line)
-    self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicsTitle_property, file: #file, line: #line, sendContinously:true)
-    self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicsVersion_property, file: #file, line: #line, sendContinously:true)
-    self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicsSheetOrientation_property, file: #file, line: #line)
+    self.mSchematicsHorizontalFlipSwitch?.bind_value (self.rootObject.mSchematicHorizontalFlip_property, file: #file, line: #line)
+    self.mSchematicsVerticalFlipSwitch?.bind_value (self.rootObject.mSchematicVerticalFlip_property, file: #file, line: #line)
+    self.mSchematicsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mSchematicGridStyle_property, file: #file, line: #line)
+    self.mSchematicsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mSchematicGridDisplayFactor_property, file: #file, line: #line)
+    self.mSchematicsTitleTextField?.bind_value (self.rootObject.mSchematicTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsVersionTextField?.bind_value (self.rootObject.mSchematicVersion_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsSheetOrientationSegmentedControl?.bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property, file: #file, line: #line)
     self.mSelectedSheetTitleTextField?.bind_value (self.rootObject.selectedSheetTitle_property, file: #file, line: #line, sendContinously:true)
     self.mSchematicsView?.bind_underObjectsDisplay (self.rootObject.schematicsBackgroundDisplay_property, file: #file, line: #line)
     self.mSchematicsView?.bind_overObjectsDisplay (self.rootObject.connectedPoints_property, file: #file, line: #line)
-    self.mSchematicsView?.bind_horizontalFlip (self.rootObject.mSchematicsHorizontalFlip_property, file: #file, line: #line)
-    self.mSchematicsView?.bind_verticalFlip (self.rootObject.mSchematicsVerticalFlip_property, file: #file, line: #line)
-    self.mSchematicsView?.bind_gridStyle (self.rootObject.mSchematicsGridStyle_property, file: #file, line: #line)
-    self.mSchematicsView?.bind_gridDisplayFactor (self.rootObject.mSchematicsGridDisplayFactor_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridStyle (self.rootObject.mSchematicGridStyle_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_gridDisplayFactor (self.rootObject.mSchematicGridDisplayFactor_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mSchematicsView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
-    self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicsZoom_property, file: #file, line: #line)
-    self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicsSelectionController.netName_property, file: #file, line: #line)
-    self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicsSelectionController.mOrientation_property, file: #file, line: #line)
-    self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicsSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
-    self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.mSchematicsLabelSelectionController.mOrientation_property, file: #file, line: #line)
-    self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.mSchematicsLabelSelectionController.netName_property, file: #file, line: #line)
+    self.mSchematicsView?.bind_zoom (self.rootObject.mSchematicZoom_property, file: #file, line: #line)
+    self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicSelectionController.netName_property, file: #file, line: #line)
+    self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicSelectionController.mOrientation_property, file: #file, line: #line)
+    self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
+    self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.mSchematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
+    self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.mSchematicLabelSelectionController.netName_property, file: #file, line: #line)
     self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
     self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
     self.mComponentSymbolValueTextField?.bind_value (self.mComponentSymbolSelectionController.componentValueProxy_property, file: #file, line: #line, sendContinously:true)
@@ -1189,21 +1193,21 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicsLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicsLabelRenameNetButton
       )
-      self.mSchematicsLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mSchematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicsLabelRenameNetButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicsObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.mSchematicObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentFromComponentSymbolButton
       )
-      self.mSchematicsObjectsController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mSchematicObjectsController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentFromComponentSymbolButton_enabled = controller
     }
     do{
@@ -1280,8 +1284,8 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
-    self.mSchematicsStatusImageViewInToolbar?.unbind_image ()
-    self.mSchematicsStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mSchematicStatusImageViewInToolbar?.unbind_image ()
+    self.mSchematicStatusImageViewInToolbar?.unbind_tooltip ()
     self.mNewComponentFromDevicePullDownButton?.unbind_deviceNames ()
     self.mComponentCountTextField?.unbind_valueObserver ()
     self.mDevicePackageTableView?.unbind_array ()
@@ -1357,9 +1361,9 @@ import Cocoa
     self.mController_mUpdateDeviceButton_enabled = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
-    self.mSchematicsLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
+    self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
     self.mController_mSchematicsLabelRenameNetButton_enabled = nil
-    self.mSchematicsObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
+    self.mSchematicObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
     self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
     self.mController_mRenameNetInNetTabButton_enabled = nil
@@ -1368,7 +1372,7 @@ import Cocoa
     self.mNetClassController.unbind_tableView (self.mNetClassTableView)
     self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.mProjectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
-    self.mSchematicsObjectsController.unbind_ebView (self.mSchematicsView)
+    self.mSchematicObjectsController.unbind_ebView (self.mSchematicsView)
   //--- Array controller property: mComponentController
     self.mComponentController.unbind_model ()
   //--- Array controller property: mNetClassController
@@ -1377,16 +1381,16 @@ import Cocoa
     self.mProjectFontController.unbind_model ()
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
-  //--- Array controller property: mSchematicsObjectsController
-    self.mSchematicsObjectsController.unbind_model ()
-  //--- Selection controller property: wireInSchematicsSelectionController
-    self.wireInSchematicsSelectionController.unbind_selection ()
-  //--- Selection controller property: ncInSchematicsSelectionController
-    self.ncInSchematicsSelectionController.unbind_selection ()
-  //--- Selection controller property: commentInSchematicsSelectionController
-    self.commentInSchematicsSelectionController.unbind_selection ()
-  //--- Selection controller property: mSchematicsLabelSelectionController
-    self.mSchematicsLabelSelectionController.unbind_selection ()
+  //--- Array controller property: mSchematicObjectsController
+    self.mSchematicObjectsController.unbind_model ()
+  //--- Selection controller property: wireInSchematicSelectionController
+    self.wireInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: ncInSchematicSelectionController
+    self.ncInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: commentInSchematicSelectionController
+    self.commentInSchematicSelectionController.unbind_selection ()
+  //--- Selection controller property: mSchematicLabelSelectionController
+    self.mSchematicLabelSelectionController.unbind_selection ()
   //--- Selection controller property: mComponentSymbolSelectionController
     self.mComponentSymbolSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
@@ -1468,6 +1472,8 @@ import Cocoa
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
+    self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
+    self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mNCInSchematicsInspectorView?.ebCleanUp ()
@@ -1509,6 +1515,7 @@ import Cocoa
     self.mRenameNetTextField?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
+    self.mSchematicStatusImageViewInToolbar?.ebCleanUp ()
     self.mSchematicsDatePicker?.ebCleanUp ()
     self.mSchematicsGridDisplayFactorPopUpButton?.ebCleanUp ()
     self.mSchematicsGridStylePopUpButton?.ebCleanUp ()
@@ -1522,7 +1529,6 @@ import Cocoa
     self.mSchematicsScrollView?.ebCleanUp ()
     self.mSchematicsSheetOrientationSegmentedControl?.ebCleanUp ()
     self.mSchematicsSheetsInspectorView?.ebCleanUp ()
-    self.mSchematicsStatusImageViewInToolbar?.ebCleanUp ()
     self.mSchematicsTitleTextField?.ebCleanUp ()
     self.mSchematicsVersionTextField?.ebCleanUp ()
     self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()
@@ -1586,6 +1592,8 @@ import Cocoa
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
+//    self.mInconsistentSchematicErrorPanel = nil
+//    self.mInconsistentSchematicErrorTextView = nil
 //    self.mLibraryPageView = nil
 //    self.mMasterView = nil
 //    self.mNCInSchematicsInspectorView = nil
@@ -1627,6 +1635,7 @@ import Cocoa
 //    self.mRenameNetTextField = nil
 //    self.mResetDeviceVersionButton = nil
 //    self.mResetFontVersionButton = nil
+//    self.mSchematicStatusImageViewInToolbar = nil
 //    self.mSchematicsDatePicker = nil
 //    self.mSchematicsGridDisplayFactorPopUpButton = nil
 //    self.mSchematicsGridStylePopUpButton = nil
@@ -1640,7 +1649,6 @@ import Cocoa
 //    self.mSchematicsScrollView = nil
 //    self.mSchematicsSheetOrientationSegmentedControl = nil
 //    self.mSchematicsSheetsInspectorView = nil
-//    self.mSchematicsStatusImageViewInToolbar = nil
 //    self.mSchematicsTitleTextField = nil
 //    self.mSchematicsVersionTextField = nil
 //    self.mSchematicsVerticalFlipSwitch = nil

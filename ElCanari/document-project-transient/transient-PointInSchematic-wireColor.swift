@@ -11,21 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_CommentInSchematics_selectionDisplay (
-       _ self_mComment : String,                     
-       _ self_mX : Int,                              
-       _ self_mY : Int
-) -> EBShape {
+func transient_PointInSchematic_wireColor (
+       _ self_mNet_wireColor : NSColor?
+) -> NSColor {
 //--- START OF USER ZONE 2
-        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-        return EBTextKnobShape (
-          (self_mComment == "") ? "Empty comment" : self_mComment,
-          p,
-          NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
-          .center,
-          .center,
-          0
-        )
+        return self_mNet_wireColor ?? .black
 //--- END OF USER ZONE 2
 }
 

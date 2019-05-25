@@ -5,39 +5,39 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument mSchematicsLabelSelectionController
+//    Derived selection controller ProjectDocument commentInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_mSchematicsLabelSelectionController : EBObject {
+final class SelectionController_ProjectDocument_commentInSchematicSelectionController : EBObject {
 
   //····················································································································
-  //   Selection observable property: mOrientation
+  //   Selection observable property: mX
   //····················································································································
 
-  let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
+  let mX_property = EBPropertyProxy_Int ()
 
-  var mOrientation_property_selection : EBSelection <QuadrantRotation> {
-    return self.mOrientation_property.prop
+  var mX_property_selection : EBSelection <Int> {
+    return self.mX_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: location
+  //   Selection observable property: mY
   //····················································································································
 
-  let location_property = EBTransientProperty_CanariPoint ()
+  let mY_property = EBPropertyProxy_Int ()
 
-  var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.prop
+  var mY_property_selection : EBSelection <Int> {
+    return self.mY_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: netName
+  //   Selection observable property: mComment
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  let mComment_property = EBPropertyProxy_String ()
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.prop
+  var mComment_property_selection : EBSelection <String> {
+    return self.mComment_property.prop
   }
 
   //····················································································································
@@ -64,21 +64,21 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [LabelInSchematics] { return self.selectedArray_property.propval }
+  var selectedArray : [CommentInSchematic] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
-   let selectedArray_property = TransientArrayOfSuperOf_LabelInSchematics <SchematicsObject> ()
+   let selectedArray_property = TransientArrayOfSuperOf_CommentInSchematic <SchematicObject> ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
-    self.bind_property_mOrientation ()
-    self.bind_property_location ()
-    self.bind_property_netName ()
+    self.bind_property_mX ()
+    self.bind_property_mY ()
+    self.bind_property_mComment ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
   }
@@ -89,17 +89,21 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
 
   func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
-  //--- mOrientation
-    self.mOrientation_property.mReadModelFunction = nil 
-    self.mOrientation_property.mWriteModelFunction = nil 
-    self.mOrientation_property.mValidateAndWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mOrientation (self.mOrientation_property)
-  //--- location
-    self.location_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_location (self.location_property)
-  //--- netName
-    self.netName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+  //--- mX
+    self.mX_property.mReadModelFunction = nil 
+    self.mX_property.mWriteModelFunction = nil 
+    self.mX_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
+  //--- mY
+    self.mY_property.mReadModelFunction = nil 
+    self.mY_property.mWriteModelFunction = nil 
+    self.mY_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
+  //--- mComment
+    self.mComment_property.mReadModelFunction = nil 
+    self.mComment_property.mWriteModelFunction = nil 
+    self.mComment_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_mComment (self.mComment_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -130,7 +134,7 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_mSchematicsLabelSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_commentInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -146,12 +150,28 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
     let view = NSView (frame: r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "mOrientation",
-      idx: self.mOrientation_property.ebObjectIndex,
+      "mX",
+      idx: self.mX_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mOrientation_property.mObserverExplorer,
-      valueExplorer: &self.mOrientation_property.mValueExplorer
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY",
+      idx: self.mY_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mComment",
+      idx: self.mComment_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mComment_property.mObserverExplorer,
+      valueExplorer: &self.mComment_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -162,7 +182,7 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_mSchematicsLabelSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_commentInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
@@ -207,9 +227,9 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
 
   //····················································································································
 
-  private final func bind_property_mOrientation () {
-    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
-    self.mOrientation_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mX () {
+    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -217,10 +237,10 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <QuadrantRotation> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mOrientation_property_selection {
+            switch object.mX_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -243,26 +263,26 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
         return .empty
       }
     }
-    self.mOrientation_property.mWriteModelFunction = { [weak self] (inValue : QuadrantRotation) in
+    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mOrientation_property.setProp (inValue)
+            object.mX_property.setProp (inValue)
           }
         }
       }
     }
-    self.mOrientation_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
+    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.mOrientation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -276,9 +296,9 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_location () {
-    self.selectedArray_property.addEBObserverOf_location (self.location_property)
-    self.location_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mY () {
+    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -286,10 +306,10 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <CanariPoint> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.location_property_selection {
+            switch object.mY_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -312,12 +332,42 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
         return .empty
       }
     }
+    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mY_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
   }
   //····················································································································
 
-  private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
-    self.netName_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mComment () {
+    self.selectedArray_property.addEBObserverOf_mComment (self.mComment_property)
+    self.mComment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -328,7 +378,7 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netName_property_selection {
+            switch object.mComment_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -349,6 +399,36 @@ final class SelectionController_ProjectDocument_mSchematicsLabelSelectionControl
         }
       }else{
         return .empty
+      }
+    }
+    self.mComment_property.mWriteModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mComment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mComment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mComment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
       }
     }
   }

@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_connectedPoints (
-       _ self_mPoints_connectedPoints : [PointInSchematics_connectedPoints]
+       _ self_mPoints_connectedPoints : [PointInSchematic_connectedPoints]
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let bp = NSBezierPath ()

@@ -11,16 +11,35 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_connectedPoints (
-       _ self_location : CanariPoint,             
-       _ self_isConnected : Bool
-) -> CanariPointArray {
+func transient_LabelInSchematic_selectionDisplay (
+       _ self_mPoint_location : CanariPoint?,     
+       _ self_netName : String,                   
+       _ prefs_pinNameFont : NSFont,              
+       _ self_mOrientation : QuadrantRotation
+) -> EBShape {
 //--- START OF USER ZONE 2
-         var array = CanariPointArray ()
-         if self_isConnected {
-           array.append (self_location)
-         }
-         return array
+        let shape = EBShape ()
+        if let p = self_mPoint_location?.cocoaPoint {
+          let bp = NSBezierPath ()
+          bp.move (to: NSPoint (x: 0.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: SCHEMATIC_LABEL_SIZE))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: -SCHEMATIC_LABEL_SIZE))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: -SCHEMATIC_LABEL_SIZE))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.lineCapStyle = .round
+          bp.lineJoinStyle = .round
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+        //---
+          let af = NSAffineTransform ()
+          af.translateX (by: p.x, yBy: p.y)
+          af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
+        //---
+          shape.append (EBStrokeBezierPathShape ([af.transform (bp)], .cyan))
+          shape.append (EBKnobShape (at: p, index: 0, .rect, SCHEMATIC_KNOB_SIZE))
+        }
+        return shape
 //--- END OF USER ZONE 2
 }
 

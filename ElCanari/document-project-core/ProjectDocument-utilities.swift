@@ -10,9 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let SCHEMATICS_GRID_IN_MILS = 50
-let SCHEMATICS_GRID_IN_CANARI_UNIT = milsToCanariUnit (SCHEMATICS_GRID_IN_MILS)
-let SCHEMATICS_GRID_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SCHEMATICS_GRID_IN_MILS))
+let SCHEMATIC_GRID_IN_MILS = 50
+let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (SCHEMATIC_GRID_IN_MILS)
+let SCHEMATIC_GRID_IN_COCOA_UNIT = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -25,12 +25,12 @@ let CONNECTED_POINT_DIAMETER = milsToCocoaUnit (75.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let SCHEMATICS_KNOB_SIZE : CGFloat = 4.0
-let SCHEMATICS_HILITE_WIDTH : CGFloat = 0.5
+let SCHEMATIC_KNOB_SIZE : CGFloat = 4.0
+let SCHEMATIC_HILITE_WIDTH : CGFloat = 0.5
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let SCHEMATICS_LABEL_SIZE : CGFloat = 3.6
+let SCHEMATIC_LABEL_SIZE : CGFloat = 3.6
 
 let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (400)
 

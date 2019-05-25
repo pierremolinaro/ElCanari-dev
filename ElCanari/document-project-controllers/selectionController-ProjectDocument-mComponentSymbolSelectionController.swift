@@ -200,11 +200,11 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   let selectedArray_property = TransientArrayOfSuperOf_ComponentSymbolInProject <SchematicsObject> ()
+   let selectedArray_property = TransientArrayOfSuperOf_ComponentSymbolInProject <SchematicObject> ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mCenterX ()
     self.bind_property_mCenterY ()

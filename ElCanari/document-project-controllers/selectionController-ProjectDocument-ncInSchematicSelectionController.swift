@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument ncInSchematicsSelectionController
+//    Derived selection controller ProjectDocument ncInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_ncInSchematicsSelectionController : EBObject {
+final class SelectionController_ProjectDocument_ncInSchematicSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: mOrientation
@@ -44,17 +44,17 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [NCInSchematics] { return self.selectedArray_property.propval }
+  var selectedArray : [NCInSchematic] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
-   let selectedArray_property = TransientArrayOfSuperOf_NCInSchematics <SchematicsObject> ()
+   let selectedArray_property = TransientArrayOfSuperOf_NCInSchematic <SchematicObject> ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mOrientation ()
     self.bind_property_objectDisplay ()
@@ -102,7 +102,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_ncInSchematicsSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -134,7 +134,7 @@ final class SelectionController_ProjectDocument_ncInSchematicsSelectionControlle
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_ncInSchematicsSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle

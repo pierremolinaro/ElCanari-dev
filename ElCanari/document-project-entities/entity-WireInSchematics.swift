@@ -26,7 +26,7 @@ protocol WireInSchematics_netName : class {
 //    Entity: WireInSchematics
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class WireInSchematics : SchematicsObject,
+class WireInSchematics : SchematicObject,
          WireInSchematics_objectDisplay,
          WireInSchematics_selectionDisplay,
          WireInSchematics_netName {
@@ -35,17 +35,17 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP1
   //····················································································································
 
-   let mP1_property = StoredObject_PointInSchematics ()
+   let mP1_property = StoredObject_PointInSchematic ()
 
   //····················································································································
 
-  var mP1_property_selection : EBSelection <PointInSchematics?> {
+  var mP1_property_selection : EBSelection <PointInSchematic?> {
     return .single (self.mP1_property.propval)
   }
 
   //····················································································································
 
-  var mP1 : PointInSchematics? {
+  var mP1 : PointInSchematic? {
     get {
       return self.mP1_property.propval
     }
@@ -61,7 +61,7 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  var mP1_none : StoredObject_PointInSchematics { return self.mP1_property }
+  var mP1_none : StoredObject_PointInSchematic { return self.mP1_property }
 
   //····················································································································
 
@@ -73,17 +73,17 @@ class WireInSchematics : SchematicsObject,
   //   To one property: mP2
   //····················································································································
 
-   let mP2_property = StoredObject_PointInSchematics ()
+   let mP2_property = StoredObject_PointInSchematic ()
 
   //····················································································································
 
-  var mP2_property_selection : EBSelection <PointInSchematics?> {
+  var mP2_property_selection : EBSelection <PointInSchematic?> {
     return .single (self.mP2_property.propval)
   }
 
   //····················································································································
 
-  var mP2 : PointInSchematics? {
+  var mP2 : PointInSchematic? {
     get {
       return self.mP2_property.propval
     }
@@ -99,7 +99,7 @@ class WireInSchematics : SchematicsObject,
 
   //····················································································································
 
-  var mP2_none : StoredObject_PointInSchematics { return self.mP2_property }
+  var mP2_none : StoredObject_PointInSchematic { return self.mP2_property }
 
   //····················································································································
 
@@ -359,7 +359,7 @@ class WireInSchematics : SchematicsObject,
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? PointInSchematics {
+      if let entity = possibleEntity as? PointInSchematic {
         self.mP1_property.setProp (entity)
       }
     }
@@ -370,7 +370,7 @@ class WireInSchematics : SchematicsObject,
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? PointInSchematics {
+      if let entity = possibleEntity as? PointInSchematic {
         self.mP2_property.setProp (entity)
       }
     }

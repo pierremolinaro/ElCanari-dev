@@ -49,17 +49,17 @@ class SheetInProject : EBManagedObject,
   //   To many property: mObjects
   //····················································································································
 
-  let mObjects_property = StoredArrayOf_SchematicsObject ()
+  let mObjects_property = StoredArrayOf_SchematicObject ()
 
   //····················································································································
 
-  var mObjects_property_selection : EBSelection < [SchematicsObject] > {
+  var mObjects_property_selection : EBSelection < [SchematicObject] > {
     return self.mObjects_property.prop
   }
 
   //····················································································································
 
-  var mObjects : [SchematicsObject] {
+  var mObjects : [SchematicObject] {
     get { return self.mObjects_property.propval }
     set { self.mObjects_property.setProp (newValue) }
   }
@@ -68,17 +68,17 @@ class SheetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematics ()
+  let mPoints_property = StoredArrayOf_PointInSchematic ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
+  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematics] {
+  var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -457,13 +457,13 @@ class SheetInProject : EBManagedObject,
       inRelationshipName: "mObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SchematicsObject])
+    ) as! [SchematicObject])
   //--- To many property: mPoints
     self.mPoints_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematics])
+    ) as! [PointInSchematic])
   }
 
   //····················································································································
@@ -1640,7 +1640,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  var mObjects_property_selection : EBSelection <[SchematicsObject]> {
+  var mObjects_property_selection : EBSelection <[SchematicObject]> {
     if let model = self.propval {
       switch (model.mObjects_property_selection) {
       case .empty :
@@ -1681,7 +1681,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+  var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
       switch (model.mPoints_property_selection) {
       case .empty :

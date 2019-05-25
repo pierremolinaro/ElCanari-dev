@@ -14,7 +14,19 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func removeUnusedSchematicsPoints () {
+  internal func netSetFor (points : [PointInSchematic]) -> Set <NetInProject> {
+    var netSet = Set <NetInProject> ()
+    for p in points {
+      if let net = p.mNet {
+        netSet.insert (net)
+      }
+    }
+    return netSet
+  }
+
+  //····················································································································
+
+  internal func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
   //--- Remove unused points
     var idx = 0
     while idx < self.mPoints.count {
@@ -32,7 +44,7 @@ extension SheetInProject {
       }
     }
   //--- Check points
-    var exploreSet = Set <PointInSchematics> ()
+    var exploreSet = Set <PointInSchematic> ()
     for point in self.mPoints {
       if point.mNC != nil {
         var errorFlags : UInt32 = 0
@@ -43,7 +55,7 @@ extension SheetInProject {
         if point.mLabels.count > 0 { errorFlags |= 16 }
         if point.mNet != nil { errorFlags |= 32 }
         if errorFlags != 0 {
-          NSLog ("Schematics NC Point Error \(errorFlags)")
+          ioErrorList.append ("Error \(errorFlags) for NC point \(string (point))")
         }
       }else{
         var errorFlags : UInt32 = 0
@@ -52,7 +64,7 @@ extension SheetInProject {
         if point.mSymbol != nil { connectionCount += 1 }
         if connectionCount == 0 { errorFlags |= 2 }
         if errorFlags != 0 {
-          NSLog ("Schematics Point Error \(errorFlags)")
+          ioErrorList.append ("Error \(errorFlags) for point \(string (point))")
         }
         exploreSet.insert (point)
       }
@@ -69,7 +81,7 @@ extension SheetInProject {
           if exploreSet.contains (p2) {
             exploreSet.remove (p2)
             if p2.mNet != net {
-              NSLog ("NET ERROR at p2")
+              ioErrorList.append ("Error p2.mNet != net for net \(string (net))")
             }
             for reachableWire in p2.mWiresP1s + p2.mWiresP2s {
               if !exploredWires.contains (reachableWire) {
@@ -82,7 +94,7 @@ extension SheetInProject {
           if exploreSet.contains (p1) {
             exploreSet.remove (p1)
             if p1.mNet != net {
-              NSLog ("NET ERROR at p1")
+              ioErrorList.append ("Error p1.mNet != net for net \(string (net))")
             }
             for reachableWire in p1.mWiresP1s + p1.mWiresP2s {
               if !exploredWires.contains (reachableWire) {

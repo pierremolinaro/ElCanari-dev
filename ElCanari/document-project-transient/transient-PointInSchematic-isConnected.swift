@@ -11,26 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_mSchematicsStatusImage (
-       _ self_unplacedSymbols : StringTagArray,    
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
-) -> NSImage {
+func transient_PointInSchematic_isConnected (
+       _ self_mNC_none : Bool,               
+       _ self_mSymbol_none : Bool,           
+       _ self_mWiresP1s_count : Int,         
+       _ self_mWiresP2s_count : Int,         
+       _ self_mLabels_count : Int
+) -> Bool {
 //--- START OF USER ZONE 2
-        for sheet in self_mSheets_connexionErrors {
-          if let n = sheet.connexionErrors, n > 0 {
-            return NSImage (named: errorStatusImageName)!
-          }
-        }
-        if self_unplacedSymbols.count > 0 {
-          return NSImage (named: warningStatusImageName)!
-        }
-        for sheet in self_mSheets_connexionWarnings {
-          if let n = sheet.connexionWarnings, n > 0 {
-            return NSImage (named: warningStatusImageName)!
-          }
-        }
-        return NSImage (named: okStatusImageName)!
+       let symbolCount = self_mSymbol_none ? 0 : 1
+       return !self_mNC_none || ((symbolCount + self_mWiresP1s_count + self_mWiresP2s_count + self_mLabels_count) > 1)
 //--- END OF USER ZONE 2
 }
 

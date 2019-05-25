@@ -11,23 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_CommentInSchematics_objectDisplay (
-       _ self_mComment : String,                  
-       _ self_mX : Int,                           
-       _ self_mY : Int
-) -> EBShape {
+func transient_SchematicObject_isPlacedInSchematics (
+       _ self_mSheet_none : Bool
+) -> Bool {
 //--- START OF USER ZONE 2
-        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-        ]
-        return EBTextShape (
-          (self_mComment == "") ? "Empty comment" : self_mComment,
-          p,
-          textAttributes,
-          .center,
-          .center
-        )
+        return !self_mSheet_none
 //--- END OF USER ZONE 2
 }
 

@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SchematicsObject_isPlacedInSchematics (
-       _ self_mSheet_none : Bool
-) -> Bool {
+func transient_LabelInSchematic_location (
+       _ self_mPoint_location : CanariPoint?
+) -> CanariPoint {
 //--- START OF USER ZONE 2
-        return !self_mSheet_none
+        return self_mPoint_location!
 //--- END OF USER ZONE 2
 }
 

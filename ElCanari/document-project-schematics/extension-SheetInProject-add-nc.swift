@@ -14,8 +14,8 @@ extension SheetInProject {
 
   //····················································································································
 
-  func addNCToPin (toPoint inPoint : PointInSchematics) -> NCInSchematics {
-    let nc = NCInSchematics (self.ebUndoManager)
+  func addNCToPin (toPoint inPoint : PointInSchematic) -> NCInSchematic {
+    let nc = NCInSchematic (self.ebUndoManager)
     nc.mPoint = inPoint
     nc.mOrientation = self.findPreferredNCOrientation (for: inPoint)
     self.mObjects.append (nc)
@@ -24,7 +24,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  private func findPreferredNCOrientation (for inPoint : PointInSchematics) -> QuadrantRotation {
+  private func findPreferredNCOrientation (for inPoint : PointInSchematic) -> QuadrantRotation {
   //--- Find the rectangle of all pins of current symbol
     let symbol = inPoint.mSymbol!
     let symbolInfo = symbol.symbolInfo!

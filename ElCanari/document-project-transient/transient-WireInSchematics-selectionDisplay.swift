@@ -24,18 +24,18 @@ func transient_WireInSchematics_selectionDisplay (
         let bp = NSBezierPath ()
         bp.move (to: p1)
         bp.line (to: p2)
-        bp.lineWidth = SCHEMATICS_HILITE_WIDTH
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         let shape = EBShape ()
         shape.append (EBStrokeBezierPathShape ([bp], .cyan))
       //--- Knob at P1 ?
         if self_mP1_canMove ?? false {
-          shape.append (EBKnobShape (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATICS_KNOB_SIZE))
+          shape.append (EBKnobShape (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
         }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
-          shape.append (EBKnobShape (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATICS_KNOB_SIZE))
+          shape.append (EBKnobShape (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
         }
       //---
         return shape

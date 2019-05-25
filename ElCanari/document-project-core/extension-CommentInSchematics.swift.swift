@@ -1,5 +1,5 @@
 //
-//  extension-CommentInSchematics.swift.swift
+//  extension-CommentInSchematic.swift.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 04/05/2019.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CommentInSchematics
+//   EXTENSION CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension CommentInSchematics {
+extension CommentInSchematic {
 
   //····················································································································
 

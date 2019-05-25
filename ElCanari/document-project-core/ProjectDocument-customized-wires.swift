@@ -16,13 +16,13 @@ extension CustomizedProjectDocument {
   // Remove unused wires
   //····················································································································
 
-  internal func removeUnusedWires () {
+  internal func removeUnusedWires (_ ioErrorList : inout [String]) {
     for object in self.rootObject.mSelectedSheet!.mObjects {
       if let wire = object as? WireInSchematics {
         if (wire.mP1 == nil) && (wire.mP2 == nil) { // Useless wire, delete
           wire.mSheet = nil
         }else if (wire.mP1 == nil) != (wire.mP2 == nil) { // Invalid wire
-          presentErrorWindow (#file, #line, "Invalid wire: mP1 \(string (wire.mP1)), mP2 \(string (wire.mP2))")
+          ioErrorList.append ("Invalid wire: mP1 \(string (wire.mP1)), mP2 \(string (wire.mP2))")
         }
       }
     }

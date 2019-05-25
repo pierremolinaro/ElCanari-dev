@@ -49,7 +49,7 @@ extension CustomizedProjectDocument {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
-      switch self.rootObject.mSchematicsSheetOrientation {
+      switch self.rootObject.mSchematicSheetOrientation {
       case .horizontal :
         pageWidth = A4MaxSize
         pageHeight = A4MinSize

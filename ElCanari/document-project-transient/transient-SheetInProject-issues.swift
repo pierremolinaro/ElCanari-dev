@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_issues (
-       _ self_mPoints_status : [PointInSchematics_status]
+       _ self_mPoints_status : [PointInSchematic_status]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
         var pointDictionary = [CanariPoint : [SchematicPointStatus]] ()
@@ -29,19 +29,19 @@ func transient_SheetInProject_issues (
         for (location, statusArray) in pointDictionary {
           if statusArray.count > 1 {
             let r = NSRect (
-              x: canariUnitToCocoa (location.x) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-              y: canariUnitToCocoa (location.y) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-              width: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0,
-              height: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0
+              x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
+              height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             let path = NSBezierPath (ovalIn: r)
             issues.append (CanariIssue (kind: .error, message: "\(statusArray.count) points at the same location", path: path))
           }else if !statusArray [0].connected {
             let r = NSRect (
-              x: canariUnitToCocoa (location.x) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-              y: canariUnitToCocoa (location.y) - SCHEMATICS_GRID_IN_COCOA_UNIT,
-              width: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0,
-              height: SCHEMATICS_GRID_IN_COCOA_UNIT * 2.0
+              x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
+              height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             let path = NSBezierPath (ovalIn: r)
             issues.append (CanariIssue (kind: .warning, message: "Unconnected pin", path: path))

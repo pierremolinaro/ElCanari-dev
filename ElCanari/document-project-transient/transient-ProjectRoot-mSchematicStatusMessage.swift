@@ -11,37 +11,45 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NCInSchematics_objectDisplay (
-       _ self_mPoint_location : CanariPoint?,
-       _ self_mOrientation : QuadrantRotation,
-       _ prefs_pinNameFont : NSFont
-) -> EBShape {
+func transient_ProjectRoot_mSchematicStatusMessage (
+       _ self_unplacedSymbols : StringTagArray,     
+       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
+       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+) -> String {
 //--- START OF USER ZONE 2
-        var point = self_mPoint_location!.cocoaPoint
-        let horizontalAlignment : EBTextHorizontalAlignment
-        let verticalAlignment : EBTextVerticalAlignment
-        switch self_mOrientation {
-        case .rotation0 :
-          point.x += NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .onTheRight
-          verticalAlignment = .center
-        case .rotation90 :
-          point.y += NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .center
-          verticalAlignment = .above
-        case .rotation180 :
-          point.x -= NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .onTheLeft
-          verticalAlignment = .center
-         case .rotation270 :
-          point.y -= NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .center
-          verticalAlignment = .below
+        var array = [String] ()
+        var errorCount = 0
+        for sheet in self_mSheets_connexionErrors {
+          if let n = sheet.connexionErrors {
+            errorCount += n
+          }
         }
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : prefs_pinNameFont,
-        ]
-        return EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
+        if errorCount == 1 {
+          array.append ("1 connection error")
+        }else if errorCount > 1 {
+          array.append ("\(errorCount) connection errors")
+        }
+        var warningCount = 0
+        for sheet in self_mSheets_connexionWarnings {
+          if let n = sheet.connexionWarnings {
+            warningCount += n
+          }
+        }
+        if warningCount == 1 {
+          array.append ("1 connection warning")
+        }else if warningCount > 1 {
+          array.append ("\(warningCount) connection warnings")
+        }
+        if self_unplacedSymbols.count == 1 {
+          array.append ("1 unplaced symbol")
+        }else if self_unplacedSymbols.count > 1 {
+          array.append ("\(self_unplacedSymbols.count) unplaced symbols")
+        }
+        if array.count == 0 {
+          return "Ok."
+        }else{
+          return array.joined (separator: "\n")
+        }
 //--- END OF USER ZONE 2
 }
 

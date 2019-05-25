@@ -116,7 +116,7 @@ protocol ComponentSymbolInProject_symbolInSchematics : class {
 //    Entity: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ComponentSymbolInProject : SchematicsObject,
+class ComponentSymbolInProject : SchematicObject,
          ComponentSymbolInProject_mCenterX,
          ComponentSymbolInProject_mCenterY,
          ComponentSymbolInProject_mRotation,
@@ -140,17 +140,17 @@ class ComponentSymbolInProject : SchematicsObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematics ()
+  let mPoints_property = StoredArrayOf_PointInSchematic ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
+  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematics] {
+  var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -1071,7 +1071,7 @@ class ComponentSymbolInProject : SchematicsObject,
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematics])
+    ) as! [PointInSchematic])
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -3974,7 +3974,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+  var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
       switch (model.mPoints_property_selection) {
       case .empty :

@@ -17,7 +17,7 @@ extension CustomizedProjectDocument {
   internal func populateContextualClickOnSchematics (_ inMouseDownPoint : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
@@ -39,7 +39,7 @@ extension CustomizedProjectDocument {
   // NC
   //····················································································································
 
-  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematics]) {
+  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if inPoints.count > 1 {
       var hasNC = false
       var pinCount = 0
@@ -66,7 +66,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func connectAction (_ inSender : NSMenuItem) {
-    if let points = inSender.representedObject as? [PointInSchematics],
+    if let points = inSender.representedObject as? [PointInSchematic],
        let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet {
       selectedSheet.connect (points: points, window)
@@ -78,7 +78,7 @@ extension CustomizedProjectDocument {
   // Remove Point From Wire
   //····················································································································
 
-  private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematics]) {
+  private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if inPoints.count == 1 {
       let point = inPoints [0]
       if point.mNC == nil, point.mLabels.count == 0, (point.mWiresP1s.count + point.mWiresP2s.count) == 2 {
@@ -96,7 +96,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func removePointFromWireAction (_ inSender : NSMenuItem) {
-    if let point = inSender.representedObject as? PointInSchematics,
+    if let point = inSender.representedObject as? PointInSchematic,
        let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet {
       selectedSheet.removeFromWire (point: point, window)
@@ -108,7 +108,7 @@ extension CustomizedProjectDocument {
   // NC
   //····················································································································
 
-  private func appendCreateNCItemTo (menu : NSMenu, points inPoints : [PointInSchematics]) {
+  private func appendCreateNCItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if inPoints.count == 1 {
       let point = inPoints [0]
       if point.mNC == nil, point.mLabels.count == 0, point.mWiresP1s.count == 0, point.mWiresP2s.count == 0 {
@@ -126,9 +126,9 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func addNCToPinAction (_ inSender : NSMenuItem) {
-    if let point = inSender.representedObject as? PointInSchematics, let selectedSheet = self.rootObject.mSelectedSheet {
+    if let point = inSender.representedObject as? PointInSchematic, let selectedSheet = self.rootObject.mSelectedSheet {
       let nc = selectedSheet.addNCToPin (toPoint: point)
-      self.mSchematicsObjectsController.setSelection ([nc])
+      self.mSchematicObjectsController.setSelection ([nc])
     }
   }
 
@@ -202,7 +202,7 @@ extension CustomizedProjectDocument {
         orientation = .rotation0
       }
     //--- Aligned mouse down location
-      let canariAlignedMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     //--- Add label
       let possibleLabel = selectedSheet.addLabelInSchematics (
         at: canariAlignedMouseDownLocation,
@@ -210,7 +210,7 @@ extension CustomizedProjectDocument {
         newNetCreator: self.createNetWithAutomaticName
       )
       if let label = possibleLabel {
-        self.mSchematicsObjectsController.setSelection ([label])
+        self.mSchematicObjectsController.setSelection ([label])
       }
     }
   }

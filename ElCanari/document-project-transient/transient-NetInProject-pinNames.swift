@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_NetInProject_pinNames (
-       _ self_mPoints_mSymbolPinName : [PointInSchematics_mSymbolPinName]
+       _ self_mPoints_mSymbolPinName : [PointInSchematic_mSymbolPinName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var array = StringArray ()

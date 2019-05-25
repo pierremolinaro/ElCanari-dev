@@ -6,79 +6,79 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_mSymbolPinName : class {
+protocol PointInSchematic_mSymbolPinName : class {
   var mSymbolPinName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_mX : class {
+protocol PointInSchematic_mX : class {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_mY : class {
+protocol PointInSchematic_mY : class {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_location : class {
+protocol PointInSchematic_location : class {
   var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_netName : class {
+protocol PointInSchematic_netName : class {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_canMove : class {
+protocol PointInSchematic_canMove : class {
   var canMove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_wireColor : class {
+protocol PointInSchematic_wireColor : class {
   var wireColor : NSColor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_isConnected : class {
+protocol PointInSchematic_isConnected : class {
   var isConnected : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_status : class {
+protocol PointInSchematic_status : class {
   var status : SchematicPointStatus? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematics_connectedPoints : class {
+protocol PointInSchematic_connectedPoints : class {
   var connectedPoints : CanariPointArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: PointInSchematics
+//    Entity: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class PointInSchematics : EBManagedObject,
-         PointInSchematics_mSymbolPinName,
-         PointInSchematics_mX,
-         PointInSchematics_mY,
-         PointInSchematics_location,
-         PointInSchematics_netName,
-         PointInSchematics_canMove,
-         PointInSchematics_wireColor,
-         PointInSchematics_isConnected,
-         PointInSchematics_status,
-         PointInSchematics_connectedPoints {
+class PointInSchematic : EBManagedObject,
+         PointInSchematic_mSymbolPinName,
+         PointInSchematic_mX,
+         PointInSchematic_mY,
+         PointInSchematic_location,
+         PointInSchematic_netName,
+         PointInSchematic_canMove,
+         PointInSchematic_wireColor,
+         PointInSchematic_isConnected,
+         PointInSchematic_status,
+         PointInSchematic_connectedPoints {
 
   //····················································································································
   //   Atomic property: mSymbolPinName
@@ -154,17 +154,17 @@ class PointInSchematics : EBManagedObject,
   //   To many property: mLabels
   //····················································································································
 
-  let mLabels_property = StoredArrayOf_LabelInSchematics ()
+  let mLabels_property = StoredArrayOf_LabelInSchematic ()
 
   //····················································································································
 
-  var mLabels_property_selection : EBSelection < [LabelInSchematics] > {
+  var mLabels_property_selection : EBSelection < [LabelInSchematic] > {
     return self.mLabels_property.prop
   }
 
   //····················································································································
 
-  var mLabels : [LabelInSchematics] {
+  var mLabels : [LabelInSchematic] {
     get { return self.mLabels_property.propval }
     set { self.mLabels_property.setProp (newValue) }
   }
@@ -360,17 +360,17 @@ class PointInSchematics : EBManagedObject,
   //   To one property: mNC
   //····················································································································
 
-   let mNC_property = StoredObject_NCInSchematics ()
+   let mNC_property = StoredObject_NCInSchematic ()
 
   //····················································································································
 
-  var mNC_property_selection : EBSelection <NCInSchematics?> {
+  var mNC_property_selection : EBSelection <NCInSchematic?> {
     return .single (self.mNC_property.propval)
   }
 
   //····················································································································
 
-  var mNC : NCInSchematics? {
+  var mNC : NCInSchematic? {
     get {
       return self.mNC_property.propval
     }
@@ -386,7 +386,7 @@ class PointInSchematics : EBManagedObject,
 
   //····················································································································
 
-  var mNC_none : StoredObject_NCInSchematics { return self.mNC_property }
+  var mNC_none : StoredObject_NCInSchematic { return self.mNC_property }
 
   //····················································································································
 
@@ -521,7 +521,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mSymbolPinName_property_selection, unwSelf.mSymbol_property.symbolInfo_property_selection, unwSelf.mSymbol_property.mSymbolInstanceName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_PointInSchematics_location (v0, v1, v2, v3, v4))
+            return .single (transient_PointInSchematic_location (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -547,7 +547,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.mNet_property.mNetName_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_PointInSchematics_netName (v0))
+            return .single (transient_PointInSchematic_netName (v0))
           default :
             return .empty
           }
@@ -569,7 +569,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.mSymbol_none_selection) {
           case (.single (let v0)) :
-            return .single (transient_PointInSchematics_canMove (v0))
+            return .single (transient_PointInSchematic_canMove (v0))
           default :
             return .empty
           }
@@ -591,7 +591,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.mNet_property.wireColor_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_PointInSchematics_wireColor (v0))
+            return .single (transient_PointInSchematic_wireColor (v0))
           default :
             return .empty
           }
@@ -623,7 +623,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.mNC_none_selection, unwSelf.mSymbol_none_selection, unwSelf.mWiresP1s_property.count_property_selection, unwSelf.mWiresP2s_property.count_property_selection, unwSelf.mLabels_property.count_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_PointInSchematics_isConnected (v0, v1, v2, v3, v4))
+            return .single (transient_PointInSchematic_isConnected (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -650,7 +650,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.location_property_selection, unwSelf.isConnected_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PointInSchematics_status (v0, v1))
+            return .single (transient_PointInSchematic_status (v0, v1))
           default :
             return .empty
           }
@@ -674,7 +674,7 @@ class PointInSchematics : EBManagedObject,
         case .single :
           switch (unwSelf.location_property_selection, unwSelf.isConnected_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PointInSchematics_connectedPoints (v0, v1))
+            return .single (transient_PointInSchematic_connectedPoints (v0, v1))
           default :
             return .empty
           }
@@ -976,7 +976,7 @@ class PointInSchematics : EBManagedObject,
       inRelationshipName: "mLabels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [LabelInSchematics])
+    ) as! [LabelInSchematic])
   //--- To many property: mWiresP1s
     self.mWiresP1s_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mWiresP1s",
@@ -1012,7 +1012,7 @@ class PointInSchematics : EBManagedObject,
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       )
-      if let entity = possibleEntity as? NCInSchematics {
+      if let entity = possibleEntity as? NCInSchematic {
         self.mNC_property.setProp (entity)
       }
     }
@@ -1101,14 +1101,14 @@ class PointInSchematics : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PointInSchematics
+//    ReadOnlyArrayOf_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointInSchematics> {
+class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInSchematic> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematics>, addedSet inAddedSet : Set <PointInSchematics>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematic>, addedSet inAddedSet : Set <PointInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mSymbolPinName_fromElementsOfSet (inRemovedSet) // Stored property
@@ -1172,7 +1172,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
         managedObject.mSymbolPinName_property.addEBObserver (observer)
@@ -1182,7 +1182,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -1229,7 +1229,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mX.apply { (_ observer : EBEvent) in
         managedObject.mX_property.addEBObserver (observer)
@@ -1239,7 +1239,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -1286,7 +1286,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mY.apply { (_ observer : EBEvent) in
         managedObject.mY_property.addEBObserver (observer)
@@ -1296,7 +1296,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -1343,7 +1343,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.addEBObserver (observer)
@@ -1353,7 +1353,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.removeEBObserver (observer)
@@ -1399,7 +1399,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.addEBObserver (observer)
@@ -1409,7 +1409,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.removeEBObserver (observer)
@@ -1455,7 +1455,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
         managedObject.canMove_property.addEBObserver (observer)
@@ -1465,7 +1465,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
         managedObject.canMove_property.removeEBObserver (observer)
@@ -1511,7 +1511,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.addEBObserver (observer)
@@ -1521,7 +1521,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.removeEBObserver (observer)
@@ -1567,7 +1567,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.addEBObserver (observer)
@@ -1577,7 +1577,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.removeEBObserver (observer)
@@ -1623,7 +1623,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_status.apply { (_ observer : EBEvent) in
         managedObject.status_property.addEBObserver (observer)
@@ -1633,7 +1633,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_status.apply { (_ observer : EBEvent) in
         managedObject.status_property.removeEBObserver (observer)
@@ -1679,7 +1679,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.addEBObserver (observer)
@@ -1689,7 +1689,7 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
@@ -1702,21 +1702,21 @@ class ReadOnlyArrayOf_PointInSchematics : ReadOnlyAbstractArrayProperty <PointIn
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf PointInSchematics
+//    TransientArrayOf PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
+class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PointInSchematics? = nil
+  private var mDataProvider : ReadOnlyArrayOf_PointInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_PointInSchematics?) {
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_PointInSchematic?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -1727,7 +1727,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [PointInSchematics] 
+    let newArray : [PointInSchematic] 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -1750,7 +1750,7 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < [PointInSchematics] > {
+  override var prop : EBSelection < [PointInSchematic] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1763,17 +1763,17 @@ class TransientArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
 
   //····················································································································
 
-  override var propval : [PointInSchematics] { return self.mInternalArrayValue }
+  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf PointInSchematics
+//    TransientArrayOfSuperOf PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_PointInSchematics <SUPER : EBManagedObject> : ReadOnlyArrayOf_PointInSchematics {
+class TransientArrayOfSuperOf_PointInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_PointInSchematic {
 
   //····················································································································
   //   Data provider
@@ -1812,9 +1812,9 @@ class TransientArrayOfSuperOf_PointInSchematics <SUPER : EBManagedObject> : Read
       newModelArray = []
       self.mTransientKind = .empty
     }
-    var newArray = [PointInSchematics] ()
+    var newArray = [PointInSchematic] ()
     for superObject in newModelArray {
-      if let object = superObject as? PointInSchematics {
+      if let object = superObject as? PointInSchematic {
         newArray.append (object)
       }
     }
@@ -1824,7 +1824,7 @@ class TransientArrayOfSuperOf_PointInSchematics <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var prop : EBSelection < [PointInSchematics] > {
+  override var prop : EBSelection < [PointInSchematic] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1837,39 +1837,39 @@ class TransientArrayOfSuperOf_PointInSchematics <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [PointInSchematics] { return self.mInternalArrayValue }
+  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: PointInSchematics
+//    To many relationship read write: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PointInSchematics : ReadOnlyArrayOf_PointInSchematics {
+class ReadWriteArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
 
   //····················································································································
  
-  func setProp (_ value :  [PointInSchematics]) { } // Abstract method
+  func setProp (_ value :  [PointInSchematic]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_PointInSchematics
+//    Proxy: ProxyArrayOf_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics {
+final class ProxyArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PointInSchematics? = nil
+  private var mModel : ReadWriteArrayOf_PointInSchematic? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_PointInSchematics?) {
+  func setModel (_ inModel : ReadWriteArrayOf_PointInSchematic?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1880,7 +1880,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [PointInSchematics]
+    let newModelArray : [PointInSchematic]
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -1899,13 +1899,13 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [PointInSchematics]) {
+  override func setProp (_ inArrayValue : [PointInSchematic]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [PointInSchematics] > {
+  override var prop : EBSelection < [PointInSchematic] > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1915,7 +1915,7 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
 
   //····················································································································
 
-  override var propval : [PointInSchematics] {
+  override var propval : [PointInSchematic] {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -1933,22 +1933,22 @@ final class ProxyArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PointInSchematics
+//    To many relationship: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics, EBSignatureObserverProtocol {
+final class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematics) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematics) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematic) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -1980,9 +1980,9 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PointInSchematics] ()
+      var objectArray = [PointInSchematic] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PointInSchematics") as? PointInSchematics {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PointInSchematic") as? PointInSchematic {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1995,7 +1995,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [PointInSchematics]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [PointInSchematic]) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -2004,7 +2004,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [PointInSchematics]) {
+  @objc func performUndo (_ oldValue : [PointInSchematic]) {
     self.mInternalArrayValue = oldValue
   }
  
@@ -2030,7 +2030,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematics>, addedSet inAddedSet : Set <PointInSchematics>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematic>, addedSet inAddedSet : Set <PointInSchematic>) {
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -2046,15 +2046,15 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
  
   //····················································································································
 
-  override var prop : EBSelection < [PointInSchematics] > { return .single (self.mInternalArrayValue) }
+  override var prop : EBSelection < [PointInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PointInSchematics]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : [PointInSchematic]) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [PointInSchematics] { return self.mInternalArrayValue }
+  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -2073,7 +2073,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
 
   //····················································································································
 
-  func remove (_ object : PointInSchematics) {
+  func remove (_ object : PointInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2081,7 +2081,7 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
   
   //····················································································································
 
-  func add (_ object : PointInSchematics) {
+  func add (_ object : PointInSchematic) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2143,14 +2143,14 @@ final class StoredArrayOf_PointInSchematics : ReadWriteArrayOf_PointInSchematics
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyObject_PointInSchematics 
+//    ReadOnlyObject_PointInSchematic 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointInSchematics> {
+class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInSchematic> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematics?) {
+  internal override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
@@ -2227,7 +2227,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
         managedObject.mSymbolPinName_property.addEBObserver (observer)
@@ -2237,7 +2237,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -2297,7 +2297,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mX.apply { (_ observer : EBEvent) in
         managedObject.mX_property.addEBObserver (observer)
@@ -2307,7 +2307,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -2367,7 +2367,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_mY.apply { (_ observer : EBEvent) in
         managedObject.mY_property.addEBObserver (observer)
@@ -2377,7 +2377,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -2437,7 +2437,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.addEBObserver (observer)
@@ -2447,7 +2447,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_location.apply { (_ observer : EBEvent) in
         managedObject.location_property.removeEBObserver (observer)
@@ -2506,7 +2506,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.addEBObserver (observer)
@@ -2516,7 +2516,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.removeEBObserver (observer)
@@ -2575,7 +2575,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
         managedObject.canMove_property.addEBObserver (observer)
@@ -2585,7 +2585,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
         managedObject.canMove_property.removeEBObserver (observer)
@@ -2644,7 +2644,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.addEBObserver (observer)
@@ -2654,7 +2654,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.removeEBObserver (observer)
@@ -2713,7 +2713,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.addEBObserver (observer)
@@ -2723,7 +2723,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.removeEBObserver (observer)
@@ -2782,7 +2782,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_status.apply { (_ observer : EBEvent) in
         managedObject.status_property.addEBObserver (observer)
@@ -2792,7 +2792,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_status.apply { (_ observer : EBEvent) in
         managedObject.status_property.removeEBObserver (observer)
@@ -2851,7 +2851,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.addEBObserver (observer)
@@ -2861,7 +2861,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<PointInSchematics>) {
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
@@ -2918,7 +2918,7 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 
   //····················································································································
 
-  var mLabels_property_selection : EBSelection <[LabelInSchematics]> {
+  var mLabels_property_selection : EBSelection <[LabelInSchematic]> {
     if let model = self.propval {
       switch (model.mLabels_property_selection) {
       case .empty :
@@ -2997,21 +2997,21 @@ class ReadOnlyObject_PointInSchematics : ReadOnlyAbstractObjectProperty <PointIn
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientObject PointInSchematics
+//    TransientObject PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientObject_PointInSchematics : ReadOnlyObject_PointInSchematics {
+class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PointInSchematics? = nil
+  private var mDataProvider : ReadOnlyObject_PointInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyObject_PointInSchematics?) {
+  func setDataProvider (_ inProvider : ReadOnlyObject_PointInSchematic?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -3022,7 +3022,7 @@ class TransientObject_PointInSchematics : ReadOnlyObject_PointInSchematics {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newObject : PointInSchematics? 
+    let newObject : PointInSchematic? 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -3045,7 +3045,7 @@ class TransientObject_PointInSchematics : ReadOnlyObject_PointInSchematics {
 
   //····················································································································
 
-  override var prop : EBSelection < PointInSchematics? > {
+  override var prop : EBSelection < PointInSchematic? > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -3062,39 +3062,39 @@ class TransientObject_PointInSchematics : ReadOnlyObject_PointInSchematics {
 
   //····················································································································
 
-  override var propval : PointInSchematics? { return self.mInternalValue }
+  override var propval : PointInSchematic? { return self.mInternalValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PointInSchematics
+//    ReadWriteObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteObject_PointInSchematics : ReadOnlyObject_PointInSchematics {
+class ReadWriteObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
  
-  func setProp (_ inValue : PointInSchematics?) { } // Abstract method
+  func setProp (_ inValue : PointInSchematic?) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_PointInSchematics
+//    Proxy: ProxyObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PointInSchematics : ReadWriteObject_PointInSchematics {
+final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PointInSchematics? = nil
+  private var mModel : ReadWriteObject_PointInSchematic? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteObject_PointInSchematics?) {
+  func setModel (_ inModel : ReadWriteObject_PointInSchematic?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -3105,7 +3105,7 @@ final class ProxyObject_PointInSchematics : ReadWriteObject_PointInSchematics {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModel : PointInSchematics?
+    let newModel : PointInSchematic?
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -3124,13 +3124,13 @@ final class ProxyObject_PointInSchematics : ReadWriteObject_PointInSchematics {
 
   //····················································································································
 
-  override func setProp (_ inValue : PointInSchematics?) {
+  override func setProp (_ inValue : PointInSchematic?) {
     self.mModel?.setProp (inValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < PointInSchematics? > {
+  override var prop : EBSelection < PointInSchematic? > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -3140,7 +3140,7 @@ final class ProxyObject_PointInSchematics : ReadWriteObject_PointInSchematics {
 
   //····················································································································
 
-  override var propval : PointInSchematics? {
+  override var propval : PointInSchematic? {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -3158,22 +3158,22 @@ final class ProxyObject_PointInSchematics : ReadWriteObject_PointInSchematics {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StoredObject_PointInSchematics 
+//    StoredObject_PointInSchematic 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, EBSignatureObserverProtocol {
+final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematics) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematics) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematic) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -3197,7 +3197,7 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematics?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -3216,7 +3216,7 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : PointInSchematics?) {
+  @objc func performUndo (_ oldValue : PointInSchematic?) {
     self.mInternalValue = oldValue
   }
  
@@ -3238,7 +3238,7 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
 
   //····················································································································
 
-  override var prop : EBSelection < PointInSchematics? > {
+  override var prop : EBSelection < PointInSchematic? > {
     if let object = self.mInternalValue {
       return .single (object)
     }else{
@@ -3248,15 +3248,15 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
 
   //····················································································································
 
-  override func setProp (_ inValue : PointInSchematics?) { self.mInternalValue = inValue }
+  override func setProp (_ inValue : PointInSchematic?) { self.mInternalValue = inValue }
 
   //····················································································································
 
-  override var propval : PointInSchematics? { return self.mInternalValue }
+  override var propval : PointInSchematic? { return self.mInternalValue }
 
   //····················································································································
 
-  func remove (_ object : PointInSchematics) {
+  func remove (_ object : PointInSchematic) {
     if object === self.mInternalValue {
       self.mInternalValue = nil
     }
@@ -3264,7 +3264,7 @@ final class StoredObject_PointInSchematics : ReadWriteObject_PointInSchematics, 
   
   //····················································································································
 
-  func add (_ object : PointInSchematics) {
+  func add (_ object : PointInSchematic) {
     if object !== self.mInternalValue {
       self.mInternalValue = object
     }

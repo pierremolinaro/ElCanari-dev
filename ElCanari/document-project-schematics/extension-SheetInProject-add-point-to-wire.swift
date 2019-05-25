@@ -26,8 +26,8 @@ extension SheetInProject {
       wire.mP2 = nil
       wire.mSheet = nil
     //--- Create a new point
-      let newPoint = PointInSchematics (self.ebUndoManager)
-      let alignedLocation = inLocation.point (alignedOnGrid: SCHEMATICS_GRID_IN_CANARI_UNIT)
+      let newPoint = PointInSchematic (self.ebUndoManager)
+      let alignedLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       newPoint.mX = alignedLocation.x
       newPoint.mY = alignedLocation.y
       newPoint.mNet = net

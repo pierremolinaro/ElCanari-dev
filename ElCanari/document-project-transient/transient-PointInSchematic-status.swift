@@ -11,11 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_LabelInSchematics_location (
-       _ self_mPoint_location : CanariPoint?
-) -> CanariPoint {
+func transient_PointInSchematic_status (
+       _ self_location : CanariPoint,   
+       _ self_isConnected : Bool
+) -> SchematicPointStatus {
 //--- START OF USER ZONE 2
-        return self_mPoint_location!
+         return SchematicPointStatus (location: self_location, connected: self_isConnected)
 //--- END OF USER ZONE 2
 }
 

@@ -15,9 +15,9 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mProductPageView ;
 
 //--- Issues
-  outlet EBImageObserverView mSchematicsStatusImageViewInToolbar
-    $image root.mSchematicsStatusImage
-    $tooltip root.mSchematicsStatusMessage
+  outlet EBImageObserverView mSchematicStatusImageViewInToolbar
+    $image root.mSchematicStatusImage
+    $tooltip root.mSchematicStatusMessage
   ;
 
 //---------------------- Components Tab
@@ -203,6 +203,10 @@ document ProjectDocument root ProjectRoot {
 //  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
 //  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
 
+//--- Schematic inconsistent error
+  outlet NSPanel mInconsistentSchematicErrorPanel ;
+  outlet NSTextView mInconsistentSchematicErrorTextView ;
+  
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
@@ -210,16 +214,16 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextObserverField mUnplacedSymbolsTextField $valueObserver self.unplacedSymbolsCountString ;
 
 //--- Grid and Flip inspector
-  outlet EBSwitch mSchematicsHorizontalFlipSwitch $value root.mSchematicsHorizontalFlip ;
-  outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicsVerticalFlip ;
-  outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicsGridStyle ;
-  outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicsGridDisplayFactor ;
+  outlet EBSwitch mSchematicsHorizontalFlipSwitch $value root.mSchematicHorizontalFlip ;
+  outlet EBSwitch mSchematicsVerticalFlipSwitch $value root.mSchematicVerticalFlip ;
+  outlet EBPopUpButton mSchematicsGridStylePopUpButton $selectedIndex root.mSchematicGridStyle ;
+  outlet EBPopUpButton mSchematicsGridDisplayFactorPopUpButton $selectedTag root.mSchematicGridDisplayFactor ;
 
 //--- Sheet inspector
-  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicsTitle {sendContinously : yes} ;
-  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicsVersion {sendContinously : yes} ;
+  outlet EBTextField mSchematicsTitleTextField $value root.mSchematicTitle {sendContinously : yes} ;
+  outlet EBTextField mSchematicsVersionTextField $value root.mSchematicVersion {sendContinously : yes} ;
   outlet CanariEnumSegmentedControl mSchematicsSheetOrientationSegmentedControl
-    $selectedSegment root.mSchematicsSheetOrientation
+    $selectedSegment root.mSchematicSheetOrientation
   ;
   outlet EBTextField mSelectedSheetTitleTextField $value root.selectedSheetTitle {sendContinously : yes} ;
 
@@ -243,19 +247,19 @@ document ProjectDocument root ProjectRoot {
   outlet NSDatePicker mSchematicsDatePicker ;
 
 //--- Schematics view
-  arrayController #mSchematicsObjectsController : root.selectedSheetObjects ;
+  arrayController #mSchematicObjectsController : root.selectedSheetObjects ;
 
   outlet EBGraphicView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
     $overObjectsDisplay root.connectedPoints
-    $horizontalFlip root.mSchematicsHorizontalFlip
-    $verticalFlip root.mSchematicsVerticalFlip
-    $graphicController self.mSchematicsObjectsController
-    $gridStyle root.mSchematicsGridStyle
-    $gridDisplayFactor root.mSchematicsGridDisplayFactor
+    $horizontalFlip root.mSchematicHorizontalFlip
+    $verticalFlip root.mSchematicVerticalFlip
+    $graphicController self.mSchematicObjectsController
+    $gridStyle root.mSchematicGridStyle
+    $gridDisplayFactor root.mSchematicGridDisplayFactor
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridCrossColor prefs.crossColorOfSymbolGrid
-    $zoom root.mSchematicsZoom
+    $zoom root.mSchematicZoom
 //    $backColor prefs.symbolBackgroundColor
 //    $xPlacardUnit root.xPlacardUnit
 //    $yPlacardUnit root.yPlacardUnit
@@ -265,53 +269,53 @@ document ProjectDocument root ProjectRoot {
 
 //--- Selected Wire In schematics
   outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
-  selectionController WireInSchematics #wireInSchematicsSelectionController :
-    #mSchematicsObjectsController.selectedArray
+  selectionController WireInSchematics #wireInSchematicSelectionController :
+    #mSchematicObjectsController.selectedArray
   ;
 
   outlet EBTextObserverField mWireNetNameTextField
-    $valueObserver #wireInSchematicsSelectionController.netName
+    $valueObserver #wireInSchematicSelectionController.netName
   ;
 
 //--- Selected NC In schematics
   outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
-  selectionController NCInSchematics #ncInSchematicsSelectionController :
-    #mSchematicsObjectsController.selectedArray
+  selectionController NCInSchematic #ncInSchematicSelectionController :
+    #mSchematicObjectsController.selectedArray
   ;
 
   outlet CanariQuadrantSegmentedControl mNCRotationSegmentedControl
-     $quadrant #ncInSchematicsSelectionController.mOrientation ;
+     $quadrant #ncInSchematicSelectionController.mOrientation ;
 
 //--- Selected comment in schematic inspector
   outlet CanariViewWithKeyView mCommentInSchematicsInspectorView ;
-  selectionController CommentInSchematics #commentInSchematicsSelectionController :
-    #mSchematicsObjectsController.selectedArray
+  selectionController CommentInSchematic #commentInSchematicSelectionController :
+    #mSchematicObjectsController.selectedArray
   ;
 
   outlet EBTextField mCommentInSchematicsTextField
-    $value #commentInSchematicsSelectionController.mComment {sendContinously : yes}
+    $value #commentInSchematicSelectionController.mComment {sendContinously : yes}
   ;
 
 //--- Selected label in schematic inspector
   outlet CanariViewWithKeyView mSchematicsLabelInspectorView ;
-  selectionController LabelInSchematics #mSchematicsLabelSelectionController :
-    #mSchematicsObjectsController.selectedArray
+  selectionController LabelInSchematic #mSchematicLabelSelectionController :
+    #mSchematicObjectsController.selectedArray
   ;
 
   outlet CanariQuadrantSegmentedControl mSchematicsLabelRotationSegmentedControl
-     $quadrant #mSchematicsLabelSelectionController.mOrientation ;
+     $quadrant #mSchematicLabelSelectionController.mOrientation ;
 
   outlet EBTextObserverField mSchematicsLabelNetNameTextField
-    $valueObserver #mSchematicsLabelSelectionController.netName
+    $valueObserver #mSchematicLabelSelectionController.netName
   ;
 
   outlet EBButton mSchematicsLabelRenameNetButton // Action set in IB
-    $enabled #mSchematicsLabelSelectionController.selectedArray.count == 1
+    $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
   ;
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
   selectionController ComponentSymbolInProject #mComponentSymbolSelectionController :
-    #mSchematicsObjectsController.selectedArray
+    #mSchematicObjectsController.selectedArray
   ;
 
   outlet EBSwitch mComponentSymbolShowComponentValueSwitch
@@ -322,7 +326,7 @@ document ProjectDocument root ProjectRoot {
   ;
 
   outlet EBButton mRenameComponentFromComponentSymbolButton // Action set in IB
-    $enabled #mSchematicsObjectsController.selectedArray.count == 1
+    $enabled #mSchematicObjectsController.selectedArray.count == 1
   ;
 
   outlet EBTextField mComponentSymbolValueTextField

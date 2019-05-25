@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_wireColor (
-       _ self_mNet_wireColor : NSColor?
-) -> NSColor {
+func transient_LabelInSchematic_netName (
+       _ self_mPoint_netName : String?
+) -> String {
 //--- START OF USER ZONE 2
-        return self_mNet_wireColor ?? .black
+        return self_mPoint_netName ?? "--"
 //--- END OF USER ZONE 2
 }
 

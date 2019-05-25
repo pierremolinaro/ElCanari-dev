@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument wireInSchematicsSelectionController
+//    Derived selection controller ProjectDocument wireInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_wireInSchematicsSelectionController : EBObject {
+final class SelectionController_ProjectDocument_wireInSchematicSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -50,11 +50,11 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   //   BIND SELECTION
   //····················································································································
 
-   let selectedArray_property = TransientArrayOfSuperOf_WireInSchematics <SchematicsObject> ()
+   let selectedArray_property = TransientArrayOfSuperOf_WireInSchematics <SchematicObject> ()
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SchematicsObject, file : String, line : Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SchematicObject, file : String, line : Int) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
@@ -100,7 +100,7 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_wireInSchematicsSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_wireInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -124,7 +124,7 @@ final class SelectionController_ProjectDocument_wireInSchematicsSelectionControl
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_wireInSchematicsSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_wireInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle

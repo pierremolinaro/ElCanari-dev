@@ -12,13 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_schematicsBackgroundDisplay (
-       _ self_mSchematicsTitle : String,                
-       _ self_mSchematicsVersion : String,              
-       _ self_mSchematicsSheetOrientation : SchematicsSheetOrientation,
+       _ self_mSchematicTitle : String,                 
+       _ self_mSchematicVersion : String,               
+       _ self_mSchematicSheetOrientation : SchematicsSheetOrientation,
        _ self_mSelectedSheet_mSheetTitle : String?,     
        _ self_mSheets : [EBManagedObject_alloc_index_protocol],
        _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
-       _ self_mSchematicsDate : Date,                   
+       _ self_mSchematicDate : Date,                    
        _ self_selectedSheetIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -38,7 +38,7 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         let A4Width  : CGFloat
         let hMarks : Int
         let vMarks : Int
-        switch self_mSchematicsSheetOrientation {
+        switch self_mSchematicSheetOrientation {
         case .horizontal :
            A4Height = A4MinSize - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
            A4Width  = A4MaxSize - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
@@ -120,10 +120,10 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
       shape.append (EBStrokeBezierPathShape ([bp], .black))
      //--- Schematics Title
         p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - MARGIN + OFFSET, y: LINE_HEIGHT * 2.5 + MARGIN + OFFSET)
-        shape.append (EBTextShape (self_mSchematicsTitle, p, textAttributes, .center, .center))
+        shape.append (EBTextShape (self_mSchematicTitle, p, textAttributes, .center, .center))
      //--- Version
         p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - MARGIN + OFFSET, y: LINE_HEIGHT * 2.5 + MARGIN + OFFSET)
-        shape.append (EBTextShape (self_mSchematicsVersion, p, textAttributes, .center, .center))
+        shape.append (EBTextShape (self_mSchematicVersion, p, textAttributes, .center, .center))
      //--- Sheet Title
         p = NSPoint (x: A4Width - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - MARGIN + OFFSET, y: LINE_HEIGHT * 1.5 + MARGIN + OFFSET)
         shape.append (EBTextShape (self_mSelectedSheet_mSheetTitle ?? "—", p, textAttributes, .center, .center))
@@ -132,7 +132,7 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
         p = NSPoint (x: A4Width - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - MARGIN + OFFSET, y: LINE_HEIGHT * 0.5 + MARGIN + OFFSET)
-        shape.append (EBTextShape (dateFormatter.string (from: self_mSchematicsDate), p, textAttributes, .center, .center))
+        shape.append (EBTextShape (dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center))
      //--- Sheet index
         var s = "?"
         if let selectedSheetIndex = self_mSelectedSheet?.ebObjectIndex {

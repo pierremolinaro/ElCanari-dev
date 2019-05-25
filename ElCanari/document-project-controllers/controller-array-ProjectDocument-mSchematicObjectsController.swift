@@ -5,20 +5,20 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Array controller ProjectDocument mSchematicsObjectsController
+//    Array controller ProjectDocument mSchematicObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
+final class Controller_ProjectDocument_mSchematicObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
  
   //····················································································································
   // Model
   //····················································································································
  
-  private var mModel : ReadWriteArrayOf_SchematicsObject? = nil
+  private var mModel : ReadWriteArrayOf_SchematicObject? = nil
 
   //····················································································································
 
-  var selectedSet : Set <SchematicsObject> {
+  var selectedSet : Set <SchematicObject> {
     set (newValue) {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet) {
@@ -42,7 +42,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <SchematicsObject> () {
+  private var mPrivateSelectedSet = Set <SchematicObject> () {
     didSet {
       self.selectedArray_property.postEvent ()
       self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
@@ -53,19 +53,19 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_SchematicsObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_SchematicObject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_SchematicsObject { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_SchematicObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [SchematicsObject] { return self.selectedArray_property.propval }
+  var selectedArray : [SchematicObject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[SchematicsObject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[SchematicObject]> { return self.selectedArray_property.prop }
  
   //····················································································································
   //   Init
@@ -156,7 +156,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_SchematicsObject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_SchematicObject) {
     self.mModel = inModel
     inModel.attachClient (self)
     self.startObservingObjectShape ()
@@ -210,7 +210,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func setSelection (_ inObjects : [SchematicsObject]) {
+  func setSelection (_ inObjects : [SchematicObject]) {
     self.selectedSet = Set (inObjects)
   }
 
@@ -368,7 +368,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
   //    select
   //····················································································································
 
-  func select (object inObject : SchematicsObject) {
+  func select (object inObject : SchematicObject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -391,7 +391,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SchematicsObject (self.ebUndoManager)
+        let newObject = SchematicObject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -413,7 +413,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [SchematicsObject : Int] ()
+        var sortedObjectDictionary = [SchematicObject : Int] ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -435,13 +435,13 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
             newSelectionIndex = index + 1
           }
         }
-        var newSelectedObject : SchematicsObject? = nil
+        var newSelectedObject : SchematicObject? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [SchematicsObject : Int] ()
+        var objectDictionary = [SchematicObject : Int] ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -461,7 +461,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
-        var newSelectionSet = Set <SchematicsObject> ()
+        var newSelectionSet = Set <SchematicObject> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -581,9 +581,9 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
-      var newObjects = [SchematicsObject] ()
+      var newObjects = [SchematicObject] ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SchematicsObject {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SchematicObject {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
@@ -944,7 +944,7 @@ final class Controller_ProjectDocument_mSchematicsObjectsController : ReadOnlyAb
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = self.mModel?.propval ?? []
-    var selectedObjects = [SchematicsObject] ()
+    var selectedObjects = [SchematicObject] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)

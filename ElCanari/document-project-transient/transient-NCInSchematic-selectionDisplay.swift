@@ -11,9 +11,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NCInSchematics_selectionDisplay (
-       _ self_mPoint_location : CanariPoint?,   
-       _ self_mOrientation : QuadrantRotation,  
+func transient_NCInSchematic_selectionDisplay (
+       _ self_mPoint_location : CanariPoint?,  
+       _ self_mOrientation : QuadrantRotation, 
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2

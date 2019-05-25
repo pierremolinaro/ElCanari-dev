@@ -11,11 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_symbolInSchematics (
-       _ self_SchematicObject_isPlacedInSchematics : Bool
-) -> Bool {
+func transient_PointInSchematic_connectedPoints (
+       _ self_location : CanariPoint,            
+       _ self_isConnected : Bool
+) -> CanariPointArray {
 //--- START OF USER ZONE 2
-       return self_SchematicObject_isPlacedInSchematics
+         var array = CanariPointArray ()
+         if self_isConnected {
+           array.append (self_location)
+         }
+         return array
 //--- END OF USER ZONE 2
 }
 

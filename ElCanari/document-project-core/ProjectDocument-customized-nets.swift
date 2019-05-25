@@ -86,7 +86,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func renameNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
-     let selectedLabels = self.mSchematicsLabelSelectionController.selectedArray
+     let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
      }
@@ -96,7 +96,7 @@ extension CustomizedProjectDocument {
 
   @IBAction func newAutomaticNetNameFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
      var netSet = Set <NetInProject> ()
-     for label in self.mSchematicsLabelSelectionController.selectedArray {
+     for label in self.mSchematicLabelSelectionController.selectedArray {
        if let net = label.mPoint?.mNet {
          netSet.insert (net)
        }

@@ -14,37 +14,36 @@ extension SheetInProject {
 
   //····················································································································
 
-  func removeFromWire (point inPoint : PointInSchematics, _ inWindow : NSWindow) {
+  func removeFromWire (point inPoint : PointInSchematic, _ inWindow : NSWindow) {
     if inPoint.mNC == nil, inPoint.mLabels.count == 0, (inPoint.mWiresP1s.count + inPoint.mWiresP2s.count) == 2 {
       if inPoint.mWiresP1s.count == 2 {
         let removedWire = inPoint.mWiresP1s [0]
         let conservedWire = inPoint.mWiresP1s [1]
-        // Swift.print ("1-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
         conservedWire.mP1 = removedWire.mP2
-        // Swift.print ("2-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
         removedWire.mP1 = nil
-        //Swift.print ("3-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
         removedWire.mP2 = nil
-        //Swift.print ("4-removedWire \(string (removedWire)), P1 \(string (removedWire.mP1)), P2 \(string (removedWire.mP2)), conservedWire \(string (conservedWire)), P1 \(string (conservedWire.mP1)), P2 \(string (conservedWire.mP2))")
+        inPoint.mNet = nil
       }else if inPoint.mWiresP2s.count == 2 {
         let removedWire = inPoint.mWiresP2s [0]
         let conservedWire = inPoint.mWiresP2s [1]
         conservedWire.mP2 = removedWire.mP1
         removedWire.mP1 = nil
         removedWire.mP2 = nil
+        inPoint.mNet = nil
       }else{
-        let removedWire = inPoint.mWiresP1s [0]
-        let conservedWire = inPoint.mWiresP2s [0]
+        let removedWire = inPoint.mWiresP2s [0]
+        let conservedWire = inPoint.mWiresP1s [0]
         conservedWire.mP1 = removedWire.mP1
         removedWire.mP1 = nil
         removedWire.mP2 = nil
+        inPoint.mNet = nil
       }
     }
   }
   
   //····················································································································
 
-  func connect (points inPoints : [PointInSchematics], _ inWindow : NSWindow) {
+  func connect (points inPoints : [PointInSchematic], _ inWindow : NSWindow) {
     var netSet = Set <NetInProject> ()
     for point in inPoints {
       if let net = point.mNet {
@@ -82,7 +81,7 @@ extension SheetInProject {
   //····················································································································
 
   private func handleAlertResponseForMergingNets (_ inResponse : NSApplication.ModalResponse,
-                                                   _ inPoints : [PointInSchematics],
+                                                   _ inPoints : [PointInSchematic],
                                                    _ inNetArray : [NetInProject]) {
     let responseIndex = inResponse.rawValue - NSApplication.ModalResponse.alertFirstButtonReturn.rawValue
     if responseIndex < inNetArray.count {
@@ -96,7 +95,7 @@ extension SheetInProject {
   //  Propagate and merge net
   //····················································································································
 
-  private func propagateAndMerge (net inNet : NetInProject, to inPoints : [PointInSchematics]) {
+  private func propagateAndMerge (net inNet : NetInProject, to inPoints : [PointInSchematic]) {
   //--- All points should be at the same location
   //    Only one point should be bound to a symbol pin
     if inPoints.count == 1 {
@@ -121,7 +120,7 @@ extension SheetInProject {
         }
       }
       if ok {
-        let newPoint = PointInSchematics (self.ebUndoManager)
+        let newPoint = PointInSchematic (self.ebUndoManager)
         newPoint.mSymbol = symbol
         newPoint.mSymbolPinName = symbolPinName
         newPoint.mNet = inNet
@@ -130,7 +129,7 @@ extension SheetInProject {
         self.mPoints.append (newPoint)
         var newWiresP1s = [WireInSchematics] ()
         var newWiresP2s = [WireInSchematics] ()
-        var newLabels = [LabelInSchematics] ()
+        var newLabels = [LabelInSchematic] ()
         for point in inPoints {
           //NSLog ("Ex point \(point.mWiresP1s.count) \(point.mWiresP2s.count) \(point.mLabels.count)")
           let wireP1s = point.mWiresP1s
@@ -160,8 +159,8 @@ extension SheetInProject {
 
   //····················································································································
 
-  private func propagateNet (fromPoint inPoint : PointInSchematics) {
-    var reachedPointSet = Set <PointInSchematics> ([inPoint])
+  internal func propagateNet (fromPoint inPoint : PointInSchematic) {
+    var reachedPointSet = Set <PointInSchematic> ([inPoint])
     var exploreArray = [inPoint]
     while let point = exploreArray.last {
       exploreArray.removeLast ()

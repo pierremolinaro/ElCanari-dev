@@ -52,17 +52,17 @@ class NetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  let mPoints_property = StoredArrayOf_PointInSchematics ()
+  let mPoints_property = StoredArrayOf_PointInSchematic ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection < [PointInSchematics] > {
+  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
     return self.mPoints_property.prop
   }
 
   //····················································································································
 
-  var mPoints : [PointInSchematics] {
+  var mPoints : [PointInSchematic] {
     get { return self.mPoints_property.propval }
     set { self.mPoints_property.setProp (newValue) }
   }
@@ -353,7 +353,7 @@ class NetInProject : EBManagedObject,
       inRelationshipName: "mPoints",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematics])
+    ) as! [PointInSchematic])
   //--- To one property: mNetClass
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1283,7 +1283,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection <[PointInSchematics]> {
+  var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
       switch (model.mPoints_property_selection) {
       case .empty :

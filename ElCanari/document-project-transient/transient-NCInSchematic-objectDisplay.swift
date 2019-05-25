@@ -11,11 +11,37 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_canMove (
-       _ self_mSymbol_none : Bool
-) -> Bool {
+func transient_NCInSchematic_objectDisplay (
+       _ self_mPoint_location : CanariPoint?,
+       _ self_mOrientation : QuadrantRotation,
+       _ prefs_pinNameFont : NSFont
+) -> EBShape {
 //--- START OF USER ZONE 2
-        return self_mSymbol_none
+        var point = self_mPoint_location!.cocoaPoint
+        let horizontalAlignment : EBTextHorizontalAlignment
+        let verticalAlignment : EBTextVerticalAlignment
+        switch self_mOrientation {
+        case .rotation0 :
+          point.x += NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .onTheRight
+          verticalAlignment = .center
+        case .rotation90 :
+          point.y += NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .center
+          verticalAlignment = .above
+        case .rotation180 :
+          point.x -= NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .onTheLeft
+          verticalAlignment = .center
+         case .rotation270 :
+          point.y -= NC_DISTANCE_IN_COCOA_UNIT
+          horizontalAlignment = .center
+          verticalAlignment = .below
+        }
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : prefs_pinNameFont,
+        ]
+        return EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
 //--- END OF USER ZONE 2
 }
 

@@ -11,12 +11,23 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematics_status (
-       _ self_location : CanariPoint,    
-       _ self_isConnected : Bool
-) -> SchematicPointStatus {
+func transient_CommentInSchematic_objectDisplay (
+       _ self_mComment : String,                 
+       _ self_mX : Int,                          
+       _ self_mY : Int
+) -> EBShape {
 //--- START OF USER ZONE 2
-         return SchematicPointStatus (location: self_location, connected: self_isConnected)
+        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+        ]
+        return EBTextShape (
+          (self_mComment == "") ? "Empty comment" : self_mComment,
+          p,
+          textAttributes,
+          .center,
+          .center
+        )
 //--- END OF USER ZONE 2
 }
 
