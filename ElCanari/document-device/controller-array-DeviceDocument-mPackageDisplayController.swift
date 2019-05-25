@@ -308,8 +308,8 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
   // MARK: -
   //····················································································································
 
-  func alignmentPointsArray () -> [[CanariPoint]] {
-    var result = [[CanariPoint]] ()
+  func alignmentPointSetArray () -> [Set<CanariPoint>] {
+    var result = [Set<CanariPoint>] ()
     for object in self.mModel?.propval ?? [] {
       result.append (object.alignmentPoints ().points)
     }

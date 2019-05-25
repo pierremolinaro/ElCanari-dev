@@ -106,10 +106,10 @@ extension PackageOval {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-    result.points.append (CanariPoint (x: self.x, y: self.y))
-    result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    result.points.insert (CanariPoint (x: self.x, y: self.y))
+    result.points.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result
   }
 

@@ -187,11 +187,11 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-    result.points.append (CanariPoint (x: self.xPin, y: self.yPin))
-    result.points.append (CanariPoint (x: self.xName, y: self.yName))
-    result.points.append (CanariPoint (x: self.xNumber, y: self.yNumber))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    result.points.insert (CanariPoint (x: self.xPin, y: self.yPin))
+    result.points.insert (CanariPoint (x: self.xName, y: self.yName))
+    result.points.insert (CanariPoint (x: self.xNumber, y: self.yNumber))
     return result
   }
 

@@ -303,12 +303,12 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-    result.points.append (CanariPoint (x: self.x1, y: self.y1))
-    result.points.append (CanariPoint (x: self.x2, y: self.y2))
-    result.points.append (CanariPoint (x: self.cpx1, y: self.cpy1))
-    result.points.append (CanariPoint (x: self.cpx2, y: self.cpy2))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    result.points.insert (CanariPoint (x: self.x1, y: self.y1))
+    result.points.insert (CanariPoint (x: self.x2, y: self.y2))
+    result.points.insert (CanariPoint (x: self.cpx1, y: self.cpy1))
+    result.points.insert (CanariPoint (x: self.cpx2, y: self.cpy2))
     return result
   }
 

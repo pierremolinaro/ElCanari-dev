@@ -119,11 +119,11 @@ extension PackageDimension {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-    result.points.append (CanariPoint (x: self.x1, y: self.y1))
-    result.points.append (CanariPoint (x: self.x2, y: self.y2))
-    result.points.append (CanariPoint (x: self.xDimension, y: self.yDimension))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    result.points.insert (CanariPoint (x: self.x1, y: self.y1))
+    result.points.insert (CanariPoint (x: self.x2, y: self.y2))
+    result.points.insert (CanariPoint (x: self.xDimension, y: self.yDimension))
     return result
   }
 

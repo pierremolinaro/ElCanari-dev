@@ -76,7 +76,7 @@ protocol EBViewControllerProtocol : class {
 
   func clearSelection ()
 
-  func alignmentPointsArray () -> [[CanariPoint]]
+  func alignmentPointSetArray () -> [Set <CanariPoint>]
 
 }
 

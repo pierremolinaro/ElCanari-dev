@@ -188,8 +188,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func alignmentPoints () -> OCCanariPointArray {
-    return OCCanariPointArray ()
+  @objc dynamic func alignmentPoints () -> OCCanariPointSet {
+    return OCCanariPointSet ()
   }
 
   //····················································································································
@@ -234,11 +234,11 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc class OCCanariPointArray : EBObject {
+@objc class OCCanariPointSet : EBObject {
 
   //····················································································································
 
-  var points = [CanariPoint] ()
+  var points = Set <CanariPoint> ()
 
   //····················································································································
 

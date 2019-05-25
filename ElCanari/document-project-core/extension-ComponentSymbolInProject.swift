@@ -125,10 +125,19 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-//    result.points.append (CanariPoint (x: self.x1, y: self.y1))
-//    result.points.append (CanariPoint (x: self.x2, y: self.y2))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    if let symbolInfo = self.symbolInfo {
+      for pin in symbolInfo.pins {
+        result.points.insert (pin.pinLocation)
+      }
+    }
+    if self.mDisplayComponentValue {
+      let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentValueOffsetX, y: self.mCenterY + self.mDisplayComponentValueOffsetY)
+      result.points.insert (p)
+    }
+    let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentNameOffsetX, y: self.mCenterY + self.mDisplayComponentNameOffsetY)
+    result.points.insert (p)
     return result
   }
 

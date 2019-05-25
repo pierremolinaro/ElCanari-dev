@@ -84,9 +84,9 @@ extension PackagePad {
 
   //····················································································································
 
-  override func alignmentPoints () -> OCCanariPointArray {
-    let result = OCCanariPointArray ()
-    result.points.append (CanariPoint (x: self.xCenter, y: self.yCenter))
+  override func alignmentPoints () -> OCCanariPointSet {
+    let result = OCCanariPointSet ()
+    result.points.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
   }
 

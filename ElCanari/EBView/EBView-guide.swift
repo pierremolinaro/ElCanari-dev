@@ -22,19 +22,19 @@ extension EBView {
   //····················································································································
 
   internal func guideFor (objectIndexes inIndexSet : Set <Int>) {
-    let alignmentPointsArray = self.viewController?.alignmentPointsArray () ?? []
+    let alignmentPointSetArray = self.viewController?.alignmentPointSetArray () ?? []
     let bp = NSBezierPath ()
     for index in inIndexSet {
-      let objectAlignmentPoints = alignmentPointsArray [index]
+      let objectAlignmentPoints = alignmentPointSetArray [index]
       for alignmentPoint in objectAlignmentPoints {
         var minX = alignmentPoint.x
         var maxX = alignmentPoint.x
         var minY = alignmentPoint.y
         var maxY = alignmentPoint.y
         var idx = 0
-        while idx < alignmentPointsArray.count {
+        while idx < alignmentPointSetArray.count {
           if !inIndexSet.contains (idx) {
-            for ap in alignmentPointsArray [idx] {
+            for ap in alignmentPointSetArray [idx] {
               if ap.x == alignmentPoint.x {
                 minY = min (minY, ap.y)
                 maxY = max (maxY, ap.y)
