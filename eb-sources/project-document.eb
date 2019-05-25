@@ -245,7 +245,7 @@ document ProjectDocument root ProjectRoot {
 //--- Schematics view
   arrayController #mSchematicsObjectsController : root.selectedSheetObjects ;
 
-  outlet EBView mSchematicsView
+  outlet EBGraphicView mSchematicsView
     $underObjectsDisplay root.schematicsBackgroundDisplay
     $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mSchematicsHorizontalFlip

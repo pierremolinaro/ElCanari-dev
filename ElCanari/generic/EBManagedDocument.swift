@@ -480,7 +480,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (EBManagedDocument.printDocument(_:)) {
-      validate = self.windowForSheet?.firstResponder is EBView
+      validate = self.windowForSheet?.firstResponder is EBGraphicView
     }else{
       validate = super.validateMenuItem (inMenuItem)
     }
@@ -493,7 +493,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   @objc override func printDocument (_ inSender : Any?) {
-    if let view = self.windowForSheet?.firstResponder as? EBView {
+    if let view = self.windowForSheet?.firstResponder as? EBGraphicView {
       let printOperation = NSPrintOperation (view: view, printInfo: self.printInfo)
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling]

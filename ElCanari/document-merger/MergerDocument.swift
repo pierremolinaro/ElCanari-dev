@@ -241,7 +241,7 @@ import Cocoa
   @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
-  @IBOutlet var mBoardModelView : EBView?
+  @IBOutlet var mBoardModelView : EBGraphicView?
   @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
@@ -269,7 +269,7 @@ import Cocoa
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardScrollView : EBScrollView?
-  @IBOutlet var mComposedBoardView : EBView?
+  @IBOutlet var mComposedBoardView : EBGraphicView?
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplaySettingView : NSView?
@@ -480,7 +480,7 @@ import Cocoa
     checkOutletConnection (self.mBoardIssueInspectorView, "mBoardIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardLimitWidthUnitPopUp, "mBoardLimitWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardModelTableView, "mBoardModelTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mBoardModelView, "mBoardModelView", EBView.self, #file, #line)
+    checkOutletConnection (self.mBoardModelView, "mBoardModelView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mBoardOperationInspectorView, "mBoardOperationInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardViewDisplayBackComponenValuesCheckbox, "mBoardViewDisplayBackComponenValuesCheckbox", EBSwitch.self, #file, #line)
@@ -508,7 +508,7 @@ import Cocoa
     checkOutletConnection (self.mBoardWidthTextField, "mBoardWidthTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mBoardWidthUnitPopUp, "mBoardWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComposedBoardScrollView, "mComposedBoardScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedBoardView, "mComposedBoardView", EBView.self, #file, #line)
+    checkOutletConnection (self.mComposedBoardView, "mComposedBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mDangerView, "mDangerView", NSView.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDisplaySettingView, "mDisplaySettingView", NSView.self, #file, #line)

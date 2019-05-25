@@ -47,7 +47,7 @@ document SymbolDocument root SymbolRoot {
 //--- Symbol display
   arrayController #mSymbolObjectsController : root.symbolObjects ;
 
-  outlet EBView mComposedSymbolView
+  outlet EBGraphicView mComposedSymbolView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController self.mSymbolObjectsController

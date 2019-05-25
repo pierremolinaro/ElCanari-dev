@@ -132,7 +132,7 @@ import Cocoa
   @IBOutlet var mAddTextButton : CanariDragSourceButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedSymbolScrollView : EBScrollView?
-  @IBOutlet var mComposedSymbolView : EBView?
+  @IBOutlet var mComposedSymbolView : EBGraphicView?
   @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mGridDisplayFactorPopUpButton : EBPopUpButton?
@@ -254,7 +254,7 @@ import Cocoa
     checkOutletConnection (self.mAddTextButton, "mAddTextButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
     checkOutletConnection (self.mComposedSymbolScrollView, "mComposedSymbolScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBView.self, #file, #line)
+    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mGridDisplayFactorPopUpButton, "mGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)

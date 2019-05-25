@@ -72,11 +72,11 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //    Selected issue display
   //····················································································································
 
-  private weak var mIssueDisplayView : EBView? = nil
+  private weak var mIssueDisplayView : EBGraphicView? = nil
 
   //····················································································································
 
-  func register (issueDisplayView : EBView?) {
+  func register (issueDisplayView : EBGraphicView?) {
     self.mIssueDisplayView = issueDisplayView
     self.updateIssueDisplay ()
   }

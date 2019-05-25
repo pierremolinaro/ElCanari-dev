@@ -212,7 +212,7 @@ import Cocoa
   @IBOutlet var mClearProgramErrorButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageScrollView : EBScrollView?
-  @IBOutlet var mComposedPackageView : EBView?
+  @IBOutlet var mComposedPackageView : EBGraphicView?
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField?
@@ -496,7 +496,7 @@ import Cocoa
     checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
     checkOutletConnection (self.mComposedPackageScrollView, "mComposedPackageScrollView", EBScrollView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)

@@ -8,7 +8,7 @@ import Cocoa
 //    Array controller PackageDocument mPackageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBViewControllerProtocol {
+final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
  
   //····················································································································
   // Model
@@ -255,7 +255,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
         selectionDisplayArray.append (EBShape ())
       }
     }
-    for view in self.mEBViews {
+    for view in self.mEBGraphicViews {
       view.updateSelectionShape (selectionDisplayArray)
     }
   }
@@ -299,7 +299,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
         displayArray.append (EBShape ())
       }
     }
-    for view in self.mEBViews {
+    for view in self.mEBGraphicViews {
       view.updateObjectDisplay (displayArray)
     }
   }
@@ -318,27 +318,27 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   //····················································································································
   // MARK: -
-  // EBViews
+  // EBGraphicViews
   //····················································································································
 
-  private var mEBViews = Set <EBView> ()
+  private var mEBGraphicViews = Set <EBGraphicView> ()
 
   //····················································································································
 
-  func bind_ebView (_ inEBView : EBView?) {
+  func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
-      self.mEBViews.insert (ebView)
+      self.mEBGraphicViews.insert (ebView)
       ebView.set (controller: self)
     }
   }
 
   //····················································································································
 
-  func unbind_ebView (_ inEBView : EBView?) {
+  func unbind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       ebView.updateObjectDisplay ([])
       ebView.updateSelectionShape ([])
-      self.mEBViews.remove (ebView)
+      self.mEBGraphicViews.remove (ebView)
     }
   }
 

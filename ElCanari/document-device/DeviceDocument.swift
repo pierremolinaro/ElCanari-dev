@@ -241,8 +241,8 @@ import Cocoa
   @IBOutlet var mAssignmentSplitView : NSSplitView?
   @IBOutlet var mBindButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
-  @IBOutlet var mComposedPackageView : EBView?
-  @IBOutlet var mComposedSymbolView : EBView?
+  @IBOutlet var mComposedPackageView : EBGraphicView?
+  @IBOutlet var mComposedSymbolView : EBGraphicView?
   @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
@@ -414,8 +414,8 @@ import Cocoa
     checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
     checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mDescriptionPageView, "mDescriptionPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDocumentationTableView, "mDocumentationTableView", DeviceDocumentationTableView.self, #file, #line)

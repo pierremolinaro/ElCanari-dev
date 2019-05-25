@@ -407,7 +407,7 @@ document PackageDocument root PackageRoot {
 //--- Package display
   arrayController #mPackageObjectsController : root.packageObjects ;
 
-  outlet EBView mComposedPackageView
+  outlet EBGraphicView mComposedPackageView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController self.mPackageObjectsController

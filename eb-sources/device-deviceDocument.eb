@@ -74,7 +74,7 @@ document DeviceDocument root DeviceRoot {
   arrayController #mSymbolDisplayController : root.mSymbolInstances ;
   selectionController SymbolInstanceInDevice #mSymbolInstanceSelection : #mSymbolDisplayController.selectedArray ;
 
-  outlet EBView mComposedSymbolView
+  outlet EBGraphicView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
     $verticalFlip root.mSymbolDisplayVerticalFlip
     $graphicController self.mSymbolDisplayController
@@ -114,7 +114,7 @@ document DeviceDocument root DeviceRoot {
 
   arrayController #mPackageDisplayController : root.mPackages ;
 
-  outlet EBView mComposedPackageView
+  outlet EBGraphicView mComposedPackageView
     $horizontalFlip root.mPackageDisplayHorizontalFlip
     $verticalFlip root.mPackageDisplayVerticalFlip
     $graphicController self.mPackageDisplayController

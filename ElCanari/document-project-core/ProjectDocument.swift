@@ -450,7 +450,7 @@ import Cocoa
   @IBOutlet var mSchematicsTitleTextField : EBTextField?
   @IBOutlet var mSchematicsVersionTextField : EBTextField?
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
-  @IBOutlet var mSchematicsView : EBView?
+  @IBOutlet var mSchematicsView : EBGraphicView?
   @IBOutlet var mSchematicsWireInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
@@ -675,7 +675,7 @@ import Cocoa
     checkOutletConnection (self.mSchematicsTitleTextField, "mSchematicsTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVersionTextField, "mSchematicsVersionTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBView.self, #file, #line)
+    checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)

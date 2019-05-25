@@ -154,7 +154,7 @@ document MergerDocument root MergerRoot {
   selectionController BoardModel #mBoardModelSelection : #mBoardModelController.selectedArray ;
 
 //--- Model view
-  outlet EBView mBoardModelView
+  outlet EBGraphicView mBoardModelView
     $zoom #mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
@@ -267,7 +267,7 @@ document MergerDocument root MergerRoot {
 //--- Composed Board View
   arrayController #mBoardInstanceController : root.boardInstances ;
   selectionController MergerBoardInstance #mBoardInstanceSelection : #mBoardInstanceController.selectedArray ;
-  outlet EBView mComposedBoardView
+  outlet EBGraphicView mComposedBoardView
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip

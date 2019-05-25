@@ -324,7 +324,7 @@ graphic entity ComponentSymbolInProject : SchematicsObject {
 
   transient ComponentSymbolInfo symbolInfo dependsFrom
     self.mRotation,
-    self.mMirror, 
+    self.mMirror,
     self.componentName,
     self.mComponent.one.mComponentValue,
     self.mComponent.one.deviceSymbolDictionary,
