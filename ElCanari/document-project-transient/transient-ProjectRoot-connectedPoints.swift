@@ -12,10 +12,35 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_connectedPoints (
-       _ self_mSelectedSheet_connectedPoints : EBShape?
+       _ self_mSelectedSheet_connectedPoints : EBShape?,
+       _ self_selectedSheetIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        return self_mSelectedSheet_connectedPoints ?? EBShape ()
+        let shape = EBShape ()
+      //--- Issues
+        let warningPath = NSBezierPath ()
+        let errorPath = NSBezierPath ()
+        for issue in self_selectedSheetIssues {
+          switch issue.kind {
+          case .warning :
+            warningPath.append (issue.path)
+          case .error :
+            errorPath.append (issue.path)
+          }
+        }
+        if warningPath.elementCount > 0 {
+          // Color is F6C050
+          let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
+          shape.append (EBFilledBezierPathShape ([warningPath], myOrange))
+        }
+        if errorPath.elementCount > 0 {
+          shape.append (EBFilledBezierPathShape ([errorPath], .red))
+        }
+      //--- Connected points
+        if let connectedPointShape = self_mSelectedSheet_connectedPoints {
+          shape.append (connectedPointShape)
+        }
+        return shape
 //--- END OF USER ZONE 2
 }
 

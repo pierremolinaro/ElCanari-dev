@@ -18,8 +18,7 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
        _ self_mSelectedSheet_mSheetTitle : String?,     
        _ self_mSheets : [EBManagedObject_alloc_index_protocol],
        _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
-       _ self_mSchematicDate : Date,                    
-       _ self_selectedSheetIssues : CanariIssueArray
+       _ self_mSchematicDate : Date
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let textAttributes : [NSAttributedString.Key : Any] = [
@@ -146,25 +145,6 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         }
         p = NSPoint (x: A4Width - RIGHT_COLUMN / 2.0 - MARGIN + OFFSET, y: LINE_HEIGHT * 1.5 + MARGIN + OFFSET)
         shape.append (EBTextShape (s + "/\(self_mSheets.count)", p, textAttributes, .center, .center))
-      //--- Issues
-        let warningPath = NSBezierPath ()
-        let errorPath = NSBezierPath ()
-        for issue in self_selectedSheetIssues {
-          switch issue.kind {
-          case .warning :
-            warningPath.append (issue.path)
-          case .error :
-            errorPath.append (issue.path)
-          }
-        }
-        if warningPath.elementCount > 0 {
-          // Color is F6C050
-          let myOrange = NSColor (red: 0.961, green: 0.750, blue: 0.3125, alpha: 1.0)
-          shape.append (EBFilledBezierPathShape ([warningPath], myOrange))
-        }
-        if errorPath.elementCount > 0 {
-          shape.append (EBFilledBezierPathShape ([errorPath], .red))
-        }
     //----
         return shape
 //--- END OF USER ZONE 2

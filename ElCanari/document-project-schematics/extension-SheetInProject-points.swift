@@ -110,6 +110,65 @@ extension SheetInProject {
 
   //····················································································································
 
+  internal func buildSubnet (from inPoint : PointInSchematic) -> Set <PointInSchematic> {
+    var exploreSet = Set ([inPoint])
+    var result = Set <PointInSchematic> ()
+    while let point = exploreSet.first {
+      _ = exploreSet.removeFirst ()
+      result.insert (point)
+      for wire in point.mWiresP1s {
+        if let p2 = wire.mP2, !result.contains (p2) {
+          exploreSet.insert (p2)
+        }
+      }
+      for wire in point.mWiresP2s {
+        if let p1 = wire.mP1, !result.contains (p1) {
+          exploreSet.insert (p1)
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  internal func buildSubnetsFrom (_ inPointSet : Set <PointInSchematic>) -> [Set <PointInSchematic>] {
+    var result = [Set <PointInSchematic>] ()
+    var currentPointSet = inPointSet
+    while let point = currentPointSet.first {
+      let subnet = self.buildSubnet (from: point)
+      currentPointSet.subtract (subnet)
+      result.append (subnet)
+    }
+    return result
+  }
+
+  //····················································································································
+
+  internal func buildLabelArrayFromSubnet (_ inSubnet : Set <PointInSchematic>) -> [LabelInSchematic] {
+    var result = [LabelInSchematic] ()
+    for point in inSubnet {
+      for label in point.mLabels {
+        result.append (label)
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  internal func buildSymbolArrayFromSubnet (_ inSubnet : Set <PointInSchematic>) -> [ComponentSymbolInProject] {
+    var result = [ComponentSymbolInProject] ()
+    for point in inSubnet {
+      if let symbol = point.mSymbol {
+        result.append (symbol)
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

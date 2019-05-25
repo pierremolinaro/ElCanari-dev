@@ -21,13 +21,15 @@ extension CustomizedProjectDocument {
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
-    //--- Add Remove point from wire ?
-      self.appendRemovePointFromWireItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
     //--- Add Point to wire ?
       let wires = selectedSheet.wiresStrictlyContaining (point: canariAlignedMouseDownLocation)
       self.appendCreateWirePointItemTo (menu : menu, canariAlignedMouseDownLocation, wires: wires)
+    //--- Add Remove point from wire ?
+      self.appendRemovePointFromWireItemTo (menu: menu, points: points)
+    //--- Add disconnect ?
+      self.appendDisconnectItemTo (menu: menu, points: points)
     //--- Add Labels
       self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: inMouseDownPoint)
     }
@@ -73,6 +75,36 @@ extension CustomizedProjectDocument {
       self.updateSchematicsPointsAndNets ()
     }
   }
+
+  //····················································································································
+  // Disconnect
+  //····················································································································
+
+  private func appendDisconnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+    var canDisconnect = false
+    for point in inPoints {
+      if (point.mNC != nil) || (point.mLabels.count > 0) || ((point.mWiresP1s.count + point.mWiresP2s.count) >= 2) {
+        canDisconnect = true
+        break
+      }
+    }
+    if canDisconnect {
+      let menuItem = NSMenuItem (title: "Disconnect", action: #selector (CustomizedProjectDocument.disconnectAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = inPoints
+      menu.addItem (menuItem)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func disconnectAction (_ inSender : NSMenuItem) {
+    if let points = inSender.representedObject as? [PointInSchematic], let selectedSheet = self.rootObject.mSelectedSheet {
+      selectedSheet.disconnect (points: points, newNetCreator: self.createNetWithAutomaticName)
+      self.updateSchematicsPointsAndNets ()
+    }
+  }
+
 
   //····················································································································
   // Remove Point From Wire

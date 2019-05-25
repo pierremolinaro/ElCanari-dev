@@ -865,16 +865,17 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSelectedSheet_property.connectedPoints_property_selection.kind ()
+        var kind = unwSelf.mSelectedSheet_property.connectedPoints_property_selection.kind ()
+        kind &= unwSelf.selectedSheetIssues_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mSelectedSheet_property.connectedPoints_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_connectedPoints (v0))
+          switch (unwSelf.mSelectedSheet_property.connectedPoints_property_selection, unwSelf.selectedSheetIssues_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_connectedPoints (v0, v1))
           default :
             return .empty
           }
@@ -884,6 +885,7 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -960,16 +962,15 @@ class ProjectRoot : EBManagedObject,
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSelectedSheet_property_selection.kind ()
         kind &= unwSelf.mSchematicDate_property_selection.kind ()
-        kind &= unwSelf.selectedSheetIssues_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection, unwSelf.selectedSheetIssues_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -985,7 +986,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.selectedSheetIssues_property.addEBObserver (self.schematicsBackgroundDisplay_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1102,6 +1102,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_modelDidChangeController = nil
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
@@ -1112,7 +1113,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.selectedSheetIssues_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.unplacedSymbols_property.removeEBObserver (self.mSchematicStatusMessage_property)

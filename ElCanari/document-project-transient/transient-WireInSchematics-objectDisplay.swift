@@ -21,13 +21,22 @@ func transient_WireInSchematics_objectDisplay (
         let p1 = self_mP1_location ?? CanariPoint ()
         let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
       //---
+        let shape = EBShape ()
+        let bp1 = NSBezierPath ()
+        bp1.move (to: p1.cocoaPoint)
+        bp1.line (to: p2.cocoaPoint)
+        bp1.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0 + 2.0
+        bp1.lineCapStyle = .round
+        bp1.lineJoinStyle = .round
+        shape.append (EBStrokeBezierPathShape ([bp1], .white))
         let bp = NSBezierPath ()
         bp.move (to: p1.cocoaPoint)
         bp.line (to: p2.cocoaPoint)
         bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        return EBStrokeBezierPathShape ([bp], self_mP1_wireColor ?? .black)
+        shape.append (EBStrokeBezierPathShape ([bp], self_mP1_wireColor ?? .black))
+        return shape
 //--- END OF USER ZONE 2
 }
 

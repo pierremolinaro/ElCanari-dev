@@ -13,7 +13,7 @@ entity ProjectRoot {
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
   toMany proxy SchematicObject selectedSheetObjects : mSelectedSheet.mObjects ;
   transient CanariIssueArray selectedSheetIssues dependsFrom self.mSelectedSheet.one.issues ;
-  transient EBShape connectedPoints dependsFrom self.mSelectedSheet.one.connectedPoints ;
+  transient EBShape connectedPoints dependsFrom self.mSelectedSheet.one.connectedPoints, self.selectedSheetIssues ;
  
   property Int mSelectedPageIndex default 0 ;
 
@@ -40,8 +40,7 @@ entity ProjectRoot {
     self.mSelectedSheet.one.mSheetTitle,
     self.mSheets,
     self.mSelectedSheet,
-    self.mSchematicDate,
-    self.selectedSheetIssues
+    self.mSchematicDate
   ;
   
   transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;
