@@ -54,37 +54,39 @@ extension ComponentSymbolInProject {
   //  Flip horizontally
   //····················································································································
 
-//  override func canFlipHorizontally () -> Bool {
-//    return x1 != x2
-//  }
+  override func canFlipHorizontally () -> Bool {
+    return true
+  }
 
   //····················································································································
 
-//  override func flipHorizontally () {
-//    (x1, x2) = (x2, x1)
-//  }
+  override func flipHorizontally () {
+    self.mMirror = !self.mMirror
+  }
 
   //····················································································································
   //  Flip vertically
   //····················································································································
 
-//  override func canFlipVertically () -> Bool {
-//    return y1 != y2
-//  }
+  override func canFlipVertically () -> Bool {
+    return true
+  }
 
   //····················································································································
 
-//  override func flipVertically () {
-//    (y1, y2) = (y2, y1)
-//  }
-
-  //····················································································································
-  //  COPY AND PASTE
-  //····················································································································
-
-//  override func canCopyAndPaste () -> Bool {
-//    return true
-//  }
+  override func flipVertically () {
+    self.mMirror = !self.mMirror
+    switch self.mRotation {
+    case .rotation0 :
+      self.mRotation = .rotation180
+    case .rotation90 :
+      self.mRotation = .rotation270
+    case .rotation180 :
+      self.mRotation = .rotation0
+    case .rotation270 :
+      self.mRotation = .rotation90
+    }
+  }
 
   //····················································································································
   //  SNAP TO GRID
