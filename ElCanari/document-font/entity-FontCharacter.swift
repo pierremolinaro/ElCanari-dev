@@ -512,7 +512,7 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.segments_property.setProp ([])
+    self.segments = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -586,7 +586,7 @@ class FontCharacter : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: segments
-    for managedObject in self.segments_property.propval {
+    for managedObject in self.segments {
       objects.append (managedObject)
     }
   }
@@ -598,7 +598,7 @@ class FontCharacter : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: segments
-    for managedObject in self.segments_property.propval {
+    for managedObject in self.segments {
       objects.append (managedObject)
     }
   }
@@ -2437,22 +2437,6 @@ final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignat
 
   override var propval : FontCharacter? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : FontCharacter) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : FontCharacter) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

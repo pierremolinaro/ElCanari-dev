@@ -3580,22 +3580,6 @@ final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObser
   override var propval : SymbolPin? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SymbolPin) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolPin) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

@@ -509,8 +509,8 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mInstances_property.setProp ([])
-    self.mPinTypes_property.setProp ([])
+    self.mInstances = []
+    self.mPinTypes = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -600,11 +600,11 @@ class SymbolTypeInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances_property.propval {
+    for managedObject in self.mInstances {
       objects.append (managedObject)
     }
   //--- To many property: mPinTypes
-    for managedObject in self.mPinTypes_property.propval {
+    for managedObject in self.mPinTypes {
       objects.append (managedObject)
     }
   }
@@ -616,11 +616,11 @@ class SymbolTypeInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances_property.propval {
+    for managedObject in self.mInstances {
       objects.append (managedObject)
     }
   //--- To many property: mPinTypes
-    for managedObject in self.mPinTypes_property.propval {
+    for managedObject in self.mPinTypes {
       objects.append (managedObject)
     }
   }
@@ -2504,22 +2504,6 @@ final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice
 
   override var propval : SymbolTypeInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SymbolTypeInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolTypeInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

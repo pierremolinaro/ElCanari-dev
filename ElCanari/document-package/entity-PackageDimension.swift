@@ -3900,22 +3900,6 @@ final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EB
   override var propval : PackageDimension? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageDimension) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageDimension) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

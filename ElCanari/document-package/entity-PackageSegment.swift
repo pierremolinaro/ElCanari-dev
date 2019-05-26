@@ -3360,22 +3360,6 @@ final class StoredObject_PackageSegment : ReadWriteObject_PackageSegment, EBSign
   override var propval : PackageSegment? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageSegment) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageSegment) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

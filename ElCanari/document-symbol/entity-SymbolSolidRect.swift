@@ -2295,22 +2295,6 @@ final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSi
   override var propval : SymbolSolidRect? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SymbolSolidRect) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolSolidRect) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

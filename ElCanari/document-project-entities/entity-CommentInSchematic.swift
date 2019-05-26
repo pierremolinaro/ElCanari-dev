@@ -1715,22 +1715,6 @@ final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic
   override var propval : CommentInSchematic? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : CommentInSchematic) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : CommentInSchematic) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

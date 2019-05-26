@@ -1733,22 +1733,6 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
   override var propval : CanariLibraryEntry? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : CanariLibraryEntry) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : CanariLibraryEntry) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

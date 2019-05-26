@@ -1008,7 +1008,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPoints_property.setProp ([])
+    self.mPoints = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1018,7 +1018,7 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mComponent_property.setProp (nil)
+    self.mComponent = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1122,12 +1122,12 @@ class ComponentSymbolInProject : SchematicObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
     }
   //--- To one property: mComponent
-    if let managedObject = self.mComponent_property.propval {
-      objects.append (managedObject)
+    if let object = self.mComponent {
+      objects.append (object)
     }
   }
 
@@ -1138,12 +1138,12 @@ class ComponentSymbolInProject : SchematicObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
     }
   //--- To one property: mComponent
-    if let managedObject = self.mComponent_property.propval {
-      objects.append (managedObject)
+    if let object = self.mComponent {
+      objects.append (object)
     }
   }
 
@@ -4269,22 +4269,6 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
   override var propval : ComponentSymbolInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : ComponentSymbolInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ComponentSymbolInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

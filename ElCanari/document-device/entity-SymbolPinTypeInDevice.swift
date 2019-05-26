@@ -563,7 +563,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mInstances_property.setProp ([])
+    self.mInstances = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -661,7 +661,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances_property.propval {
+    for managedObject in self.mInstances {
       objects.append (managedObject)
     }
   }
@@ -673,7 +673,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mInstances
-    for managedObject in self.mInstances_property.propval {
+    for managedObject in self.mInstances {
       objects.append (managedObject)
     }
   }
@@ -2916,22 +2916,6 @@ final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeIn
 
   override var propval : SymbolPinTypeInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SymbolPinTypeInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolPinTypeInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

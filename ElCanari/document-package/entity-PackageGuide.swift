@@ -2790,22 +2790,6 @@ final class StoredObject_PackageGuide : ReadWriteObject_PackageGuide, EBSignatur
   override var propval : PackageGuide? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageGuide) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageGuide) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

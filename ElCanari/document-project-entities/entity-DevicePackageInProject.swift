@@ -126,7 +126,7 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mMasterPads_property.setProp ([])
+    self.mMasterPads = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -188,7 +188,7 @@ class DevicePackageInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads_property.propval {
+    for managedObject in self.mMasterPads {
       objects.append (managedObject)
     }
   }
@@ -200,7 +200,7 @@ class DevicePackageInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads_property.propval {
+    for managedObject in self.mMasterPads {
       objects.append (managedObject)
     }
   }
@@ -1116,22 +1116,6 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   override var propval : DevicePackageInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : DevicePackageInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DevicePackageInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

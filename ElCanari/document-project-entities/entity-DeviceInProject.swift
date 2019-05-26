@@ -832,10 +832,10 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mComponents_property.setProp ([])
-    self.mPackages_property.setProp ([])
-    self.mSymbols_property.setProp ([])
-    self.mPadAssignments_property.setProp ([])
+    self.mComponents = []
+    self.mPackages = []
+    self.mSymbols = []
+    self.mPadAssignments = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -945,19 +945,19 @@ class DeviceInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages_property.propval {
+    for managedObject in self.mPackages {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols_property.propval {
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments
-    for managedObject in self.mPadAssignments_property.propval {
+    for managedObject in self.mPadAssignments {
       objects.append (managedObject)
     }
   }
@@ -969,19 +969,19 @@ class DeviceInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages_property.propval {
+    for managedObject in self.mPackages {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols_property.propval {
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To many property: mPadAssignments
-    for managedObject in self.mPadAssignments_property.propval {
+    for managedObject in self.mPadAssignments {
       objects.append (managedObject)
     }
   }
@@ -3445,22 +3445,6 @@ final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSi
 
   override var propval : DeviceInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : DeviceInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

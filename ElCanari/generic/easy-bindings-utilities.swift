@@ -925,7 +925,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
         self.notifyModelDidChange ()
         let newSet = Set (self.mInternalArrayValue)
         if self.mInternalSetValue != newSet {
-          let oldSet = Set (self.mInternalSetValue)
+          let oldSet = self.mInternalSetValue
           self.mInternalSetValue = newSet
           let removedSet = oldSet.subtracting (newSet)
           let addedSet = newSet.subtracting (oldSet)

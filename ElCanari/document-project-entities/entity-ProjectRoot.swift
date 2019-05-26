@@ -806,8 +806,12 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mSheets (no option)
+  //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
+    self.mSheets_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
@@ -1083,6 +1087,10 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.mSchematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.mSchematicStatusImage_property)
   //--- Install undoers and opposite setter for relationships
+    self.mSheets_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1416,11 +1424,11 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mComponents_property.setProp ([])
-    self.mNetClasses_property.setProp ([])
-    self.mFonts_property.setProp ([])
-    self.mDevices_property.setProp ([])
-    self.mSheets_property.setProp ([])
+    self.mComponents = []
+    self.mNetClasses = []
+    self.mFonts = []
+    self.mDevices = []
+    self.mSheets = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1430,7 +1438,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSelectedSheet_property.setProp (nil)
+    self.mSelectedSheet = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1586,28 +1594,28 @@ class ProjectRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
+    for managedObject in self.mNetClasses {
       objects.append (managedObject)
     }
   //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
+    for managedObject in self.mFonts {
       objects.append (managedObject)
     }
   //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
+    for managedObject in self.mDevices {
       objects.append (managedObject)
     }
   //--- To many property: mSheets
-    for managedObject in self.mSheets_property.propval {
+    for managedObject in self.mSheets {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet
-    if let managedObject = self.mSelectedSheet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSelectedSheet {
+      objects.append (object)
     }
   }
 
@@ -1618,28 +1626,28 @@ class ProjectRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mComponents
-    for managedObject in self.mComponents_property.propval {
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses_property.propval {
+    for managedObject in self.mNetClasses {
       objects.append (managedObject)
     }
   //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
+    for managedObject in self.mFonts {
       objects.append (managedObject)
     }
   //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
+    for managedObject in self.mDevices {
       objects.append (managedObject)
     }
   //--- To many property: mSheets
-    for managedObject in self.mSheets_property.propval {
+    for managedObject in self.mSheets {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet
-    if let managedObject = self.mSelectedSheet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSelectedSheet {
+      objects.append (object)
     }
   }
 
@@ -5445,22 +5453,6 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 
   override var propval : ProjectRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : ProjectRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ProjectRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

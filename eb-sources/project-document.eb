@@ -354,6 +354,7 @@ document ProjectDocument root ProjectRoot {
   outlet CanariNetInfoTableView mNetInfoTableView $netInfo root.netsDescription ;
 
   transient String netCountString dependsFrom root.netsDescription ;
+  
   outlet EBTextObserverField mNetCountTextField $valueObserver self.netCountString ;
   
   transient Int netCount dependsFrom root.netsDescription ;

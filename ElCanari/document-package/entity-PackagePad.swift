@@ -1370,7 +1370,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.slaves_property.setProp ([])
+    self.slaves = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1380,7 +1380,7 @@ class PackagePad : PackageObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.zone_property.setProp (nil)
+    self.zone = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1500,12 +1500,12 @@ class PackagePad : PackageObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: slaves
-    for managedObject in self.slaves_property.propval {
+    for managedObject in self.slaves {
       objects.append (managedObject)
     }
   //--- To one property: zone
-    if let managedObject = self.zone_property.propval {
-      objects.append (managedObject)
+    if let object = self.zone {
+      objects.append (object)
     }
   }
 
@@ -1516,12 +1516,12 @@ class PackagePad : PackageObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: slaves
-    for managedObject in self.slaves_property.propval {
+    for managedObject in self.slaves {
       objects.append (managedObject)
     }
   //--- To one property: zone
-    if let managedObject = self.zone_property.propval {
-      objects.append (managedObject)
+    if let object = self.zone {
+      objects.append (object)
     }
   }
 
@@ -5581,22 +5581,6 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
   override var propval : PackagePad? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : PackagePad) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackagePad) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

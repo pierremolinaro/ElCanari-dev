@@ -903,9 +903,9 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mWiresP2s_property.setProp ([])
-    self.mLabels_property.setProp ([])
-    self.mWiresP1s_property.setProp ([])
+    self.mWiresP2s = []
+    self.mLabels = []
+    self.mWiresP1s = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -915,9 +915,9 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSymbol_property.setProp (nil)
-    self.mNet_property.setProp (nil)
-    self.mNC_property.setProp (nil)
+    self.mSymbol = nil
+    self.mNet = nil
+    self.mNC = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1039,28 +1039,28 @@ class PointInSchematic : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s_property.propval {
+    for managedObject in self.mWiresP2s {
       objects.append (managedObject)
     }
   //--- To many property: mLabels
-    for managedObject in self.mLabels_property.propval {
+    for managedObject in self.mLabels {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s
-    for managedObject in self.mWiresP1s_property.propval {
+    for managedObject in self.mWiresP1s {
       objects.append (managedObject)
     }
   //--- To one property: mSymbol
-    if let managedObject = self.mSymbol_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbol {
+      objects.append (object)
     }
   //--- To one property: mNet
-    if let managedObject = self.mNet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNet {
+      objects.append (object)
     }
   //--- To one property: mNC
-    if let managedObject = self.mNC_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNC {
+      objects.append (object)
     }
   }
 
@@ -1071,28 +1071,28 @@ class PointInSchematic : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s_property.propval {
+    for managedObject in self.mWiresP2s {
       objects.append (managedObject)
     }
   //--- To many property: mLabels
-    for managedObject in self.mLabels_property.propval {
+    for managedObject in self.mLabels {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s
-    for managedObject in self.mWiresP1s_property.propval {
+    for managedObject in self.mWiresP1s {
       objects.append (managedObject)
     }
   //--- To one property: mSymbol
-    if let managedObject = self.mSymbol_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbol {
+      objects.append (object)
     }
   //--- To one property: mNet
-    if let managedObject = self.mNet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNet {
+      objects.append (object)
     }
   //--- To one property: mNC
-    if let managedObject = self.mNC_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNC {
+      objects.append (object)
     }
   }
 
@@ -3254,22 +3254,6 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
   override var propval : PointInSchematic? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : PointInSchematic) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PointInSchematic) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

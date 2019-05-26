@@ -405,7 +405,7 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSymbolType_property.setProp (nil)
+    self.mSymbolType = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -461,8 +461,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSymbolType
-    if let managedObject = self.mSymbolType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbolType {
+      objects.append (object)
     }
   }
 
@@ -473,8 +473,8 @@ class DeviceSymbolInstanceInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mSymbolType
-    if let managedObject = self.mSymbolType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbolType {
+      objects.append (object)
     }
   }
 
@@ -1864,22 +1864,6 @@ final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceS
 
   override var propval : DeviceSymbolInstanceInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : DeviceSymbolInstanceInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceSymbolInstanceInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

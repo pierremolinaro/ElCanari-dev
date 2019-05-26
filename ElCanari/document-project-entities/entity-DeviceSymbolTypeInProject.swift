@@ -1369,22 +1369,6 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
   override var propval : DeviceSymbolTypeInProject? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : DeviceSymbolTypeInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceSymbolTypeInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

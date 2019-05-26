@@ -412,6 +412,8 @@
 		CF52031222771846002B12B7 /* ProjectDocument-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52031022771846002B12B7 /* ProjectDocument-utilities.swift */; };
 		CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */; };
 		CF52DF5221501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */; };
+		CF53200F229A948C0055136B /* extension-ProjectRoot-create-net.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */; };
+		CF532010229A948C0055136B /* extension-ProjectRoot-create-net.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */; };
 		CF53C46421C662C2001502F4 /* outlet-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* outlet-events.swift */; };
 		CF53C46521C662C2001502F4 /* outlet-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* outlet-events.swift */; };
 		CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */; };
@@ -1938,6 +1940,7 @@
 		CF52031022771846002B12B7 /* ProjectDocument-utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-utilities.swift"; sourceTree = "<group>"; };
 		CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-selectionDisplay.swift"; sourceTree = "<group>"; };
+		CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ProjectRoot-create-net.swift"; sourceTree = "<group>"; };
 		CF53C46321C662C2001502F4 /* outlet-events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "outlet-events.swift"; sourceTree = "<group>"; };
 		CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MergerRoot.swift"; sourceTree = "<group>"; };
 		CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
@@ -2792,6 +2795,7 @@
 		CF4EC7272284929500902FBB /* document — project — schematics */ = {
 			isa = PBXGroup;
 			children = (
+				CF53200E229A948C0055136B /* extension-ProjectRoot-create-net.swift */,
 				CF4EC731228494CF00902FBB /* extension-SheetInProject-add-label.swift */,
 				CF4EC7342284973400902FBB /* extension-SheetInProject-add-nc.swift */,
 				CF4EC73A2284A07B00902FBB /* extension-SheetInProject-add-point-to-wire.swift */,
@@ -4720,6 +4724,7 @@
 				CFF5EF0622269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
 				CFDA579D1BFA524A00EEF3CB /* entity-FontRoot.swift in Sources */,
+				CF53200F229A948C0055136B /* extension-ProjectRoot-create-net.swift in Sources */,
 				CFE85A9921A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,
 				CF4B3AC621D50FD3001217C6 /* extension-PackageObject.swift in Sources */,
 				CFD7338A2258B8D6009B2614 /* open-font-in-library.swift in Sources */,
@@ -4912,6 +4917,7 @@
 				CF5C4CED219F04D600EAC52A /* EBSwitch.swift in Sources */,
 				CF5C4CEE219F04D600EAC52A /* CanariSegment.swift in Sources */,
 				CF5C4CEF219F04D600EAC52A /* transient-MergerRoot-modelNames.swift in Sources */,
+				CF532010229A948C0055136B /* extension-ProjectRoot-create-net.swift in Sources */,
 				CF35A54B21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
 				CF4B39BA21D3F1C5001217C6 /* transient-PackageSlavePad-padIsTraversing.swift in Sources */,
 				CF5123F2222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift in Sources */,

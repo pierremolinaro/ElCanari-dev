@@ -1075,7 +1075,7 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.packageObjects_property.setProp ([])
+    self.packageObjects = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1189,19 +1189,19 @@ class PackageRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: packageObjects
-    for managedObject in self.packageObjects_property.propval {
+    for managedObject in self.packageObjects {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
-    for managedObject in self.packagePads_property.propval {
+    for managedObject in self.packagePads {
       objects.append (managedObject)
     }
   //--- To many property: packageSlavePads
-    for managedObject in self.packageSlavePads_property.propval {
+    for managedObject in self.packageSlavePads {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
-    for managedObject in self.packageZones_property.propval {
+    for managedObject in self.packageZones {
       objects.append (managedObject)
     }
   }
@@ -1213,19 +1213,19 @@ class PackageRoot : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: packageObjects
-    for managedObject in self.packageObjects_property.propval {
+    for managedObject in self.packageObjects {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
-    for managedObject in self.packagePads_property.propval {
+    for managedObject in self.packagePads {
       objects.append (managedObject)
     }
   //--- To many property: packageSlavePads
-    for managedObject in self.packageSlavePads_property.propval {
+    for managedObject in self.packageSlavePads {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
-    for managedObject in self.packageZones_property.propval {
+    for managedObject in self.packageZones {
       objects.append (managedObject)
     }
   }
@@ -4626,22 +4626,6 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
 
   override var propval : PackageRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : PackageRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

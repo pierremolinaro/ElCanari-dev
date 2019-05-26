@@ -3043,22 +3043,6 @@ final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, 
   override var propval : SymbolBezierCurve? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SymbolBezierCurve) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolBezierCurve) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

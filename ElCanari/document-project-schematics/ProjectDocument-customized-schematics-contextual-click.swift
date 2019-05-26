@@ -83,7 +83,16 @@ extension CustomizedProjectDocument {
   private func appendDisconnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     var canDisconnect = false
     for point in inPoints {
-      if (point.mNC != nil) || (point.mLabels.count > 0) || ((point.mWiresP1s.count + point.mWiresP2s.count) >= 2) {
+      if point.mNC != nil {
+        canDisconnect = true
+        break
+      }else if (point.mWiresP1s.count + point.mWiresP2s.count) >= 2 {
+        canDisconnect = true
+        break
+      }else if point.mLabels.count > 1 {
+        canDisconnect = true
+        break
+      }else if (point.mLabels.count == 1) && ((point.mWiresP1s.count + point.mWiresP2s.count) == 1) {
         canDisconnect = true
         break
       }
@@ -100,7 +109,7 @@ extension CustomizedProjectDocument {
 
   @objc private func disconnectAction (_ inSender : NSMenuItem) {
     if let points = inSender.representedObject as? [PointInSchematic], let selectedSheet = self.rootObject.mSelectedSheet {
-      selectedSheet.disconnect (points: points, newNetCreator: self.createNetWithAutomaticName)
+      selectedSheet.disconnect (points: points)
       self.updateSchematicsPointsAndNets ()
     }
   }
@@ -239,7 +248,7 @@ extension CustomizedProjectDocument {
       let possibleLabel = selectedSheet.addLabelInSchematics (
         at: canariAlignedMouseDownLocation,
         orientation: orientation,
-        newNetCreator: self.createNetWithAutomaticName
+        newNetCreator: self.rootObject.createNetWithAutomaticName
       )
       if let label = possibleLabel {
         self.mSchematicObjectsController.setSelection ([label])

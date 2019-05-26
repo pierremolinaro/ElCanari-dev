@@ -2295,22 +2295,6 @@ final class StoredObject_SymbolOval : ReadWriteObject_SymbolOval, EBSignatureObs
   override var propval : SymbolOval? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SymbolOval) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolOval) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

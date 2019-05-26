@@ -4887,22 +4887,6 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
   override var propval : ArtworkFileGenerationParameters? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : ArtworkFileGenerationParameters) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ArtworkFileGenerationParameters) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

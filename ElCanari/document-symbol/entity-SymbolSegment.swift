@@ -2295,22 +2295,6 @@ final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignat
   override var propval : SymbolSegment? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SymbolSegment) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolSegment) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

@@ -1,0 +1,61 @@
+//
+//  extension-ProjectRoot-create-net.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 26/05/2019.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension ProjectRoot {
+
+  //····················································································································
+  //  Find a new unique name
+  //····················································································································
+
+  internal func findUniqueNetName () -> String {
+    var newNetName = ""
+    var idx = 1
+    while newNetName == "" {
+      let tentativeNetName = "$\(idx)"
+      var ok = true
+      for netClass in self.mNetClasses {
+        for net in netClass.mNets {
+          if net.mNetName == tentativeNetName {
+            ok = false
+          }
+        }
+      }
+      if ok {
+        newNetName = tentativeNetName
+      }else{
+        idx += 1
+      }
+    }
+  //---
+    return newNetName
+  }
+
+  //····················································································································
+  // Create a new net with automatic name
+  //····················································································································
+
+  internal func createNetWithAutomaticName () -> NetInProject {
+  //--- Find a new net name
+    let newNetName = self.findUniqueNetName ()
+  //--- Create new
+    let newNet = NetInProject (self.ebUndoManager)
+    newNet.mNetName = newNetName
+    newNet.mNetClass = self.mNetClasses [0]
+  //---
+    return newNet
+  }
+
+
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

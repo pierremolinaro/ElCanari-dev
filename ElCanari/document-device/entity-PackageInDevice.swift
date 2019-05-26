@@ -759,7 +759,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mMasterPads_property.setProp ([])
+    self.mMasterPads = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -769,7 +769,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mRoot_property.setProp (nil)
+    self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -853,12 +853,12 @@ class PackageInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads_property.propval {
+    for managedObject in self.mMasterPads {
       objects.append (managedObject)
     }
   //--- To one property: mRoot
-    if let managedObject = self.mRoot_property.propval {
-      objects.append (managedObject)
+    if let object = self.mRoot {
+      objects.append (object)
     }
   }
 
@@ -869,12 +869,12 @@ class PackageInDevice : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads_property.propval {
+    for managedObject in self.mMasterPads {
       objects.append (managedObject)
     }
   //--- To one property: mRoot
-    if let managedObject = self.mRoot_property.propval {
-      objects.append (managedObject)
+    if let object = self.mRoot {
+      objects.append (object)
     }
   }
 
@@ -3234,22 +3234,6 @@ final class StoredObject_PackageInDevice : ReadWriteObject_PackageInDevice, EBSi
 
   override var propval : PackageInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : PackageInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

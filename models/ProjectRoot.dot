@@ -3,7 +3,7 @@ digraph G {
   node [shape=record fontname=helvetica style=rounded] ;
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicsSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicObject[label="<SchematicObject>SchematicObject|<mSheet>SheetInProject? mSheet"] ;
-  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicObject] mObjects|<mPoints>[PointInSchematic] mPoints|String mSheetTitle"] ;
+  SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicObject] mObjects|<mPoints>[PointInSchematic] mPoints|<mRoot>ProjectRoot? mRoot|String mSheetTitle"] ;
   PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematics] mWiresP1s|<mWiresP2s>[WireInSchematics] mWiresP2s|Int mX|Int mY"] ;
   WireInSchematics[label="<WireInSchematics>WireInSchematics|<mP1>PointInSchematic? mP1|<mP2>PointInSchematic? mP2|<mSheet>SheetInProject? mSheet"] ;
   NCInSchematic[label="<NCInSchematic>NCInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
@@ -26,7 +26,7 @@ digraph G {
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mNetClasses -> NetClassInProject:NetClassInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mSelectedSheet -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=onormal] ;
-  ProjectRoot:mSheets -> SheetInProject:SheetInProject [dir=both arrowtail=none arrowhead=vee] ;
+  ProjectRoot:mSheets -> SheetInProject:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
   ProjectRoot:selectedSheetObjects -> SchematicObject:SchematicObject [dir=both arrowtail=none arrowhead=vee] ;
   SheetInProject:mObjects -> SchematicObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
   SheetInProject:mPoints -> PointInSchematic:PointInSchematic [dir=both arrowtail=none arrowhead=vee] ;

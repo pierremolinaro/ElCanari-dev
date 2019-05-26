@@ -14,58 +14,67 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func disconnect (points inPoints : [PointInSchematic], newNetCreator inNewNetCreator : () -> NetInProject) {
+  internal func disconnect (points inPoints : [PointInSchematic]) {
   //--- Perform disconnection
     let pointSet = self.performDisconnection (points: inPoints)
-  //--- Find subnets
-    let subnets : [Set <PointInSchematic>] = self.buildSubnetsFrom (pointSet)
-    // Swift.print ("subnets \(subnets.count)")
-  //--- Classify subnets
-    var subnetsWithSymbolPin = [Set <PointInSchematic>] ()
-    var subnetsWithLabelsNoSymbolPin = [Set <PointInSchematic>] ()
-    var subnetsWithNoLabelNoSymbolPin = [Set <PointInSchematic>] ()
-    for subnet in subnets {
-      let symbolArray = self.buildSymbolArrayFromSubnet (subnet)
-      if symbolArray.count > 0 {
-        subnetsWithSymbolPin.append (subnet)
-      }else{
-        let labelArray = self.buildLabelArrayFromSubnet (subnet)
-        if labelArray.count > 0 {
-          subnetsWithLabelsNoSymbolPin.append (subnet)
+  //--- Update connections
+    self.updateConnections (pointSet: pointSet)
+  }
+
+  //····················································································································
+
+  internal func updateConnections (pointSet inPointSet : Set <PointInSchematic>) {
+    if let root = self.mRoot {
+    //--- Find subnets
+      let subnets : [Set <PointInSchematic>] = self.buildSubnetsFrom (inPointSet)
+      // Swift.print ("subnets \(subnets.count)")
+    //--- Classify subnets
+      var subnetsWithSymbolPin = [Set <PointInSchematic>] ()
+      var subnetsWithLabelsNoSymbolPin = [Set <PointInSchematic>] ()
+      var subnetsWithNoLabelNoSymbolPin = [Set <PointInSchematic>] ()
+      for subnet in subnets {
+        let symbolArray = self.buildSymbolArrayFromSubnet (subnet)
+        if symbolArray.count > 0 {
+          subnetsWithSymbolPin.append (subnet)
         }else{
-          subnetsWithNoLabelNoSymbolPin.append (subnet)
+          let labelArray = self.buildLabelArrayFromSubnet (subnet)
+          if labelArray.count > 0 {
+            subnetsWithLabelsNoSymbolPin.append (subnet)
+          }else{
+            subnetsWithNoLabelNoSymbolPin.append (subnet)
+          }
         }
       }
-    }
-    // Swift.print ("with pin \(subnetsWithSymbolPin.count), with labels \(subnetsWithLabelsNoSymbolPin.count), others \(subnetsWithNoLabelNoSymbolPin.count)")
-  //--- Reassign nets
-    var usedNets = Set <NetInProject> ()
-    for subnet in subnetsWithSymbolPin {
-      var net = subnet.first!.mNet!
-      if usedNets.contains (net) {
-        net = inNewNetCreator ()
-      }else{
-        usedNets.insert (net)
+      // Swift.print ("with pin \(subnetsWithSymbolPin.count), with labels \(subnetsWithLabelsNoSymbolPin.count), others \(subnetsWithNoLabelNoSymbolPin.count)")
+    //--- Reassign nets
+      var usedNets = Set <NetInProject> ()
+      for subnet in subnetsWithSymbolPin {
+        var net = subnet.first!.mNet!
+        if usedNets.contains (net) {
+          net = root.createNetWithAutomaticName ()
+        }else{
+          usedNets.insert (net)
+        }
+        for point in subnet {
+          point.mNet = net
+        }
       }
-      for point in subnet {
-        point.mNet = net
+      for subnet in subnetsWithLabelsNoSymbolPin {
+        var net = subnet.first!.mNet!
+        if usedNets.contains (net) {
+          net = root.createNetWithAutomaticName ()
+        }else{
+          usedNets.insert (net)
+        }
+        for point in subnet {
+          point.mNet = net
+        }
       }
-    }
-    for subnet in subnetsWithLabelsNoSymbolPin {
-      var net = subnet.first!.mNet!
-      if usedNets.contains (net) {
-        net = inNewNetCreator ()
-      }else{
-        usedNets.insert (net)
-      }
-      for point in subnet {
-        point.mNet = net
-      }
-    }
-  //--- Remove any net for subnets without pin, without label
-    for subnet in subnetsWithNoLabelNoSymbolPin {
-      for point in subnet {
-        point.mNet = nil
+    //--- Remove any net for subnets without pin, without label
+      for subnet in subnetsWithNoLabelNoSymbolPin {
+        for point in subnet {
+          point.mNet = nil
+        }
       }
     }
   }

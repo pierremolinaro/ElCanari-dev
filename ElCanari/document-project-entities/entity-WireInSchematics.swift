@@ -331,8 +331,8 @@ class WireInSchematics : SchematicObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mP1_property.setProp (nil)
-    self.mP2_property.setProp (nil)
+    self.mP1 = nil
+    self.mP2 = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -391,12 +391,12 @@ class WireInSchematics : SchematicObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mP1
-    if let managedObject = self.mP1_property.propval {
-      objects.append (managedObject)
+    if let object = self.mP1 {
+      objects.append (object)
     }
   //--- To one property: mP2
-    if let managedObject = self.mP2_property.propval {
-      objects.append (managedObject)
+    if let object = self.mP2 {
+      objects.append (object)
     }
   }
 
@@ -407,12 +407,12 @@ class WireInSchematics : SchematicObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mP1
-    if let managedObject = self.mP1_property.propval {
-      objects.append (managedObject)
+    if let object = self.mP1 {
+      objects.append (object)
     }
   //--- To one property: mP2
-    if let managedObject = self.mP2_property.propval {
-      objects.append (managedObject)
+    if let object = self.mP2 {
+      objects.append (object)
     }
   }
 
@@ -1542,22 +1542,6 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 
   override var propval : WireInSchematics? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : WireInSchematics) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : WireInSchematics) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

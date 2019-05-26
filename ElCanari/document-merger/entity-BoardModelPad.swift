@@ -1885,22 +1885,6 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
   override var propval : BoardModelPad? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : BoardModelPad) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : BoardModelPad) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

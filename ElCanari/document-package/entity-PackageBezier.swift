@@ -4422,22 +4422,6 @@ final class StoredObject_PackageBezier : ReadWriteObject_PackageBezier, EBSignat
   override var propval : PackageBezier? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageBezier) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageBezier) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

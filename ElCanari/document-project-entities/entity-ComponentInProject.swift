@@ -754,7 +754,7 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mSymbols_property.setProp ([])
+    self.mSymbols = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -764,8 +764,8 @@ class ComponentInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mDevice_property.setProp (nil)
-    self.mSelectedPackage_property.setProp (nil)
+    self.mDevice = nil
+    self.mSelectedPackage = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -852,16 +852,16 @@ class ComponentInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols_property.propval {
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To one property: mDevice
-    if let managedObject = self.mDevice_property.propval {
-      objects.append (managedObject)
+    if let object = self.mDevice {
+      objects.append (object)
     }
   //--- To one property: mSelectedPackage
-    if let managedObject = self.mSelectedPackage_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSelectedPackage {
+      objects.append (object)
     }
   }
 
@@ -872,16 +872,16 @@ class ComponentInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mSymbols
-    for managedObject in self.mSymbols_property.propval {
+    for managedObject in self.mSymbols {
       objects.append (managedObject)
     }
   //--- To one property: mDevice
-    if let managedObject = self.mDevice_property.propval {
-      objects.append (managedObject)
+    if let object = self.mDevice {
+      objects.append (object)
     }
   //--- To one property: mSelectedPackage
-    if let managedObject = self.mSelectedPackage_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSelectedPackage {
+      objects.append (object)
     }
   }
 
@@ -2961,22 +2961,6 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
 
   override var propval : ComponentInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : ComponentInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ComponentInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

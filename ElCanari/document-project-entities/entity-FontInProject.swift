@@ -1749,22 +1749,6 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   override var propval : FontInProject? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : FontInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : FontInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

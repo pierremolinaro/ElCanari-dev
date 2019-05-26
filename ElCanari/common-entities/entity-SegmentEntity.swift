@@ -1713,22 +1713,6 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
   override var propval : SegmentEntity? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SegmentEntity) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SegmentEntity) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

@@ -385,7 +385,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mSlavePads_property.setProp ([])
+    self.mSlavePads = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -475,7 +475,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mSlavePads
-    for managedObject in self.mSlavePads_property.propval {
+    for managedObject in self.mSlavePads {
       objects.append (managedObject)
     }
   }
@@ -487,7 +487,7 @@ class DeviceMasterPadInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mSlavePads
-    for managedObject in self.mSlavePads_property.propval {
+    for managedObject in self.mSlavePads {
       objects.append (managedObject)
     }
   }
@@ -2320,22 +2320,6 @@ final class StoredObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMaster
 
   override var propval : DeviceMasterPadInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : DeviceMasterPadInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceMasterPadInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

@@ -573,8 +573,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.myModel_property.setProp (nil)
-    self.myRoot_property.setProp (nil)
+    self.myModel = nil
+    self.myRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -645,12 +645,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: myModel
-    if let managedObject = self.myModel_property.propval {
-      objects.append (managedObject)
+    if let object = self.myModel {
+      objects.append (object)
     }
   //--- To one property: myRoot
-    if let managedObject = self.myRoot_property.propval {
-      objects.append (managedObject)
+    if let object = self.myRoot {
+      objects.append (object)
     }
   }
 
@@ -661,12 +661,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: myModel
-    if let managedObject = self.myModel_property.propval {
-      objects.append (managedObject)
+    if let object = self.myModel {
+      objects.append (object)
     }
   //--- To one property: myRoot
-    if let managedObject = self.myRoot_property.propval {
-      objects.append (managedObject)
+    if let object = self.myRoot {
+      objects.append (object)
     }
   }
 
@@ -2447,22 +2447,6 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
 
   override var propval : MergerBoardInstance? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : MergerBoardInstance) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : MergerBoardInstance) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

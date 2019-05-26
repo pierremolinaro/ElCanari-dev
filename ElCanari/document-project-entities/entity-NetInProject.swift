@@ -310,7 +310,7 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPoints_property.setProp ([])
+    self.mPoints = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -320,7 +320,7 @@ class NetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mNetClass_property.setProp (nil)
+    self.mNetClass = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -384,12 +384,12 @@ class NetInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
     }
   //--- To one property: mNetClass
-    if let managedObject = self.mNetClass_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNetClass {
+      objects.append (object)
     }
   }
 
@@ -400,12 +400,12 @@ class NetInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
     }
   //--- To one property: mNetClass
-    if let managedObject = self.mNetClass_property.propval {
-      objects.append (managedObject)
+    if let object = self.mNetClass {
+      objects.append (object)
     }
   }
 
@@ -1578,22 +1578,6 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
 
   override var propval : NetInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : NetInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : NetInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

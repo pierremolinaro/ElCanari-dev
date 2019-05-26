@@ -510,7 +510,7 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.fileGenerationParameterArray_property.setProp ([])
+    self.fileGenerationParameterArray = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -612,7 +612,7 @@ class ArtworkRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: fileGenerationParameterArray
-    for managedObject in self.fileGenerationParameterArray_property.propval {
+    for managedObject in self.fileGenerationParameterArray {
       objects.append (managedObject)
     }
   }
@@ -624,7 +624,7 @@ class ArtworkRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: fileGenerationParameterArray
-    for managedObject in self.fileGenerationParameterArray_property.propval {
+    for managedObject in self.fileGenerationParameterArray {
       objects.append (managedObject)
     }
   }
@@ -2866,22 +2866,6 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 
   override var propval : ArtworkRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : ArtworkRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ArtworkRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

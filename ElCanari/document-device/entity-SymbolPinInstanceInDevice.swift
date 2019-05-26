@@ -550,9 +550,9 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSymbolInstance_property.setProp (nil)
-    self.mType_property.setProp (nil)
-    self.mPadProxy_property.setProp (nil)
+    self.mSymbolInstance = nil
+    self.mType = nil
+    self.mPadProxy = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -626,16 +626,16 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSymbolInstance
-    if let managedObject = self.mSymbolInstance_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbolInstance {
+      objects.append (object)
     }
   //--- To one property: mType
-    if let managedObject = self.mType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mType {
+      objects.append (object)
     }
   //--- To one property: mPadProxy
-    if let managedObject = self.mPadProxy_property.propval {
-      objects.append (managedObject)
+    if let object = self.mPadProxy {
+      objects.append (object)
     }
   }
 
@@ -646,16 +646,16 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mSymbolInstance
-    if let managedObject = self.mSymbolInstance_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSymbolInstance {
+      objects.append (object)
     }
   //--- To one property: mType
-    if let managedObject = self.mType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mType {
+      objects.append (object)
     }
   //--- To one property: mPadProxy
-    if let managedObject = self.mPadProxy_property.propval {
-      objects.append (managedObject)
+    if let object = self.mPadProxy {
+      objects.append (object)
     }
   }
 
@@ -2043,22 +2043,6 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
 
   override var propval : SymbolPinInstanceInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SymbolPinInstanceInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolPinInstanceInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

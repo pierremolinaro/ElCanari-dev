@@ -2057,22 +2057,6 @@ final class StoredObject_DeviceSlavePadInProject : ReadWriteObject_DeviceSlavePa
   override var propval : DeviceSlavePadInProject? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : DeviceSlavePadInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceSlavePadInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

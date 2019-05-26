@@ -1402,22 +1402,6 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
   override var propval : DeviceDocumentation? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : DeviceDocumentation) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceDocumentation) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

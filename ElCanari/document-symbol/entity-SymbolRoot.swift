@@ -644,7 +644,7 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.symbolObjects_property.setProp ([])
+    self.symbolObjects = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -742,11 +742,11 @@ class SymbolRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: symbolObjects
-    for managedObject in self.symbolObjects_property.propval {
+    for managedObject in self.symbolObjects {
       objects.append (managedObject)
     }
   //--- To many property: symbolPins
-    for managedObject in self.symbolPins_property.propval {
+    for managedObject in self.symbolPins {
       objects.append (managedObject)
     }
   }
@@ -758,11 +758,11 @@ class SymbolRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: symbolObjects
-    for managedObject in self.symbolObjects_property.propval {
+    for managedObject in self.symbolObjects {
       objects.append (managedObject)
     }
   //--- To many property: symbolPins
-    for managedObject in self.symbolPins_property.propval {
+    for managedObject in self.symbolPins {
       objects.append (managedObject)
     }
   }
@@ -3169,22 +3169,6 @@ final class StoredObject_SymbolRoot : ReadWriteObject_SymbolRoot, EBSignatureObs
 
   override var propval : SymbolRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SymbolRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

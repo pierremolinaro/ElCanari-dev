@@ -575,7 +575,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mPinInstances_property.setProp ([])
+    self.mPinInstances = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -585,7 +585,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mType_property.setProp (nil)
+    self.mType = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -657,12 +657,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPinInstances
-    for managedObject in self.mPinInstances_property.propval {
+    for managedObject in self.mPinInstances {
       objects.append (managedObject)
     }
   //--- To one property: mType
-    if let managedObject = self.mType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mType {
+      objects.append (object)
     }
   }
 
@@ -673,12 +673,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mPinInstances
-    for managedObject in self.mPinInstances_property.propval {
+    for managedObject in self.mPinInstances {
       objects.append (managedObject)
     }
   //--- To one property: mType
-    if let managedObject = self.mType_property.propval {
-      objects.append (managedObject)
+    if let object = self.mType {
+      objects.append (object)
     }
   }
 
@@ -2512,22 +2512,6 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 
   override var propval : SymbolInstanceInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SymbolInstanceInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SymbolInstanceInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

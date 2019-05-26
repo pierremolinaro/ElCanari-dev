@@ -3333,22 +3333,6 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
   override var propval : DevicePinInProject? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : DevicePinInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DevicePinInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

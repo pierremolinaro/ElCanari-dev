@@ -774,7 +774,7 @@ class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mNets_property.setProp ([])
+    self.mNets = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -864,7 +864,7 @@ class NetClassInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mNets
-    for managedObject in self.mNets_property.propval {
+    for managedObject in self.mNets {
       objects.append (managedObject)
     }
   }
@@ -876,7 +876,7 @@ class NetClassInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mNets
-    for managedObject in self.mNets_property.propval {
+    for managedObject in self.mNets {
       objects.append (managedObject)
     }
   }
@@ -3483,22 +3483,6 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
   override var propval : NetClassInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : NetClassInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : NetClassInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

@@ -149,8 +149,8 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   internal func updateSchematicsPointsAndNets () {
     var errorList = [String] ()
     self.rootObject.mSelectedSheet?.removeUnusedSchematicsPoints (&errorList)
-    self.removeUnusedNets ()
     self.removeUnusedWires (&errorList)
+    self.removeUnusedNets ()
     if errorList.count > 0,
        let dialog = self.mInconsistentSchematicErrorPanel,
        let window = self.windowForSheet {
@@ -227,7 +227,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
         self.performAddCommentDragOperation (draggingLocationInDestinationView)
         ok = true
       }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematic]) {
-        let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.createNetWithAutomaticName)
+        let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.rootObject.createNetWithAutomaticName)
         if let newWire = possibleNewWire {
           self.mSchematicObjectsController.setSelection ([newWire])
           ok = true

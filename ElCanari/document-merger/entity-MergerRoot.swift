@@ -1307,8 +1307,8 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.boardModels_property.setProp ([])
-    self.boardInstances_property.setProp ([])
+    self.boardModels = []
+    self.boardInstances = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1318,7 +1318,7 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.artwork_property.setProp (nil)
+    self.artwork = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1474,16 +1474,16 @@ class MergerRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: boardModels
-    for managedObject in self.boardModels_property.propval {
+    for managedObject in self.boardModels {
       objects.append (managedObject)
     }
   //--- To many property: boardInstances
-    for managedObject in self.boardInstances_property.propval {
+    for managedObject in self.boardInstances {
       objects.append (managedObject)
     }
   //--- To one property: artwork
-    if let managedObject = self.artwork_property.propval {
-      objects.append (managedObject)
+    if let object = self.artwork {
+      objects.append (object)
     }
   }
 
@@ -1494,16 +1494,16 @@ class MergerRoot : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: boardModels
-    for managedObject in self.boardModels_property.propval {
+    for managedObject in self.boardModels {
       objects.append (managedObject)
     }
   //--- To many property: boardInstances
-    for managedObject in self.boardInstances_property.propval {
+    for managedObject in self.boardInstances {
       objects.append (managedObject)
     }
   //--- To one property: artwork
-    if let managedObject = self.artwork_property.propval {
-      objects.append (managedObject)
+    if let object = self.artwork {
+      objects.append (object)
     }
   }
 
@@ -5722,22 +5722,6 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
   override var propval : MergerRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : MergerRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : MergerRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

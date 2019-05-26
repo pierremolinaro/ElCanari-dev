@@ -289,7 +289,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mSheet_property.setProp (nil)
+    self.mSheet = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -337,8 +337,8 @@ class SchematicObject : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSheet
-    if let managedObject = self.mSheet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSheet {
+      objects.append (object)
     }
   }
 
@@ -349,8 +349,8 @@ class SchematicObject : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mSheet
-    if let managedObject = self.mSheet_property.propval {
-      objects.append (managedObject)
+    if let object = self.mSheet {
+      objects.append (object)
     }
   }
 
@@ -1738,22 +1738,6 @@ final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSi
 
   override var propval : SchematicObject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SchematicObject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SchematicObject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

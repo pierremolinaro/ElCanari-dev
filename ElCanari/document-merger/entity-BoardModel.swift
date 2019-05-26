@@ -4232,26 +4232,26 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.frontLegendLines_property.setProp ([])
-    self.backLegendLines_property.setProp ([])
-    self.frontLegendTexts_property.setProp ([])
-    self.frontLayoutTexts_property.setProp ([])
-    self.backLegendTexts_property.setProp ([])
-    self.backLayoutTexts_property.setProp ([])
-    self.internalBoardsLimits_property.setProp ([])
-    self.drills_property.setProp ([])
-    self.vias_property.setProp ([])
-    self.frontPads_property.setProp ([])
-    self.backPads_property.setProp ([])
-    self.backComponentNames_property.setProp ([])
-    self.frontComponentNames_property.setProp ([])
-    self.frontComponentValues_property.setProp ([])
-    self.backComponentValues_property.setProp ([])
-    self.backTracks_property.setProp ([])
-    self.frontTracks_property.setProp ([])
-    self.frontPackages_property.setProp ([])
-    self.backPackages_property.setProp ([])
-    self.myInstances_property.setProp ([])
+    self.frontLegendLines = []
+    self.backLegendLines = []
+    self.frontLegendTexts = []
+    self.frontLayoutTexts = []
+    self.backLegendTexts = []
+    self.backLayoutTexts = []
+    self.internalBoardsLimits = []
+    self.drills = []
+    self.vias = []
+    self.frontPads = []
+    self.backPads = []
+    self.backComponentNames = []
+    self.frontComponentNames = []
+    self.frontComponentValues = []
+    self.backComponentValues = []
+    self.backTracks = []
+    self.frontTracks = []
+    self.frontPackages = []
+    self.backPackages = []
+    self.myInstances = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -4573,83 +4573,83 @@ class BoardModel : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: frontLegendLines
-    for managedObject in self.frontLegendLines_property.propval {
+    for managedObject in self.frontLegendLines {
       objects.append (managedObject)
     }
   //--- To many property: backLegendLines
-    for managedObject in self.backLegendLines_property.propval {
+    for managedObject in self.backLegendLines {
       objects.append (managedObject)
     }
   //--- To many property: frontLegendTexts
-    for managedObject in self.frontLegendTexts_property.propval {
+    for managedObject in self.frontLegendTexts {
       objects.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
-    for managedObject in self.frontLayoutTexts_property.propval {
+    for managedObject in self.frontLayoutTexts {
       objects.append (managedObject)
     }
   //--- To many property: backLegendTexts
-    for managedObject in self.backLegendTexts_property.propval {
+    for managedObject in self.backLegendTexts {
       objects.append (managedObject)
     }
   //--- To many property: backLayoutTexts
-    for managedObject in self.backLayoutTexts_property.propval {
+    for managedObject in self.backLayoutTexts {
       objects.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
-    for managedObject in self.internalBoardsLimits_property.propval {
+    for managedObject in self.internalBoardsLimits {
       objects.append (managedObject)
     }
   //--- To many property: drills
-    for managedObject in self.drills_property.propval {
+    for managedObject in self.drills {
       objects.append (managedObject)
     }
   //--- To many property: vias
-    for managedObject in self.vias_property.propval {
+    for managedObject in self.vias {
       objects.append (managedObject)
     }
   //--- To many property: frontPads
-    for managedObject in self.frontPads_property.propval {
+    for managedObject in self.frontPads {
       objects.append (managedObject)
     }
   //--- To many property: backPads
-    for managedObject in self.backPads_property.propval {
+    for managedObject in self.backPads {
       objects.append (managedObject)
     }
   //--- To many property: backComponentNames
-    for managedObject in self.backComponentNames_property.propval {
+    for managedObject in self.backComponentNames {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentNames
-    for managedObject in self.frontComponentNames_property.propval {
+    for managedObject in self.frontComponentNames {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentValues
-    for managedObject in self.frontComponentValues_property.propval {
+    for managedObject in self.frontComponentValues {
       objects.append (managedObject)
     }
   //--- To many property: backComponentValues
-    for managedObject in self.backComponentValues_property.propval {
+    for managedObject in self.backComponentValues {
       objects.append (managedObject)
     }
   //--- To many property: backTracks
-    for managedObject in self.backTracks_property.propval {
+    for managedObject in self.backTracks {
       objects.append (managedObject)
     }
   //--- To many property: frontTracks
-    for managedObject in self.frontTracks_property.propval {
+    for managedObject in self.frontTracks {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
-    for managedObject in self.frontPackages_property.propval {
+    for managedObject in self.frontPackages {
       objects.append (managedObject)
     }
   //--- To many property: backPackages
-    for managedObject in self.backPackages_property.propval {
+    for managedObject in self.backPackages {
       objects.append (managedObject)
     }
   //--- To many property: myInstances
-    for managedObject in self.myInstances_property.propval {
+    for managedObject in self.myInstances {
       objects.append (managedObject)
     }
   }
@@ -4661,83 +4661,83 @@ class BoardModel : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: frontLegendLines
-    for managedObject in self.frontLegendLines_property.propval {
+    for managedObject in self.frontLegendLines {
       objects.append (managedObject)
     }
   //--- To many property: backLegendLines
-    for managedObject in self.backLegendLines_property.propval {
+    for managedObject in self.backLegendLines {
       objects.append (managedObject)
     }
   //--- To many property: frontLegendTexts
-    for managedObject in self.frontLegendTexts_property.propval {
+    for managedObject in self.frontLegendTexts {
       objects.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
-    for managedObject in self.frontLayoutTexts_property.propval {
+    for managedObject in self.frontLayoutTexts {
       objects.append (managedObject)
     }
   //--- To many property: backLegendTexts
-    for managedObject in self.backLegendTexts_property.propval {
+    for managedObject in self.backLegendTexts {
       objects.append (managedObject)
     }
   //--- To many property: backLayoutTexts
-    for managedObject in self.backLayoutTexts_property.propval {
+    for managedObject in self.backLayoutTexts {
       objects.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
-    for managedObject in self.internalBoardsLimits_property.propval {
+    for managedObject in self.internalBoardsLimits {
       objects.append (managedObject)
     }
   //--- To many property: drills
-    for managedObject in self.drills_property.propval {
+    for managedObject in self.drills {
       objects.append (managedObject)
     }
   //--- To many property: vias
-    for managedObject in self.vias_property.propval {
+    for managedObject in self.vias {
       objects.append (managedObject)
     }
   //--- To many property: frontPads
-    for managedObject in self.frontPads_property.propval {
+    for managedObject in self.frontPads {
       objects.append (managedObject)
     }
   //--- To many property: backPads
-    for managedObject in self.backPads_property.propval {
+    for managedObject in self.backPads {
       objects.append (managedObject)
     }
   //--- To many property: backComponentNames
-    for managedObject in self.backComponentNames_property.propval {
+    for managedObject in self.backComponentNames {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentNames
-    for managedObject in self.frontComponentNames_property.propval {
+    for managedObject in self.frontComponentNames {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentValues
-    for managedObject in self.frontComponentValues_property.propval {
+    for managedObject in self.frontComponentValues {
       objects.append (managedObject)
     }
   //--- To many property: backComponentValues
-    for managedObject in self.backComponentValues_property.propval {
+    for managedObject in self.backComponentValues {
       objects.append (managedObject)
     }
   //--- To many property: backTracks
-    for managedObject in self.backTracks_property.propval {
+    for managedObject in self.backTracks {
       objects.append (managedObject)
     }
   //--- To many property: frontTracks
-    for managedObject in self.frontTracks_property.propval {
+    for managedObject in self.frontTracks {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
-    for managedObject in self.frontPackages_property.propval {
+    for managedObject in self.frontPackages {
       objects.append (managedObject)
     }
   //--- To many property: backPackages
-    for managedObject in self.backPackages_property.propval {
+    for managedObject in self.backPackages {
       objects.append (managedObject)
     }
   //--- To many property: myInstances
-    for managedObject in self.myInstances_property.propval {
+    for managedObject in self.myInstances {
       objects.append (managedObject)
     }
   }
@@ -13027,22 +13027,6 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
 
   override var propval : BoardModel? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : BoardModel) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : BoardModel) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

@@ -1914,22 +1914,6 @@ final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFon
   override var propval : SegmentForFontCharacter? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : SegmentForFontCharacter) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SegmentForFontCharacter) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

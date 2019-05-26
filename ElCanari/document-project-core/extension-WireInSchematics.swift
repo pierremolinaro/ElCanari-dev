@@ -55,56 +55,16 @@ extension WireInSchematics {
   }
 
   //····················································································································
-  //  ROTATE 90 CLOCKWISE
-  //····················································································································
-
-//  override func rotate90Clockwise () {
-//    switch self.mOrientation {
-//    case .rotation0 :
-//      self.mOrientation = .rotation270
-//    case .rotation90 :
-//      self.mOrientation = .rotation0
-//    case .rotation180 :
-//      self.mOrientation = .rotation90
-//    case .rotation270 :
-//      self.mOrientation = .rotation180
-//    }
-//  }
-
-  //····················································································································
-
-//  override func canRotate90Clockwise () -> Bool {
-//    return true
-//  }
-
-  //····················································································································
-  //  ROTATE 90 COUNTER CLOCKWISE
-  //····················································································································
-
-//  override func rotate90CounterClockwise () {
-//    switch self.mOrientation {
-//    case .rotation0 :
-//      self.mOrientation = .rotation90
-//    case .rotation90 :
-//      self.mOrientation = .rotation180
-//    case .rotation180 :
-//      self.mOrientation = .rotation270
-//    case .rotation270 :
-//      self.mOrientation = .rotation0
-//    }
-//  }
-
-  //····················································································································
-
-//  override func canRotate90CounterClockwise () -> Bool {
-//    return true
-//  }
-
-  //····················································································································
 
   override func operationBeforeRemoving () {
+    var pointSet = Set <PointInSchematic> ()
+    pointSet.insert (self.mP1!)
+    pointSet.insert (self.mP2!)
     self.mP1 = nil // Detach from point
     self.mP2 = nil // Detach from point
+    if let currentSheet = self.mSheet, let rootObject = currentSheet.mRoot {
+      currentSheet.updateConnections (pointSet : pointSet)
+    }
   }
 
   //····················································································································

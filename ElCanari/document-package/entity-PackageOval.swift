@@ -2986,22 +2986,6 @@ final class StoredObject_PackageOval : ReadWriteObject_PackageOval, EBSignatureO
   override var propval : PackageOval? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageOval) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageOval) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

@@ -3891,22 +3891,6 @@ final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObs
   override var propval : PackageArc? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageArc) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageArc) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 

@@ -1462,11 +1462,11 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mDocs_property.setProp ([])
-    self.mSymbolInstances_property.setProp ([])
-    self.mPackages_property.setProp ([])
-    self.mSymbolTypes_property.setProp ([])
-    self.mPadProxies_property.setProp ([])
+    self.mDocs = []
+    self.mSymbolInstances = []
+    self.mPackages = []
+    self.mSymbolTypes = []
+    self.mPadProxies = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1632,23 +1632,23 @@ class DeviceRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mDocs
-    for managedObject in self.mDocs_property.propval {
+    for managedObject in self.mDocs {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolInstances
-    for managedObject in self.mSymbolInstances_property.propval {
+    for managedObject in self.mSymbolInstances {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages_property.propval {
+    for managedObject in self.mPackages {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolTypes
-    for managedObject in self.mSymbolTypes_property.propval {
+    for managedObject in self.mSymbolTypes {
       objects.append (managedObject)
     }
   //--- To many property: mPadProxies
-    for managedObject in self.mPadProxies_property.propval {
+    for managedObject in self.mPadProxies {
       objects.append (managedObject)
     }
   }
@@ -1660,23 +1660,23 @@ class DeviceRoot : EBGraphicManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mDocs
-    for managedObject in self.mDocs_property.propval {
+    for managedObject in self.mDocs {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolInstances
-    for managedObject in self.mSymbolInstances_property.propval {
+    for managedObject in self.mSymbolInstances {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject in self.mPackages_property.propval {
+    for managedObject in self.mPackages {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolTypes
-    for managedObject in self.mSymbolTypes_property.propval {
+    for managedObject in self.mSymbolTypes {
       objects.append (managedObject)
     }
   //--- To many property: mPadProxies
-    for managedObject in self.mPadProxies_property.propval {
+    for managedObject in self.mPadProxies {
       objects.append (managedObject)
     }
   }
@@ -5908,22 +5908,6 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
 
   override var propval : DeviceRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : DeviceRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : DeviceRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

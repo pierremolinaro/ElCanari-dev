@@ -728,7 +728,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.characters_property.setProp ([])
+    self.characters = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -808,7 +808,7 @@ class FontRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: characters
-    for managedObject in self.characters_property.propval {
+    for managedObject in self.characters {
       objects.append (managedObject)
     }
   }
@@ -3175,22 +3175,6 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
 
   override var propval : FontRoot? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : FontRoot) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : FontRoot) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

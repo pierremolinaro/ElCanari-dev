@@ -386,7 +386,7 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mPinInstance_property.setProp (nil)
+    self.mPinInstance = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -446,8 +446,8 @@ class PadProxyInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mPinInstance
-    if let managedObject = self.mPinInstance_property.propval {
-      objects.append (managedObject)
+    if let object = self.mPinInstance {
+      objects.append (object)
     }
   }
 
@@ -458,8 +458,8 @@ class PadProxyInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mPinInstance
-    if let managedObject = self.mPinInstance_property.propval {
-      objects.append (managedObject)
+    if let object = self.mPinInstance {
+      objects.append (object)
     }
   }
 
@@ -1862,22 +1862,6 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   override var propval : PadProxyInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : PadProxyInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PadProxyInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

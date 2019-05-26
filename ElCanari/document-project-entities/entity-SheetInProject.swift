@@ -101,6 +101,44 @@ class SheetInProject : EBManagedObject,
   var mSheetTitle_property_selection : EBSelection <String> { return self.mSheetTitle_property.prop }
 
   //····················································································································
+  //   To one property: mRoot
+  //····················································································································
+
+   let mRoot_property = StoredObject_ProjectRoot ()
+
+  //····················································································································
+
+  var mRoot_property_selection : EBSelection <ProjectRoot?> {
+    return .single (self.mRoot_property.propval)
+  }
+
+  //····················································································································
+
+  var mRoot : ProjectRoot? {
+    get {
+      return self.mRoot_property.propval
+    }
+    set {
+      if self.mRoot_property.propval != nil {
+        self.mRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mRoot_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+
+  //····················································································································
+
+  var mRoot_none_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -208,6 +246,12 @@ class SheetInProject : EBManagedObject,
     self.mPoints_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
+  //--- To one property: mRoot (has opposite to many relationship: mSheets) §
+    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSheets_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }
+    )
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -384,6 +428,13 @@ class SheetInProject : EBManagedObject,
       valueExplorer:&mPoints_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mRoot",
+      idx:self.mRoot_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mRoot_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -399,6 +450,9 @@ class SheetInProject : EBManagedObject,
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.mObserverExplorer = nil
     self.mSheetTitle_property.mValueExplorer = nil
+  //--- To one property: mRoot
+    self.mRoot_property.mObserverExplorer = nil
+    self.mRoot_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -408,8 +462,8 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mObjects_property.setProp ([])
-    self.mPoints_property.setProp ([])
+    self.mObjects = []
+    self.mPoints = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -419,6 +473,7 @@ class SheetInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mRoot = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -464,6 +519,17 @@ class SheetInProject : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [PointInSchematic])
+  //--- To one property: mRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ProjectRoot {
+        self.mRoot_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -483,12 +549,16 @@ class SheetInProject : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mObjects
-    for managedObject in self.mObjects_property.propval {
+    for managedObject in self.mObjects {
       objects.append (managedObject)
     }
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
+    }
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
     }
   }
 
@@ -499,12 +569,16 @@ class SheetInProject : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To many property: mObjects
-    for managedObject in self.mObjects_property.propval {
+    for managedObject in self.mObjects {
       objects.append (managedObject)
     }
   //--- To many property: mPoints
-    for managedObject in self.mPoints_property.propval {
+    for managedObject in self.mPoints {
       objects.append (managedObject)
+    }
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
     }
   }
 
@@ -1976,22 +2050,6 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   override var propval : SheetInProject? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SheetInProject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SheetInProject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

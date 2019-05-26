@@ -626,7 +626,7 @@ class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
-    self.mMasterPad_property.setProp (nil)
+    self.mMasterPad = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -702,8 +702,8 @@ class SlavePadInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mMasterPad
-    if let managedObject = self.mMasterPad_property.propval {
-      objects.append (managedObject)
+    if let object = self.mMasterPad {
+      objects.append (object)
     }
   }
 
@@ -714,8 +714,8 @@ class SlavePadInDevice : EBManagedObject,
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
   //--- To one property: mMasterPad
-    if let managedObject = self.mMasterPad_property.propval {
-      objects.append (managedObject)
+    if let object = self.mMasterPad {
+      objects.append (object)
     }
   }
 
@@ -2778,22 +2778,6 @@ final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EB
 
   override var propval : SlavePadInDevice? { return self.mInternalValue }
 
-  //····················································································································
-
-  func remove (_ object : SlavePadInDevice) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : SlavePadInDevice) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
   //····················································································································
   //   signature
   //····················································································································

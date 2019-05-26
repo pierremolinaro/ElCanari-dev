@@ -1308,22 +1308,6 @@ final class StoredObject_PackageObject : ReadWriteObject_PackageObject, EBSignat
   override var propval : PackageObject? { return self.mInternalValue }
 
   //····················································································································
-
-  func remove (_ object : PackageObject) {
-    if object === self.mInternalValue {
-      self.mInternalValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : PackageObject) {
-    if object !== self.mInternalValue {
-      self.mInternalValue = object
-    }
-  }
-  
-  //····················································································································
   //   signature
   //····················································································································
 
