@@ -552,9 +552,9 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

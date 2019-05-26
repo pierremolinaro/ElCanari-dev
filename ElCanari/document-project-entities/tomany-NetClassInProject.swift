@@ -1018,9 +1018,9 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

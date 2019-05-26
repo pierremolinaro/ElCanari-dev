@@ -1663,9 +1663,9 @@ final class ProxyArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

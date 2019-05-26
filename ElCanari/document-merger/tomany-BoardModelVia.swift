@@ -375,9 +375,9 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

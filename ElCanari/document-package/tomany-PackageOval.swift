@@ -902,9 +902,9 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

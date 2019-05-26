@@ -1484,9 +1484,9 @@ final class ProxyArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

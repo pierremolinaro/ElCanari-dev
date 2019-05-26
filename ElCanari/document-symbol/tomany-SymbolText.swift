@@ -608,9 +608,9 @@ final class ProxyArrayOf_SymbolText : ReadWriteArrayOf_SymbolText {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

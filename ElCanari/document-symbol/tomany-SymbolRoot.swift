@@ -904,9 +904,9 @@ final class ProxyArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

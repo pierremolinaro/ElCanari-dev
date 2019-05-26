@@ -202,6 +202,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     self.mMetadataDictionary = metadataDictionary
   //--- Read version from file
     self.mVersion.setProp (self.readVersionFromMetadataDictionary (metadataDictionary))
+  //--- Remove current root object graph
+    for object in self.reachableObjectsFromRootObject () {
+      object.cleanUpRelationshipsAndRemoveAllObservers ()
+    }
   //--- Store root object
     self.mRootObject = possibleRootObject
   //---

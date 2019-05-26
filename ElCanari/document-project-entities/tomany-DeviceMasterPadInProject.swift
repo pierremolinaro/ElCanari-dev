@@ -670,9 +670,9 @@ final class ProxyArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMaste
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

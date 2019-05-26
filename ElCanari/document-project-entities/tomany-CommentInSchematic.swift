@@ -491,9 +491,9 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

@@ -1256,9 +1256,9 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 

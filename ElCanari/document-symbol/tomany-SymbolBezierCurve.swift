@@ -902,9 +902,9 @@ final class ProxyArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve 
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      if inModel == nil {
+      /* if inModel == nil {
         self.mInternalArrayValue = []
-      }
+      } */
     }
   }
 
