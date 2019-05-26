@@ -62,9 +62,7 @@ extension WireInSchematics {
     pointSet.insert (self.mP2!)
     self.mP1 = nil // Detach from point
     self.mP2 = nil // Detach from point
-    if let currentSheet = self.mSheet, let rootObject = currentSheet.mRoot {
-      currentSheet.updateConnections (pointSet : pointSet)
-    }
+    self.mSheet?.updateConnections (pointSet : pointSet)
   }
 
   //····················································································································
