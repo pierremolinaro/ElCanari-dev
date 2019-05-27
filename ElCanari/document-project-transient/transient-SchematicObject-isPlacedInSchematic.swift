@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematics_netName (
-       _ self_mP1_netName : String?
-) -> String {
+func transient_SchematicObject_isPlacedInSchematic (
+       _ self_mSheet_none : Bool
+) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mP1_netName ?? "?"
+        return !self_mSheet_none
 //--- END OF USER ZONE 2
 }
 

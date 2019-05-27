@@ -739,7 +739,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  var mWiresP2s_property_selection : EBSelection <[WireInSchematics]> {
+  var mWiresP2s_property_selection : EBSelection <[WireInSchematic]> {
     if let model = self.propval {
       switch (model.mWiresP2s_property_selection) {
       case .empty :
@@ -821,7 +821,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  var mWiresP1s_property_selection : EBSelection <[WireInSchematics]> {
+  var mWiresP1s_property_selection : EBSelection <[WireInSchematic]> {
     if let model = self.propval {
       switch (model.mWiresP1s_property_selection) {
       case .empty :

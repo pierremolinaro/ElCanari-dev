@@ -19,13 +19,13 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.isPlacedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematics) // Transient property
+    inOldValue?.isPlacedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.isPlacedInSchematics_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematics) // Transient property
+    self.mInternalValue?.isPlacedInSchematic_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
   }
 
   //····················································································································
@@ -305,16 +305,16 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   }
 
   //····················································································································
-  //   Observers of 'isPlacedInSchematics' transient property
+  //   Observers of 'isPlacedInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_isPlacedInSchematics = EBWeakEventSet ()
+  private var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  var isPlacedInSchematics_property_selection : EBSelection <Bool?> {
+  var isPlacedInSchematic_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
-      switch (model.isPlacedInSchematics_property_selection) {
+      switch (model.isPlacedInSchematic_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -329,46 +329,46 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
 
   //····················································································································
 
-  final func addEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+  final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_isPlacedInSchematics.insert (inObserver)
+    self.mObserversOf_isPlacedInSchematic.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isPlacedInSchematics_property.addEBObserver (inObserver)
+      v?.isPlacedInSchematic_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_isPlacedInSchematics (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_isPlacedInSchematics.remove (inObserver)
+    self.mObserversOf_isPlacedInSchematic.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.isPlacedInSchematics_property.removeEBObserver (inObserver)
+      v?.isPlacedInSchematic_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_isPlacedInSchematics_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+  final func addEBObserversOf_isPlacedInSchematic_toElementsOfSet (_ inSet : Set<SchematicObject>) {
     for managedObject in inSet {
-      self.mObserversOf_isPlacedInSchematics.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInSchematics_property.addEBObserver (observer)
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematic_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_isPlacedInSchematics_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+  final func removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
     for managedObject in inSet {
-      self.mObserversOf_isPlacedInSchematics.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInSchematics_property.removeEBObserver (observer)
+      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.isPlacedInSchematic_property.removeEBObserver (observer)
       }
     }
   }

@@ -20,7 +20,7 @@ func transient_DevicePinInProject_descriptor (
        _ self_mXName : Int,                   
        _ self_mYName : Int,                   
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
-       _ self_mPinNameIsDisplayedInSchematics : Bool,
+       _ self_mPinNameIsDisplayedInSchematic : Bool,
        _ self_mXNumber : Int,                 
        _ self_mYNumber : Int,                 
        _ self_mNumberHorizontalAlignment : HorizontalAlignment
@@ -32,7 +32,7 @@ func transient_DevicePinInProject_descriptor (
           pinXY: CanariPoint (x: self_mPinX, y: self_mPinY),
           nameXY: CanariPoint (x: self_mXName, y: self_mYName),
           nameHorizontalAlignment: self_mNameHorizontalAlignment,
-          pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematics,
+          pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematic,
           numberXY : CanariPoint (x: self_mXNumber, y: self_mYNumber),
           numberHorizontalAlignment: self_mNumberHorizontalAlignment
         )

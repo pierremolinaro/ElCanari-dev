@@ -6,30 +6,30 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematics_objectDisplay : class {
+protocol WireInSchematic_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematics_selectionDisplay : class {
+protocol WireInSchematic_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematics_netName : class {
+protocol WireInSchematic_netName : class {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: WireInSchematics
+//    Entity: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class WireInSchematics : SchematicObject,
-         WireInSchematics_objectDisplay,
-         WireInSchematics_selectionDisplay,
-         WireInSchematics_netName {
+class WireInSchematic : SchematicObject,
+         WireInSchematic_objectDisplay,
+         WireInSchematic_selectionDisplay,
+         WireInSchematic_netName {
 
   //····················································································································
   //   To one property: mP1
@@ -163,7 +163,7 @@ class WireInSchematics : SchematicObject,
         case .single :
           switch (unwSelf.mP1_property.wireColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_WireInSchematics_objectDisplay (v0, v1, v2, v3))
+            return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -191,7 +191,7 @@ class WireInSchematics : SchematicObject,
         case .single :
           switch (unwSelf.mP1_property.location_property_selection, unwSelf.mP1_property.canMove_property_selection, unwSelf.mP2_property.location_property_selection, unwSelf.mP2_property.canMove_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_WireInSchematics_selectionDisplay (v0, v1, v2, v3))
+            return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -216,7 +216,7 @@ class WireInSchematics : SchematicObject,
         case .single :
           switch (unwSelf.mP1_property.netName_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_WireInSchematics_netName (v0))
+            return .single (transient_WireInSchematic_netName (v0))
           default :
             return .empty
           }

@@ -16,8 +16,8 @@ document ProjectDocument root ProjectRoot {
 
 //--- Issues
   outlet EBImageObserverView mSchematicStatusImageViewInToolbar
-    $image root.mSchematicStatusImage
-    $tooltip root.mSchematicStatusMessage
+    $image root.schematicStatusImage
+    $tooltip root.schematicStatusMessage
   ;
 
 //---------------------- Components Tab
@@ -74,7 +74,7 @@ document ProjectDocument root ProjectRoot {
      column "device" EBTextObserverField $valueObserver self.deviceName
      column "package" EBTextObserverField $valueObserver self.selectedPackageName
      column "value" EBTextField $value self.mComponentValue { sendContinously : no }
-     column "inSchematics" EBTextObserverField $valueObserver self.placementInSchematics
+     column "inSchematics" EBTextObserverField $valueObserver self.placementInSchematic
   }
   outlet EBTableView mComponentTableView $tableValue mComponentController ;
 
@@ -190,7 +190,7 @@ document ProjectDocument root ProjectRoot {
   outlet ThreeStringArrayTableView mPinPadAssignmentTableView $array self.pinPadAssignments ;
 
 //---------------------- Schematics Tab
-  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicsInspector ;
+  outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
   outlet NSView mBaseSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;
   outlet CanariViewWithKeyView mGridZoomSchematicsInspectorView ;
@@ -250,7 +250,7 @@ document ProjectDocument root ProjectRoot {
   arrayController #mSchematicObjectsController : root.selectedSheetObjects ;
 
   outlet EBGraphicView mSchematicsView
-    $underObjectsDisplay root.schematicsBackgroundDisplay
+    $underObjectsDisplay root.schematicBackgroundDisplay
     $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mSchematicHorizontalFlip
     $verticalFlip root.mSchematicVerticalFlip
@@ -269,7 +269,7 @@ document ProjectDocument root ProjectRoot {
 
 //--- Selected Wire In schematics
   outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
-  selectionController WireInSchematics #wireInSchematicSelectionController :
+  selectionController WireInSchematic #wireInSchematicSelectionController :
     #mSchematicObjectsController.selectedArray
   ;
 

@@ -11,17 +11,45 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_placementInSchematics (
-       _ self_mSymbols_symbolInSchematics : [ComponentSymbolInProject_symbolInSchematics]
+func transient_ProjectRoot_schematicStatusMessage (
+       _ self_unplacedSymbols : StringTagArray,    
+       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
+       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
 ) -> String {
 //--- START OF USER ZONE 2
-        var placedCount = 0
-        for symbol in self_mSymbols_symbolInSchematics {
-          if let placed = symbol.symbolInSchematics, placed {
-            placedCount += 1
+        var array = [String] ()
+        var errorCount = 0
+        for sheet in self_mSheets_connexionErrors {
+          if let n = sheet.connexionErrors {
+            errorCount += n
           }
         }
-        return "\(placedCount)/\(self_mSymbols_symbolInSchematics.count)"
+        if errorCount == 1 {
+          array.append ("1 connection error")
+        }else if errorCount > 1 {
+          array.append ("\(errorCount) connection errors")
+        }
+        var warningCount = 0
+        for sheet in self_mSheets_connexionWarnings {
+          if let n = sheet.connexionWarnings {
+            warningCount += n
+          }
+        }
+        if warningCount == 1 {
+          array.append ("1 connection warning")
+        }else if warningCount > 1 {
+          array.append ("\(warningCount) connection warnings")
+        }
+        if self_unplacedSymbols.count == 1 {
+          array.append ("1 unplaced symbol")
+        }else if self_unplacedSymbols.count > 1 {
+          array.append ("\(self_unplacedSymbols.count) unplaced symbols")
+        }
+        if array.count == 0 {
+          return "Ok."
+        }else{
+          return array.joined (separator: "\n")
+        }
 //--- END OF USER ZONE 2
 }
 

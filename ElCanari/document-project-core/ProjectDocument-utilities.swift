@@ -110,6 +110,7 @@ struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
   let pins : StringArray
+//  let labels : StringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -117,6 +118,14 @@ struct NetInfo : Hashable {
 struct SchematicPointStatus : Hashable {
   let location : CanariPoint
   let connected : Bool
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct SchematicSheetDescriptor : Hashable {
+  let size : CanariSize // Canari Unit
+  let horizontalDivisions : Int
+  let vericalDivisions : Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,45 +11,34 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_mSchematicStatusMessage (
-       _ self_unplacedSymbols : StringTagArray,     
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
-) -> String {
+func transient_WireInSchematic_selectionDisplay (
+       _ self_mP1_location : CanariPoint?,       
+       _ self_mP1_canMove : Bool?,               
+       _ self_mP2_location : CanariPoint?,       
+       _ self_mP2_canMove : Bool?
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var array = [String] ()
-        var errorCount = 0
-        for sheet in self_mSheets_connexionErrors {
-          if let n = sheet.connexionErrors {
-            errorCount += n
-          }
+        let p1 = (self_mP1_location ?? CanariPoint ()).cocoaPoint
+        let p2 = (self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)).cocoaPoint
+      //--- Hilite wire
+        let bp = NSBezierPath ()
+        bp.move (to: p1)
+        bp.line (to: p2)
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+        bp.lineCapStyle = .round
+        bp.lineJoinStyle = .round
+        let shape = EBShape ()
+        shape.append (EBStrokeBezierPathShape ([bp], .cyan))
+      //--- Knob at P1 ?
+        if self_mP1_canMove ?? false {
+          shape.append (EBKnobShape (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
         }
-        if errorCount == 1 {
-          array.append ("1 connection error")
-        }else if errorCount > 1 {
-          array.append ("\(errorCount) connection errors")
+      //--- Knob at P2 ?
+        if self_mP2_canMove ?? false {
+          shape.append (EBKnobShape (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
         }
-        var warningCount = 0
-        for sheet in self_mSheets_connexionWarnings {
-          if let n = sheet.connexionWarnings {
-            warningCount += n
-          }
-        }
-        if warningCount == 1 {
-          array.append ("1 connection warning")
-        }else if warningCount > 1 {
-          array.append ("\(warningCount) connection warnings")
-        }
-        if self_unplacedSymbols.count == 1 {
-          array.append ("1 unplaced symbol")
-        }else if self_unplacedSymbols.count > 1 {
-          array.append ("\(self_unplacedSymbols.count) unplaced symbols")
-        }
-        if array.count == 0 {
-          return "Ok."
-        }else{
-          return array.joined (separator: "\n")
-        }
+      //---
+        return shape
 //--- END OF USER ZONE 2
 }
 

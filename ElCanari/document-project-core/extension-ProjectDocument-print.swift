@@ -10,8 +10,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let A4MaxSize : CGFloat = 842.0
-let A4MinSize : CGFloat = 595.0
+let A4MaxSize_IN_POINT : CGFloat = 842.0
+let A4MinSize_IN_POINT : CGFloat = 595.0
 let SCHEMATICS_LEFT_MARGIN : CGFloat = 72.0
 let SCHEMATICS_RIGHT_MARGIN : CGFloat = 72.0
 let SCHEMATICS_TOP_MARGIN : CGFloat = 72.0
@@ -51,12 +51,12 @@ extension CustomizedProjectDocument {
       let pageHeight : CGFloat
       switch self.rootObject.mSchematicSheetOrientation {
       case .horizontal :
-        pageWidth = A4MaxSize
-        pageHeight = A4MinSize
+        pageWidth = A4MaxSize_IN_POINT
+        pageHeight = A4MinSize_IN_POINT
         orientation = .landscape
       case .vertical :
-        pageWidth = A4MinSize
-        pageHeight = A4MaxSize
+        pageWidth = A4MinSize_IN_POINT
+        pageHeight = A4MaxSize_IN_POINT
         orientation = .portrait
       }
     //--- Build print view

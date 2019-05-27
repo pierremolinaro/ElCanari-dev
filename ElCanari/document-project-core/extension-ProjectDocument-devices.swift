@@ -173,7 +173,7 @@ extension ProjectDocument {
           // NSLog ("pinInProject.mSymbolTypeName \(pinInProject.mSymbolTypeName)")
           pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
           pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
-          pinInProject.mPinNameIsDisplayedInSchematics = pinInDevice.mPinNameIsDisplayedInSchematics
+          pinInProject.mPinNameIsDisplayedInSchematic = pinInDevice.mPinNameIsDisplayedInSchematics
           pinInProject.mPinX = pinInDevice.mPinX
           pinInProject.mPinY = pinInDevice.mPinY
           pinInProject.mXName = pinInDevice.mXName

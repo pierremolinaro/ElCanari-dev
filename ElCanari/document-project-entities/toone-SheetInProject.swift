@@ -20,12 +20,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     inOldValue?.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
     inOldValue?.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+    inOldValue?.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     self.mInternalValue?.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
     self.mInternalValue?.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+    self.mInternalValue?.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
   }
 
   //····················································································································
@@ -370,6 +372,75 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     for managedObject in inSet {
       self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
         managedObject.connexionErrors_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetDescriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
+    if let model = self.propval {
+      switch (model.sheetDescriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.removeEBObserver (observer)
       }
     }
   }

@@ -12,8 +12,8 @@ protocol ProjectRoot_mSelectedPageIndex : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedSchematicsInspector : class {
-  var mSelectedSchematicsInspector : Int { get }
+protocol ProjectRoot_mSelectedSchematicInspector : class {
+  var mSelectedSchematicInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -67,7 +67,7 @@ protocol ProjectRoot_mSchematicGridDisplayFactor : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ProjectRoot_mSchematicSheetOrientation : class {
-  var mSchematicSheetOrientation : SchematicsSheetOrientation { get }
+  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -108,8 +108,8 @@ protocol ProjectRoot_deviceNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicsBackgroundDisplay : class {
-  var schematicsBackgroundDisplay : EBShape? { get }
+protocol ProjectRoot_schematicBackgroundDisplay : class {
+  var schematicBackgroundDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -126,14 +126,14 @@ protocol ProjectRoot_connexionErrorString : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicStatusMessage : class {
-  var mSchematicStatusMessage : String? { get }
+protocol ProjectRoot_schematicStatusMessage : class {
+  var schematicStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicStatusImage : class {
-  var mSchematicStatusImage : NSImage? { get }
+protocol ProjectRoot_schematicStatusImage : class {
+  var schematicStatusImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -142,7 +142,7 @@ protocol ProjectRoot_mSchematicStatusImage : class {
 
 class ProjectRoot : EBManagedObject,
          ProjectRoot_mSelectedPageIndex,
-         ProjectRoot_mSelectedSchematicsInspector,
+         ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
          ProjectRoot_mSchematicVersion,
          ProjectRoot_mSchematicDate,
@@ -158,11 +158,11 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
          ProjectRoot_deviceNames,
-         ProjectRoot_schematicsBackgroundDisplay,
+         ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
-         ProjectRoot_mSchematicStatusMessage,
-         ProjectRoot_mSchematicStatusImage {
+         ProjectRoot_schematicStatusMessage,
+         ProjectRoot_schematicStatusImage {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -182,21 +182,21 @@ class ProjectRoot : EBManagedObject,
   var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
-  //   Atomic property: mSelectedSchematicsInspector
+  //   Atomic property: mSelectedSchematicInspector
   //····················································································································
 
-  let mSelectedSchematicsInspector_property = EBStoredProperty_Int (defaultValue: 0)
+  let mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mSelectedSchematicsInspector : Int {
-    get { return self.mSelectedSchematicsInspector_property.propval }
-    set { self.mSelectedSchematicsInspector_property.setProp (newValue) }
+  var mSelectedSchematicInspector : Int {
+    get { return self.mSelectedSchematicInspector_property.propval }
+    set { self.mSelectedSchematicInspector_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSelectedSchematicsInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicsInspector_property.prop }
+  var mSelectedSchematicInspector_property_selection : EBSelection <Int> { return self.mSelectedSchematicInspector_property.prop }
 
   //····················································································································
   //   Atomic property: mSchematicTitle
@@ -433,18 +433,18 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mSchematicSheetOrientation
   //····················································································································
 
-  let mSchematicSheetOrientation_property = EBStoredProperty_SchematicsSheetOrientation (defaultValue: SchematicsSheetOrientation.horizontal)
+  let mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.horizontal)
 
   //····················································································································
 
-  var mSchematicSheetOrientation : SchematicsSheetOrientation {
+  var mSchematicSheetOrientation : SchematicSheetOrientation {
     get { return self.mSchematicSheetOrientation_property.propval }
     set { self.mSchematicSheetOrientation_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicsSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
+  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation> { return self.mSchematicSheetOrientation_property.prop }
 
   //····················································································································
   //   Atomic proxy property: selectedSheetTitle
@@ -658,21 +658,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: schematicsBackgroundDisplay
+  //   Transient property: schematicBackgroundDisplay
   //····················································································································
 
-  let schematicsBackgroundDisplay_property = EBTransientProperty_EBShape ()
+  let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var schematicsBackgroundDisplay_property_selection : EBSelection <EBShape> {
-    return self.schematicsBackgroundDisplay_property.prop
+  var schematicBackgroundDisplay_property_selection : EBSelection <EBShape> {
+    return self.schematicBackgroundDisplay_property.prop
   }
 
   //····················································································································
 
-  var schematicsBackgroundDisplay : EBShape? {
-    switch self.schematicsBackgroundDisplay_property_selection {
+  var schematicBackgroundDisplay : EBShape? {
+    switch self.schematicBackgroundDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -727,21 +727,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: mSchematicStatusMessage
+  //   Transient property: schematicStatusMessage
   //····················································································································
 
-  let mSchematicStatusMessage_property = EBTransientProperty_String ()
+  let schematicStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mSchematicStatusMessage_property_selection : EBSelection <String> {
-    return self.mSchematicStatusMessage_property.prop
+  var schematicStatusMessage_property_selection : EBSelection <String> {
+    return self.schematicStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var mSchematicStatusMessage : String? {
-    switch self.mSchematicStatusMessage_property_selection {
+  var schematicStatusMessage : String? {
+    switch self.schematicStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -750,21 +750,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: mSchematicStatusImage
+  //   Transient property: schematicStatusImage
   //····················································································································
 
-  let mSchematicStatusImage_property = EBTransientProperty_NSImage ()
+  let schematicStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  var mSchematicStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mSchematicStatusImage_property.prop
+  var schematicStatusImage_property_selection : EBSelection <NSImage> {
+    return self.schematicStatusImage_property.prop
   }
 
   //····················································································································
 
-  var mSchematicStatusImage : NSImage? {
-    switch self.mSchematicStatusImage_property_selection {
+  var schematicStatusImage : NSImage? {
+    switch self.schematicStatusImage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -780,8 +780,8 @@ class ProjectRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mSelectedSchematicInspector
+    self.mSelectedSchematicInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicTitle
     self.mSchematicTitle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicVersion
@@ -956,8 +956,8 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mDevices_property.addEBObserverOf_mDeviceName (self.deviceNames_property)
-  //--- Atomic property: schematicsBackgroundDisplay
-    self.schematicsBackgroundDisplay_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicBackgroundDisplay
+    self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mSchematicTitle_property_selection.kind ()
         kind &= unwSelf.mSchematicVersion_property_selection.kind ()
@@ -974,7 +974,7 @@ class ProjectRoot : EBManagedObject,
         case .single :
           switch (unwSelf.mSchematicTitle_property_selection, unwSelf.mSchematicVersion_property_selection, unwSelf.mSchematicSheetOrientation_property_selection, unwSelf.mSelectedSheet_property.mSheetTitle_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSelectedSheet_property_selection, unwSelf.mSchematicDate_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_ProjectRoot_schematicsBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
+            return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -983,13 +983,13 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSchematicTitle_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicVersion_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicSheetOrientation_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicsBackgroundDisplay_property)
-    self.mSheets_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicDate_property.addEBObserver (self.schematicsBackgroundDisplay_property)
+    self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicSheetOrientation_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
+    self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1034,8 +1034,8 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
-  //--- Atomic property: mSchematicStatusMessage
-    self.mSchematicStatusMessage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicStatusMessage
+    self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
@@ -1048,7 +1048,7 @@ class ProjectRoot : EBManagedObject,
         case .single :
           switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_mSchematicStatusMessage (v0, v1, v2))
+            return .single (transient_ProjectRoot_schematicStatusMessage (v0, v1, v2))
           default :
             return .empty
           }
@@ -1057,11 +1057,11 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.mSchematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.mSchematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.mSchematicStatusMessage_property)
-  //--- Atomic property: mSchematicStatusImage
-    self.mSchematicStatusImage_property.mReadModelFunction = { [weak self] in
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+  //--- Atomic property: schematicStatusImage
+    self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
@@ -1074,7 +1074,7 @@ class ProjectRoot : EBManagedObject,
         case .single :
           switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_mSchematicStatusImage (v0, v1, v2))
+            return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2))
           default :
             return .empty
           }
@@ -1083,9 +1083,9 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.mSchematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.mSchematicStatusImage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.mSchematicStatusImage_property)
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -1114,21 +1114,21 @@ class ProjectRoot : EBManagedObject,
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
-    self.mSchematicTitle_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicVersion_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicSheetOrientation_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.schematicsBackgroundDisplay_property)
-    self.mSheets_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSelectedSheet_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
-    self.mSchematicDate_property.removeEBObserver (self.schematicsBackgroundDisplay_property)
+    self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicSheetOrientation_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.removeEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
+    self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
+    self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
-    self.unplacedSymbols_property.removeEBObserver (self.mSchematicStatusMessage_property)
-    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.mSchematicStatusMessage_property)
-    self.mSheets_property.removeEBObserverOf_connexionErrors (self.mSchematicStatusMessage_property)
-    self.unplacedSymbols_property.removeEBObserver (self.mSchematicStatusImage_property)
-    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.mSchematicStatusImage_property)
-    self.mSheets_property.removeEBObserverOf_connexionErrors (self.mSchematicStatusImage_property)
+    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusImage_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1152,12 +1152,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mSelectedPageIndex_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mSelectedSchematicsInspector",
-      idx: self.mSelectedSchematicsInspector_property.ebObjectIndex,
+      "mSelectedSchematicInspector",
+      idx: self.mSelectedSchematicInspector_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mSelectedSchematicsInspector_property.mObserverExplorer,
-      valueExplorer: &self.mSelectedSchematicsInspector_property.mValueExplorer
+      observerExplorer: &self.mSelectedSchematicInspector_property.mObserverExplorer,
+      valueExplorer: &self.mSelectedSchematicInspector_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mSchematicTitle",
@@ -1273,12 +1273,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.deviceNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "schematicsBackgroundDisplay",
-      idx: self.schematicsBackgroundDisplay_property.ebObjectIndex,
+      "schematicBackgroundDisplay",
+      idx: self.schematicBackgroundDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.schematicsBackgroundDisplay_property.mObserverExplorer,
-      valueExplorer: &self.schematicsBackgroundDisplay_property.mValueExplorer
+      observerExplorer: &self.schematicBackgroundDisplay_property.mObserverExplorer,
+      valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "connexionWarningString",
@@ -1297,20 +1297,20 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.connexionErrorString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mSchematicStatusMessage",
-      idx: self.mSchematicStatusMessage_property.ebObjectIndex,
+      "schematicStatusMessage",
+      idx: self.schematicStatusMessage_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mSchematicStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicStatusMessage_property.mValueExplorer
+      observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mSchematicStatusImage",
-      idx: self.mSchematicStatusImage_property.ebObjectIndex,
+      "schematicStatusImage",
+      idx: self.schematicStatusImage_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mSchematicStatusImage_property.mObserverExplorer,
-      valueExplorer: &self.mSchematicStatusImage_property.mValueExplorer
+      observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.schematicStatusImage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
@@ -1367,9 +1367,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.mObserverExplorer = nil
-    self.mSelectedSchematicsInspector_property.mValueExplorer = nil
+  //--- Atomic property: mSelectedSchematicInspector
+    self.mSelectedSchematicInspector_property.mObserverExplorer = nil
+    self.mSelectedSchematicInspector_property.mValueExplorer = nil
   //--- Atomic property: mSchematicTitle
     self.mSchematicTitle_property.mObserverExplorer = nil
     self.mSchematicTitle_property.mValueExplorer = nil
@@ -1451,8 +1451,8 @@ class ProjectRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedSchematicsInspector")
+  //--- Atomic property: mSelectedSchematicInspector
+    self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedSchematicInspector")
   //--- Atomic property: mSchematicTitle
     self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicTitle")
   //--- Atomic property: mSchematicVersion
@@ -1565,8 +1565,8 @@ class ProjectRoot : EBManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
-  //--- Atomic property: mSelectedSchematicsInspector
-    self.mSelectedSchematicsInspector_property.readFrom (dictionary: inDictionary, forKey:"mSelectedSchematicsInspector")
+  //--- Atomic property: mSelectedSchematicInspector
+    self.mSelectedSchematicInspector_property.readFrom (dictionary: inDictionary, forKey:"mSelectedSchematicInspector")
   //--- Atomic property: mSchematicTitle
     self.mSchematicTitle_property.readFrom (dictionary: inDictionary, forKey:"mSchematicTitle")
   //--- Atomic property: mSchematicVersion

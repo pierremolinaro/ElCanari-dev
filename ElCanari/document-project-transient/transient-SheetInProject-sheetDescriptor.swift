@@ -11,34 +11,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematics_selectionDisplay (
-       _ self_mP1_location : CanariPoint?,        
-       _ self_mP1_canMove : Bool?,                
-       _ self_mP2_location : CanariPoint?,        
-       _ self_mP2_canMove : Bool?
-) -> EBShape {
+func transient_SheetInProject_sheetDescriptor (
+       _ self_mRoot_mSchematicSheetOrientation : SchematicSheetOrientation?
+) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2
-        let p1 = (self_mP1_location ?? CanariPoint ()).cocoaPoint
-        let p2 = (self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)).cocoaPoint
-      //--- Hilite wire
-        let bp = NSBezierPath ()
-        bp.move (to: p1)
-        bp.line (to: p2)
-        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        let shape = EBShape ()
-        shape.append (EBStrokeBezierPathShape ([bp], .cyan))
-      //--- Knob at P1 ?
-        if self_mP1_canMove ?? false {
-          shape.append (EBKnobShape (at: p1, index: WIRE_P1_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
+        let A4MinSize = cocoaToCanariUnit (A4MinSize_IN_POINT)
+        let A4MaxSize = cocoaToCanariUnit (A4MaxSize_IN_POINT)
+        switch self_mRoot_mSchematicSheetOrientation! {
+        case .horizontal :
+          return SchematicSheetDescriptor (size: CanariSize (width: A4MaxSize, height: A4MinSize), horizontalDivisions: 8, vericalDivisions: 6)
+        case .vertical :
+          return SchematicSheetDescriptor (size: CanariSize (width: A4MinSize, height: A4MaxSize), horizontalDivisions: 6, vericalDivisions: 8)
         }
-      //--- Knob at P2 ?
-        if self_mP2_canMove ?? false {
-          shape.append (EBKnobShape (at: p2, index: WIRE_P2_KNOB, .rect, SCHEMATIC_KNOB_SIZE))
-        }
-      //---
-        return shape
 //--- END OF USER ZONE 2
 }
 

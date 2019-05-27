@@ -73,7 +73,7 @@ extension SheetInProject {
         let point = exploreSet.removeFirst ()
         let net = point.mNet
         var wiresToExplore = Set (point.mWiresP1s + point.mWiresP2s)
-        var exploredWires = Set <WireInSchematics> ()
+        var exploredWires = Set <WireInSchematic> ()
         while wiresToExplore.count > 0 {
           let wire = wiresToExplore.removeFirst ()
           exploredWires.insert (wire)

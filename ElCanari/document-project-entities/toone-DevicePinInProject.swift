@@ -22,7 +22,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     inOldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
     inOldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
     inOldValue?.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
-    inOldValue?.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
+    inOldValue?.mPinNameIsDisplayedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematic) // Stored property
     inOldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
     inOldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
     inOldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
@@ -37,7 +37,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     self.mInternalValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
     self.mInternalValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
     self.mInternalValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
-    self.mInternalValue?.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
+    self.mInternalValue?.mPinNameIsDisplayedInSchematic_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematic) // Stored property
     self.mInternalValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
     self.mInternalValue?.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
     self.mInternalValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
@@ -537,16 +537,16 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   }
 
   //····················································································································
-  //   Observers of 'mPinNameIsDisplayedInSchematics' stored property
+  //   Observers of 'mPinNameIsDisplayedInSchematic' stored property
   //····················································································································
 
-  private var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
+  private var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool?> {
+  var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
-      switch (model.mPinNameIsDisplayedInSchematics_property_selection) {
+      switch (model.mPinNameIsDisplayedInSchematic_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -561,47 +561,47 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
 
   //····················································································································
 
-  final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPinNameIsDisplayedInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mPinNameIsDisplayedInSchematics.insert (inObserver)
+    self.mObserversOf_mPinNameIsDisplayedInSchematic.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mPinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
+       v?.mPinNameIsDisplayedInSchematic_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPinNameIsDisplayedInSchematic (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mPinNameIsDisplayedInSchematics.remove (inObserver)
+    self.mObserversOf_mPinNameIsDisplayedInSchematic.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mPinNameIsDisplayedInSchematics_property.removeEBObserver (inObserver)
+      v?.mPinNameIsDisplayedInSchematic_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+  final func addEBObserversOf_mPinNameIsDisplayedInSchematic_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_mPinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
-        managedObject.mPinNameIsDisplayedInSchematics_property.addEBObserver (observer)
+      self.mObserversOf_mPinNameIsDisplayedInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.mPinNameIsDisplayedInSchematic_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
-    self.mObserversOf_mPinNameIsDisplayedInSchematics.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mPinNameIsDisplayedInSchematic_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    self.mObserversOf_mPinNameIsDisplayedInSchematic.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mPinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
+        managedObject.mPinNameIsDisplayedInSchematic_property.removeEBObserver (observer)
       }
     }
   }

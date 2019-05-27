@@ -181,13 +181,13 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
 
   //····················································································································
-  //   Selection observable property: symbolInSchematics
+  //   Selection observable property: symbolInSchematic
   //····················································································································
 
-  let symbolInSchematics_property = EBTransientProperty_Bool ()
+  let symbolInSchematic_property = EBTransientProperty_Bool ()
 
-  var symbolInSchematics_property_selection : EBSelection <Bool> {
-    return self.symbolInSchematics_property.prop
+  var symbolInSchematic_property_selection : EBSelection <Bool> {
+    return self.symbolInSchematic_property.prop
   }
 
   //····················································································································
@@ -223,7 +223,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     self.bind_property_symbolInfo ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
-    self.bind_property_symbolInSchematics ()
+    self.bind_property_symbolInSchematic ()
   }
 
   //····················································································································
@@ -302,9 +302,9 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- symbolInSchematics
-    self.symbolInSchematics_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_symbolInSchematics (self.symbolInSchematics_property)
+  //--- symbolInSchematic
+    self.symbolInSchematic_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_symbolInSchematic (self.symbolInSchematic_property)
   //---
   }
 
@@ -1509,9 +1509,9 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   }
   //····················································································································
 
-  private final func bind_property_symbolInSchematics () {
-    self.selectedArray_property.addEBObserverOf_symbolInSchematics (self.symbolInSchematics_property)
-    self.symbolInSchematics_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_symbolInSchematic () {
+    self.selectedArray_property.addEBObserverOf_symbolInSchematic (self.symbolInSchematic_property)
+    self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -1522,7 +1522,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.symbolInSchematics_property_selection {
+            switch object.symbolInSchematic_property_selection {
             case .empty :
               return .empty
             case .multiple :

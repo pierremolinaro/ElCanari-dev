@@ -33,12 +33,12 @@ extension SheetInProject {
       newPoint.mNet = net
       self.mPoints.append (newPoint)
     //--- Create first wire
-      let firstWire = WireInSchematics (self.ebUndoManager)
+      let firstWire = WireInSchematic (self.ebUndoManager)
       firstWire.mP1 = p1
       firstWire.mP2 = newPoint
       self.mObjects.append (firstWire)
     //--- Create second wire
-      let secondWire = WireInSchematics (self.ebUndoManager)
+      let secondWire = WireInSchematic (self.ebUndoManager)
       secondWire.mP1 = newPoint
       secondWire.mP2 = p2
       self.mObjects.append (secondWire)

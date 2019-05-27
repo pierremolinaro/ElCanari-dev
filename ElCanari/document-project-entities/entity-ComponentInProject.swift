@@ -60,8 +60,8 @@ protocol ComponentInProject_unplacedSymbols : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_placementInSchematics : class {
-  var placementInSchematics : String? { get }
+protocol ComponentInProject_placementInSchematic : class {
+  var placementInSchematic : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -78,7 +78,7 @@ class ComponentInProject : EBManagedObject,
          ComponentInProject_availablePackages,
          ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_unplacedSymbols,
-         ComponentInProject_placementInSchematics {
+         ComponentInProject_placementInSchematic {
 
   //····················································································································
   //   Atomic property: mNamePrefix
@@ -365,21 +365,21 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: placementInSchematics
+  //   Transient property: placementInSchematic
   //····················································································································
 
-  let placementInSchematics_property = EBTransientProperty_String ()
+  let placementInSchematic_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var placementInSchematics_property_selection : EBSelection <String> {
-    return self.placementInSchematics_property.prop
+  var placementInSchematic_property_selection : EBSelection <String> {
+    return self.placementInSchematic_property.prop
   }
 
   //····················································································································
 
-  var placementInSchematics : String? {
-    switch self.placementInSchematics_property_selection {
+  var placementInSchematic : String? {
+    switch self.placementInSchematic_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -552,11 +552,11 @@ class ComponentInProject : EBManagedObject,
     }
     self.componentName_property.addEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserver (self.unplacedSymbols_property)
-    self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
+    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
-  //--- Atomic property: placementInSchematics
-    self.placementInSchematics_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: placementInSchematic
+    self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSymbols_property_selection.kind ()
         switch kind {
@@ -567,7 +567,7 @@ class ComponentInProject : EBManagedObject,
         case .single :
           switch (unwSelf.mSymbols_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ComponentInProject_placementInSchematics (v0))
+            return .single (transient_ComponentInProject_placementInSchematic (v0))
           default :
             return .empty
           }
@@ -576,7 +576,7 @@ class ComponentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
+    self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
   //--- Install undoers and opposite setter for relationships
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -598,10 +598,10 @@ class ComponentInProject : EBManagedObject,
     self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.componentName_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserver (self.unplacedSymbols_property)
-    self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.unplacedSymbols_property)
+    self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
-    self.mSymbols_property.removeEBObserverOf_symbolInSchematics (self.placementInSchematics_property)
+    self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
   //--- Unregister properties for handling signature
   }
 
@@ -690,12 +690,12 @@ class ComponentInProject : EBManagedObject,
       valueExplorer: &self.unplacedSymbols_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "placementInSchematics",
-      idx: self.placementInSchematics_property.ebObjectIndex,
+      "placementInSchematic",
+      idx: self.placementInSchematic_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.placementInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.placementInSchematics_property.mValueExplorer
+      observerExplorer: &self.placementInSchematic_property.mObserverExplorer,
+      valueExplorer: &self.placementInSchematic_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

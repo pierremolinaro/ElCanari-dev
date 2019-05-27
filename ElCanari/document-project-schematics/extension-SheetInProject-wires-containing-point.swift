@@ -14,11 +14,11 @@ extension SheetInProject {
 
   //····················································································································
 
-  internal func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematics] {
+  internal func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematic] {
     let width = cocoaToCanariUnit (CGFloat (g_Preferences!.symbolDrawingWidthMultipliedByTen) / 5.0)
-    var result = [WireInSchematics]  ()
+    var result = [WireInSchematic]  ()
     for object in self.mObjects {
-      if let wire = object as? WireInSchematics {
+      if let wire = object as? WireInSchematic {
         let p1 = wire.mP1!.location!
         let p2 = wire.mP2!.location!
         let segment = CanariSegment (x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, width: width)

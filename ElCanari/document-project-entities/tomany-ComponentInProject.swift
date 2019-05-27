@@ -24,7 +24,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.removeEBObserversOf_availablePackages_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_placementInSchematics_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_placementInSchematic_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNamePrefix_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mNameIndex_toElementsOfSet (inAddedSet) // Stored property
@@ -35,7 +35,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     self.addEBObserversOf_availablePackages_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_placementInSchematics_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_placementInSchematic_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -546,57 +546,57 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   }
 
   //····················································································································
-  //   Observers of 'placementInSchematics' transient property
+  //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_placementInSchematics = EBWeakEventSet ()
+  private var mObserversOf_placementInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+  final func addEBObserverOf_placementInSchematic (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_placementInSchematics.insert (inObserver)
+    self.mObserversOf_placementInSchematic.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.placementInSchematics_property.addEBObserver (inObserver)
+        managedObject.placementInSchematic_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_placementInSchematics (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_placementInSchematic (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_placementInSchematics.remove (inObserver)
+    self.mObserversOf_placementInSchematic.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.placementInSchematics_property.removeEBObserver (inObserver)
+        managedObject.placementInSchematic_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_placementInSchematics_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
+  final func addEBObserversOf_placementInSchematic_toElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
-        managedObject.placementInSchematics_property.addEBObserver (observer)
+      self.mObserversOf_placementInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematic_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_placementInSchematics_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
+  final func removeEBObserversOf_placementInSchematic_fromElementsOfSet (_ inSet : Set<ComponentInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_placementInSchematics.apply { (_ observer : EBEvent) in
-        managedObject.placementInSchematics_property.removeEBObserver (observer)
+      self.mObserversOf_placementInSchematic.apply { (_ observer : EBEvent) in
+        managedObject.placementInSchematic_property.removeEBObserver (observer)
       }
     }
   }

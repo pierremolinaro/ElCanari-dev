@@ -16,7 +16,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
-    inOldValue?.mSelectedSchematicsInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicsInspector) // Stored property
+    inOldValue?.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     inOldValue?.mSchematicTitle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
     inOldValue?.mSchematicVersion_property.removeEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
     inOldValue?.mSchematicDate_property.removeEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
@@ -31,14 +31,14 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
-    inOldValue?.schematicsBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicsBackgroundDisplay) // Transient property
+    inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     inOldValue?.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     inOldValue?.connexionErrorString_property.removeEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
-    inOldValue?.mSchematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_mSchematicStatusMessage) // Transient property
-    inOldValue?.mSchematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mSchematicStatusImage) // Transient property
+    inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
-    self.mInternalValue?.mSelectedSchematicsInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicsInspector) // Stored property
+    self.mInternalValue?.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     self.mInternalValue?.mSchematicTitle_property.addEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
     self.mInternalValue?.mSchematicVersion_property.addEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
     self.mInternalValue?.mSchematicDate_property.addEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
@@ -53,11 +53,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
-    self.mInternalValue?.schematicsBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicsBackgroundDisplay) // Transient property
+    self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     self.mInternalValue?.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     self.mInternalValue?.connexionErrorString_property.addEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
-    self.mInternalValue?.mSchematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_mSchematicStatusMessage) // Transient property
-    self.mInternalValue?.mSchematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_mSchematicStatusImage) // Transient property
+    self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
   }
 
   //····················································································································
@@ -131,16 +131,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mSelectedSchematicsInspector' stored property
+  //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedSchematicsInspector = EBWeakEventSet ()
+  private var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSelectedSchematicsInspector_property_selection : EBSelection <Int?> {
+  var mSelectedSchematicInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mSelectedSchematicsInspector_property_selection) {
+      switch (model.mSelectedSchematicInspector_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -155,47 +155,47 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedSchematicsInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mSelectedSchematicInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSelectedSchematicsInspector.insert (inObserver)
+    self.mObserversOf_mSelectedSchematicInspector.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mSelectedSchematicsInspector_property.addEBObserver (inObserver)
+       v?.mSelectedSchematicInspector_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSelectedSchematicsInspector (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mSelectedSchematicInspector (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSelectedSchematicsInspector.remove (inObserver)
+    self.mObserversOf_mSelectedSchematicInspector.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mSelectedSchematicsInspector_property.removeEBObserver (inObserver)
+      v?.mSelectedSchematicInspector_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedSchematicsInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mSelectedSchematicInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedSchematicsInspector.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedSchematicsInspector_property.addEBObserver (observer)
+      self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
+        managedObject.mSelectedSchematicInspector_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedSchematicsInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedSchematicsInspector.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mSelectedSchematicInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mSelectedSchematicsInspector_property.removeEBObserver (observer)
+        managedObject.mSelectedSchematicInspector_property.removeEBObserver (observer)
       }
     }
   }
@@ -768,7 +768,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicsSheetOrientation?> {
+  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation?> {
     if let model = self.propval {
       switch (model.mSchematicSheetOrientation_property_selection) {
       case .empty :
@@ -1246,16 +1246,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'schematicsBackgroundDisplay' transient property
+  //   Observers of 'schematicBackgroundDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_schematicsBackgroundDisplay = EBWeakEventSet ()
+  private var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicsBackgroundDisplay_property_selection : EBSelection <EBShape?> {
+  var schematicBackgroundDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
-      switch (model.schematicsBackgroundDisplay_property_selection) {
+      switch (model.schematicBackgroundDisplay_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1270,46 +1270,46 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicsBackgroundDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_schematicsBackgroundDisplay.insert (inObserver)
+    self.mObserversOf_schematicBackgroundDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicsBackgroundDisplay_property.addEBObserver (inObserver)
+      v?.schematicBackgroundDisplay_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_schematicsBackgroundDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_schematicsBackgroundDisplay.remove (inObserver)
+    self.mObserversOf_schematicBackgroundDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicsBackgroundDisplay_property.removeEBObserver (inObserver)
+      v?.schematicBackgroundDisplay_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_schematicsBackgroundDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicsBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.schematicsBackgroundDisplay_property.addEBObserver (observer)
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
+        managedObject.schematicBackgroundDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_schematicsBackgroundDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicsBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.schematicsBackgroundDisplay_property.removeEBObserver (observer)
+      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
+        managedObject.schematicBackgroundDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -1453,16 +1453,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mSchematicStatusMessage' transient property
+  //   Observers of 'schematicStatusMessage' transient property
   //····················································································································
 
-  private var mObserversOf_mSchematicStatusMessage = EBWeakEventSet ()
+  private var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicStatusMessage_property_selection : EBSelection <String?> {
+  var schematicStatusMessage_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mSchematicStatusMessage_property_selection) {
+      switch (model.schematicStatusMessage_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1477,61 +1477,61 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicStatusMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSchematicStatusMessage.insert (inObserver)
+    self.mObserversOf_schematicStatusMessage.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mSchematicStatusMessage_property.addEBObserver (inObserver)
+      v?.schematicStatusMessage_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSchematicStatusMessage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSchematicStatusMessage.remove (inObserver)
+    self.mObserversOf_schematicStatusMessage.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mSchematicStatusMessage_property.removeEBObserver (inObserver)
+      v?.schematicStatusMessage_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSchematicStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_schematicStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSchematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicStatusMessage_property.addEBObserver (observer)
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusMessage_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSchematicStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSchematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicStatusMessage_property.removeEBObserver (observer)
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusMessage_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mSchematicStatusImage' transient property
+  //   Observers of 'schematicStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_mSchematicStatusImage = EBWeakEventSet ()
+  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicStatusImage_property_selection : EBSelection <NSImage?> {
+  var schematicStatusImage_property_selection : EBSelection <NSImage?> {
     if let model = self.propval {
-      switch (model.mSchematicStatusImage_property_selection) {
+      switch (model.schematicStatusImage_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1546,46 +1546,46 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicStatusImage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSchematicStatusImage.insert (inObserver)
+    self.mObserversOf_schematicStatusImage.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mSchematicStatusImage_property.addEBObserver (inObserver)
+      v?.schematicStatusImage_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSchematicStatusImage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSchematicStatusImage.remove (inObserver)
+    self.mObserversOf_schematicStatusImage.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mSchematicStatusImage_property.removeEBObserver (inObserver)
+      v?.schematicStatusImage_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSchematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSchematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicStatusImage_property.addEBObserver (observer)
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSchematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mSchematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicStatusImage_property.removeEBObserver (observer)
+      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusImage_property.removeEBObserver (observer)
       }
     }
   }

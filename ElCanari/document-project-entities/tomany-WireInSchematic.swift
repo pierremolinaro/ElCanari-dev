@@ -5,23 +5,23 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyObject_WireInSchematics 
+//    ReadOnlyArrayOf_WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSchematics> {
+class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSchematic> {
 
   //····················································································································
 
-  internal override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematics?) {
-    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  internal override func updateObservers (removedSet inRemovedSet : Set <WireInSchematic>, addedSet inAddedSet : Set <WireInSchematic>) {
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -32,23 +32,6 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
@@ -56,7 +39,9 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
     }
   }
 
@@ -69,13 +54,15 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -85,7 +72,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -101,23 +88,6 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
@@ -125,7 +95,9 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
     }
   }
 
@@ -138,13 +110,15 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -154,7 +128,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -170,23 +144,6 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.netName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
     self.mObserversOf_netName.insert (inObserver)
@@ -194,7 +151,9 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netName_property.addEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.netName_property.addEBObserver (inObserver)
+      }
     }
   }
 
@@ -207,13 +166,15 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.netName_property.removeEBObserver (inObserver)
+      for managedObject in v {
+        managedObject.netName_property.removeEBObserver (inObserver)
+      }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.addEBObserver (observer)
@@ -223,7 +184,7 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 
   //····················································································································
 
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<WireInSchematics>) {
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.removeEBObserver (observer)
@@ -236,21 +197,92 @@ class ReadOnlyObject_WireInSchematics : ReadOnlyAbstractObjectProperty <WireInSc
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientObject WireInSchematics
+//    TransientArrayOf WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientObject_WireInSchematics : ReadOnlyObject_WireInSchematics {
+class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_WireInSchematics? = nil
+  private var mDataProvider : ReadOnlyArrayOf_WireInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyObject_WireInSchematics?) {
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_WireInSchematic?) {
+    if self.mDataProvider !== inProvider {
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = inProvider
+      self.mDataProvider?.attachClient (self)
+      if inProvider == nil {
+        self.mInternalArrayValue = []
+      }
+    }
+  }
+
+  //····················································································································
+
+  override func notifyModelDidChange () {
+    let newArray : [WireInSchematic] 
+    if let dataProvider = self.mDataProvider {
+      switch dataProvider.prop {
+      case .empty :
+        newArray = []
+        self.mTransientKind = .empty
+      case .single (let v) :
+        newArray = v
+        self.mTransientKind = .single
+       case .multiple :
+        newArray = []
+        self.mTransientKind = .multiple
+      }
+    }else{
+      newArray = []
+      self.mTransientKind = .empty
+    }
+    self.mInternalArrayValue = newArray
+    super.notifyModelDidChange ()
+  }
+
+  //····················································································································
+
+  override var prop : EBSelection < [WireInSchematic] > {
+    switch self.mTransientKind {
+    case .empty :
+      return .empty
+    case .single :
+      return .single (self.mInternalArrayValue)
+    case .multiple :
+      return .multiple
+    }
+  }
+
+  //····················································································································
+
+  override var propval : [WireInSchematic] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    TransientArrayOfSuperOf WireInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_WireInSchematic {
+
+  //····················································································································
+  //   Data provider
+  //····················································································································
+
+  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private var mTransientKind : PropertyKind = .empty
+
+  //····················································································································
+
+  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
@@ -261,39 +293,41 @@ class TransientObject_WireInSchematics : ReadOnlyObject_WireInSchematics {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newObject : WireInSchematics? 
+    var newModelArray : [SUPER] 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
-        newObject = nil
+        newModelArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newObject = v
+        newModelArray = v
         self.mTransientKind = .single
        case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
+        newModelArray = []
+        self.mTransientKind = .multiple
       }
     }else{
-      newObject = nil
+      newModelArray = []
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    var newArray = [WireInSchematic] ()
+    for superObject in newModelArray {
+      if let object = superObject as? WireInSchematic {
+        newArray.append (object)
+      }
+    }
+    self.mInternalArrayValue = newArray
     super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override var prop : EBSelection < WireInSchematics? > {
+  override var prop : EBSelection < [WireInSchematic] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
-      }else{
-        return .empty
-      }
+      return .single (self.mInternalArrayValue)
     case .multiple :
       return .multiple
     }
@@ -301,75 +335,78 @@ class TransientObject_WireInSchematics : ReadOnlyObject_WireInSchematics {
 
   //····················································································································
 
-  override var propval : WireInSchematics? { return self.mInternalValue }
+  override var propval : [WireInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_WireInSchematics
+//    To many relationship read write: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteObject_WireInSchematics : ReadOnlyObject_WireInSchematics {
+class ReadWriteArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 
   //····················································································································
  
-  func setProp (_ inValue : WireInSchematics?) { } // Abstract method
+  func setProp (_ value :  [WireInSchematic]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_WireInSchematics
+//    Proxy: ProxyArrayOf_WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_WireInSchematics : ReadWriteObject_WireInSchematics {
+final class ProxyArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_WireInSchematics? = nil
+  private var mModel : ReadWriteArrayOf_WireInSchematic? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteObject_WireInSchematics?) {
+  func setModel (_ inModel : ReadWriteArrayOf_WireInSchematic?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
+      /* if inModel == nil {
+        self.mInternalArrayValue = []
+      } */
     }
   }
 
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModel : WireInSchematics?
+    let newModelArray : [WireInSchematic]
     if let model = self.mModel {
       switch model.prop {
       case .empty :
-        newModel = nil
+        newModelArray = []
       case .single (let v) :
-        newModel = v
+        newModelArray = v
        case .multiple :
-        newModel = nil
+        newModelArray = []
       }
     }else{
-      newModel = nil
+      newModelArray = []
     }
-    self.mInternalValue = newModel
+    self.mInternalArrayValue = newModelArray
     super.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  override func setProp (_ inValue : WireInSchematics?) {
-    self.mModel?.setProp (inValue)
+  override func setProp (_ inArrayValue : [WireInSchematic]) {
+    self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < WireInSchematics? > {
+  override var prop : EBSelection < [WireInSchematic] > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -379,16 +416,16 @@ final class ProxyObject_WireInSchematics : ReadWriteObject_WireInSchematics {
 
   //····················································································································
 
-  override var propval : WireInSchematics? {
+  override var propval : [WireInSchematic] {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
-        return nil
+        return []
       case .single (let v) :
         return v
       }
     }else{
-      return nil
+      return []
     }
   }
 
@@ -397,66 +434,79 @@ final class ProxyObject_WireInSchematics : ReadWriteObject_WireInSchematics {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StoredObject_WireInSchematics 
+//    To many relationship: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EBSignatureObserverProtocol {
+final class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : WireInSchematics) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : WireInSchematics) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : WireInSchematic) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : WireInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : WireInSchematics) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : WireInSchematics) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : WireInSchematic) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : WireInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSButton? {
+  private var mPrefKey : String? = nil
+
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
-        switch self.prop {
+        switch prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
     }
   }
 
- //····················································································································
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [WireInSchematic] ()
+      for dictionary in array {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "WireInSchematic") as? WireInSchematic {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematics?) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [WireInSchematic]) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
-  //---
-    if let object = inOldValue {
-      object.setSignatureObserver (observer: nil)
-      self.mResetOppositeRelationship? (object)
-    }
-  //---
-    if let object = self.mInternalValue {
-      object.setSignatureObserver (observer: self)
-      self.mSetOppositeRelationship? (object)
-    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : WireInSchematics?) {
-    self.mInternalValue = oldValue
+  @objc func performUndo (_ oldValue : [WireInSchematic]) {
+    self.mInternalArrayValue = oldValue
   }
  
   //····················································································································
@@ -466,33 +516,78 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
   override func notifyModelDidChange () {
   //--- Update explorer
     if let valueExplorer = self.mValueExplorer {
-      updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
+      updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue, popUpButton: valueExplorer)
     }
   //--- Notify observers
     self.postEvent ()
     self.clearSignatureCache ()
+  //--- Write in preferences ?
+    self.writeInPreferences ()
   //---
     super.notifyModelDidChange ()
   }
 
   //····················································································································
+  // Update observers 
+  //····················································································································
 
-  override var prop : EBSelection < WireInSchematics? > {
-    if let object = self.mInternalValue {
-      return .single (object)
-    }else{
-      return .empty
+  internal override func updateObservers (removedSet inRemovedSet : Set <WireInSchematic>, addedSet inAddedSet : Set <WireInSchematic>) {
+    for managedObject in inRemovedSet {
+      managedObject.setSignatureObserver (observer: nil)
+      self.mResetOppositeRelationship? (managedObject)
+    }
+  //---
+    for managedObject in inAddedSet {
+      managedObject.setSignatureObserver (observer: self)
+      self.mSetOppositeRelationship? (managedObject)
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
+ 
+  //····················································································································
+
+  override var prop : EBSelection < [WireInSchematic] > { return .single (self.mInternalArrayValue) }
+
+  //····················································································································
+
+  override func setProp (_ inValue : [WireInSchematic]) { self.mInternalArrayValue = inValue }
+
+  //····················································································································
+
+  override var propval : [WireInSchematic] { return self.mInternalArrayValue }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mInternalArrayValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 
   //····················································································································
 
-  override func setProp (_ inValue : WireInSchematics?) { self.mInternalValue = inValue }
-
+  func remove (_ object : WireInSchematic) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+  
   //····················································································································
 
-  override var propval : WireInSchematics? { return self.mInternalValue }
-
+  func add (_ object : WireInSchematic) {
+    if !self.internalSetValue.contains (object) {
+      self.mInternalArrayValue.append (object)
+    }
+  }
+  
   //····················································································································
   //   signature
   //····················································································································
@@ -507,7 +602,9 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
-    self.mInternalValue?.setSignatureObserver (observer: observer)
+    for object in self.mInternalArrayValue {
+      object.setSignatureObserver (observer: observer)
+    }
   }
 
   //····················································································································
@@ -527,7 +624,7 @@ final class StoredObject_WireInSchematics : ReadWriteObject_WireInSchematics, EB
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    for object in self.mInternalArrayValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

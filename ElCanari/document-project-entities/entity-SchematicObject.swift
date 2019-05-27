@@ -30,8 +30,8 @@ protocol SchematicObject_objectDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SchematicObject_isPlacedInSchematics : class {
-  var isPlacedInSchematics : Bool? { get }
+protocol SchematicObject_isPlacedInSchematic : class {
+  var isPlacedInSchematic : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -43,7 +43,7 @@ class SchematicObject : EBGraphicManagedObject,
          SchematicObject_connectedPoints,
          SchematicObject_selectionDisplay,
          SchematicObject_objectDisplay,
-         SchematicObject_isPlacedInSchematics {
+         SchematicObject_isPlacedInSchematic {
 
   //····················································································································
   //   To one property: mSheet
@@ -130,21 +130,21 @@ class SchematicObject : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: isPlacedInSchematics
+  //   Transient property: isPlacedInSchematic
   //····················································································································
 
-  let isPlacedInSchematics_property = EBTransientProperty_Bool ()
+  let isPlacedInSchematic_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var isPlacedInSchematics_property_selection : EBSelection <Bool> {
-    return self.isPlacedInSchematics_property.prop
+  var isPlacedInSchematic_property_selection : EBSelection <Bool> {
+    return self.isPlacedInSchematic_property.prop
   }
 
   //····················································································································
 
-  var isPlacedInSchematics : Bool? {
-    switch self.isPlacedInSchematics_property_selection {
+  var isPlacedInSchematic : Bool? {
+    switch self.isPlacedInSchematic_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -164,8 +164,8 @@ class SchematicObject : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
     )
-  //--- Atomic property: isPlacedInSchematics
-    self.isPlacedInSchematics_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: isPlacedInSchematic
+    self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mSheet_none_selection.kind ()
         switch kind {
@@ -176,7 +176,7 @@ class SchematicObject : EBGraphicManagedObject,
         case .single :
           switch (unwSelf.mSheet_none_selection) {
           case (.single (let v0)) :
-            return .single (transient_SchematicObject_isPlacedInSchematics (v0))
+            return .single (transient_SchematicObject_isPlacedInSchematic (v0))
           default :
             return .empty
           }
@@ -185,7 +185,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserver (self.isPlacedInSchematics_property)
+    self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -195,7 +195,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mSheet_property.removeEBObserver (self.isPlacedInSchematics_property)
+    self.mSheet_property.removeEBObserver (self.isPlacedInSchematic_property)
   //--- Unregister properties for handling signature
   }
 
@@ -244,12 +244,12 @@ class SchematicObject : EBGraphicManagedObject,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "isPlacedInSchematics",
-      idx: self.isPlacedInSchematics_property.ebObjectIndex,
+      "isPlacedInSchematic",
+      idx: self.isPlacedInSchematic_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.isPlacedInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.isPlacedInSchematics_property.mValueExplorer
+      observerExplorer: &self.isPlacedInSchematic_property.mObserverExplorer,
+      valueExplorer: &self.isPlacedInSchematic_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

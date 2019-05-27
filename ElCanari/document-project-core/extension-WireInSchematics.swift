@@ -1,5 +1,5 @@
 //
-//  extension-WireInSchematics.swift
+//  extension-WireInSchematic.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 08/05/2019.
@@ -14,10 +14,10 @@ let WIRE_P1_KNOB = 0
 let WIRE_P2_KNOB = 1
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION WireInSchematics
+//   EXTENSION WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension WireInSchematics {
+extension WireInSchematic {
 
   //····················································································································
 

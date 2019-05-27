@@ -48,8 +48,8 @@ protocol DevicePinInProject_mNameHorizontalAlignment : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinNameIsDisplayedInSchematics : class {
-  var mPinNameIsDisplayedInSchematics : Bool { get }
+protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : class {
+  var mPinNameIsDisplayedInSchematic : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,7 +100,7 @@ class DevicePinInProject : EBManagedObject,
          DevicePinInProject_mXName,
          DevicePinInProject_mYName,
          DevicePinInProject_mNameHorizontalAlignment,
-         DevicePinInProject_mPinNameIsDisplayedInSchematics,
+         DevicePinInProject_mPinNameIsDisplayedInSchematic,
          DevicePinInProject_mXNumber,
          DevicePinInProject_mYNumber,
          DevicePinInProject_mNumberHorizontalAlignment,
@@ -228,21 +228,21 @@ class DevicePinInProject : EBManagedObject,
   var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNameHorizontalAlignment_property.prop }
 
   //····················································································································
-  //   Atomic property: mPinNameIsDisplayedInSchematics
+  //   Atomic property: mPinNameIsDisplayedInSchematic
   //····················································································································
 
-  let mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
+  let mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematics : Bool {
-    get { return self.mPinNameIsDisplayedInSchematics_property.propval }
-    set { self.mPinNameIsDisplayedInSchematics_property.setProp (newValue) }
+  var mPinNameIsDisplayedInSchematic : Bool {
+    get { return self.mPinNameIsDisplayedInSchematic_property.propval }
+    set { self.mPinNameIsDisplayedInSchematic_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematics_property.prop }
+  var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool> { return self.mPinNameIsDisplayedInSchematic_property.prop }
 
   //····················································································································
   //   Atomic property: mXNumber
@@ -378,8 +378,8 @@ class DevicePinInProject : EBManagedObject,
     self.mYName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPinNameIsDisplayedInSchematic
+    self.mPinNameIsDisplayedInSchematic_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mXNumber
     self.mXNumber_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mYNumber
@@ -423,7 +423,7 @@ class DevicePinInProject : EBManagedObject,
         kind &= unwSelf.mXName_property_selection.kind ()
         kind &= unwSelf.mYName_property_selection.kind ()
         kind &= unwSelf.mNameHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mPinNameIsDisplayedInSchematics_property_selection.kind ()
+        kind &= unwSelf.mPinNameIsDisplayedInSchematic_property_selection.kind ()
         kind &= unwSelf.mXNumber_property_selection.kind ()
         kind &= unwSelf.mYNumber_property_selection.kind ()
         kind &= unwSelf.mNumberHorizontalAlignment_property_selection.kind ()
@@ -433,7 +433,7 @@ class DevicePinInProject : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mPinName_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mPinX_property_selection, unwSelf.mPinY_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, unwSelf.mXNumber_property_selection, unwSelf.mYNumber_property_selection, unwSelf.mNumberHorizontalAlignment_property_selection) {
+          switch (unwSelf.mPinName_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mPinX_property_selection, unwSelf.mPinY_property_selection, unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematic_property_selection, unwSelf.mXNumber_property_selection, unwSelf.mYNumber_property_selection, unwSelf.mNumberHorizontalAlignment_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
             return .single (transient_DevicePinInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
@@ -452,7 +452,7 @@ class DevicePinInProject : EBManagedObject,
     self.mXName_property.addEBObserver (self.descriptor_property)
     self.mYName_property.addEBObserver (self.descriptor_property)
     self.mNameHorizontalAlignment_property.addEBObserver (self.descriptor_property)
-    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematic_property.addEBObserver (self.descriptor_property)
     self.mXNumber_property.addEBObserver (self.descriptor_property)
     self.mYNumber_property.addEBObserver (self.descriptor_property)
     self.mNumberHorizontalAlignment_property.addEBObserver (self.descriptor_property)
@@ -475,7 +475,7 @@ class DevicePinInProject : EBManagedObject,
     self.mXName_property.removeEBObserver (self.descriptor_property)
     self.mYName_property.removeEBObserver (self.descriptor_property)
     self.mNameHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
-    self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematic_property.removeEBObserver (self.descriptor_property)
     self.mXNumber_property.removeEBObserver (self.descriptor_property)
     self.mYNumber_property.removeEBObserver (self.descriptor_property)
     self.mNumberHorizontalAlignment_property.removeEBObserver (self.descriptor_property)
@@ -550,12 +550,12 @@ class DevicePinInProject : EBManagedObject,
       valueExplorer: &self.mNameHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mPinNameIsDisplayedInSchematics",
-      idx: self.mPinNameIsDisplayedInSchematics_property.ebObjectIndex,
+      "mPinNameIsDisplayedInSchematic",
+      idx: self.mPinNameIsDisplayedInSchematic_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
+      observerExplorer: &self.mPinNameIsDisplayedInSchematic_property.mObserverExplorer,
+      valueExplorer: &self.mPinNameIsDisplayedInSchematic_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mXNumber",
@@ -637,9 +637,9 @@ class DevicePinInProject : EBManagedObject,
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.mObserverExplorer = nil
     self.mNameHorizontalAlignment_property.mValueExplorer = nil
-  //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer = nil
-    self.mPinNameIsDisplayedInSchematics_property.mValueExplorer = nil
+  //--- Atomic property: mPinNameIsDisplayedInSchematic
+    self.mPinNameIsDisplayedInSchematic_property.mObserverExplorer = nil
+    self.mPinNameIsDisplayedInSchematic_property.mValueExplorer = nil
   //--- Atomic property: mXNumber
     self.mXNumber_property.mObserverExplorer = nil
     self.mXNumber_property.mValueExplorer = nil
@@ -694,8 +694,8 @@ class DevicePinInProject : EBManagedObject,
     self.mYName_property.storeIn (dictionary: ioDictionary, forKey:"mYName")
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNameHorizontalAlignment")
-  //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey:"mPinNameIsDisplayedInSchematics")
+  //--- Atomic property: mPinNameIsDisplayedInSchematic
+    self.mPinNameIsDisplayedInSchematic_property.storeIn (dictionary: ioDictionary, forKey:"mPinNameIsDisplayedInSchematic")
   //--- Atomic property: mXNumber
     self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey:"mXNumber")
   //--- Atomic property: mYNumber
@@ -735,8 +735,8 @@ class DevicePinInProject : EBManagedObject,
     self.mYName_property.readFrom (dictionary: inDictionary, forKey:"mYName")
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNameHorizontalAlignment")
-  //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey:"mPinNameIsDisplayedInSchematics")
+  //--- Atomic property: mPinNameIsDisplayedInSchematic
+    self.mPinNameIsDisplayedInSchematic_property.readFrom (dictionary: inDictionary, forKey:"mPinNameIsDisplayedInSchematic")
   //--- Atomic property: mXNumber
     self.mXNumber_property.readFrom (dictionary: inDictionary, forKey:"mXNumber")
   //--- Atomic property: mYNumber

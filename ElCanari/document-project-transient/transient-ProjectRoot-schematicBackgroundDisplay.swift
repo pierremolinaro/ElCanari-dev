@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_schematicsBackgroundDisplay (
-       _ self_mSchematicTitle : String,                 
-       _ self_mSchematicVersion : String,               
-       _ self_mSchematicSheetOrientation : SchematicsSheetOrientation,
-       _ self_mSelectedSheet_mSheetTitle : String?,     
+func transient_ProjectRoot_schematicBackgroundDisplay (
+       _ self_mSchematicTitle : String,                
+       _ self_mSchematicVersion : String,              
+       _ self_mSchematicSheetOrientation : SchematicSheetOrientation,
+       _ self_mSelectedSheet_mSheetTitle : String?,    
        _ self_mSheets : [EBManagedObject_alloc_index_protocol],
        _ self_mSelectedSheet : EBManagedObject_alloc_index_protocol?,
        _ self_mSchematicDate : Date
@@ -39,13 +39,13 @@ func transient_ProjectRoot_schematicsBackgroundDisplay (
         let vMarks : Int
         switch self_mSchematicSheetOrientation {
         case .horizontal :
-           A4Height = A4MinSize - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
-           A4Width  = A4MaxSize - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
+           A4Height = A4MinSize_IN_POINT - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
+           A4Width  = A4MaxSize_IN_POINT - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
            hMarks = 8
            vMarks = 6
         case .vertical :
-           A4Height = A4MaxSize - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
-           A4Width  = A4MinSize - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
+           A4Height = A4MaxSize_IN_POINT - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 2.0
+           A4Width  = A4MinSize_IN_POINT - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 2.0
            hMarks = 6
            vMarks = 8
         }

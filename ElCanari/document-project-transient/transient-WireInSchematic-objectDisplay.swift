@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematics_objectDisplay (
-       _ self_mP1_wireColor : NSColor?,        
+func transient_WireInSchematic_objectDisplay (
+       _ self_mP1_wireColor : NSColor?,       
        _ prefs_symbolDrawingWidthMultipliedByTen : Int,
-       _ self_mP1_location : CanariPoint?,     
+       _ self_mP1_location : CanariPoint?,    
        _ self_mP2_location : CanariPoint?
 ) -> EBShape {
 //--- START OF USER ZONE 2

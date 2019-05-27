@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SchematicObject_isPlacedInSchematics (
-       _ self_mSheet_none : Bool
+func transient_ComponentSymbolInProject_symbolInSchematic (
+       _ self_SchematicObject_isPlacedInSchematic : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return !self_mSheet_none
+       return self_SchematicObject_isPlacedInSchematic
 //--- END OF USER ZONE 2
 }
 

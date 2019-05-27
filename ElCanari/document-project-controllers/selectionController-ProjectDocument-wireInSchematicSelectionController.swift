@@ -44,13 +44,13 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   //   Selected array (not observable)
   //····················································································································
 
-  var selectedArray : [WireInSchematics] { return self.selectedArray_property.propval }
+  var selectedArray : [WireInSchematic] { return self.selectedArray_property.propval }
 
   //····················································································································
   //   BIND SELECTION
   //····················································································································
 
-   let selectedArray_property = TransientArrayOfSuperOf_WireInSchematics <SchematicObject> ()
+   let selectedArray_property = TransientArrayOfSuperOf_WireInSchematic <SchematicObject> ()
 
   //····················································································································
 

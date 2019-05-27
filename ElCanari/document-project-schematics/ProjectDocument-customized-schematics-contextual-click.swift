@@ -177,7 +177,7 @@ extension CustomizedProjectDocument {
   // Insert point into wire
   //····················································································································
 
-  private func appendCreateWirePointItemTo (menu : NSMenu, _ inCanariAlignedMouseDownLocation : CanariPoint, wires inWires : [WireInSchematics]) {
+  private func appendCreateWirePointItemTo (menu : NSMenu, _ inCanariAlignedMouseDownLocation : CanariPoint, wires inWires : [WireInSchematic]) {
     if inWires.count == 1 {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())

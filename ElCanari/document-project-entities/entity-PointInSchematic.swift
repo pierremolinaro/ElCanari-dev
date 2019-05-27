@@ -135,17 +135,17 @@ class PointInSchematic : EBManagedObject,
   //   To many property: mWiresP2s
   //····················································································································
 
-  let mWiresP2s_property = StoredArrayOf_WireInSchematics ()
+  let mWiresP2s_property = StoredArrayOf_WireInSchematic ()
 
   //····················································································································
 
-  var mWiresP2s_property_selection : EBSelection < [WireInSchematics] > {
+  var mWiresP2s_property_selection : EBSelection < [WireInSchematic] > {
     return self.mWiresP2s_property.prop
   }
 
   //····················································································································
 
-  var mWiresP2s : [WireInSchematics] {
+  var mWiresP2s : [WireInSchematic] {
     get { return self.mWiresP2s_property.propval }
     set { self.mWiresP2s_property.setProp (newValue) }
   }
@@ -173,17 +173,17 @@ class PointInSchematic : EBManagedObject,
   //   To many property: mWiresP1s
   //····················································································································
 
-  let mWiresP1s_property = StoredArrayOf_WireInSchematics ()
+  let mWiresP1s_property = StoredArrayOf_WireInSchematic ()
 
   //····················································································································
 
-  var mWiresP1s_property_selection : EBSelection < [WireInSchematics] > {
+  var mWiresP1s_property_selection : EBSelection < [WireInSchematic] > {
     return self.mWiresP1s_property.prop
   }
 
   //····················································································································
 
-  var mWiresP1s : [WireInSchematics] {
+  var mWiresP1s : [WireInSchematic] {
     get { return self.mWiresP1s_property.propval }
     set { self.mWiresP1s_property.setProp (newValue) }
   }
@@ -970,7 +970,7 @@ class PointInSchematic : EBManagedObject,
       inRelationshipName: "mWiresP2s",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematics])
+    ) as! [WireInSchematic])
   //--- To many property: mLabels
     self.mLabels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mLabels",
@@ -982,7 +982,7 @@ class PointInSchematic : EBManagedObject,
       inRelationshipName: "mWiresP1s",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematics])
+    ) as! [WireInSchematic])
   //--- To one property: mSymbol
     do{
       let possibleEntity = readEntityFromDictionary (

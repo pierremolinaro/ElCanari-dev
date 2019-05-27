@@ -11,32 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_unplacedSymbols (
-       _ self_componentName : String,              
-       _ self_mSymbols : [EBManagedObject_alloc_index_protocol],
-       _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
-       _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
-       _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName]
-) -> StringTagArray {
+func transient_WireInSchematic_netName (
+       _ self_mP1_netName : String?
+) -> String {
 //--- START OF USER ZONE 2
-        var result = StringTagArray ()
-        var idx = 0
-        while idx < self_mSymbols_mSymbolInstanceName.count {
-          let inSchematics = self_mSymbols_symbolInSchematic [idx].symbolInSchematic!
-          if !inSchematics {
-            let ebObjectIndex = self_mSymbols [idx].ebObjectIndex
-            let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
-            let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
-            var name = self_componentName
-            if symbolInstanceName != "" {
-              name += ":" + symbolInstanceName
-            }
-            name += " (" + symbolTypeName + ")"
-            result.append (StringTag (name, ebObjectIndex))
-          }
-          idx += 1
-        }
-        return result
+        return self_mP1_netName ?? "?"
 //--- END OF USER ZONE 2
 }
 

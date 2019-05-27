@@ -108,8 +108,8 @@ protocol ComponentSymbolInProject_selectionDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_symbolInSchematics : class {
-  var symbolInSchematics : Bool? { get }
+protocol ComponentSymbolInProject_symbolInSchematic : class {
+  var symbolInSchematic : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -134,7 +134,7 @@ class ComponentSymbolInProject : SchematicObject,
          ComponentSymbolInProject_symbolInfo,
          ComponentSymbolInProject_objectDisplay,
          ComponentSymbolInProject_selectionDisplay,
-         ComponentSymbolInProject_symbolInSchematics {
+         ComponentSymbolInProject_symbolInSchematic {
 
   //····················································································································
   //   To many property: mPoints
@@ -478,21 +478,21 @@ class ComponentSymbolInProject : SchematicObject,
   }
 
   //····················································································································
-  //   Transient property: symbolInSchematics
+  //   Transient property: symbolInSchematic
   //····················································································································
 
-  let symbolInSchematics_property = EBTransientProperty_Bool ()
+  let symbolInSchematic_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  var symbolInSchematics_property_selection : EBSelection <Bool> {
-    return self.symbolInSchematics_property.prop
+  var symbolInSchematic_property_selection : EBSelection <Bool> {
+    return self.symbolInSchematic_property.prop
   }
 
   //····················································································································
 
-  var symbolInSchematics : Bool? {
-    switch self.symbolInSchematics_property_selection {
+  var symbolInSchematic : Bool? {
+    switch self.symbolInSchematic_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -713,19 +713,19 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.addEBObserver (self.selectionDisplay_property)
     self.mDisplayComponentValueOffsetY_property.addEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.addEBObserver (self.selectionDisplay_property)
-  //--- Atomic property: symbolInSchematics
-    self.symbolInSchematics_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolInSchematic
+    self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.isPlacedInSchematics_property_selection.kind ()
+        let kind = unwSelf.isPlacedInSchematic_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.isPlacedInSchematics_property_selection) {
+          switch (unwSelf.isPlacedInSchematic_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_symbolInSchematics (v0))
+            return .single (transient_ComponentSymbolInProject_symbolInSchematic (v0))
           default :
             return .empty
           }
@@ -734,7 +734,7 @@ class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.isPlacedInSchematics_property.addEBObserver (self.symbolInSchematics_property)
+    self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
@@ -782,7 +782,7 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.removeEBObserver (self.selectionDisplay_property)
     self.mDisplayComponentValueOffsetY_property.removeEBObserver (self.selectionDisplay_property)
     self.symbolInfo_property.removeEBObserver (self.selectionDisplay_property)
-    self.isPlacedInSchematics_property.removeEBObserver (self.symbolInSchematics_property)
+    self.isPlacedInSchematic_property.removeEBObserver (self.symbolInSchematic_property)
   //--- Unregister properties for handling signature
   }
 
@@ -927,12 +927,12 @@ class ComponentSymbolInProject : SchematicObject,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "symbolInSchematics",
-      idx: self.symbolInSchematics_property.ebObjectIndex,
+      "symbolInSchematic",
+      idx: self.symbolInSchematic_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.symbolInSchematics_property.mObserverExplorer,
-      valueExplorer: &self.symbolInSchematics_property.mValueExplorer
+      observerExplorer: &self.symbolInSchematic_property.mObserverExplorer,
+      valueExplorer: &self.symbolInSchematic_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

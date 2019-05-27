@@ -1,11 +1,11 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicsSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicsInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicObject[label="<SchematicObject>SchematicObject|<mSheet>SheetInProject? mSheet"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicObject] mObjects|<mPoints>[PointInSchematic] mPoints|<mRoot>ProjectRoot? mRoot|String mSheetTitle"] ;
-  PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematics] mWiresP1s|<mWiresP2s>[WireInSchematics] mWiresP2s|Int mX|Int mY"] ;
-  WireInSchematics[label="<WireInSchematics>WireInSchematics|<mP1>PointInSchematic? mP1|<mP2>PointInSchematic? mP2|<mSheet>SheetInProject? mSheet"] ;
+  PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematic] mWiresP1s|<mWiresP2s>[WireInSchematic] mWiresP2s|Int mX|Int mY"] ;
+  WireInSchematic[label="<WireInSchematic>WireInSchematic|<mP1>PointInSchematic? mP1|<mP2>PointInSchematic? mP2|<mSheet>SheetInProject? mSheet"] ;
   NCInSchematic[label="<NCInSchematic>NCInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   LabelInSchematic[label="<LabelInSchematic>LabelInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   NetClassInProject[label="<NetClassInProject>NetClassInProject|NSColor mNetClassColor|String mNetClassName|Int mNetWidth|Int mNetWidthUnit|<mNets>[NetInProject] mNets|Int mViaHoleDiameter|Int mViaHoleDiameterUnit|Int mViaPadDiameter|Int mViaPadDiameterUnit"] ;
@@ -15,7 +15,7 @@ digraph G {
   DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|String mSymbolInstanceName|<mSymbolType>DeviceSymbolTypeInProject? mSymbolType"] ;
   DeviceSymbolTypeInProject[label="<DeviceSymbolTypeInProject>DeviceSymbolTypeInProject|NSBezierPath mFilledBezierPath|NSBezierPath mStrokeBezierPath|String mSymbolTypeName"] ;
   DevicePadAssignmentInProject[label="<DevicePadAssignmentInProject>DevicePadAssignmentInProject|String mPadName|<mPin>DevicePinInProject? mPin"] ;
-  DevicePinInProject[label="<DevicePinInProject>DevicePinInProject|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|String mPinName|Bool mPinNameIsDisplayedInSchematics|Int mPinX|Int mPinY|String mSymbolInstanceName|String mSymbolTypeName|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
+  DevicePinInProject[label="<DevicePinInProject>DevicePinInProject|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|String mPinName|Bool mPinNameIsDisplayedInSchematic|Int mPinX|Int mPinY|String mSymbolInstanceName|String mSymbolTypeName|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>[DeviceMasterPadInProject] mMasterPads|String mPackageName"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>[DeviceSlavePadInProject] mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
@@ -31,9 +31,9 @@ digraph G {
   SheetInProject:mObjects -> SchematicObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
   SheetInProject:mPoints -> PointInSchematic:PointInSchematic [dir=both arrowtail=none arrowhead=vee] ;
   PointInSchematic:mLabels -> LabelInSchematic:mPoint [dir=both arrowtail=onormal arrowhead=vee] ;
-  PointInSchematic:mWiresP1s -> WireInSchematics:mP1 [dir=both arrowtail=onormal arrowhead=vee] ;
-  PointInSchematic:mWiresP2s -> WireInSchematics:mP2 [dir=both arrowtail=onormal arrowhead=vee] ;
-  WireInSchematics -> SchematicObject [arrowhead=dot] ;
+  PointInSchematic:mWiresP1s -> WireInSchematic:mP1 [dir=both arrowtail=onormal arrowhead=vee] ;
+  PointInSchematic:mWiresP2s -> WireInSchematic:mP2 [dir=both arrowtail=onormal arrowhead=vee] ;
+  WireInSchematic -> SchematicObject [arrowhead=dot] ;
   NCInSchematic -> SchematicObject [arrowhead=dot] ;
   NCInSchematic:mPoint -> PointInSchematic:mNC [dir=both arrowtail=onormal arrowhead=onormal] ;
   LabelInSchematic -> SchematicObject [arrowhead=dot] ;

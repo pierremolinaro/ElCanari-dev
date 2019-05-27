@@ -417,7 +417,7 @@ final class Controller_ProjectDocument_mComponentController : ReadOnlyAbstractGe
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.placementInSchematics_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.placementInSchematic_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

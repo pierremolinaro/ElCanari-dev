@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SchematicsSheetOrientation : Int, EnumPropertyProtocol {
+enum SchematicSheetOrientation : Int, EnumPropertyProtocol {
   case horizontal = 0
   case vertical = 1
 
@@ -34,8 +34,8 @@ enum SchematicsSheetOrientation : Int, EnumPropertyProtocol {
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> SchematicsSheetOrientation? {
-    if let v = SchematicsSheetOrientation (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> SchematicSheetOrientation? {
+    if let v = SchematicSheetOrientation (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +44,9 @@ enum SchematicsSheetOrientation : Int, EnumPropertyProtocol {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> SchematicsSheetOrientation {
+  func enumfromRawValue (rawValue : Int) -> SchematicSheetOrientation {
     var result = self
-    let v : SchematicsSheetOrientation? = SchematicsSheetOrientation (rawValue:rawValue) ;
+    let v : SchematicSheetOrientation? = SchematicSheetOrientation (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -65,9 +65,9 @@ enum SchematicsSheetOrientation : Int, EnumPropertyProtocol {
     return NSNumber (value: self.rawValue)
   }
 
-  static func convertFromNSObject (object : NSObject) -> SchematicsSheetOrientation {
-    var result = SchematicsSheetOrientation.horizontal
-    if let number = object as? NSNumber, let v = SchematicsSheetOrientation (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> SchematicSheetOrientation {
+    var result = SchematicSheetOrientation.horizontal
+    if let number = object as? NSNumber, let v = SchematicSheetOrientation (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,10 +79,10 @@ enum SchematicsSheetOrientation : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SchematicsSheetOrientation = EBReadOnlyEnumProperty <SchematicsSheetOrientation>
-typealias EBTransientProperty_SchematicsSheetOrientation = EBTransientEnumProperty <SchematicsSheetOrientation>
-typealias EBReadWriteProperty_SchematicsSheetOrientation = EBReadWriteEnumProperty <SchematicsSheetOrientation>
-typealias EBStoredProperty_SchematicsSheetOrientation = EBStoredEnumProperty <SchematicsSheetOrientation>
-typealias EBPropertyProxy_SchematicsSheetOrientation = EBPropertyEnumProxy <SchematicsSheetOrientation>
+typealias EBReadOnlyProperty_SchematicSheetOrientation = EBReadOnlyEnumProperty <SchematicSheetOrientation>
+typealias EBTransientProperty_SchematicSheetOrientation = EBTransientEnumProperty <SchematicSheetOrientation>
+typealias EBReadWriteProperty_SchematicSheetOrientation = EBReadWriteEnumProperty <SchematicSheetOrientation>
+typealias EBStoredProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
+typealias EBPropertyProxy_SchematicSheetOrientation = EBPropertyEnumProxy <SchematicSheetOrientation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

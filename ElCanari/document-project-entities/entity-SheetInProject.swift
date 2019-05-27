@@ -35,6 +35,12 @@ protocol SheetInProject_connexionErrors : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SheetInProject_sheetDescriptor : class {
+  var sheetDescriptor : SchematicSheetDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -43,7 +49,8 @@ class SheetInProject : EBManagedObject,
          SheetInProject_issues,
          SheetInProject_connectedPoints,
          SheetInProject_connexionWarnings,
-         SheetInProject_connexionErrors {
+         SheetInProject_connexionErrors,
+         SheetInProject_sheetDescriptor {
 
   //····················································································································
   //   To many property: mObjects
@@ -231,6 +238,29 @@ class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetDescriptor
+  //····················································································································
+
+  let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+
+  //····················································································································
+
+  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
+    return self.sheetDescriptor_property.prop
+  }
+
+  //····················································································································
+
+  var sheetDescriptor : SchematicSheetDescriptor? {
+    switch self.sheetDescriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -340,6 +370,28 @@ class SheetInProject : EBManagedObject,
       }
     }
     self.issues_property.addEBObserver (self.connexionErrors_property)
+  //--- Atomic property: sheetDescriptor
+    self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SheetInProject_sheetDescriptor (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -357,6 +409,7 @@ class SheetInProject : EBManagedObject,
     self.mPoints_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)
+    self.mRoot_property.removeEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
   //--- Unregister properties for handling signature
   }
 
@@ -411,6 +464,14 @@ class SheetInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.connexionErrors_property.mObserverExplorer,
       valueExplorer: &self.connexionErrors_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sheetDescriptor",
+      idx: self.sheetDescriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
+      valueExplorer: &self.sheetDescriptor_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

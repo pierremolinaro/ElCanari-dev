@@ -1910,6 +1910,12 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property SchematicSheetDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SchematicSheetDescriptor  = EBReadOnlyValueProperty <SchematicSheetDescriptor>
+typealias EBTransientProperty_SchematicSheetDescriptor = EBTransientValueProperty <SchematicSheetDescriptor>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property SchematicPointStatus
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

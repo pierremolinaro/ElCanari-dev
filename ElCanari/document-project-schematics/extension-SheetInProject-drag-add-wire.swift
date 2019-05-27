@@ -15,9 +15,9 @@ extension SheetInProject {
   //····················································································································
 
   func performAddWireDragOperation (_ inDraggingLocationInDestinationView : NSPoint,
-                                    newNetCreator inNewNetCreator : () -> NetInProject) -> WireInSchematics? {
+                                    newNetCreator inNewNetCreator : () -> NetInProject) -> WireInSchematic? {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    let possibleWire : WireInSchematics?
+    let possibleWire : WireInSchematic?
     let p1 = CanariPoint (x: p.x, y: p.y)
     let p2 = CanariPoint (x: p.x + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: p.y + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
   //--- Find points at p1 and p2
@@ -25,7 +25,7 @@ extension SheetInProject {
     let pointsAtP2 = self.pointsInSchematics (at: p2)
   //---
     if (pointsAtP1.count == 1) && (pointsAtP2.count == 1) && (pointsAtP1 [0].mNet === pointsAtP2 [0].mNet) {
-      let wire = WireInSchematics (self.ebUndoManager)
+      let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
       wire.mP2 = pointsAtP2 [0]
@@ -35,7 +35,7 @@ extension SheetInProject {
 //        wire.mP2?.mNet = newNet
 //      }
     }else if (pointsAtP1.count == 1) && (pointsAtP2.count == 0) { // Use point at p1, create a point at p2
-      let wire = WireInSchematics (self.ebUndoManager)
+      let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
 //      if pointsAtP1 [0].mNet == nil {
@@ -49,7 +49,7 @@ extension SheetInProject {
       wire.mP2 = point
       self.mPoints.append (point)
     }else if pointsAtP2.count == 1 { // Use point at p2, create a point at p1
-      let wire = WireInSchematics (self.ebUndoManager)
+      let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP2 = pointsAtP2 [0]
 //      if pointsAtP2 [0].mNet == nil {
@@ -63,7 +63,7 @@ extension SheetInProject {
       wire.mP1 = point
       self.mPoints.append (point)
     }else{ // Assign no net
-      let wire = WireInSchematics (self.ebUndoManager)
+      let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       let point1 = PointInSchematic (self.ebUndoManager)
       point1.mX = p1.x
