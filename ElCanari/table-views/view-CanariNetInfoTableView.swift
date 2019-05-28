@@ -54,9 +54,9 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
       }else if columnIdentifier.rawValue == "netclass" {
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
       }else if columnIdentifier.rawValue == "pincount" {
-        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pins.count)"
+        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pinCount)"
       }else if columnIdentifier.rawValue == "labelcount" {
-        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].labels)"
+        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].labelCount)"
       }
     }
     return result
@@ -97,15 +97,15 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
           }
         }else if key == "pincount" {
           if s.ascending {
-            self.mDataSource.sort { $0.pins.count < $1.pins.count }
+            self.mDataSource.sort { $0.pinCount < $1.pinCount }
           }else{
-            self.mDataSource.sort { $0.pins.count > $1.pins.count }
+            self.mDataSource.sort { $0.pinCount > $1.pinCount }
           }
         }else if key == "labelcount" {
           if s.ascending {
-            self.mDataSource.sort { $0.labels.count < $1.labels.count }
+            self.mDataSource.sort { $0.labelCount < $1.labelCount }
           }else{
-            self.mDataSource.sort { $0.labels.count > $1.labels.count }
+            self.mDataSource.sort { $0.labelCount > $1.labelCount }
           }
         }else{
           NSLog ("Key '\(key)' unknown in \(#file):\(#line)")

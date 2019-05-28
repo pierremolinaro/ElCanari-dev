@@ -66,8 +66,8 @@ protocol PointInSchematic_connectedPoints : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_labelSchematicLocation : class {
-  var labelSchematicLocation : StringArray? { get }
+protocol PointInSchematic_netInfoForPoint : class {
+  var netInfoForPoint : NetInfoPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,7 +85,7 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_isConnected,
          PointInSchematic_status,
          PointInSchematic_connectedPoints,
-         PointInSchematic_labelSchematicLocation {
+         PointInSchematic_netInfoForPoint {
 
   //····················································································································
   //   Atomic property: mSymbolPinName
@@ -509,21 +509,21 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: labelSchematicLocation
+  //   Transient property: netInfoForPoint
   //····················································································································
 
-  let labelSchematicLocation_property = EBTransientProperty_StringArray ()
+  let netInfoForPoint_property = EBTransientProperty_NetInfoPoint ()
 
   //····················································································································
 
-  var labelSchematicLocation_property_selection : EBSelection <StringArray> {
-    return self.labelSchematicLocation_property.prop
+  var netInfoForPoint_property_selection : EBSelection <NetInfoPoint> {
+    return self.netInfoForPoint_property.prop
   }
 
   //····················································································································
 
-  var labelSchematicLocation : StringArray? {
-    switch self.labelSchematicLocation_property_selection {
+  var netInfoForPoint : NetInfoPoint? {
+    switch self.netInfoForPoint_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -759,10 +759,13 @@ class PointInSchematic : EBManagedObject,
     }
     self.location_property.addEBObserver (self.connectedPoints_property)
     self.isConnected_property.addEBObserver (self.connectedPoints_property)
-  //--- Atomic property: labelSchematicLocation
-    self.labelSchematicLocation_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: netInfoForPoint
+    self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mLabels_property.count_property_selection.kind ()
+        kind &= unwSelf.mSymbolPinName_property_selection.kind ()
+        kind &= unwSelf.mWiresP1s_property_selection.kind ()
+        kind &= unwSelf.mWiresP2s_property_selection.kind ()
         kind &= unwSelf.location_property_selection.kind ()
         kind &= unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
         switch kind {
@@ -771,9 +774,9 @@ class PointInSchematic : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mLabels_property.count_property_selection, unwSelf.location_property_selection, unwSelf.mSheet_property.sheetDescriptor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PointInSchematic_labelSchematicLocation (v0, v1, v2))
+          switch (unwSelf.mLabels_property.count_property_selection, unwSelf.mSymbolPinName_property_selection, unwSelf.mWiresP1s_property_selection, unwSelf.mWiresP2s_property_selection, unwSelf.location_property_selection, unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_PointInSchematic_netInfoForPoint (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -782,9 +785,12 @@ class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mLabels_property.addEBObserver (self.labelSchematicLocation_property)
-    self.location_property.addEBObserver (self.labelSchematicLocation_property)
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.labelSchematicLocation_property)
+    self.mLabels_property.addEBObserver (self.netInfoForPoint_property)
+    self.mSymbolPinName_property.addEBObserver (self.netInfoForPoint_property)
+    self.mWiresP1s_property.addEBObserver (self.netInfoForPoint_property)
+    self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
+    self.location_property.addEBObserver (self.netInfoForPoint_property)
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.netInfoForPoint_property)
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -823,9 +829,12 @@ class PointInSchematic : EBManagedObject,
     self.isConnected_property.removeEBObserver (self.status_property)
     self.location_property.removeEBObserver (self.connectedPoints_property)
     self.isConnected_property.removeEBObserver (self.connectedPoints_property)
-    self.mLabels_property.removeEBObserver (self.labelSchematicLocation_property)
-    self.location_property.removeEBObserver (self.labelSchematicLocation_property)
-    self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.labelSchematicLocation_property)
+    self.mLabels_property.removeEBObserver (self.netInfoForPoint_property)
+    self.mSymbolPinName_property.removeEBObserver (self.netInfoForPoint_property)
+    self.mWiresP1s_property.removeEBObserver (self.netInfoForPoint_property)
+    self.mWiresP2s_property.removeEBObserver (self.netInfoForPoint_property)
+    self.location_property.removeEBObserver (self.netInfoForPoint_property)
+    self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.netInfoForPoint_property)
   //--- Unregister properties for handling signature
   }
 
@@ -922,12 +931,12 @@ class PointInSchematic : EBManagedObject,
       valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "labelSchematicLocation",
-      idx: self.labelSchematicLocation_property.ebObjectIndex,
+      "netInfoForPoint",
+      idx: self.netInfoForPoint_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.labelSchematicLocation_property.mObserverExplorer,
-      valueExplorer: &self.labelSchematicLocation_property.mValueExplorer
+      observerExplorer: &self.netInfoForPoint_property.mObserverExplorer,
+      valueExplorer: &self.netInfoForPoint_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

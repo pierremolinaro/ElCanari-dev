@@ -1884,12 +1884,6 @@ typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property StringSet
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_StringSet  = EBReadOnlyValueProperty <StringSet>
-typealias EBTransientProperty_StringSet = EBTransientValueProperty <StringSet>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1909,6 +1903,24 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property NetInfoPoint
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NetInfoPoint  = EBReadOnlyValueProperty <NetInfoPoint>
+typealias EBTransientProperty_NetInfoPoint = EBTransientValueProperty <NetInfoPoint>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property NetInfoPointArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NetInfoPointArray  = EBReadOnlyValueProperty <NetInfoPointArray>
+typealias EBTransientProperty_NetInfoPointArray = EBTransientValueProperty <NetInfoPointArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property NetInfo
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NetInfo  = EBReadOnlyValueProperty <NetInfo>
+typealias EBTransientProperty_NetInfo = EBTransientValueProperty <NetInfo>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property SchematicSheetDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1993,6 +2005,12 @@ typealias EBTransientProperty_IntArray = EBTransientValueProperty <IntArray>
 
 typealias EBReadOnlyProperty_StringArray  = EBReadOnlyValueProperty <StringArray>
 typealias EBTransientProperty_StringArray = EBTransientValueProperty <StringArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property StringSet
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_StringSet  = EBReadOnlyValueProperty <StringSet>
+typealias EBTransientProperty_StringSet = EBTransientValueProperty <StringSet>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property StringTagArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

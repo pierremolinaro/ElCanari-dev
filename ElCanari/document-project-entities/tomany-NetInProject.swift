@@ -16,14 +16,12 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_pinNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_labelSchematicLocationArray_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_pinNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_labelSchematicLocationArray_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netPointsInfo_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -79,62 +77,6 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNetName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'pinNames' transient property
-  //····················································································································
-
-  private var mObserversOf_pinNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinNames (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_pinNames.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinNames_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_pinNames (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_pinNames.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinNames_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_pinNames_toElementsOfSet (_ inSet : Set<NetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinNames.apply { (_ observer : EBEvent) in
-        managedObject.pinNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinNames_fromElementsOfSet (_ inSet : Set<NetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinNames.apply { (_ observer : EBEvent) in
-        managedObject.pinNames_property.removeEBObserver (observer)
       }
     }
   }
@@ -196,57 +138,57 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   }
 
   //····················································································································
-  //   Observers of 'labelSchematicLocationArray' transient property
+  //   Observers of 'netPointsInfo' transient property
   //····················································································································
 
-  private var mObserversOf_labelSchematicLocationArray = EBWeakEventSet ()
+  private var mObserversOf_netPointsInfo = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_labelSchematicLocationArray (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_labelSchematicLocationArray.insert (inObserver)
+    self.mObserversOf_netPointsInfo.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.labelSchematicLocationArray_property.addEBObserver (inObserver)
+        managedObject.netPointsInfo_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_labelSchematicLocationArray (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netPointsInfo (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_labelSchematicLocationArray.remove (inObserver)
+    self.mObserversOf_netPointsInfo.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.labelSchematicLocationArray_property.removeEBObserver (inObserver)
+        managedObject.netPointsInfo_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_labelSchematicLocationArray_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_labelSchematicLocationArray.apply { (_ observer : EBEvent) in
-        managedObject.labelSchematicLocationArray_property.addEBObserver (observer)
+      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netPointsInfo_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_labelSchematicLocationArray_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
     for managedObject in inSet {
-      self.mObserversOf_labelSchematicLocationArray.apply { (_ observer : EBEvent) in
-        managedObject.labelSchematicLocationArray_property.removeEBObserver (observer)
+      self.mObserversOf_netPointsInfo.apply { (_ observer : EBEvent) in
+        managedObject.netPointsInfo_property.removeEBObserver (observer)
       }
     }
   }

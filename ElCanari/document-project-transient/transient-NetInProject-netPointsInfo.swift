@@ -11,17 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_pinNames (
-       _ self_mPoints_mSymbolPinName : [PointInSchematic_mSymbolPinName]
-) -> StringArray {
+func transient_NetInProject_netInfo (
+       _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]
+) -> NetInfoPointArray {
 //--- START OF USER ZONE 2
-        var array = StringArray ()
-        for point in self_mPoints_mSymbolPinName {
-          if point.mSymbolPinName != "" {
-            array.append (point.mSymbolPinName)
+        var pointArray = NetInfoPointArray ()
+        for point in self_mPoints_netInfoForPoint {
+          if let a = point.netInfoForPoint {
+            pointArray.append (a)
           }
         }
-        return array
+        return pointArray
 //--- END OF USER ZONE 2
 }
 

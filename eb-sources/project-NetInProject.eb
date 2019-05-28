@@ -8,11 +8,9 @@ entity NetInProject {
 
   toMany PointInSchematic mPoints inverse toOne mNet ;
   
-  transient StringArray pinNames dependsFrom self.mPoints.all.mSymbolPinName ;
-  
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 
-  transient StringArray labelSchematicLocationArray dependsFrom self.mPoints.all.labelSchematicLocation ;
+  transient NetInfoPointArray netPointsInfo dependsFrom self.mPoints.all.netInfoForPoint ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -109,9 +109,38 @@ typealias NetInfoArray = [NetInfo]
 struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
-  let pins : StringArray
-  let labels : StringArray
+  let points : NetInfoPointArray
+
+  var pinCount : Int {
+    var count = 0
+    for point in self.points {
+      if point.pin != nil {
+        count += 1
+      }
+    }
+    return count
+  }
+
+  var labelCount : Int {
+    var count = 0
+    for point in self.points {
+       count += point.labels.count
+    }
+    return count
+  }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct NetInfoPoint : Hashable {
+  let pin : String?
+  let labels : StringArray
+  let wires : Set <Int>
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias NetInfoPointArray = [NetInfoPoint]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
