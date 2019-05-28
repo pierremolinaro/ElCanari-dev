@@ -15,6 +15,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePinInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    inOldValue?.mPinName_property.removeEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
     inOldValue?.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
     inOldValue?.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
     inOldValue?.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
@@ -26,10 +27,10 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     inOldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
     inOldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
     inOldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
-    inOldValue?.mPinName_property.removeEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
     inOldValue?.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
     inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
   //--- Add observers to added objects
+    self.mInternalValue?.mPinName_property.addEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
     self.mInternalValue?.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
     self.mInternalValue?.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
     self.mInternalValue?.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
@@ -41,9 +42,78 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     self.mInternalValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
     self.mInternalValue?.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
     self.mInternalValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
-    self.mInternalValue?.mPinName_property.addEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
     self.mInternalValue?.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
     self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mPinName' stored property
+  //····················································································································
+
+  private var mObserversOf_mPinName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPinName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPinName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPinName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mPinName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mPinName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPinName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mPinName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mPinName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mPinName_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_mPinName.apply { (_ observer : EBEvent) in
+        managedObject.mPinName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mPinName_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
+    self.mObserversOf_mPinName.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mPinName_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -812,76 +882,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNumberHorizontalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'mPinName' stored property
-  //····················································································································
-
-  private var mObserversOf_mPinName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mPinName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.mPinName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mPinName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPinName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mPinName_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mPinName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPinName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mPinName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mPinName_toElementsOfSet (_ inSet : Set<DevicePinInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPinName.apply { (_ observer : EBEvent) in
-        managedObject.mPinName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPinName_fromElementsOfSet (_ inSet : Set<DevicePinInProject>) {
-    self.mObserversOf_mPinName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPinName_property.removeEBObserver (observer)
       }
     }
   }

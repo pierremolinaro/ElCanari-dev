@@ -137,25 +137,6 @@ class ComponentSymbolInProject : SchematicObject,
          ComponentSymbolInProject_symbolInSchematic {
 
   //····················································································································
-  //   To many property: mPoints
-  //····················································································································
-
-  let mPoints_property = StoredArrayOf_PointInSchematic ()
-
-  //····················································································································
-
-  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
-    return self.mPoints_property.prop
-  }
-
-  //····················································································································
-
-  var mPoints : [PointInSchematic] {
-    get { return self.mPoints_property.propval }
-    set { self.mPoints_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mCenterX
   //····················································································································
 
@@ -343,6 +324,25 @@ class ComponentSymbolInProject : SchematicObject,
   var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int> { return self.mDisplayComponentValueOffsetY_property.prop }
 
   //····················································································································
+  //   To many property: mPoints
+  //····················································································································
+
+  let mPoints_property = StoredArrayOf_PointInSchematic ()
+
+  //····················································································································
+
+  var mPoints_property_selection : EBSelection < [PointInSchematic] > {
+    return self.mPoints_property.prop
+  }
+
+  //····················································································································
+
+  var mPoints : [PointInSchematic] {
+    get { return self.mPoints_property.propval }
+    set { self.mPoints_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic proxy property: componentValueProxy
   //····················································································································
 
@@ -506,12 +506,6 @@ class ComponentSymbolInProject : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To many property: mPoints (has opposite relationship)
-    self.mPoints_property.ebUndoManager = self.ebUndoManager
-    self.mPoints_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
-      resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
-    )
   //--- Atomic property: mCenterX
     self.mCenterX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mCenterY
@@ -534,6 +528,12 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mPoints (has opposite relationship)
+    self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
+      resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
+    )
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mReadModelFunction = { [weak self] in
       if let object = self?.mComponent {
@@ -958,8 +958,6 @@ class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- To many property: mPoints
-    self.mPoints_property.mValueExplorer = nil
   //--- Atomic property: mCenterX
     self.mCenterX_property.mObserverExplorer = nil
     self.mCenterX_property.mValueExplorer = nil
@@ -993,6 +991,8 @@ class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.mObserverExplorer = nil
     self.mDisplayComponentValueOffsetY_property.mValueExplorer = nil
+  //--- To many property: mPoints
+    self.mPoints_property.mValueExplorer = nil
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mObserverExplorer = nil
     self.componentValueProxy_property.mValueExplorer = nil
@@ -1029,12 +1029,6 @@ class ComponentSymbolInProject : SchematicObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- To many property: mPoints
-    self.store (
-      managedObjectArray: self.mPoints_property.propval,
-      relationshipName: "mPoints",
-      intoDictionary: ioDictionary
-    )
   //--- Atomic property: mCenterX
     self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey:"mCenterX")
   //--- Atomic property: mCenterY
@@ -1057,6 +1051,12 @@ class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetX")
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey:"mDisplayComponentValueOffsetY")
+  //--- To many property: mPoints
+    self.store (
+      managedObjectArray: self.mPoints_property.propval,
+      relationshipName: "mPoints",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································

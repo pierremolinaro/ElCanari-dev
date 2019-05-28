@@ -12,14 +12,14 @@ protocol NetInProject_mNetName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_wireColor : class {
-  var wireColor : NSColor? { get }
+protocol NetInProject_pinNames : class {
+  var pinNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_pinNames : class {
-  var pinNames : StringArray? { get }
+protocol NetInProject_wireColor : class {
+  var wireColor : NSColor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -28,8 +28,8 @@ protocol NetInProject_pinNames : class {
 
 class NetInProject : EBManagedObject,
          NetInProject_mNetName,
-         NetInProject_wireColor,
-         NetInProject_pinNames {
+         NetInProject_pinNames,
+         NetInProject_wireColor {
 
   //····················································································································
   //   Atomic property: mNetName
@@ -106,29 +106,6 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: wireColor
-  //····················································································································
-
-  let wireColor_property = EBTransientProperty_NSColor ()
-
-  //····················································································································
-
-  var wireColor_property_selection : EBSelection <NSColor> {
-    return self.wireColor_property.prop
-  }
-
-  //····················································································································
-
-  var wireColor : NSColor? {
-    switch self.wireColor_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: pinNames
   //····················································································································
 
@@ -144,6 +121,29 @@ class NetInProject : EBManagedObject,
 
   var pinNames : StringArray? {
     switch self.pinNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: wireColor
+  //····················································································································
+
+  let wireColor_property = EBTransientProperty_NSColor ()
+
+  //····················································································································
+
+  var wireColor_property_selection : EBSelection <NSColor> {
+    return self.wireColor_property.prop
+  }
+
+  //····················································································································
+
+  var wireColor : NSColor? {
+    switch self.wireColor_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -171,28 +171,6 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
     )
-  //--- Atomic property: wireColor
-    self.wireColor_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mNetClassColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mNetClassColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_wireColor (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
   //--- Atomic property: pinNames
     self.pinNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -215,6 +193,28 @@ class NetInProject : EBManagedObject,
       }
     }
     self.mPoints_property.addEBObserverOf_mSymbolPinName (self.pinNames_property)
+  //--- Atomic property: wireColor
+    self.wireColor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNetClass_property.mNetClassColor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNetClass_property.mNetClassColor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_wireColor (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -228,8 +228,8 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
     self.mPoints_property.removeEBObserverOf_mSymbolPinName (self.pinNames_property)
+    self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
   //--- Unregister properties for handling signature
   }
 
@@ -254,20 +254,20 @@ class NetInProject : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
-      "wireColor",
-      idx: self.wireColor_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.wireColor_property.mObserverExplorer,
-      valueExplorer: &self.wireColor_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "pinNames",
       idx: self.pinNames_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.pinNames_property.mObserverExplorer,
       valueExplorer: &self.pinNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "wireColor",
+      idx: self.wireColor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.wireColor_property.mObserverExplorer,
+      valueExplorer: &self.wireColor_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

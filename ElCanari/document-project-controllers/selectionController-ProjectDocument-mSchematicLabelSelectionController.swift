@@ -41,16 +41,6 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
   }
 
   //····················································································································
-  //   Selection observable property: objectDisplay
-  //····················································································································
-
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.prop
-  }
-
-  //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
@@ -58,6 +48,16 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
     return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: objectDisplay
+  //····················································································································
+
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -79,8 +79,8 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
     self.bind_property_mOrientation ()
     self.bind_property_location ()
     self.bind_property_netName ()
-    self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
+    self.bind_property_objectDisplay ()
   }
 
   //····················································································································
@@ -100,12 +100,12 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
   //--- netName
     self.netName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //---
   }
 
@@ -354,9 +354,9 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -367,7 +367,7 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.selectionDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -393,9 +393,9 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.prop {
         case .empty :
@@ -406,7 +406,7 @@ final class SelectionController_ProjectDocument_mSchematicLabelSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.objectDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

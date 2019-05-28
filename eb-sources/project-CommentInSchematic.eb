@@ -1,0 +1,24 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   CommentInSchematic
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity CommentInSchematic : SchematicObject {
+  property String mComment default "" ;
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+  
+  override transient EBShape objectDisplay dependsFrom
+    self.mComment,
+    self.mX,
+    self.mY
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mComment,
+    self.mX,
+    self.mY
+  ;
+
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

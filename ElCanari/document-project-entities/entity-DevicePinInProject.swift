@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DevicePinInProject_mPinName : class {
+  var mPinName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DevicePinInProject_mSymbolInstanceName : class {
   var mSymbolInstanceName : String { get }
 }
@@ -72,12 +78,6 @@ protocol DevicePinInProject_mNumberHorizontalAlignment : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinName : class {
-  var mPinName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol DevicePinInProject_pinQualifiedName : class {
   var pinQualifiedName : PinQualifiedNameStruct? { get }
 }
@@ -93,6 +93,7 @@ protocol DevicePinInProject_descriptor : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DevicePinInProject : EBManagedObject,
+         DevicePinInProject_mPinName,
          DevicePinInProject_mSymbolInstanceName,
          DevicePinInProject_mSymbolTypeName,
          DevicePinInProject_mPinX,
@@ -104,9 +105,25 @@ class DevicePinInProject : EBManagedObject,
          DevicePinInProject_mXNumber,
          DevicePinInProject_mYNumber,
          DevicePinInProject_mNumberHorizontalAlignment,
-         DevicePinInProject_mPinName,
          DevicePinInProject_pinQualifiedName,
          DevicePinInProject_descriptor {
+
+  //····················································································································
+  //   Atomic property: mPinName
+  //····················································································································
+
+  let mPinName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mPinName : String {
+    get { return self.mPinName_property.propval }
+    set { self.mPinName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPinName_property_selection : EBSelection <String> { return self.mPinName_property.prop }
 
   //····················································································································
   //   Atomic property: mSymbolInstanceName
@@ -296,23 +313,6 @@ class DevicePinInProject : EBManagedObject,
   var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mNumberHorizontalAlignment_property.prop }
 
   //····················································································································
-  //   Atomic property: mPinName
-  //····················································································································
-
-  let mPinName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mPinName : String {
-    get { return self.mPinName_property.propval }
-    set { self.mPinName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mPinName_property_selection : EBSelection <String> { return self.mPinName_property.prop }
-
-  //····················································································································
   //   Transient property: pinQualifiedName
   //····················································································································
 
@@ -364,6 +364,8 @@ class DevicePinInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mPinName
+    self.mPinName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolTypeName
@@ -386,8 +388,6 @@ class DevicePinInProject : EBManagedObject,
     self.mYNumber_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: mPinName
-    self.mPinName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -494,6 +494,14 @@ class DevicePinInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
+      "mPinName",
+      idx: self.mPinName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mPinName_property.mObserverExplorer,
+      valueExplorer: &self.mPinName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mSymbolInstanceName",
       idx: self.mSymbolInstanceName_property.ebObjectIndex,
       y: &y,
@@ -581,14 +589,6 @@ class DevicePinInProject : EBManagedObject,
       observerExplorer: &self.mNumberHorizontalAlignment_property.mObserverExplorer,
       valueExplorer: &self.mNumberHorizontalAlignment_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "mPinName",
-      idx: self.mPinName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mPinName_property.mObserverExplorer,
-      valueExplorer: &self.mPinName_property.mValueExplorer
-    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "pinQualifiedName",
@@ -616,6 +616,9 @@ class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mPinName
+    self.mPinName_property.mObserverExplorer = nil
+    self.mPinName_property.mValueExplorer = nil
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.mObserverExplorer = nil
     self.mSymbolInstanceName_property.mValueExplorer = nil
@@ -649,9 +652,6 @@ class DevicePinInProject : EBManagedObject,
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.mObserverExplorer = nil
     self.mNumberHorizontalAlignment_property.mValueExplorer = nil
-  //--- Atomic property: mPinName
-    self.mPinName_property.mObserverExplorer = nil
-    self.mPinName_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -680,6 +680,8 @@ class DevicePinInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mPinName
+    self.mPinName_property.storeIn (dictionary: ioDictionary, forKey:"mPinName")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -702,8 +704,6 @@ class DevicePinInProject : EBManagedObject,
     self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey:"mYNumber")
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNumberHorizontalAlignment")
-  //--- Atomic property: mPinName
-    self.mPinName_property.storeIn (dictionary: ioDictionary, forKey:"mPinName")
   }
 
   //····················································································································
@@ -721,6 +721,8 @@ class DevicePinInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mPinName
+    self.mPinName_property.readFrom (dictionary: inDictionary, forKey:"mPinName")
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mSymbolInstanceName")
   //--- Atomic property: mSymbolTypeName
@@ -743,8 +745,6 @@ class DevicePinInProject : EBManagedObject,
     self.mYNumber_property.readFrom (dictionary: inDictionary, forKey:"mYNumber")
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNumberHorizontalAlignment")
-  //--- Atomic property: mPinName
-    self.mPinName_property.readFrom (dictionary: inDictionary, forKey:"mPinName")
   }
 
   //····················································································································

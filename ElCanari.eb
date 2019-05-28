@@ -29,8 +29,7 @@ include "eb-sources/device-deviceDocument.eb" ;
 include "eb-sources/device-deviceRoot.eb" ;
 //--- Project
 include "eb-sources/project-document.eb" ;
-include "eb-sources/project-root.eb" ;
-
+include "eb-sources/project-CommentInSchematic.eb" ;include "eb-sources/project-ComponentInProject.eb" ;include "eb-sources/project-ComponentSymbolInProject.eb" ;include "eb-sources/project-DeviceInProject.eb" ;include "eb-sources/project-DeviceMasterPadInProject.eb" ;include "eb-sources/project-DevicePackageInProject.eb" ;include "eb-sources/project-DevicePadAssignmentInProject.eb" ;include "eb-sources/project-DevicePinInProject.eb" ;include "eb-sources/project-DeviceSlavePadInProject.eb" ;include "eb-sources/project-DeviceSymbolInstanceInProject.eb" ;include "eb-sources/project-DeviceSymbolTypeInProject.eb" ;include "eb-sources/project-FontInProject.eb" ;include "eb-sources/project-LabelInSchematic.eb" ;include "eb-sources/project-NCInSchematic.eb" ;include "eb-sources/project-NetClassInProject.eb" ;include "eb-sources/project-NetInProject.eb" ;include "eb-sources/project-PointInSchematic.eb" ;include "eb-sources/project-ProjectRoot.eb" ;include "eb-sources/project-SchematicObject.eb" ;include "eb-sources/project-SheetInProject.eb" ;include "eb-sources/project-WireInSchematic.eb" ;
 
 //---
 graphviz SymbolRoot ;

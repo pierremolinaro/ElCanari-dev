@@ -1,0 +1,27 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   WireInSchematic
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity WireInSchematic : SchematicObject {
+
+  toOne PointInSchematic mP1 inverse toMany mWiresP1s ;
+  toOne PointInSchematic mP2 inverse toMany mWiresP2s ;  
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mP1.one.wireColor,
+    prefs.symbolDrawingWidthMultipliedByTen,
+    self.mP1.one.location,
+    self.mP2.one.location
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mP1.one.location,
+    self.mP1.one.canMove,
+    self.mP2.one.location,
+    self.mP2.one.canMove
+  ;
+  
+  transient String netName dependsFrom self.mP1.one.netName ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

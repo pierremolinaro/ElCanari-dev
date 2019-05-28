@@ -1,0 +1,31 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   LabelInSchematic
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity LabelInSchematic : SchematicObject {
+  toOne PointInSchematic mPoint inverse toMany mLabels ;
+
+  property QuadrantRotation mOrientation default rotation0 ;
+ 
+  transient CanariPoint location dependsFrom self.mPoint.one.location ;
+
+  override transient EBShape objectDisplay dependsFrom
+    prefs.symbolColorForSchematic,
+    prefs.symbolDrawingWidthMultipliedByTen,
+    self.mPoint.one.location,
+    self.netName,
+    prefs.pinNameFont,
+    self.mOrientation
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mPoint.one.location,
+    self.netName,
+    prefs.pinNameFont,
+    self.mOrientation
+  ;
+
+  transient String netName dependsFrom self.mPoint.one.netName ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

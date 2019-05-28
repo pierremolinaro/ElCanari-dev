@@ -1,0 +1,31 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Device
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceInProject {
+  property String mDeviceName default "" ;
+  property String mPrefix default "" ;
+  property Int mDeviceVersion default 0 ;
+  property Data mDeviceFileData default empty ;
+
+  toMany DevicePackageInProject mPackages ;
+  toMany DeviceSymbolInstanceInProject mSymbols ;
+  toMany ComponentInProject mComponents inverse toOne mDevice ;
+  toMany DevicePadAssignmentInProject mPadAssignments ;
+
+  transient String versionString dependsFrom self.mDeviceVersion ;
+  transient String sizeString dependsFrom self.mDeviceFileData ;
+  transient Bool canExport dependsFrom self.mDeviceFileData ;
+  transient Bool canRemove dependsFrom self.mComponents.count ;
+  transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
+  transient SymbolInProjectIdentifierArray symbolAndTypesNames dependsFrom self.mSymbols.all.symbolAndTypeName ;
+  transient ThreeStringArray pinPadAssignments dependsFrom self.mPadAssignments.all.pinPadAssignment ;
+
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom
+    self.mPadAssignments.all.descriptor,
+    self.mSymbols.all.symbolAndTypeName,
+    self.mSymbols.all.filledBezierPath,
+    self.mSymbols.all.strokeBezierPath ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

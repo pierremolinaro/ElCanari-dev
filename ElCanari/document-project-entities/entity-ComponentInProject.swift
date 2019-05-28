@@ -48,14 +48,14 @@ protocol ComponentInProject_availablePackages : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_deviceSymbolDictionary : class {
-  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
+protocol ComponentInProject_unplacedSymbols : class {
+  var unplacedSymbols : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_unplacedSymbols : class {
-  var unplacedSymbols : StringTagArray? { get }
+protocol ComponentInProject_deviceSymbolDictionary : class {
+  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,8 +76,8 @@ class ComponentInProject : EBManagedObject,
          ComponentInProject_deviceName,
          ComponentInProject_selectedPackageName,
          ComponentInProject_availablePackages,
-         ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_unplacedSymbols,
+         ComponentInProject_deviceSymbolDictionary,
          ComponentInProject_placementInSchematic {
 
   //····················································································································
@@ -148,6 +148,29 @@ class ComponentInProject : EBManagedObject,
   var mSymbols : [ComponentSymbolInProject] {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: componentName
+  //····················································································································
+
+  let componentName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentName_property_selection : EBSelection <String> {
+    return self.componentName_property.prop
+  }
+
+  //····················································································································
+
+  var componentName : String? {
+    switch self.componentName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -227,29 +250,6 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: componentName
-  //····················································································································
-
-  let componentName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var componentName_property_selection : EBSelection <String> {
-    return self.componentName_property.prop
-  }
-
-  //····················································································································
-
-  var componentName : String? {
-    switch self.componentName_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: deviceName
   //····················································································································
 
@@ -319,29 +319,6 @@ class ComponentInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: deviceSymbolDictionary
-  //····················································································································
-
-  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
-
-  //····················································································································
-
-  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
-    return self.deviceSymbolDictionary_property.prop
-  }
-
-  //····················································································································
-
-  var deviceSymbolDictionary : DeviceSymbolDictionary? {
-    switch self.deviceSymbolDictionary_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -357,6 +334,29 @@ class ComponentInProject : EBManagedObject,
 
   var unplacedSymbols : StringTagArray? {
     switch self.unplacedSymbols_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: deviceSymbolDictionary
+  //····················································································································
+
+  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+
+  //····················································································································
+
+  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
+    return self.deviceSymbolDictionary_property.prop
+  }
+
+  //····················································································································
+
+  var deviceSymbolDictionary : DeviceSymbolDictionary? {
+    switch self.deviceSymbolDictionary_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -405,14 +405,6 @@ class ComponentInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
-  //--- To one property: mDevice (has opposite to many relationship: mComponents) §
-    self.mDevice_property.ebUndoManager = self.ebUndoManager
-    self.mDevice_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
-      resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
-    )
-  //--- To one property: mSelectedPackage
-    self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -437,6 +429,14 @@ class ComponentInProject : EBManagedObject,
     }
     self.mNamePrefix_property.addEBObserver (self.componentName_property)
     self.mNameIndex_property.addEBObserver (self.componentName_property)
+  //--- To one property: mDevice (has opposite to many relationship: mComponents) §
+    self.mDevice_property.ebUndoManager = self.ebUndoManager
+    self.mDevice_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
+    )
+  //--- To one property: mSelectedPackage
+    self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -503,28 +503,6 @@ class ComponentInProject : EBManagedObject,
       }
     }
     self.mDevice_property.addEBObserverOf_packageNames (self.availablePackages_property)
-  //--- Atomic property: deviceSymbolDictionary
-    self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mDevice_property.deviceSymbolDictionary_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mDevice_property.deviceSymbolDictionary_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentInProject_deviceSymbolDictionary (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -555,6 +533,28 @@ class ComponentInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.addEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+  //--- Atomic property: deviceSymbolDictionary
+    self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDevice_property.deviceSymbolDictionary_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mDevice_property.deviceSymbolDictionary_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ComponentInProject_deviceSymbolDictionary (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevice_property.addEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
   //--- Atomic property: placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -595,12 +595,12 @@ class ComponentInProject : EBManagedObject,
     self.mDevice_property.removeEBObserverOf_mDeviceName (self.deviceName_property)
     self.mSelectedPackage_property.removeEBObserverOf_mPackageName (self.selectedPackageName_property)
     self.mDevice_property.removeEBObserverOf_packageNames (self.availablePackages_property)
-    self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.componentName_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserver (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolInstanceName (self.unplacedSymbols_property)
     self.mSymbols_property.removeEBObserverOf_mSymbolTypeName (self.unplacedSymbols_property)
+    self.mDevice_property.removeEBObserverOf_deviceSymbolDictionary (self.deviceSymbolDictionary_property)
     self.mSymbols_property.removeEBObserverOf_symbolInSchematic (self.placementInSchematic_property)
   //--- Unregister properties for handling signature
   }
@@ -674,20 +674,20 @@ class ComponentInProject : EBManagedObject,
       valueExplorer: &self.availablePackages_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "deviceSymbolDictionary",
-      idx: self.deviceSymbolDictionary_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
-      valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "unplacedSymbols",
       idx: self.unplacedSymbols_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.unplacedSymbols_property.mObserverExplorer,
       valueExplorer: &self.unplacedSymbols_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "deviceSymbolDictionary",
+      idx: self.deviceSymbolDictionary_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.deviceSymbolDictionary_property.mObserverExplorer,
+      valueExplorer: &self.deviceSymbolDictionary_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "placementInSchematic",

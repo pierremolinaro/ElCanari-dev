@@ -24,14 +24,14 @@ protocol LabelInSchematic_netName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
+protocol LabelInSchematic_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
+protocol LabelInSchematic_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -42,8 +42,8 @@ class LabelInSchematic : SchematicObject,
          LabelInSchematic_mOrientation,
          LabelInSchematic_location,
          LabelInSchematic_netName,
-         LabelInSchematic_objectDisplay,
-         LabelInSchematic_selectionDisplay {
+         LabelInSchematic_selectionDisplay,
+         LabelInSchematic_objectDisplay {
 
   //····················································································································
   //   Atomic property: mOrientation
@@ -204,6 +204,34 @@ class LabelInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.addEBObserverOf_netName (self.netName_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
+        kind &= unwSelf.netName_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        kind &= unwSelf.mOrientation_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -236,34 +264,6 @@ class LabelInSchematic : SchematicObject,
     self.netName_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
-        kind &= unwSelf.netName_property_selection.kind ()
-        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
-        kind &= unwSelf.mOrientation_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, g_Preferences!.pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.netName_property.addEBObserver (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
-    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -275,16 +275,16 @@ class LabelInSchematic : SchematicObject,
     super.removeAllObservers ()
     self.mPoint_property.removeEBObserverOf_location (self.location_property)
     self.mPoint_property.removeEBObserverOf_netName (self.netName_property)
+    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
+    self.netName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
+    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
     self.netName_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.mOrientation_property.removeEBObserver (self.objectDisplay_property)
-    self.mPoint_property.removeEBObserverOf_location (self.selectionDisplay_property)
-    self.netName_property.removeEBObserver (self.selectionDisplay_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
-    self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
   //--- Unregister properties for handling signature
   }
 
@@ -325,20 +325,20 @@ class LabelInSchematic : SchematicObject,
       valueExplorer: &self.netName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "selectionDisplay",
       idx: self.selectionDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

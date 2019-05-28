@@ -98,6 +98,25 @@ class PointInSchematic : EBManagedObject,
   var mSymbolPinName_property_selection : EBSelection <String> { return self.mSymbolPinName_property.prop }
 
   //····················································································································
+  //   To many property: mLabels
+  //····················································································································
+
+  let mLabels_property = StoredArrayOf_LabelInSchematic ()
+
+  //····················································································································
+
+  var mLabels_property_selection : EBSelection < [LabelInSchematic] > {
+    return self.mLabels_property.prop
+  }
+
+  //····················································································································
+
+  var mLabels : [LabelInSchematic] {
+    get { return self.mLabels_property.propval }
+    set { self.mLabels_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -148,25 +167,6 @@ class PointInSchematic : EBManagedObject,
   var mWiresP2s : [WireInSchematic] {
     get { return self.mWiresP2s_property.propval }
     set { self.mWiresP2s_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   To many property: mLabels
-  //····················································································································
-
-  let mLabels_property = StoredArrayOf_LabelInSchematic ()
-
-  //····················································································································
-
-  var mLabels_property_selection : EBSelection < [LabelInSchematic] > {
-    return self.mLabels_property.prop
-  }
-
-  //····················································································································
-
-  var mLabels : [LabelInSchematic] {
-    get { return self.mLabels_property.propval }
-    set { self.mLabels_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -265,6 +265,44 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: mNC
+  //····················································································································
+
+   let mNC_property = StoredObject_NCInSchematic ()
+
+  //····················································································································
+
+  var mNC_property_selection : EBSelection <NCInSchematic?> {
+    return .single (self.mNC_property.propval)
+  }
+
+  //····················································································································
+
+  var mNC : NCInSchematic? {
+    get {
+      return self.mNC_property.propval
+    }
+    set {
+      if self.mNC_property.propval != nil {
+        self.mNC_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mNC_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mNC_none : StoredObject_NCInSchematic { return self.mNC_property }
+
+  //····················································································································
+
+  var mNC_none_selection : EBSelection <Bool> {
+    return .single (self.mNC_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: location
   //····················································································································
 
@@ -357,44 +395,6 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-  //   To one property: mNC
-  //····················································································································
-
-   let mNC_property = StoredObject_NCInSchematic ()
-
-  //····················································································································
-
-  var mNC_property_selection : EBSelection <NCInSchematic?> {
-    return .single (self.mNC_property.propval)
-  }
-
-  //····················································································································
-
-  var mNC : NCInSchematic? {
-    get {
-      return self.mNC_property.propval
-    }
-    set {
-      if self.mNC_property.propval != nil {
-        self.mNC_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNC_property.setProp (newValue)
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mNC_none : StoredObject_NCInSchematic { return self.mNC_property }
-
-  //····················································································································
-
-  var mNC_none_selection : EBSelection <Bool> {
-    return .single (self.mNC_property.propval == nil)
-  }
-
-  //····················································································································
   //   Transient property: isConnected
   //····················································································································
 
@@ -471,6 +471,12 @@ class PointInSchematic : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mLabels (has opposite relationship)
+    self.mLabels_property.ebUndoManager = self.ebUndoManager
+    self.mLabels_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
+      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
+    )
   //--- Atomic property: mX
     self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mY
@@ -480,12 +486,6 @@ class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
       resetter: { inObject in inObject.mP2_property.setProp (nil) }
-    )
-  //--- To many property: mLabels (has opposite relationship)
-    self.mLabels_property.ebUndoManager = self.ebUndoManager
-    self.mLabels_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
-      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
   //--- To many property: mWiresP1s (has opposite relationship)
     self.mWiresP1s_property.ebUndoManager = self.ebUndoManager
@@ -504,6 +504,12 @@ class PointInSchematic : EBManagedObject,
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+    )
+  //--- To one property: mNC (has opposite to one relationship: mPoint) §
+    self.mNC_property.ebUndoManager = self.ebUndoManager
+    self.mNC_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
+      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
@@ -601,12 +607,6 @@ class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
-  //--- To one property: mNC (has opposite to one relationship: mPoint) §
-    self.mNC_property.ebUndoManager = self.ebUndoManager
-    self.mNC_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
-      resetter: { inObject in inObject.mPoint_property.setProp (nil) }
-    )
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -686,13 +686,13 @@ class PointInSchematic : EBManagedObject,
     self.location_property.addEBObserver (self.connectedPoints_property)
     self.isConnected_property.addEBObserver (self.connectedPoints_property)
   //--- Install undoers and opposite setter for relationships
-    self.mWiresP2s_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
-      resetter: { inObject in inObject.mP2_property.setProp (nil) }
-    )
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
+    )
+    self.mWiresP2s_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
+      resetter: { inObject in inObject.mP2_property.setProp (nil) }
     )
     self.mWiresP1s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
@@ -820,18 +820,18 @@ class PointInSchematic : EBManagedObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
-      "mWiresP2s",
-      idx:mWiresP2s_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mWiresP2s_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
       "mLabels",
       idx:mLabels_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&mLabels_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mWiresP2s",
+      idx:mWiresP2s_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mWiresP2s_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "mWiresP1s",
@@ -873,6 +873,8 @@ class PointInSchematic : EBManagedObject,
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.mObserverExplorer = nil
     self.mSymbolPinName_property.mValueExplorer = nil
+  //--- To many property: mLabels
+    self.mLabels_property.mValueExplorer = nil
   //--- Atomic property: mX
     self.mX_property.mObserverExplorer = nil
     self.mX_property.mValueExplorer = nil
@@ -881,8 +883,6 @@ class PointInSchematic : EBManagedObject,
     self.mY_property.mValueExplorer = nil
   //--- To many property: mWiresP2s
     self.mWiresP2s_property.mValueExplorer = nil
-  //--- To many property: mLabels
-    self.mLabels_property.mValueExplorer = nil
   //--- To many property: mWiresP1s
     self.mWiresP1s_property.mValueExplorer = nil
   //--- To one property: mSymbol
@@ -903,8 +903,8 @@ class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mWiresP2s = []
     self.mLabels = []
+    self.mWiresP2s = []
     self.mWiresP1s = []
   //---
     super.cleanUpToManyRelationships ()
@@ -930,6 +930,12 @@ class PointInSchematic : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolPinName")
+  //--- To many property: mLabels
+    self.store (
+      managedObjectArray: self.mLabels_property.propval,
+      relationshipName: "mLabels",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mX
     self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
   //--- Atomic property: mY
@@ -938,12 +944,6 @@ class PointInSchematic : EBManagedObject,
     self.store (
       managedObjectArray: self.mWiresP2s_property.propval,
       relationshipName: "mWiresP2s",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mLabels
-    self.store (
-      managedObjectArray: self.mLabels_property.propval,
-      relationshipName: "mLabels",
       intoDictionary: ioDictionary
     )
   //--- To many property: mWiresP1s
@@ -965,18 +965,18 @@ class PointInSchematic : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mWiresP2s
-    self.mWiresP2s_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mWiresP2s",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematic])
   //--- To many property: mLabels
     self.mLabels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mLabels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [LabelInSchematic])
+  //--- To many property: mWiresP2s
+    self.mWiresP2s_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mWiresP2s",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [WireInSchematic])
   //--- To many property: mWiresP1s
     self.mWiresP1s_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mWiresP1s",
@@ -1038,12 +1038,12 @@ class PointInSchematic : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s {
-      objects.append (managedObject)
-    }
   //--- To many property: mLabels
     for managedObject in self.mLabels {
+      objects.append (managedObject)
+    }
+  //--- To many property: mWiresP2s
+    for managedObject in self.mWiresP2s {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s
@@ -1070,12 +1070,12 @@ class PointInSchematic : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s {
-      objects.append (managedObject)
-    }
   //--- To many property: mLabels
     for managedObject in self.mLabels {
+      objects.append (managedObject)
+    }
+  //--- To many property: mWiresP2s
+    for managedObject in self.mWiresP2s {
       objects.append (managedObject)
     }
   //--- To many property: mWiresP1s

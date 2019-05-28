@@ -163,25 +163,6 @@ class DeviceInProject : EBManagedObject,
   var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.prop }
 
   //····················································································································
-  //   To many property: mComponents
-  //····················································································································
-
-  let mComponents_property = StoredArrayOf_ComponentInProject ()
-
-  //····················································································································
-
-  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponents_property.prop
-  }
-
-  //····················································································································
-
-  var mComponents : [ComponentInProject] {
-    get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mPackages
   //····················································································································
 
@@ -198,6 +179,25 @@ class DeviceInProject : EBManagedObject,
   var mPackages : [DevicePackageInProject] {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mComponents
+  //····················································································································
+
+  let mComponents_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponents_property.prop
+  }
+
+  //····················································································································
+
+  var mComponents : [ComponentInProject] {
+    get { return self.mComponents_property.propval }
+    set { self.mComponents_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -436,14 +436,14 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mPackages (no option)
+    self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mComponents (has opposite relationship)
     self.mComponents_property.ebUndoManager = self.ebUndoManager
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
       resetter: { inObject in inObject.mDevice_property.setProp (nil) }
     )
-  //--- To many property: mPackages (no option)
-    self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)
     self.mSymbols_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPadAssignments (no option)
@@ -767,18 +767,18 @@ class DeviceInProject : EBManagedObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
-      "mComponents",
-      idx:mComponents_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mComponents_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
       "mPackages",
       idx:mPackages_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&mPackages_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mComponents",
+      idx:mComponents_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponents_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "mSymbols",
@@ -815,10 +815,10 @@ class DeviceInProject : EBManagedObject,
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.mObserverExplorer = nil
     self.mDeviceFileData_property.mValueExplorer = nil
-  //--- To many property: mComponents
-    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mPackages
     self.mPackages_property.mValueExplorer = nil
+  //--- To many property: mComponents
+    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mSymbols
     self.mSymbols_property.mValueExplorer = nil
   //--- To many property: mPadAssignments
@@ -832,8 +832,8 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mComponents = []
     self.mPackages = []
+    self.mComponents = []
     self.mSymbols = []
     self.mPadAssignments = []
   //---
@@ -863,16 +863,16 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceVersion")
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceFileData")
-  //--- To many property: mComponents
-    self.store (
-      managedObjectArray: self.mComponents_property.propval,
-      relationshipName: "mComponents",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval,
       relationshipName: "mPackages",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mComponents
+    self.store (
+      managedObjectArray: self.mComponents_property.propval,
+      relationshipName: "mComponents",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbols
@@ -896,18 +896,18 @@ class DeviceInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mComponents
-    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject])
   //--- To many property: mPackages
     self.mPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DevicePackageInProject])
+  //--- To many property: mComponents
+    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponents",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   //--- To many property: mSymbols
     self.mSymbols_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSymbols",
@@ -944,12 +944,12 @@ class DeviceInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mPackages
     for managedObject in self.mPackages {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols
@@ -968,12 +968,12 @@ class DeviceInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mComponents
-    for managedObject in self.mComponents {
-      objects.append (managedObject)
-    }
   //--- To many property: mPackages
     for managedObject in self.mPackages {
+      objects.append (managedObject)
+    }
+  //--- To many property: mComponents
+    for managedObject in self.mComponents {
       objects.append (managedObject)
     }
   //--- To many property: mSymbols

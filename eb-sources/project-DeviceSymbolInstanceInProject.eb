@@ -1,0 +1,20 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSymbolInstanceInProject {
+  toOne DeviceSymbolTypeInProject mSymbolType ;
+
+  property String mSymbolInstanceName default "" ;
+
+  transient SymbolInProjectIdentifier symbolAndTypeName dependsFrom self.mSymbolInstanceName, self.mSymbolType.one.mSymbolTypeName ;
+
+  transient String symbolTypeName dependsFrom self.mSymbolType.one.mSymbolTypeName ;
+
+  transient NSBezierPath filledBezierPath dependsFrom self.mSymbolType.one.mFilledBezierPath ;
+
+  transient NSBezierPath strokeBezierPath dependsFrom
+    self.mSymbolType.one.mStrokeBezierPath,
+    prefs.symbolDrawingWidthMultipliedByTenForSchematic
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

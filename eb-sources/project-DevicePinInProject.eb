@@ -1,0 +1,39 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DevicePinInProject {
+  property String mPinName default "" ;
+  property String mSymbolInstanceName default "" ;
+  property String mSymbolTypeName default "" ;
+
+  property Int mPinX default 0 ;
+  property Int mPinY default 0 ;
+
+  property Int mXName default 0 ;
+  property Int mYName default 0 ;
+
+  property HorizontalAlignment mNameHorizontalAlignment default center ;
+  property Bool mPinNameIsDisplayedInSchematic default yes ;
+
+  property Int mXNumber default 0 ;
+  property Int mYNumber default 0 ;
+  property HorizontalAlignment mNumberHorizontalAlignment default center ;
+
+  transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;
+
+  transient PinInProjectDescriptor descriptor dependsFrom
+    self.mPinName,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName,
+    self.mPinX,
+    self.mPinY,
+    self.mXName,
+    self.mYName,
+    self.mNameHorizontalAlignment,
+    self.mPinNameIsDisplayedInSchematic,
+    self.mXNumber,
+    self.mYNumber,
+    self.mNumberHorizontalAlignment
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

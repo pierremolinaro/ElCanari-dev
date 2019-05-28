@@ -1,0 +1,12 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DevicePadAssignmentInProject {
+  property String mPadName default "" ;
+  toOne DevicePinInProject mPin ; // Is nil if pad is NC
+
+  transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;
+
+  transient PinPadAssignmentInProject descriptor dependsFrom self.mPadName, self.mPin.one.descriptor ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

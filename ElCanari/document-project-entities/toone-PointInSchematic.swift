@@ -732,47 +732,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-  //   Observable toMany property: mWiresP2s
-  //····················································································································
-
-  private var mObserversOf_mWiresP2s = EBWeakEventSet ()
-
-  //····················································································································
-
-  var mWiresP2s_property_selection : EBSelection <[WireInSchematic]> {
-    if let model = self.propval {
-      switch (model.mWiresP2s_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
-    self.mObserversOf_mWiresP2s.insert (inObserver)
-    if let object = self.propval {
-      object.mWiresP2s_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
-    self.mObserversOf_mWiresP2s.remove (inObserver)
-    if let object = self.propval {
-      object.mWiresP2s_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable toMany property: mLabels
   //····················································································································
 
@@ -810,6 +769,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     self.mObserversOf_mLabels.remove (inObserver)
     if let object = self.propval {
       object.mLabels_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mWiresP2s
+  //····················································································································
+
+  private var mObserversOf_mWiresP2s = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mWiresP2s_property_selection : EBSelection <[WireInSchematic]> {
+    if let model = self.propval {
+      switch (model.mWiresP2s_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP2s.insert (inObserver)
+    if let object = self.propval {
+      object.mWiresP2s_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBEvent) {
+    self.mObserversOf_mWiresP2s.remove (inObserver)
+    if let object = self.propval {
+      object.mWiresP2s_property.removeEBObserver (inObserver)
     }
   }
 

@@ -1,0 +1,68 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Component Symbol
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity ComponentSymbolInProject : SchematicObject {
+  toOne ComponentInProject mComponent inverse toMany mSymbols ;
+  property proxy String componentValueProxy : mComponent.mComponentValue ;
+
+  toMany PointInSchematic mPoints inverse toOne mSymbol ;
+
+  property Int mCenterX default 0 ;
+  property Int mCenterY default 0 ;
+  property QuadrantRotation mRotation default rotation0 ;
+  property Bool mMirror default no ;
+
+  property String mSymbolInstanceName default "" ;
+  property String mSymbolTypeName default "" ;
+
+  property Int mDisplayComponentNameOffsetX default 0 ;
+  property Int mDisplayComponentNameOffsetY default 457_200 ; // 200 mils
+
+  property Bool mDisplayComponentValue default yes ;
+  property Int mDisplayComponentValueOffsetX default 0 ;
+  property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
+
+  transient String componentName dependsFrom self.mComponent.one.componentName ;
+  transient String deviceName dependsFrom self.mComponent.one.deviceName ;
+
+  transient ComponentSymbolInfo symbolInfo dependsFrom
+    self.mRotation,
+    self.mMirror,
+    self.componentName,
+    self.mComponent.one.mComponentValue,
+    self.mComponent.one.deviceSymbolDictionary,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName,
+    self.mCenterX,
+    self.mCenterY,
+    prefs.pinNameFont
+  ;
+
+  transient Bool symbolInSchematic dependsFrom super.SchematicObject.isPlacedInSchematic ;
+
+  override transient EBShape objectDisplay dependsFrom
+    prefs.pinNameFont,
+    self.mDisplayComponentNameOffsetX,
+    self.mDisplayComponentNameOffsetY,
+    self.mDisplayComponentValue,
+    self.mDisplayComponentValueOffsetX,
+    self.mDisplayComponentValueOffsetY,
+    self.symbolInfo,
+    prefs.symbolColorForSchematic,
+    self.mSymbolInstanceName,
+    self.mSymbolTypeName
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    prefs.pinNameFont,
+    self.mDisplayComponentNameOffsetX,
+    self.mDisplayComponentNameOffsetY,
+    self.mDisplayComponentValue,
+    self.mDisplayComponentValueOffsetX,
+    self.mDisplayComponentValueOffsetY,
+    self.symbolInfo
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

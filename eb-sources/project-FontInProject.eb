@@ -1,0 +1,14 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Font
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity FontInProject {
+  property String mFontName default "" ;
+  property Int mFontVersion default 0 ;
+  property String mDescriptiveString default "" ;
+
+  transient String versionString dependsFrom self.mFontVersion ;
+  transient String sizeString dependsFrom self.mDescriptiveString ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

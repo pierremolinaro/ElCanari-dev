@@ -1,0 +1,47 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   PointInSchematic
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity PointInSchematic {
+  toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
+  property String mSymbolPinName default "" ; // Used only if mSymbol is not nil
+
+  toOne NetInProject mNet inverse toMany mPoints ;
+
+  toOne NCInSchematic mNC inverse toOne mPoint ;
+
+  toMany LabelInSchematic mLabels inverse toOne mPoint ;
+
+  property Int mX default 0 ; // Used only if mSymbol is nil
+  property Int mY default 0 ; // Used only if mSymbol is nil 
+
+  toMany WireInSchematic mWiresP1s inverse toOne mP1 ;
+  toMany WireInSchematic mWiresP2s inverse toOne mP2 ;
+  
+  transient CanariPoint location dependsFrom
+    self.mX, self.mY, self.mSymbolPinName,
+    self.mSymbol.one.symbolInfo,
+    self.mSymbol.one.mSymbolInstanceName ;
+
+  transient String netName dependsFrom self.mNet.one.mNetName ;
+
+//  transient StringArray labelNames dependsFrom self.mLabels.count, self.location ;
+
+  transient Bool canMove dependsFrom self.mSymbol.none ;
+
+  transient Bool isConnected dependsFrom
+    self.mNC.none,
+    self.mSymbol.none,
+    self.mWiresP1s.count,
+    self.mWiresP2s.count,
+    self.mLabels.count
+  ;
+
+  transient SchematicPointStatus status dependsFrom self.location, self.isConnected ;
+  
+  transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
+
+  transient NSColor wireColor dependsFrom self.mNet.one.wireColor ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

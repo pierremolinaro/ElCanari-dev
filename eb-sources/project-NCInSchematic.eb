@@ -1,0 +1,23 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   NCInSchematic
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity NCInSchematic : SchematicObject {
+  toOne PointInSchematic mPoint inverse toOne mNC ;
+
+  property QuadrantRotation mOrientation default rotation0 ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mPoint.one.location,
+    self.mOrientation,
+    prefs.pinNameFont
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mPoint.one.location,
+    self.mOrientation,
+    prefs.pinNameFont
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

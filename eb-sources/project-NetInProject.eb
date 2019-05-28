@@ -1,0 +1,18 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Net
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity NetInProject {
+  property String mNetName default "" ;
+  toOne NetClassInProject mNetClass inverse toMany mNets ;
+
+  toMany PointInSchematic mPoints inverse toOne mNet ;
+  
+  transient StringArray pinNames dependsFrom self.mPoints.all.mSymbolPinName ;
+  
+//  transient StringArray labelNames dependsFrom self.mPoints.all.labelNames ;
+  
+  transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

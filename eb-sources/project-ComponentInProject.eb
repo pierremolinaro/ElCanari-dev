@@ -1,0 +1,30 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity ComponentInProject {
+  toOne DeviceInProject mDevice inverse toMany mComponents ;
+  toOne DevicePackageInProject mSelectedPackage ;
+  toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
+
+  property String mNamePrefix default "" ;
+  property Int mNameIndex default 0 ;
+  property String mComponentValue default "" ;
+
+  transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
+  transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
+  transient String selectedPackageName dependsFrom self.mSelectedPackage.one.mPackageName ;
+
+  transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
+  transient StringTagArray unplacedSymbols dependsFrom
+    self.componentName,
+    self.mSymbols,
+    self.mSymbols.all.symbolInSchematic,
+    self.mSymbols.all.mSymbolInstanceName,
+    self.mSymbols.all.mSymbolTypeName
+  ;
+
+  transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;
+
+  transient String placementInSchematic dependsFrom self.mSymbols.all.symbolInSchematic ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

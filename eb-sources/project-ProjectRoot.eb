@@ -1,0 +1,65 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//     P R O J E C T    R O O T
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity ProjectRoot {
+  toMany FontInProject mFonts ;
+  toMany DeviceInProject mDevices ;
+  toMany ComponentInProject mComponents ;
+  toMany NetClassInProject mNetClasses ;
+  toMany SheetInProject mSheets inverse toOne mRoot ;
+
+  toOne SheetInProject mSelectedSheet ;
+  property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;
+  toMany proxy SchematicObject selectedSheetObjects : mSelectedSheet.mObjects ;
+  transient CanariIssueArray selectedSheetIssues dependsFrom self.mSelectedSheet.one.issues ;
+  transient EBShape connectedPoints dependsFrom self.mSelectedSheet.one.connectedPoints, self.selectedSheetIssues ;
+ 
+  property Int mSelectedPageIndex default 0 ;
+
+  property Int mSelectedSchematicInspector default 0 ;
+  property String mSchematicTitle default "" ;
+  property String mSchematicVersion default "" ;
+  property Date mSchematicDate default date ;
+  property Bool mSchematicHorizontalFlip default no ;
+  property Bool mSchematicVerticalFlip default no ;
+  property Int mSchematicZoom default 100 ;
+  property GridStyle mSchematicGridStyle default line ;
+  property Int mSchematicGridDisplayFactor default 4 ;
+
+  property SchematicSheetOrientation mSchematicSheetOrientation default horizontal ;
+
+  transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
+
+  transient StringTagArray unplacedSymbols dependsFrom self.mComponents.all.unplacedSymbols ;
+
+  transient EBShape schematicBackgroundDisplay dependsFrom
+    self.mSchematicTitle,
+    self.mSchematicVersion,
+    self.mSchematicSheetOrientation,
+    self.mSelectedSheet.one.mSheetTitle,
+    self.mSheets,
+    self.mSelectedSheet,
+    self.mSchematicDate
+  ;
+  
+  transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;
+  
+  transient String connexionErrorString dependsFrom self.mSheets.all.connexionErrors ;
+
+  transient String schematicStatusMessage dependsFrom
+     self.unplacedSymbols,
+     self.mSheets.all.connexionWarnings,
+     self.mSheets.all.connexionErrors
+   ;
+
+  transient NSImage schematicStatusImage dependsFrom
+    self.unplacedSymbols,
+    self.mSheets.all.connexionWarnings,
+    self.mSheets.all.connexionErrors
+  ;
+ 
+   transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -6,12 +6,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mFontName : class {
-  var mFontName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol FontInProject_mFontVersion : class {
   var mFontVersion : Int { get }
 }
@@ -20,6 +14,12 @@ protocol FontInProject_mFontVersion : class {
 
 protocol FontInProject_mDescriptiveString : class {
   var mDescriptiveString : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontInProject_mFontName : class {
+  var mFontName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,28 +39,11 @@ protocol FontInProject_sizeString : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class FontInProject : EBManagedObject,
-         FontInProject_mFontName,
          FontInProject_mFontVersion,
          FontInProject_mDescriptiveString,
+         FontInProject_mFontName,
          FontInProject_versionString,
          FontInProject_sizeString {
-
-  //····················································································································
-  //   Atomic property: mFontName
-  //····················································································································
-
-  let mFontName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mFontName : String {
-    get { return self.mFontName_property.propval }
-    set { self.mFontName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
 
   //····················································································································
   //   Atomic property: mFontVersion
@@ -95,6 +78,23 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.prop }
+
+  //····················································································································
+  //   Atomic property: mFontName
+  //····················································································································
+
+  let mFontName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mFontName : String {
+    get { return self.mFontName_property.propval }
+    set { self.mFontName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.prop }
 
   //····················································································································
   //   Transient property: versionString
@@ -148,12 +148,12 @@ class FontInProject : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mFontName
-    self.mFontName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mFontName
+    self.mFontName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -224,14 +224,6 @@ class FontInProject : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mFontName",
-      idx: self.mFontName_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.mFontName_property.mObserverExplorer,
-      valueExplorer: &self.mFontName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "mFontVersion",
       idx: self.mFontVersion_property.ebObjectIndex,
       y: &y,
@@ -246,6 +238,14 @@ class FontInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.mDescriptiveString_property.mObserverExplorer,
       valueExplorer: &self.mDescriptiveString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mFontName",
+      idx: self.mFontName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mFontName_property.mObserverExplorer,
+      valueExplorer: &self.mFontName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
@@ -274,15 +274,15 @@ class FontInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mFontName
-    self.mFontName_property.mObserverExplorer = nil
-    self.mFontName_property.mValueExplorer = nil
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.mObserverExplorer = nil
     self.mFontVersion_property.mValueExplorer = nil
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.mObserverExplorer = nil
     self.mDescriptiveString_property.mValueExplorer = nil
+  //--- Atomic property: mFontName
+    self.mFontName_property.mObserverExplorer = nil
+    self.mFontName_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -311,12 +311,12 @@ class FontInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mFontName
-    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey:"mDescriptiveString")
+  //--- Atomic property: mFontName
+    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
   }
 
   //····················································································································
@@ -334,12 +334,12 @@ class FontInProject : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mFontName
-    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey:"mFontVersion")
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey:"mDescriptiveString")
+  //--- Atomic property: mFontName
+    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
   }
 
   //····················································································································

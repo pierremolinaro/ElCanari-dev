@@ -1,0 +1,13 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSlavePadInProject {
+  property Int mCenterX default 0 ;
+  property Int mCenterY default 0 ;
+  property Int mWidth default 114_300 ;
+  property Int mHeight default 228_600 ;
+  property Int mHoleDiameter default 57_150 ;
+  property PadShape mShape default octo ;
+  property SlavePadStyle mStyle default traversing ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

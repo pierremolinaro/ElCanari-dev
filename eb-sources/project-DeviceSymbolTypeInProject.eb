@@ -1,0 +1,10 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity DeviceSymbolTypeInProject {
+  property String mSymbolTypeName default "" ;
+
+  property NSBezierPath mStrokeBezierPath default empty ;
+  property NSBezierPath mFilledBezierPath default empty ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

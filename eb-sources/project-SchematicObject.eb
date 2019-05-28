@@ -1,0 +1,17 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   SchematicObject
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract graphic entity SchematicObject {
+  toOne SheetInProject mSheet inverse toMany mObjects ;
+
+  transient Bool isPlacedInSchematic dependsFrom self.mSheet.none ;
+  
+  abstract transient CanariIssueArray issues ;
+  
+  abstract transient CanariPointArray connectedPoints ;
+  
+ // transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mSheet.one.sheetDescriptor ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

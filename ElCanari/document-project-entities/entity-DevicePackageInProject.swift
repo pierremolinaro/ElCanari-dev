@@ -18,23 +18,6 @@ class DevicePackageInProject : EBManagedObject,
          DevicePackageInProject_mPackageName {
 
   //····················································································································
-  //   Atomic property: mPackageName
-  //····················································································································
-
-  let mPackageName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var mPackageName : String {
-    get { return self.mPackageName_property.propval }
-    set { self.mPackageName_property.setProp (newValue) }
-  }
-
-  //····················································································································
-
-  var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
-
-  //····················································································································
   //   To many property: mMasterPads
   //····················································································································
 
@@ -54,15 +37,32 @@ class DevicePackageInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mPackageName
+  //····················································································································
+
+  let mPackageName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mPackageName : String {
+    get { return self.mPackageName_property.propval }
+    set { self.mPackageName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.prop }
+
+  //····················································································································
   //    init
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -112,11 +112,11 @@ class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mMasterPads
+    self.mMasterPads_property.mValueExplorer = nil
   //--- Atomic property: mPackageName
     self.mPackageName_property.mObserverExplorer = nil
     self.mPackageName_property.mValueExplorer = nil
-  //--- To many property: mMasterPads
-    self.mMasterPads_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -146,14 +146,14 @@ class DevicePackageInProject : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mPackageName
-    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
   //--- To many property: mMasterPads
     self.store (
       managedObjectArray: self.mMasterPads_property.propval,
       relationshipName: "mMasterPads",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mPackageName
+    self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey:"mPackageName")
   }
 
   //····················································································································
