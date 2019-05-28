@@ -12,9 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SheetInProject_sheetDescriptor (
-       _ self_mRoot_mSchematicSheetOrientation : SchematicSheetOrientation?
+       _ self_mRoot_mSchematicSheetOrientation : SchematicSheetOrientation?,
+       _ self_mRoot_sheetIndexes : IntArray?,  
+       _ self_ebObjectIndex : Int
 ) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2
+        let sheetIndex = 1 + (self_mRoot_sheetIndexes?.firstIndex (of: self_ebObjectIndex) ?? -1)
         let A4MinSize = cocoaToCanariUnit (SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT)
         let A4MaxSize = cocoaToCanariUnit (SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT)
         let leftMargin = cocoaToCanariUnit (SCHEMATIC_LEFT_MARGIN_COCOA_UNIT)
@@ -30,7 +33,8 @@ func transient_SheetInProject_sheetDescriptor (
           return SchematicSheetDescriptor (
             size: CanariSize (width: width, height: height),
             horizontalDivisions: 8,
-            verticalDivisions: 6
+            verticalDivisions: 6,
+            sheetIndex: sheetIndex
           )
         case .vertical :
           let width = A4MinSize - leftMargin - rightMargin - 2 * gutterWidth
@@ -38,7 +42,8 @@ func transient_SheetInProject_sheetDescriptor (
           return SchematicSheetDescriptor (
             size: CanariSize (width: width, height: height),
             horizontalDivisions: 6,
-            verticalDivisions: 8
+            verticalDivisions: 8,
+            sheetIndex: sheetIndex
           )
         }
 //--- END OF USER ZONE 2

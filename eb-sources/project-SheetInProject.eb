@@ -21,7 +21,15 @@ entity SheetInProject {
   
   transient Int connexionErrors dependsFrom self.issues ;
   
-  transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mRoot.one.mSchematicSheetOrientation ;
+//  transient Int sheetIndex dependsFrom self.mRoot.all.mSheets ;
+   
+//  transient IntArray sheetIndexes dependsFrom self.mSheets ;
+  
+  transient SchematicSheetDescriptor sheetDescriptor dependsFrom
+     self.mRoot.one.mSchematicSheetOrientation,
+     self.mRoot.one.sheetIndexes,
+     self
+  ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

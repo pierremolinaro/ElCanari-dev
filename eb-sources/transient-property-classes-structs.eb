@@ -19,6 +19,7 @@ transient property struct PinInProjectDescriptor ;
 transient property struct PinPadAssignmentInProject ;
 
 transient property struct DeviceSymbolDictionary ;
+transient property struct IntArray ;
 transient property struct StringArray ;
 transient property struct StringTagArray ;
 transient property struct TwoStrings ;

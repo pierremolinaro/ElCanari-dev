@@ -30,6 +30,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     inOldValue?.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     inOldValue?.connexionErrorString_property.removeEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
+    inOldValue?.sheetIndexes_property.removeEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
     inOldValue?.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
@@ -52,6 +53,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
     self.mInternalValue?.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
     self.mInternalValue?.connexionErrorString_property.addEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
+    self.mInternalValue?.sheetIndexes_property.addEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
     self.mInternalValue?.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
@@ -1172,6 +1174,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
         managedObject.connexionErrorString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetIndexes' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetIndexes = EBWeakEventSet ()
+
+  //····················································································································
+
+  var sheetIndexes_property_selection : EBSelection <IntArray?> {
+    if let model = self.propval {
+      switch (model.sheetIndexes_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetIndexes.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetIndexes_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetIndexes.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetIndexes_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetIndexes_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+        managedObject.sheetIndexes_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetIndexes_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+        managedObject.sheetIndexes_property.removeEBObserver (observer)
       }
     }
   }

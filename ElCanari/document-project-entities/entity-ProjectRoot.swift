@@ -102,6 +102,12 @@ protocol ProjectRoot_connexionErrorString : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_sheetIndexes : class {
+  var sheetIndexes : IntArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -157,6 +163,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_connectedPoints,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
+         ProjectRoot_sheetIndexes,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
          ProjectRoot_deviceNames,
@@ -635,6 +642,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetIndexes
+  //····················································································································
+
+  let sheetIndexes_property = EBTransientProperty_IntArray ()
+
+  //····················································································································
+
+  var sheetIndexes_property_selection : EBSelection <IntArray> {
+    return self.sheetIndexes_property.prop
+  }
+
+  //····················································································································
+
+  var sheetIndexes : IntArray? {
+    switch self.sheetIndexes_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -934,6 +964,28 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
+  //--- Atomic property: sheetIndexes
+    self.sheetIndexes_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSheets_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_sheetIndexes (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.addEBObserver (self.sheetIndexes_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1113,6 +1165,7 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
+    self.mSheets_property.removeEBObserver (self.sheetIndexes_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
@@ -1263,6 +1316,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
       valueExplorer: &self.connexionErrorString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sheetIndexes",
+      idx: self.sheetIndexes_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sheetIndexes_property.mObserverExplorer,
+      valueExplorer: &self.sheetIndexes_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "unplacedSymbols",

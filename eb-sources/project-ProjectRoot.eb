@@ -60,6 +60,8 @@ entity ProjectRoot {
   ;
  
    transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
+   
+   transient IntArray sheetIndexes dependsFrom self.mSheets ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

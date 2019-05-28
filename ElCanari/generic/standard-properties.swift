@@ -1982,6 +1982,12 @@ typealias EBTransientProperty_PinPadAssignmentInProject = EBTransientValueProper
 typealias EBReadOnlyProperty_DeviceSymbolDictionary  = EBReadOnlyValueProperty <DeviceSymbolDictionary>
 typealias EBTransientProperty_DeviceSymbolDictionary = EBTransientValueProperty <DeviceSymbolDictionary>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property IntArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_IntArray  = EBReadOnlyValueProperty <IntArray>
+typealias EBTransientProperty_IntArray = EBTransientValueProperty <IntArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property StringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

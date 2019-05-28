@@ -11,25 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_labelSchematicLocation (
-       _ self_mLabels_count : Int,                      
-       _ self_location : CanariPoint,                   
-       _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
-) -> StringArray {
+func transient_ProjectRoot_sheetIndexes (
+       _ self_mSheets : [EBManagedObject_alloc_index_protocol]
+) -> IntArray {
 //--- START OF USER ZONE 2
-        var result = StringArray ()
-        let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
-        let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
-        if self_mLabels_count > 0, let sheetDescriptor = self_mSheet_sheetDescriptor {
-          var column = 0
-          if self_location.x >= gutterWidth {
-            column = (self_location.x - gutterWidth) * sheetDescriptor.horizontalDivisions / sheetDescriptor.size.width
-          }
-          var line = 0
-          if self_location.y >= gutterHeight {
-            line = (self_location.y - gutterHeight) * sheetDescriptor.verticalDivisions / sheetDescriptor.size.height
-          }
-          result.append ("\(sheetDescriptor.sheetIndex)\(UnicodeScalar (0x41 + column)!)\(line)")
+        var result = [Int] ()
+        for sheet in self_mSheets {
+          result.append (sheet.ebObjectIndex)
         }
         return result
 //--- END OF USER ZONE 2

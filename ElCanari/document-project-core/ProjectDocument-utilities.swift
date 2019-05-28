@@ -126,10 +126,15 @@ struct SchematicSheetDescriptor : Hashable {
   let size : CanariSize // Canari Unit
   let horizontalDivisions : Int
   let verticalDivisions : Int
+  let sheetIndex : Int
 
   func coordinates (ofPoint inPoint : CanariPoint) -> String {
     return ""
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias IntArray = [Int]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

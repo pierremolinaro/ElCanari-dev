@@ -30,6 +30,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_connexionWarningString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_connexionErrorString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_sheetIndexes_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_unplacedSymbols_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netsDescription_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
@@ -52,6 +53,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_connexionWarningString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_connexionErrorString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_sheetIndexes_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_unplacedSymbols_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netsDescription_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
@@ -964,6 +966,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
         managedObject.connexionErrorString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetIndexes' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetIndexes = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetIndexes.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sheetIndexes_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetIndexes.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sheetIndexes_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetIndexes_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+        managedObject.sheetIndexes_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetIndexes_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
+        managedObject.sheetIndexes_property.removeEBObserver (observer)
       }
     }
   }

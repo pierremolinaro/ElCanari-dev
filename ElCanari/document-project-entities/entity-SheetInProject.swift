@@ -377,16 +377,18 @@ class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection.kind ()
+        var kind = unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.sheetIndexes_property_selection.kind ()
+        kind &= unwSelf.ebObjectIndex_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SheetInProject_sheetDescriptor (v0))
+          switch (unwSelf.mRoot_property.mSchematicSheetOrientation_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.ebObjectIndex_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
           default :
             return .empty
           }
@@ -396,6 +398,7 @@ class SheetInProject : EBManagedObject,
       }
     }
     self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
+    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -418,6 +421,7 @@ class SheetInProject : EBManagedObject,
     self.issues_property.removeEBObserver (self.connexionWarnings_property)
     self.issues_property.removeEBObserver (self.connexionErrors_property)
     self.mRoot_property.removeEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
+    self.mRoot_property.removeEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
   //--- Unregister properties for handling signature
   }
 
