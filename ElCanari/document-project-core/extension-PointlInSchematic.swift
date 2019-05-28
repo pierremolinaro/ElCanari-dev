@@ -1,46 +1,40 @@
 //
-//  extension-SheetInProject-add-label.swift
+//  extension-PointlInSchematic.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 09/05/2019.
+//  Created by Pierre Molinaro on 28/05/2019.
+//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EXTENSION PointInSchematic
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension SheetInProject {
+extension PointInSchematic {
 
   //····················································································································
 
-  func addLabelInSchematics (at inLocation : CanariPoint,
-                             orientation inOrientation : QuadrantRotation,
-                             newNetCreator inNewNetCreator : () -> NetInProject) -> LabelInSchematic? {
-    let canariAlignedMouseDownLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
-    var possiblePoint : PointInSchematic? = nil
-    if points.count == 1 {
-      possiblePoint = points [0]
-    }else if points.count == 0 {
-      let point = PointInSchematic (self.ebUndoManager)
-      point.mX = canariAlignedMouseDownLocation.x
-      point.mY = canariAlignedMouseDownLocation.y
-      point.mNet = inNewNetCreator ()
-      self.mPoints.append (point)
-      possiblePoint = point
-    }
-    if let point = possiblePoint {
-      let label = LabelInSchematic (self.ebUndoManager)
-      label.mPoint = point
-      label.mOrientation = inOrientation
-      self.mObjects.append (label)
-      if point.mNet == nil {
-        point.mNet = inNewNetCreator ()
+  func propagateNetToAccessiblePointsThroughtWires () {
+    var reachedPointSet = Set <PointInSchematic> ([self])
+    var exploreArray = [self]
+    while let point = exploreArray.last {
+      exploreArray.removeLast ()
+      for wire in point.mWiresP1s + point.mWiresP2s {
+        let p1 = wire.mP1!
+        if !reachedPointSet.contains (p1) {
+          reachedPointSet.insert (p1)
+          exploreArray.append (p1)
+          p1.mNet = self.mNet
+        }
+        let p2 = wire.mP2!
+        if !reachedPointSet.contains (p2) {
+          reachedPointSet.insert (p2)
+          exploreArray.append (p2)
+          p2.mNet = self.mNet
+        }
       }
-      point.propagateNetToAccessiblePointsThroughtWires ()
-      return label
-    }else{
-      return nil
     }
   }
 

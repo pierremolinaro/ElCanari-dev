@@ -13,48 +13,6 @@ import Cocoa
 extension CustomizedProjectDocument {
 
   //····················································································································
-  //  Find a new unique name
-  //····················································································································
-
-//  internal func findUniqueNetName () -> String {
-//    var newNetName = ""
-//    var idx = 1
-//    while newNetName == "" {
-//      let tentativeNetName = "$\(idx)"
-//      var ok = true
-//      for netClass in self.rootObject.mNetClasses {
-//        for net in netClass.mNets {
-//          if net.mNetName == tentativeNetName {
-//            ok = false
-//          }
-//        }
-//      }
-//      if ok {
-//        newNetName = tentativeNetName
-//      }else{
-//        idx += 1
-//      }
-//    }
-//  //---
-//    return newNetName
-//  }
-
-  //····················································································································
-  // Create a new net with automatic name
-  //····················································································································
-
-//  internal func createNetWithAutomaticName () -> NetInProject {
-//  //--- Find a new net name
-//    let newNetName = self.findUniqueNetName ()
-//  //--- Create new
-//    let newNet = NetInProject (self.ebUndoManager)
-//    newNet.mNetName = newNetName
-//    newNet.mNetClass = self.rootObject.mNetClasses [0]
-//  //---
-//    return newNet
-//  }
-
-  //····················································································································
   // Remove unused nets
   //····················································································································
 
@@ -104,6 +62,17 @@ extension CustomizedProjectDocument {
      for net in netSet {
        net.mNetName = self.rootObject.findUniqueNetName ()
      }
+  }
+
+  //····················································································································
+
+  @IBAction func mergeSubnetIntoExistingNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
+    let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
+    if selectedLabels.count == 1 {
+      let label = selectedLabels [0]
+      let point = label.mPoint!
+      self.dialogForMergingSubnetFrom (point: point)
+    }
   }
 
   //····················································································································
@@ -181,6 +150,42 @@ extension CustomizedProjectDocument {
     if let newNetName = self.mRenameNetTextField?.stringValue {
       inNet.mNetName = newNetName
     }
+  }
+
+  //····················································································································
+  //   DIALOG FOR MERGING SUBNET
+  //····················································································································
+
+  internal func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
+    if let window = self.windowForSheet, let panel = self.mMergeNetDialog, let popup = self.mMergeNetPopUpButton {
+      let initialNetName = inPoint.mNet!.mNetName
+      popup.removeAllItems ()
+      var selectedIndex : Int? = nil
+      var idx = 0
+      for netClass in self.rootObject.mNetClasses {
+        for net in netClass.mNets {
+          popup.addItem (withTitle: net.mNetName)
+          popup.lastItem?.representedObject = net
+          if initialNetName == net.mNetName {
+            selectedIndex = idx
+          }
+          idx += 1
+        }
+      }
+      if let idx = selectedIndex {
+        popup.selectItem (at: idx)
+      }
+    //--- Dialog
+      window.beginSheet (panel) { inResponse in
+        if inResponse == .stop {
+          if let net = popup.selectedItem?.representedObject as? NetInProject {
+            inPoint.mNet = net
+            inPoint.propagateNetToAccessiblePointsThroughtWires ()
+          }
+        }
+      }
+    }
+
   }
 
   //····················································································································

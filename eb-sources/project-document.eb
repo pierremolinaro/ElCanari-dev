@@ -312,6 +312,13 @@ document ProjectDocument root ProjectRoot {
   outlet EBButton mSchematicsLabelRenameNetButton // Action set in IB
     $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
   ;
+  
+  outlet EBButton mSchematicLabelMergeSubnetButton  // Action set in IB
+    $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
+  ;
+  outlet NSPanel mMergeNetDialog ;
+  outlet EBPopUpButton mMergeNetPopUpButton ;
+
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;
   selectionController ComponentSymbolInProject #mComponentSymbolSelectionController :

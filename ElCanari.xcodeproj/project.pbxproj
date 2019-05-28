@@ -1055,6 +1055,8 @@
 		CF90B77421427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90B77321427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift */; };
 		CF90B77621427D4100E725B0 /* action-FontDocument-addCharacterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90B77521427D4100E725B0 /* action-FontDocument-addCharacterAction.swift */; };
 		CF92E1F51DDB1C9E0019691C /* GeometricRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */; };
+		CF95A855229DA294000B0D23 /* extension-PointlInSchematic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF95A854229DA294000B0D23 /* extension-PointlInSchematic.swift */; };
+		CF95A856229DA294000B0D23 /* extension-PointlInSchematic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF95A854229DA294000B0D23 /* extension-PointlInSchematic.swift */; };
 		CF968AEE21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */; };
 		CF968AEF21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */; };
 		CF968AF121BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF968AF021BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift */; };
@@ -2448,6 +2450,7 @@
 		CF90B77321427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-currentCharacterCodePointString.swift"; sourceTree = "<group>"; };
 		CF90B77521427D4100E725B0 /* action-FontDocument-addCharacterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-FontDocument-addCharacterAction.swift"; sourceTree = "<group>"; };
 		CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricRect.swift; sourceTree = "<group>"; };
+		CF95A854229DA294000B0D23 /* extension-PointlInSchematic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-PointlInSchematic.swift"; sourceTree = "<group>"; };
 		CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-arrowKeyMagnitude.swift"; sourceTree = "<group>"; };
 		CF968AF021BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-shiftArrowKeyMagnitude.swift"; sourceTree = "<group>"; };
 		CF968AF321BBD40B0010175E /* EBGraphicView-binding-backColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-backColor.swift"; sourceTree = "<group>"; };
@@ -3183,6 +3186,7 @@
 				CFADD35E227882B7005588A9 /* extension-ComponentSymbolInProject.swift */,
 				CF7E69F6228219F80024233A /* extension-LabelInSchematic.swift */,
 				CF2D0EAC227F2C8A00FDA633 /* extension-NCInSchematic.swift */,
+				CF95A854229DA294000B0D23 /* extension-PointlInSchematic.swift */,
 				CF64AFA8225B78FA00E40C83 /* extension-ProjectDocument-add-components.swift */,
 				CF15D7622273399F0025B780 /* extension-ProjectDocument-add-edit-net-class.swift */,
 				CF64AFA2225B78C100E40C83 /* extension-ProjectDocument-devices.swift */,
@@ -5326,6 +5330,7 @@
 				CF7E69F022820FF00024233A /* transient-LabelInSchematic-location.swift in Sources */,
 				CFBAFCE71DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */,
 				CF00845921C42F59003627E9 /* extension-PackageOval.swift in Sources */,
+				CF95A855229DA294000B0D23 /* extension-PointlInSchematic.swift in Sources */,
 				CF512400222A8FD800FA4364 /* transient-PackageInDevice-selectionDisplay.swift in Sources */,
 				CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */,
 				CF6F6F162247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift in Sources */,
@@ -6147,6 +6152,7 @@
 				CF2A01FB21DE827D00F3A379 /* action-PackageDocument-setDimensionTextOriginAtMidYAction.swift in Sources */,
 				CF9D4B95227F79A9006E2035 /* transient-ComponentInProject-unplacedSymbols.swift in Sources */,
 				CF4D083F21C2F18000380ACA /* transient-PackageSegment-issues.swift in Sources */,
+				CF95A856229DA294000B0D23 /* extension-PointlInSchematic.swift in Sources */,
 				CF5C4D84219F04D600EAC52A /* transient-ArtworkDocument-mStatusImage.swift in Sources */,
 				CF5C4D85219F04D600EAC52A /* GeometricOblong.swift in Sources */,
 				CFDD8869223420C0008D3781 /* action-DeviceDocument-performBindAction.swift in Sources */,

@@ -100,7 +100,7 @@ extension SheetInProject {
   //    Only one point should be bound to a symbol pin
     if inPoints.count == 1 {
       inPoints [0].mNet = inNet
-      self.propagateNet (fromPoint: inPoints [0])
+      inPoints [0].propagateNetToAccessiblePointsThroughtWires ()
     }else if inPoints.count > 1 {
       var symbol : ComponentSymbolInProject? = nil
       var symbolPinName = ""
@@ -143,34 +143,13 @@ extension SheetInProject {
           let idx = self.mPoints.firstIndex (of: point)!
           self.mPoints.remove (at: idx)
         }
-        self.propagateNet (fromPoint: newPoint)
+        newPoint.propagateNetToAccessiblePointsThroughtWires ()
       }
     }
   }
 
   //····················································································································
 
-  internal func propagateNet (fromPoint inPoint : PointInSchematic) {
-    var reachedPointSet = Set <PointInSchematic> ([inPoint])
-    var exploreArray = [inPoint]
-    while let point = exploreArray.last {
-      exploreArray.removeLast ()
-      for wire in point.mWiresP1s + point.mWiresP2s {
-        let p1 = wire.mP1!
-        if !reachedPointSet.contains (p1) {
-          reachedPointSet.insert (p1)
-          exploreArray.append (p1)
-          p1.mNet = inPoint.mNet
-        }
-        let p2 = wire.mP2!
-        if !reachedPointSet.contains (p2) {
-          reachedPointSet.insert (p2)
-          exploreArray.append (p2)
-          p2.mNet = inPoint.mNet
-        }
-      }
-    }
-  }
 
   //····················································································································
 
