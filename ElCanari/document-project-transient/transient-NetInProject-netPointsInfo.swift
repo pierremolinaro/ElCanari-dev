@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_netInfo (
+func transient_NetInProject_netPointsInfo (
        _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]
 ) -> NetInfoPointArray {
 //--- START OF USER ZONE 2
