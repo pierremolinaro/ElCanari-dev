@@ -16,6 +16,10 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
+  @IBOutlet var mSubnetTableView : StringArrayTableView? = nil
+
+  //····················································································································
+
   override func awakeFromNib () {
     super.awakeFromNib ()
     self.dataSource = self // NSTableViewDataSource protocol
@@ -60,6 +64,16 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
       }
     }
     return result
+  }
+
+  //····················································································································
+
+  func tableViewSelectionDidChange (_ notification: Notification) {
+    var a = [String] ()
+    if self.selectedRow >= 0 {
+      a = self.computeSubnets (self.mDataSource [self.selectedRow].points)
+    }
+    self.mSubnetTableView?.reloadDataSource (a)
   }
 
   //····················································································································
@@ -173,6 +187,66 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   func unbind_netInfo () {
     self.mController?.unregister ()
     self.mController = nil
+  }
+
+  //····················································································································
+  //  COMPUTE SUB NETS
+  //····················································································································
+
+  private func computeSubnets (_ inPointArray : NetInfoPointArray) -> StringArray {
+  //--- Wire dictionary (for compute subnet accessibility)
+    var wireDictionary = [Int : NetInfoPointArray] ()
+    for point in inPointArray {
+      for wire in point.wires {
+        if let v = wireDictionary [wire] {
+          wireDictionary [wire] = v + [point]
+        }else{
+          wireDictionary [wire] = [point]
+        }
+      }
+    }
+  //---
+    var result = StringArray ()
+    var unExploredPointSet = Set (inPointArray)
+    while let aPoint = unExploredPointSet.first {
+      unExploredPointSet.removeFirst ()
+      var currentPointSet = Set <NetInfoPoint> ([aPoint])
+      var exploreArray = [aPoint]
+      var exploreWireSet = Set <Int> ()
+      while let p = exploreArray.last {
+        exploreArray.remove (at: exploreArray.count - 1)
+        for wire in p.wires {
+          if !exploreWireSet.contains (wire) {
+            exploreWireSet.insert (wire)
+            if let pts = wireDictionary [wire] {
+              for pp in pts {
+                if !currentPointSet.contains(pp) {
+                  currentPointSet.insert (pp)
+                  exploreArray.append (pp)
+                  unExploredPointSet.remove (pp)
+                }
+              }
+            }
+          }
+        }
+
+      }
+    //--- Build subnet description string
+      var subnetDescription = ""
+      for p in currentPointSet {
+        if let pinName = p.pin {
+          subnetDescription += " " + pinName
+        }
+      }
+      for p in currentPointSet {
+        for label in p.labels {
+          subnetDescription += " " + label
+        }
+      }
+      result.append (subnetDescription)
+    }
+  //---
+    return result
   }
 
   //····················································································································
