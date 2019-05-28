@@ -3,6 +3,7 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity PointInSchematic {
+  toOne SheetInProject mSheet inverse toMany mPoints ;
   toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
   property String mSymbolPinName default "" ; // Used only if mSymbol is not nil
 
@@ -25,8 +26,6 @@ entity PointInSchematic {
 
   transient String netName dependsFrom self.mNet.one.mNetName ;
 
-//  transient StringArray labelNames dependsFrom self.mLabels.count, self.location ;
-
   transient Bool canMove dependsFrom self.mSymbol.none ;
 
   transient Bool isConnected dependsFrom
@@ -42,6 +41,13 @@ entity PointInSchematic {
   transient CanariPointArray connectedPoints dependsFrom self.location, self.isConnected ;
 
   transient NSColor wireColor dependsFrom self.mNet.one.wireColor ;
+  
+  transient StringArray labelSchematicLocation dependsFrom
+    self.mLabels.count,
+    self.location,
+    self.mSheet.one.sheetDescriptor
+   ;
+
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

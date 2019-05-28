@@ -71,8 +71,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "NCInSchematic" : NCInSchematic.self,
   "NetClassInProject" : NetClassInProject.self,
   "NetInProject" : NetInProject.self,
-  "WireInSchematic" : WireInSchematic.self,
   "SheetInProject" : SheetInProject.self,
+  "WireInSchematic" : WireInSchematic.self,
   "CommentInSchematic" : CommentInSchematic.self
 ]
 

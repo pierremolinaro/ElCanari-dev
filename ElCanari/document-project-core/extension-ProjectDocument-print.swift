@@ -10,12 +10,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let A4MaxSize_IN_POINT : CGFloat = 842.0
-let A4MinSize_IN_POINT : CGFloat = 595.0
-let SCHEMATICS_LEFT_MARGIN : CGFloat = 72.0
-let SCHEMATICS_RIGHT_MARGIN : CGFloat = 72.0
-let SCHEMATICS_TOP_MARGIN : CGFloat = 72.0
-let SCHEMATICS_BOTTOM_MARGIN : CGFloat = 72.0
+let SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT : CGFloat = 842.0
+let SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT : CGFloat = 595.0
+let SCHEMATIC_LEFT_MARGIN_COCOA_UNIT : CGFloat = 72.0
+let SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT : CGFloat = 72.0
+let SCHEMATIC_TOP_MARGIN_COCOA_UNIT : CGFloat = 72.0
+let SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT : CGFloat = 72.0
+let SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT : CGFloat = 13.0
+let SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT : CGFloat = 13.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -51,18 +53,18 @@ extension CustomizedProjectDocument {
       let pageHeight : CGFloat
       switch self.rootObject.mSchematicSheetOrientation {
       case .horizontal :
-        pageWidth = A4MaxSize_IN_POINT
-        pageHeight = A4MinSize_IN_POINT
+        pageWidth = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT
+        pageHeight = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT
         orientation = .landscape
       case .vertical :
-        pageWidth = A4MinSize_IN_POINT
-        pageHeight = A4MaxSize_IN_POINT
+        pageWidth = SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT
+        pageHeight = SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT
         orientation = .portrait
       }
     //--- Build print view
       let sheets = self.rootObject.mSheets
-      let printWidth = pageWidth - SCHEMATICS_LEFT_MARGIN - SCHEMATICS_RIGHT_MARGIN - 1.0
-      let printHeight = pageHeight - SCHEMATICS_TOP_MARGIN - SCHEMATICS_BOTTOM_MARGIN - 1.0
+      let printWidth = pageWidth - SCHEMATIC_LEFT_MARGIN_COCOA_UNIT - SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT - 1.0
+      let printHeight = pageHeight - SCHEMATIC_TOP_MARGIN_COCOA_UNIT - SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT - 1.0
       let printViewFrame = NSRect (
         x: 0.0,
         y: 0.0,
@@ -103,10 +105,10 @@ extension CustomizedProjectDocument {
       printInfo.scalingFactor = 1.0
       printInfo.isHorizontallyCentered = true
       printInfo.isVerticallyCentered = true
-      printInfo.leftMargin = SCHEMATICS_LEFT_MARGIN
-      printInfo.topMargin = SCHEMATICS_TOP_MARGIN
-      printInfo.rightMargin = SCHEMATICS_RIGHT_MARGIN
-      printInfo.bottomMargin = SCHEMATICS_BOTTOM_MARGIN
+      printInfo.leftMargin = SCHEMATIC_LEFT_MARGIN_COCOA_UNIT
+      printInfo.topMargin = SCHEMATIC_TOP_MARGIN_COCOA_UNIT
+      printInfo.rightMargin = SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT
+      printInfo.bottomMargin = SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT
       let printOperation = NSPrintOperation (view: printView) //, printInfo: printInfo)
       self.mPrintOperation = printOperation // It seems that printOperation should be retained
       printOperation.showsPrintPanel = true

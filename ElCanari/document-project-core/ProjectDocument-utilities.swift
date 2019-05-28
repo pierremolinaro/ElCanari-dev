@@ -110,7 +110,7 @@ struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
   let pins : StringArray
-//  let labels : StringArray
+  let labels : StringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -125,7 +125,11 @@ struct SchematicPointStatus : Hashable {
 struct SchematicSheetDescriptor : Hashable {
   let size : CanariSize // Canari Unit
   let horizontalDivisions : Int
-  let vericalDivisions : Int
+  let verticalDivisions : Int
+
+  func coordinates (ofPoint inPoint : CanariPoint) -> String {
+    return ""
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

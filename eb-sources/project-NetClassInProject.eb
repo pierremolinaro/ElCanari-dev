@@ -25,7 +25,7 @@ entity NetClassInProject {
   transient NetInfoArray netsDescription dependsFrom
     self.mNets.all.pinNames,
     self.mNets.all.mNetName,
-//    self.mNets.all.labelNames,
+    self.mNets.all.labelSchematicLocationArray,
     self.mNetClassName ;
 }
 

@@ -65,6 +65,12 @@ protocol PointInSchematic_connectedPoints : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PointInSchematic_labelSchematicLocation : class {
+  var labelSchematicLocation : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +84,8 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_wireColor,
          PointInSchematic_isConnected,
          PointInSchematic_status,
-         PointInSchematic_connectedPoints {
+         PointInSchematic_connectedPoints,
+         PointInSchematic_labelSchematicLocation {
 
   //····················································································································
   //   Atomic property: mSymbolPinName
@@ -395,6 +402,44 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: mSheet
+  //····················································································································
+
+   let mSheet_property = StoredObject_SheetInProject ()
+
+  //····················································································································
+
+  var mSheet_property_selection : EBSelection <SheetInProject?> {
+    return .single (self.mSheet_property.propval)
+  }
+
+  //····················································································································
+
+  var mSheet : SheetInProject? {
+    get {
+      return self.mSheet_property.propval
+    }
+    set {
+      if self.mSheet_property.propval != nil {
+        self.mSheet_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mSheet_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
+
+  //····················································································································
+
+  var mSheet_none_selection : EBSelection <Bool> {
+    return .single (self.mSheet_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: isConnected
   //····················································································································
 
@@ -456,6 +501,29 @@ class PointInSchematic : EBManagedObject,
 
   var connectedPoints : CanariPointArray? {
     switch self.connectedPoints_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: labelSchematicLocation
+  //····················································································································
+
+  let labelSchematicLocation_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var labelSchematicLocation_property_selection : EBSelection <StringArray> {
+    return self.labelSchematicLocation_property.prop
+  }
+
+  //····················································································································
+
+  var labelSchematicLocation : StringArray? {
+    switch self.labelSchematicLocation_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -607,6 +675,12 @@ class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
+  //--- To one property: mSheet (has opposite to many relationship: mPoints) §
+    self.mSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSheet_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
+    )
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -685,6 +759,32 @@ class PointInSchematic : EBManagedObject,
     }
     self.location_property.addEBObserver (self.connectedPoints_property)
     self.isConnected_property.addEBObserver (self.connectedPoints_property)
+  //--- Atomic property: labelSchematicLocation
+    self.labelSchematicLocation_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mLabels_property.count_property_selection.kind ()
+        kind &= unwSelf.location_property_selection.kind ()
+        kind &= unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mLabels_property.count_property_selection, unwSelf.location_property_selection, unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_PointInSchematic_labelSchematicLocation (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLabels_property.addEBObserver (self.labelSchematicLocation_property)
+    self.location_property.addEBObserver (self.labelSchematicLocation_property)
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.labelSchematicLocation_property)
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -723,6 +823,9 @@ class PointInSchematic : EBManagedObject,
     self.isConnected_property.removeEBObserver (self.status_property)
     self.location_property.removeEBObserver (self.connectedPoints_property)
     self.isConnected_property.removeEBObserver (self.connectedPoints_property)
+    self.mLabels_property.removeEBObserver (self.labelSchematicLocation_property)
+    self.location_property.removeEBObserver (self.labelSchematicLocation_property)
+    self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.labelSchematicLocation_property)
   //--- Unregister properties for handling signature
   }
 
@@ -818,6 +921,14 @@ class PointInSchematic : EBManagedObject,
       observerExplorer: &self.connectedPoints_property.mObserverExplorer,
       valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "labelSchematicLocation",
+      idx: self.labelSchematicLocation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.labelSchematicLocation_property.mObserverExplorer,
+      valueExplorer: &self.labelSchematicLocation_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
       "mLabels",
@@ -862,6 +973,13 @@ class PointInSchematic : EBManagedObject,
       view: view,
       valueExplorer:&self.mNC_property.mValueExplorer
     )
+    createEntryForToOneRelationshipNamed (
+      "mSheet",
+      idx:self.mSheet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mSheet_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -894,6 +1012,9 @@ class PointInSchematic : EBManagedObject,
   //--- To one property: mNC
     self.mNC_property.mObserverExplorer = nil
     self.mNC_property.mValueExplorer = nil
+  //--- To one property: mSheet
+    self.mSheet_property.mObserverExplorer = nil
+    self.mSheet_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -918,6 +1039,7 @@ class PointInSchematic : EBManagedObject,
     self.mSymbol = nil
     self.mNet = nil
     self.mNC = nil
+    self.mSheet = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1016,6 +1138,17 @@ class PointInSchematic : EBManagedObject,
         self.mNC_property.setProp (entity)
       }
     }
+  //--- To one property: mSheet
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mSheet",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? SheetInProject {
+        self.mSheet_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -1062,6 +1195,10 @@ class PointInSchematic : EBManagedObject,
     if let object = self.mNC {
       objects.append (object)
     }
+  //--- To one property: mSheet
+    if let object = self.mSheet {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -1092,6 +1229,10 @@ class PointInSchematic : EBManagedObject,
     }
   //--- To one property: mNC
     if let object = self.mNC {
+      objects.append (object)
+    }
+  //--- To one property: mSheet
+    if let object = self.mSheet {
       objects.append (object)
     }
   }

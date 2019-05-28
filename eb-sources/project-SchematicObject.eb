@@ -11,7 +11,7 @@ abstract graphic entity SchematicObject {
   
   abstract transient CanariPointArray connectedPoints ;
   
- // transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mSheet.one.sheetDescriptor ;
+  transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mSheet.one.sheetDescriptor ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

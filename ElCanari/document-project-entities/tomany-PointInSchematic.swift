@@ -25,6 +25,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.removeEBObserversOf_isConnected_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_status_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_labelSchematicLocation_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_mSymbolPinName_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
@@ -36,6 +37,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.addEBObserversOf_isConnected_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_status_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_labelSchematicLocation_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -597,6 +599,62 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'labelSchematicLocation' transient property
+  //····················································································································
+
+  private var mObserversOf_labelSchematicLocation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_labelSchematicLocation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_labelSchematicLocation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.labelSchematicLocation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_labelSchematicLocation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_labelSchematicLocation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.labelSchematicLocation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_labelSchematicLocation_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_labelSchematicLocation.apply { (_ observer : EBEvent) in
+        managedObject.labelSchematicLocation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_labelSchematicLocation_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_labelSchematicLocation.apply { (_ observer : EBEvent) in
+        managedObject.labelSchematicLocation_property.removeEBObserver (observer)
       }
     }
   }

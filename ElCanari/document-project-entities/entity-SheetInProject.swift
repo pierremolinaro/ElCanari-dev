@@ -272,8 +272,12 @@ class SheetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
-  //--- To many property: mPoints (no option)
+  //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
+      resetter: { inObject in inObject.mSheet_property.setProp (nil) }
+    )
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mSheets) §
@@ -394,6 +398,10 @@ class SheetInProject : EBManagedObject,
     self.mRoot_property.addEBObserverOf_mSchematicSheetOrientation (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
+      resetter: { inObject in inObject.mSheet_property.setProp (nil) }
+    )
+    self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )

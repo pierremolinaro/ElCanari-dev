@@ -17,12 +17,14 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //--- Remove observers from removed objects
     inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+    inOldValue?.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
     inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     inOldValue?.isPlacedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+    self.mInternalValue?.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
     self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
     self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
     self.mInternalValue?.isPlacedInSchematic_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
@@ -162,6 +164,75 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sheetDescriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
+    if let model = self.propval {
+      switch (model.sheetDescriptor_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sheetDescriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.sheetDescriptor_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
+        managedObject.sheetDescriptor_property.removeEBObserver (observer)
       }
     }
   }

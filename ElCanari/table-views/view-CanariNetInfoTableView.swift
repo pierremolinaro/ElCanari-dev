@@ -55,6 +55,8 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
       }else if columnIdentifier.rawValue == "pincount" {
         result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pins.count)"
+      }else if columnIdentifier.rawValue == "labelcount" {
+        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].labels)"
       }
     }
     return result
@@ -98,6 +100,12 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
             self.mDataSource.sort { $0.pins.count < $1.pins.count }
           }else{
             self.mDataSource.sort { $0.pins.count > $1.pins.count }
+          }
+        }else if key == "labelcount" {
+          if s.ascending {
+            self.mDataSource.sort { $0.labels.count < $1.labels.count }
+          }else{
+            self.mDataSource.sort { $0.labels.count > $1.labels.count }
           }
         }else{
           NSLog ("Key '\(key)' unknown in \(#file):\(#line)")

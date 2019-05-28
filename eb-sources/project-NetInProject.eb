@@ -10,9 +10,9 @@ entity NetInProject {
   
   transient StringArray pinNames dependsFrom self.mPoints.all.mSymbolPinName ;
   
-//  transient StringArray labelNames dependsFrom self.mPoints.all.labelNames ;
-  
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
+
+  transient StringArray labelSchematicLocationArray dependsFrom self.mPoints.all.labelSchematicLocation ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

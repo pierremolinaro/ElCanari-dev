@@ -11,24 +11,28 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_netsDescription (
-       _ self_mNets_pinNames : [NetInProject_pinNames],
-       _ self_mNets_mNetName : [NetInProject_mNetName],
-       _ self_mNets_labelSchematicLocationArray : [NetInProject_labelSchematicLocationArray],
-       _ self_mNetClassName : String
-) -> NetInfoArray {
+func transient_PointInSchematic_labelSchematicLocation (
+       _ self_mLabels_count : Int,                      
+       _ self_location : CanariPoint,                   
+       _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
+) -> StringArray {
 //--- START OF USER ZONE 2
-        var array = NetInfoArray ()
-        var idx = 0
-        while idx < self_mNets_mNetName.count {
-          let netName = self_mNets_mNetName [idx].mNetName
-          let pins = self_mNets_pinNames [idx].pinNames!
-          let labelSchematicLocationArray = self_mNets_labelSchematicLocationArray [idx].labelSchematicLocationArray!
-          let netInfo = NetInfo (netName: netName, netClassName: self_mNetClassName, pins: pins, labels: labelSchematicLocationArray)
-          array.append (netInfo)
-          idx += 1
+        var result = StringArray ()
+        let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
+        let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
+        if self_mLabels_count > 0, let sheetDescriptor = self_mSheet_sheetDescriptor {
+          var column = 0
+          if self_location.x >= gutterWidth {
+            column = (self_location.x - gutterWidth) * sheetDescriptor.horizontalDivisions / sheetDescriptor.size.width
+          }
+          var line = 0
+          if self_location.y >= gutterHeight {
+            line = (self_location.y - gutterHeight) * sheetDescriptor.verticalDivisions / sheetDescriptor.size.height
+          }
+          let s : String = "\(UnicodeScalar (0x41 + column)!)\(line)"
+          result.append (s)
         }
-        return array
+        return result
 //--- END OF USER ZONE 2
 }
 

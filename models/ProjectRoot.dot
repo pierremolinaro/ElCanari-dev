@@ -4,7 +4,7 @@ digraph G {
   ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicObject[label="<SchematicObject>SchematicObject|<mSheet>SheetInProject? mSheet"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicObject] mObjects|<mPoints>[PointInSchematic] mPoints|<mRoot>ProjectRoot? mRoot|String mSheetTitle"] ;
-  PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematic] mWiresP1s|<mWiresP2s>[WireInSchematic] mWiresP2s|Int mX|Int mY"] ;
+  PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSheet>SheetInProject? mSheet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematic] mWiresP1s|<mWiresP2s>[WireInSchematic] mWiresP2s|Int mX|Int mY"] ;
   WireInSchematic[label="<WireInSchematic>WireInSchematic|<mP1>PointInSchematic? mP1|<mP2>PointInSchematic? mP2|<mSheet>SheetInProject? mSheet"] ;
   NCInSchematic[label="<NCInSchematic>NCInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
   LabelInSchematic[label="<LabelInSchematic>LabelInSchematic|QuadrantRotation mOrientation|<mPoint>PointInSchematic? mPoint|<mSheet>SheetInProject? mSheet"] ;
@@ -29,7 +29,7 @@ digraph G {
   ProjectRoot:mSheets -> SheetInProject:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
   ProjectRoot:selectedSheetObjects -> SchematicObject:SchematicObject [dir=both arrowtail=none arrowhead=vee] ;
   SheetInProject:mObjects -> SchematicObject:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
-  SheetInProject:mPoints -> PointInSchematic:PointInSchematic [dir=both arrowtail=none arrowhead=vee] ;
+  SheetInProject:mPoints -> PointInSchematic:mSheet [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematic:mLabels -> LabelInSchematic:mPoint [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematic:mWiresP1s -> WireInSchematic:mP1 [dir=both arrowtail=onormal arrowhead=vee] ;
   PointInSchematic:mWiresP2s -> WireInSchematic:mP2 [dir=both arrowtail=onormal arrowhead=vee] ;

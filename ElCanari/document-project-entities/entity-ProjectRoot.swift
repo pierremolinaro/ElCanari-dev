@@ -90,6 +90,18 @@ protocol ProjectRoot_connectedPoints : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_connexionWarningString : class {
+  var connexionWarningString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_connexionErrorString : class {
+  var connexionErrorString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_unplacedSymbols : class {
   var unplacedSymbols : StringTagArray? { get }
 }
@@ -110,18 +122,6 @@ protocol ProjectRoot_deviceNames : class {
 
 protocol ProjectRoot_schematicBackgroundDisplay : class {
   var schematicBackgroundDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_connexionWarningString : class {
-  var connexionWarningString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_connexionErrorString : class {
-  var connexionErrorString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -155,14 +155,33 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_selectedSheetTitle,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
+         ProjectRoot_connexionWarningString,
+         ProjectRoot_connexionErrorString,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_netsDescription,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
-         ProjectRoot_connexionWarningString,
-         ProjectRoot_connexionErrorString,
          ProjectRoot_schematicStatusMessage,
          ProjectRoot_schematicStatusImage {
+
+  //····················································································································
+  //   To many property: mSheets
+  //····················································································································
+
+  let mSheets_property = StoredArrayOf_SheetInProject ()
+
+  //····················································································································
+
+  var mSheets_property_selection : EBSelection < [SheetInProject] > {
+    return self.mSheets_property.prop
+  }
+
+  //····················································································································
+
+  var mSheets : [SheetInProject] {
+    get { return self.mSheets_property.propval }
+    set { self.mSheets_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -411,25 +430,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   To many property: mSheets
-  //····················································································································
-
-  let mSheets_property = StoredArrayOf_SheetInProject ()
-
-  //····················································································································
-
-  var mSheets_property_selection : EBSelection < [SheetInProject] > {
-    return self.mSheets_property.prop
-  }
-
-  //····················································································································
-
-  var mSheets : [SheetInProject] {
-    get { return self.mSheets_property.propval }
-    set { self.mSheets_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicSheetOrientation
   //····················································································································
 
@@ -589,6 +589,52 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: connexionWarningString
+  //····················································································································
+
+  let connexionWarningString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var connexionWarningString_property_selection : EBSelection <String> {
+    return self.connexionWarningString_property.prop
+  }
+
+  //····················································································································
+
+  var connexionWarningString : String? {
+    switch self.connexionWarningString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: connexionErrorString
+  //····················································································································
+
+  let connexionErrorString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var connexionErrorString_property_selection : EBSelection <String> {
+    return self.connexionErrorString_property.prop
+  }
+
+  //····················································································································
+
+  var connexionErrorString : String? {
+    switch self.connexionErrorString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: unplacedSymbols
   //····················································································································
 
@@ -681,52 +727,6 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: connexionWarningString
-  //····················································································································
-
-  let connexionWarningString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var connexionWarningString_property_selection : EBSelection <String> {
-    return self.connexionWarningString_property.prop
-  }
-
-  //····················································································································
-
-  var connexionWarningString : String? {
-    switch self.connexionWarningString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: connexionErrorString
-  //····················································································································
-
-  let connexionErrorString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var connexionErrorString_property_selection : EBSelection <String> {
-    return self.connexionErrorString_property.prop
-  }
-
-  //····················································································································
-
-  var connexionErrorString : String? {
-    switch self.connexionErrorString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: schematicStatusMessage
   //····················································································································
 
@@ -778,6 +778,12 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To many property: mSheets (has opposite relationship)
+    self.mSheets_property.ebUndoManager = self.ebUndoManager
+    self.mSheets_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSelectedSchematicInspector
@@ -806,12 +812,6 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mSheets (has opposite relationship)
-    self.mSheets_property.ebUndoManager = self.ebUndoManager
-    self.mSheets_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
-      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
-    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
@@ -890,6 +890,50 @@ class ProjectRoot : EBManagedObject,
     }
     self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
+  //--- Atomic property: connexionWarningString
+    self.connexionWarningString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSheets_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_connexionWarningString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property)
+  //--- Atomic property: connexionErrorString
+    self.connexionErrorString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSheets_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_connexionErrorString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -990,50 +1034,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-  //--- Atomic property: connexionWarningString
-    self.connexionWarningString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mSheets_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mSheets_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_connexionWarningString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.connexionWarningString_property)
-  //--- Atomic property: connexionErrorString
-    self.connexionErrorString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mSheets_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.mSheets_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectRoot_connexionErrorString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.connexionErrorString_property)
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1111,6 +1111,8 @@ class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.mComponents_property.removeEBObserverOf_unplacedSymbols (self.unplacedSymbols_property)
     self.mNetClasses_property.removeEBObserverOf_netsDescription (self.netsDescription_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
@@ -1121,8 +1123,6 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.connexionWarningString_property)
-    self.mSheets_property.removeEBObserverOf_connexionErrors (self.connexionErrorString_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
@@ -1249,6 +1249,22 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.connectedPoints_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "connexionWarningString",
+      idx: self.connexionWarningString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
+      valueExplorer: &self.connexionWarningString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "connexionErrorString",
+      idx: self.connexionErrorString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
+      valueExplorer: &self.connexionErrorString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "unplacedSymbols",
       idx: self.unplacedSymbols_property.ebObjectIndex,
       y: &y,
@@ -1281,22 +1297,6 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "connexionWarningString",
-      idx: self.connexionWarningString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionWarningString_property.mObserverExplorer,
-      valueExplorer: &self.connexionWarningString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "connexionErrorString",
-      idx: self.connexionErrorString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.connexionErrorString_property.mObserverExplorer,
-      valueExplorer: &self.connexionErrorString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "schematicStatusMessage",
       idx: self.schematicStatusMessage_property.ebObjectIndex,
       y: &y,
@@ -1313,6 +1313,13 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.schematicStatusImage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
+    createEntryForToManyRelationshipNamed (
+      "mSheets",
+      idx:mSheets_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mSheets_property.mValueExplorer
+    )
     createEntryForToManyRelationshipNamed (
       "mComponents",
       idx:mComponents_property.ebObjectIndex,
@@ -1341,13 +1348,6 @@ class ProjectRoot : EBManagedObject,
       view: view,
       valueExplorer:&mDevices_property.mValueExplorer
     )
-    createEntryForToManyRelationshipNamed (
-      "mSheets",
-      idx:mSheets_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mSheets_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSelectedSheet",
@@ -1364,6 +1364,8 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mSheets
+    self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
@@ -1402,8 +1404,6 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.mValueExplorer = nil
   //--- To many property: mDevices
     self.mDevices_property.mValueExplorer = nil
-  //--- To many property: mSheets
-    self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicSheetOrientation_property.mValueExplorer = nil
@@ -1424,11 +1424,11 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mSheets = []
     self.mComponents = []
     self.mNetClasses = []
     self.mFonts = []
     self.mDevices = []
-    self.mSheets = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1449,6 +1449,12 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- To many property: mSheets
+    self.store (
+      managedObjectArray: self.mSheets_property.propval,
+      relationshipName: "mSheets",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector
@@ -1493,12 +1499,6 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
-  //--- To many property: mSheets
-    self.store (
-      managedObjectArray: self.mSheets_property.propval,
-      relationshipName: "mSheets",
-      intoDictionary: ioDictionary
-    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
   //--- To one property: mSelectedSheet
@@ -1514,6 +1514,12 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mSheets
+    self.mSheets_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mSheets",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SheetInProject])
   //--- To many property: mComponents
     self.mComponents_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mComponents",
@@ -1538,12 +1544,6 @@ class ProjectRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DeviceInProject])
-  //--- To many property: mSheets
-    self.mSheets_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSheets",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SheetInProject])
   //--- To one property: mSelectedSheet
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1593,6 +1593,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mSheets
+    for managedObject in self.mSheets {
+      objects.append (managedObject)
+    }
   //--- To many property: mComponents
     for managedObject in self.mComponents {
       objects.append (managedObject)
@@ -1607,10 +1611,6 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mDevices
     for managedObject in self.mDevices {
-      objects.append (managedObject)
-    }
-  //--- To many property: mSheets
-    for managedObject in self.mSheets {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet
@@ -1625,6 +1625,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mSheets
+    for managedObject in self.mSheets {
+      objects.append (managedObject)
+    }
   //--- To many property: mComponents
     for managedObject in self.mComponents {
       objects.append (managedObject)
@@ -1639,10 +1643,6 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mDevices
     for managedObject in self.mDevices {
-      objects.append (managedObject)
-    }
-  //--- To many property: mSheets
-    for managedObject in self.mSheets {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet

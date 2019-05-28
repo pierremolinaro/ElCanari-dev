@@ -9,7 +9,7 @@ enum SchematicSheetOrientation { horizontal, vertical }
 entity SheetInProject {
   toOne ProjectRoot mRoot inverse toMany mSheets ;
   toMany SchematicObject mObjects inverse toOne mSheet ;
-  toMany PointInSchematic mPoints ;
+  toMany PointInSchematic mPoints inverse toOne mSheet ;
 
   property String mSheetTitle default "" ;
   

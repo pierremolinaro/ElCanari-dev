@@ -23,13 +23,20 @@ protocol NetInProject_wireColor : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetInProject_labelSchematicLocationArray : class {
+  var labelSchematicLocationArray : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class NetInProject : EBManagedObject,
          NetInProject_mNetName,
          NetInProject_pinNames,
-         NetInProject_wireColor {
+         NetInProject_wireColor,
+         NetInProject_labelSchematicLocationArray {
 
   //····················································································································
   //   Atomic property: mNetName
@@ -152,6 +159,29 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: labelSchematicLocationArray
+  //····················································································································
+
+  let labelSchematicLocationArray_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var labelSchematicLocationArray_property_selection : EBSelection <StringArray> {
+    return self.labelSchematicLocationArray_property.prop
+  }
+
+  //····················································································································
+
+  var labelSchematicLocationArray : StringArray? {
+    switch self.labelSchematicLocationArray_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -215,6 +245,28 @@ class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserverOf_mNetClassColor (self.wireColor_property)
+  //--- Atomic property: labelSchematicLocationArray
+    self.labelSchematicLocationArray_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoints_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPoints_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_labelSchematicLocationArray (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoints_property.addEBObserverOf_labelSchematicLocation (self.labelSchematicLocationArray_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -230,6 +282,7 @@ class NetInProject : EBManagedObject,
     super.removeAllObservers ()
     self.mPoints_property.removeEBObserverOf_mSymbolPinName (self.pinNames_property)
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
+    self.mPoints_property.removeEBObserverOf_labelSchematicLocation (self.labelSchematicLocationArray_property)
   //--- Unregister properties for handling signature
   }
 
@@ -268,6 +321,14 @@ class NetInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.wireColor_property.mObserverExplorer,
       valueExplorer: &self.wireColor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "labelSchematicLocationArray",
+      idx: self.labelSchematicLocationArray_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.labelSchematicLocationArray_property.mObserverExplorer,
+      valueExplorer: &self.labelSchematicLocationArray_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

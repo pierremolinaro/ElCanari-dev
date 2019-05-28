@@ -11,24 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_netsDescription (
-       _ self_mNets_pinNames : [NetInProject_pinNames],
-       _ self_mNets_mNetName : [NetInProject_mNetName],
-       _ self_mNets_labelSchematicLocationArray : [NetInProject_labelSchematicLocationArray],
-       _ self_mNetClassName : String
-) -> NetInfoArray {
+func transient_NetInProject_labelSchematicLocationArray (
+       _ self_mPoints_labelSchematicLocation : [PointInSchematic_labelSchematicLocation]
+) -> StringArray {
 //--- START OF USER ZONE 2
-        var array = NetInfoArray ()
-        var idx = 0
-        while idx < self_mNets_mNetName.count {
-          let netName = self_mNets_mNetName [idx].mNetName
-          let pins = self_mNets_pinNames [idx].pinNames!
-          let labelSchematicLocationArray = self_mNets_labelSchematicLocationArray [idx].labelSchematicLocationArray!
-          let netInfo = NetInfo (netName: netName, netClassName: self_mNetClassName, pins: pins, labels: labelSchematicLocationArray)
-          array.append (netInfo)
-          idx += 1
+        var result = StringArray ()
+        for point in self_mPoints_labelSchematicLocation {
+          if let a = point.labelSchematicLocation {
+            result += a
+          }
         }
-        return array
+        return result
 //--- END OF USER ZONE 2
 }
 

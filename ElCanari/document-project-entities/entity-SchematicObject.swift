@@ -18,6 +18,12 @@ protocol SchematicObject_connectedPoints : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SchematicObject_sheetDescriptor : class {
+  var sheetDescriptor : SchematicSheetDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SchematicObject_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
@@ -41,6 +47,7 @@ protocol SchematicObject_isPlacedInSchematic : class {
 class SchematicObject : EBGraphicManagedObject,
          SchematicObject_issues,
          SchematicObject_connectedPoints,
+         SchematicObject_sheetDescriptor,
          SchematicObject_selectionDisplay,
          SchematicObject_objectDisplay,
          SchematicObject_isPlacedInSchematic {
@@ -130,6 +137,29 @@ class SchematicObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: sheetDescriptor
+  //····················································································································
+
+  let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+
+  //····················································································································
+
+  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
+    return self.sheetDescriptor_property.prop
+  }
+
+  //····················································································································
+
+  var sheetDescriptor : SchematicSheetDescriptor? {
+    switch self.sheetDescriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: isPlacedInSchematic
   //····················································································································
 
@@ -164,6 +194,28 @@ class SchematicObject : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
     )
+  //--- Atomic property: sheetDescriptor
+    self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SchematicObject_sheetDescriptor (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -195,6 +247,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mSheet_property.removeEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
     self.mSheet_property.removeEBObserver (self.isPlacedInSchematic_property)
   //--- Unregister properties for handling signature
   }
@@ -226,6 +279,14 @@ class SchematicObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.connectedPoints_property.mObserverExplorer,
       valueExplorer: &self.connectedPoints_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sheetDescriptor",
+      idx: self.sheetDescriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.sheetDescriptor_property.mObserverExplorer,
+      valueExplorer: &self.sheetDescriptor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectionDisplay",

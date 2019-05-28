@@ -15,13 +15,31 @@ func transient_SheetInProject_sheetDescriptor (
        _ self_mRoot_mSchematicSheetOrientation : SchematicSheetOrientation?
 ) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2
-        let A4MinSize = cocoaToCanariUnit (A4MinSize_IN_POINT)
-        let A4MaxSize = cocoaToCanariUnit (A4MaxSize_IN_POINT)
+        let A4MinSize = cocoaToCanariUnit (SCHEMATIC_A4_MIN_SIZE_COCOA_UNIT)
+        let A4MaxSize = cocoaToCanariUnit (SCHEMATIC_A4_MAX_SIZE_COCOA_UNIT)
+        let leftMargin = cocoaToCanariUnit (SCHEMATIC_LEFT_MARGIN_COCOA_UNIT)
+        let rightMargin = cocoaToCanariUnit (SCHEMATIC_RIGHT_MARGIN_COCOA_UNIT)
+        let topMargin = cocoaToCanariUnit (SCHEMATIC_TOP_MARGIN_COCOA_UNIT)
+        let bottomMargin = cocoaToCanariUnit (SCHEMATIC_BOTTOM_MARGIN_COCOA_UNIT)
+        let gutterWidth = cocoaToCanariUnit (SCHEMATIC_GUTTER_WIDTH_COCOA_UNIT)
+        let gutterHeight = cocoaToCanariUnit (SCHEMATIC_GUTTER_HEIGHT_COCOA_UNIT)
         switch self_mRoot_mSchematicSheetOrientation! {
         case .horizontal :
-          return SchematicSheetDescriptor (size: CanariSize (width: A4MaxSize, height: A4MinSize), horizontalDivisions: 8, vericalDivisions: 6)
+          let width = A4MaxSize - leftMargin - rightMargin - 2 * gutterWidth
+          let height = A4MinSize - topMargin - bottomMargin - 2 * gutterHeight
+          return SchematicSheetDescriptor (
+            size: CanariSize (width: width, height: height),
+            horizontalDivisions: 8,
+            verticalDivisions: 6
+          )
         case .vertical :
-          return SchematicSheetDescriptor (size: CanariSize (width: A4MinSize, height: A4MaxSize), horizontalDivisions: 6, vericalDivisions: 8)
+          let width = A4MinSize - leftMargin - rightMargin - 2 * gutterWidth
+          let height = A4MaxSize - topMargin - bottomMargin - 2 * gutterHeight
+          return SchematicSheetDescriptor (
+            size: CanariSize (width: width, height: height),
+            horizontalDivisions: 6,
+            verticalDivisions: 8
+          )
         }
 //--- END OF USER ZONE 2
 }
