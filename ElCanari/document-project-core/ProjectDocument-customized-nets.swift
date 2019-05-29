@@ -76,6 +76,19 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
+
+  @IBAction func insulateSubnetFromCurrentNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
+    let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
+    if selectedLabels.count == 1 {
+      let label = selectedLabels [0]
+      let point = label.mPoint!
+      let newNet = self.rootObject.createNetWithAutomaticName ()
+      point.mNet = newNet
+      point.propagateNetToAccessiblePointsThroughtWires ()
+    }
+  }
+
+  //····················································································································
   //  Rename net dialog
   //····················································································································
 

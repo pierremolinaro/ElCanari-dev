@@ -70,8 +70,15 @@ extension CustomizedProjectDocument {
   @objc private func connectAction (_ inSender : NSMenuItem) {
     if let points = inSender.representedObject as? [PointInSchematic],
        let selectedSheet = self.rootObject.mSelectedSheet,
-       let window = self.windowForSheet {
-      selectedSheet.connect (points: points, window)
+       let window = self.windowForSheet,
+       let mergeSeveralSubnetsPanel = self.mMergeSeveralSubnetsPanel,
+       let mergeSeveralSubnetsPopUpButton = self.mMergeSeveralSubnetsPopUpButton {
+      selectedSheet.connect (
+        points: points,
+        window,
+        panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
+        popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton
+      )
       self.updateSchematicsPointsAndNets ()
     }
   }

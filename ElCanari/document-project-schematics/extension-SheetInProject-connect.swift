@@ -43,7 +43,10 @@ extension SheetInProject {
   
   //····················································································································
 
-  func connect (points inPoints : [PointInSchematic], _ inWindow : NSWindow) {
+  func connect (points inPoints : [PointInSchematic],
+                _ inWindow : NSWindow,
+                panelForMergingSeveralSubnet inPanel : NSPanel,
+                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
     var netSet = Set <NetInProject> ()
     for point in inPoints {
       if let net = point.mNet {
@@ -51,8 +54,18 @@ extension SheetInProject {
       }
     }
   //---
-    let netArray = Array (netSet).sorted { $0.mNetName > $1.mNetName }
-    if netArray.count == 1 {
+    let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
+    if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
+      var hasPinOrLabel = false
+      for p in inPoints {
+        if (p.mSymbol != nil) || (p.mLabels.count > 0) {
+          hasPinOrLabel = true
+          break
+        }
+      }
+      let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
+      self.propagateAndMerge (net: newNet, to: inPoints)
+    }else if netArray.count == 1 {
       self.propagateAndMerge (net: netArray [0], to: inPoints)
     }else if netArray.count == 2 {
       let alert = NSAlert ()
@@ -74,7 +87,27 @@ extension SheetInProject {
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
         self.handleAlertResponseForMergingNets (response, inPoints, netArray)
       }
-    }else if netArray.count > 3 {
+    }else{ // netArray.count > 3
+      self.connectionWillMergeSeveralSubnets (points: inPoints, netArray, inWindow, inPanel, inPopUp)
+    }
+  }
+
+  //····················································································································
+
+  private func connectionWillMergeSeveralSubnets (points inPoints : [PointInSchematic],
+                                                  _ netArray : [NetInProject],
+                                                  _ inWindow : NSWindow,
+                                                  _ inPanel : NSPanel,
+                                                  _ inPopUp : EBPopUpButton) {
+    inPopUp.removeAllItems ()
+    for net in netArray {
+      inPopUp.addItem (withTitle: net.mNetName)
+      inPopUp.lastItem?.representedObject = net
+    }
+    inWindow.beginSheet (inPanel) { (_ inModalResponse : NSApplication.ModalResponse) in
+      if inModalResponse == .stop, let net = inPopUp.selectedItem?.representedObject as? NetInProject {
+        self.propagateAndMerge (net: net, to: inPoints)
+      }
     }
   }
 
@@ -95,7 +128,7 @@ extension SheetInProject {
   //  Propagate and merge net
   //····················································································································
 
-  private func propagateAndMerge (net inNet : NetInProject, to inPoints : [PointInSchematic]) {
+  private func propagateAndMerge (net inNet : NetInProject?, to inPoints : [PointInSchematic]) {
   //--- All points should be at the same location
   //    Only one point should be bound to a symbol pin
     if inPoints.count == 1 {

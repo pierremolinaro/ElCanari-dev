@@ -203,6 +203,10 @@ document ProjectDocument root ProjectRoot {
 //  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
 //  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
 
+//--- Contextual menu
+  outlet NSPanel mMergeSeveralSubnetsPanel ;
+  outlet EBPopUpButton mMergeSeveralSubnetsPopUpButton ;
+  
 //--- Schematic inconsistent error
   outlet NSPanel mInconsistentSchematicErrorPanel ;
   outlet NSTextView mInconsistentSchematicErrorTextView ;
@@ -318,6 +322,10 @@ document ProjectDocument root ProjectRoot {
   ;
   outlet NSPanel mMergeNetDialog ;
   outlet EBPopUpButton mMergeNetPopUpButton ;
+  
+  outlet EBButton mSchematicLabelInsulateSubnetButton  // Action set in IB
+    $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
+  ;
 
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;

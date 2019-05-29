@@ -1,22 +1,43 @@
 //
-//  view-CanariNetInfoTableView.swift
+//  view-StatusStringArrayTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 08/04/2019.
+//  Created by Pierre Molinaro on 28/05/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: CanariNetInfoTableView is view based
+//   Status
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+enum Status : UInt, Hashable {
+  case ok
+  case warning
+  case error
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StatusString
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  @IBOutlet var mSubnetTableView : StatusStringArrayTableView? = nil
+struct StatusString : Hashable {
+  let status : Status
+  let string : String
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StatusStringArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias StatusStringArray = [StatusString]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// NOTE: StatusStringArrayTableView is view based
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class StatusStringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -53,73 +74,51 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
       if !reuseTableViewCells () {
         result?.identifier = nil // So result cannot be reused, will be freed
       }
-      if columnIdentifier.rawValue == "netname" {
-        result?.textField?.stringValue = self.mDataSource [inRowIndex].netName
-      }else if columnIdentifier.rawValue == "netclass" {
-        result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
-      }else if columnIdentifier.rawValue == "pincount" {
-        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pinCount)"
-      }else if columnIdentifier.rawValue == "labelcount" {
-        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].labelCount)"
+      if columnIdentifier.rawValue == "value" {
+        result?.textField?.stringValue = self.mDataSource [inRowIndex].string
+        switch self.mDataSource [inRowIndex].status {
+        case .ok :
+          result?.imageView?.image = NSImage (named: okStatusImageName)
+        case .warning :
+          result?.imageView?.image = NSImage (named: warningStatusImageName)
+        case .error :
+          result?.imageView?.image = NSImage (named: errorStatusImageName)
+        }
       }
     }
     return result
   }
 
   //····················································································································
-
-  func tableViewSelectionDidChange (_ notification: Notification) {
-    var a = [StatusString] ()
-    if self.selectedRow >= 0 {
-      a = self.computeSubnets (self.mDataSource [self.selectedRow].points)
-    }
-    self.mSubnetTableView?.reloadDataSource (a)
-  }
-
-  //····················································································································
   //  DATA SOURCE
   //····················································································································
 
-  private var mDataSource = NetInfoArray ()
+  private var mDataSource = StatusStringArray ()
 
   //····················································································································
 
-  func reloadDataSource (_ inDataSource : NetInfoArray) {
+  func reloadDataSource (_ inDataSource : [StatusString]) {
   //--- Note selected rows
-    var selectedRowContents = Set <NetInfo> ()
+    var selectedRowContents = Set <String> ()
     let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mDataSource.count {
-        selectedRowContents.insert (self.mDataSource [idx])
+        selectedRowContents.insert (self.mDataSource [idx].string)
       }
     }
   //--- Sort
     self.mDataSource = inDataSource
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
-        if key == "netname" {
-          if s.ascending {
-            self.mDataSource.sort { $0.netName < $1.netName }
-          }else{
-            self.mDataSource.sort { $0.netName > $1.netName }
+        if key == "value" {
+          self.mDataSource.sort (by: { $0.string < $1.string } )
+          if !s.ascending {
+            self.mDataSource.reverse ()
           }
-        }else if key == "netclass" {
-          if s.ascending {
-            self.mDataSource.sort { $0.netClassName < $1.netClassName }
-          }else{
-            self.mDataSource.sort { $0.netClassName > $1.netClassName }
-          }
-        }else if key == "pincount" {
-          if s.ascending {
-            self.mDataSource.sort { $0.pinCount < $1.pinCount }
-          }else{
-            self.mDataSource.sort { $0.pinCount > $1.pinCount }
-          }
-        }else if key == "labelcount" {
-          if s.ascending {
-            self.mDataSource.sort { $0.labelCount < $1.labelCount }
-          }else{
-            self.mDataSource.sort { $0.labelCount > $1.labelCount }
+        }else if key == "status" {
+          self.mDataSource.sort (by: { $0.status.rawValue < $1.status.rawValue } )
+          if !s.ascending {
+            self.mDataSource.reverse ()
           }
         }else{
           NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
@@ -131,7 +130,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
     while idx < self.mDataSource.count {
-      if selectedRowContents.contains (self.mDataSource [idx]) {
+      if selectedRowContents.contains (self.mDataSource [idx].string) {
         newSelectedRowIndexes.insert (idx)
       }
       idx += 1
@@ -152,7 +151,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
-  func update (from inModel : EBReadOnlyProperty_NetInfoArray) {
+  func update (from inModel : EBReadOnlyProperty_StatusStringArray) {
     switch inModel.prop {
     case .empty, .multiple :
       self.reloadDataSource ([])
@@ -162,20 +161,14 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   }
 
   //····················································································································
-
-  func object (at inIndex : Int) -> NetInfo {
-    return self.mDataSource [inIndex]
-  }
-
-  //····················································································································
-  //  $netInfo binding
+  //  $array binding
   //····················································································································
 
   private var mController : EBSimpleController? = nil
 
   //····················································································································
 
-  func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray, file : String, line : Int) {
+  func bind_array (_ model : EBReadOnlyProperty_StatusStringArray, file : String, line : Int) {
     self.mController = EBSimpleController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -184,81 +177,9 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   //····················································································································
 
-  func unbind_netInfo () {
+  func unbind_array () {
     self.mController?.unregister ()
     self.mController = nil
-  }
-
-  //····················································································································
-  //  COMPUTE SUB NETS
-  //····················································································································
-
-  private func computeSubnets (_ inPointArray : NetInfoPointArray) -> StatusStringArray {
-  //--- Wire dictionary (for compute subnet accessibility)
-    var wireDictionary = [Int : NetInfoPointArray] ()
-    for point in inPointArray {
-      for wire in point.wires {
-        if let v = wireDictionary [wire] {
-          wireDictionary [wire] = v + [point]
-        }else{
-          wireDictionary [wire] = [point]
-        }
-      }
-    }
-  //---
-    var subnetDescriptionStrings = [(Bool, String)] ()
-    var unExploredPointSet = Set (inPointArray)
-    while let aPoint = unExploredPointSet.first {
-      unExploredPointSet.removeFirst ()
-      var currentPointSet = Set <NetInfoPoint> ([aPoint])
-      var exploreArray = [aPoint]
-      var exploreWireSet = Set <Int> ()
-      while let p = exploreArray.last {
-        exploreArray.remove (at: exploreArray.count - 1)
-        for wire in p.wires {
-          if !exploreWireSet.contains (wire) {
-            exploreWireSet.insert (wire)
-            if let pts = wireDictionary [wire] {
-              for pp in pts {
-                if !currentPointSet.contains(pp) {
-                  currentPointSet.insert (pp)
-                  exploreArray.append (pp)
-                  unExploredPointSet.remove (pp)
-                }
-              }
-            }
-          }
-        }
-
-      }
-    //--- Build subnet description string
-      var subnetDescription = ""
-      for p in currentPointSet {
-        if let pinName = p.pin {
-          subnetDescription += " " + pinName
-        }
-      }
-      var labelCount = 0
-      for p in currentPointSet {
-        labelCount += p.labels.count
-        for label in p.labels {
-          subnetDescription += " " + label
-        }
-      }
-      subnetDescriptionStrings.append ((labelCount > 0, subnetDescription))
-    }
-  //--- Several subnets ?
-    var result = [StatusString] ()
-    if subnetDescriptionStrings.count == 1 {
-      result.append (StatusString (status: .ok, string: subnetDescriptionStrings [0].1))
-    }else if subnetDescriptionStrings.count > 1 {
-      for (severalLabels, descriptionString) in subnetDescriptionStrings {
-        let status : Status = severalLabels ? .ok : .warning
-        result.append (StatusString (status: status, string: descriptionString))
-      }
-    }
-  //---
-    return result
   }
 
   //····················································································································

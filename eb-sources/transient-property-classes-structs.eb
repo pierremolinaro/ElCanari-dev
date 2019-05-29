@@ -7,6 +7,7 @@ transient property class CanariMenuItemListClass ; // Used for populating « Ope
 
 transient property struct NetInfoPoint ;
 transient property struct NetInfoPointArray ;
+transient property struct StatusStringArray ;
 transient property struct NetInfo ;
 transient property struct SchematicSheetDescriptor ;
 transient property struct SchematicPointStatus ;
