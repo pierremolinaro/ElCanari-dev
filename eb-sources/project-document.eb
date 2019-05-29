@@ -281,6 +281,22 @@ document ProjectDocument root ProjectRoot {
     $valueObserver #wireInSchematicSelectionController.netName
   ;
 
+  outlet EBButton mWireRenameNetButton // Action set in IB
+    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
+  ;
+
+  outlet EBButton mWireRenameNetWithUniqueNewNameButton // Action set in IB
+    $enabled (#wireInSchematicSelectionController.selectedArray.count > 0) & #wireInSchematicSelectionController.hasNet
+  ;
+  
+  outlet EBButton mSchematicWireMergeSubnetButton  // Action set in IB
+    $enabled #wireInSchematicSelectionController.selectedArray.count == 1
+  ;
+
+  outlet EBButton mSchematicWireInsulateSubnetButton  // Action set in IB
+    $enabled #wireInSchematicSelectionController.selectedArray.count == 1
+  ;
+
 //--- Selected NC In schematics
   outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
   selectionController NCInSchematic #ncInSchematicSelectionController :

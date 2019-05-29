@@ -23,13 +23,20 @@ protocol WireInSchematic_netName : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol WireInSchematic_hasNet : class {
+  var hasNet : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class WireInSchematic : SchematicObject,
          WireInSchematic_objectDisplay,
          WireInSchematic_selectionDisplay,
-         WireInSchematic_netName {
+         WireInSchematic_netName,
+         WireInSchematic_hasNet {
 
   //····················································································································
   //   To one property: mP1
@@ -123,6 +130,29 @@ class WireInSchematic : SchematicObject,
 
   var netName : String? {
     switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasNet
+  //····················································································································
+
+  let hasNet_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasNet_property_selection : EBSelection <Bool> {
+    return self.hasNet_property.prop
+  }
+
+  //····················································································································
+
+  var hasNet : Bool? {
+    switch self.hasNet_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -226,6 +256,28 @@ class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.addEBObserverOf_netName (self.netName_property)
+  //--- Atomic property: hasNet
+    self.hasNet_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mP1_property.hasNet_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP1_property.hasNet_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_WireInSchematic_hasNet (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_hasNet (self.hasNet_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -244,6 +296,7 @@ class WireInSchematic : SchematicObject,
     self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
     self.mP1_property.removeEBObserverOf_netName (self.netName_property)
+    self.mP1_property.removeEBObserverOf_hasNet (self.hasNet_property)
   //--- Unregister properties for handling signature
   }
 
@@ -282,6 +335,14 @@ class WireInSchematic : SchematicObject,
       view: view,
       observerExplorer: &self.netName_property.mObserverExplorer,
       valueExplorer: &self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "hasNet",
+      idx: self.hasNet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasNet_property.mObserverExplorer,
+      valueExplorer: &self.hasNet_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

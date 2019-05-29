@@ -42,6 +42,53 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
+  //  SELECTED WIRE NET ACTIONS
+  //····················································································································
+
+  @IBAction func renameNetFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
+     let selectedWires = self.wireInSchematicSelectionController.selectedArray
+     if selectedWires.count == 1, let net = selectedWires [0].mP1?.mNet {
+       self.dialogForRenaming (net: net)
+     }
+  }
+
+  //····················································································································
+
+  @IBAction func newAutomaticNetNameFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
+     var netSet = Set <NetInProject> ()
+     for wire in self.wireInSchematicSelectionController.selectedArray {
+       if let net = wire.mP1?.mNet {
+         netSet.insert (net)
+       }
+     }
+     for net in netSet {
+       net.mNetName = self.rootObject.findUniqueNetName ()
+     }
+  }
+
+  //····················································································································
+
+  @IBAction func mergeSubnetIntoExistingNetFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
+    let selectedWires = self.wireInSchematicSelectionController.selectedArray
+    if selectedWires.count == 1, let point = selectedWires [0].mP1 {
+      self.dialogForMergingSubnetFrom (point: point)
+    }
+  }
+
+  //····················································································································
+
+  @IBAction func insulateSubnetFromCurrentNetFromSelectedWireAction (_ sender : NSObject?) { // Bound in IB
+    let selectedWires = self.wireInSchematicSelectionController.selectedArray
+    if selectedWires.count == 1, let point = selectedWires [0].mP1 {
+      let newNet = self.rootObject.createNetWithAutomaticName ()
+      point.mNet = newNet
+      point.propagateNetToAccessiblePointsThroughtWires ()
+    }
+  }
+
+  //····················································································································
+  //  SELECTED LABEL NET ACTIONS
+  //····················································································································
 
   @IBAction func renameNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
      let selectedLabels = self.mSchematicLabelSelectionController.selectedArray

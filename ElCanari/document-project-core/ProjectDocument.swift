@@ -442,6 +442,8 @@ import Cocoa
   @IBOutlet var mSchematicLabelInsulateSubnetButton : EBButton?
   @IBOutlet var mSchematicLabelMergeSubnetButton : EBButton?
   @IBOutlet var mSchematicStatusImageViewInToolbar : EBImageObserverView?
+  @IBOutlet var mSchematicWireInsulateSubnetButton : EBButton?
+  @IBOutlet var mSchematicWireMergeSubnetButton : EBButton?
   @IBOutlet var mSchematicsDatePicker : NSDatePicker?
   @IBOutlet var mSchematicsGridDisplayFactorPopUpButton : EBPopUpButton?
   @IBOutlet var mSchematicsGridStylePopUpButton : EBPopUpButton?
@@ -475,6 +477,8 @@ import Cocoa
   @IBOutlet var mUpdateDeviceButton : EBButton?
   @IBOutlet var mUpdateFontButton : EBButton?
   @IBOutlet var mWireNetNameTextField : EBTextObserverField?
+  @IBOutlet var mWireRenameNetButton : EBButton?
+  @IBOutlet var mWireRenameNetWithUniqueNewNameButton : EBButton?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -497,6 +501,10 @@ import Cocoa
   var mController_mExportDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateDeviceButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveSheetButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mWireRenameNetButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mWireRenameNetWithUniqueNewNameButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSchematicWireMergeSubnetButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSchematicWireInsulateSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicsLabelRenameNetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelMergeSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelInsulateSubnetButton_enabled : MultipleBindingController_enabled? = nil
@@ -677,6 +685,8 @@ import Cocoa
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelMergeSubnetButton, "mSchematicLabelMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicStatusImageViewInToolbar, "mSchematicStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
+    checkOutletConnection (self.mSchematicWireInsulateSubnetButton, "mSchematicWireInsulateSubnetButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSchematicWireMergeSubnetButton, "mSchematicWireMergeSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsDatePicker, "mSchematicsDatePicker", NSDatePicker.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridDisplayFactorPopUpButton, "mSchematicsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsGridStylePopUpButton, "mSchematicsGridStylePopUpButton", EBPopUpButton.self, #file, #line)
@@ -710,6 +720,8 @@ import Cocoa
     checkOutletConnection (self.mUpdateDeviceButton, "mUpdateDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mUpdateFontButton, "mUpdateFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mWireNetNameTextField, "mWireNetNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mWireRenameNetButton, "mWireRenameNetButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mWireRenameNetWithUniqueNewNameButton, "mWireRenameNetWithUniqueNewNameButton", EBButton.self, #file, #line)
    }
   
   //····················································································································
@@ -1207,6 +1219,48 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
+        },
+        outlet: self.mWireRenameNetButton
+      )
+      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
+      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mWireRenameNetButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection > EBSelection.single (0)) && self.wireInSchematicSelectionController.hasNet_property_selection)
+        },
+        outlet: self.mWireRenameNetWithUniqueNewNameButton
+      )
+      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
+      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mWireRenameNetWithUniqueNewNameButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mSchematicWireMergeSubnetButton
+      )
+      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mSchematicWireMergeSubnetButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+        },
+        outlet: self.mSchematicWireInsulateSubnetButton
+      )
+      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mSchematicWireInsulateSubnetButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicsLabelRenameNetButton
@@ -1395,6 +1449,16 @@ import Cocoa
     self.mController_mUpdateDeviceButton_enabled = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
+    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetButton_enabled!)
+    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mWireRenameNetButton_enabled!)
+    self.mController_mWireRenameNetButton_enabled = nil
+    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
+    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
+    self.mController_mWireRenameNetWithUniqueNewNameButton_enabled = nil
+    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireMergeSubnetButton_enabled!)
+    self.mController_mSchematicWireMergeSubnetButton_enabled = nil
+    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
+    self.mController_mSchematicWireInsulateSubnetButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
     self.mController_mSchematicsLabelRenameNetButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelMergeSubnetButton_enabled!)
@@ -1560,6 +1624,8 @@ import Cocoa
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicLabelMergeSubnetButton?.ebCleanUp ()
     self.mSchematicStatusImageViewInToolbar?.ebCleanUp ()
+    self.mSchematicWireInsulateSubnetButton?.ebCleanUp ()
+    self.mSchematicWireMergeSubnetButton?.ebCleanUp ()
     self.mSchematicsDatePicker?.ebCleanUp ()
     self.mSchematicsGridDisplayFactorPopUpButton?.ebCleanUp ()
     self.mSchematicsGridStylePopUpButton?.ebCleanUp ()
@@ -1593,6 +1659,8 @@ import Cocoa
     self.mUpdateDeviceButton?.ebCleanUp ()
     self.mUpdateFontButton?.ebCleanUp ()
     self.mWireNetNameTextField?.ebCleanUp ()
+    self.mWireRenameNetButton?.ebCleanUp ()
+    self.mWireRenameNetWithUniqueNewNameButton?.ebCleanUp ()
 //    self.mAddCommentButton = nil
 //    self.mAddComponentButton = nil
 //    self.mAddFontButton = nil
@@ -1686,6 +1754,8 @@ import Cocoa
 //    self.mSchematicLabelInsulateSubnetButton = nil
 //    self.mSchematicLabelMergeSubnetButton = nil
 //    self.mSchematicStatusImageViewInToolbar = nil
+//    self.mSchematicWireInsulateSubnetButton = nil
+//    self.mSchematicWireMergeSubnetButton = nil
 //    self.mSchematicsDatePicker = nil
 //    self.mSchematicsGridDisplayFactorPopUpButton = nil
 //    self.mSchematicsGridStylePopUpButton = nil
@@ -1719,6 +1789,8 @@ import Cocoa
 //    self.mUpdateDeviceButton = nil
 //    self.mUpdateFontButton = nil
 //    self.mWireNetNameTextField = nil
+//    self.mWireRenameNetButton = nil
+//    self.mWireRenameNetWithUniqueNewNameButton = nil
   }
 
   //····················································································································

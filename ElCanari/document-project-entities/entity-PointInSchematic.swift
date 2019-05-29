@@ -36,6 +36,12 @@ protocol PointInSchematic_netName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematic_hasNet : class {
+  var hasNet : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematic_canMove : class {
   var canMove : Bool? { get }
 }
@@ -80,6 +86,7 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_mY,
          PointInSchematic_location,
          PointInSchematic_netName,
+         PointInSchematic_hasNet,
          PointInSchematic_canMove,
          PointInSchematic_wireColor,
          PointInSchematic_isConnected,
@@ -348,6 +355,29 @@ class PointInSchematic : EBManagedObject,
 
   var netName : String? {
     switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasNet
+  //····················································································································
+
+  let hasNet_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasNet_property_selection : EBSelection <Bool> {
+    return self.hasNet_property.prop
+  }
+
+  //····················································································································
+
+  var hasNet : Bool? {
+    switch self.hasNet_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -631,6 +661,28 @@ class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+  //--- Atomic property: hasNet
+    self.hasNet_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_none_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_none_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PointInSchematic_hasNet (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserver (self.hasNet_property)
   //--- Atomic property: canMove
     self.canMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -818,6 +870,7 @@ class PointInSchematic : EBManagedObject,
     self.mSymbol_property.removeEBObserverOf_symbolInfo (self.location_property)
     self.mSymbol_property.removeEBObserverOf_mSymbolInstanceName (self.location_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.removeEBObserver (self.hasNet_property)
     self.mSymbol_property.removeEBObserver (self.canMove_property)
     self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
@@ -889,6 +942,14 @@ class PointInSchematic : EBManagedObject,
       view: view,
       observerExplorer: &self.netName_property.mObserverExplorer,
       valueExplorer: &self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "hasNet",
+      idx: self.hasNet_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasNet_property.mObserverExplorer,
+      valueExplorer: &self.hasNet_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canMove",

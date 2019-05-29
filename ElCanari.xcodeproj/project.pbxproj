@@ -1639,6 +1639,10 @@
 		CFC2FEAD20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift */; };
 		CFC35140213FEE6300EA504C /* kicad-class-KicadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3513F213FEE6300EA504C /* kicad-class-KicadItem.swift */; };
 		CFC3EDBB1DE0C10900445A35 /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
+		CFC58EEC229EF8640005A448 /* transient-PointInSchematic-hasNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC58EEA229EF8640005A448 /* transient-PointInSchematic-hasNet.swift */; };
+		CFC58EED229EF8640005A448 /* transient-PointInSchematic-hasNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC58EEA229EF8640005A448 /* transient-PointInSchematic-hasNet.swift */; };
+		CFC58EEE229EF8640005A448 /* transient-WireInSchematic-hasNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC58EEB229EF8640005A448 /* transient-WireInSchematic-hasNet.swift */; };
+		CFC58EEF229EF8640005A448 /* transient-WireInSchematic-hasNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC58EEB229EF8640005A448 /* transient-WireInSchematic-hasNet.swift */; };
 		CFC5BB562232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */; };
 		CFC5BB572232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */; };
 		CFC5BB592232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB582232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift */; };
@@ -2762,6 +2766,8 @@
 		CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-move-selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-arrange-move-selection.swift"; sourceTree = "<group>"; };
 		CFC3513F213FEE6300EA504C /* kicad-class-KicadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-class-KicadItem.swift"; sourceTree = "<group>"; };
 		CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricOblong.swift; sourceTree = "<group>"; };
+		CFC58EEA229EF8640005A448 /* transient-PointInSchematic-hasNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PointInSchematic-hasNet.swift"; sourceTree = "<group>"; };
+		CFC58EEB229EF8640005A448 /* transient-WireInSchematic-hasNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-WireInSchematic-hasNet.swift"; sourceTree = "<group>"; };
 		CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "atomic-UnconnectedSymbolPinsInDevice.swift"; sourceTree = "<group>"; };
 		CFC5BB582232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolInstanceInDevice-unconnectedPins.swift"; sourceTree = "<group>"; };
 		CFC5BB5B2232D45A00E03849 /* transient-SymbolPinInstanceInDevice-pinName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPinInstanceInDevice-pinName.swift"; sourceTree = "<group>"; };
@@ -3806,6 +3812,8 @@
 		CF9D4B46227F7979006E2035 /* document — project — transients */ = {
 			isa = PBXGroup;
 			children = (
+				CFC58EEA229EF8640005A448 /* transient-PointInSchematic-hasNet.swift */,
+				CFC58EEB229EF8640005A448 /* transient-WireInSchematic-hasNet.swift */,
 				CF9D4B73227F79A7006E2035 /* transient-CommentInSchematic-objectDisplay.swift */,
 				CF9D4B7E227F79A8006E2035 /* transient-CommentInSchematic-selectionDisplay.swift */,
 				CF9D4B72227F79A7006E2035 /* transient-ComponentInProject-availablePackages.swift */,
@@ -4572,6 +4580,7 @@
 				CF5A55CA21C5949F00C7014E /* enum-PadStyle.swift in Sources */,
 				CF5632C021A2C7B00026B7B7 /* controller-array-SymbolDocument-mSymbolObjectsController.swift in Sources */,
 				CF3CF20222329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift in Sources */,
+				CFC58EEC229EF8640005A448 /* transient-PointInSchematic-hasNet.swift in Sources */,
 				CFDD88502233FC2C008D3781 /* transient-PadProxyInDevice-pinInstanceName.swift in Sources */,
 				CF2ED48A21ADCE750019114E /* FontDocument-customized.swift in Sources */,
 				CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
@@ -5208,6 +5217,7 @@
 				CFE85AAB21A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift in Sources */,
 				CFA43009229AEB68000AA8C8 /* tomany-PackageZone.swift in Sources */,
 				CFB1DB272282D31F005F9811 /* enum-SchematicSheetOrientation.swift in Sources */,
+				CFC58EEE229EF8640005A448 /* transient-WireInSchematic-hasNet.swift in Sources */,
 				CFA43069229AEB96000AA8C8 /* toone-DevicePadAssignmentInProject.swift in Sources */,
 				CF9D4BB8227F79A9006E2035 /* transient-ComponentSymbolInProject-selectionDisplay.swift in Sources */,
 				CF0AE89021E0F56E00BE7EE2 /* enum-MetadataStatus.swift in Sources */,
@@ -5990,6 +6000,7 @@
 				CF99E37821AE920F002AB233 /* CanariIssueArray.swift in Sources */,
 				CFA42F7C229AEACF000AA8C8 /* tomany-MasterPadInDevice.swift in Sources */,
 				CF5C4D57219F04D600EAC52A /* EBDoubleField.swift in Sources */,
+				CFC58EEF229EF8640005A448 /* transient-WireInSchematic-hasNet.swift in Sources */,
 				CFEAAD742231827C00F69A12 /* action-DeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */,
 				CF5C4D58219F04D600EAC52A /* ArtworkDocument-customized.swift in Sources */,
@@ -6006,6 +6017,7 @@
 				CFF83D4621ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */,
 				CF5C4D5A219F04D600EAC52A /* kicad-class-KicadItem.swift in Sources */,
 				CF5C4D5C219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */,
+				CFC58EED229EF8640005A448 /* transient-PointInSchematic-hasNet.swift in Sources */,
 				CF5123FB222A8AC500FA4364 /* extension-PackageRoot.swift in Sources */,
 				CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */,
 				CF9D4BBD227F79A9006E2035 /* transient-ComponentInProject-deviceName.swift in Sources */,
