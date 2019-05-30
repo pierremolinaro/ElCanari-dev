@@ -153,3 +153,10 @@ struct SchematicSheetDescriptor : Hashable {
 typealias IntArray = [Int]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func + (lhs : QuadrantRotation, rhs : QuadrantRotation) -> QuadrantRotation {
+  let v = (lhs.rawValue + rhs.rawValue) % 4
+  return QuadrantRotation (rawValue: v)!
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

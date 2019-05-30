@@ -53,6 +53,7 @@ entity PointInSchematic {
     self.mSheet.one.sheetDescriptor
    ;
 
+  transient QuadrantRotation symbolRotation dependsFrom self.mSymbol.one.mRotation, self.mSymbol.one.mMirror ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

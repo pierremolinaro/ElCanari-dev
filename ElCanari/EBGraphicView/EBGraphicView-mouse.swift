@@ -15,7 +15,11 @@ extension EBGraphicView {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
-    self.mMouseMovedCallback? (locationOnGridInView)
+    if self.window?.firstResponder == self, self.visibleRect.contains (locationOnGridInView) {
+      self.mMouseMovedCallback? (locationOnGridInView)
+    }else{
+      self.mMouseExitCallback? ()
+    }
   }
 
   //····················································································································
@@ -32,6 +36,7 @@ extension EBGraphicView {
     if let viewController = self.viewController {
       let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       let alignedLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
+      self.mMouseMovedCallback? (mouseDownLocation)
       self.mLastMouseDraggedLocation = alignedLastMouseDraggedLocation
       let modifierFlags = inEvent.modifierFlags
       if modifierFlags.contains (.control), !modifierFlags.contains (.shift), !modifierFlags.contains (.option) { // Ctrl Key On, no shift

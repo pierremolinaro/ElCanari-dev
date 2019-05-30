@@ -10,12 +10,14 @@ graphic entity NCInSchematic : SchematicObject {
   override transient EBShape objectDisplay dependsFrom
     self.mPoint.one.location,
     self.mOrientation,
+    self.mPoint.one.symbolRotation,
     prefs.pinNameFont
   ;
 
   override transient EBShape selectionDisplay dependsFrom
     self.mPoint.one.location,
     self.mOrientation,
+    self.mPoint.one.symbolRotation,
     prefs.pinNameFont
   ;
 }

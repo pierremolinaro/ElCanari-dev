@@ -76,13 +76,20 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func connectAction (_ inSender : NSMenuItem) {
-    if let points = inSender.representedObject as? [PointInSchematic],
-       let selectedSheet = self.rootObject.mSelectedSheet,
+    if let points = inSender.representedObject as? [PointInSchematic] {
+      self.connectInSchematic (points: points)
+    }
+  }
+
+  //····················································································································
+
+  internal func connectInSchematic (points inPoints : [PointInSchematic]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet,
        let mergeSeveralSubnetsPanel = self.mMergeSeveralSubnetsPanel,
        let mergeSeveralSubnetsPopUpButton = self.mMergeSeveralSubnetsPopUpButton {
       selectedSheet.connect (
-        points: points,
+        points: inPoints,
         window,
         panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
         popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton
@@ -129,12 +136,19 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func disconnectAction (_ inSender : NSMenuItem) {
-    if let points = inSender.representedObject as? [PointInSchematic], let selectedSheet = self.rootObject.mSelectedSheet {
-      selectedSheet.disconnect (points: points)
-      self.updateSchematicsPointsAndNets ()
+    if let points = inSender.representedObject as? [PointInSchematic] {
+      self.disconnectInSchematic (points: points)
     }
   }
 
+  //····················································································································
+
+  internal func disconnectInSchematic (points inPoints : [PointInSchematic]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      selectedSheet.disconnect (points: inPoints)
+      self.updateSchematicsPointsAndNets ()
+    }
+  }
 
   //····················································································································
   // Remove Point From Wire
@@ -168,10 +182,18 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func removePointFromWireAction (_ inSender : NSMenuItem) {
-    if let point = inSender.representedObject as? PointInSchematic,
-       let selectedSheet = self.rootObject.mSelectedSheet,
-       let window = self.windowForSheet {
-      selectedSheet.removeFromWire (point: point, window)
+    if let point = inSender.representedObject as? PointInSchematic {
+      self.removePointFromWireInSchematic (points: [point])
+    }
+  }
+
+  //····················································································································
+
+  internal func removePointFromWireInSchematic (points inPoints : [PointInSchematic]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet,
+       let window = self.windowForSheet,
+       inPoints.count == 1 {
+      selectedSheet.removeFromWire (point: inPoints [0], window)
       self.updateSchematicsPointsAndNets ()
     }
   }
@@ -239,8 +261,16 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func addPointToWireAction (_ inSender : NSMenuItem) {
-    if let location = inSender.representedObject as? CanariPoint, let selectedSheet = self.rootObject.mSelectedSheet {
-      selectedSheet.addPointToWire (at: location)
+    if let location = inSender.representedObject as? CanariPoint {
+      self.addPointToWireInSchematic (at: location)
+    }
+  }
+
+  //····················································································································
+
+  internal func addPointToWireInSchematic (at inLocation : CanariPoint) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      selectedSheet.addPointToWire (at: inLocation)
     }
   }
 
@@ -269,22 +299,22 @@ extension CustomizedProjectDocument {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 0 // Right
       menuItem.representedObject = inMouseDownPoint
       menu.addItem (menuItem)
-      menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 1 // Top
       menuItem.representedObject = inMouseDownPoint
       menu.addItem (menuItem)
-      menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 2 // Left
       menuItem.representedObject = inMouseDownPoint
       menu.addItem (menuItem)
-      menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 3 // Bottom
       menuItem.representedObject = inMouseDownPoint
@@ -294,8 +324,8 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  @objc private func addLabelInSchematics (_ inSender : NSMenuItem) {
-    if let mouseLocation = inSender.representedObject as? CanariPoint, let selectedSheet = self.rootObject.mSelectedSheet {
+  @objc private func addLabelInSchematicAction (_ inSender : NSMenuItem) {
+    if let mouseLocation = inSender.representedObject as? CanariPoint {
     //--- Orientation
       let orientation : QuadrantRotation
       if inSender.tag == 1 {
@@ -307,12 +337,20 @@ extension CustomizedProjectDocument {
       }else{
         orientation = .rotation0
       }
+      self.addLabelInSchematic (at: mouseLocation, orientation: orientation)
+    }
+  }
+
+  //····················································································································
+
+  internal func addLabelInSchematic (at inLocation : CanariPoint, orientation inOrientation : QuadrantRotation) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
     //--- Aligned mouse down location
-      let canariAlignedMouseDownLocation = mouseLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     //--- Add label
       let possibleLabel = selectedSheet.addLabelInSchematics (
         at: canariAlignedMouseDownLocation,
-        orientation: orientation,
+        orientation: inOrientation,
         newNetCreator: self.rootObject.createNetWithAutomaticName
       )
       if let label = possibleLabel {

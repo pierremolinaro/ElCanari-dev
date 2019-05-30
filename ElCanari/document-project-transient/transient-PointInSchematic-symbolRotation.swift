@@ -13,39 +13,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NCInSchematic_objectDisplay (
-       _ self_mPoint_location : CanariPoint?,
-       _ self_mOrientation : QuadrantRotation,
-       _ self_mPoint_symbolRotation : QuadrantRotation?,
-       _ prefs_pinNameFont : NSFont
-) -> EBShape {
+func transient_PointInSchematic_symbolRotation (
+       _ self_mSymbol_mRotation : QuadrantRotation?,
+       _ self_mSymbol_mMirror : Bool?
+) -> QuadrantRotation {
 //--- START OF USER ZONE 2
-        var point = self_mPoint_location!.cocoaPoint
-        let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
-        let horizontalAlignment : EBTextHorizontalAlignment
-        let verticalAlignment : EBTextVerticalAlignment
-        switch ncRotation {
-        case .rotation0 :
-          point.x += NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .onTheRight
-          verticalAlignment = .center
-        case .rotation90 :
-          point.y += NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .center
-          verticalAlignment = .above
-        case .rotation180 :
-          point.x -= NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .onTheLeft
-          verticalAlignment = .center
-         case .rotation270 :
-          point.y -= NC_DISTANCE_IN_COCOA_UNIT
-          horizontalAlignment = .center
-          verticalAlignment = .below
+        var r = self_mSymbol_mRotation ?? .rotation0
+        if self_mSymbol_mMirror ?? false {
+          if r == .rotation0 {
+            r = .rotation180
+          }else if r == .rotation180 {
+            r = .rotation0
+          }
         }
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : prefs_pinNameFont,
-        ]
-        return EBTextShape (NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
+        return r
 //--- END OF USER ZONE 2
 }
 

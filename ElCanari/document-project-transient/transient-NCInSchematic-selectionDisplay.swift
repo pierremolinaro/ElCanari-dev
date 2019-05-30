@@ -16,13 +16,15 @@ import Cocoa
 func transient_NCInSchematic_selectionDisplay (
        _ self_mPoint_location : CanariPoint?,  
        _ self_mOrientation : QuadrantRotation, 
+       _ self_mPoint_symbolRotation : QuadrantRotation?,
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var point = self_mPoint_location!.cocoaPoint
+        let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
         let horizontalAlignment : EBTextHorizontalAlignment
         let verticalAlignment : EBTextVerticalAlignment
-        switch self_mOrientation {
+        switch ncRotation {
         case .rotation0 :
           point.x += NC_DISTANCE_IN_COCOA_UNIT
           horizontalAlignment = .onTheRight

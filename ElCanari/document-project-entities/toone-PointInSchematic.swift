@@ -23,6 +23,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     inOldValue?.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
     inOldValue?.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove) // Transient property
     inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+    inOldValue?.symbolRotation_property.removeEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
     inOldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
     inOldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status) // Transient property
     inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
@@ -36,6 +37,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     self.mInternalValue?.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
     self.mInternalValue?.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove) // Transient property
     self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+    self.mInternalValue?.symbolRotation_property.addEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
     self.mInternalValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
     self.mInternalValue?.status_property.addEBObserversFrom (&self.mObserversOf_status) // Transient property
     self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
@@ -593,6 +595,75 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'symbolRotation' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolRotation_property_selection : EBSelection <QuadrantRotation?> {
+    if let model = self.propval {
+      switch (model.symbolRotation_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.symbolRotation_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.symbolRotation_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolRotation_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolRotation.apply { (_ observer : EBEvent) in
+        managedObject.symbolRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolRotation_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolRotation.apply { (_ observer : EBEvent) in
+        managedObject.symbolRotation_property.removeEBObserver (observer)
       }
     }
   }

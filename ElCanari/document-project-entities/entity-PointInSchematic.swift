@@ -54,6 +54,12 @@ protocol PointInSchematic_wireColor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematic_symbolRotation : class {
+  var symbolRotation : QuadrantRotation? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematic_isConnected : class {
   var isConnected : Bool? { get }
 }
@@ -89,6 +95,7 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_hasNet,
          PointInSchematic_canMove,
          PointInSchematic_wireColor,
+         PointInSchematic_symbolRotation,
          PointInSchematic_isConnected,
          PointInSchematic_status,
          PointInSchematic_connectedPoints,
@@ -432,6 +439,29 @@ class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: symbolRotation
+  //····················································································································
+
+  let symbolRotation_property = EBTransientProperty_QuadrantRotation ()
+
+  //····················································································································
+
+  var symbolRotation_property_selection : EBSelection <QuadrantRotation> {
+    return self.symbolRotation_property.prop
+  }
+
+  //····················································································································
+
+  var symbolRotation : QuadrantRotation? {
+    switch self.symbolRotation_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mSheet
   //····················································································································
 
@@ -727,6 +757,30 @@ class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
+  //--- Atomic property: symbolRotation
+    self.symbolRotation_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mSymbol_property.mRotation_property_selection.kind ()
+        kind &= unwSelf.mSymbol_property.mMirror_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mSymbol_property.mRotation_property_selection, unwSelf.mSymbol_property.mMirror_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PointInSchematic_symbolRotation (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbol_property.addEBObserverOf_mRotation (self.symbolRotation_property)
+    self.mSymbol_property.addEBObserverOf_mMirror (self.symbolRotation_property)
   //--- To one property: mSheet (has opposite to many relationship: mPoints) §
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -873,6 +927,8 @@ class PointInSchematic : EBManagedObject,
     self.mNet_property.removeEBObserver (self.hasNet_property)
     self.mSymbol_property.removeEBObserver (self.canMove_property)
     self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
+    self.mSymbol_property.removeEBObserverOf_mRotation (self.symbolRotation_property)
+    self.mSymbol_property.removeEBObserverOf_mMirror (self.symbolRotation_property)
     self.mNC_property.removeEBObserver (self.isConnected_property)
     self.mSymbol_property.removeEBObserver (self.isConnected_property)
     self.mWiresP1s_property.removeEBObserver (self.isConnected_property)
@@ -966,6 +1022,14 @@ class PointInSchematic : EBManagedObject,
       view: view,
       observerExplorer: &self.wireColor_property.mObserverExplorer,
       valueExplorer: &self.wireColor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolRotation",
+      idx: self.symbolRotation_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.symbolRotation_property.mObserverExplorer,
+      valueExplorer: &self.symbolRotation_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "isConnected",

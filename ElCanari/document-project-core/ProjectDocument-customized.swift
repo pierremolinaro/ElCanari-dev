@@ -130,6 +130,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSchematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
     self.mSchematicsView?.setMouseMovedCallback { [weak self] (mouseLocation) in self?.mouseMovedInSchematic (mouseLocation) }
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
+    self.mouseExitInSchematic ()
     self.mSchematicsView?.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
   }
 
