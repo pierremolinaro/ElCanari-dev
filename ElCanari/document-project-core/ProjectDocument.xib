@@ -8,15 +8,21 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CustomizedProjectDocument">
             <connections>
+                <outlet property="mAddBottomSchematicHotKeyTextField" destination="baE-9B-mWJ" id="6W1-WT-bio"/>
                 <outlet property="mAddCommentButton" destination="ISn-xc-DLS" id="GPv-R4-2wH"/>
                 <outlet property="mAddComponentButton" destination="2924" id="sw1-Gi-V1d"/>
                 <outlet property="mAddFontButton" destination="2963" id="lil-j8-vsW"/>
+                <outlet property="mAddLeftLabelSchematicHotKeyTextField" destination="6bP-pM-LQo" id="v8k-cI-ae5"/>
+                <outlet property="mAddNCSchematicHotKeyTextField" destination="EJY-hU-Y6u" id="T5J-Ma-Hbn"/>
                 <outlet property="mAddNetClassButton" destination="3061" id="9MD-n1-pp4"/>
                 <outlet property="mAddNetClassErrorMessageTextField" destination="TR4-Vk-7Yg" id="SEC-LK-W8A"/>
                 <outlet property="mAddNetClassPanel" destination="kcL-Ff-sBD" id="wyW-Qj-fAI"/>
                 <outlet property="mAddNetClassTextField" destination="mIx-xD-rHB" id="yHy-cZ-o44"/>
                 <outlet property="mAddNetClassValidationButton" destination="S52-wH-h5H" id="0kI-yP-xf6"/>
+                <outlet property="mAddRightLabelSchematicHotKeyTextField" destination="YZi-ol-cus" id="9Af-Xl-yvj"/>
+                <outlet property="mAddTopLabelSchematicHotKeyTextField" destination="cgB-ym-JpH" id="rXe-79-GCR"/>
                 <outlet property="mAddWireButton" destination="15596" id="oZ6-ug-Lc1"/>
+                <outlet property="mAddWirePointSchematicHotKeyTextField" destination="BGk-yW-02a" id="o8V-bL-DCB"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
                 <outlet property="mBoardPageView" destination="3080" id="Gwf-Pt-3pr"/>
                 <outlet property="mChangeComponentValueComboxBox" destination="3xd-rQ-uBf" id="VhK-oZ-Qs4"/>
@@ -40,10 +46,12 @@
                 <outlet property="mComponentSymbolValueTextField" destination="1695" id="eLz-qn-Lbr"/>
                 <outlet property="mComponentTableView" destination="2919" id="nfb-oR-9Fm"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
+                <outlet property="mConnectSchematicHotKeyTextField" destination="eLW-AK-yCb" id="qTY-Uh-1YW"/>
                 <outlet property="mCurrentComponentNameTextField" destination="8pc-vo-3GG" id="vQY-lv-cXZ"/>
                 <outlet property="mDeviceLibraryTableView" destination="2957" id="Yl8-h9-pJb"/>
                 <outlet property="mDevicePackageTableView" destination="2946" id="TsV-YH-hdM"/>
                 <outlet property="mDeviceSymbolTableView" destination="2949" id="bC7-Qn-ZHb"/>
+                <outlet property="mDisconnectSchematicHotKeyTextField" destination="8Un-Lz-CN6" id="QRF-lj-wL9"/>
                 <outlet property="mDuplicateSelectedComponentsActionButton" destination="5196" id="euo-vE-NM3"/>
                 <outlet property="mEditDeviceButton" destination="2954" id="h7x-qf-f8n"/>
                 <outlet property="mEditFontButton" destination="2974" id="Jdy-FT-vIW"/>
@@ -51,6 +59,7 @@
                 <outlet property="mExportDeviceButton" destination="16608" id="Nx0-iS-2kA"/>
                 <outlet property="mFontLibraryTableView" destination="2965" id="MIT-IO-zdp"/>
                 <outlet property="mGridZoomSchematicsInspectorView" destination="1238" id="hZC-Xb-ibf"/>
+                <outlet property="mHotKeysSchematicInspectorView" destination="kPw-gu-6Ip" id="PRb-E1-6RG"/>
                 <outlet property="mInconsistentSchematicErrorPanel" destination="16252" id="8uM-AP-x78"/>
                 <outlet property="mInconsistentSchematicErrorTextView" destination="16263" id="4xP-DG-kTS"/>
                 <outlet property="mLibraryPageView" destination="2935" id="v8E-FH-RL9"/>
@@ -86,6 +95,7 @@
                 <outlet property="mRemoveNetClassButton" destination="3062" id="ffW-PK-Dey"/>
                 <outlet property="mRemoveSelectedComponentsActionButton" destination="2926" id="hbm-WI-0ZS"/>
                 <outlet property="mRemoveSheetButton" destination="15306" id="1gw-jO-Z6Z"/>
+                <outlet property="mRemoveWirePointSchematicHotKeyTextField" destination="2QO-p4-nwh" id="tPI-00-PHn"/>
                 <outlet property="mRenameComponentButton" destination="2927" id="Gls-FU-98f"/>
                 <outlet property="mRenameComponentErrorMessageTextField" destination="RzG-dE-rAX" id="DX4-0S-Uce"/>
                 <outlet property="mRenameComponentFromComponentSymbolButton" destination="1704" id="elE-Ti-Kth"/>
@@ -3314,7 +3324,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="92.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3328,11 +3338,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="92" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="92.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3347,7 +3357,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="235.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="235" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3361,11 +3371,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="563.5" y="1" width="235.5" height="17"/>
+                                                <rect key="frame" x="564" y="1" width="235" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="235.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="235" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -4398,7 +4408,7 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="TJO-lq-ns5">
                         <rect key="frame" x="1" y="1" width="573" height="596"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="3013" customClass="EBGraphicView">
                                 <rect key="frame" x="0.0" y="0.0" width="347" height="262"/>
@@ -4440,19 +4450,16 @@ Diameter</string>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
                 <segmentedControl verticalHuggingPriority="750" id="15593" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="9" y="549" width="233" height="20"/>
+                    <rect key="frame" x="-1" y="549" width="253" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="15594">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Selected Object Inspector" image="selected-object" width="57"/>
-                            <segment label="+ ?" toolTip="Insert Symbol Inspector" width="56" tag="1"/>
-                            <segment toolTip="Zoom and Grid Inspector" image="loupe" width="57" selected="YES">
-                                <nil key="label"/>
-                            </segment>
-                            <segment toolTip="Sheet Inspector" image="sheet" width="57">
-                                <nil key="label"/>
-                            </segment>
+                            <segment toolTip="Selected Object Inspector" image="selected-object" width="50"/>
+                            <segment label="🄰" toolTip="Insert Symbol Inspector" width="49" tag="1"/>
+                            <segment label="+ ?" toolTip="Zoom and Grid Inspector" width="49" selected="YES"/>
+                            <segment toolTip="Sheet Inspector" image="loupe" width="49"/>
+                            <segment image="sheet" width="49"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
@@ -4754,14 +4761,14 @@ Diameter</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="NET_TABLEVIEW" rowSizeStyle="automatic" headerView="14849" viewBased="YES" id="3068" customClass="CanariNetInfoTableView" customModule="ElCanari" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="470" height="403"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="467" height="403"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>
                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                         <tableColumns>
-                                            <tableColumn identifier="netname" editable="NO" width="138.5" minWidth="40" maxWidth="200" id="3073">
+                                            <tableColumn identifier="netname" editable="NO" width="137.5" minWidth="40" maxWidth="200" id="3073">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Net Name">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -4776,11 +4783,11 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="qxd-L2-1dP">
-                                                        <rect key="frame" x="1" y="1" width="139" height="17"/>
+                                                        <rect key="frame" x="1" y="1" width="138" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="5s8-jI-yfj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="139" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4fy-rW-8wS">
                                                                     <font key="font" metaFont="system"/>
@@ -4795,7 +4802,7 @@ Diameter</string>
                                                     </tableCellView>
                                                 </prototypeCellViews>
                                             </tableColumn>
-                                            <tableColumn identifier="netclass" editable="NO" width="138.5" minWidth="40" maxWidth="200" id="3069">
+                                            <tableColumn identifier="netclass" editable="NO" width="137.5" minWidth="40" maxWidth="200" id="3069">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Class">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -4810,11 +4817,11 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="Fhv-aL-293">
-                                                        <rect key="frame" x="143" y="1" width="138" height="17"/>
+                                                        <rect key="frame" x="142" y="1" width="137" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="08P-jI-Ar5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="kWR-lY-cmK">
                                                                     <font key="font" metaFont="system"/>
@@ -4829,7 +4836,7 @@ Diameter</string>
                                                     </tableCellView>
                                                 </prototypeCellViews>
                                             </tableColumn>
-                                            <tableColumn identifier="pins" editable="NO" width="89" minWidth="80" maxWidth="100" id="3071">
+                                            <tableColumn identifier="pins" editable="NO" width="88" minWidth="80" maxWidth="100" id="3071">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Pins">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -4844,7 +4851,7 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="7Dt-bL-u5S">
-                                                        <rect key="frame" x="284" y="1" width="89" height="17"/>
+                                                        <rect key="frame" x="282" y="1" width="88" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="93r-N9-QLO">
@@ -4853,7 +4860,7 @@ Diameter</string>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="EXM-3Z-UMP"/>
                                                             </imageView>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="D8P-Z7-oaX">
-                                                                <rect key="frame" x="25" y="0.0" width="64" height="17"/>
+                                                                <rect key="frame" x="25" y="0.0" width="63" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="P8f-kK-bGl">
                                                                     <font key="font" metaFont="system"/>
@@ -4883,7 +4890,7 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="6XC-Wl-Zc7">
-                                                        <rect key="frame" x="376" y="1" width="92" height="17"/>
+                                                        <rect key="frame" x="373" y="1" width="92" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yTY-Qt-AA6">
@@ -4924,7 +4931,7 @@ Diameter</string>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <tableHeaderView key="headerView" id="14849">
-                                <rect key="frame" x="0.0" y="0.0" width="470" height="23"/>
+                                <rect key="frame" x="0.0" y="0.0" width="467" height="23"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </tableHeaderView>
                         </scrollView>
@@ -7222,11 +7229,11 @@ TW: Track Width</string>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <popUpButton id="15764" customClass="EBPopUpButton">
-                    <rect key="frame" x="93" y="94" width="137" height="19"/>
+                    <rect key="frame" x="93" y="94" width="137" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Net class…" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="15795" id="15793">
+                    <popUpButtonCell key="cell" type="roundRect" title="Net class…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="15795" id="15793">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="15794">
                             <items>
                                 <menuItem title="Net class…" state="on" id="15795"/>
@@ -7235,80 +7242,71 @@ TW: Track Width</string>
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15763">
-                    <rect key="frame" x="18" y="96" width="69" height="17"/>
+                    <rect key="frame" x="18" y="96" width="69" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Net Class:" id="15796">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Net Class:" id="15796">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15769" customClass="EBTextObserverField">
-                    <rect key="frame" x="65" y="173" width="167" height="17"/>
+                    <rect key="frame" x="65" y="173" width="167" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="… net Name…" id="15789">
-                        <font key="font" metaFont="systemBold"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="… net Name…" id="15789">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15770">
-                    <rect key="frame" x="18" y="173" width="39" height="17"/>
+                    <rect key="frame" x="18" y="173" width="39" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Net:" id="15788">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15775">
-                    <rect key="frame" x="18" y="197" width="214" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Wire Inspector" id="15780">
-                        <font key="font" metaFont="systemBold"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Net:" id="15788">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" id="eLg-8l-Guf" customClass="EBButton">
-                    <rect key="frame" x="20" y="146" width="210" height="19"/>
+                    <rect key="frame" x="20" y="146" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Rename Net…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Ot-oT-45e">
+                    <buttonCell key="cell" type="roundRect" title="Rename Net…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Ot-oT-45e">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="renameNetFromSelectedWireAction:" target="-2" id="Qzt-8g-n9E"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="kXM-aR-L2U" customClass="EBButton">
-                    <rect key="frame" x="20" y="120" width="210" height="19"/>
+                    <rect key="frame" x="20" y="120" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Rename Net with automatic name" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yxb-0z-cce">
+                    <buttonCell key="cell" type="roundRect" title="Rename Net with automatic name" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yxb-0z-cce">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="newAutomaticNetNameFromSelectedWireAction:" target="-2" id="eYT-xN-PzP"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="5bJ-CJ-Ynt" customClass="EBButton">
-                    <rect key="frame" x="20" y="45" width="210" height="19"/>
+                    <rect key="frame" x="20" y="45" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Merge Subnet into an existing Net…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AVc-t7-iZJ">
+                    <buttonCell key="cell" type="roundRect" title="Merge Subnet into an existing Net…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AVc-t7-iZJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="mergeSubnetIntoExistingNetFromSelectedWireAction:" target="-2" id="G3y-5N-M7J"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="xOe-Xg-c1N" customClass="EBButton">
-                    <rect key="frame" x="20" y="19" width="210" height="19"/>
+                    <rect key="frame" x="20" y="19" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Insulate Subnet from current Net" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EEl-hU-T0R">
+                    <buttonCell key="cell" type="roundRect" title="Insulate Subnet from current Net" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EEl-hU-T0R">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="insulateSubnetFromCurrentNetFromSelectedWireAction:" target="-2" id="z5t-1i-T2W"/>
@@ -7318,6 +7316,15 @@ TW: Track Width</string>
                     <rect key="frame" x="20" y="76" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15775">
+                    <rect key="frame" x="18" y="200" width="214" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Wire Inspector" id="15780">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-274" y="59"/>
         </customView>
@@ -8237,19 +8244,19 @@ Gw
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="m1O-At-UtD">
-                    <rect key="frame" x="65" y="233" width="120" height="17"/>
+                    <rect key="frame" x="65" y="233" width="120" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label Inspector" id="vqk-Ap-rk3">
-                        <font key="font" metaFont="systemBold"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label Inspector" id="vqk-Ap-rk3">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" id="YxY-JJ-Hrb" customClass="CanariQuadrantSegmentedControl" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="19" y="206" width="212" height="20"/>
+                    <rect key="frame" x="19" y="206" width="212" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="SSi-IN-7UJ">
-                        <font key="font" metaFont="cellTitle"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="SSi-IN-7UJ">
+                        <font key="font" metaFont="smallSystem"/>
                         <segments>
                             <segment label="Right" width="52"/>
                             <segment label="Above" width="52" selected="YES" tag="1"/>
@@ -8259,22 +8266,22 @@ Gw
                     </segmentedCell>
                 </segmentedControl>
                 <button verticalHuggingPriority="750" id="DSM-Fw-ljM" customClass="EBButton">
-                    <rect key="frame" x="20" y="149" width="210" height="19"/>
+                    <rect key="frame" x="20" y="149" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Rename Net…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xLP-rB-g9D">
+                    <buttonCell key="cell" type="roundRect" title="Rename Net…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xLP-rB-g9D">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <connections>
                             <action selector="renameNetFromSelectedLabelAction:" target="-2" id="5Zc-gH-NQ2"/>
                         </connections>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" id="9EL-5A-2fY" customClass="EBButton">
-                    <rect key="frame" x="20" y="123" width="210" height="19"/>
+                    <rect key="frame" x="20" y="123" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Rename Net with automatic name" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S60-e5-VpQ">
+                    <buttonCell key="cell" type="roundRect" title="Rename Net with automatic name" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S60-e5-VpQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="newAutomaticNetNameFromSelectedLabelAction:" target="-2" id="Cl7-BJ-gPg"/>
@@ -8283,29 +8290,29 @@ Gw
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jxz-xJ-OlT">
                     <rect key="frame" x="18" y="176" width="65" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Net Name" id="uIL-W7-LO4">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Net Name" id="uIL-W7-LO4">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" id="DE0-V2-kDZ" customClass="EBButton">
-                    <rect key="frame" x="20" y="45" width="210" height="19"/>
+                    <rect key="frame" x="20" y="45" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Merge Subnet into an existing Net…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zGq-dd-X4F">
+                    <buttonCell key="cell" type="roundRect" title="Merge Subnet into an existing Net…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zGq-dd-X4F">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="mergeSubnetIntoExistingNetFromSelectedLabelAction:" target="-2" id="nsf-EO-gDS"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="4jm-P0-gGS" customClass="EBButton">
-                    <rect key="frame" x="20" y="19" width="210" height="19"/>
+                    <rect key="frame" x="20" y="19" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Insulate Subnet from current Net" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iev-3J-Kxh">
+                    <buttonCell key="cell" type="roundRect" title="Insulate Subnet from current Net" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iev-3J-Kxh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="insulateSubnetFromCurrentNetFromSelectedLabelAction:" target="-2" id="4bj-hq-6Ak"/>
@@ -8314,18 +8321,18 @@ Gw
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="NHk-cJ-b3T" customClass="EBTextObserverField">
                     <rect key="frame" x="87" y="176" width="145" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="… net name …" id="6LP-su-R64">
-                        <font key="font" metaFont="systemBold"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="… net name …" id="6LP-su-R64">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton id="kKb-R6-tu8" customClass="EBPopUpButton">
-                    <rect key="frame" x="93" y="97" width="137" height="19"/>
+                    <rect key="frame" x="93" y="97" width="137" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Net class…" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="Kek-lT-ojZ" id="h3s-Iq-7qt">
+                    <popUpButtonCell key="cell" type="roundRect" title="Net class…" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="Kek-lT-ojZ" id="h3s-Iq-7qt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="Ekz-Jk-LaB">
                             <items>
                                 <menuItem title="Net class…" state="on" id="Kek-lT-ojZ"/>
@@ -8334,10 +8341,10 @@ Gw
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="eMM-oG-wrl">
-                    <rect key="frame" x="18" y="99" width="69" height="17"/>
+                    <rect key="frame" x="18" y="99" width="69" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Net Class:" id="JsB-9O-f2z">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Net Class:" id="JsB-9O-f2z">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -8348,6 +8355,103 @@ Gw
                 </box>
             </subviews>
             <point key="canvasLocation" x="-280" y="-259"/>
+        </customView>
+        <customView id="kPw-gu-6Ip" userLabel="Schematics Inspector : Hot Keys" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="277"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="2FV-zk-1pN">
+                    <rect key="frame" x="65" y="258" width="120" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Hot Keys" id="stC-JM-oJN">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="eLW-AK-yCb">
+                    <rect key="frame" x="18" y="195" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="🄲 Connect" id="Tct-1P-h3U">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8Un-Lz-CN6">
+                    <rect key="frame" x="18" y="170" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🄳 Disconnect" id="kLC-Zy-aQ8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2QO-p4-nwh">
+                    <rect key="frame" x="18" y="95" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🄿 Remove Wire Point" id="vgZ-dt-41v">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6bP-pM-LQo">
+                    <rect key="frame" x="18" y="145" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🄻 Add Left Label" id="qeb-9s-hDw">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YZi-ol-cus">
+                    <rect key="frame" x="18" y="70" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🅁 Add Right Label" id="Eyg-j0-PzM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cgB-ym-JpH">
+                    <rect key="frame" x="18" y="45" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🅃 Add Top Label" id="onD-39-YLq">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="baE-9B-mWJ">
+                    <rect key="frame" x="18" y="220" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🄱 Add Bottom Label" id="K3X-bD-NWy">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EJY-hU-Y6u">
+                    <rect key="frame" x="18" y="120" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🄽 Add NC" id="WUL-WG-jVT">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BGk-yW-02a">
+                    <rect key="frame" x="18" y="20" width="214" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="🅆 Add Wire Point" id="lgq-ov-9nE">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="626" y="-142.5"/>
         </customView>
     </objects>
     <resources>

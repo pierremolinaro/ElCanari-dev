@@ -70,6 +70,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   //--- Set schematics inspector segmented control
     let schematicsInspectors = [
       self.mSelectedObjectsSchematicsInspectorView,
+      self.mHotKeysSchematicInspectorView,
       self.mUnplacedSymbolsSchematicsInspectorView,
       self.mGridZoomSchematicsInspectorView,
       self.mSchematicsSheetsInspectorView
@@ -95,7 +96,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
         case .single (let v) :
           title = "+ \(v)"
         }
-        self.mSchematicsInspectorSegmentedControl?.setLabel (title, forSegment: 1)
+        self.mSchematicsInspectorSegmentedControl?.setLabel (title, forSegment: 2)
       }
     )
   //---
@@ -127,6 +128,9 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     )
   //---
     self.mSchematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
+    self.mSchematicsView?.setMouseMovedCallback { [weak self] (mouseLocation) in self?.mouseMovedInSchematic (mouseLocation) }
+    self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
+    self.mSchematicsView?.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
   }
 
   //····················································································································

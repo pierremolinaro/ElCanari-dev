@@ -28,6 +28,8 @@ extension EBGraphicView {
       case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
         self.deleteSelection ()
       default :
+        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+        self.mKeyDownCallback? (mouseDownLocation, character)
         break
       }
     }

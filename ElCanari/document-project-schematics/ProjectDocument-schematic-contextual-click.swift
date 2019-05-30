@@ -31,17 +31,18 @@ extension CustomizedProjectDocument {
     //--- Add disconnect ?
       self.appendDisconnectItemTo (menu: menu, points: points)
     //--- Add Labels
-      self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: inMouseDownPoint)
+      self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: inMouseDownPoint, points: points)
     }
   //---
     return menu
   }
 
   //····················································································································
-  // NC
+  // Connect
   //····················································································································
 
-  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+  internal func canConnect (points inPoints : [PointInSchematic]) -> Bool {
+    var canConnect = false
     if inPoints.count > 1 {
       var hasNC = false
       var pinCount = 0
@@ -53,15 +54,22 @@ extension CustomizedProjectDocument {
           pinCount += 1
         }
       }
-      if !hasNC && (pinCount <= 1) {
-        if menu.numberOfItems > 0 {
-          menu.addItem (.separator ())
-        }
-        let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connectAction (_:)), keyEquivalent: "")
-        menuItem.target = self
-        menuItem.representedObject = inPoints
-        menu.addItem (menuItem)
+      canConnect = !hasNC && (pinCount <= 1)
+    }
+    return canConnect
+  }
+
+  //····················································································································
+
+  private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+    if self.canConnect (points: inPoints) {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
       }
+      let menuItem = NSMenuItem (title: "Connect…", action: #selector (CustomizedProjectDocument.connectAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = inPoints
+      menu.addItem (menuItem)
     }
   }
 
@@ -87,7 +95,7 @@ extension CustomizedProjectDocument {
   // Disconnect
   //····················································································································
 
-  private func appendDisconnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+  internal func canDisconnect (points inPoints : [PointInSchematic]) -> Bool {
     var canDisconnect = false
     for point in inPoints {
       if point.mNC != nil {
@@ -104,7 +112,13 @@ extension CustomizedProjectDocument {
         break
       }
     }
-    if canDisconnect {
+    return canDisconnect
+  }
+
+  //····················································································································
+
+  private func appendDisconnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+    if self.canDisconnect (points: inPoints) {
       let menuItem = NSMenuItem (title: "Disconnect", action: #selector (CustomizedProjectDocument.disconnectAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = inPoints
@@ -126,18 +140,28 @@ extension CustomizedProjectDocument {
   // Remove Point From Wire
   //····················································································································
 
-  private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+  internal func canRemovePointFromWire (points inPoints : [PointInSchematic]) -> Bool {
+    var canRemove = false
     if inPoints.count == 1 {
       let point = inPoints [0]
       if point.mNC == nil, point.mLabels.count == 0, (point.mWiresP1s.count + point.mWiresP2s.count) == 2 {
-        if menu.numberOfItems > 0 {
-          menu.addItem (.separator ())
-        }
-        let menuItem = NSMenuItem (title: "Remove Point from Wire", action: #selector (CustomizedProjectDocument.removePointFromWireAction (_:)), keyEquivalent: "")
-        menuItem.target = self
-        menuItem.representedObject = point
-        menu.addItem (menuItem)
+        canRemove = true
       }
+    }
+    return canRemove
+  }
+
+  //····················································································································
+
+  private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+    if self.canRemovePointFromWire (points: inPoints) {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Remove Point from Wire", action: #selector (CustomizedProjectDocument.removePointFromWireAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = inPoints [0]
+      menu.addItem (menuItem)
     }
   }
 
@@ -156,18 +180,28 @@ extension CustomizedProjectDocument {
   // NC
   //····················································································································
 
-  private func appendCreateNCItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+  internal func canCreateNC (points inPoints : [PointInSchematic]) -> Bool {
+    var canCreate = false
     if inPoints.count == 1 {
       let point = inPoints [0]
       if point.mNC == nil, point.mLabels.count == 0, point.mWiresP1s.count == 0, point.mWiresP2s.count == 0 {
-        if menu.numberOfItems > 0 {
-          menu.addItem (.separator ())
-        }
-        let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPinAction (_:)), keyEquivalent: "")
-        menuItem.target = self
-        menuItem.representedObject = point
-        menu.addItem (menuItem)
+        canCreate = true
       }
+    }
+    return canCreate
+  }
+
+  //····················································································································
+
+  private func appendCreateNCItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
+    if self.canCreateNC (points: inPoints) {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Add NC", action: #selector (CustomizedProjectDocument.addNCToPinAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = inPoints [0]
+      menu.addItem (menuItem)
     }
   }
 
@@ -184,8 +218,14 @@ extension CustomizedProjectDocument {
   // Insert point into wire
   //····················································································································
 
+  internal func canCreateWirePoint (wires inWires : [WireInSchematic]) -> Bool {
+    return inWires.count == 1
+  }
+
+  //····················································································································
+
   private func appendCreateWirePointItemTo (menu : NSMenu, _ inCanariAlignedMouseDownLocation : CanariPoint, wires inWires : [WireInSchematic]) {
-    if inWires.count == 1 {
+    if self.canCreateWirePoint (wires: inWires) {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
@@ -208,30 +248,48 @@ extension CustomizedProjectDocument {
   // Labels
   //····················································································································
 
-  private func appendCreateLabelsItemTo (menu : NSMenu, mouseDownLocation inMouseDownPoint : CanariPoint) {
-     if menu.numberOfItems > 0 {
-       menu.addItem (.separator ())
-     }
-     var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 0 // Right
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 1 // Top
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 2 // Left
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
-     menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
-     menuItem.target = self
-     menuItem.tag = 3 // Bottom
-     menuItem.representedObject = inMouseDownPoint
-     menu.addItem (menuItem)
+  internal func canCreateLabels (points inPoints : [PointInSchematic]) -> Bool {
+  //--- Check points have no label
+    var pointsHaveLabel = false
+    for p in inPoints {
+      if p.mLabels.count > 0 {
+        pointsHaveLabel = true
+        break
+      }
+    }
+    return !pointsHaveLabel
+  }
+
+  //····················································································································
+
+  private func appendCreateLabelsItemTo (menu : NSMenu,
+                                         mouseDownLocation inMouseDownPoint : CanariPoint,
+                                         points inPoints : [PointInSchematic]) {
+    if self.canCreateLabels (points: inPoints) {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.tag = 0 // Right
+      menuItem.representedObject = inMouseDownPoint
+      menu.addItem (menuItem)
+      menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.tag = 1 // Top
+      menuItem.representedObject = inMouseDownPoint
+      menu.addItem (menuItem)
+      menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.tag = 2 // Left
+      menuItem.representedObject = inMouseDownPoint
+      menu.addItem (menuItem)
+      menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematics (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.tag = 3 // Bottom
+      menuItem.representedObject = inMouseDownPoint
+      menu.addItem (menuItem)
+    }
   }
 
   //····················································································································

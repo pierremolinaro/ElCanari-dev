@@ -349,15 +349,21 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddBottomSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddCommentButton : CanariDragSourceButton?
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
+  @IBOutlet var mAddLeftLabelSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mAddNCSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddNetClassButton : EBButton?
   @IBOutlet var mAddNetClassErrorMessageTextField : NSTextField?
   @IBOutlet var mAddNetClassPanel : NSPanel?
   @IBOutlet var mAddNetClassTextField : EBTextField?
   @IBOutlet var mAddNetClassValidationButton : NSButton?
+  @IBOutlet var mAddRightLabelSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mAddTopLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddWireButton : CanariDragSourceButton?
+  @IBOutlet var mAddWirePointSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
@@ -381,10 +387,12 @@ import Cocoa
   @IBOutlet var mComponentSymbolValueTextField : EBTextField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
+  @IBOutlet var mConnectSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView?
+  @IBOutlet var mDisconnectSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mDuplicateSelectedComponentsActionButton : EBButton?
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
@@ -392,6 +400,7 @@ import Cocoa
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mHotKeysSchematicInspectorView : CanariViewWithKeyView?
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel?
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
@@ -427,6 +436,7 @@ import Cocoa
   @IBOutlet var mRemoveNetClassButton : EBButton?
   @IBOutlet var mRemoveSelectedComponentsActionButton : EBButton?
   @IBOutlet var mRemoveSheetButton : EBButton?
+  @IBOutlet var mRemoveWirePointSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mRenameComponentButton : EBButton?
   @IBOutlet var mRenameComponentErrorMessageTextField : NSTextField?
   @IBOutlet var mRenameComponentFromComponentSymbolButton : EBButton?
@@ -600,15 +610,21 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
+    checkOutletConnection (self.mAddBottomSchematicHotKeyTextField, "mAddBottomSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddCommentButton, "mAddCommentButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddLeftLabelSchematicHotKeyTextField, "mAddLeftLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddNCSchematicHotKeyTextField, "mAddNCSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassButton, "mAddNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddNetClassErrorMessageTextField, "mAddNetClassErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -632,10 +648,12 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
@@ -643,6 +661,7 @@ import Cocoa
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
@@ -678,6 +697,7 @@ import Cocoa
     checkOutletConnection (self.mRemoveNetClassButton, "mRemoveNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveSheetButton, "mRemoveSheetButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveWirePointSchematicHotKeyTextField, "mRemoveWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentButton, "mRenameComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRenameComponentErrorMessageTextField, "mRenameComponentErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mRenameComponentFromComponentSymbolButton, "mRenameComponentFromComponentSymbolButton", EBButton.self, #file, #line)
@@ -1593,15 +1613,21 @@ import Cocoa
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddBottomSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddCommentButton?.ebCleanUp ()
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
+    self.mAddLeftLabelSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAddNCSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddNetClassButton?.ebCleanUp ()
     self.mAddNetClassErrorMessageTextField?.ebCleanUp ()
     self.mAddNetClassPanel?.ebCleanUp ()
     self.mAddNetClassTextField?.ebCleanUp ()
     self.mAddNetClassValidationButton?.ebCleanUp ()
+    self.mAddRightLabelSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAddTopLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
+    self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -1625,10 +1651,12 @@ import Cocoa
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
+    self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
+    self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
@@ -1636,6 +1664,7 @@ import Cocoa
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
+    self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
@@ -1671,6 +1700,7 @@ import Cocoa
     self.mRemoveNetClassButton?.ebCleanUp ()
     self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
     self.mRemoveSheetButton?.ebCleanUp ()
+    self.mRemoveWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mRenameComponentButton?.ebCleanUp ()
     self.mRenameComponentErrorMessageTextField?.ebCleanUp ()
     self.mRenameComponentFromComponentSymbolButton?.ebCleanUp ()
@@ -1727,15 +1757,21 @@ import Cocoa
     self.mWireNetNameTextField?.ebCleanUp ()
     self.mWireRenameNetButton?.ebCleanUp ()
     self.mWireRenameNetWithUniqueNewNameButton?.ebCleanUp ()
+//    self.mAddBottomSchematicHotKeyTextField = nil
 //    self.mAddCommentButton = nil
 //    self.mAddComponentButton = nil
 //    self.mAddFontButton = nil
+//    self.mAddLeftLabelSchematicHotKeyTextField = nil
+//    self.mAddNCSchematicHotKeyTextField = nil
 //    self.mAddNetClassButton = nil
 //    self.mAddNetClassErrorMessageTextField = nil
 //    self.mAddNetClassPanel = nil
 //    self.mAddNetClassTextField = nil
 //    self.mAddNetClassValidationButton = nil
+//    self.mAddRightLabelSchematicHotKeyTextField = nil
+//    self.mAddTopLabelSchematicHotKeyTextField = nil
 //    self.mAddWireButton = nil
+//    self.mAddWirePointSchematicHotKeyTextField = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardPageView = nil
 //    self.mChangeComponentValueComboxBox = nil
@@ -1759,10 +1795,12 @@ import Cocoa
 //    self.mComponentSymbolValueTextField = nil
 //    self.mComponentTableView = nil
 //    self.mComponentsPageView = nil
+//    self.mConnectSchematicHotKeyTextField = nil
 //    self.mCurrentComponentNameTextField = nil
 //    self.mDeviceLibraryTableView = nil
 //    self.mDevicePackageTableView = nil
 //    self.mDeviceSymbolTableView = nil
+//    self.mDisconnectSchematicHotKeyTextField = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
@@ -1770,6 +1808,7 @@ import Cocoa
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
+//    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
 //    self.mLibraryPageView = nil
@@ -1805,6 +1844,7 @@ import Cocoa
 //    self.mRemoveNetClassButton = nil
 //    self.mRemoveSelectedComponentsActionButton = nil
 //    self.mRemoveSheetButton = nil
+//    self.mRemoveWirePointSchematicHotKeyTextField = nil
 //    self.mRenameComponentButton = nil
 //    self.mRenameComponentErrorMessageTextField = nil
 //    self.mRenameComponentFromComponentSymbolButton = nil

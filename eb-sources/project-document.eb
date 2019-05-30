@@ -193,6 +193,7 @@ document ProjectDocument root ProjectRoot {
   outlet CanariSegmentedControl mSchematicsInspectorSegmentedControl $selectedPage root.mSelectedSchematicInspector ;
   outlet NSView mBaseSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsSchematicsInspectorView ;
+  outlet CanariViewWithKeyView mHotKeysSchematicInspectorView ;
   outlet CanariViewWithKeyView mGridZoomSchematicsInspectorView ;
   outlet CanariViewWithKeyView mUnplacedSymbolsSchematicsInspectorView ;
   outlet CanariViewWithKeyView mSchematicsSheetsInspectorView ;
@@ -210,7 +211,18 @@ document ProjectDocument root ProjectRoot {
 //--- Schematic inconsistent error
   outlet NSPanel mInconsistentSchematicErrorPanel ;
   outlet NSTextView mInconsistentSchematicErrorTextView ;
-  
+
+//--- Hot kets inspector
+  outlet NSTextField mConnectSchematicHotKeyTextField ;
+  outlet NSTextField mDisconnectSchematicHotKeyTextField ;
+  outlet NSTextField mAddWirePointSchematicHotKeyTextField ;
+  outlet NSTextField mRemoveWirePointSchematicHotKeyTextField ;
+  outlet NSTextField mAddLeftLabelSchematicHotKeyTextField ;
+  outlet NSTextField mAddRightLabelSchematicHotKeyTextField ;
+  outlet NSTextField mAddTopLabelSchematicHotKeyTextField ;
+  outlet NSTextField mAddBottomSchematicHotKeyTextField ;
+  outlet NSTextField mAddNCSchematicHotKeyTextField ;
+   
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;

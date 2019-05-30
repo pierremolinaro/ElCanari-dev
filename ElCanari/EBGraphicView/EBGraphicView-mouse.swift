@@ -15,6 +15,7 @@ extension EBGraphicView {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
+    self.mMouseMovedCallback? (locationOnGridInView)
   }
 
   //····················································································································
@@ -22,6 +23,7 @@ extension EBGraphicView {
   override func mouseExited (with inEvent : NSEvent) {
     super.mouseExited (with: inEvent)
     self.clearXYplacards ()
+    self.mMouseExitCallback? ()
   }
 
   //····················································································································
