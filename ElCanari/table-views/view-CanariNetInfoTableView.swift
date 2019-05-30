@@ -57,10 +57,12 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netName
       }else if columnIdentifier.rawValue == "netclass" {
         result?.textField?.stringValue = self.mDataSource [inRowIndex].netClassName
-      }else if columnIdentifier.rawValue == "pincount" {
+      }else if columnIdentifier.rawValue == "pins" {
         result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].pinCount)"
-      }else if columnIdentifier.rawValue == "labelcount" {
-        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].labelCount)"
+        result?.imageView?.image = NSImage (named: (self.mDataSource [inRowIndex].pinCount < 2) ? warningStatusImageName : okStatusImageName)
+      }else if columnIdentifier.rawValue == "subnets" {
+        result?.textField?.stringValue = "\(self.mDataSource [inRowIndex].subnets.count)"
+        result?.imageView?.image = NSImage (named: self.mDataSource [inRowIndex].subnetsHaveWarning ? warningStatusImageName : okStatusImageName)
       }
     }
     return result
@@ -71,7 +73,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   func tableViewSelectionDidChange (_ notification: Notification) {
     var a = [StatusString] ()
     if self.selectedRow >= 0 {
-      a = self.computeSubnets (self.mDataSource [self.selectedRow].points)
+      a = self.mDataSource [self.selectedRow].subnets
     }
     self.mSubnetTableView?.reloadDataSource (a)
   }
@@ -109,13 +111,13 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
           }else{
             self.mDataSource.sort { $0.netClassName > $1.netClassName }
           }
-        }else if key == "pincount" {
+        }else if key == "pins" {
           if s.ascending {
             self.mDataSource.sort { $0.pinCount < $1.pinCount }
           }else{
             self.mDataSource.sort { $0.pinCount > $1.pinCount }
           }
-        }else if key == "labelcount" {
+        }else if key == "subnets" {
           if s.ascending {
             self.mDataSource.sort { $0.labelCount < $1.labelCount }
           }else{
@@ -187,78 +189,6 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
   func unbind_netInfo () {
     self.mController?.unregister ()
     self.mController = nil
-  }
-
-  //····················································································································
-  //  COMPUTE SUB NETS
-  //····················································································································
-
-  private func computeSubnets (_ inPointArray : NetInfoPointArray) -> StatusStringArray {
-  //--- Wire dictionary (for compute subnet accessibility)
-    var wireDictionary = [Int : NetInfoPointArray] ()
-    for point in inPointArray {
-      for wire in point.wires {
-        if let v = wireDictionary [wire] {
-          wireDictionary [wire] = v + [point]
-        }else{
-          wireDictionary [wire] = [point]
-        }
-      }
-    }
-  //---
-    var subnetDescriptionStrings = [(Bool, String)] ()
-    var unExploredPointSet = Set (inPointArray)
-    while let aPoint = unExploredPointSet.first {
-      unExploredPointSet.removeFirst ()
-      var currentPointSet = Set <NetInfoPoint> ([aPoint])
-      var exploreArray = [aPoint]
-      var exploreWireSet = Set <Int> ()
-      while let p = exploreArray.last {
-        exploreArray.remove (at: exploreArray.count - 1)
-        for wire in p.wires {
-          if !exploreWireSet.contains (wire) {
-            exploreWireSet.insert (wire)
-            if let pts = wireDictionary [wire] {
-              for pp in pts {
-                if !currentPointSet.contains(pp) {
-                  currentPointSet.insert (pp)
-                  exploreArray.append (pp)
-                  unExploredPointSet.remove (pp)
-                }
-              }
-            }
-          }
-        }
-
-      }
-    //--- Build subnet description string
-      var subnetDescription = ""
-      for p in currentPointSet {
-        if let pinName = p.pin {
-          subnetDescription += " " + pinName
-        }
-      }
-      var labelCount = 0
-      for p in currentPointSet {
-        labelCount += p.labels.count
-        for label in p.labels {
-          subnetDescription += " " + label
-        }
-      }
-      subnetDescriptionStrings.append ((labelCount > 0, subnetDescription))
-    }
-  //--- Several subnets ?
-    var result = [StatusString] ()
-    if subnetDescriptionStrings.count == 1 {
-      result.append (StatusString (status: .ok, string: subnetDescriptionStrings [0].1))
-    }else if subnetDescriptionStrings.count > 1 {
-      for (severalLabels, descriptionString) in subnetDescriptionStrings {
-        let status : Status = severalLabels ? .ok : .warning
-        result.append (StatusString (status: status, string: descriptionString))
-      }
-    }
-  //---
-    return result
   }
 
   //····················································································································

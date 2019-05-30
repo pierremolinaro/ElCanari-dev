@@ -296,6 +296,10 @@ document ProjectDocument root ProjectRoot {
   outlet EBButton mSchematicWireInsulateSubnetButton  // Action set in IB
     $enabled #wireInSchematicSelectionController.selectedArray.count == 1
   ;
+  
+  outlet EBPopUpButton mSchematicWireNetClassButton
+    $enabled #wireInSchematicSelectionController.selectedArray.count == 1
+  ;
 
 //--- Selected NC In schematics
   outlet CanariViewWithKeyView mNCInSchematicsInspectorView ;
@@ -340,6 +344,10 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mMergeNetPopUpButton ;
   
   outlet EBButton mSchematicLabelInsulateSubnetButton  // Action set in IB
+    $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
+  ;
+  
+  outlet EBPopUpButton mSchematicLabelNetClassButton
     $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
   ;
 
@@ -395,6 +403,13 @@ document ProjectDocument root ProjectRoot {
   outlet EBTextField mRenameNetTextField ;
   outlet EBTextField mRenameNetErrorTextField ;
   outlet EBButton mRenameNetOkButton ;
+  
+  outlet NSImageView mNetWarningImageView $hidden root.netWarningCount == 0 ;
+  
+  outlet EBIntObserverField mNetWarningTextField
+    $valueObserver root.netWarningCount {autoFormatter: yes}
+    $hidden root.netWarningCount == 0
+  ;
 }
 
 //----------------------------------------------------------------------------*

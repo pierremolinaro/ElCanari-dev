@@ -35,8 +35,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
-    inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     inOldValue?.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+    inOldValue?.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     self.mInternalValue?.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
@@ -58,8 +59,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
-    self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+    self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
     self.mInternalValue?.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+    self.mInternalValue?.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
   }
 
   //····················································································································
@@ -1524,16 +1526,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'schematicStatusMessage' transient property
+  //   Observers of 'netWarningCount' transient property
   //····················································································································
 
-  private var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
+  private var mObserversOf_netWarningCount = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicStatusMessage_property_selection : EBSelection <String?> {
+  var netWarningCount_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.schematicStatusMessage_property_selection) {
+      switch (model.netWarningCount_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1548,46 +1550,46 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_schematicStatusMessage.insert (inObserver)
+    self.mObserversOf_netWarningCount.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicStatusMessage_property.addEBObserver (inObserver)
+      v?.netWarningCount_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_schematicStatusMessage.remove (inObserver)
+    self.mObserversOf_netWarningCount.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.schematicStatusMessage_property.removeEBObserver (inObserver)
+      v?.netWarningCount_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_schematicStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusMessage_property.addEBObserver (observer)
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+        managedObject.netWarningCount_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusMessage_property.removeEBObserver (observer)
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+        managedObject.netWarningCount_property.removeEBObserver (observer)
       }
     }
   }
@@ -1657,6 +1659,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
         managedObject.schematicStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'schematicStatusMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var schematicStatusMessage_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.schematicStatusMessage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_schematicStatusMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicStatusMessage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_schematicStatusMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.schematicStatusMessage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_schematicStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusMessage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
+        managedObject.schematicStatusMessage_property.removeEBObserver (observer)
       }
     }
   }

@@ -110,24 +110,10 @@ struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
   let points : NetInfoPointArray
-
-  var pinCount : Int {
-    var count = 0
-    for point in self.points {
-      if point.pin != nil {
-        count += 1
-      }
-    }
-    return count
-  }
-
-  var labelCount : Int {
-    var count = 0
-    for point in self.points {
-       count += point.labels.count
-    }
-    return count
-  }
+  let subnets : StatusStringArray
+  let subnetsHaveWarning : Bool
+  let pinCount : Int
+  let labelCount : Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

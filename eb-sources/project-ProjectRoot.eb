@@ -49,12 +49,14 @@ entity ProjectRoot {
 
   transient String schematicStatusMessage dependsFrom
      self.unplacedSymbols,
+     self.netWarningCount,
      self.mSheets.all.connexionWarnings,
      self.mSheets.all.connexionErrors
    ;
 
   transient NSImage schematicStatusImage dependsFrom
     self.unplacedSymbols,
+    self.netWarningCount,
     self.mSheets.all.connexionWarnings,
     self.mSheets.all.connexionErrors
   ;
@@ -62,6 +64,8 @@ entity ProjectRoot {
    transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
    
    transient IntArray sheetIndexes dependsFrom self.mSheets ;
+
+  transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

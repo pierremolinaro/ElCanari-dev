@@ -89,6 +89,12 @@ protocol NetClassInProject_netsDescription : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_netWarningCount : class {
+  var netWarningCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -106,7 +112,8 @@ class NetClassInProject : EBManagedObject,
          NetClassInProject_viaPadDiameter,
          NetClassInProject_canRemove,
          NetClassInProject_netUsage,
-         NetClassInProject_netsDescription {
+         NetClassInProject_netsDescription,
+         NetClassInProject_netWarningCount {
 
   //····················································································································
   //   Atomic property: mNetClassName
@@ -402,6 +409,29 @@ class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netWarningCount
+  //····················································································································
+
+  let netWarningCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var netWarningCount_property_selection : EBSelection <Int> {
+    return self.netWarningCount_property.prop
+  }
+
+  //····················································································································
+
+  var netWarningCount : Int? {
+    switch self.netWarningCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -571,6 +601,28 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_netPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
+  //--- Atomic property: netWarningCount
+    self.netWarningCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.netsDescription_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.netsDescription_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetClassInProject_netWarningCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.netsDescription_property.addEBObserver (self.netWarningCount_property)
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
@@ -595,6 +647,7 @@ class NetClassInProject : EBManagedObject,
     self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
     self.mNets_property.removeEBObserverOf_netPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.removeEBObserver (self.netsDescription_property)
+    self.netsDescription_property.removeEBObserver (self.netWarningCount_property)
   //--- Unregister properties for handling signature
   }
 
@@ -721,6 +774,14 @@ class NetClassInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.netsDescription_property.mObserverExplorer,
       valueExplorer: &self.netsDescription_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netWarningCount",
+      idx: self.netWarningCount_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netWarningCount_property.mObserverExplorer,
+      valueExplorer: &self.netWarningCount_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

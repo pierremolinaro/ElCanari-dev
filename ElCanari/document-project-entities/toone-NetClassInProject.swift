@@ -29,6 +29,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     inOldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
     inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+    inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
     self.mInternalValue?.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
@@ -44,6 +45,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
     self.mInternalValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
     self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+    self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
   }
 
   //····················································································································
@@ -1016,6 +1018,75 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     for managedObject in inSet {
       self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
         managedObject.netsDescription_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netWarningCount' transient property
+  //····················································································································
+
+  private var mObserversOf_netWarningCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netWarningCount_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.netWarningCount_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netWarningCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netWarningCount_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netWarningCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netWarningCount_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+        managedObject.netWarningCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
+        managedObject.netWarningCount_property.removeEBObserver (observer)
       }
     }
   }

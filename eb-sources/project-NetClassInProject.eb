@@ -26,6 +26,8 @@ entity NetClassInProject {
     self.mNets.all.mNetName,
     self.mNets.all.netPointsInfo,
     self.mNetClassName ;
+
+  transient Int netWarningCount dependsFrom self.netsDescription ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

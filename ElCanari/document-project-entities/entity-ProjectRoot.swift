@@ -132,14 +132,20 @@ protocol ProjectRoot_schematicBackgroundDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicStatusMessage : class {
-  var schematicStatusMessage : String? { get }
+protocol ProjectRoot_netWarningCount : class {
+  var netWarningCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ProjectRoot_schematicStatusImage : class {
   var schematicStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_schematicStatusMessage : class {
+  var schematicStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -168,8 +174,9 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_netsDescription,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
-         ProjectRoot_schematicStatusMessage,
-         ProjectRoot_schematicStatusImage {
+         ProjectRoot_netWarningCount,
+         ProjectRoot_schematicStatusImage,
+         ProjectRoot_schematicStatusMessage {
 
   //····················································································································
   //   To many property: mSheets
@@ -757,21 +764,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: schematicStatusMessage
+  //   Transient property: netWarningCount
   //····················································································································
 
-  let schematicStatusMessage_property = EBTransientProperty_String ()
+  let netWarningCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var schematicStatusMessage_property_selection : EBSelection <String> {
-    return self.schematicStatusMessage_property.prop
+  var netWarningCount_property_selection : EBSelection <Int> {
+    return self.netWarningCount_property.prop
   }
 
   //····················································································································
 
-  var schematicStatusMessage : String? {
-    switch self.schematicStatusMessage_property_selection {
+  var netWarningCount : Int? {
+    switch self.netWarningCount_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -795,6 +802,29 @@ class ProjectRoot : EBManagedObject,
 
   var schematicStatusImage : NSImage? {
     switch self.schematicStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: schematicStatusMessage
+  //····················································································································
+
+  let schematicStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var schematicStatusMessage_property_selection : EBSelection <String> {
+    return self.schematicStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var schematicStatusMessage : String? {
+    switch self.schematicStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1086,21 +1116,19 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)
-  //--- Atomic property: schematicStatusMessage
-    self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: netWarningCount
+    self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
-        kind &= unwSelf.mSheets_property_selection.kind ()
-        kind &= unwSelf.mSheets_property_selection.kind ()
+        let kind = unwSelf.mNetClasses_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_schematicStatusMessage (v0, v1, v2))
+          switch (unwSelf.mNetClasses_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_netWarningCount (v0))
           default :
             return .empty
           }
@@ -1109,13 +1137,12 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.addEBObserver (self.schematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
-    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+    self.mNetClasses_property.addEBObserverOf_netWarningCount (self.netWarningCount_property)
   //--- Atomic property: schematicStatusImage
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.netWarningCount_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
         kind &= unwSelf.mSheets_property_selection.kind ()
         switch kind {
@@ -1124,9 +1151,9 @@ class ProjectRoot : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2))
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.netWarningCount_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -1136,8 +1163,37 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.unplacedSymbols_property.addEBObserver (self.schematicStatusImage_property)
+    self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+  //--- Atomic property: schematicStatusMessage
+    self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.unplacedSymbols_property_selection.kind ()
+        kind &= unwSelf.netWarningCount_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        kind &= unwSelf.mSheets_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.unplacedSymbols_property_selection, unwSelf.netWarningCount_property_selection, unwSelf.mSheets_property_selection, unwSelf.mSheets_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_schematicStatusMessage (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.addEBObserver (self.schematicStatusMessage_property)
+    self.netWarningCount_property.addEBObserver (self.schematicStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
+    self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -1176,12 +1232,15 @@ class ProjectRoot : EBManagedObject,
     self.mSheets_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.removeEBObserver (self.schematicBackgroundDisplay_property)
-    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
-    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
-    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
+    self.mNetClasses_property.removeEBObserverOf_netWarningCount (self.netWarningCount_property)
     self.unplacedSymbols_property.removeEBObserver (self.schematicStatusImage_property)
+    self.netWarningCount_property.removeEBObserver (self.schematicStatusImage_property)
     self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
     self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+    self.unplacedSymbols_property.removeEBObserver (self.schematicStatusMessage_property)
+    self.netWarningCount_property.removeEBObserver (self.schematicStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionWarnings (self.schematicStatusMessage_property)
+    self.mSheets_property.removeEBObserverOf_connexionErrors (self.schematicStatusMessage_property)
   //--- Unregister properties for handling signature
   }
 
@@ -1358,12 +1417,12 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.schematicBackgroundDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "schematicStatusMessage",
-      idx: self.schematicStatusMessage_property.ebObjectIndex,
+      "netWarningCount",
+      idx: self.netWarningCount_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
-      valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
+      observerExplorer: &self.netWarningCount_property.mObserverExplorer,
+      valueExplorer: &self.netWarningCount_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "schematicStatusImage",
@@ -1372,6 +1431,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.schematicStatusImage_property.mObserverExplorer,
       valueExplorer: &self.schematicStatusImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "schematicStatusMessage",
+      idx: self.schematicStatusMessage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.schematicStatusMessage_property.mObserverExplorer,
+      valueExplorer: &self.schematicStatusMessage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

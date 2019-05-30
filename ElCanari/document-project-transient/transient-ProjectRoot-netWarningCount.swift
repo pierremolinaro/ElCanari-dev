@@ -13,15 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_symbolTypeNames (
-       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
-) -> StringArray {
+func transient_ProjectRoot_netWarningCount (
+       _ self_mNetClasses_netWarningCount : [NetClassInProject_netWarningCount]
+) -> Int {
 //--- START OF USER ZONE 2
-       var array = [String] ()
-       for t in self_mSymbolTypes_mTypeName {
-         array.append (t.mTypeName)
-       }
-       return array
+        var warningCount = 0
+        for netClass in self_mNetClasses_netWarningCount {
+          if let n = netClass.netWarningCount {
+            warningCount += n
+          }
+        }
+        return warningCount
 //--- END OF USER ZONE 2
 }
 

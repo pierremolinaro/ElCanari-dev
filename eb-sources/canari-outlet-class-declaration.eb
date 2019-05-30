@@ -28,7 +28,7 @@ binding CanariNewComponentFromDevicePullDownButton $deviceNames : transient Stri
 
 extern outlet class NSPanel ;
 
-extern outlet class NSImageView ;
+extern outlet class NSImageView $hidden ;
 
 extern outlet class NSButton ;
 

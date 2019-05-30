@@ -13,15 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_symbolTypeNames (
-       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
-) -> StringArray {
+func transient_NetClassInProject_netWarningCount (
+       _ self_netsDescription : NetInfoArray
+) -> Int {
 //--- START OF USER ZONE 2
-       var array = [String] ()
-       for t in self_mSymbolTypes_mTypeName {
-         array.append (t.mTypeName)
-       }
-       return array
+        var warningCount = 0
+        for netInfo in self_netsDescription {
+          if (netInfo.pinCount < 2) || netInfo.subnetsHaveWarning {
+            warningCount += 1
+          }
+        }
+        return warningCount
 //--- END OF USER ZONE 2
 }
 
