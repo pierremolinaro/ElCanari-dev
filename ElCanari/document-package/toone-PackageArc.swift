@@ -1410,6 +1410,12 @@ final class ProxyObject_PackageArc : ReadWriteObject_PackageArc {
 final class StoredObject_PackageArc : ReadWriteObject_PackageArc, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

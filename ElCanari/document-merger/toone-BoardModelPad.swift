@@ -622,6 +622,12 @@ final class ProxyObject_BoardModelPad : ReadWriteObject_BoardModelPad {
 final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

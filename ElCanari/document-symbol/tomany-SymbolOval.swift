@@ -734,6 +734,12 @@ final class ProxyArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval {
 final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

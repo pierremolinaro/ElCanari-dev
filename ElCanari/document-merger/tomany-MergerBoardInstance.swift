@@ -733,6 +733,12 @@ final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInsta
 final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

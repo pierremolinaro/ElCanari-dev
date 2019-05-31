@@ -907,6 +907,12 @@ final class ProxyObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice {
 final class StoredObject_SlavePadInDevice : ReadWriteObject_SlavePadInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

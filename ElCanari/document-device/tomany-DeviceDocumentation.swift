@@ -442,6 +442,12 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
 final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

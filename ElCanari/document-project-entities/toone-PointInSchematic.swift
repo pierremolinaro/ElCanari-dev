@@ -1310,6 +1310,12 @@ final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

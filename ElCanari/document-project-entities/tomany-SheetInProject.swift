@@ -615,6 +615,12 @@ final class ProxyArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject {
 final class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

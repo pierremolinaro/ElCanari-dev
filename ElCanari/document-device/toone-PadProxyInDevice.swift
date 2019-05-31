@@ -547,6 +547,12 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

@@ -1442,6 +1442,12 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

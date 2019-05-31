@@ -548,6 +548,12 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

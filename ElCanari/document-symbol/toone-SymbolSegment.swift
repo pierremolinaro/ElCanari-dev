@@ -762,6 +762,12 @@ final class ProxyObject_SymbolSegment : ReadWriteObject_SymbolSegment {
 final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

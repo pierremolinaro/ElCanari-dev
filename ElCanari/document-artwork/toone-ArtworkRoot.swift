@@ -1023,6 +1023,12 @@ final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
 final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

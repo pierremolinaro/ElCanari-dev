@@ -2138,6 +2138,12 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

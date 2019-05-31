@@ -1304,6 +1304,12 @@ final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
 final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

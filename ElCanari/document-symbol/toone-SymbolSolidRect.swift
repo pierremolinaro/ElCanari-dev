@@ -762,6 +762,12 @@ final class ProxyObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect {
 final class StoredObject_SymbolSolidRect : ReadWriteObject_SymbolSolidRect, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

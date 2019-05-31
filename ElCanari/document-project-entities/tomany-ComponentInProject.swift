@@ -849,6 +849,12 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 final class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

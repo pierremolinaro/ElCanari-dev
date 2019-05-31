@@ -1410,6 +1410,12 @@ final class ProxyObject_PackageDimension : ReadWriteObject_PackageDimension {
 final class StoredObject_PackageDimension : ReadWriteObject_PackageDimension, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

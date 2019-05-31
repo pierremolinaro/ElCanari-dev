@@ -545,6 +545,12 @@ final class ProxyObject_WireInSchematic : ReadWriteObject_WireInSchematic {
 final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

@@ -1050,6 +1050,12 @@ final class ProxyObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve {
 final class StoredObject_SymbolBezierCurve : ReadWriteObject_SymbolBezierCurve, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

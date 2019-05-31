@@ -1196,6 +1196,12 @@ final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject 
 final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

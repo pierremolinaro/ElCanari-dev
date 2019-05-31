@@ -807,6 +807,12 @@ final class ProxyObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMasterP
 final class StoredObject_DeviceMasterPadInProject : ReadWriteObject_DeviceMasterPadInProject, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

@@ -967,6 +967,12 @@ final class ProxyArrayOf_FontRoot : ReadWriteArrayOf_FontRoot {
 final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

@@ -441,6 +441,12 @@ final class ProxyArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 final class StoredArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
   //   Opposite relationship management
   //····················································································································
 

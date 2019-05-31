@@ -803,6 +803,12 @@ final class ProxyObject_FontCharacter : ReadWriteObject_FontCharacter {
 final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

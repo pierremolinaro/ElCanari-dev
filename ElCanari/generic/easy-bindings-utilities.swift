@@ -809,12 +809,6 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
 class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
-  //   Undo manager
-  //····················································································································
-
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
-
-  //····················································································································
   // Abstract methods
   //····················································································································
 
@@ -885,12 +879,6 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRelationshipProperty {
-
-  //····················································································································
-  //   Undo manager
-  //····················································································································
-
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Abstract methods

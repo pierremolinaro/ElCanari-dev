@@ -2020,6 +2020,12 @@ final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
 final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

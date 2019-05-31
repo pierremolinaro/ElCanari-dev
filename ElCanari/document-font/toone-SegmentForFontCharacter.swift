@@ -620,6 +620,12 @@ final class ProxyObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFont
 final class StoredObject_SegmentForFontCharacter : ReadWriteObject_SegmentForFontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

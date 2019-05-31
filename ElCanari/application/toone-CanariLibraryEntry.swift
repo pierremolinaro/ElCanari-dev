@@ -549,6 +549,12 @@ final class ProxyObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry 
 final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 

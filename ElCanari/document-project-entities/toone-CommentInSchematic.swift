@@ -548,6 +548,12 @@ final class ProxyObject_CommentInSchematic : ReadWriteObject_CommentInSchematic 
 final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic, EBSignatureObserverProtocol {
 
   //····················································································································
+  //   Undo manager
+  //····················································································································
+
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+ //····················································································································
   //   Opposite relationship management
   //····················································································································
 
