@@ -50,6 +50,26 @@ extension WireInSchematic {
   //  Knob
   //····················································································································
 
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
+      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+        return OCCanariPoint (x: 0, y: 0)
+      }else{
+        return OCCanariPoint (x: inDx, y: inDy)
+      }
+    }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
+      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+        return OCCanariPoint (x: 0, y: 0)
+      }else{
+        return OCCanariPoint (x: inDx, y: inDy)
+      }
+    }else{
+      return OCCanariPoint (x: 0, y: 0)
+    }
+  }
+
+  //····················································································································
+
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
       point.mX += inDx
@@ -60,6 +80,8 @@ extension WireInSchematic {
     }
   }
 
+  //····················································································································
+  //  REMOVING
   //····················································································································
 
   override func operationBeforeRemoving () {

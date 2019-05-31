@@ -14,24 +14,24 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func populateContextualClickOnSchematics (_ inMouseDownPoint : CanariPoint) -> NSMenu {
+  internal func populateContextualClickOnSchematics (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariAlignedMouseDownLocation = inMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
     //--- Add Point to wire ?
-      let wires = selectedSheet.wiresStrictlyContaining (point: inMouseDownPoint)
+      let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
       self.appendCreateWirePointItemTo (menu : menu, canariAlignedMouseDownLocation, wires: wires)
     //--- Add Remove point from wire ?
       self.appendRemovePointFromWireItemTo (menu: menu, points: points)
     //--- Add disconnect ?
       self.appendDisconnectItemTo (menu: menu, points: points)
     //--- Add Labels
-      self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: inMouseDownPoint, points: points)
+      self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: canariAlignedMouseDownLocation, points: points)
     }
   //---
     return menu
@@ -293,7 +293,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func appendCreateLabelsItemTo (menu : NSMenu,
-                                         mouseDownLocation inMouseDownPoint : CanariPoint,
+                                         mouseDownLocation inAlignedMouseDownPoint : CanariPoint,
                                          points inPoints : [PointInSchematic]) {
     if self.canCreateLabels (points: inPoints) {
       if menu.numberOfItems > 0 {
@@ -302,22 +302,22 @@ extension CustomizedProjectDocument {
       var menuItem = NSMenuItem (title: "Add Label with right flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 0 // Right
-      menuItem.representedObject = inMouseDownPoint
+      menuItem.representedObject = inAlignedMouseDownPoint
       menu.addItem (menuItem)
       menuItem = NSMenuItem (title: "Add Label with top flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 1 // Top
-      menuItem.representedObject = inMouseDownPoint
+      menuItem.representedObject = inAlignedMouseDownPoint
       menu.addItem (menuItem)
       menuItem = NSMenuItem (title: "Add Label with left flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 2 // Left
-      menuItem.representedObject = inMouseDownPoint
+      menuItem.representedObject = inAlignedMouseDownPoint
       menu.addItem (menuItem)
       menuItem = NSMenuItem (title: "Add Label with bottom flag", action: #selector (CustomizedProjectDocument.addLabelInSchematicAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.tag = 3 // Bottom
-      menuItem.representedObject = inMouseDownPoint
+      menuItem.representedObject = inAlignedMouseDownPoint
       menu.addItem (menuItem)
     }
   }
@@ -325,7 +325,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func addLabelInSchematicAction (_ inSender : NSMenuItem) {
-    if let mouseLocation = inSender.representedObject as? CanariPoint {
+    if let alignedMouseDownPoint = inSender.representedObject as? CanariPoint {
     //--- Orientation
       let orientation : QuadrantRotation
       if inSender.tag == 1 {
@@ -337,7 +337,7 @@ extension CustomizedProjectDocument {
       }else{
         orientation = .rotation0
       }
-      self.addLabelInSchematic (at: mouseLocation, orientation: orientation)
+      self.addLabelInSchematic (at: alignedMouseDownPoint, orientation: orientation)
     }
   }
 

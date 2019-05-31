@@ -160,3 +160,41 @@ func + (lhs : QuadrantRotation, rhs : QuadrantRotation) -> QuadrantRotation {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension QuadrantRotation {
+
+  //····················································································································
+
+  mutating func rotateClockwise () {
+    switch self {
+    case .rotation0 :
+      self = .rotation270
+    case .rotation90 :
+      self = .rotation0
+    case .rotation180 :
+      self = .rotation90
+    case .rotation270 :
+      self = .rotation180
+    }
+  }
+
+  //····················································································································
+
+  mutating func rotateCounterClockwise () {
+    switch self {
+    case .rotation0 :
+      self = .rotation90
+    case .rotation90 :
+      self = .rotation180
+    case .rotation180 :
+      self = .rotation270
+    case .rotation270 :
+      self = .rotation0
+    }
+  }
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
