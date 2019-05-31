@@ -14,8 +14,8 @@ extension SheetInProject {
 
   //····················································································································
 
-  func addPointToWire (at inLocation : CanariPoint) {
-    let wires = self.wiresStrictlyContaining (point: inLocation)
+  func addPointToWire (at inUnalignedLocation : CanariPoint) {
+    let wires = self.wiresStrictlyContaining (point: inUnalignedLocation)
     if wires.count == 1 {
       let wire = wires [0]
       let p1 = wire.mP1!
@@ -27,7 +27,7 @@ extension SheetInProject {
       wire.mSheet = nil
     //--- Create a new point
       let newPoint = PointInSchematic (self.ebUndoManager)
-      let alignedLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let alignedLocation = inUnalignedLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       newPoint.mX = alignedLocation.x
       newPoint.mY = alignedLocation.y
       newPoint.mNet = net

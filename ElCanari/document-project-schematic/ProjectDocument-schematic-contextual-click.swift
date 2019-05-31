@@ -24,7 +24,7 @@ extension CustomizedProjectDocument {
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
     //--- Add Point to wire ?
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: inMouseDownPoint)
       self.appendCreateWirePointItemTo (menu : menu, canariAlignedMouseDownLocation, wires: wires)
     //--- Add Remove point from wire ?
       self.appendRemovePointFromWireItemTo (menu: menu, points: points)
@@ -268,9 +268,9 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func addPointToWireInSchematic (at inLocation : CanariPoint) {
+  internal func addPointToWireInSchematic (at inUnalignedLocation : CanariPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      selectedSheet.addPointToWire (at: inLocation)
+      selectedSheet.addPointToWire (at: inUnalignedLocation)
     }
   }
 

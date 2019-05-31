@@ -15,8 +15,8 @@ extension EBGraphicView {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
-    if self.window?.firstResponder == self, self.visibleRect.contains (locationOnGridInView) {
-      self.mMouseMovedCallback? (locationOnGridInView)
+    if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
+      self.mMouseMovedCallback? (locationInView)
     }else{
       self.mMouseExitCallback? ()
     }

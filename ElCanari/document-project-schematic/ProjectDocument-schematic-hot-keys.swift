@@ -22,14 +22,15 @@ extension CustomizedProjectDocument {
 
   internal func mouseMovedInSchematic (_ inMouseLocation : NSPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariAlignedMouseDownLocation = inMouseLocation.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariMouseDownLocation = inMouseLocation.canariPoint
+      let canariAlignedMouseDownLocation = canariMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Connect
       self.mConnectSchematicHotKeyTextField?.textColor = self.color (self.canConnect (points: points))
     //--- Disconnect
       self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (self.canDisconnect (points: points))
     //--- Add Point to wire
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: canariMouseDownLocation)
       self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (self.canCreateWirePoint (wires: wires))
     //--- Remove Point from wire
       self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (self.canRemovePointFromWire (points: points))
@@ -68,7 +69,8 @@ extension CustomizedProjectDocument {
 
   internal func keyDownInSchematic (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariAlignedMouseDownLocation = inMouseLocation.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariMouseDownLocation = inMouseLocation.canariPoint
+      let canariAlignedMouseDownLocation = canariMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
     //--- Connect
       if ((inKey == UnicodeScalar ("C")) || (inKey == UnicodeScalar ("c"))) && self.canConnect (points: points) {
@@ -79,9 +81,9 @@ extension CustomizedProjectDocument {
         self.disconnectInSchematic (points: points)
       }
     //--- Add Point to wire
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: canariMouseDownLocation)
       if ((inKey == UnicodeScalar ("W")) || (inKey == UnicodeScalar ("w"))) && self.canCreateWirePoint (wires: wires) {
-        self.addPointToWireInSchematic (at: canariAlignedMouseDownLocation)
+        self.addPointToWireInSchematic (at: canariMouseDownLocation)
       }
     //--- Remove Point from wire
       if ((inKey == UnicodeScalar ("P")) || (inKey == UnicodeScalar ("p"))) && self.canRemovePointFromWire (points: points) {
