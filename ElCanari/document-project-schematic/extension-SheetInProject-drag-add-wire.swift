@@ -14,9 +14,9 @@ extension SheetInProject {
 
   //····················································································································
 
-  func performAddWireDragOperation (_ inDraggingLocationInDestinationView : NSPoint,
+  func performAddWireDragOperation (_ inUnalignedDraggingLocation : NSPoint,
                                     newNetCreator inNewNetCreator : () -> NetInProject) -> WireInSchematic? {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    let p = inUnalignedDraggingLocation.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     let possibleWire : WireInSchematic?
     let p1 = CanariPoint (x: p.x, y: p.y)
     let p2 = CanariPoint (x: p.x + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: p.y + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
@@ -29,19 +29,10 @@ extension SheetInProject {
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
       wire.mP2 = pointsAtP2 [0]
-//      if pointsAtP1 [0].mNet == nil {
-//        let newNet = inNewNetCreator ()
-//        wire.mP1?.mNet = newNet
-//        wire.mP2?.mNet = newNet
-//      }
     }else if (pointsAtP1.count == 1) && (pointsAtP2.count == 0) { // Use point at p1, create a point at p2
       let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
-//      if pointsAtP1 [0].mNet == nil {
-//        let newNet = inNewNetCreator ()
-//        wire.mP1?.mNet = newNet
-//      }
       let point = PointInSchematic (self.ebUndoManager)
       point.mX = p2.x
       point.mY = p2.y
@@ -52,10 +43,6 @@ extension SheetInProject {
       let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP2 = pointsAtP2 [0]
-//      if pointsAtP2 [0].mNet == nil {
-//        let newNet = inNewNetCreator ()
-//        wire.mP2?.mNet = newNet
-//      }
       let point = PointInSchematic (self.ebUndoManager)
       point.mX = p1.x
       point.mY = p1.y

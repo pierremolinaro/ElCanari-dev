@@ -1279,20 +1279,22 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
         },
         outlet: self.mSchematicWireMergeSubnetButton
       )
+      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
       self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicWireMergeSubnetButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
         },
         outlet: self.mSchematicWireInsulateSubnetButton
       )
+      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
       self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicWireInsulateSubnetButton_enabled = controller
     }
@@ -1524,8 +1526,10 @@ import Cocoa
     self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
     self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
     self.mController_mWireRenameNetWithUniqueNewNameButton_enabled = nil
+    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mSchematicWireMergeSubnetButton_enabled!)
     self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireMergeSubnetButton_enabled!)
     self.mController_mSchematicWireMergeSubnetButton_enabled = nil
+    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.mController_mSchematicWireInsulateSubnetButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)

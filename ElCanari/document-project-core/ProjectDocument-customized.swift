@@ -29,6 +29,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   }
 
   //····················································································································
+  //  WIRE CREATED BY AN OPTION CLICK
+  //····················································································································
+
+  internal var mWireCreatedByOptionClick : WireInSchematic? = nil
+
+  //····················································································································
   //  POP UP BUTTON CONTROLLERS FOR SELECTING NET CLASS
   //····················································································································
 
@@ -63,6 +69,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Option click for creating wire
+     self.mSchematicsView?.setOptionMouseCallbacks (
+       start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+       continue: { [weak self] (inUnalignedMouseLocation) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
+       stop: { [weak self] in self?.stopWireCreationOnOptionMouseUp () }
+     )
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.bind_model (
       self.rootObject.mNetClasses_property,

@@ -302,11 +302,11 @@ document ProjectDocument root ProjectRoot {
   ;
   
   outlet EBButton mSchematicWireMergeSubnetButton  // Action set in IB
-    $enabled #wireInSchematicSelectionController.selectedArray.count == 1
+    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
   ;
 
   outlet EBButton mSchematicWireInsulateSubnetButton  // Action set in IB
-    $enabled #wireInSchematicSelectionController.selectedArray.count == 1
+    $enabled (#wireInSchematicSelectionController.selectedArray.count == 1) & #wireInSchematicSelectionController.hasNet
   ;
   
   outlet EBPopUpButton mSchematicWireNetClassButton ;

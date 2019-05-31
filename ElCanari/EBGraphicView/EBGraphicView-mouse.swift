@@ -34,9 +34,9 @@ extension EBGraphicView {
 
   override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      let alignedLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
-      self.mMouseMovedCallback? (mouseDownLocation)
+      let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      let alignedLastMouseDraggedLocation = unalignedMouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
+      self.mMouseMovedCallback? (unalignedMouseDownLocation)
       self.mLastMouseDraggedLocation = alignedLastMouseDraggedLocation
       let modifierFlags = inEvent.modifierFlags
       if modifierFlags.contains (.control), !modifierFlags.contains (.shift), !modifierFlags.contains (.option) { // Ctrl Key On, no shift
@@ -45,9 +45,14 @@ extension EBGraphicView {
         }
       }else if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
         self.ebStartDragging (with: inEvent, dragType: pbType)
+      }else if self.pasteboardType == nil, inEvent.modifierFlags.contains (.option) {
+        self.mPerformEndUndoGroupingOnMouseUp = true
+        self.viewController?.ebUndoManager?.beginUndoGrouping ()
+        self.mStartOptionMouseDownCallback? (unalignedMouseDownLocation)
+        self.mOptionClickOperationInProgress = true
       }else{
       //--- Find index of object under mouse down
-        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: mouseDownLocation)
+        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: unalignedMouseDownLocation)
         self.guideFor (possibleObjectIndex: possibleObjectIndex)
         let controlKey = inEvent.modifierFlags.contains (.control)
         if !controlKey {
@@ -87,11 +92,13 @@ extension EBGraphicView {
 
   override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
-    let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
+    let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
     let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
+    if self.mOptionClickOperationInProgress {
+      self.mContinueOptionMouseDraggedCallback? (unalignedLocationInView)
+    }else if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
       self.handleSelectionRectangle (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
     }else if let lastMouseDraggedLocation = self.mLastMouseDraggedLocation {
       let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
@@ -187,6 +194,10 @@ extension EBGraphicView {
 
   override func mouseUp (with inEvent : NSEvent) {
     super.mouseUp (with: inEvent)
+    if self.mOptionClickOperationInProgress {
+      self.mStopOptionMouseUpCallback? ()
+      self.mOptionClickOperationInProgress = false
+    }
     if self.mPerformEndUndoGroupingOnMouseUp {
       self.mPerformEndUndoGroupingOnMouseUp = false
       self.viewController?.ebUndoManager?.endUndoGrouping ()
