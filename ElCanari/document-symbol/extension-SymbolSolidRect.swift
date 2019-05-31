@@ -39,7 +39,7 @@ extension SymbolSolidRect {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
     self.x += inDx
     self.y += inDy
   }

@@ -582,10 +582,11 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [MergerBoardInstance] ()
+      let userSet = OCObjectSet ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? MergerBoardInstance {
           object.operationAfterPasting ()
-          object.translate (xBy: X, yBy: Y)
+          object.translate (xBy: X, yBy: Y, userSet: userSet)
           newObjects.append (object)
         }
       }

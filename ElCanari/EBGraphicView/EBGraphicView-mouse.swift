@@ -174,8 +174,9 @@ extension EBGraphicView {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.ebUndoManager?.beginUndoGrouping ()
       }
+      let userSet = OCObjectSet ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-        object.translate (xBy: dx, yBy: dy)
+        object.translate (xBy: dx, yBy: dy, userSet: userSet)
       }
       let mouseDraggedLocation = CanariPoint (x: dx + lastMouseDraggedLocation.x, y: dy + lastMouseDraggedLocation.y)
       mLastMouseDraggedLocation = mouseDraggedLocation

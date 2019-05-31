@@ -154,11 +154,13 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
            let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
            let X = dataDictionary ["X"] as? Int,
            let Y = dataDictionary ["Y"] as? Int {
+          let userSet = OCObjectSet ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
               newObject.translate (
                 xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y
+                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                userSet: userSet
               )
               self.rootObject.symbolObjects_property.add (newObject)
               self.mSymbolObjectsController.select (object: newObject)

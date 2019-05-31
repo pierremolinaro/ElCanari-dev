@@ -185,12 +185,14 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
            let X = dataDictionary ["X"] as? Int,
            let Y = dataDictionary ["Y"] as? Int {
           var objetsToSelect = [PackageObject] ()
+          let userSet = OCObjectSet ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
               newObject.operationAfterPasting ()
               newObject.translate (
                 xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y
+                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                userSet: userSet
               )
               self.rootObject.packageObjects_property.add (newObject)
               objetsToSelect.append (newObject)

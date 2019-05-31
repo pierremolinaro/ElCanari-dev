@@ -582,10 +582,11 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [SymbolObject] ()
+      let userSet = OCObjectSet ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
           object.operationAfterPasting ()
-          object.translate (xBy: X, yBy: Y)
+          object.translate (xBy: X, yBy: Y, userSet: userSet)
           newObjects.append (object)
         }
       }

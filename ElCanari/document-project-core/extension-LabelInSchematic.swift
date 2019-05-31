@@ -23,7 +23,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
     if let point = self.mPoint, point.mSymbol == nil {
       point.mX += inDx
       point.mY += inDy
