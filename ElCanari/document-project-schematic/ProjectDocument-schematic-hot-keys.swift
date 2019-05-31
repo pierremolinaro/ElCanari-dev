@@ -67,11 +67,12 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func keyDownInSchematic (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
+  internal func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariMouseDownLocation = inMouseLocation.canariPoint
-      let canariAlignedMouseDownLocation = canariMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
+      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
     //--- Connect
       if ((inKey == UnicodeScalar ("C")) || (inKey == UnicodeScalar ("c"))) && self.canConnect (points: points) {
         self.connectInSchematic (points: points)
@@ -81,9 +82,8 @@ extension CustomizedProjectDocument {
         self.disconnectInSchematic (points: points)
       }
     //--- Add Point to wire
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariMouseDownLocation)
       if ((inKey == UnicodeScalar ("W")) || (inKey == UnicodeScalar ("w"))) && self.canCreateWirePoint (wires: wires) {
-        self.addPointToWireInSchematic (at: canariMouseDownLocation)
+        self.addPointToWireInSchematic (at: canariUnalignedMouseDownLocation)
       }
     //--- Remove Point from wire
       if ((inKey == UnicodeScalar ("P")) || (inKey == UnicodeScalar ("p"))) && self.canRemovePointFromWire (points: points) {
@@ -108,7 +108,7 @@ extension CustomizedProjectDocument {
       }
     }
   //--- For updating hot key labels
-    self.mouseMovedInSchematic (inMouseLocation)
+    self.mouseMovedInSchematic (inUnalignedMouseLocation)
   }
 
   //····················································································································

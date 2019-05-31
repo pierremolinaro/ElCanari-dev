@@ -16,11 +16,8 @@ extension CustomizedProjectDocument {
 
   internal func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
      if let selectedSheet = self.rootObject.mSelectedSheet {
-//       self.mWireCreatedByOptionClick = selectedSheet.performAddWireDragOperation (
-//         inUnalignedMousePoint,
-//         newNetCreator:self.rootObject.createNetWithAutomaticName
-//       )
-     let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+       _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
+       let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     //--- Find points at p1 and p2
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
     //---
@@ -76,8 +73,8 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func stopWireCreationOnOptionMouseUp () {
-     if let wire = self.mWireCreatedByOptionClick {
+  internal func stopWireCreationOnOptionMouseUp (at inUnalignedMousePoint : NSPoint) {
+     if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
        let p1 = wire.mP1!.location!
        let p2 = wire.mP2!.location!
        if (p1.x == p2.x) && (p1.y == p2.y) {
@@ -85,6 +82,8 @@ extension CustomizedProjectDocument {
          wire.mP2 = nil
          wire.mSheet = nil
        }else{
+         let points = selectedSheet.pointsInSchematics (at: p2)
+         self.connectInSchematic (points: points)
          self.schematicObjectsController.setSelection ([wire])
        }
        self.mWireCreatedByOptionClick = nil

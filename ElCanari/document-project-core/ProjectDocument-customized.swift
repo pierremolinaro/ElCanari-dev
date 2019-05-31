@@ -74,7 +74,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
        abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
-       stop: { [weak self] in self?.stopWireCreationOnOptionMouseUp () }
+       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopWireCreationOnOptionMouseUp (at: inUnalignedMouseLocation) }
      )
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.bind_model (

@@ -195,7 +195,8 @@ extension EBGraphicView {
   override func mouseUp (with inEvent : NSEvent) {
     super.mouseUp (with: inEvent)
     if self.mOptionClickOperationInProgress {
-      self.mStopOptionMouseUpCallback? ()
+      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      self.mStopOptionMouseUpCallback? (unalignedLocationInView)
       self.mOptionClickOperationInProgress = false
     }
     if self.mPerformEndUndoGroupingOnMouseUp {

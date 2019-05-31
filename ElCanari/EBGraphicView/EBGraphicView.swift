@@ -54,7 +54,7 @@ import Cocoa
   internal var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   internal var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   internal var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
-  internal var mStopOptionMouseUpCallback : Optional < () -> Void > = nil
+  internal var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
   internal var mOptionClickOperationInProgress = false
 
   //····················································································································
@@ -62,7 +62,7 @@ import Cocoa
   func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
                                 continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
                                 abort inAbortCallback : @escaping () -> Void,
-                                stop inStopCallback : @escaping () -> Void) {
+                                stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void) {
     self.mStartOptionMouseDownCallback = inStartCallback
     self.mContinueOptionMouseDraggedCallback = inContinueCallback
     self.mAbortOptionMouseOperationCallback = inAbortCallback

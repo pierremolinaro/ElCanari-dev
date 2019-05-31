@@ -44,11 +44,16 @@ extension SheetInProject {
   //····················································································································
 
   func connect (points inPoints : [PointInSchematic],
-                _ inWindow : NSWindow,
+                window inWindow : NSWindow,
                 panelForMergingSeveralSubnet inPanel : NSPanel,
                 popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
+    let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
+    var points = inPoints
+    if let newPoint = optionalPoint {
+      points.append (newPoint)
+    }
     var netSet = Set <NetInProject> ()
-    for point in inPoints {
+    for point in points {
       if let net = point.mNet {
         netSet.insert (net)
       }
@@ -57,16 +62,16 @@ extension SheetInProject {
     let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
     if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
       var hasPinOrLabel = false
-      for p in inPoints {
+      for p in points {
         if (p.mSymbol != nil) || (p.mLabels.count > 0) {
           hasPinOrLabel = true
           break
         }
       }
       let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
-      self.propagateAndMerge (net: newNet, to: inPoints)
+      self.propagateAndMerge (net: newNet, to: points)
     }else if netArray.count == 1 {
-      self.propagateAndMerge (net: netArray [0], to: inPoints)
+      self.propagateAndMerge (net: netArray [0], to: points)
     }else if netArray.count == 2 {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
@@ -75,7 +80,7 @@ extension SheetInProject {
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, inPoints, netArray)
+        self.handleAlertResponseForMergingNets (response, points, netArray)
       }
     }else if netArray.count == 3 {
       let alert = NSAlert ()
@@ -85,10 +90,10 @@ extension SheetInProject {
       }
       alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, inPoints, netArray)
+        self.handleAlertResponseForMergingNets (response, points, netArray)
       }
     }else{ // netArray.count > 3
-      self.connectionWillMergeSeveralSubnets (points: inPoints, netArray, inWindow, inPanel, inPopUp)
+      self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, inPanel, inPopUp)
     }
   }
 

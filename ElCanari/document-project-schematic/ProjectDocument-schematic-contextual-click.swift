@@ -19,12 +19,12 @@ extension CustomizedProjectDocument {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
     //--- Add Point to wire ?
-      let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
       self.appendCreateWirePointItemTo (menu : menu, canariAlignedMouseDownLocation, wires: wires)
     //--- Add Remove point from wire ?
       self.appendRemovePointFromWireItemTo (menu: menu, points: points)
@@ -90,7 +90,7 @@ extension CustomizedProjectDocument {
        let mergeSeveralSubnetsPopUpButton = self.mMergeSeveralSubnetsPopUpButton {
       selectedSheet.connect (
         points: inPoints,
-        window,
+        window: window,
         panelForMergingSeveralSubnet: mergeSeveralSubnetsPanel,
         popUpButtonForMergingSeveralSubnet: mergeSeveralSubnetsPopUpButton
       )
