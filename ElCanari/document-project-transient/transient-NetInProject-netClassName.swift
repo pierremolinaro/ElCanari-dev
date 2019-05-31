@@ -17,7 +17,7 @@ func transient_NetInProject_netClassName (
        _ self_mNetClass_mNetClassName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return self_mNetClass_mNetClassName ?? ""
 //--- END OF USER ZONE 2
 }
 

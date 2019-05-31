@@ -17,7 +17,7 @@ func transient_WireInSchematic_netClassName (
        _ self_mP1_netClassName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return self_mP1_netClassName ?? ""
 //--- END OF USER ZONE 2
 }
 

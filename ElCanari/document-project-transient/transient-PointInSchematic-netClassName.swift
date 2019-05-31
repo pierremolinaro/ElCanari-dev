@@ -17,7 +17,7 @@ func transient_PointInSchematic_netClassName (
        _ self_mNet_netClassName : String?
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return self_mNet_netClassName ?? ""
 //--- END OF USER ZONE 2
 }
 
