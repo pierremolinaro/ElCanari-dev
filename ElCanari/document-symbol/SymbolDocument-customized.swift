@@ -115,8 +115,8 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorReceivingView: self.mSymbolBaseInspectorView)
-    self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
-    self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
+    self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, for: SymbolPin.self)
+    self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, for: SymbolText.self)
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)

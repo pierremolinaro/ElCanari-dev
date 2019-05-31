@@ -109,11 +109,11 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
   //--- Register schematics inspector views
     self.schematicObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
-    self.schematicObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
-    self.schematicObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematic")
-    self.schematicObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematic")
-    self.schematicObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematic")
-    self.schematicObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematic")
+    self.schematicObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, for: ComponentSymbolInProject.self)
+    self.schematicObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, for: CommentInSchematic.self)
+    self.schematicObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, for: NCInSchematic.self)
+    self.schematicObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, for: LabelInSchematic.self)
+    self.schematicObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, for: WireInSchematic.self)
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---

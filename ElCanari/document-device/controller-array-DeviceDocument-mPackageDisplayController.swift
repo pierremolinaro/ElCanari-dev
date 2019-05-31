@@ -963,7 +963,7 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
 
   private var mInspectorReceivingView : NSView? = nil
   private var mCurrentAttachedView : NSView? = nil
-  private var mInspectorDictionary = [String : NSView] ()
+  private var mInspectorDictionary = [ObjectIdentifier : NSView] ()
   private var mInspectorObserver = EBOutletEvent ()
 
   //····················································································································
@@ -975,8 +975,8 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
 
   //····················································································································
 
-  func register (inspectorView : NSView?, forClass inClassName : String) {
-    self.mInspectorDictionary [inClassName] = inspectorView
+  func register (inspectorView : NSView?, for inEntity : EBGraphicManagedObject.Type) {
+    self.mInspectorDictionary [ObjectIdentifier (inEntity)] = inspectorView
     self.updateInspectorViews ()
   }
 
@@ -1006,16 +1006,16 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
         inspectorView.addSubview (tf)
         self.mCurrentAttachedView = tf
       }else{
-        var classNames = Set <String> ()
+        var selectionTypes = Set <ObjectIdentifier> ()
         for object in self.selectedArray_property.propset {
-          let className = String (describing: type (of: object))
-          classNames.insert (className)
+          let T = ObjectIdentifier (type (of: object))
+          selectionTypes.insert (T)
         }
-        if classNames.count > 1 {
+        if selectionTypes.count > 1 {
           let tf = self.textField ("Multiple Selection", inspectorView.frame)
           inspectorView.addSubview (tf)
           self.mCurrentAttachedView = tf
-        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
+        }else if let selectionInspectorView = self.mInspectorDictionary [selectionTypes.first!] {
           selectionInspectorView.frame = inspectorView.frame
           inspectorView.addSubview (selectionInspectorView)
           self.mCurrentAttachedView = selectionInspectorView

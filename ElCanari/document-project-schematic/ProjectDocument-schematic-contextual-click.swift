@@ -270,7 +270,7 @@ extension CustomizedProjectDocument {
 
   internal func addPointToWireInSchematic (at inUnalignedLocation : CanariPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      selectedSheet.addPointToWire (at: inUnalignedLocation)
+      _ = selectedSheet.addPointToWire (at: inUnalignedLocation)
     }
   }
 
