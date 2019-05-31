@@ -357,9 +357,7 @@ document ProjectDocument root ProjectRoot {
     $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
   ;
   
-  outlet EBPopUpButton mSchematicLabelNetClassButton
-    $enabled #mSchematicLabelSelectionController.selectedArray.count == 1
-  ;
+  outlet EBPopUpButton mSchematicLabelNetClassButton ;
 
 //--- Selected symbol in schematic inspector
   outlet CanariViewWithKeyView mComponentSymbolInspectorView ;

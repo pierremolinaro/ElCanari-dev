@@ -26,6 +26,8 @@ graphic entity LabelInSchematic : SchematicObject {
   ;
 
   transient String netName dependsFrom self.mPoint.one.netName ;
+  
+  transient String netClassName dependsFrom self.mPoint.one.netClassName ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

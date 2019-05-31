@@ -29,10 +29,11 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   }
 
   //····················································································································
-  //  POP UP BUTTON CONTROLLERS
+  //  POP UP BUTTON CONTROLLERS FOR SELECTING NET CLASS
   //····················································································································
 
   private var mSelectedWireNetClassPopUpController = EBPopUpButtonControllerForNetClassFromSelectedWires ()
+  private var mSelectedLabelNetClassPopUpController = EBPopUpButtonControllerForNetClassFromSelectedLabels ()
 
   //····················································································································
   //  Property needed for handling "symbol count" to insert in segmented control title
@@ -68,6 +69,11 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
       self.wireInSchematicSelectionController
     )
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (self.mSchematicWireNetClassButton)
+    self.mSelectedLabelNetClassPopUpController.bind_model (
+      self.rootObject.mNetClasses_property,
+      self.mSchematicLabelSelectionController
+    )
+    self.mSelectedLabelNetClassPopUpController.attachPopUpButton (self.mSchematicLabelNetClassButton)
   //--- Set pages segmented control
     let pages = [
       self.mComponentsPageView,
@@ -160,6 +166,8 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)
+    self.mSelectedLabelNetClassPopUpController.unbind_model ()
+    self.mSelectedLabelNetClassPopUpController.attachPopUpButton (nil)
   }
 
   //····················································································································

@@ -525,7 +525,6 @@ import Cocoa
   var mController_mSchematicsLabelRenameNetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelMergeSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelInsulateSubnetButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mSchematicLabelNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentFromComponentSymbolButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameNetInNetTabButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSelectNetClassInNetTabButton_enabled : MultipleBindingController_enabled? = nil
@@ -1330,16 +1329,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
-        outlet: self.mSchematicLabelNetClassButton
-      )
-      self.mSchematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
-      self.mController_mSchematicLabelNetClassButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
           return (self.mSchematicObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentFromComponentSymbolButton
@@ -1545,8 +1534,6 @@ import Cocoa
     self.mController_mSchematicLabelMergeSubnetButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelInsulateSubnetButton_enabled!)
     self.mController_mSchematicLabelInsulateSubnetButton_enabled = nil
-    self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelNetClassButton_enabled!)
-    self.mController_mSchematicLabelNetClassButton_enabled = nil
     self.mSchematicObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
     self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)

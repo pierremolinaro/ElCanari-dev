@@ -30,6 +30,12 @@ protocol LabelInSchematic_selectionDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol LabelInSchematic_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol LabelInSchematic_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -43,6 +49,7 @@ class LabelInSchematic : SchematicObject,
          LabelInSchematic_location,
          LabelInSchematic_netName,
          LabelInSchematic_selectionDisplay,
+         LabelInSchematic_netClassName,
          LabelInSchematic_objectDisplay {
 
   //····················································································································
@@ -147,6 +154,29 @@ class LabelInSchematic : SchematicObject,
   }
 
   //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -232,6 +262,28 @@ class LabelInSchematic : SchematicObject,
     self.netName_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPoint_property.netClassName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mPoint_property.netClassName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_LabelInSchematic_netClassName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -279,6 +331,7 @@ class LabelInSchematic : SchematicObject,
     self.netName_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.removeEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.removeEBObserverOf_netClassName (self.netClassName_property)
     g_Preferences?.symbolColorForSchematic_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.mPoint_property.removeEBObserverOf_location (self.objectDisplay_property)
@@ -331,6 +384,14 @@ class LabelInSchematic : SchematicObject,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
