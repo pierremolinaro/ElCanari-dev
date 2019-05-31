@@ -77,48 +77,48 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageSegment",
+      entity: PackageSegment.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageBezier",
+      entity: PackageBezier.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddOvalButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageOval",
+      entity: PackageOval.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddArcButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageArc",
+      entity: PackageArc.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddPadButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackagePad",
+      entity: PackagePad.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddSlavePadButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageSlavePad",
+      entity: PackageSlavePad.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageGuide",
+      entity: PackageGuide.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddGuideButton?.image = self.imageForAddGuideButton ()
     self.mAddDimensionButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageDimension",
+      entity: PackageDimension.self,
       scaleProvider: self.mComposedPackageView
     )
     self.mAddZoneButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageZone",
+      entity: PackageZone.self,
       scaleProvider: self.mComposedPackageView
     )
  //--- Register scroll view

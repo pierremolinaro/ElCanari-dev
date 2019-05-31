@@ -36,23 +36,24 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectTypeName = "" // Any value if mDragType is null
+  private var mDraggedObjectType : EBGraphicManagedObject.Type? = nil
   private var mScaleProvider : EBGraphicViewScaleProvider? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 entityName : String,
+                 entity inEntityType : EBGraphicManagedObject.Type,
                  scaleProvider : EBGraphicViewScaleProvider?) {
     self.mDragType = draggedType
-    self.mDraggedObjectTypeName = entityName
+    self.mDraggedObjectType = inEntityType
     self.mScaleProvider = scaleProvider
   }
 
   //····················································································································
 
   func buildButtonImageFromDraggedObjectTypeName () {
-    if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
+    if let T = self.mDraggedObjectType {
+      let temporaryObject = T.init (nil)
       let displayShape = temporaryObject.objectDisplay!
       let rect = displayShape.boundingBox
       if !rect.isEmpty {
@@ -73,34 +74,33 @@ class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSour
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let dragType = self.mDragType, self.isEnabled {
+    if let dragType = self.mDragType, self.isEnabled, let T = self.mDraggedObjectType {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
-        let transform = NSAffineTransform ()
-        let scale = self.mScaleProvider?.actualScale ?? 1.0
-        let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
-        let verticalFlip   : CGFloat = (self.mScaleProvider?.verticalFlip   ?? false) ? -1.0 : 1.0
-        transform.scaleX (by: scale * horizontalFlip, yBy: scale * verticalFlip)
-        let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
-        let rect = displayShape.boundingBox
-        let image = buildPDFimage (frame: rect, shape: displayShape)
-      //--- Move image rect origin to mouse click location
-        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-        var r = rect
-        r.origin.x += mouseDownLocation.x
-        r.origin.y += mouseDownLocation.y
-      //--- Associated data
-        let d = NSMutableDictionary ()
-        temporaryObject.saveIntoDictionary (d)
-        let dataDictionary : NSDictionary = ["OBJECTS" : [d], "X" : 0, "Y" : 0]
-        pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
-      //--- Set dragged image
-        draggingItem.setDraggingFrame (r, contents: image)
-      //--- Begin
-        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
-      }
+      let temporaryObject = T.init (nil)
+      let transform = NSAffineTransform ()
+      let scale = self.mScaleProvider?.actualScale ?? 1.0
+      let horizontalFlip : CGFloat = (self.mScaleProvider?.horizontalFlip ?? false) ? -1.0 : 1.0
+      let verticalFlip   : CGFloat = (self.mScaleProvider?.verticalFlip   ?? false) ? -1.0 : 1.0
+      transform.scaleX (by: scale * horizontalFlip, yBy: scale * verticalFlip)
+      let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
+      let rect = displayShape.boundingBox
+      let image = buildPDFimage (frame: rect, shape: displayShape)
+    //--- Move image rect origin to mouse click location
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      var r = rect
+      r.origin.x += mouseDownLocation.x
+      r.origin.y += mouseDownLocation.y
+    //--- Associated data
+      let d = NSMutableDictionary ()
+      temporaryObject.saveIntoDictionary (d)
+      let dataDictionary : NSDictionary = ["OBJECTS" : [d], "X" : 0, "Y" : 0]
+      pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
+    //--- Set dragged image
+      draggingItem.setDraggingFrame (r, contents: image)
+    //--- Begin
+      self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
     }
   }
 

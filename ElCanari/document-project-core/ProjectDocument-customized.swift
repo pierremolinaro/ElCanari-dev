@@ -149,12 +149,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
       draggedType: kDragAndDropCommentInSchematic,
-      entityName: "CommentInSchematics",
+      entity: CommentInSchematic.self,
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
       draggedType: kDragAndDropWireInSchematic,
-      entityName: "WireInSchematic",
+      entity: WireInSchematic.self,
       scaleProvider: self.mSchematicsView
     )
   //---
