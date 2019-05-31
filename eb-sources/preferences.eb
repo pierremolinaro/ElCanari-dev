@@ -350,7 +350,7 @@ prefs {
 
 //--- Array of additionnal libraries
   toMany CanariLibraryEntry additionnalLibraryArray ;
-  outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;
+  outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue #additionnalLibraryArrayController ;
   tableViewController #additionnalLibraryArrayController {
     allowsEmptySelection:no, allowsMultipleSelection:no
   } self.additionnalLibraryArray {

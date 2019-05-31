@@ -410,7 +410,7 @@ document PackageDocument root PackageRoot {
   outlet EBGraphicView mComposedPackageView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
-    $graphicController self.mPackageObjectsController
+    $graphicController #mPackageObjectsController
     $overObjectsDisplay root.padNumberDisplay
     $mouseGrid root.gridStep
     $gridStep root.gridStep

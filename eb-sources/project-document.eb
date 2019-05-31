@@ -76,7 +76,7 @@ document ProjectDocument root ProjectRoot {
      column "value" EBTextField $value self.mComponentValue { sendContinously : no }
      column "inSchematics" EBTextObserverField $valueObserver self.placementInSchematic
   }
-  outlet EBTableView mComponentTableView $tableValue componentController ;
+  outlet EBTableView mComponentTableView $tableValue #componentController ;
 
   transient String componentCount dependsFrom root.mComponents.count ;
   outlet EBTextObserverField mComponentCountTextField $valueObserver self.componentCount ;
@@ -90,7 +90,7 @@ document ProjectDocument root ProjectRoot {
     column "pad" EBTextObserverField $valueObserver self.viaPadDiameter
     column "used" EBTextObserverField $valueObserver self.netUsage
   }
-  outlet EBTableView mNetClassTableView $tableValue netClassController ;
+  outlet EBTableView mNetClassTableView $tableValue #netClassController ;
 
   action addNetClassAction ;
   outlet EBButton mAddNetClassButton $run addNetClassAction ;
@@ -137,7 +137,7 @@ document ProjectDocument root ProjectRoot {
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
   }
-  outlet EBTableView mFontLibraryTableView $tableValue projectFontController ;
+  outlet EBTableView mFontLibraryTableView $tableValue #projectFontController ;
 
 //--- Devices
   action resetDeviceVersionAction ;
@@ -177,7 +177,7 @@ document ProjectDocument root ProjectRoot {
      column "size" EBTextObserverField $valueObserver self.sizeString
      column "componentCount" EBIntObserverField $valueObserver self.mComponents.count {autoFormatter:yes}
   }
-  outlet EBTableView mDeviceLibraryTableView $tableValue projectDeviceController ;
+  outlet EBTableView mDeviceLibraryTableView $tableValue #projectDeviceController ;
 
   transient StringArray selectedDevicePackageNames dependsFrom #projectDeviceController.selectedArray.all.packageNames ;
   outlet StringArrayTableView mDevicePackageTableView $array self.selectedDevicePackageNames ;
@@ -270,7 +270,7 @@ document ProjectDocument root ProjectRoot {
     $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mSchematicHorizontalFlip
     $verticalFlip root.mSchematicVerticalFlip
-    $graphicController self.schematicObjectsController
+    $graphicController #schematicObjectsController
     $gridStyle root.mSchematicGridStyle
     $gridDisplayFactor root.mSchematicGridDisplayFactor
     $gridLineColor prefs.lineColorOfSymbolGrid

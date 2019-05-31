@@ -149,7 +149,7 @@ document MergerDocument root MergerRoot {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
 
-  outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
+  outlet EBTableView mBoardModelTableView $tableValue #mBoardModelController ;
 
   selectionController BoardModel #mBoardModelSelection : #mBoardModelController.selectedArray ;
 
@@ -272,7 +272,7 @@ document MergerDocument root MergerRoot {
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
     $overObjectsDisplay root.boardOutlineRectDisplay
-    $graphicController self.mBoardInstanceController
+    $graphicController #mBoardInstanceController
     $arrowKeyMagnitude root.arrowMagnitude
     $shiftArrowKeyMagnitude root.shiftArrowMagnitude
   ;

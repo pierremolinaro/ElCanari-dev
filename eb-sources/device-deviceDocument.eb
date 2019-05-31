@@ -47,7 +47,7 @@ document DeviceDocument root DeviceRoot {
   }
 
 
-  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue mDocumentationController ;
+  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue #mDocumentationController ;
 
   outlet EBButton mRemoveSelectedDocButton
     $run #mDocumentationController.remove
@@ -77,7 +77,7 @@ document DeviceDocument root DeviceRoot {
   outlet EBGraphicView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
     $verticalFlip root.mSymbolDisplayVerticalFlip
-    $graphicController self.mSymbolDisplayController
+    $graphicController #mSymbolDisplayController
     $zoom root.mSymbolDisplayZoom
   ;
 
@@ -117,7 +117,7 @@ document DeviceDocument root DeviceRoot {
   outlet EBGraphicView mComposedPackageView
     $horizontalFlip root.mPackageDisplayHorizontalFlip
     $verticalFlip root.mPackageDisplayVerticalFlip
-    $graphicController self.mPackageDisplayController
+    $graphicController #mPackageDisplayController
     $zoom root.mPackageDisplayZoom
   ;
 
@@ -164,7 +164,7 @@ document DeviceDocument root DeviceRoot {
      column "version" EBTextObserverField $valueObserver self.versionString
      column "count" EBIntObserverField $valueObserver self.instanceCount {autoFormatter : yes}
   }
-  outlet EBTableView mSymbolTableView $tableValue mSymbolController ;
+  outlet EBTableView mSymbolTableView $tableValue #mSymbolController ;
 
   action resetSelectedSymbolVersion ;
   outlet EBButton mResetSelectedSymbolVersionButton
@@ -195,7 +195,7 @@ document DeviceDocument root DeviceRoot {
      column "package" EBTextObserverField $valueObserver self.mName
      column "version" EBTextObserverField $valueObserver self.versionString
   }
-  outlet EBTableView mPackageTableView $tableValue mPackageController ;
+  outlet EBTableView mPackageTableView $tableValue #mPackageController ;
 
   action resetSelectedPackageVersion ;
   outlet EBButton mResetSelectedPackageVersionButton

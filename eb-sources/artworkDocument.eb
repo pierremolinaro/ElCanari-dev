@@ -59,7 +59,7 @@ document ArtworkDocument root ArtworkRoot {
 
 //--- Data Tab
   outlet CanariViewWithKeyView mDataPageView ;
-  outlet EBTableView mDataTableView $tableValue mDataController ;
+  outlet EBTableView mDataTableView $tableValue #mDataController ;
   tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }

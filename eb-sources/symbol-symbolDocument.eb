@@ -50,7 +50,7 @@ document SymbolDocument root SymbolRoot {
   outlet EBGraphicView mComposedSymbolView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
-    $graphicController self.mSymbolObjectsController
+    $graphicController #mSymbolObjectsController
     $gridStyle root.gridStyle
     $gridDisplayFactor root.gridDisplay
     $gridLineColor prefs.lineColorOfSymbolGrid
