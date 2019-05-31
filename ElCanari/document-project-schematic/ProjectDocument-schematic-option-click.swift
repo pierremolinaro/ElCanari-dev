@@ -65,6 +65,14 @@ extension CustomizedProjectDocument {
     }
   }
 
+  //····················································································································
+
+  internal func abortWireCreationOnOptionMouseUp () {
+     if self.mWireCreatedByOptionClick != nil {
+       self.ebUndoManager.undo ()
+       self.mWireCreatedByOptionClick = nil
+     }
+  }
 
   //····················································································································
 

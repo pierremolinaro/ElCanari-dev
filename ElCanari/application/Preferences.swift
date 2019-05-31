@@ -3234,7 +3234,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--- Atomic property: mLastSystemLibraryCheckTime
     self.mLastSystemLibraryCheckTime_property.ebUndoManager = self.ebUndoManager
   //--- Array controller property: additionnalLibraryArrayController
-    self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
+    self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     self.mValueRevealInFinder_packages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

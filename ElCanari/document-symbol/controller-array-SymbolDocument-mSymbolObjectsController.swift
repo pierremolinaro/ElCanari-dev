@@ -156,8 +156,9 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_SymbolObject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_SymbolObject, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
+    self.mUndoManager = inUndoManager
     inModel.attachClient (self)
     self.startObservingObjectShape ()
     self.startObservingSelectionShape ()
@@ -173,6 +174,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
     self.mModel?.detachClient (self)
     self.selectedSet = Set ()
     self.mModel = nil
+    self.mUndoManager = nil
  }
 
   //····················································································································
@@ -185,11 +187,12 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
     self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
   }
 
-  //····················································································································
+ //····················································································································
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? { return self.mModel?.ebUndoManager }
+  private var mUndoManager : EBUndoManager? = nil
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   SELECTION

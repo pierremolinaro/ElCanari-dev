@@ -486,17 +486,17 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: mPackageController
-    self.mPackageController.bind_model (self.rootObject.mPackages_property)
+    self.mPackageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
   //--- Array controller property: mDocumentationController
-    self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
+    self.mDocumentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
   //--- Array controller property: mSymbolDisplayController
-    self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property)
+    self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
   //--- Selection controller property: mSymbolInstanceSelection
     self.mSymbolInstanceSelection.bind_selection (model: self.mSymbolDisplayController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: mPackageDisplayController
-    self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property)
+    self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
   //--- Array controller property: mSymbolController
-    self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property)
+    self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

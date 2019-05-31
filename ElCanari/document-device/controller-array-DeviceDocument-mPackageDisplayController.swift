@@ -156,8 +156,9 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
+    self.mUndoManager = inUndoManager
     inModel.attachClient (self)
     self.startObservingObjectShape ()
     self.startObservingSelectionShape ()
@@ -173,6 +174,7 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
     self.mModel?.detachClient (self)
     self.selectedSet = Set ()
     self.mModel = nil
+    self.mUndoManager = nil
  }
 
   //····················································································································
@@ -185,11 +187,12 @@ final class Controller_DeviceDocument_mPackageDisplayController : ReadOnlyAbstra
     self.mInternalSelectedArrayProperty.setProp (Array (newSelectedSet))
   }
 
-  //····················································································································
+ //····················································································································
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? { return self.mModel?.ebUndoManager }
+  private var mUndoManager : EBUndoManager? = nil
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   SELECTION

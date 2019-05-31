@@ -618,11 +618,11 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: mBoardModelController
-    self.mBoardModelController.bind_model (self.rootObject.boardModels_property)
+    self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
   //--- Selection controller property: mBoardModelSelection
     self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: mBoardInstanceController
-    self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property)
+    self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property, self.ebUndoManager)
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: incorrectDocumentFileErrorMessage

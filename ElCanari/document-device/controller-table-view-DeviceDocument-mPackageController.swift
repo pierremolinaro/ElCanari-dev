@@ -66,8 +66,9 @@ final class Controller_DeviceDocument_mPackageController : ReadOnlyAbstractGener
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice) {
+  func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
+    self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
   //--- Add observed properties (for filtering and sorting)
@@ -87,6 +88,7 @@ final class Controller_DeviceDocument_mPackageController : ReadOnlyAbstractGener
     }
   //---
     self.mModel = nil
+    self.mUndoManager = nil
  }
 
   //····················································································································
@@ -110,9 +112,8 @@ final class Controller_DeviceDocument_mPackageController : ReadOnlyAbstractGener
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? {
-    return self.mModel?.ebUndoManager
-  }
+  private var mUndoManager : EBUndoManager? = nil
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Selected Array

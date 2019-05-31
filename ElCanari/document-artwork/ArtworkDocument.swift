@@ -299,7 +299,7 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: mDataController
-    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property)
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mGeneratedFileCountString

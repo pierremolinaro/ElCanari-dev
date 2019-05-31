@@ -331,7 +331,7 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: mSelectedCharacterController
-    self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
+    self.mSelectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: canDeleteCurrentCharacter

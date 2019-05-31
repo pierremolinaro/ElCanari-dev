@@ -66,8 +66,9 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters) {
+  func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
+    self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
   //--- Add observed properties (for filtering and sorting)
@@ -89,6 +90,7 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
     }
   //---
     self.mModel = nil
+    self.mUndoManager = nil
  }
 
   //····················································································································
@@ -112,9 +114,8 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? {
-    return self.mModel?.ebUndoManager
-  }
+  private var mUndoManager : EBUndoManager? = nil
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Selected Array

@@ -651,7 +651,7 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: mPackageObjectsController
-    self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property)
+    self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageOvalSelectionController

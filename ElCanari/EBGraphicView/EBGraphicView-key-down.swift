@@ -17,6 +17,15 @@ extension EBGraphicView {
     ;
     for character in (inEvent.characters ?? "").unicodeScalars {
       switch (character) {
+      case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
+        if self.mPerformEndUndoGroupingOnMouseUp {
+          self.mPerformEndUndoGroupingOnMouseUp = false
+          self.viewController?.ebUndoManager?.endUndoGrouping ()
+        }
+        if self.mOptionClickOperationInProgress {
+          self.mOptionClickOperationInProgress = false
+          self.mAbortOptionMouseOperationCallback? ()
+        }
       case NSEvent.SpecialKey.upArrow.unicodeScalar :
         _ = self.wantsToTranslateSelection (byX: 0, byY:amount)
       case NSEvent.SpecialKey.downArrow.unicodeScalar :

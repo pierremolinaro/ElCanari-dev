@@ -770,15 +770,15 @@ import Cocoa
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
   //--- Array controller property: componentController
-    self.componentController.bind_model (self.rootObject.mComponents_property)
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
   //--- Array controller property: netClassController
-    self.netClassController.bind_model (self.rootObject.mNetClasses_property)
+    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
   //--- Array controller property: projectFontController
-    self.projectFontController.bind_model (self.rootObject.mFonts_property)
+    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
   //--- Array controller property: projectDeviceController
-    self.projectDeviceController.bind_model (self.rootObject.mDevices_property)
+    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
   //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: ncInSchematicSelectionController

@@ -73,6 +73,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
      self.mSchematicsView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
        continue: { [weak self] (inUnalignedMouseLocation) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation) },
+       abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
        stop: { [weak self] in self?.stopWireCreationOnOptionMouseUp () }
      )
   //--- Pop up button controllers
