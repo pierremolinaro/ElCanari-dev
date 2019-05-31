@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func updateFontAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        let selectedFonts = self.mProjectFontController.selectedArray_property.propval
+        let selectedFonts = self.projectFontController.selectedArray_property.propval
         var messages = [String] ()
         for font in selectedFonts {
           let pathes = fontFilePathInLibraries (font.mFontName)

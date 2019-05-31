@@ -69,7 +69,7 @@ extension ProjectDocument {
           netClass.mViaPadDiameter = viaPadDiameter_property.propval
           netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
           self.rootObject.mNetClasses.append (netClass)
-          self.mNetClassController.setSelection ([netClass])
+          self.netClassController.setSelection ([netClass])
         }
         self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()
@@ -107,7 +107,7 @@ extension ProjectDocument {
   //····················································································································
 
   internal func performEditNetClass () {
-    let selectedNetClasses = self.mNetClassController.selectedArray
+    let selectedNetClasses = self.netClassController.selectedArray
     if let window = self.windowForSheet, let panel = self.mAddNetClassPanel, selectedNetClasses.count == 1 {
       let editedNetClass = selectedNetClasses [0]
       self.mAddNetClassTextField?.stringValue = editedNetClass.mNetClassName
@@ -175,7 +175,7 @@ extension ProjectDocument {
   //····················································································································
 
   @objc fileprivate func classNameTextFieldEditionDidChange (_ inSender : NSObject?) {
-    let selectedNetClasses = self.mNetClassController.selectedArray
+    let selectedNetClasses = self.netClassController.selectedArray
     if let newNetClassName = self.mAddNetClassTextField?.stringValue, selectedNetClasses.count == 1 {
       let editedNetClass = selectedNetClasses [0]
       if newNetClassName == "" {

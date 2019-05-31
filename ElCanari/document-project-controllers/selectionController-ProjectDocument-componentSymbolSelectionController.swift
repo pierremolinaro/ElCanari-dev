@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Derived selection controller ProjectDocument mComponentSymbolSelectionController
+//    Derived selection controller ProjectDocument componentSymbolSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_mComponentSymbolSelectionController : EBObject {
+final class SelectionController_ProjectDocument_componentSymbolSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: mCenterX
@@ -329,7 +329,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_mComponentSymbolSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -441,7 +441,7 @@ final class SelectionController_ProjectDocument_mComponentSymbolSelectionControl
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_mComponentSymbolSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle

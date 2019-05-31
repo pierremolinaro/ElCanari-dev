@@ -9,10 +9,10 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Table View Controller + ProjectDocument mNetClassController
+//    Table View Controller + ProjectDocument projectDeviceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties
@@ -25,11 +25,11 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_NetClassInProject ()
+  let sortedArray_property = TransientArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var sortedArray : [NetClassInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [DeviceInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -55,7 +55,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
+  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
 
   //····················································································································
 
@@ -66,7 +66,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject) {
     self.mModel = inModel
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
@@ -97,7 +97,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [NetClassInProject] ()
+    var newSelectedArray = [DeviceInProject] ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -118,23 +118,23 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_NetClassInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceInProject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_NetClassInProject { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_DeviceInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [NetClassInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[NetClassInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  var selectedSet : Set <NetClassInProject> { return Set (self.selectedArray) }
+  var selectedSet : Set <DeviceInProject> { return Set (self.selectedArray) }
 
   //····················································································································
 
@@ -152,7 +152,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  func setSelection (_ inObjects : [NetClassInProject]) {
+  func setSelection (_ inObjects : [DeviceInProject]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
   }
 
@@ -167,7 +167,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [NetClassInProject] ()
+          var result = [DeviceInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -240,35 +240,23 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
-    //--- Check 'netcolor' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "netcolor")) {
+    //--- Check 'version' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"netcolor\" column view unknown")
+        presentErrorWindow (file, line, "\"version\" column view unknown")
       }
-    //--- Check 'width' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "width")) {
+    //--- Check 'size' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"width\" column view unknown")
+        presentErrorWindow (file, line, "\"size\" column view unknown")
       }
-    //--- Check 'hole' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "hole")) {
+    //--- Check 'componentCount' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "componentCount")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"hole\" column view unknown")
-      }
-    //--- Check 'pad' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "pad")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"pad\" column view unknown")
-      }
-    //--- Check 'used' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "used")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"used\" column view unknown")
+        presentErrorWindow (file, line, "\"componentCount\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -303,7 +291,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [NetClassInProject : Int] ()
+      var objectDictionary = [DeviceInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -346,7 +334,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [NetClassInProject] ()
+      var newSelectedObjects = [DeviceInProject] ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -395,42 +383,28 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mDeviceName_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_backColor ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.netWidth_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property, file: #file, line: #line)
-          cell.update ()
-        }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mComponents_property.count_property, file: #file, line: #line, autoFormatter:true)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -446,7 +420,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: NetClassInProject) {
+  func select (object inObject: DeviceInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -472,7 +446,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = NetClassInProject (self.ebUndoManager)
+        let newObject = DeviceInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
         model.setProp (array)
@@ -501,7 +475,7 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [NetClassInProject : Int] ()
+          var sortedObjectDictionary = [DeviceInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -523,13 +497,13 @@ final class Controller_ProjectDocument_mNetClassController : ReadOnlyAbstractGen
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : NetClassInProject? = nil
+          var newSelectedObject : DeviceInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [NetClassInProject : Int] ()
+          var objectDictionary = [DeviceInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

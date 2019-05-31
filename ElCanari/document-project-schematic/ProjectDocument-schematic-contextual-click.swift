@@ -232,7 +232,7 @@ extension CustomizedProjectDocument {
   @objc private func addNCToPinAction (_ inSender : NSMenuItem) {
     if let point = inSender.representedObject as? PointInSchematic, let selectedSheet = self.rootObject.mSelectedSheet {
       let nc = selectedSheet.addNCToPin (toPoint: point)
-      self.mSchematicObjectsController.setSelection ([nc])
+      self.schematicObjectsController.setSelection ([nc])
     }
   }
 
@@ -354,7 +354,7 @@ extension CustomizedProjectDocument {
         newNetCreator: self.rootObject.createNetWithAutomaticName
       )
       if let label = possibleLabel {
-        self.mSchematicObjectsController.setSelection ([label])
+        self.schematicObjectsController.setSelection ([label])
       }
     }
   }

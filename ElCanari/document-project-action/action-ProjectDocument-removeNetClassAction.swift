@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func removeNetClassAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        for netClass in self.mNetClassController.selectedArray {
+        for netClass in self.netClassController.selectedArray {
           if let idx = self.rootObject.mNetClasses.firstIndex (of: netClass) {
             self.rootObject.mNetClasses.remove (at: idx)
           }

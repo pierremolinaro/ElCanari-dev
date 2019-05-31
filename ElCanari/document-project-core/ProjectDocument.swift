@@ -9,34 +9,34 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedDocument {
 
   //····················································································································
-  //   Array controller: mComponentController
+  //   Array controller: componentController
   //····················································································································
 
-  var mComponentController = Controller_ProjectDocument_mComponentController ()
+  var componentController = Controller_ProjectDocument_componentController ()
 
   //····················································································································
-  //   Array controller: mNetClassController
+  //   Array controller: netClassController
   //····················································································································
 
-  var mNetClassController = Controller_ProjectDocument_mNetClassController ()
+  var netClassController = Controller_ProjectDocument_netClassController ()
 
   //····················································································································
-  //   Array controller: mProjectFontController
+  //   Array controller: projectFontController
   //····················································································································
 
-  var mProjectFontController = Controller_ProjectDocument_mProjectFontController ()
+  var projectFontController = Controller_ProjectDocument_projectFontController ()
 
   //····················································································································
-  //   Array controller: mProjectDeviceController
+  //   Array controller: projectDeviceController
   //····················································································································
 
-  var mProjectDeviceController = Controller_ProjectDocument_mProjectDeviceController ()
+  var projectDeviceController = Controller_ProjectDocument_projectDeviceController ()
 
   //····················································································································
-  //   Array controller: mSchematicObjectsController
+  //   Array controller: schematicObjectsController
   //····················································································································
 
-  var mSchematicObjectsController = Controller_ProjectDocument_mSchematicObjectsController ()
+  var schematicObjectsController = Controller_ProjectDocument_schematicObjectsController ()
 
   //····················································································································
   //   Selection controller: wireInSchematicSelectionController
@@ -57,16 +57,16 @@ import Cocoa
   var commentInSchematicSelectionController = SelectionController_ProjectDocument_commentInSchematicSelectionController ()
 
   //····················································································································
-  //   Selection controller: mSchematicLabelSelectionController
+  //   Selection controller: schematicLabelSelectionController
   //····················································································································
 
-  var mSchematicLabelSelectionController = SelectionController_ProjectDocument_mSchematicLabelSelectionController ()
+  var schematicLabelSelectionController = SelectionController_ProjectDocument_schematicLabelSelectionController ()
 
   //····················································································································
-  //   Selection controller: mComponentSymbolSelectionController
+  //   Selection controller: componentSymbolSelectionController
   //····················································································································
 
-  var mComponentSymbolSelectionController = SelectionController_ProjectDocument_mComponentSymbolSelectionController ()
+  var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
 
   //····················································································································
   //   Transient property: componentCount
@@ -561,26 +561,26 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: mComponentController
-    self.mComponentController.addExplorer (name: "mComponentController", y:&y, view:view)
-  //--- Array controller property: mNetClassController
-    self.mNetClassController.addExplorer (name: "mNetClassController", y:&y, view:view)
-  //--- Array controller property: mProjectFontController
-    self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
-  //--- Array controller property: mProjectDeviceController
-    self.mProjectDeviceController.addExplorer (name: "mProjectDeviceController", y:&y, view:view)
-  //--- Array controller property: mSchematicObjectsController
-    self.mSchematicObjectsController.addExplorer (name: "mSchematicObjectsController", y:&y, view:view)
+  //--- Array controller property: componentController
+    self.componentController.addExplorer (name: "componentController", y:&y, view:view)
+  //--- Array controller property: netClassController
+    self.netClassController.addExplorer (name: "netClassController", y:&y, view:view)
+  //--- Array controller property: projectFontController
+    self.projectFontController.addExplorer (name: "projectFontController", y:&y, view:view)
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.addExplorer (name: "projectDeviceController", y:&y, view:view)
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.addExplorer (name: "schematicObjectsController", y:&y, view:view)
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.addExplorer (name: "wireInSchematicSelectionController", y:&y, view:view)
   //--- Selection controller property: ncInSchematicSelectionController
     self.ncInSchematicSelectionController.addExplorer (name: "ncInSchematicSelectionController", y:&y, view:view)
   //--- Selection controller property: commentInSchematicSelectionController
     self.commentInSchematicSelectionController.addExplorer (name: "commentInSchematicSelectionController", y:&y, view:view)
-  //--- Selection controller property: mSchematicLabelSelectionController
-    self.mSchematicLabelSelectionController.addExplorer (name: "mSchematicLabelSelectionController", y:&y, view:view)
-  //--- Selection controller property: mComponentSymbolSelectionController
-    self.mComponentSymbolSelectionController.addExplorer (name: "mComponentSymbolSelectionController", y:&y, view:view)
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
+  //--- Selection controller property: componentSymbolSelectionController
+    self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -769,26 +769,26 @@ import Cocoa
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
-  //--- Array controller property: mComponentController
-    self.mComponentController.bind_model (self.rootObject.mComponents_property)
-  //--- Array controller property: mNetClassController
-    self.mNetClassController.bind_model (self.rootObject.mNetClasses_property)
-  //--- Array controller property: mProjectFontController
-    self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
-  //--- Array controller property: mProjectDeviceController
-    self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
-  //--- Array controller property: mSchematicObjectsController
-    self.mSchematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
+  //--- Array controller property: componentController
+    self.componentController.bind_model (self.rootObject.mComponents_property)
+  //--- Array controller property: netClassController
+    self.netClassController.bind_model (self.rootObject.mNetClasses_property)
+  //--- Array controller property: projectFontController
+    self.projectFontController.bind_model (self.rootObject.mFonts_property)
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.bind_model (self.rootObject.mDevices_property)
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property)
   //--- Selection controller property: wireInSchematicSelectionController
-    self.wireInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+    self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: ncInSchematicSelectionController
-    self.ncInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+    self.ncInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: commentInSchematicSelectionController
-    self.commentInSchematicSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: mSchematicLabelSelectionController
-    self.mSchematicLabelSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Selection controller property: mComponentSymbolSelectionController
-    self.mComponentSymbolSelectionController.bind_selection (model: self.mSchematicObjectsController.selectedArray_property, file: #file, line: #line)
+    self.commentInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: componentSymbolSelectionController
+    self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -837,14 +837,14 @@ import Cocoa
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
-        kind &= unwSelf.mNetClassController.selectedArray_property_selection.kind ()
+        kind &= unwSelf.netClassController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.mNetClassController.selectedArray_property_selection) {
+          switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.netClassController.selectedArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
           default :
@@ -856,18 +856,18 @@ import Cocoa
       }
     }
     self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
-    self.mNetClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
           default :
@@ -878,18 +878,18 @@ import Cocoa
         return .empty
       }
     }
-    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
           default :
@@ -900,18 +900,18 @@ import Cocoa
         return .empty
       }
     }
-    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_pinPadAssignments (v0))
           default :
@@ -922,7 +922,7 @@ import Cocoa
         return .empty
       }
     }
-    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -992,14 +992,14 @@ import Cocoa
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponentController.selectedArray_property_selection.kind ()
+        let kind = unwSelf.componentController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mComponentController.selectedArray_property_selection) {
+          switch (unwSelf.componentController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_canChangePackage (v0))
           default :
@@ -1010,18 +1010,18 @@ import Cocoa
         return .empty
       }
     }
-    self.mComponentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
+    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
           default :
@@ -1032,12 +1032,12 @@ import Cocoa
         return .empty
       }
     }
-    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
-    self.mComponentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
-    self.mNetClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
-    self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
-    self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
-    self.mSchematicObjectsController.bind_ebView (self.mSchematicsView)
+    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    self.componentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
+    self.netClassController.bind_tableView (self.mNetClassTableView, file: #file, line: #line)
+    self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
+    self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
+    self.schematicObjectsController.bind_ebView (self.mSchematicsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
@@ -1070,16 +1070,16 @@ import Cocoa
     self.mWireNetNameTextField?.bind_valueObserver (self.wireInSchematicSelectionController.netName_property, file: #file, line: #line)
     self.mNCRotationSegmentedControl?.bind_quadrant (self.ncInSchematicSelectionController.mOrientation_property, file: #file, line: #line)
     self.mCommentInSchematicsTextField?.bind_value (self.commentInSchematicSelectionController.mComment_property, file: #file, line: #line, sendContinously:true)
-    self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.mSchematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
-    self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.mSchematicLabelSelectionController.netName_property, file: #file, line: #line)
-    self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.mComponentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
-    self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.componentName_property, file: #file, line: #line)
-    self.mComponentSymbolValueTextField?.bind_value (self.mComponentSymbolSelectionController.componentValueProxy_property, file: #file, line: #line, sendContinously:true)
-    self.mComponentSymbolDeviceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.deviceName_property, file: #file, line: #line)
-    self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
-    self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.mComponentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
-    self.mSymbolRotationSegmentedControl?.bind_quadrant (self.mComponentSymbolSelectionController.mRotation_property, file: #file, line: #line)
-    self.mSymbolMirrorSwitch?.bind_value (self.mComponentSymbolSelectionController.mMirror_property, file: #file, line: #line)
+    self.mSchematicsLabelRotationSegmentedControl?.bind_quadrant (self.schematicLabelSelectionController.mOrientation_property, file: #file, line: #line)
+    self.mSchematicsLabelNetNameTextField?.bind_valueObserver (self.schematicLabelSelectionController.netName_property, file: #file, line: #line)
+    self.mComponentSymbolShowComponentValueSwitch?.bind_value (self.componentSymbolSelectionController.mDisplayComponentValue_property, file: #file, line: #line)
+    self.mComponentSymbolComponentNameTextField?.bind_valueObserver (self.componentSymbolSelectionController.componentName_property, file: #file, line: #line)
+    self.mComponentSymbolValueTextField?.bind_value (self.componentSymbolSelectionController.componentValueProxy_property, file: #file, line: #line, sendContinously:true)
+    self.mComponentSymbolDeviceNameTextField?.bind_valueObserver (self.componentSymbolSelectionController.deviceName_property, file: #file, line: #line)
+    self.mComponentSymbolTypeNameTextField?.bind_valueObserver (self.componentSymbolSelectionController.mSymbolTypeName_property, file: #file, line: #line)
+    self.mComponentSymbolInstanceNameTextField?.bind_valueObserver (self.componentSymbolSelectionController.mSymbolInstanceName_property, file: #file, line: #line)
+    self.mSymbolRotationSegmentedControl?.bind_quadrant (self.componentSymbolSelectionController.mRotation_property, file: #file, line: #line)
+    self.mSymbolMirrorSwitch?.bind_value (self.componentSymbolSelectionController.mMirror_property, file: #file, line: #line)
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
     self.mNetWarningTextField?.bind_valueObserver (self.rootObject.netWarningCount_property, file: #file, line: #line, autoFormatter:true)
@@ -1087,21 +1087,21 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mDuplicateSelectedComponentsActionButton
       )
-      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mDuplicateSelectedComponentsActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mRemoveSelectedComponentsActionButton
       )
-      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSelectedComponentsActionButton_enabled = controller
     }
     do{
@@ -1117,21 +1117,21 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mChangeValueOfSelectedComponentsActionButton
       )
-      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mComponentController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.componentController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentButton
       )
-      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentButton_enabled = controller
     }
     do{
@@ -1147,61 +1147,61 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mNetClassController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.netClassController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mEditNetClassButton
       )
-      self.mNetClassController.selectedArray_property.count_property.addEBObserver (controller)
+      self.netClassController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditNetClassButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditFontButton
       )
-      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditFontButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mUpdateFontButton
       )
-      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateFontButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mRemoveFontButton
       )
-      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveFontButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mResetFontVersionButton
       )
-      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetFontVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mResetDeviceVersionButton
       )
-      self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetDeviceVersionButton_enabled = controller
     }
     do{
@@ -1217,31 +1217,31 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mEditDeviceButton
       )
-      self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditDeviceButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mExportDeviceButton
       )
-      self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportDeviceButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mUpdateDeviceButton
       )
-      self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
+      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateDeviceButton_enabled = controller
     }
     do{
@@ -1301,41 +1301,41 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicsLabelRenameNetButton
       )
-      self.mSchematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicsLabelRenameNetButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicLabelMergeSubnetButton
       )
-      self.mSchematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicLabelMergeSubnetButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicLabelInsulateSubnetButton
       )
-      self.mSchematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
+      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicLabelInsulateSubnetButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mSchematicObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
+          return (self.schematicObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mRenameComponentFromComponentSymbolButton
       )
-      self.mSchematicObjectsController.selectedArray_property.count_property.addEBObserver (controller)
+      self.schematicObjectsController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentFromComponentSymbolButton_enabled = controller
     }
     do{
@@ -1486,37 +1486,37 @@ import Cocoa
     self.mNetCountTextField?.unbind_valueObserver ()
     self.mNetWarningTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
-    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
+    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
-    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
+    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
     self.canChangePackage_property.removeEBObserver (self.mController_mChangePackageOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = nil
-    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mChangeValueOfSelectedComponentsActionButton_enabled!)
+    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mChangeValueOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
-    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
+    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
     self.canRemoveNetClasses_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
     self.mController_mRemoveNetClassButton_enabled = nil
-    self.mNetClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditNetClassButton_enabled!)
+    self.netClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditNetClassButton_enabled!)
     self.mController_mEditNetClassButton_enabled = nil
-    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
+    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
-    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
+    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
     self.mController_mUpdateFontButton_enabled = nil
-    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
+    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
     self.mController_mRemoveFontButton_enabled = nil
-    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
+    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
     self.mController_mResetFontVersionButton_enabled = nil
-    self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetDeviceVersionButton_enabled!)
+    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetDeviceVersionButton_enabled!)
     self.mController_mResetDeviceVersionButton_enabled = nil
     self.canRemoveSelectedDevices_property.removeEBObserver (self.mController_mRemoveDeviceButton_enabled!)
     self.mController_mRemoveDeviceButton_enabled = nil
-    self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
+    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
     self.mController_mEditDeviceButton_enabled = nil
-    self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportDeviceButton_enabled!)
+    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportDeviceButton_enabled!)
     self.mController_mExportDeviceButton_enabled = nil
-    self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
+    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
     self.mController_mUpdateDeviceButton_enabled = nil
     self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
@@ -1532,13 +1532,13 @@ import Cocoa
     self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.mController_mSchematicWireInsulateSubnetButton_enabled = nil
-    self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
+    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
     self.mController_mSchematicsLabelRenameNetButton_enabled = nil
-    self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelMergeSubnetButton_enabled!)
+    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelMergeSubnetButton_enabled!)
     self.mController_mSchematicLabelMergeSubnetButton_enabled = nil
-    self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelInsulateSubnetButton_enabled!)
+    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelInsulateSubnetButton_enabled!)
     self.mController_mSchematicLabelInsulateSubnetButton_enabled = nil
-    self.mSchematicObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
+    self.schematicObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
     self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
     self.mController_mRenameNetInNetTabButton_enabled = nil
@@ -1549,43 +1549,43 @@ import Cocoa
     self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningTextField_hidden!)
     self.mController_mNetWarningTextField_hidden = nil
   //--------------------------- Unbind array controllers
-    self.mComponentController.unbind_tableView (self.mComponentTableView)
-    self.mNetClassController.unbind_tableView (self.mNetClassTableView)
-    self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
-    self.mProjectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
-    self.mSchematicObjectsController.unbind_ebView (self.mSchematicsView)
-  //--- Array controller property: mComponentController
-    self.mComponentController.unbind_model ()
-  //--- Array controller property: mNetClassController
-    self.mNetClassController.unbind_model ()
-  //--- Array controller property: mProjectFontController
-    self.mProjectFontController.unbind_model ()
-  //--- Array controller property: mProjectDeviceController
-    self.mProjectDeviceController.unbind_model ()
-  //--- Array controller property: mSchematicObjectsController
-    self.mSchematicObjectsController.unbind_model ()
+    self.componentController.unbind_tableView (self.mComponentTableView)
+    self.netClassController.unbind_tableView (self.mNetClassTableView)
+    self.projectFontController.unbind_tableView (self.mFontLibraryTableView)
+    self.projectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
+    self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
+  //--- Array controller property: componentController
+    self.componentController.unbind_model ()
+  //--- Array controller property: netClassController
+    self.netClassController.unbind_model ()
+  //--- Array controller property: projectFontController
+    self.projectFontController.unbind_model ()
+  //--- Array controller property: projectDeviceController
+    self.projectDeviceController.unbind_model ()
+  //--- Array controller property: schematicObjectsController
+    self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.unbind_selection ()
   //--- Selection controller property: ncInSchematicSelectionController
     self.ncInSchematicSelectionController.unbind_selection ()
   //--- Selection controller property: commentInSchematicSelectionController
     self.commentInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: mSchematicLabelSelectionController
-    self.mSchematicLabelSelectionController.unbind_selection ()
-  //--- Selection controller property: mComponentSymbolSelectionController
-    self.mComponentSymbolSelectionController.unbind_selection ()
+  //--- Selection controller property: schematicLabelSelectionController
+    self.schematicLabelSelectionController.unbind_selection ()
+  //--- Selection controller property: componentSymbolSelectionController
+    self.componentSymbolSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
-    self.mNetClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
-    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
-    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
-    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.netClassController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
     self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
     self.unplacedSymbolsCount_property.removeEBObserver (self.unplacedSymbolsCountString_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCountString_property)
-    self.mComponentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
-    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    self.componentController.selectedArray_property.removeEBObserverOf_availablePackages (self.canChangePackage_property)
+    self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mDuplicateSelectedComponentsActionButton?.target = nil

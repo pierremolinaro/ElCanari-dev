@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        for component in self.mComponentController.selectedArray_property.propval {
+        for component in self.componentController.selectedArray_property.propval {
           if let idx = self.rootObject.mComponents.firstIndex (of: component) {
           //--- Remove all symbols from schematics sheets
             for symbol in component.mSymbols {

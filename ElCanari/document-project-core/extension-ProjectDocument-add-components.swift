@@ -95,7 +95,7 @@ extension ProjectDocument {
       }
       newComponent.mNameIndex = idx
       self.rootObject.mComponents.append (newComponent)
-      self.mComponentController.setSelection ([newComponent])
+      self.componentController.setSelection ([newComponent])
     }
   }
 

@@ -83,7 +83,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (self.mSchematicWireNetClassButton)
     self.mSelectedLabelNetClassPopUpController.bind_model (
       self.rootObject.mNetClasses_property,
-      self.mSchematicLabelSelectionController
+      self.schematicLabelSelectionController
     )
     self.mSelectedLabelNetClassPopUpController.attachPopUpButton (self.mSchematicLabelNetClassButton)
   //--- Set pages segmented control
@@ -107,12 +107,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     ]
     self.mSchematicsInspectorSegmentedControl?.register (masterView: self.mBaseSchematicsInspectorView, schematicsInspectors)
   //--- Register schematics inspector views
-    self.mSchematicObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
-    self.mSchematicObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
-    self.mSchematicObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematic")
-    self.mSchematicObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematic")
-    self.mSchematicObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematic")
-    self.mSchematicObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematic")
+    self.schematicObjectsController.register (inspectorReceivingView: self.mSelectedObjectsSchematicsInspectorView)
+    self.schematicObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, forClass: "ComponentSymbolInProject")
+    self.schematicObjectsController.register (inspectorView: self.mCommentInSchematicsInspectorView, forClass: "CommentInSchematic")
+    self.schematicObjectsController.register (inspectorView: self.mNCInSchematicsInspectorView, forClass: "NCInSchematic")
+    self.schematicObjectsController.register (inspectorView: self.mSchematicsLabelInspectorView, forClass: "LabelInSchematic")
+    self.schematicObjectsController.register (inspectorView: self.mSchematicsWireInspectorView, forClass: "WireInSchematic")
   //---
     self.mNewComponentFromDevicePullDownButton?.register (document: self)
   //---
@@ -157,7 +157,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
       scaleProvider: self.mSchematicsView
     )
   //---
-    self.mSchematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
+    self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
     self.mSchematicsView?.setMouseMovedCallback { [weak self] (mouseLocation) in self?.mouseMovedInSchematic (mouseLocation) }
     self.mSchematicsView?.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
@@ -174,7 +174,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mSchematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+    self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()
     self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)
@@ -269,7 +269,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
       }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematic]) {
         let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.rootObject.createNetWithAutomaticName)
         if let newWire = possibleNewWire {
-          self.mSchematicObjectsController.setSelection ([newWire])
+          self.schematicObjectsController.setSelection ([newWire])
           ok = true
         }
       }
@@ -285,7 +285,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     comment.mX = p.x
     comment.mY = p.y
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
-    self.mSchematicObjectsController.setSelection ([comment])
+    self.schematicObjectsController.setSelection ([comment])
   }
 
   //····················································································································
@@ -308,7 +308,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     }
   //--- Enter symbol
     self.rootObject.mSelectedSheet?.mObjects.append (inSymbol)
-    self.mSchematicObjectsController.setSelection ([inSymbol])
+    self.schematicObjectsController.setSelection ([inSymbol])
   }
 
   //····················································································································

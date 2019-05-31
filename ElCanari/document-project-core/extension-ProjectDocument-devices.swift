@@ -32,7 +32,7 @@ extension ProjectDocument {
   //····················································································································
 
   internal func updateDeviceAction () {
-    let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
+    let selectedDevices = self.projectDeviceController.selectedArray_property.propval
     var messages = [String] ()
     for deviceInProject in selectedDevices {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)

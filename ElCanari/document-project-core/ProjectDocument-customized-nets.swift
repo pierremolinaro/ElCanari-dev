@@ -77,7 +77,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func renameNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
-     let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
+     let selectedLabels = self.schematicLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels [0].mPoint?.mNet {
        self.dialogForRenaming (net: net)
      }
@@ -87,7 +87,7 @@ extension CustomizedProjectDocument {
 
   @IBAction func newAutomaticNetNameFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
      var netSet = Set <NetInProject> ()
-     for label in self.mSchematicLabelSelectionController.selectedArray {
+     for label in self.schematicLabelSelectionController.selectedArray {
        if let net = label.mPoint?.mNet {
          netSet.insert (net)
        }
@@ -100,7 +100,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func mergeSubnetIntoExistingNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
-    let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
+    let selectedLabels = self.schematicLabelSelectionController.selectedArray
     if selectedLabels.count == 1 {
       let label = selectedLabels [0]
       let point = label.mPoint!
@@ -111,7 +111,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @IBAction func insulateSubnetFromCurrentNetFromSelectedLabelAction (_ sender : NSObject?) { // Bound in IB
-    let selectedLabels = self.mSchematicLabelSelectionController.selectedArray
+    let selectedLabels = self.schematicLabelSelectionController.selectedArray
     if selectedLabels.count == 1 {
       let label = selectedLabels [0]
       let point = label.mPoint!

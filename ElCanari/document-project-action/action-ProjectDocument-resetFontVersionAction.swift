@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func resetFontVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        let selectedFonts = self.mProjectFontController.selectedArray_property.propval
+        let selectedFonts = self.projectFontController.selectedArray_property.propval
         for font in selectedFonts {
           font.mFontVersion = 0
         }

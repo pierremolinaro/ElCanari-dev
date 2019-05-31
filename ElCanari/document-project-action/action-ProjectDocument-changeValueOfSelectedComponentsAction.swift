@@ -16,7 +16,7 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
          var possibleValues = Set <String> ()
          var componentNames = [String] ()
-         let selectedComponents = self.mComponentController.selectedArray_property.propval
+         let selectedComponents = self.componentController.selectedArray_property.propval
          for component in selectedComponents {
            componentNames.append (component.componentName!)
            possibleValues.insert (component.mComponentValue)

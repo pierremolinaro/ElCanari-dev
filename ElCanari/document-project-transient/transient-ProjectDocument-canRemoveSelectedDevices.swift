@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectDocument_canRemoveSelectedDevices (
-       _ self_mProjectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
+       _ self_projectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
 ) -> Bool {
 //--- START OF USER ZONE 2
         var canRemove = false
-        if self_mProjectDeviceController_selectedArray_all_canRemove.count > 0 {
+        if self_projectDeviceController_selectedArray_all_canRemove.count > 0 {
           canRemove = true
-          for device in self_mProjectDeviceController_selectedArray_all_canRemove {
+          for device in self_projectDeviceController_selectedArray_all_canRemove {
             canRemove = canRemove && (device.canRemove ?? false)
           }
         }

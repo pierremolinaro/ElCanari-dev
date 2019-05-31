@@ -104,7 +104,7 @@ extension CustomizedProjectDocument {
     //--- Create NC
       if ((inKey == UnicodeScalar ("N")) || (inKey == UnicodeScalar ("n"))) && self.canCreateNC (points: points) {
         let nc = selectedSheet.addNCToPin (toPoint: points [0])
-        self.mSchematicObjectsController.setSelection ([nc])
+        self.schematicObjectsController.setSelection ([nc])
       }
     }
   //--- For updating hot key labels

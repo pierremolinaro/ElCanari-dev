@@ -9,27 +9,27 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Table View Controller + ProjectDocument mProjectFontController
+//    Table View Controller + ProjectDocument netClassController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
 
   //····················································································································
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontInProject ()
+  let sortedArray_property = TransientArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var sortedArray : [FontInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [NetClassInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -55,7 +55,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontInProject? = nil
+  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
 
   //····················································································································
 
@@ -66,7 +66,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_FontInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject) {
     self.mModel = inModel
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
@@ -97,7 +97,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [FontInProject] ()
+    var newSelectedArray = [NetClassInProject] ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -118,23 +118,23 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_FontInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_NetClassInProject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_FontInProject { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_NetClassInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [NetClassInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[NetClassInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  var selectedSet : Set <FontInProject> { return Set (self.selectedArray) }
+  var selectedSet : Set <NetClassInProject> { return Set (self.selectedArray) }
 
   //····················································································································
 
@@ -152,7 +152,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
 
   //····················································································································
 
-  func setSelection (_ inObjects : [FontInProject]) {
+  func setSelection (_ inObjects : [NetClassInProject]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
   }
 
@@ -167,7 +167,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [FontInProject] ()
+          var result = [NetClassInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -240,17 +240,35 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
       }else{
         presentErrorWindow (file, line, "\"name\" column view unknown")
       }
-    //--- Check 'version' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
+    //--- Check 'netcolor' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "netcolor")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"version\" column view unknown")
+        presentErrorWindow (file, line, "\"netcolor\" column view unknown")
       }
-    //--- Check 'size' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
+    //--- Check 'width' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "width")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file, line, "\"size\" column view unknown")
+        presentErrorWindow (file, line, "\"width\" column view unknown")
+      }
+    //--- Check 'hole' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "hole")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"hole\" column view unknown")
+      }
+    //--- Check 'pad' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "pad")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"pad\" column view unknown")
+      }
+    //--- Check 'used' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "used")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (file, line, "\"used\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
@@ -285,7 +303,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [FontInProject : Int] ()
+      var objectDictionary = [NetClassInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -328,7 +346,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [FontInProject] ()
+      var newSelectedObjects = [NetClassInProject] ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -377,21 +395,42 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mNetClassName_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "netcolor", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_backColor ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_backColor (object.mNetClassColor_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "width", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.netWidth_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "hole", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.viaHoleDiameter_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "pad", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.viaPadDiameter_property, file: #file, line: #line)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "used", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.netUsage_property, file: #file, line: #line)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
@@ -407,7 +446,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: FontInProject) {
+  func select (object inObject: NetClassInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -433,7 +472,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = FontInProject (self.ebUndoManager)
+        let newObject = NetClassInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
         model.setProp (array)
@@ -462,7 +501,7 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [FontInProject : Int] ()
+          var sortedObjectDictionary = [NetClassInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -484,13 +523,13 @@ final class Controller_ProjectDocument_mProjectFontController : ReadOnlyAbstract
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : FontInProject? = nil
+          var newSelectedObject : NetClassInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [FontInProject : Int] ()
+          var objectDictionary = [NetClassInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

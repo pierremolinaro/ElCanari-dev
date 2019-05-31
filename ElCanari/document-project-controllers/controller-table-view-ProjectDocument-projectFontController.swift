@@ -9,27 +9,27 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Table View Controller + ProjectDocument mProjectDeviceController
+//    Table View Controller + ProjectDocument projectFontController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
  
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
+  private let allowsEmptySelection = false
+  private let allowsMultipleSelection = false
 
   //····················································································································
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_DeviceInProject ()
+  let sortedArray_property = TransientArrayOf_FontInProject ()
 
   //····················································································································
 
-  var sortedArray : [DeviceInProject] { return self.sortedArray_property.propval }
+  var sortedArray : [FontInProject] { return self.sortedArray_property.propval }
 
   //····················································································································
 
@@ -55,7 +55,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
+  private var mModel : ReadWriteArrayOf_FontInProject? = nil
 
   //····················································································································
 
@@ -66,7 +66,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontInProject) {
     self.mModel = inModel
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
@@ -97,7 +97,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
     super.notifyModelDidChange ()
     // NSLog ("self.sortedArray \(self.sortedArray.count)")
     let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [DeviceInProject] ()
+    var newSelectedArray = [FontInProject] ()
     for object in self.sortedArray {
       if oldSelectionSet.contains (object) {
         newSelectedArray.append (object)
@@ -118,23 +118,23 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_FontInProject ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_DeviceInProject { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_FontInProject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
+  var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.prop }
  
   //····················································································································
 
-  var selectedSet : Set <DeviceInProject> { return Set (self.selectedArray) }
+  var selectedSet : Set <FontInProject> { return Set (self.selectedArray) }
 
   //····················································································································
 
@@ -152,7 +152,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
 
   //····················································································································
 
-  func setSelection (_ inObjects : [DeviceInProject]) {
+  func setSelection (_ inObjects : [FontInProject]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
   }
 
@@ -167,7 +167,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [DeviceInProject] ()
+          var result = [FontInProject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -252,12 +252,6 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
       }else{
         presentErrorWindow (file, line, "\"size\" column view unknown")
       }
-    //--- Check 'componentCount' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "componentCount")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (file, line, "\"componentCount\" column view unknown")
-      }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
@@ -291,7 +285,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [DeviceInProject : Int] ()
+      var objectDictionary = [FontInProject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -334,7 +328,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjects = [DeviceInProject] ()
+      var newSelectedObjects = [FontInProject] ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjects.append (v [index])
       }
@@ -383,7 +377,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mDeviceName_property, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
           cell.update ()
         }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
@@ -399,13 +393,6 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
           cell.update ()
-        }else if tableColumnIdentifier.rawValue == "componentCount", let cell = result as? EBIntObserverField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_valueObserver ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mComponents_property.count_property, file: #file, line: #line, autoFormatter:true)
-          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
@@ -420,7 +407,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: DeviceInProject) {
+  func select (object inObject: FontInProject) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -446,7 +433,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DeviceInProject (self.ebUndoManager)
+        let newObject = FontInProject (self.ebUndoManager)
         var array = v
         array.append (newObject)
         model.setProp (array)
@@ -475,7 +462,7 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [DeviceInProject : Int] ()
+          var sortedObjectDictionary = [FontInProject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -497,13 +484,13 @@ final class Controller_ProjectDocument_mProjectDeviceController : ReadOnlyAbstra
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : DeviceInProject? = nil
+          var newSelectedObject : FontInProject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [DeviceInProject : Int] ()
+          var objectDictionary = [FontInProject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

@@ -15,7 +15,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc @IBAction func renameComponentAction (_ sender : NSObject?) { // Targeted in IB
-    let selectedComponents = self.mComponentController.selectedArray_property.propval
+    let selectedComponents = self.componentController.selectedArray_property.propval
     if selectedComponents.count == 1 {
       self.renameComponentDialog (selectedComponents [0])
     }
@@ -24,7 +24,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc @IBAction func renameComponentFromComponentSymbolAction (_ sender : NSObject?) {  // Targeted in IB
-    let selectedObjects = self.mSchematicObjectsController.selectedArray_property.propval
+    let selectedObjects = self.schematicObjectsController.selectedArray_property.propval
     if selectedObjects.count == 1,
         let symbol = selectedObjects [0] as? ComponentSymbolInProject,
         let component = symbol.mComponent {

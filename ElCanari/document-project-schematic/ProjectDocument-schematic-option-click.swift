@@ -77,7 +77,7 @@ extension CustomizedProjectDocument {
          wire.mP2 = nil
          wire.mSheet = nil
        }else{
-         self.mSchematicObjectsController.setSelection ([wire])
+         self.schematicObjectsController.setSelection ([wire])
        }
        self.mWireCreatedByOptionClick = nil
      }

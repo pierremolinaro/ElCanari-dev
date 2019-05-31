@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Array controller ProjectDocument mSchematicObjectsController
+//    Array controller ProjectDocument schematicObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_mSchematicObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
+final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
  
   //····················································································································
   // Model

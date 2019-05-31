@@ -15,11 +15,11 @@ extension ProjectDocument {
   @objc func duplicateSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         var newComponents = [ComponentInProject] ()
-        for selectedComponent in self.mComponentController.selectedArray_property.propval {
+        for selectedComponent in self.componentController.selectedArray_property.propval {
           let newComponent = self.duplicate (component: selectedComponent)
           newComponents.append (newComponent)
         }
-        self.mComponentController.setSelection (newComponents)
+        self.componentController.setSelection (newComponents)
 //--- END OF USER ZONE 2
   }
 }

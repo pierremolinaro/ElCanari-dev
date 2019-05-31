@@ -14,7 +14,7 @@ import Cocoa
 extension ProjectDocument {
   @objc func exportDeviceAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
+        let selectedDevices = self.projectDeviceController.selectedArray_property.propval
         var messages = [String] ()
         for device in selectedDevices {
           if device.mDeviceFileData.count > 0 {

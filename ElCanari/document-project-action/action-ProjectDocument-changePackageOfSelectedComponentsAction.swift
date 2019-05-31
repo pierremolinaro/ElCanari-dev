@@ -17,7 +17,7 @@ extension ProjectDocument {
          var possiblePackages = StringArray ()
          var componentNames = [String] ()
          var currentSelectedPackageSet = Set <String> ()
-         let selectedComponents = self.mComponentController.selectedArray_property.propval
+         let selectedComponents = self.componentController.selectedArray_property.propval
          if selectedComponents.count > 0 {
            var intersectionOfPackageSet = Set (selectedComponents [0].availablePackages!)
            for component in selectedComponents {
