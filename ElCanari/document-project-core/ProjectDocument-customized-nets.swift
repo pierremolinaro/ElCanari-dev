@@ -13,20 +13,6 @@ import Cocoa
 extension CustomizedProjectDocument {
 
   //····················································································································
-  // Remove unused nets
-  //····················································································································
-
-  internal func removeUnusedNets () {
-    for netClass in self.rootObject.mNetClasses {
-      for net in netClass.mNets {
-        if net.mPoints.count == 0 {
-          net.mNetClass = nil
-        }
-      }
-    }
-  }
-
-  //····················································································································
   //  User actions
   //····················································································································
 
@@ -132,6 +118,20 @@ extension CustomizedProjectDocument {
       let newNet = self.rootObject.createNetWithAutomaticName ()
       point.mNet = newNet
       point.propagateNetToAccessiblePointsThroughtWires ()
+    }
+  }
+
+  //····················································································································
+  // Remove unused nets
+  //····················································································································
+
+  internal func removeUnusedNets () {
+    for netClass in self.rootObject.mNetClasses {
+      for net in netClass.mNets {
+        if net.mPoints.count == 0 {
+          net.mNetClass = nil
+        }
+      }
     }
   }
 

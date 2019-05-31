@@ -24,6 +24,12 @@ protocol WireInSchematic_netName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol WireInSchematic_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol WireInSchematic_hasNet : class {
   var hasNet : Bool? { get }
 }
@@ -36,6 +42,7 @@ class WireInSchematic : SchematicObject,
          WireInSchematic_objectDisplay,
          WireInSchematic_selectionDisplay,
          WireInSchematic_netName,
+         WireInSchematic_netClassName,
          WireInSchematic_hasNet {
 
   //····················································································································
@@ -130,6 +137,29 @@ class WireInSchematic : SchematicObject,
 
   var netName : String? {
     switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -256,6 +286,28 @@ class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.addEBObserverOf_netName (self.netName_property)
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mP1_property.netClassName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP1_property.netClassName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_WireInSchematic_netClassName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -296,6 +348,7 @@ class WireInSchematic : SchematicObject,
     self.mP2_property.removeEBObserverOf_location (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_canMove (self.selectionDisplay_property)
     self.mP1_property.removeEBObserverOf_netName (self.netName_property)
+    self.mP1_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mP1_property.removeEBObserverOf_hasNet (self.hasNet_property)
   //--- Unregister properties for handling signature
   }
@@ -335,6 +388,14 @@ class WireInSchematic : SchematicObject,
       view: view,
       observerExplorer: &self.netName_property.mObserverExplorer,
       valueExplorer: &self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "hasNet",

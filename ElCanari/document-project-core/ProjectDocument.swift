@@ -476,6 +476,9 @@ import Cocoa
   @IBOutlet var mSchematicsVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mSchematicsView : EBGraphicView?
   @IBOutlet var mSchematicsWireInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSelectNetClassInNetTabButton : EBButton?
+  @IBOutlet var mSelectNetClassPanel : NSPanel?
+  @IBOutlet var mSelectNetClassPopUpButton : EBPopUpButton?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
   @IBOutlet var mSetDatePanel : NSPanel?
@@ -519,13 +522,13 @@ import Cocoa
   var mController_mWireRenameNetWithUniqueNewNameButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicWireMergeSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicWireInsulateSubnetButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mSchematicWireNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicsLabelRenameNetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelMergeSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelInsulateSubnetButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSchematicLabelNetClassButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameComponentFromComponentSymbolButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRenameNetInNetTabButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSelectNetClassInNetTabButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mNetWarningImageView_hidden : MultipleBindingController_hidden? = nil
   var mController_mNetWarningTextField_hidden : MultipleBindingController_hidden? = nil
 
@@ -737,6 +740,9 @@ import Cocoa
     checkOutletConnection (self.mSchematicsVerticalFlipSwitch, "mSchematicsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSchematicsView, "mSchematicsView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mSchematicsWireInspectorView, "mSchematicsWireInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSetDatePanel, "mSetDatePanel", NSPanel.self, #file, #line)
@@ -1294,16 +1300,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
-        outlet: self.mSchematicWireNetClassButton
-      )
-      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
-      self.mController_mSchematicWireNetClassButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
           return (self.mSchematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
         },
         outlet: self.mSchematicsLabelRenameNetButton
@@ -1360,6 +1356,16 @@ import Cocoa
       )
       self.netCount_property.addEBObserver (controller)
       self.mController_mRenameNetInNetTabButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.netCount_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mSelectNetClassInNetTabButton
+      )
+      self.netCount_property.addEBObserver (controller)
+      self.mController_mSelectNetClassInNetTabButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1533,8 +1539,6 @@ import Cocoa
     self.mController_mSchematicWireMergeSubnetButton_enabled = nil
     self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.mController_mSchematicWireInsulateSubnetButton_enabled = nil
-    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireNetClassButton_enabled!)
-    self.mController_mSchematicWireNetClassButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
     self.mController_mSchematicsLabelRenameNetButton_enabled = nil
     self.mSchematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelMergeSubnetButton_enabled!)
@@ -1547,6 +1551,8 @@ import Cocoa
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
     self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
     self.mController_mRenameNetInNetTabButton_enabled = nil
+    self.netCount_property.removeEBObserver (self.mController_mSelectNetClassInNetTabButton_enabled!)
+    self.mController_mSelectNetClassInNetTabButton_enabled = nil
     self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningImageView_hidden!)
     self.mController_mNetWarningImageView_hidden = nil
     self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningTextField_hidden!)
@@ -1740,6 +1746,9 @@ import Cocoa
     self.mSchematicsVerticalFlipSwitch?.ebCleanUp ()
     self.mSchematicsView?.ebCleanUp ()
     self.mSchematicsWireInspectorView?.ebCleanUp ()
+    self.mSelectNetClassInNetTabButton?.ebCleanUp ()
+    self.mSelectNetClassPanel?.ebCleanUp ()
+    self.mSelectNetClassPopUpButton?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
     self.mSetDatePanel?.ebCleanUp ()
@@ -1884,6 +1893,9 @@ import Cocoa
 //    self.mSchematicsVerticalFlipSwitch = nil
 //    self.mSchematicsView = nil
 //    self.mSchematicsWireInspectorView = nil
+//    self.mSelectNetClassInNetTabButton = nil
+//    self.mSelectNetClassPanel = nil
+//    self.mSelectNetClassPopUpButton = nil
 //    self.mSelectedObjectsSchematicsInspectorView = nil
 //    self.mSelectedSheetTitleTextField = nil
 //    self.mSetDatePanel = nil

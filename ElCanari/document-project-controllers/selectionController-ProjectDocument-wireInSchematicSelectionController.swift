@@ -41,6 +41,16 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   }
 
   //····················································································································
+  //   Selection observable property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: hasNet
   //····················································································································
 
@@ -69,6 +79,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_netName ()
+    self.bind_property_netClassName ()
     self.bind_property_hasNet ()
   }
 
@@ -87,6 +98,9 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
   //--- netName
     self.netName_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+  //--- netClassName
+    self.netClassName_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
   //--- hasNet
     self.hasNet_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_hasNet (self.hasNet_property)
@@ -275,6 +289,45 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var isMultipleSelection = false
           for object in v {
             switch object.netName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_netClassName () {
+    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.netClassName_property_selection {
             case .empty :
               return .empty
             case .multiple :

@@ -16,10 +16,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     inOldValue?.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
     inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     inOldValue?.netPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
   //--- Add observers to added objects
     self.mInternalValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
     self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
     self.mInternalValue?.netPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netPointsInfo) // Transient property
   }
@@ -90,6 +92,75 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mNetName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassName' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.netClassName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.netClassName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.removeEBObserver (observer)
       }
     }
   }

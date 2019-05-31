@@ -23,6 +23,8 @@ graphic entity WireInSchematic : SchematicObject {
   
   transient String netName dependsFrom self.mP1.one.netName ;
   
+  transient String netClassName dependsFrom self.mP1.one.netClassName ;
+  
   transient Bool hasNet dependsFrom self.mP1.one.hasNet ;
 }
 

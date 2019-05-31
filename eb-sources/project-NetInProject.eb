@@ -8,6 +8,8 @@ entity NetInProject {
 
   toMany PointInSchematic mPoints inverse toOne mNet ;
   
+  transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
+  
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 
   transient NetInfoPointArray netPointsInfo dependsFrom self.mPoints.all.netInfoForPoint ;

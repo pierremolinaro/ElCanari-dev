@@ -29,6 +29,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   }
 
   //····················································································································
+  //  POP UP BUTTON CONTROLLERS
+  //····················································································································
+
+  private var mSelectedWireNetClassPopUpController = EBPopUpButtonControllerForNetClassFromSelectedWires ()
+
+  //····················································································································
   //  Property needed for handling "symbol count" to insert in segmented control title
   //····················································································································
 
@@ -56,6 +62,12 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Pop up button controllers
+    self.mSelectedWireNetClassPopUpController.bind_model (
+      self.rootObject.mNetClasses_property,
+      self.wireInSchematicSelectionController
+    )
+    self.mSelectedWireNetClassPopUpController.attachPopUpButton (self.mSchematicWireNetClassButton)
   //--- Set pages segmented control
     let pages = [
       self.mComponentsPageView,
@@ -145,6 +157,9 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSheetController.unregister ()
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.mSchematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
+  //--- Pop up button controllers
+    self.mSelectedWireNetClassPopUpController.unbind_model ()
+    self.mSelectedWireNetClassPopUpController.attachPopUpButton (nil)
   }
 
   //····················································································································

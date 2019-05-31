@@ -20,6 +20,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_location_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_hasNet_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_canMove_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
@@ -34,6 +35,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_location_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_hasNet_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_canMove_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
@@ -323,6 +325,62 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'netClassName' transient property
+  //····················································································································
+
+  private var mObserversOf_netClassName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_netClassName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_netClassName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.netClassName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
+    for managedObject in inSet {
+      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
+        managedObject.netClassName_property.removeEBObserver (observer)
       }
     }
   }

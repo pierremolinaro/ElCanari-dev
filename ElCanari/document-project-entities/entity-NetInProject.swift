@@ -12,6 +12,12 @@ protocol NetInProject_mNetName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetInProject_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetInProject_wireColor : class {
   var wireColor : NSColor? { get }
 }
@@ -28,6 +34,7 @@ protocol NetInProject_netPointsInfo : class {
 
 class NetInProject : EBManagedObject,
          NetInProject_mNetName,
+         NetInProject_netClassName,
          NetInProject_wireColor,
          NetInProject_netPointsInfo {
 
@@ -106,6 +113,29 @@ class NetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: wireColor
   //····················································································································
 
@@ -171,6 +201,28 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
     )
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNetClass_property.mNetClassName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNetClass_property.mNetClassName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_NetInProject_netClassName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClass_property.addEBObserverOf_mNetClassName (self.netClassName_property)
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -228,6 +280,7 @@ class NetInProject : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mNetClass_property.removeEBObserverOf_mNetClassName (self.netClassName_property)
     self.mNetClass_property.removeEBObserverOf_mNetClassColor (self.wireColor_property)
     self.mPoints_property.removeEBObserverOf_netInfoForPoint (self.netPointsInfo_property)
   //--- Unregister properties for handling signature
@@ -253,6 +306,14 @@ class NetInProject : EBManagedObject,
       valueExplorer: &self.mNetName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "wireColor",
       idx: self.wireColor_property.ebObjectIndex,

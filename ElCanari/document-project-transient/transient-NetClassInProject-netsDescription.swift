@@ -43,20 +43,37 @@ fileprivate func computeSubnets (_ inPointArray : NetInfoPointArray) -> (StatusS
 
     }
   //--- Build subnet description string
-    var subnetDescription = ""
+    var pinArray = [String] ()
     for p in currentPointSet {
       if let pinName = p.pin {
-        subnetDescription += " " + pinName
+        pinArray.append (pinName)
       }
     }
-    var labelCount = 0
+    var labelArray = [String] ()
     for p in currentPointSet {
-      labelCount += p.labels.count
       for label in p.labels {
-        subnetDescription += " " + label
+        labelArray.append (label)
       }
     }
-    subnetDescriptionStrings.append ((labelCount > 0, subnetDescription))
+    var subnetDescription : String
+    if pinArray.count == 0 {
+      subnetDescription = "No pin"
+    }else if pinArray.count == 1 {
+      subnetDescription = "1 pin: "
+    }else{
+      subnetDescription = "\(pinArray.count) pins: "
+    }
+    subnetDescription += pinArray.joined (separator: ", ")
+    subnetDescription += "; "
+    if labelArray.count == 0 {
+      subnetDescription += "no label"
+    }else if labelArray.count == 1 {
+      subnetDescription += "1 label: "
+    }else{
+      subnetDescription += "\(labelArray.count) labels: "
+    }
+    subnetDescription += labelArray.joined (separator: ", ")
+    subnetDescriptionStrings.append ((labelArray.count > 0, subnetDescription))
   }
 //--- Several subnets ?
   var harWarning = false

@@ -36,6 +36,12 @@ protocol PointInSchematic_netName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PointInSchematic_netClassName : class {
+  var netClassName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PointInSchematic_hasNet : class {
   var hasNet : Bool? { get }
 }
@@ -92,6 +98,7 @@ class PointInSchematic : EBManagedObject,
          PointInSchematic_mY,
          PointInSchematic_location,
          PointInSchematic_netName,
+         PointInSchematic_netClassName,
          PointInSchematic_hasNet,
          PointInSchematic_canMove,
          PointInSchematic_wireColor,
@@ -362,6 +369,29 @@ class PointInSchematic : EBManagedObject,
 
   var netName : String? {
     switch self.netName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: netClassName
+  //····················································································································
+
+  let netClassName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var netClassName_property_selection : EBSelection <String> {
+    return self.netClassName_property.prop
+  }
+
+  //····················································································································
+
+  var netClassName : String? {
+    switch self.netClassName_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -691,6 +721,28 @@ class PointInSchematic : EBManagedObject,
       }
     }
     self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+  //--- Atomic property: netClassName
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mNet_property.netClassName_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mNet_property.netClassName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PointInSchematic_netClassName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -924,6 +976,7 @@ class PointInSchematic : EBManagedObject,
     self.mSymbol_property.removeEBObserverOf_symbolInfo (self.location_property)
     self.mSymbol_property.removeEBObserverOf_mSymbolInstanceName (self.location_property)
     self.mNet_property.removeEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.removeEBObserverOf_netClassName (self.netClassName_property)
     self.mNet_property.removeEBObserver (self.hasNet_property)
     self.mSymbol_property.removeEBObserver (self.canMove_property)
     self.mNet_property.removeEBObserverOf_wireColor (self.wireColor_property)
@@ -998,6 +1051,14 @@ class PointInSchematic : EBManagedObject,
       view: view,
       observerExplorer: &self.netName_property.mObserverExplorer,
       valueExplorer: &self.netName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "netClassName",
+      idx: self.netClassName_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.netClassName_property.mObserverExplorer,
+      valueExplorer: &self.netClassName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "hasNet",
