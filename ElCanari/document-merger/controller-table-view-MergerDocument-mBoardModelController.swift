@@ -161,31 +161,6 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
 
   //····················································································································
 
-/*  private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.mReadModelFunction = { [weak self] in
-      if let me = self {
-        switch me.sortedArray_property.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var result = [BoardModel] ()
-          for object in v {
-            if me.mSelectedSet.mSet.contains (object) {
-              result.append (object)
-            }
-          }
-          return .single (result)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-*/
-  //····················································································································
-
   func isOrderedBefore (left : BoardModel, right : BoardModel) -> Bool {
     var order = ComparisonResult.orderedSame
     for (column, ascending) in self.mSortDescriptorArray {
@@ -206,26 +181,6 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
     return order == .orderedAscending
   }
 
-  //····················································································································
-
-/*  private final func setFilterAndSortFunction () {
-    self.sortedArray_property.mReadModelFunction = { [weak self] in
-      if let me = self, let model = me.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          let sortedArray = modelArray.sorted { me.isOrderedBefore (left: $0, right: $1) }
-          return .single (sortedArray)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-*/
   //····················································································································
   //    Explorer
   //····················································································································

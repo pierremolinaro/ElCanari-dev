@@ -23,7 +23,7 @@ func transient_ProjectRoot_unplacedSymbols (
             result += us
           }
         }
-        return result.sorted (by: { $0.mString < $1.mString} )
+        return result
 //--- END OF USER ZONE 2
 }
 

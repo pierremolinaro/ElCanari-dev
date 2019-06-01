@@ -803,16 +803,17 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardModels_property_selection.kind ()
+        var kind = unwSelf.boardModels_property_selection.kind ()
+        kind &= unwSelf.boardModels_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.boardModels_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerRoot_modelNames (v0))
+          switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_MergerRoot_modelNames (v0, v1))
           default :
             return .empty
           }
@@ -822,6 +823,7 @@ class MergerRoot : EBManagedObject,
       }
     }
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.addEBObserver (self.modelNames_property)
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -964,6 +966,7 @@ class MergerRoot : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.removeEBObserver (self.modelNames_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)

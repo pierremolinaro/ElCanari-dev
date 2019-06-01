@@ -91,8 +91,8 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
       for modelName in inArray {
-        self.addItem (withTitle: "Insert \"\(modelName.mString)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
-        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName: modelName.mString)
+        self.addItem (withTitle: "Insert \"\(modelName.string)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName: modelName.string)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }

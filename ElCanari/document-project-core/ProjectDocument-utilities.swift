@@ -107,6 +107,7 @@ typealias NetInfoArray = [NetInfo]
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct NetInfo : Hashable {
+  let netIdentifier : Int
   let netName : String
   let netClassName : String
   let points : NetInfoPointArray

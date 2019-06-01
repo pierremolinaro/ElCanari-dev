@@ -158,50 +158,6 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
   }
 
   //····················································································································
-
-/*  private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.mReadModelFunction = { [weak self] in
-      if let me = self {
-        switch me.sortedArray_property.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var result = [FontCharacter] ()
-          for object in v {
-            if me.mSelectedSet.mSet.contains (object) {
-              result.append (object)
-            }
-          }
-          return .single (result)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-*/
-  //····················································································································
-
-/*  private final func setFilterAndSortFunction () {
-    self.sortedArray_property.mReadModelFunction = { [weak self] in
-      if let me = self, let model = me.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          return .single (modelArray)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-*/
-  //····················································································································
   //    Explorer
   //····················································································································
 

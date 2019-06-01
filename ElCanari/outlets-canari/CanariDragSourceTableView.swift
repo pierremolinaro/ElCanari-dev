@@ -9,29 +9,62 @@
 
 import Cocoa
 
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StringTag
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct StringTag : Hashable {
+  let string : String
+  let tag : Int
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   StringTagArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias StringTagArray = [StringTag]
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource {
+class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   // INIT
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
-    self.dataSource = self  }
+  }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
-    self.dataSource = self
   }
   
+  //····················································································································
+  // AWAKE FROM NIB
+  //····················································································································
+
+  override func awakeFromNib () {
+    super.awakeFromNib ()
+  //--- Set sort descriptor
+    let tableColumns = self.tableColumns
+    if tableColumns.count == 1 {
+      let column = tableColumns [0]
+      let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
+      column.sortDescriptorPrototype = sortDescriptor
+      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
+    }
+    self.dataSource = self
+    self.delegate = self
+  }
+
   //····················································································································
   // DEINIT
   //····················································································································
@@ -55,37 +88,105 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   }
 
   //····················································································································
-  //    Table view data source protocol
+  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
   //····················································································································
 
-  private var mModelArray = [StringTag] () {
-    didSet {
-      self.reloadData ()
+  func numberOfRows (in _ : NSTableView) -> Int {
+    return self.mModelArray.count
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn : NSTableColumn?,
+                  row inRowIndex : Int) -> NSView? {
+    if let tableColumnIdentifier = inTableColumn?.identifier,
+       let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner: self) as? NSTableCellView {
+      if !reuseTableViewCells () {
+        result.identifier = nil // So result cannot be reused, will be freed
+      }
+      result.textField?.stringValue = self.mModelArray [inRowIndex].string
+      return result
+    }else{
+      return nil
     }
   }
 
   //····················································································································
+  //    Table view data source protocol
+  //····················································································································
+
+  private var mModelArray = [StringTag] ()
+
+  //····················································································································
+
+  private func setModel (_ inModel : [StringTag]) {
+  //--- Note selected rows
+    var selectedRowContents = Set <String> ()
+    let currentSelectedRowIndexes = self.selectedRowIndexes
+    for idx in currentSelectedRowIndexes {
+      if idx < self.mModelArray.count {
+        selectedRowContents.insert (self.mModelArray [idx].string)
+      }
+    }
+  //--- Assignment
+    self.mModelArray = inModel
+  //-- Sort
+    if self.sortDescriptors.count == 1 {
+      let sortDescriptor = self.sortDescriptors [0]
+      if !sortDescriptor.ascending {
+        self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
+      }else{
+        self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedDescending } )
+      }
+    }
+  //--- Tell Table view to reload
+    self.reloadData ()
+  //--- Restore selection
+    var newSelectedRowIndexes = IndexSet ()
+    var idx = 0
+    while idx < self.mModelArray.count {
+      if selectedRowContents.contains (self.mModelArray [idx].string) {
+        newSelectedRowIndexes.insert (idx)
+      }
+      idx += 1
+    }
+    if (newSelectedRowIndexes.count == 0) && (self.mModelArray.count > 0) {
+      if let firstIndex : Int = currentSelectedRowIndexes.first {
+        if firstIndex < self.mModelArray.count {
+          newSelectedRowIndexes.insert (firstIndex)
+        }else{
+          newSelectedRowIndexes.insert (self.mModelArray.count - 1)
+        }
+      }else{
+        newSelectedRowIndexes.insert (0)
+      }
+    }
+    self.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView, mouseDownInHeaderOf inTableColumn : NSTableColumn) {
+    self.setModel (self.mModelArray)
+  }
+
+  //····················································································································
+  //   GETTERS
+  //····················································································································
 
   func title (atIndex inIndex : Int) -> String {
-    return self.mModelArray [inIndex].mString
+    return self.mModelArray [inIndex].string
   }
 
   //····················································································································
 
   func tag (atIndex inIndex : Int) -> Int {
-    return self.mModelArray [inIndex].mTag
-  }
-
-  //····················································································································
-
-  func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mModelArray.count
-  }
-
-  //····················································································································
-
-  func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-    return self.mModelArray [row].mString
+    return self.mModelArray [inIndex].tag
   }
 
   //····················································································································
@@ -96,7 +197,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      let cellName : String = self.mModelArray [rowIndexes.first!].mString
+      let cellName : String = self.mModelArray [rowIndexes.first!].string
       pboard.declareTypes ([draggedType], owner:self)
     //--- Associated data is cell name
       let data = cellName.data (using: .ascii)
@@ -151,37 +252,15 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   func update (from model : EBReadOnlyProperty_StringTagArray) {
     switch model.prop {
-    case .empty :
-      self.mModelArray = []
+    case .empty, .multiple :
+      self.setModel ([])
     case .single (let v) :
-      self.mModelArray = v
-    case .multiple :
-      self.mModelArray = []
+      self.setModel (v)
     }
   }
 
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StringTag
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct StringTag : Hashable {
-  let mString : String
-  let mTag : Int
-
-  init (_ inString : String, _ inTag : Int) {
-    mString = inString
-    mTag = inTag
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StringTagArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias StringTagArray = [StringTag]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

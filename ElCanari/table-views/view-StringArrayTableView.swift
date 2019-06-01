@@ -84,7 +84,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "value" {
-          self.mDataSource.sort ()
+          self.mDataSource.sort (by: { $0.localizedStandardCompare ($1) == .orderedAscending } )
           if !s.ascending {
             self.mDataSource.reverse ()
           }
@@ -155,3 +155,10 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension String {
+
+  func ebLocalizedStandardOrdering (_ inOtherString : String) -> Bool {
+    return self.localizedCompare (inOtherString) == .orderedAscending
+  }
+}

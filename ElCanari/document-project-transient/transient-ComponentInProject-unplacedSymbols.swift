@@ -34,7 +34,7 @@ func transient_ComponentInProject_unplacedSymbols (
               name += ":" + symbolInstanceName
             }
             name += " (" + symbolTypeName + ")"
-            result.append (StringTag (name, ebObjectIndex))
+            result.append (StringTag (string: name, tag: ebObjectIndex))
           }
           idx += 1
         }

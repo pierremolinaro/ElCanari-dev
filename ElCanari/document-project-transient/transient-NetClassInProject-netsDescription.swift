@@ -101,6 +101,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_NetClassInProject_netsDescription (
+       _ self_mNets : [EBManagedObject_alloc_index_protocol],
        _ self_mNets_mNetName : [NetInProject_mNetName],
        _ self_mNets_netPointsInfo : [NetInProject_netPointsInfo],
        _ self_mNetClassName : String
@@ -121,6 +122,7 @@ func transient_NetClassInProject_netsDescription (
           }
           let (subnets, subnetsHaveWarning) = computeSubnets (netPointInfo)
           let netInfo = NetInfo (
+            netIdentifier: self_mNets [idx].ebObjectIndex, 
             netName: netName,
             netClassName: self_mNetClassName,
             points: netPointInfo,

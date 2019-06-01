@@ -580,6 +580,7 @@ class NetClassInProject : EBManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.mNets_property_selection.kind ()
         kind &= unwSelf.mNets_property_selection.kind ()
+        kind &= unwSelf.mNets_property_selection.kind ()
         kind &= unwSelf.mNetClassName_property_selection.kind ()
         switch kind {
         case .empty :
@@ -587,9 +588,9 @@ class NetClassInProject : EBManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_NetClassInProject_netsDescription (v0, v1, v2))
+          switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -598,6 +599,7 @@ class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
+    self.mNets_property.addEBObserver (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_mNetName (self.netsDescription_property)
     self.mNets_property.addEBObserverOf_netPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.addEBObserver (self.netsDescription_property)
@@ -644,6 +646,7 @@ class NetClassInProject : EBManagedObject,
     self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
     self.mNets_property.removeEBObserver (self.canRemove_property)
     self.mNets_property.removeEBObserver (self.netUsage_property)
+    self.mNets_property.removeEBObserver (self.netsDescription_property)
     self.mNets_property.removeEBObserverOf_mNetName (self.netsDescription_property)
     self.mNets_property.removeEBObserverOf_netPointsInfo (self.netsDescription_property)
     self.mNetClassName_property.removeEBObserver (self.netsDescription_property)

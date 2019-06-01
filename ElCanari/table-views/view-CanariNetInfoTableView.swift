@@ -88,11 +88,11 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
 
   func reloadDataSource (_ inDataSource : NetInfoArray) {
   //--- Note selected rows
-    var selectedRowContents = Set <NetInfo> ()
+    var selectedRowContents = Set <Int> ()
     let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mDataSource.count {
-        selectedRowContents.insert (self.mDataSource [idx])
+        selectedRowContents.insert (self.mDataSource [idx].netIdentifier)
       }
     }
   //--- Sort
@@ -101,15 +101,15 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
       if let key = s.key {
         if key == "netname" {
           if s.ascending {
-            self.mDataSource.sort { $0.netName < $1.netName }
+            self.mDataSource.sort { $0.netName.localizedStandardCompare ($1.netName) == .orderedAscending }
           }else{
-            self.mDataSource.sort { $0.netName > $1.netName }
+            self.mDataSource.sort { $0.netName.localizedStandardCompare ($1.netName) == .orderedDescending }
           }
         }else if key == "netclass" {
           if s.ascending {
-            self.mDataSource.sort { $0.netClassName < $1.netClassName }
+            self.mDataSource.sort { $0.netClassName.localizedStandardCompare ($1.netClassName) == .orderedAscending }
           }else{
-            self.mDataSource.sort { $0.netClassName > $1.netClassName }
+            self.mDataSource.sort { $0.netClassName.localizedStandardCompare ($1.netClassName) == .orderedDescending }
           }
         }else if key == "pins" {
           if s.ascending {
@@ -133,7 +133,7 @@ class CanariNetInfoTableView : EBTableView, NSTableViewDataSource, NSTableViewDe
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
     while idx < self.mDataSource.count {
-      if selectedRowContents.contains (self.mDataSource [idx]) {
+      if selectedRowContents.contains (self.mDataSource [idx].netIdentifier) {
         newSelectedRowIndexes.insert (idx)
       }
       idx += 1

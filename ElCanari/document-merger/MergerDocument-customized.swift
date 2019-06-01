@@ -106,34 +106,48 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
-    if let boardView = self.mComposedBoardView, dragRows.count == 1, let idx = dragRows.first {
-    //--- Get board view scale and flip
-      let scale : CGFloat = boardView.actualScale
-     // Swift.print ("Scale \(scale)")
-      let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
-      let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
-    //--- Image size
-      let boardModel = self.rootObject.boardModels_property.propval [idx]
-   //   Swift.print ("Model size: \(canariUnitToCocoa (boardModel.modelWidth)), \(canariUnitToCocoa (boardModel.modelHeight))")
-      var width  : CGFloat = scale * canariUnitToCocoa (boardModel.modelWidth)
-      var height : CGFloat = scale * canariUnitToCocoa (boardModel.modelHeight)
-   //   Swift.print ("Image size: \(width), \(height)")
-    //--- Orientation (0 -> 0°, 1 -> 90°, 2 -> 180°, 3 -> 270°)
-      let rotation = self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0
-      if (rotation == 1) || (rotation == 3) {
-        let temp = width
-        width = height
-        height = temp
+    if let boardView = self.mComposedBoardView,
+       dragRows.count == 1,
+      let idx = dragRows.first,
+      let boardModelTag = self.mModelDragSourceTableView?.tag (atIndex: idx) {
+    //--- Find board model
+      var optionalBoardModel : BoardModel? = nil
+      for boardModel in self.rootObject.boardModels {
+        if boardModel.ebObjectIndex == boardModelTag {
+          optionalBoardModel = boardModel
+          break
+        }
       }
-    //--- By default, image is centered
-      dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
-    //--- Build image
-      let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
-      let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
-      bp.lineWidth = 1.0
-      let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
-      let image = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
-      return image
+      if let boardModel = optionalBoardModel {
+      //--- Get board view scale and flip
+        let scale : CGFloat = boardView.actualScale
+       // Swift.print ("Scale \(scale)")
+        let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
+        let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
+      //--- Image size
+     //   Swift.print ("Model size: \(canariUnitToCocoa (boardModel.modelWidth)), \(canariUnitToCocoa (boardModel.modelHeight))")
+        var width  : CGFloat = scale * canariUnitToCocoa (boardModel.modelWidth)
+        var height : CGFloat = scale * canariUnitToCocoa (boardModel.modelHeight)
+     //   Swift.print ("Image size: \(width), \(height)")
+      //--- Orientation (0 -> 0°, 1 -> 90°, 2 -> 180°, 3 -> 270°)
+        let rotation = self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0
+        if (rotation == 1) || (rotation == 3) {
+          let temp = width
+          width = height
+          height = temp
+        }
+      //--- By default, image is centered
+        dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
+      //--- Build image
+        let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
+        let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+        bp.lineWidth = 1.0
+        let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
+        let image = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
+        return image
+      }else{
+        return NSImage (named: NSImage.Name ("exclamation"))!
+      }
     }else{
       return NSImage (named: NSImage.Name ("exclamation"))!
     }

@@ -1910,11 +1910,15 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 typealias EBReadOnlyProperty_NetInfoPoint  = EBReadOnlyValueProperty <NetInfoPoint>
 typealias EBTransientProperty_NetInfoPoint = EBTransientValueProperty <NetInfoPoint>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property NetInfoPointArray
+//   Transient property class NetInfoPointArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NetInfoPointArray  = EBReadOnlyValueProperty <NetInfoPointArray>
-typealias EBTransientProperty_NetInfoPointArray = EBTransientValueProperty <NetInfoPointArray>
+typealias EBReadOnlyProperty_NetInfoPointArray  = EBReadOnlyClassProperty <NetInfoPointArray>
+typealias EBTransientProperty_NetInfoPointArray = EBTransientClassProperty <NetInfoPointArray>
+typealias EBReadOnlyPropertyArray_NetInfoPointArray  = EBReadOnlyClassProperty <[NetInfoPointArray]>
+typealias EBTransientPropertyArray_NetInfoPointArray = EBTransientClassProperty <[NetInfoPointArray]>
+
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property StatusStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

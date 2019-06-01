@@ -23,6 +23,7 @@ entity NetClassInProject {
   transient String viaPadDiameter dependsFrom self.mViaPadDiameter, self.mViaPadDiameterUnit ;
   
   transient NetInfoArray netsDescription dependsFrom
+    self.mNets,
     self.mNets.all.mNetName,
     self.mNets.all.netPointsInfo,
     self.mNetClassName ;

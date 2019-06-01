@@ -29,7 +29,7 @@ extension ProjectDocument {
   internal func addComponent (_ inData : Data, _ inName : String) {
   //--- Append device
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
-    self.addComponent (fromPossibleDevice: possibleNewDeviceInProject)
+    _ = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject)
   }
 
   //····················································································································
@@ -43,32 +43,34 @@ extension ProjectDocument {
       }
     }
   //--- Add Component
-    self.addComponent (fromPossibleDevice: possibleDevice)
+    _ = self.addComponent (fromPossibleDevice: possibleDevice)
   }
 
   //····················································································································
 
-  internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject {
-    let newComponent = ComponentInProject (self.ebUndoManager)
-    newComponent.mDevice = inComponent.mDevice
-    newComponent.mSelectedPackage = inComponent.mSelectedPackage
-    newComponent.mComponentValue = inComponent.mComponentValue
-  //--- Fix index for component name
-    newComponent.mNamePrefix = inComponent.mNamePrefix
-    var idx = 1
-    for component in self.rootObject.mComponents {
-      if newComponent.mNamePrefix == component.mNamePrefix {
-        idx = max (idx, component.mNameIndex + 1)
-      }
-    }
-    newComponent.mNameIndex = idx
-    self.rootObject.mComponents.append (newComponent)
-    return newComponent
+  internal func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
+    let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice)
+//    let newComponent = ComponentInProject (self.ebUndoManager)
+//    newComponent.mDevice = inComponent.mDevice
+//    newComponent.mSelectedPackage = inComponent.mSelectedPackage
+//    newComponent.mComponentValue = inComponent.mComponentValue
+//  //--- Fix index for component name
+//    newComponent.mNamePrefix = inComponent.mNamePrefix
+//    var idx = 1
+//    for component in self.rootObject.mComponents {
+//      if newComponent.mNamePrefix == component.mNamePrefix {
+//        idx = max (idx, component.mNameIndex + 1)
+//      }
+//    }
+//    newComponent.mNameIndex = idx
+//    self.rootObject.mComponents.append (newComponent)
+    return optionalNewComponent
   }
 
   //····················································································································
 
-  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) {
+  internal func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?) -> ComponentInProject? {
+    var optionalNewComponent : ComponentInProject? = nil
   //--- Append component
     if let deviceInProject = inPossibleDevice {
       let newComponent = ComponentInProject (self.ebUndoManager)
@@ -96,7 +98,9 @@ extension ProjectDocument {
       newComponent.mNameIndex = idx
       self.rootObject.mComponents.append (newComponent)
       self.componentController.setSelection ([newComponent])
+      optionalNewComponent = newComponent
     }
+    return optionalNewComponent
   }
 
   //····················································································································

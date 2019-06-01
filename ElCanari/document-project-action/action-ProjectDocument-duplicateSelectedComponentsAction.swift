@@ -16,8 +16,9 @@ extension ProjectDocument {
 //--- START OF USER ZONE 2
         var newComponents = [ComponentInProject] ()
         for selectedComponent in self.componentController.selectedArray_property.propval {
-          let newComponent = self.duplicate (component: selectedComponent)
-          newComponents.append (newComponent)
+          if let newComponent = self.duplicate (component: selectedComponent) {
+            newComponents.append (newComponent)
+          }
         }
         self.componentController.setSelection (newComponents)
 //--- END OF USER ZONE 2
