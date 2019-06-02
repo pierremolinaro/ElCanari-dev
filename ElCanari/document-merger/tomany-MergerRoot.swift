@@ -1561,12 +1561,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   //····················································································································
 
   private var mIsOrderedBefore : Optional < (_ left : MergerRoot, _ right : MergerRoot) -> Bool > = nil 
-
-  //····················································································································
-
-  func setSortCallback (_ inCallBack : Optional < (_ left : MergerRoot, _ right : MergerRoot) -> Bool >) {
-    self.mIsOrderedBefore = inCallBack
-  }
+  private var mSortObserver : EBModelNotifierEvent? = nil
 
   //····················································································································
   //   Data provider
@@ -1575,16 +1570,38 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   private var mDataProvider : ReadOnlyArrayOf_MergerRoot? = nil
   private var mTransientKind : PropertyKind = .empty
 
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_MergerRoot?) {
+ 
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_MergerRoot,
+                        sortCallback inSortCallBack : Optional < (_ left : MergerRoot, _ right : MergerRoot) -> Bool >,
+                        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
+                        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     if self.mDataProvider !== inProvider {
+      self.mSortObserver?.removeSortObservers ()
+      self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
+      self.mIsOrderedBefore = inSortCallBack
       self.mDataProvider?.attachClient (self)
-      if inProvider == nil {
+      if inSortCallBack != nil {
+        self.mSortObserver = EBModelNotifierEvent (
+          self,
+          addSortObserversCallback: inAddSortObserversCallback,
+          removeSortObserversCallback: inRemoveSortObserversCallback
+        )
+      }else{
         self.mInternalArrayValue = []
       }
+    }
+  }
+
+  //····················································································································
+
+  func resetDataProvider () {
+    if self.mDataProvider != nil {
+      self.mSortObserver = nil
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = nil
+      self.mIsOrderedBefore = nil
     }
   }
 

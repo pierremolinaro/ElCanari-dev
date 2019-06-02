@@ -57,21 +57,25 @@ final class Controller_FontDocument_mSelectedCharacterController : ReadOnlyAbstr
       }
       tableView.sortDescriptors = self.mSortDescriptorArray
     }
-  //--- Add observed properties (for filtering and sorting)
   //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
-    self.sortedArray_property.setDataProvider (inModel)
+    self.sortedArray_property.setDataProvider (
+      inModel,
+      sortCallback: nil,
+      addSortObserversCallback: {(observer) in
+      },
+      removeSortObserversCallback: {(observer) in
+      }
+    )
     inModel.attachClient (self)
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.sortedArray_property.setSortCallback (nil)
-    self.sortedArray_property.setDataProvider (nil)
+    self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
-  //--- Remove observed properties (for filtering and sorting)
     for tvc in self.mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }

@@ -848,12 +848,7 @@ class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
   //····················································································································
 
   private var mIsOrderedBefore : Optional < (_ left : PointInSchematic, _ right : PointInSchematic) -> Bool > = nil 
-
-  //····················································································································
-
-  func setSortCallback (_ inCallBack : Optional < (_ left : PointInSchematic, _ right : PointInSchematic) -> Bool >) {
-    self.mIsOrderedBefore = inCallBack
-  }
+  private var mSortObserver : EBModelNotifierEvent? = nil
 
   //····················································································································
   //   Data provider
@@ -862,16 +857,38 @@ class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
   private var mDataProvider : ReadOnlyArrayOf_PointInSchematic? = nil
   private var mTransientKind : PropertyKind = .empty
 
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_PointInSchematic?) {
+ 
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_PointInSchematic,
+                        sortCallback inSortCallBack : Optional < (_ left : PointInSchematic, _ right : PointInSchematic) -> Bool >,
+                        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
+                        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     if self.mDataProvider !== inProvider {
+      self.mSortObserver?.removeSortObservers ()
+      self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
+      self.mIsOrderedBefore = inSortCallBack
       self.mDataProvider?.attachClient (self)
-      if inProvider == nil {
+      if inSortCallBack != nil {
+        self.mSortObserver = EBModelNotifierEvent (
+          self,
+          addSortObserversCallback: inAddSortObserversCallback,
+          removeSortObserversCallback: inRemoveSortObserversCallback
+        )
+      }else{
         self.mInternalArrayValue = []
       }
+    }
+  }
+
+  //····················································································································
+
+  func resetDataProvider () {
+    if self.mDataProvider != nil {
+      self.mSortObserver = nil
+      self.mDataProvider?.detachClient (self)
+      self.mDataProvider = nil
+      self.mIsOrderedBefore = nil
     }
   }
 

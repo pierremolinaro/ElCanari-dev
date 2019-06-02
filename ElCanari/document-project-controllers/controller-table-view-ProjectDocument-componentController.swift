@@ -48,7 +48,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
-    self.mSortDescriptorArray = []
+    self.mSortDescriptorArray = []    
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "device", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "package", ascending: true))
@@ -62,7 +62,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       }
       tableView.sortDescriptors = self.mSortDescriptorArray
     }
-  //--- Add observed properties (for filtering and sorting)
   //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
@@ -75,7 +74,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
         inModel.addEBObserverOf_mComponentValue (observer)
         inModel.addEBObserverOf_placementInSchematic (observer)
         inModel.addEBObserverOf_selectedPackageName (observer)
-    },
+      },
       removeSortObserversCallback: {(observer) in
         inModel.removeEBObserverOf_componentName (observer)
         inModel.removeEBObserverOf_deviceName (observer)
@@ -92,12 +91,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
-  //--- Remove observed properties (for filtering and sorting)
-    self.mModel?.removeEBObserverOf_componentName (self.sortedArray_property)
-    self.mModel?.removeEBObserverOf_deviceName (self.sortedArray_property)
-    self.mModel?.removeEBObserverOf_mComponentValue (self.sortedArray_property)
-    self.mModel?.removeEBObserverOf_placementInSchematic (self.sortedArray_property)
-    self.mModel?.removeEBObserverOf_selectedPackageName (self.sortedArray_property)
     for tvc in self.mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }

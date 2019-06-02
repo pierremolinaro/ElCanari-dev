@@ -48,7 +48,6 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
 
   func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
-    self.sortedArray_property.setSortCallback ( { (left, right) in self.isOrderedBefore (left, right) } )
     self.mSortDescriptorArray = []    
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     for tableView in self.mTableViewArray {
@@ -59,23 +58,27 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
       }
       tableView.sortDescriptors = self.mSortDescriptorArray
     }
-  //--- Add observed properties (for filtering and sorting)
-    inModel.addEBObserverOf_name (self.sortedArray_property)
   //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
-    self.sortedArray_property.setDataProvider (inModel)
+    self.sortedArray_property.setDataProvider (
+      inModel,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      addSortObserversCallback: {(observer) in
+        inModel.addEBObserverOf_name (observer)
+      },
+      removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_name (observer)
+      }
+    )
     inModel.attachClient (self)
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.sortedArray_property.setSortCallback (nil)
-    self.sortedArray_property.setDataProvider (nil)
+    self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
-  //--- Remove observed properties (for filtering and sorting)
-    self.mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in self.mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }

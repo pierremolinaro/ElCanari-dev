@@ -606,49 +606,6 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBModelNotifierEvent
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBModelNotifierEvent : EBEvent {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  private let mClient : ReadOnlyAbstractGenericRelationshipProperty
-  private let mRemoveSortObserversCallback : (EBModelNotifierEvent) -> Void
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  init (_ inClient : ReadOnlyAbstractGenericRelationshipProperty,
-        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
-        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
-    mClient = inClient
-    mRemoveSortObserversCallback = inRemoveSortObserversCallback
-    super.init ()
-    inAddSortObserversCallback (self)
-  }
-
-  //····················································································································
-
-  func removeSortObservers () {
-    self.mRemoveSortObserversCallback (self)
-  }
-
-  //····················································································································
-
-  override func postEvent () {
-    super.postEvent ()
-    self.mClient.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    TransientArrayOf ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -668,8 +625,7 @@ class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
   private var mDataProvider : ReadOnlyArrayOf_ComponentInProject? = nil
   private var mTransientKind : PropertyKind = .empty
 
-  //····················································································································
-
+ 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_ComponentInProject,
                         sortCallback inSortCallBack : Optional < (_ left : ComponentInProject, _ right : ComponentInProject) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
