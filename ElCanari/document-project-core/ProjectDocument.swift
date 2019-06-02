@@ -69,6 +69,12 @@ import Cocoa
   var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
 
   //····················································································································
+  //   Array controller: boardLimitsObjectsController
+  //····················································································································
+
+  var boardLimitsObjectsController = Controller_ProjectDocument_boardLimitsObjectsController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -365,7 +371,9 @@ import Cocoa
   @IBOutlet var mAddWireButton : CanariDragSourceButton?
   @IBOutlet var mAddWirePointSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
-  @IBOutlet var mBoardPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardLimitsView : EBGraphicView?
+  @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
@@ -581,6 +589,8 @@ import Cocoa
     self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
+  //--- Array controller property: boardLimitsObjectsController
+    self.boardLimitsObjectsController.addExplorer (name: "boardLimitsObjectsController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -628,7 +638,9 @@ import Cocoa
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
-    checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsView, "mBoardLimitsView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -789,6 +801,8 @@ import Cocoa
     self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: boardLimitsObjectsController
+    self.boardLimitsObjectsController.bind_model (self.rootObject.mBoardLimits_property, self.ebUndoManager)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1038,6 +1052,7 @@ import Cocoa
     self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
     self.schematicObjectsController.bind_ebView (self.mSchematicsView)
+    self.boardLimitsObjectsController.bind_ebView (self.mBoardLimitsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
@@ -1083,6 +1098,7 @@ import Cocoa
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
     self.mNetWarningTextField?.bind_valueObserver (self.rootObject.netWarningCount_property, file: #file, line: #line, autoFormatter:true)
+    self.mBoardLimitsView?.bind_backColor (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1485,6 +1501,7 @@ import Cocoa
     self.mNetInfoTableView?.unbind_netInfo ()
     self.mNetCountTextField?.unbind_valueObserver ()
     self.mNetWarningTextField?.unbind_valueObserver ()
+    self.mBoardLimitsView?.unbind_backColor ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1554,6 +1571,7 @@ import Cocoa
     self.projectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.projectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
+    self.boardLimitsObjectsController.unbind_ebView (self.mBoardLimitsView)
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
   //--- Array controller property: netClassController
@@ -1574,6 +1592,8 @@ import Cocoa
     self.schematicLabelSelectionController.unbind_selection ()
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.unbind_selection ()
+  //--- Array controller property: boardLimitsObjectsController
+    self.boardLimitsObjectsController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -1626,7 +1646,9 @@ import Cocoa
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
-    self.mBoardPageView?.ebCleanUp ()
+    self.mBoardBorderPageView?.ebCleanUp ()
+    self.mBoardLimitsView?.ebCleanUp ()
+    self.mBoardObjectsPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -1773,7 +1795,9 @@ import Cocoa
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
 //    self.mBaseSchematicsInspectorView = nil
-//    self.mBoardPageView = nil
+//    self.mBoardBorderPageView = nil
+//    self.mBoardLimitsView = nil
+//    self.mBoardObjectsPageView = nil
 //    self.mChangeComponentValueComboxBox = nil
 //    self.mChangePackageComponentListTextField = nil
 //    self.mChangePackageOfSelectedComponentsActionButton = nil

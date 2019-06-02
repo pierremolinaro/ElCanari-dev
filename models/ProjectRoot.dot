@@ -1,7 +1,7 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mBoardLimits>[BoardLimit] mBoardLimits|<mBorderPoints>[BorderPoint] mBorderPoints|<mComponents>[ComponentInProject] mComponents|<mDevices>[DeviceInProject] mDevices|<mFonts>[FontInProject] mFonts|<mNetClasses>[NetClassInProject] mNetClasses|Date mSchematicDate|Int mSchematicGridDisplayFactor|GridStyle mSchematicGridStyle|Bool mSchematicHorizontalFlip|SchematicSheetOrientation mSchematicSheetOrientation|String mSchematicTitle|String mSchematicVersion|Bool mSchematicVerticalFlip|Int mSchematicZoom|Int mSelectedPageIndex|Int mSelectedSchematicInspector|<mSelectedSheet>SheetInProject? mSelectedSheet|<mSheets>[SheetInProject] mSheets|<selectedSheetObjects>[SchematicObject] selectedSheetObjects|String selectedSheetTitle"] ;
   SchematicObject[label="<SchematicObject>SchematicObject|<mSheet>SheetInProject? mSheet"] ;
   SheetInProject[label="<SheetInProject>SheetInProject|<mObjects>[SchematicObject] mObjects|<mPoints>[PointInSchematic] mPoints|<mRoot>ProjectRoot? mRoot|String mSheetTitle"] ;
   PointInSchematic[label="<PointInSchematic>PointInSchematic|<mLabels>[LabelInSchematic] mLabels|<mNC>NCInSchematic? mNC|<mNet>NetInProject? mNet|<mSheet>SheetInProject? mSheet|<mSymbol>ComponentSymbolInProject? mSymbol|String mSymbolPinName|<mWiresP1s>[WireInSchematic] mWiresP1s|<mWiresP2s>[WireInSchematic] mWiresP2s|Int mX|Int mY"] ;
@@ -21,6 +21,10 @@ digraph G {
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>DeviceInProject? mDevice|Int mNameIndex|String mNamePrefix|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|<mSymbols>[ComponentSymbolInProject] mSymbols"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
+  BorderPoint[label="<BorderPoint>BorderPoint|<mCurve1>BoardLimit? mCurve1|<mCurve2>BoardLimit? mCurve2|Int mX|Int mY"] ;
+  BoardLimit[label="<BoardLimit>BoardLimit|<mP1>BorderPoint? mP1|<mP2>BorderPoint? mP2"] ;
+  ProjectRoot:mBoardLimits -> BoardLimit:BoardLimit [dir=both arrowtail=none arrowhead=vee] ;
+  ProjectRoot:mBorderPoints -> BorderPoint:BorderPoint [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
@@ -51,4 +55,6 @@ digraph G {
   ComponentInProject:mSymbols -> ComponentSymbolInProject:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
   ComponentSymbolInProject -> SchematicObject [arrowhead=dot] ;
   ComponentSymbolInProject:mPoints -> PointInSchematic:mSymbol [dir=both arrowtail=onormal arrowhead=vee] ;
+  BoardLimit:mP1 -> BorderPoint:mCurve1 [dir=both arrowtail=onormal arrowhead=onormal] ;
+  BoardLimit:mP2 -> BorderPoint:mCurve2 [dir=both arrowtail=onormal arrowhead=onormal] ;
 }

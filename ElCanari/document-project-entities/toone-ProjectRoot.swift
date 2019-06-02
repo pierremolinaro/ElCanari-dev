@@ -1733,6 +1733,47 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observable toMany property: mBorderPoints
+  //····················································································································
+
+  private var mObserversOf_mBorderPoints = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBorderPoints_property_selection : EBSelection <[BorderPoint]> {
+    if let model = self.propval {
+      switch (model.mBorderPoints_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBorderPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mBorderPoints.insert (inObserver)
+    if let object = self.propval {
+      object.mBorderPoints_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBorderPoints (_ inObserver : EBEvent) {
+    self.mObserversOf_mBorderPoints.remove (inObserver)
+    if let object = self.propval {
+      object.mBorderPoints_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable toMany property: mSheets
   //····················································································································
 
@@ -1934,6 +1975,47 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mObserversOf_mDevices.remove (inObserver)
     if let object = self.propval {
       object.mDevices_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: mBoardLimits
+  //····················································································································
+
+  private var mObserversOf_mBoardLimits = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBoardLimits_property_selection : EBSelection <[BoardLimit]> {
+    if let model = self.propval {
+      switch (model.mBoardLimits_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardLimits (_ inObserver : EBEvent) {
+    self.mObserversOf_mBoardLimits.insert (inObserver)
+    if let object = self.propval {
+      object.mBoardLimits_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardLimits (_ inObserver : EBEvent) {
+    self.mObserversOf_mBoardLimits.remove (inObserver)
+    if let object = self.propval {
+      object.mBoardLimits_property.removeEBObserver (inObserver)
     }
   }
 

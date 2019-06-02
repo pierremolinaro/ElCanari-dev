@@ -179,6 +179,25 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicStatusMessage {
 
   //····················································································································
+  //   To many property: mBorderPoints
+  //····················································································································
+
+  let mBorderPoints_property = StoredArrayOf_BorderPoint ()
+
+  //····················································································································
+
+  var mBorderPoints_property_selection : EBSelection < [BorderPoint] > {
+    return self.mBorderPoints_property.prop
+  }
+
+  //····················································································································
+
+  var mBorderPoints : [BorderPoint] {
+    get { return self.mBorderPoints_property.propval }
+    set { self.mBorderPoints_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: mSheets
   //····················································································································
 
@@ -441,6 +460,25 @@ class ProjectRoot : EBManagedObject,
   var mDevices : [DeviceInProject] {
     get { return self.mDevices_property.propval }
     set { self.mDevices_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: mBoardLimits
+  //····················································································································
+
+  let mBoardLimits_property = StoredArrayOf_BoardLimit ()
+
+  //····················································································································
+
+  var mBoardLimits_property_selection : EBSelection < [BoardLimit] > {
+    return self.mBoardLimits_property.prop
+  }
+
+  //····················································································································
+
+  var mBoardLimits : [BoardLimit] {
+    get { return self.mBoardLimits_property.propval }
+    set { self.mBoardLimits_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -838,6 +876,8 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To many property: mBorderPoints (no option)
+    self.mBorderPoints_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -872,6 +912,8 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mBoardLimits (no option)
+    self.mBoardLimits_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
@@ -1442,6 +1484,13 @@ class ProjectRoot : EBManagedObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
+      "mBorderPoints",
+      idx:mBorderPoints_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mBorderPoints_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "mSheets",
       idx:mSheets_property.ebObjectIndex,
       y: &y,
@@ -1476,6 +1525,13 @@ class ProjectRoot : EBManagedObject,
       view: view,
       valueExplorer:&mDevices_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "mBoardLimits",
+      idx:mBoardLimits_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mBoardLimits_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
       "mSelectedSheet",
@@ -1492,6 +1548,8 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mBorderPoints
+    self.mBorderPoints_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
@@ -1532,6 +1590,8 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.mValueExplorer = nil
   //--- To many property: mDevices
     self.mDevices_property.mValueExplorer = nil
+  //--- To many property: mBoardLimits
+    self.mBoardLimits_property.mValueExplorer = nil
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.mObserverExplorer = nil
     self.mSchematicSheetOrientation_property.mValueExplorer = nil
@@ -1552,11 +1612,13 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mBorderPoints = []
     self.mSheets = []
     self.mComponents = []
     self.mNetClasses = []
     self.mFonts = []
     self.mDevices = []
+    self.mBoardLimits = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1577,6 +1639,12 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- To many property: mBorderPoints
+    self.store (
+      managedObjectArray: self.mBorderPoints_property.propval,
+      relationshipName: "mBorderPoints",
+      intoDictionary: ioDictionary
+    )
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -1627,6 +1695,12 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mDevices",
       intoDictionary: ioDictionary
     )
+  //--- To many property: mBoardLimits
+    self.store (
+      managedObjectArray: self.mBoardLimits_property.propval,
+      relationshipName: "mBoardLimits",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey:"mSchematicSheetOrientation")
   //--- To one property: mSelectedSheet
@@ -1642,6 +1716,12 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mBorderPoints
+    self.mBorderPoints_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mBorderPoints",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BorderPoint])
   //--- To many property: mSheets
     self.mSheets_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSheets",
@@ -1672,6 +1752,12 @@ class ProjectRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [DeviceInProject])
+  //--- To many property: mBoardLimits
+    self.mBoardLimits_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mBoardLimits",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardLimit])
   //--- To one property: mSelectedSheet
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -1721,6 +1807,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mBorderPoints
+    for managedObject in self.mBorderPoints {
+      objects.append (managedObject)
+    }
   //--- To many property: mSheets
     for managedObject in self.mSheets {
       objects.append (managedObject)
@@ -1739,6 +1829,10 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mDevices
     for managedObject in self.mDevices {
+      objects.append (managedObject)
+    }
+  //--- To many property: mBoardLimits
+    for managedObject in self.mBoardLimits {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet
@@ -1753,6 +1847,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mBorderPoints
+    for managedObject in self.mBorderPoints {
+      objects.append (managedObject)
+    }
   //--- To many property: mSheets
     for managedObject in self.mSheets {
       objects.append (managedObject)
@@ -1771,6 +1869,10 @@ class ProjectRoot : EBManagedObject,
     }
   //--- To many property: mDevices
     for managedObject in self.mDevices {
+      objects.append (managedObject)
+    }
+  //--- To many property: mBoardLimits
+    for managedObject in self.mBoardLimits {
       objects.append (managedObject)
     }
   //--- To one property: mSelectedSheet

@@ -18,13 +18,42 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
 
   override init () {
     super.init ()
-  //--- Add default net class and first sheet
     self.ebUndoManager.disableUndoRegistration ()
+  //--- Add default net class and first sheet
     let netClass = NetClassInProject (self.ebUndoManager)
     self.rootObject.mNetClasses.append (netClass)
     let sheet = SheetInProject (self.ebUndoManager)
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
+  //--- Add board limits
+    let boardLength = millimeterToCanariUnit (100.0)
+    let bottomLeft = BorderPoint (self.ebUndoManager)
+    bottomLeft.mX = 0
+    bottomLeft.mY = 0
+    let bottomRight = BorderPoint (self.ebUndoManager)
+    bottomRight.mX = boardLength
+    bottomRight.mY = 0
+    let topRight = BorderPoint (self.ebUndoManager)
+    topRight.mX = boardLength
+    topRight.mY = boardLength
+    let topLeft = BorderPoint (self.ebUndoManager)
+    topLeft.mX = 0
+    topLeft.mY = boardLength
+    let bottom = BoardLimit (self.ebUndoManager)
+    bottom.mP1 = bottomLeft
+    bottom.mP2 = bottomRight
+    let right = BoardLimit (self.ebUndoManager)
+    right.mP1 = bottomRight
+    right.mP2 = topRight
+    let top = BoardLimit (self.ebUndoManager)
+    top.mP1 = topRight
+    top.mP2 = topLeft
+    let left = BoardLimit (self.ebUndoManager)
+    left.mP1 = topLeft
+    left.mP2 = bottomLeft
+    self.rootObject.mBorderPoints = [bottomLeft, bottomRight, topRight, topLeft]
+    self.rootObject.mBoardLimits = [bottom, right, top, left]
+  //---
     self.ebUndoManager.enableUndoRegistration ()
   }
 
@@ -94,7 +123,8 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
       self.mSchematicsPageView,
       self.mNetClassesPageView ,
       self.mNetListPageView,
-      self.mBoardPageView,
+      self.mBoardBorderPageView,
+      self.mBoardObjectsPageView,
       self.mProductPageView
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)

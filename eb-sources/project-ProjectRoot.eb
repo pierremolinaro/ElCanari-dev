@@ -2,7 +2,43 @@
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+entity BorderPoint {
+  toOne BoardLimit mCurve1 inverse toOne mP1 ;
+  toOne BoardLimit mCurve2 inverse toOne mP2 ;
+
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity BoardLimit {
+  toOne BorderPoint mP1 inverse toOne mCurve1 ;
+  toOne BorderPoint mP2 inverse toOne mCurve2 ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mP1.one.mX,
+    self.mP1.one.mY,
+    self.mP2.one.mX,
+    self.mP2.one.mY,
+    prefs.boardLimitsColorForBoard
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mP1.one.mX,
+    self.mP1.one.mY,
+    self.mP2.one.mX,
+    self.mP2.one.mY
+  ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 entity ProjectRoot {
+//--- Board border
+  toMany BorderPoint mBorderPoints ;
+  toMany BoardLimit mBoardLimits ;
+//---
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;
   toMany ComponentInProject mComponents ;

@@ -1,6 +1,6 @@
-//----------------------------------------------------------------------------*
-//     P R O J E C T    D O C U M E N T                                       *
-//----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
+//     P R O J E C T    D O C U M E N T
+//----------------------------------------------------------------------------------------------------------------------
 
 document ProjectDocument root ProjectRoot {
 //--- Selected Page
@@ -11,7 +11,8 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mSchematicsPageView ;
   outlet CanariViewWithKeyView mNetClassesPageView ;
   outlet CanariViewWithKeyView mNetListPageView ;
-  outlet CanariViewWithKeyView mBoardPageView ;
+  outlet CanariViewWithKeyView mBoardBorderPageView ;
+  outlet CanariViewWithKeyView mBoardObjectsPageView ;
   outlet CanariViewWithKeyView mProductPageView ;
 
 //--- Issues
@@ -423,6 +424,26 @@ document ProjectDocument root ProjectRoot {
     $valueObserver root.netWarningCount {autoFormatter: yes}
     $hidden root.netWarningCount == 0
   ;
+
+//----------------- Board limits tab
+  arrayController #boardLimitsObjectsController : root.mBoardLimits ;
+
+  outlet EBGraphicView mBoardLimitsView
+//    $underObjectsDisplay root.schematicBackgroundDisplay
+//    $overObjectsDisplay root.connectedPoints
+//    $horizontalFlip root.mSchematicHorizontalFlip
+//    $verticalFlip root.mSchematicVerticalFlip
+    $graphicController #boardLimitsObjectsController
+//    $gridStyle root.mSchematicGridStyle
+//    $gridDisplayFactor root.mSchematicGridDisplayFactor
+//    $gridLineColor prefs.lineColorOfSymbolGrid
+//    $gridCrossColor prefs.crossColorOfSymbolGrid
+//    $zoom root.mSchematicZoom
+    $backColor prefs.boardBackgroundColorForBoard
+//    $xPlacardUnit root.xPlacardUnit
+//    $yPlacardUnit root.yPlacardUnit
+  ;
+
 }
 
-//----------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------

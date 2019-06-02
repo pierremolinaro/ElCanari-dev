@@ -73,6 +73,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "NetInProject" : NetInProject.self,
   "SheetInProject" : SheetInProject.self,
   "WireInSchematic" : WireInSchematic.self,
+  "BorderPoint" : BorderPoint.self,
+  "BoardLimit" : BoardLimit.self,
   "CommentInSchematic" : CommentInSchematic.self
 ]
 
