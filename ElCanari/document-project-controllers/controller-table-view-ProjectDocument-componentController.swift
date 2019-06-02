@@ -48,8 +48,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
-    self.sortedArray_property.setSortCallback ( { (left, right) in self.isOrderedBefore (left, right) } )
-    self.mSortDescriptorArray = []    
+    self.mSortDescriptorArray = []
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "device", ascending: true))
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "package", ascending: true))
@@ -64,23 +63,34 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       tableView.sortDescriptors = self.mSortDescriptorArray
     }
   //--- Add observed properties (for filtering and sorting)
-    inModel.addEBObserverOf_componentName (self.sortedArray_property)
-    inModel.addEBObserverOf_deviceName (self.sortedArray_property)
-    inModel.addEBObserverOf_mComponentValue (self.sortedArray_property)
-    inModel.addEBObserverOf_placementInSchematic (self.sortedArray_property)
-    inModel.addEBObserverOf_selectedPackageName (self.sortedArray_property)
   //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
-    self.sortedArray_property.setDataProvider (inModel)
+    self.sortedArray_property.setDataProvider (
+      inModel,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      addSortObserversCallback: {(observer) in
+        inModel.addEBObserverOf_componentName (observer)
+        inModel.addEBObserverOf_deviceName (observer)
+        inModel.addEBObserverOf_mComponentValue (observer)
+        inModel.addEBObserverOf_placementInSchematic (observer)
+        inModel.addEBObserverOf_selectedPackageName (observer)
+    },
+      removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_componentName (observer)
+        inModel.removeEBObserverOf_deviceName (observer)
+        inModel.removeEBObserverOf_mComponentValue (observer)
+        inModel.removeEBObserverOf_placementInSchematic (observer)
+        inModel.removeEBObserverOf_selectedPackageName (observer)
+      }
+    )
     inModel.attachClient (self)
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.sortedArray_property.setSortCallback (nil)
-    self.sortedArray_property.setDataProvider (nil)
+    self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
   //--- Remove observed properties (for filtering and sorting)
     self.mModel?.removeEBObserverOf_componentName (self.sortedArray_property)
@@ -171,15 +181,15 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
-        order = compare_String (left: left.componentName_property, right: right.componentName_property)
+        order = compare_String_properties (left.componentName_property, right.componentName_property)
       }else if sortDescriptor.key == "device" {
-        order = compare_String (left: left.deviceName_property, right: right.deviceName_property)
+        order = compare_String_properties (left.deviceName_property, right.deviceName_property)
       }else if sortDescriptor.key == "package" {
-        order = compare_String (left: left.selectedPackageName_property, right: right.selectedPackageName_property)
+        order = compare_String_properties (left.selectedPackageName_property, right.selectedPackageName_property)
       }else if sortDescriptor.key == "value" {
-        order = compare_String (left: left.mComponentValue_property, right: right.mComponentValue_property)
+        order = compare_String_properties (left.mComponentValue_property, right.mComponentValue_property)
       }else if sortDescriptor.key == "inSchematics" {
-        order = compare_String (left: left.placementInSchematic_property, right: right.placementInSchematic_property)
+        order = compare_String_properties (left.placementInSchematic_property, right.placementInSchematic_property)
       }
       // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
       if !sortDescriptor.ascending {
@@ -335,10 +345,10 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   }
 
   //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:didClick:
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, didClick inTableColumn : NSTableColumn) {
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.mSortDescriptorArray = tableView.sortDescriptors
 /*    for s in tableView.sortDescriptors {
       Swift.print ("key \(s.key), ascending \(s.ascending)")

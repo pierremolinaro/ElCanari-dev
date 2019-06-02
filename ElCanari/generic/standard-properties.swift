@@ -1547,7 +1547,7 @@ typealias EBStoredProperty_Int    = EBStoredValueProperty <Int>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int) -> ComparisonResult {
+func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOnlyProperty_Int) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1593,7 +1593,7 @@ typealias EBStoredProperty_Bool    = EBStoredValueProperty <Bool>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bool) -> ComparisonResult {
+func compare_Bool_properties (_ left : EBReadOnlyProperty_Bool, _ right : EBReadOnlyProperty_Bool) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1639,7 +1639,7 @@ typealias EBStoredProperty_Double    = EBStoredValueProperty <Double>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyProperty_Double) -> ComparisonResult {
+func compare_Double_properties (_ left : EBReadOnlyProperty_Double, _ right : EBReadOnlyProperty_Double) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1685,7 +1685,7 @@ typealias EBStoredProperty_String    = EBStoredValueProperty <String>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyProperty_String) -> ComparisonResult {
+func compare_String_properties (_ left : EBReadOnlyProperty_String, _ right : EBReadOnlyProperty_String) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1708,13 +1708,7 @@ func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyPropert
     case .empty, .multiple :
       return .orderedDescending
     case .single (let otherValue) :
-      if currentValue < otherValue {
-        return .orderedAscending
-      }else if currentValue > otherValue {
-        return .orderedDescending
-      }else{
-        return .orderedSame
-      }
+      return currentValue.localizedStandardCompare (otherValue)
     }
   }
 }
@@ -1731,7 +1725,7 @@ typealias EBStoredProperty_Data    = EBStoredValueProperty <Data>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_Data (left : EBReadOnlyProperty_Data, right : EBReadOnlyProperty_Data) -> ComparisonResult {
+func compare_Data_properties (_ left : EBReadOnlyProperty_Data, _ right : EBReadOnlyProperty_Data) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1777,7 +1771,7 @@ typealias EBStoredProperty_Date    = EBStoredValueProperty <Date>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Date) -> ComparisonResult {
+func compare_Date_properties (_ left : EBReadOnlyProperty_Date, _ right : EBReadOnlyProperty_Date) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {
@@ -1823,7 +1817,7 @@ typealias EBStoredProperty_BezierPathArray    = EBStoredValueProperty <BezierPat
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compare_BezierPathArray (left : EBReadOnlyProperty_BezierPathArray, right : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+func compare_BezierPathArray_properties (_ left : EBReadOnlyProperty_BezierPathArray, _ right : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
   switch left.prop {
   case .empty :
     switch right.prop {

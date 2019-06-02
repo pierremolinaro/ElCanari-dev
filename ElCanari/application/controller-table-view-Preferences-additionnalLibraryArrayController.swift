@@ -282,10 +282,10 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
   }
 
   //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:didClick:
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, didClick inTableColumn : NSTableColumn) {
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.mSortDescriptorArray = tableView.sortDescriptors
 /*    for s in tableView.sortDescriptors {
       Swift.print ("key \(s.key), ascending \(s.ascending)")

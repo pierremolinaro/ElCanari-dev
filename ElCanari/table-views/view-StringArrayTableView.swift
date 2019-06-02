@@ -38,7 +38,7 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.reloadDataSource (self.mDataSource)
   }
 

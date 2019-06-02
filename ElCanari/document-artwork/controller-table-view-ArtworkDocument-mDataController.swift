@@ -159,7 +159,7 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
-        order = compare_String (left: left.name_property, right: right.name_property)
+        order = compare_String_properties (left.name_property, right.name_property)
       }
       // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
       if !sortDescriptor.ascending {
@@ -291,10 +291,10 @@ final class Controller_ArtworkDocument_mDataController : ReadOnlyAbstractGeneric
   }
 
   //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:didClick:
+  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, didClick inTableColumn : NSTableColumn) {
+  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.mSortDescriptorArray = tableView.sortDescriptors
 /*    for s in tableView.sortDescriptors {
       Swift.print ("key \(s.key), ascending \(s.ascending)")
