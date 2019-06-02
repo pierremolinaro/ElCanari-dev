@@ -844,6 +844,18 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : PointInSchematic, _ right : PointInSchematic) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : PointInSchematic, _ right : PointInSchematic) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -873,7 +885,11 @@ class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -1013,9 +1029,6 @@ final class ProxyArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

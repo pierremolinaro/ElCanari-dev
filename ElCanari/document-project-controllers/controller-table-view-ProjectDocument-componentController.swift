@@ -5,11 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let DEBUG_EVENT = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Table View Controller + ProjectDocument componentController
+//    Table View Controller ProjectDocument componentController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
@@ -33,23 +29,7 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
 
   //····················································································································
 
-  private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
-    didSet {
-      self.sortedArray_property.postEvent ()
-      for tableView in mTableViewArray {
-        var first = true
-        for (key, ascending) in mSortDescriptorArray {
-          if let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-            tableView.setIndicatorImage (
-              first ? (ascending ? NSImage (named: NSImage.Name ("NSAscendingSortIndicator"))! : NSImage (named: NSImage.Name ("NSDescendingSortIndicator"))!) : nil,
-              in:column
-            )
-            first = false
-          }
-        }
-      }
-    }
-  }
+  private var mSortDescriptorArray = [NSSortDescriptor] ()
 
   //····················································································································
   //    Model
@@ -67,19 +47,47 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   func bind_model (_ inModel : ReadWriteArrayOf_ComponentInProject, _ inUndoManager : EBUndoManager) {
+  //--- Set sort descriptors
+    self.sortedArray_property.setSortCallback ( { (left, right) in self.isOrderedBefore (left, right) } )
+    self.mSortDescriptorArray = []    
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "device", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "package", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "value", ascending: true))
+    self.mSortDescriptorArray.append (NSSortDescriptor (key: "inSchematics", ascending: true))
+    for tableView in self.mTableViewArray {
+      for sortDescriptor in self.mSortDescriptorArray {
+        if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
+          column.sortDescriptorPrototype = sortDescriptor
+        }
+      }
+      tableView.sortDescriptors = self.mSortDescriptorArray
+    }
+  //--- Add observed properties (for filtering and sorting)
+    inModel.addEBObserverOf_componentName (self.sortedArray_property)
+    inModel.addEBObserverOf_deviceName (self.sortedArray_property)
+    inModel.addEBObserverOf_mComponentValue (self.sortedArray_property)
+    inModel.addEBObserverOf_placementInSchematic (self.sortedArray_property)
+    inModel.addEBObserverOf_selectedPackageName (self.sortedArray_property)
+  //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (inModel)
     inModel.attachClient (self)
-  //--- Add observed properties (for filtering and sorting)
   }
 
   //····················································································································
 
   func unbind_model () {
+    self.sortedArray_property.setSortCallback (nil)
     self.sortedArray_property.setDataProvider (nil)
     self.mModel?.detachClient (self)
   //--- Remove observed properties (for filtering and sorting)
+    self.mModel?.removeEBObserverOf_componentName (self.sortedArray_property)
+    self.mModel?.removeEBObserverOf_deviceName (self.sortedArray_property)
+    self.mModel?.removeEBObserverOf_mComponentValue (self.sortedArray_property)
+    self.mModel?.removeEBObserverOf_placementInSchematic (self.sortedArray_property)
+    self.mModel?.removeEBObserverOf_selectedPackageName (self.sortedArray_property)
     for tvc in self.mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -158,6 +166,37 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   }
 
   //····················································································································
+
+  func isOrderedBefore (_ left : ComponentInProject, _ right : ComponentInProject) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for sortDescriptor in self.mSortDescriptorArray {
+      if sortDescriptor.key == "name" {
+        order = compare_String (left: left.componentName_property, right: right.componentName_property)
+      }else if sortDescriptor.key == "device" {
+        order = compare_String (left: left.deviceName_property, right: right.deviceName_property)
+      }else if sortDescriptor.key == "package" {
+        order = compare_String (left: left.selectedPackageName_property, right: right.selectedPackageName_property)
+      }else if sortDescriptor.key == "value" {
+        order = compare_String (left: left.mComponentValue_property, right: right.mComponentValue_property)
+      }else if sortDescriptor.key == "inSchematics" {
+        order = compare_String (left: left.placementInSchematic_property, right: right.placementInSchematic_property)
+      }
+      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
+      if !sortDescriptor.ascending {
+        switch order {
+        case .orderedAscending : order = .orderedDescending
+        case .orderedSame : ()
+        case .orderedDescending : order = .orderedAscending
+        }
+      }
+      if order != .orderedSame {
+        break // Exit from for
+      }
+    }
+    return order == .orderedAscending
+  }
+
+  //····················································································································
   //    Explorer
   //····················································································································
 
@@ -175,9 +214,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let tableView = inTableView {
       tableView.allowsEmptySelection = allowsEmptySelection
       tableView.allowsMultipleSelection = allowsMultipleSelection
@@ -221,12 +257,14 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
       }else{
         presentErrorWindow (file, line, "\"inSchematics\" column view unknown")
       }
-    //--- Set descriptors from first column of table view
-      var newSortDescriptorArray = [(String, Bool)] ()
-      for column in tableView.tableColumns {
-        newSortDescriptorArray.append ((column.identifier.rawValue, true)) // Ascending
+    //--- Set table view sort descriptors
+      for sortDescriptor in self.mSortDescriptorArray {
+        if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
+          column.sortDescriptorPrototype = sortDescriptor
+        }
       }
-      self.mSortDescriptorArray = newSortDescriptorArray
+      tableView.sortDescriptors = self.mSortDescriptorArray
+    //---
       self.mTableViewArray.append (tableView)
     }
   }
@@ -234,9 +272,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
  
   func unbind_tableView (_ inTableView : EBTableView?) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
       self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
@@ -273,9 +308,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   func numberOfRows (in _ : NSTableView) -> Int {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return 0
@@ -289,9 +321,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     switch self.sortedArray_property.prop {
     case .empty, .multiple :
       break
@@ -306,19 +335,18 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   }
 
   //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
+  //    T A B L E V I E W    D E L E G A T E : tableView:didClick:
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
-    var newSortDescriptorArray = [(String, Bool)] ()
-    for (columnName, ascending) in self.mSortDescriptorArray {
-      if inTableColumn.identifier == NSUserInterfaceItemIdentifier (columnName) {
-        newSortDescriptorArray.insert ((columnName, !ascending), at:0)
-      }else{
-        newSortDescriptorArray.append ((columnName, !ascending))
-      }
+  func tableView (_ tableView : NSTableView, didClick inTableColumn : NSTableColumn) {
+    self.mSortDescriptorArray = tableView.sortDescriptors
+/*    for s in tableView.sortDescriptors {
+      Swift.print ("key \(s.key), ascending \(s.ascending)")
+    } */
+    for tableView in self.mTableViewArray {
+      tableView.sortDescriptors = self.mSortDescriptorArray
     }
-    self.mSortDescriptorArray = newSortDescriptorArray
+    self.sortedArray_property.notifyModelDidChange ()
   }
 
   //····················································································································
@@ -328,9 +356,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return nil
@@ -408,9 +433,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
    @objc func add (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -431,9 +453,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   @objc func remove (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :

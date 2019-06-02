@@ -1087,6 +1087,18 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : PackageZone, _ right : PackageZone) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : PackageZone, _ right : PackageZone) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -1116,7 +1128,11 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -1256,9 +1272,6 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

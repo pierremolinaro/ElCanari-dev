@@ -909,6 +909,18 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : SymbolPin, _ right : SymbolPin) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : SymbolPin, _ right : SymbolPin) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -938,7 +950,11 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -1078,9 +1094,6 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

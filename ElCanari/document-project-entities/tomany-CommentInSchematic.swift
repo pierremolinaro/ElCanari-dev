@@ -322,6 +322,18 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : CommentInSchematic, _ right : CommentInSchematic) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : CommentInSchematic, _ right : CommentInSchematic) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -351,7 +363,11 @@ class TransientArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -491,9 +507,6 @@ final class ProxyArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchemati
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

@@ -616,6 +616,18 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : SlavePadInDevice, _ right : SlavePadInDevice) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : SlavePadInDevice, _ right : SlavePadInDevice) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -645,7 +657,11 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -785,9 +801,6 @@ final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

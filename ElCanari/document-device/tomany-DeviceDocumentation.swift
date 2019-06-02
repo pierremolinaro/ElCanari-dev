@@ -205,6 +205,18 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : DeviceDocumentation, _ right : DeviceDocumentation) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : DeviceDocumentation, _ right : DeviceDocumentation) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -234,7 +246,11 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -374,9 +390,6 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

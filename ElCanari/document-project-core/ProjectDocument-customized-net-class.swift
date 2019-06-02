@@ -46,7 +46,9 @@ extension CustomizedProjectDocument {
     //--- Build net class popup
       if let net = possibleNet {
         popup.removeAllItems ()
-        for netClass in self.rootObject.mNetClasses {
+        var netClasses = self.rootObject.mNetClasses
+        netClasses.sort (by : { $0.mNetClassName.localizedStandardCompare ($1.mNetClassName) == .orderedAscending } )
+        for netClass in netClasses {
           popup.addItem (withTitle: netClass.mNetClassName)
           popup.lastItem?.representedObject = netClass
           if netClass === net.mNetClass {

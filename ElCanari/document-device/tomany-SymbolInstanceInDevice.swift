@@ -496,6 +496,18 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceInDevice {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : SymbolInstanceInDevice, _ right : SymbolInstanceInDevice) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : SymbolInstanceInDevice, _ right : SymbolInstanceInDevice) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -525,7 +537,11 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -665,9 +681,6 @@ final class ProxyArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanc
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

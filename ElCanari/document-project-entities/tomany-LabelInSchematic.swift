@@ -378,6 +378,18 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
 class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : LabelInSchematic, _ right : LabelInSchematic) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : LabelInSchematic, _ right : LabelInSchematic) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -407,7 +419,11 @@ class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -547,9 +563,6 @@ final class ProxyArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

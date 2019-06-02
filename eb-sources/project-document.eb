@@ -70,11 +70,11 @@ document ProjectDocument root ProjectRoot {
   outlet NSButton mRenameComponentValidationButton ;
 
   tableViewController #componentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
-     column "name" EBTextObserverField $valueObserver self.componentName
-     column "device" EBTextObserverField $valueObserver self.deviceName
-     column "package" EBTextObserverField $valueObserver self.selectedPackageName
-     column "value" EBTextField $value self.mComponentValue { sendContinously : no }
-     column "inSchematics" EBTextObserverField $valueObserver self.placementInSchematic
+     column "name" sort componentName EBTextObserverField $valueObserver self.componentName
+     column "device" sort deviceName EBTextObserverField $valueObserver self.deviceName
+     column "package" sort selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
+     column "value" sort mComponentValue EBTextField $value self.mComponentValue { sendContinously : no }
+     column "inSchematics" sort placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
   }
   outlet EBTableView mComponentTableView $tableValue #componentController ;
 

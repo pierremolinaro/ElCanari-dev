@@ -381,6 +381,18 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : SegmentForFontCharacter, _ right : SegmentForFontCharacter) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : SegmentForFontCharacter, _ right : SegmentForFontCharacter) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -410,7 +422,11 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -550,9 +566,6 @@ final class ProxyArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFo
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 

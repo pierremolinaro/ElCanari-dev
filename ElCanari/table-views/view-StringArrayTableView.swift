@@ -155,10 +155,3 @@ class StringArrayTableView : EBTableView, NSTableViewDataSource, NSTableViewDele
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension String {
-
-  func ebLocalizedStandardOrdering (_ inOtherString : String) -> Bool {
-    return self.localizedCompare (inOtherString) == .orderedAscending
-  }
-}

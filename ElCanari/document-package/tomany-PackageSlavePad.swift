@@ -1202,6 +1202,18 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
+  //   Sort
+  //····················································································································
+
+  private var mIsOrderedBefore : Optional < (_ left : PackageSlavePad, _ right : PackageSlavePad) -> Bool > = nil 
+
+  //····················································································································
+
+  func setSortCallback (_ inCallBack : Optional < (_ left : PackageSlavePad, _ right : PackageSlavePad) -> Bool >) {
+    self.mIsOrderedBefore = inCallBack
+  }
+
+  //····················································································································
   //   Data provider
   //····················································································································
 
@@ -1231,7 +1243,11 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
         newArray = []
         self.mTransientKind = .empty
       case .single (let v) :
-        newArray = v
+        if let sortFunction = self.mIsOrderedBefore {
+          newArray = v.sorted { sortFunction ($0, $1) }
+        }else{
+          newArray = v
+        }
         self.mTransientKind = .single
        case .multiple :
         newArray = []
@@ -1371,9 +1387,6 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
       self.mModel?.detachClient (self)
       self.mModel = inModel
       self.mModel?.attachClient (self)
-      /* if inModel == nil {
-        self.mInternalArrayValue = []
-      } */
     }
   }
 
