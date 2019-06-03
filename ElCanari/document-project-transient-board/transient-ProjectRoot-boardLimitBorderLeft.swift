@@ -15,10 +15,16 @@ import Cocoa
 
 func transient_ProjectRoot_boardLimitBorderLeft (
        _ self_mBorderPoints_mX : [BorderPoint_mX],
-       _ self_mBoardLimitsBoundingBoxUnit : Int
+       _ self_mBoardLimitsBoundingBoxUnit : Int, 
+       _ self_mBoardLimitsWidth : Int
 ) -> String {
 //--- START OF USER ZONE 2
-
+        var minX = Int.max
+        for p in self_mBorderPoints_mX {
+          minX = min (minX, p.mX)
+        }
+        minX -= self_mBoardLimitsWidth / 2
+        return stringFrom (valueInCanariUnit: minX, displayUnit: self_mBoardLimitsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 
