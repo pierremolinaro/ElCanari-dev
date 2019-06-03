@@ -129,6 +129,14 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set schematics inspector segmented control
+    let boardLimitsInspectors = [
+      self.mSelectedObjectsBoardLimitsInspectorView,
+      self.mGridZoomBoardLimitsInspectorView,
+      self.mOperationBoardLimitsInspectorView
+    ]
+    self.mBoardLimitsInspectorSegmentedControl?.register (masterView: self.mBaseBoardLimitsInspectorView, boardLimitsInspectors)
+    self.mBoardLimitsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnBoardLimits
+  //--- Set schematics inspector segmented control
     let schematicsInspectors = [
       self.mSelectedObjectsSchematicsInspectorView,
       self.mHotKeysSchematicInspectorView,

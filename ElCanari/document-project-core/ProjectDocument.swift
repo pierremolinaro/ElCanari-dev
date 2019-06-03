@@ -370,9 +370,25 @@ import Cocoa
   @IBOutlet var mAddTopLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddWireButton : CanariDragSourceButton?
   @IBOutlet var mAddWirePointSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mBaseBoardLimitsInspectorView : NSView?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardLimitsBottomTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitsBoundingBoxUnitPopUp : EBPopUpButton?
+  @IBOutlet var mBoardLimitsElementCountTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitsGridDisplayFactorPopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardLimitsGridStylePopUpButton : EBPopUpButton?
+  @IBOutlet var mBoardLimitsGridTextField : CanariDimensionTextField?
+  @IBOutlet var mBoardLimitsGridUnitPopUp : EBPopUpButton?
+  @IBOutlet var mBoardLimitsHorizontalFlipSwitch : EBSwitch?
+  @IBOutlet var mBoardLimitsInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mBoardLimitsLeftTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitsRightTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitsTopTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitsVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardLimitsView : EBGraphicView?
+  @IBOutlet var mBoardLimitsWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mBoardLimitsWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
@@ -407,6 +423,7 @@ import Cocoa
   @IBOutlet var mEditNetClassButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
+  @IBOutlet var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mHotKeysSchematicInspectorView : CanariViewWithKeyView?
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel?
@@ -436,6 +453,7 @@ import Cocoa
   @IBOutlet var mNewComponentFromDevicePullDownButton : CanariNewComponentFromDevicePullDownButton?
   @IBOutlet var mNewSheetButton : EBButton?
   @IBOutlet var mOpenSetDateDialogButton : EBButton?
+  @IBOutlet var mOperationBoardLimitsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinPadAssignmentTableView : ThreeStringArrayTableView?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
@@ -487,6 +505,7 @@ import Cocoa
   @IBOutlet var mSelectNetClassInNetTabButton : EBButton?
   @IBOutlet var mSelectNetClassPanel : NSPanel?
   @IBOutlet var mSelectNetClassPopUpButton : EBPopUpButton?
+  @IBOutlet var mSelectedObjectsBoardLimitsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
   @IBOutlet var mSetDatePanel : NSPanel?
@@ -637,9 +656,25 @@ import Cocoa
     checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsBottomTextField, "mBoardLimitsBottomTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsBoundingBoxUnitPopUp, "mBoardLimitsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsElementCountTextField, "mBoardLimitsElementCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsGridDisplayFactorPopUpButton, "mBoardLimitsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsGridStylePopUpButton, "mBoardLimitsGridStylePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsGridTextField, "mBoardLimitsGridTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsGridUnitPopUp, "mBoardLimitsGridUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsHorizontalFlipSwitch, "mBoardLimitsHorizontalFlipSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsInspectorSegmentedControl, "mBoardLimitsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsLeftTextField, "mBoardLimitsLeftTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsRightTextField, "mBoardLimitsRightTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsTopTextField, "mBoardLimitsTopTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsVerticalFlipSwitch, "mBoardLimitsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsView, "mBoardLimitsView", EBGraphicView.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsWidthTextField, "mBoardLimitsWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsWidthUnitPopUp, "mBoardLimitsWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
@@ -674,6 +709,7 @@ import Cocoa
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
@@ -703,6 +739,7 @@ import Cocoa
     checkOutletConnection (self.mNewComponentFromDevicePullDownButton, "mNewComponentFromDevicePullDownButton", CanariNewComponentFromDevicePullDownButton.self, #file, #line)
     checkOutletConnection (self.mNewSheetButton, "mNewSheetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mOpenSetDateDialogButton, "mOpenSetDateDialogButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mOperationBoardLimitsInspectorView, "mOperationBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mPinPadAssignmentTableView, "mPinPadAssignmentTableView", ThreeStringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
@@ -754,6 +791,7 @@ import Cocoa
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSelectedObjectsBoardLimitsInspectorView, "mSelectedObjectsBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mSetDatePanel, "mSetDatePanel", NSPanel.self, #file, #line)
@@ -1098,7 +1136,35 @@ import Cocoa
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
     self.mNetWarningTextField?.bind_valueObserver (self.rootObject.netWarningCount_property, file: #file, line: #line, autoFormatter:true)
+    self.mBoardLimitsView?.bind_horizontalFlip (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_verticalFlip (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_gridStyle (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_gridDisplayFactor (self.rootObject.mBoardLimitsGridDisplayFactor_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_gridLineColor (g_Preferences!.lineColorGridForBoard_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_gridCrossColor (g_Preferences!.crossColorGridForBoard_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_zoom (self.rootObject.mBoardLimitsZoom_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_backColor (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_mouseGrid (self.rootObject.mBoardLimitsGridStep_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_gridStep (self.rootObject.mBoardLimitsGridStep_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_arrowKeyMagnitude (self.rootObject.mBoardLimitsGridStep_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_shiftArrowKeyMagnitude (self.rootObject.boardLimitsGridStepMultipliedByDisplayFactor_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_xPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
+    self.mBoardLimitsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardLimitsSelectedInspector_property, file: #file, line: #line)
+    self.mBoardLimitsHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
+    self.mBoardLimitsVerticalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
+    self.mBoardLimitsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
+    self.mBoardLimitsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardLimitsGridDisplayFactor_property, file: #file, line: #line)
+    self.mBoardLimitsBoundingBoxUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsBoundingBoxUnit_property, file: #file, line: #line)
+    self.mBoardLimitsGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
+    self.mBoardLimitsGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsGridStep_property, self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
+    self.mBoardLimitsTopTextField?.bind_valueObserver (self.rootObject.boardLimitsTop_property, file: #file, line: #line)
+    self.mBoardLimitsBottomTextField?.bind_valueObserver (self.rootObject.boardLimitsBottom_property, file: #file, line: #line)
+    self.mBoardLimitsLeftTextField?.bind_valueObserver (self.rootObject.boardLimitsLeft_property, file: #file, line: #line)
+    self.mBoardLimitsRightTextField?.bind_valueObserver (self.rootObject.boardLimitsRight_property, file: #file, line: #line)
+    self.mBoardLimitsElementCountTextField?.bind_valueObserver (self.rootObject.borderElementCountString_property, file: #file, line: #line)
+    self.mBoardLimitsWidthUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
+    self.mBoardLimitsWidthTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1501,7 +1567,35 @@ import Cocoa
     self.mNetInfoTableView?.unbind_netInfo ()
     self.mNetCountTextField?.unbind_valueObserver ()
     self.mNetWarningTextField?.unbind_valueObserver ()
+    self.mBoardLimitsView?.unbind_horizontalFlip ()
+    self.mBoardLimitsView?.unbind_verticalFlip ()
+    self.mBoardLimitsView?.unbind_gridStyle ()
+    self.mBoardLimitsView?.unbind_gridDisplayFactor ()
+    self.mBoardLimitsView?.unbind_gridLineColor ()
+    self.mBoardLimitsView?.unbind_gridCrossColor ()
+    self.mBoardLimitsView?.unbind_zoom ()
     self.mBoardLimitsView?.unbind_backColor ()
+    self.mBoardLimitsView?.unbind_mouseGrid ()
+    self.mBoardLimitsView?.unbind_gridStep ()
+    self.mBoardLimitsView?.unbind_arrowKeyMagnitude ()
+    self.mBoardLimitsView?.unbind_shiftArrowKeyMagnitude ()
+    self.mBoardLimitsView?.unbind_xPlacardUnit ()
+    self.mBoardLimitsView?.unbind_yPlacardUnit ()
+    self.mBoardLimitsInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mBoardLimitsHorizontalFlipSwitch?.unbind_value ()
+    self.mBoardLimitsVerticalFlipSwitch?.unbind_value ()
+    self.mBoardLimitsGridStylePopUpButton?.unbind_selectedIndex ()
+    self.mBoardLimitsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
+    self.mBoardLimitsBoundingBoxUnitPopUp?.unbind_selectedTag ()
+    self.mBoardLimitsGridUnitPopUp?.unbind_selectedTag ()
+    self.mBoardLimitsGridTextField?.unbind_dimensionAndUnit ()
+    self.mBoardLimitsTopTextField?.unbind_valueObserver ()
+    self.mBoardLimitsBottomTextField?.unbind_valueObserver ()
+    self.mBoardLimitsLeftTextField?.unbind_valueObserver ()
+    self.mBoardLimitsRightTextField?.unbind_valueObserver ()
+    self.mBoardLimitsElementCountTextField?.unbind_valueObserver ()
+    self.mBoardLimitsWidthUnitPopUp?.unbind_selectedTag ()
+    self.mBoardLimitsWidthTextField?.unbind_dimensionAndUnit ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1645,9 +1739,25 @@ import Cocoa
     self.mAddTopLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
+    self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
+    self.mBoardLimitsBottomTextField?.ebCleanUp ()
+    self.mBoardLimitsBoundingBoxUnitPopUp?.ebCleanUp ()
+    self.mBoardLimitsElementCountTextField?.ebCleanUp ()
+    self.mBoardLimitsGridDisplayFactorPopUpButton?.ebCleanUp ()
+    self.mBoardLimitsGridStylePopUpButton?.ebCleanUp ()
+    self.mBoardLimitsGridTextField?.ebCleanUp ()
+    self.mBoardLimitsGridUnitPopUp?.ebCleanUp ()
+    self.mBoardLimitsHorizontalFlipSwitch?.ebCleanUp ()
+    self.mBoardLimitsInspectorSegmentedControl?.ebCleanUp ()
+    self.mBoardLimitsLeftTextField?.ebCleanUp ()
+    self.mBoardLimitsRightTextField?.ebCleanUp ()
+    self.mBoardLimitsTopTextField?.ebCleanUp ()
+    self.mBoardLimitsVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardLimitsView?.ebCleanUp ()
+    self.mBoardLimitsWidthTextField?.ebCleanUp ()
+    self.mBoardLimitsWidthUnitPopUp?.ebCleanUp ()
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
@@ -1682,6 +1792,7 @@ import Cocoa
     self.mEditNetClassButton?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
+    self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
@@ -1711,6 +1822,7 @@ import Cocoa
     self.mNewComponentFromDevicePullDownButton?.ebCleanUp ()
     self.mNewSheetButton?.ebCleanUp ()
     self.mOpenSetDateDialogButton?.ebCleanUp ()
+    self.mOperationBoardLimitsInspectorView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinPadAssignmentTableView?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
@@ -1762,6 +1874,7 @@ import Cocoa
     self.mSelectNetClassInNetTabButton?.ebCleanUp ()
     self.mSelectNetClassPanel?.ebCleanUp ()
     self.mSelectNetClassPopUpButton?.ebCleanUp ()
+    self.mSelectedObjectsBoardLimitsInspectorView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
     self.mSetDatePanel?.ebCleanUp ()
@@ -1794,9 +1907,25 @@ import Cocoa
 //    self.mAddTopLabelSchematicHotKeyTextField = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
+//    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardBorderPageView = nil
+//    self.mBoardLimitsBottomTextField = nil
+//    self.mBoardLimitsBoundingBoxUnitPopUp = nil
+//    self.mBoardLimitsElementCountTextField = nil
+//    self.mBoardLimitsGridDisplayFactorPopUpButton = nil
+//    self.mBoardLimitsGridStylePopUpButton = nil
+//    self.mBoardLimitsGridTextField = nil
+//    self.mBoardLimitsGridUnitPopUp = nil
+//    self.mBoardLimitsHorizontalFlipSwitch = nil
+//    self.mBoardLimitsInspectorSegmentedControl = nil
+//    self.mBoardLimitsLeftTextField = nil
+//    self.mBoardLimitsRightTextField = nil
+//    self.mBoardLimitsTopTextField = nil
+//    self.mBoardLimitsVerticalFlipSwitch = nil
 //    self.mBoardLimitsView = nil
+//    self.mBoardLimitsWidthTextField = nil
+//    self.mBoardLimitsWidthUnitPopUp = nil
 //    self.mBoardObjectsPageView = nil
 //    self.mChangeComponentValueComboxBox = nil
 //    self.mChangePackageComponentListTextField = nil
@@ -1831,6 +1960,7 @@ import Cocoa
 //    self.mEditNetClassButton = nil
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
+//    self.mGridZoomBoardLimitsInspectorView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
 //    self.mHotKeysSchematicInspectorView = nil
 //    self.mInconsistentSchematicErrorPanel = nil
@@ -1860,6 +1990,7 @@ import Cocoa
 //    self.mNewComponentFromDevicePullDownButton = nil
 //    self.mNewSheetButton = nil
 //    self.mOpenSetDateDialogButton = nil
+//    self.mOperationBoardLimitsInspectorView = nil
 //    self.mPageSegmentedControl = nil
 //    self.mPinPadAssignmentTableView = nil
 //    self.mProductPageView = nil
@@ -1911,6 +2042,7 @@ import Cocoa
 //    self.mSelectNetClassInNetTabButton = nil
 //    self.mSelectNetClassPanel = nil
 //    self.mSelectNetClassPopUpButton = nil
+//    self.mSelectedObjectsBoardLimitsInspectorView = nil
 //    self.mSelectedObjectsSchematicsInspectorView = nil
 //    self.mSelectedSheetTitleTextField = nil
 //    self.mSetDatePanel = nil

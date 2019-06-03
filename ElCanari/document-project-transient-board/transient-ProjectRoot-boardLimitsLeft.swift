@@ -13,28 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_objectDisplay (
-       _ self_mP1_mX : Int?,             
-       _ self_mP1_mY : Int?,             
-       _ self_mP2_mX : Int?,             
-       _ self_mP2_mY : Int?,             
-       _ self_mRoot_mBoardLimitsWidth : Int?,
-       _ prefs_boardLimitsColorForBoard : NSColor
-) -> EBShape {
+func transient_ProjectRoot_boardLimitsLeft (
+       _ self_mBorderPoints_mX : [BorderPoint_mX],
+       _ self_mBoardLimitsBoundingBoxUnit : Int
+) -> String {
 //--- START OF USER ZONE 2
-        let result = EBShape ()
-        if let x1 = self_mP1_mX, let y1 = self_mP1_mY, let x2 = self_mP2_mX, let y2 = self_mP2_mY, let width = self_mRoot_mBoardLimitsWidth{
-          let p1 = CanariPoint (x: x1, y: y1).cocoaPoint
-          let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          let bp = NSBezierPath ()
-          bp.move (to: p1)
-          bp.line (to: p2)
-          bp.lineWidth = canariUnitToCocoa (width)
-          bp.lineCapStyle = .round
-          bp.lineJoinStyle = .round
-          result.append (EBStrokeBezierPathShape ([bp], prefs_boardLimitsColorForBoard))
+        var minX = Int.max
+        for p in self_mBorderPoints_mX {
+          minX = min (minX, p.mX)
         }
-        return result
+        return stringFrom (valueInCanariUnit: minX, displayUnit: self_mBoardLimitsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 

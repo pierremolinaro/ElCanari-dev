@@ -233,9 +233,9 @@ prefs {
 
 prefs {
 //--- Board Grid Colors
-  property NSColor dotColorGridForBoard   default black;
-  outlet EBColorWell mBoardDotColorGridColorWell $color self.dotColorGridForBoard {sendContinously:no}  ;
-  property NSColor lineColorGridForBoard  default gray;
+  property NSColor crossColorGridForBoard default white ;
+  outlet EBColorWell mBoardDotColorGridColorWell $color self.crossColorGridForBoard {sendContinously:no}  ;
+  property NSColor lineColorGridForBoard default lightGray ;
   outlet EBColorWell mBoardLineColorGridColorWell $color self.lineColorGridForBoard {sendContinously:no} ;
 //--- Board Background Color
   property NSColor boardBackgroundColorForBoard default black;

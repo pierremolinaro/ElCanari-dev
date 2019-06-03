@@ -13,6 +13,7 @@ entity BorderPoint {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardLimit {
+  toOne ProjectRoot mRoot inverse toMany mBoardLimits ;
   toOne BorderPoint mP1 inverse toOne mCurve1 ;
   toOne BorderPoint mP2 inverse toOne mCurve2 ;
 
@@ -21,6 +22,7 @@ graphic entity BoardLimit {
     self.mP1.one.mY,
     self.mP2.one.mX,
     self.mP2.one.mY,
+    self.mRoot.one.mBoardLimitsWidth,
     prefs.boardLimitsColorForBoard
   ;
 
@@ -37,7 +39,31 @@ graphic entity BoardLimit {
 entity ProjectRoot {
 //--- Board border
   toMany BorderPoint mBorderPoints ;
-  toMany BoardLimit mBoardLimits ;
+  toMany BoardLimit mBoardLimits inverse toOne mRoot ;
+  property Int mBoardLimitsWidth default 114_300 ; // 50 mil
+  property Int mBoardLimitsWidthUnit default 2_286 ; // mil
+
+  property Int mBoardLimitsSelectedInspector default 1 ;
+  property Bool mBoardLimitsHorizontalFlip default no ;
+  property Bool mBoardLimitsVerticalFlip default no ;
+  property GridStyle mBoardLimitsGridStyle default line ;
+  property Int mBoardLimitsGridDisplayFactor default 4 ;
+  property Int mBoardLimitsZoom default 200 ;
+  property Int mBoardLimitsGridStep default 57_150 ; // 25 mils
+  property Int mBoardLimitsGridStepUnit default 2_286 ; // mil
+  property Int mBoardLimitsBoundingBoxUnit default 2_286 ; // mil
+
+  transient Int boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
+    self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
+  ;
+
+  transient String boardLimitsTop dependsFrom self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitsBottom dependsFrom self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitsLeft dependsFrom self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitsRight dependsFrom self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit ;
+  
+  transient String borderElementCountString dependsFrom self.mBorderPoints.count ;
+
 //---
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;
@@ -97,9 +123,9 @@ entity ProjectRoot {
     self.mSheets.all.connexionErrors
   ;
  
-   transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
+  transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
    
-   transient IntArray sheetIndexes dependsFrom self.mSheets ;
+  transient IntArray sheetIndexes dependsFrom self.mSheets ;
 
   transient Int netWarningCount dependsFrom self.mNetClasses.all.netWarningCount ;
 }

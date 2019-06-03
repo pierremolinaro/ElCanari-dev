@@ -14,7 +14,6 @@ import Cocoa
     super.init (coder: coder)
     self.delegate = self
     self.isEditable = false
-    self.isBordered = false
     noteObjectAllocation (self)
   }
 
@@ -24,7 +23,6 @@ import Cocoa
     super.init (frame: frame)
     self.delegate = self
     self.isEditable = false
-    self.isBordered = false
     noteObjectAllocation (self)
   }
   

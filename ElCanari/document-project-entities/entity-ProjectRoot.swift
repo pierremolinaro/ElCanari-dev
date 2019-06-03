@@ -6,6 +6,72 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardLimitsWidth : class {
+  var mBoardLimitsWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsWidthUnit : class {
+  var mBoardLimitsWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsSelectedInspector : class {
+  var mBoardLimitsSelectedInspector : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsHorizontalFlip : class {
+  var mBoardLimitsHorizontalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsVerticalFlip : class {
+  var mBoardLimitsVerticalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsGridStyle : class {
+  var mBoardLimitsGridStyle : GridStyle { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsGridDisplayFactor : class {
+  var mBoardLimitsGridDisplayFactor : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsZoom : class {
+  var mBoardLimitsZoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsGridStep : class {
+  var mBoardLimitsGridStep : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsGridStepUnit : class {
+  var mBoardLimitsGridStepUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : class {
+  var mBoardLimitsBoundingBoxUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
@@ -74,6 +140,42 @@ protocol ProjectRoot_mSchematicSheetOrientation : class {
 
 protocol ProjectRoot_selectedSheetTitle : class {
   var selectedSheetTitle : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : class {
+  var boardLimitsGridStepMultipliedByDisplayFactor : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitsTop : class {
+  var boardLimitsTop : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitsBottom : class {
+  var boardLimitsBottom : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitsLeft : class {
+  var boardLimitsLeft : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitsRight : class {
+  var boardLimitsRight : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_borderElementCountString : class {
+  var borderElementCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -153,6 +255,17 @@ protocol ProjectRoot_schematicStatusMessage : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectRoot : EBManagedObject,
+         ProjectRoot_mBoardLimitsWidth,
+         ProjectRoot_mBoardLimitsWidthUnit,
+         ProjectRoot_mBoardLimitsSelectedInspector,
+         ProjectRoot_mBoardLimitsHorizontalFlip,
+         ProjectRoot_mBoardLimitsVerticalFlip,
+         ProjectRoot_mBoardLimitsGridStyle,
+         ProjectRoot_mBoardLimitsGridDisplayFactor,
+         ProjectRoot_mBoardLimitsZoom,
+         ProjectRoot_mBoardLimitsGridStep,
+         ProjectRoot_mBoardLimitsGridStepUnit,
+         ProjectRoot_mBoardLimitsBoundingBoxUnit,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -165,6 +278,12 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicGridDisplayFactor,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_selectedSheetTitle,
+         ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
+         ProjectRoot_boardLimitsTop,
+         ProjectRoot_boardLimitsBottom,
+         ProjectRoot_boardLimitsLeft,
+         ProjectRoot_boardLimitsRight,
+         ProjectRoot_borderElementCountString,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
          ProjectRoot_connexionWarningString,
@@ -196,6 +315,193 @@ class ProjectRoot : EBManagedObject,
     get { return self.mBorderPoints_property.propval }
     set { self.mBorderPoints_property.setProp (newValue) }
   }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsWidth
+  //····················································································································
+
+  let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+
+  //····················································································································
+
+  var mBoardLimitsWidth : Int {
+    get { return self.mBoardLimitsWidth_property.propval }
+    set { self.mBoardLimitsWidth_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsWidth_property_selection : EBSelection <Int> { return self.mBoardLimitsWidth_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsWidthUnit
+  //····················································································································
+
+  let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mBoardLimitsWidthUnit : Int {
+    get { return self.mBoardLimitsWidthUnit_property.propval }
+    set { self.mBoardLimitsWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsWidthUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsWidthUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsSelectedInspector
+  //····················································································································
+
+  let mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1)
+
+  //····················································································································
+
+  var mBoardLimitsSelectedInspector : Int {
+    get { return self.mBoardLimitsSelectedInspector_property.propval }
+    set { self.mBoardLimitsSelectedInspector_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int> { return self.mBoardLimitsSelectedInspector_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsHorizontalFlip
+  //····················································································································
+
+  let mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mBoardLimitsHorizontalFlip : Bool {
+    get { return self.mBoardLimitsHorizontalFlip_property.propval }
+    set { self.mBoardLimitsHorizontalFlip_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsHorizontalFlip_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsVerticalFlip
+  //····················································································································
+
+  let mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
+
+  //····················································································································
+
+  var mBoardLimitsVerticalFlip : Bool {
+    get { return self.mBoardLimitsVerticalFlip_property.propval }
+    set { self.mBoardLimitsVerticalFlip_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool> { return self.mBoardLimitsVerticalFlip_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsGridStyle
+  //····················································································································
+
+  let mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
+
+  //····················································································································
+
+  var mBoardLimitsGridStyle : GridStyle {
+    get { return self.mBoardLimitsGridStyle_property.propval }
+    set { self.mBoardLimitsGridStyle_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle> { return self.mBoardLimitsGridStyle_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsGridDisplayFactor
+  //····················································································································
+
+  let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+
+  //····················································································································
+
+  var mBoardLimitsGridDisplayFactor : Int {
+    get { return self.mBoardLimitsGridDisplayFactor_property.propval }
+    set { self.mBoardLimitsGridDisplayFactor_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int> { return self.mBoardLimitsGridDisplayFactor_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsZoom
+  //····················································································································
+
+  let mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 200)
+
+  //····················································································································
+
+  var mBoardLimitsZoom : Int {
+    get { return self.mBoardLimitsZoom_property.propval }
+    set { self.mBoardLimitsZoom_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsZoom_property_selection : EBSelection <Int> { return self.mBoardLimitsZoom_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsGridStep
+  //····················································································································
+
+  let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+
+  //····················································································································
+
+  var mBoardLimitsGridStep : Int {
+    get { return self.mBoardLimitsGridStep_property.propval }
+    set { self.mBoardLimitsGridStep_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsGridStep_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStep_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsGridStepUnit
+  //····················································································································
+
+  let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mBoardLimitsGridStepUnit : Int {
+    get { return self.mBoardLimitsGridStepUnit_property.propval }
+    set { self.mBoardLimitsGridStepUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsGridStepUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardLimitsBoundingBoxUnit
+  //····················································································································
+
+  let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mBoardLimitsBoundingBoxUnit : Int {
+    get { return self.mBoardLimitsBoundingBoxUnit_property.propval }
+    set { self.mBoardLimitsBoundingBoxUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -557,6 +863,144 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: boardLimitsGridStepMultipliedByDisplayFactor
+  //····················································································································
+
+  let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
+    return self.boardLimitsGridStepMultipliedByDisplayFactor_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
+    switch self.boardLimitsGridStepMultipliedByDisplayFactor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitsTop
+  //····················································································································
+
+  let boardLimitsTop_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitsTop_property_selection : EBSelection <String> {
+    return self.boardLimitsTop_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitsTop : String? {
+    switch self.boardLimitsTop_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitsBottom
+  //····················································································································
+
+  let boardLimitsBottom_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitsBottom_property_selection : EBSelection <String> {
+    return self.boardLimitsBottom_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitsBottom : String? {
+    switch self.boardLimitsBottom_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitsLeft
+  //····················································································································
+
+  let boardLimitsLeft_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitsLeft_property_selection : EBSelection <String> {
+    return self.boardLimitsLeft_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitsLeft : String? {
+    switch self.boardLimitsLeft_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitsRight
+  //····················································································································
+
+  let boardLimitsRight_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitsRight_property_selection : EBSelection <String> {
+    return self.boardLimitsRight_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitsRight : String? {
+    switch self.boardLimitsRight_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: borderElementCountString
+  //····················································································································
+
+  let borderElementCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var borderElementCountString_property_selection : EBSelection <String> {
+    return self.borderElementCountString_property.prop
+  }
+
+  //····················································································································
+
+  var borderElementCountString : String? {
+    switch self.borderElementCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   To one property: mSelectedSheet
   //····················································································································
 
@@ -878,6 +1322,28 @@ class ProjectRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- To many property: mBorderPoints (no option)
     self.mBorderPoints_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsWidth
+    self.mBoardLimitsWidth_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsWidthUnit
+    self.mBoardLimitsWidthUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsSelectedInspector
+    self.mBoardLimitsSelectedInspector_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsHorizontalFlip
+    self.mBoardLimitsHorizontalFlip_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsVerticalFlip
+    self.mBoardLimitsVerticalFlip_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsGridStyle
+    self.mBoardLimitsGridStyle_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsGridDisplayFactor
+    self.mBoardLimitsGridDisplayFactor_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsZoom
+    self.mBoardLimitsZoom_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsGridStep
+    self.mBoardLimitsGridStep_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsGridStepUnit
+    self.mBoardLimitsGridStepUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardLimitsBoundingBoxUnit
+    self.mBoardLimitsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -912,8 +1378,12 @@ class ProjectRoot : EBManagedObject,
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
     self.mDevices_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mBoardLimits (no option)
+  //--- To many property: mBoardLimits (has opposite relationship)
     self.mBoardLimits_property.ebUndoManager = self.ebUndoManager
+    self.mBoardLimits_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Atomic property: mSchematicSheetOrientation
     self.mSchematicSheetOrientation_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: selectedSheetTitle
@@ -944,6 +1414,148 @@ class ProjectRoot : EBManagedObject,
       self.mSelectedSheet_property.addEBObserverOf_mObjects (controller)
       self.selectedSheetObjects_modelDidChangeController = controller
     }
+  //--- Atomic property: boardLimitsGridStepMultipliedByDisplayFactor
+    self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBoardLimitsGridStep_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsGridDisplayFactor_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardLimitsGridStep_property_selection, unwSelf.mBoardLimitsGridDisplayFactor_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+    self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+  //--- Atomic property: boardLimitsTop
+    self.boardLimitsTop_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boardLimitsTop (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitsTop_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsTop_property)
+  //--- Atomic property: boardLimitsBottom
+    self.boardLimitsBottom_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boardLimitsBottom (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitsBottom_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsBottom_property)
+  //--- Atomic property: boardLimitsLeft
+    self.boardLimitsLeft_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boardLimitsLeft (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitsLeft_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsLeft_property)
+  //--- Atomic property: boardLimitsRight
+    self.boardLimitsRight_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boardLimitsRight (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitsRight_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsRight_property)
+  //--- Atomic property: borderElementCountString
+    self.borderElementCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mBorderPoints_property.count_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectRoot_borderElementCountString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserver (self.borderElementCountString_property)
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedSheetIssues
@@ -1241,6 +1853,10 @@ class ProjectRoot : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+    self.mBoardLimits_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -1258,6 +1874,17 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_property.setModel (nil)
     self.selectedSheetObjects_modelDidChangeController?.unregister ()
     self.selectedSheetObjects_modelDidChangeController = nil
+    self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+    self.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitsTop_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsTop_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitsBottom_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsBottom_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitsLeft_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsLeft_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitsRight_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsRight_property)
+    self.mBorderPoints_property.removeEBObserver (self.borderElementCountString_property)
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
     self.selectedSheetIssues_property.removeEBObserver (self.connectedPoints_property)
@@ -1297,6 +1924,94 @@ class ProjectRoot : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mBoardLimitsWidth",
+      idx: self.mBoardLimitsWidth_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsWidth_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsWidthUnit",
+      idx: self.mBoardLimitsWidthUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsWidthUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsSelectedInspector",
+      idx: self.mBoardLimitsSelectedInspector_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsSelectedInspector_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsSelectedInspector_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsHorizontalFlip",
+      idx: self.mBoardLimitsHorizontalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsHorizontalFlip_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsHorizontalFlip_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsVerticalFlip",
+      idx: self.mBoardLimitsVerticalFlip_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsVerticalFlip_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsVerticalFlip_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsGridStyle",
+      idx: self.mBoardLimitsGridStyle_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsGridStyle_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsGridStyle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsGridDisplayFactor",
+      idx: self.mBoardLimitsGridDisplayFactor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsGridDisplayFactor_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsGridDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsZoom",
+      idx: self.mBoardLimitsZoom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsZoom_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsZoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsGridStep",
+      idx: self.mBoardLimitsGridStep_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsGridStep_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsGridStep_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsGridStepUnit",
+      idx: self.mBoardLimitsGridStepUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsGridStepUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsGridStepUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardLimitsBoundingBoxUnit",
+      idx: self.mBoardLimitsBoundingBoxUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mSelectedPageIndex",
       idx: self.mSelectedPageIndex_property.ebObjectIndex,
@@ -1386,6 +2101,54 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mSchematicSheetOrientation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "boardLimitsGridStepMultipliedByDisplayFactor",
+      idx: self.boardLimitsGridStepMultipliedByDisplayFactor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsTop",
+      idx: self.boardLimitsTop_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitsTop_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitsTop_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsBottom",
+      idx: self.boardLimitsBottom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitsBottom_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitsBottom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsLeft",
+      idx: self.boardLimitsLeft_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitsLeft_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitsLeft_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsRight",
+      idx: self.boardLimitsRight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitsRight_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitsRight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "borderElementCountString",
+      idx: self.borderElementCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.borderElementCountString_property.mObserverExplorer,
+      valueExplorer: &self.borderElementCountString_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "selectedSheetIssues",
       idx: self.selectedSheetIssues_property.ebObjectIndex,
@@ -1550,6 +2313,39 @@ class ProjectRoot : EBManagedObject,
   override func clearObjectExplorer () {
   //--- To many property: mBorderPoints
     self.mBorderPoints_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsWidth
+    self.mBoardLimitsWidth_property.mObserverExplorer = nil
+    self.mBoardLimitsWidth_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsWidthUnit
+    self.mBoardLimitsWidthUnit_property.mObserverExplorer = nil
+    self.mBoardLimitsWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsSelectedInspector
+    self.mBoardLimitsSelectedInspector_property.mObserverExplorer = nil
+    self.mBoardLimitsSelectedInspector_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsHorizontalFlip
+    self.mBoardLimitsHorizontalFlip_property.mObserverExplorer = nil
+    self.mBoardLimitsHorizontalFlip_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsVerticalFlip
+    self.mBoardLimitsVerticalFlip_property.mObserverExplorer = nil
+    self.mBoardLimitsVerticalFlip_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsGridStyle
+    self.mBoardLimitsGridStyle_property.mObserverExplorer = nil
+    self.mBoardLimitsGridStyle_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsGridDisplayFactor
+    self.mBoardLimitsGridDisplayFactor_property.mObserverExplorer = nil
+    self.mBoardLimitsGridDisplayFactor_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsZoom
+    self.mBoardLimitsZoom_property.mObserverExplorer = nil
+    self.mBoardLimitsZoom_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsGridStep
+    self.mBoardLimitsGridStep_property.mObserverExplorer = nil
+    self.mBoardLimitsGridStep_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsGridStepUnit
+    self.mBoardLimitsGridStepUnit_property.mObserverExplorer = nil
+    self.mBoardLimitsGridStepUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardLimitsBoundingBoxUnit
+    self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer = nil
+    self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
@@ -1645,6 +2441,28 @@ class ProjectRoot : EBManagedObject,
       relationshipName: "mBorderPoints",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: mBoardLimitsWidth
+    self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidth")
+  //--- Atomic property: mBoardLimitsWidthUnit
+    self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsWidthUnit")
+  //--- Atomic property: mBoardLimitsSelectedInspector
+    self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsSelectedInspector")
+  //--- Atomic property: mBoardLimitsHorizontalFlip
+    self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsHorizontalFlip")
+  //--- Atomic property: mBoardLimitsVerticalFlip
+    self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsVerticalFlip")
+  //--- Atomic property: mBoardLimitsGridStyle
+    self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStyle")
+  //--- Atomic property: mBoardLimitsGridDisplayFactor
+    self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridDisplayFactor")
+  //--- Atomic property: mBoardLimitsZoom
+    self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsZoom")
+  //--- Atomic property: mBoardLimitsGridStep
+    self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStep")
+  //--- Atomic property: mBoardLimitsGridStepUnit
+    self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStepUnit")
+  //--- Atomic property: mBoardLimitsBoundingBoxUnit
+    self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -1777,6 +2595,28 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mBoardLimitsWidth
+    self.mBoardLimitsWidth_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidth")
+  //--- Atomic property: mBoardLimitsWidthUnit
+    self.mBoardLimitsWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsWidthUnit")
+  //--- Atomic property: mBoardLimitsSelectedInspector
+    self.mBoardLimitsSelectedInspector_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsSelectedInspector")
+  //--- Atomic property: mBoardLimitsHorizontalFlip
+    self.mBoardLimitsHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsHorizontalFlip")
+  //--- Atomic property: mBoardLimitsVerticalFlip
+    self.mBoardLimitsVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsVerticalFlip")
+  //--- Atomic property: mBoardLimitsGridStyle
+    self.mBoardLimitsGridStyle_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStyle")
+  //--- Atomic property: mBoardLimitsGridDisplayFactor
+    self.mBoardLimitsGridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridDisplayFactor")
+  //--- Atomic property: mBoardLimitsZoom
+    self.mBoardLimitsZoom_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsZoom")
+  //--- Atomic property: mBoardLimitsGridStep
+    self.mBoardLimitsGridStep_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStep")
+  //--- Atomic property: mBoardLimitsGridStepUnit
+    self.mBoardLimitsGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStepUnit")
+  //--- Atomic property: mBoardLimitsBoundingBoxUnit
+    self.mBoardLimitsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector

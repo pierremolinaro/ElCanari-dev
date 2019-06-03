@@ -431,19 +431,55 @@ document ProjectDocument root ProjectRoot {
   outlet EBGraphicView mBoardLimitsView
 //    $underObjectsDisplay root.schematicBackgroundDisplay
 //    $overObjectsDisplay root.connectedPoints
-//    $horizontalFlip root.mSchematicHorizontalFlip
-//    $verticalFlip root.mSchematicVerticalFlip
+    $horizontalFlip root.mBoardLimitsHorizontalFlip
+    $verticalFlip root.mBoardLimitsVerticalFlip
     $graphicController #boardLimitsObjectsController
-//    $gridStyle root.mSchematicGridStyle
-//    $gridDisplayFactor root.mSchematicGridDisplayFactor
-//    $gridLineColor prefs.lineColorOfSymbolGrid
-//    $gridCrossColor prefs.crossColorOfSymbolGrid
-//    $zoom root.mSchematicZoom
+    $gridStyle root.mBoardLimitsGridStyle
+    $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
+    $gridLineColor prefs.lineColorGridForBoard
+    $gridCrossColor prefs.crossColorGridForBoard
+    $zoom root.mBoardLimitsZoom
     $backColor prefs.boardBackgroundColorForBoard
-//    $xPlacardUnit root.xPlacardUnit
-//    $yPlacardUnit root.yPlacardUnit
+    $mouseGrid root.mBoardLimitsGridStep
+    $gridStep root.mBoardLimitsGridStep
+    $arrowKeyMagnitude root.mBoardLimitsGridStep
+    $shiftArrowKeyMagnitude root.boardLimitsGridStepMultipliedByDisplayFactor
+    $xPlacardUnit root.mBoardLimitsGridStepUnit
+    $yPlacardUnit root.mBoardLimitsGridStepUnit
   ;
 
+//--- Inspectors
+  outlet CanariSegmentedControl mBoardLimitsInspectorSegmentedControl $selectedPage root.mBoardLimitsSelectedInspector ;
+  outlet NSView mBaseBoardLimitsInspectorView ;
+  outlet CanariViewWithKeyView mSelectedObjectsBoardLimitsInspectorView ;
+  outlet CanariViewWithKeyView mGridZoomBoardLimitsInspectorView ;
+  outlet CanariViewWithKeyView mOperationBoardLimitsInspectorView ;
+
+//--- Grid and Flip inspector
+  outlet EBSwitch mBoardLimitsHorizontalFlipSwitch $value root.mBoardLimitsHorizontalFlip ;
+  outlet EBSwitch mBoardLimitsVerticalFlipSwitch $value root.mBoardLimitsVerticalFlip ;
+  outlet EBPopUpButton mBoardLimitsGridStylePopUpButton $selectedIndex root.mBoardLimitsGridStyle ;
+  outlet EBPopUpButton mBoardLimitsGridDisplayFactorPopUpButton $selectedTag root.mBoardLimitsGridDisplayFactor ;
+
+  outlet EBPopUpButton mBoardLimitsBoundingBoxUnitPopUp $selectedTag root.mBoardLimitsBoundingBoxUnit ;
+
+  outlet EBPopUpButton mBoardLimitsGridUnitPopUp $selectedTag root.mBoardLimitsGridStepUnit ;
+  outlet CanariDimensionTextField mBoardLimitsGridTextField
+     $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
+  ;
+  
+//--- Operation Inspector
+  outlet EBTextObserverField mBoardLimitsTopTextField $valueObserver root.boardLimitsTop ;
+  outlet EBTextObserverField mBoardLimitsBottomTextField $valueObserver root.boardLimitsBottom ;
+  outlet EBTextObserverField mBoardLimitsLeftTextField $valueObserver root.boardLimitsLeft ;
+  outlet EBTextObserverField mBoardLimitsRightTextField $valueObserver root.boardLimitsRight ;  
+
+  outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ;  
+
+  outlet EBPopUpButton mBoardLimitsWidthUnitPopUp $selectedTag root.mBoardLimitsWidthUnit ;
+  outlet CanariDimensionTextField mBoardLimitsWidthTextField
+     $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
+  ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

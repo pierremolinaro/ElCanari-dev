@@ -58,7 +58,7 @@ let Preferences_pinNumberFontForSchematic = "Preferences:pinNumberFontForSchemat
 let Preferences_pinNumberColorForSchematic = "Preferences:pinNumberColorForSchematic"
 let Preferences_connectionColorForSchematic = "Preferences:connectionColorForSchematic"
 let Preferences_symbolDrawingWidthMultipliedByTenForSchematic = "Preferences:symbolDrawingWidthMultipliedByTenForSchematic"
-let Preferences_dotColorGridForBoard = "Preferences:dotColorGridForBoard"
+let Preferences_crossColorGridForBoard = "Preferences:crossColorGridForBoard"
 let Preferences_lineColorGridForBoard = "Preferences:lineColorGridForBoard"
 let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColorForBoard"
 let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
@@ -979,27 +979,27 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> { return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop }
 
   //····················································································································
-  //   Atomic property: dotColorGridForBoard
+  //   Atomic property: crossColorGridForBoard
   //····················································································································
 
-  let dotColorGridForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_dotColorGridForBoard)
+  let crossColorGridForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorGridForBoard)
 
   //····················································································································
 
-  var dotColorGridForBoard : NSColor {
-    get { return self.dotColorGridForBoard_property.propval }
-    set { self.dotColorGridForBoard_property.setProp (newValue) }
+  var crossColorGridForBoard : NSColor {
+    get { return self.crossColorGridForBoard_property.propval }
+    set { self.crossColorGridForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var dotColorGridForBoard_property_selection : EBSelection <NSColor> { return self.dotColorGridForBoard_property.prop }
+  var crossColorGridForBoard_property_selection : EBSelection <NSColor> { return self.crossColorGridForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: lineColorGridForBoard
   //····················································································································
 
-  let lineColorGridForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorGridForBoard)
+  let lineColorGridForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_lineColorGridForBoard)
 
   //····················································································································
 
@@ -3035,8 +3035,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.connectionColorForSchematic_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
     self.symbolDrawingWidthMultipliedByTenForSchematic_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: dotColorGridForBoard
-    self.dotColorGridForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: crossColorGridForBoard
+    self.crossColorGridForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: lineColorGridForBoard
     self.lineColorGridForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardBackgroundColorForBoard
@@ -3549,7 +3549,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mPinNumberColorForSchematicColorWell?.bind_color (self.pinNumberColorForSchematic_property, file: #file, line: #line, sendContinously:false)
     mConnectionColorForSchematicColorWell?.bind_color (self.connectionColorForSchematic_property, file: #file, line: #line, sendContinously:false)
     mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTenForSchematic_property, file: #file, line: #line)
-    mBoardDotColorGridColorWell?.bind_color (self.dotColorGridForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardDotColorGridColorWell?.bind_color (self.crossColorGridForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardLineColorGridColorWell?.bind_color (self.lineColorGridForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardBackgroundColorWell?.bind_color (self.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardErrorBackgroundColorWell?.bind_color (self.errorBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)

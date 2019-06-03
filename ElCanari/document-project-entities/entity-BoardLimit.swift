@@ -25,6 +25,44 @@ class BoardLimit : EBGraphicManagedObject,
          BoardLimit_selectionDisplay {
 
   //····················································································································
+  //   To one property: mRoot
+  //····················································································································
+
+   let mRoot_property = StoredObject_ProjectRoot ()
+
+  //····················································································································
+
+  var mRoot_property_selection : EBSelection <ProjectRoot?> {
+    return .single (self.mRoot_property.propval)
+  }
+
+  //····················································································································
+
+  var mRoot : ProjectRoot? {
+    get {
+      return self.mRoot_property.propval
+    }
+    set {
+      if self.mRoot_property.propval != nil {
+        self.mRoot_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mRoot_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+
+  //····················································································································
+
+  var mRoot_none_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
+  }
+
+  //····················································································································
   //   To one property: mP1
   //····················································································································
 
@@ -106,6 +144,12 @@ class BoardLimit : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- To one property: mRoot (has opposite to many relationship: mBoardLimits) §
+    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mBoardLimits_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mBoardLimits_property.remove (me) } }
+    )
   //--- To one property: mP1 (has opposite to one relationship: mCurve1) §
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -125,6 +169,7 @@ class BoardLimit : EBGraphicManagedObject,
         kind &= unwSelf.mP1_property.mY_property_selection.kind ()
         kind &= unwSelf.mP2_property.mX_property_selection.kind ()
         kind &= unwSelf.mP2_property.mY_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardLimitsWidth_property_selection.kind ()
         kind &= g_Preferences!.boardLimitsColorForBoard_property_selection.kind ()
         switch kind {
         case .empty :
@@ -132,9 +177,9 @@ class BoardLimit : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_BoardLimit_objectDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardLimit_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -147,6 +192,7 @@ class BoardLimit : EBGraphicManagedObject,
     self.mP1_property.addEBObserverOf_mY (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_mX (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_mY (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -189,6 +235,7 @@ class BoardLimit : EBGraphicManagedObject,
     self.mP1_property.removeEBObserverOf_mY (self.objectDisplay_property)
     self.mP2_property.removeEBObserverOf_mX (self.objectDisplay_property)
     self.mP2_property.removeEBObserverOf_mY (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     self.mP1_property.removeEBObserverOf_mX (self.selectionDisplay_property)
     self.mP1_property.removeEBObserverOf_mY (self.selectionDisplay_property)
@@ -228,6 +275,13 @@ class BoardLimit : EBGraphicManagedObject,
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
+      "mRoot",
+      idx:self.mRoot_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mRoot_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
       "mP1",
       idx:self.mP1_property.ebObjectIndex,
       y: &y,
@@ -249,6 +303,9 @@ class BoardLimit : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To one property: mRoot
+    self.mRoot_property.mObserverExplorer = nil
+    self.mRoot_property.mValueExplorer = nil
   //--- To one property: mP1
     self.mP1_property.mObserverExplorer = nil
     self.mP1_property.mValueExplorer = nil
@@ -273,6 +330,7 @@ class BoardLimit : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mRoot = nil
     self.mP1 = nil
     self.mP2 = nil
   //---
@@ -302,6 +360,17 @@ class BoardLimit : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ProjectRoot {
+        self.mRoot_property.setProp (entity)
+      }
+    }
   //--- To one property: mP1
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -340,6 +409,10 @@ class BoardLimit : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   //--- To one property: mP1
     if let object = self.mP1 {
       objects.append (object)
@@ -356,6 +429,10 @@ class BoardLimit : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mRoot
+    if let object = self.mRoot {
+      objects.append (object)
+    }
   //--- To one property: mP1
     if let object = self.mP1 {
       objects.append (object)

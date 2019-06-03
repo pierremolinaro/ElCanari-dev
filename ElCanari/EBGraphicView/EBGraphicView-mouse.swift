@@ -35,12 +35,13 @@ extension EBGraphicView {
   override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let unalignedMouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      let alignedLastMouseDraggedLocation = unalignedMouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
+      let canariUnalignedMouseDownLocation = unalignedMouseDownLocation.canariPoint
+      let alignedLastMouseDraggedLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: self.mouseGridInCanariUnit)
       self.mMouseMovedCallback? (unalignedMouseDownLocation)
       self.mLastMouseDraggedLocation = alignedLastMouseDraggedLocation
       let modifierFlags = inEvent.modifierFlags
       if modifierFlags.contains (.control), !modifierFlags.contains (.shift), !modifierFlags.contains (.option) { // Ctrl Key On, no shift
-        if let theMenu = self.mPopulateContextualMenuClosure? (alignedLastMouseDraggedLocation) {
+        if let theMenu = self.mPopulateContextualMenuClosure? (canariUnalignedMouseDownLocation) {
           NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
         }
       }else if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
