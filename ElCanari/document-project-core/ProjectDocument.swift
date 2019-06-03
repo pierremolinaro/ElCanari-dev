@@ -373,7 +373,14 @@ import Cocoa
   @IBOutlet var mBaseBoardLimitsInspectorView : NSView?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView?
-  @IBOutlet var mBoardLimitsBottomTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitBorderBottomTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitBorderLeftTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitBorderRightTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitBorderTopTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitPointsBottomTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitPointsLeftTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitPointsRightTextField : EBTextObserverField?
+  @IBOutlet var mBoardLimitPointsTopTextField : EBTextObserverField?
   @IBOutlet var mBoardLimitsBoundingBoxUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardLimitsElementCountTextField : EBTextObserverField?
   @IBOutlet var mBoardLimitsGridDisplayFactorPopUpButton : EBPopUpButton?
@@ -382,14 +389,12 @@ import Cocoa
   @IBOutlet var mBoardLimitsGridUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardLimitsHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardLimitsInspectorSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mBoardLimitsLeftTextField : EBTextObserverField?
-  @IBOutlet var mBoardLimitsRightTextField : EBTextObserverField?
-  @IBOutlet var mBoardLimitsTopTextField : EBTextObserverField?
   @IBOutlet var mBoardLimitsVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardLimitsView : EBGraphicView?
   @IBOutlet var mBoardLimitsWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardLimitsWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
@@ -659,7 +664,14 @@ import Cocoa
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsBottomTextField, "mBoardLimitsBottomTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitBorderBottomTextField, "mBoardLimitBorderBottomTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitBorderLeftTextField, "mBoardLimitBorderLeftTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitBorderRightTextField, "mBoardLimitBorderRightTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitBorderTopTextField, "mBoardLimitBorderTopTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitPointsBottomTextField, "mBoardLimitPointsBottomTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitPointsLeftTextField, "mBoardLimitPointsLeftTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitPointsRightTextField, "mBoardLimitPointsRightTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitPointsTopTextField, "mBoardLimitPointsTopTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsBoundingBoxUnitPopUp, "mBoardLimitsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsElementCountTextField, "mBoardLimitsElementCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsGridDisplayFactorPopUpButton, "mBoardLimitsGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
@@ -668,14 +680,12 @@ import Cocoa
     checkOutletConnection (self.mBoardLimitsGridUnitPopUp, "mBoardLimitsGridUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsHorizontalFlipSwitch, "mBoardLimitsHorizontalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsInspectorSegmentedControl, "mBoardLimitsInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsLeftTextField, "mBoardLimitsLeftTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsRightTextField, "mBoardLimitsRightTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mBoardLimitsTopTextField, "mBoardLimitsTopTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsVerticalFlipSwitch, "mBoardLimitsVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsView, "mBoardLimitsView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsWidthTextField, "mBoardLimitsWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsWidthUnitPopUp, "mBoardLimitsWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -1155,14 +1165,19 @@ import Cocoa
     self.mBoardLimitsVerticalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
     self.mBoardLimitsGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardLimitsGridDisplayFactor_property, file: #file, line: #line)
-    self.mBoardLimitsBoundingBoxUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsBoundingBoxUnit_property, file: #file, line: #line)
     self.mBoardLimitsGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
     self.mBoardLimitsGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsGridStep_property, self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
-    self.mBoardLimitsTopTextField?.bind_valueObserver (self.rootObject.boardLimitsTop_property, file: #file, line: #line)
-    self.mBoardLimitsBottomTextField?.bind_valueObserver (self.rootObject.boardLimitsBottom_property, file: #file, line: #line)
-    self.mBoardLimitsLeftTextField?.bind_valueObserver (self.rootObject.boardLimitsLeft_property, file: #file, line: #line)
-    self.mBoardLimitsRightTextField?.bind_valueObserver (self.rootObject.boardLimitsRight_property, file: #file, line: #line)
     self.mBoardLimitsElementCountTextField?.bind_valueObserver (self.rootObject.borderElementCountString_property, file: #file, line: #line)
+    self.mBoardLimitPointsTopTextField?.bind_valueObserver (self.rootObject.boardLimitPointsTop_property, file: #file, line: #line)
+    self.mBoardLimitPointsBottomTextField?.bind_valueObserver (self.rootObject.boardLimitPointsBottom_property, file: #file, line: #line)
+    self.mBoardLimitPointsLeftTextField?.bind_valueObserver (self.rootObject.boardLimitPointsLeft_property, file: #file, line: #line)
+    self.mBoardLimitPointsRightTextField?.bind_valueObserver (self.rootObject.boardLimitPointsRight_property, file: #file, line: #line)
+    self.mBoardPointsBoundingBoxUnitPopUp?.bind_selectedTag (self.rootObject.mBoardPointsBoundingBoxUnit_property, file: #file, line: #line)
+    self.mBoardLimitBorderTopTextField?.bind_valueObserver (self.rootObject.boardLimitBorderTop_property, file: #file, line: #line)
+    self.mBoardLimitBorderBottomTextField?.bind_valueObserver (self.rootObject.boardLimitBorderBottom_property, file: #file, line: #line)
+    self.mBoardLimitBorderLeftTextField?.bind_valueObserver (self.rootObject.boardLimitBorderLeft_property, file: #file, line: #line)
+    self.mBoardLimitBorderRightTextField?.bind_valueObserver (self.rootObject.boardLimitBorderRight_property, file: #file, line: #line)
+    self.mBoardLimitsBoundingBoxUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsBoundingBoxUnit_property, file: #file, line: #line)
     self.mBoardLimitsWidthUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
     self.mBoardLimitsWidthTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1586,14 +1601,19 @@ import Cocoa
     self.mBoardLimitsVerticalFlipSwitch?.unbind_value ()
     self.mBoardLimitsGridStylePopUpButton?.unbind_selectedIndex ()
     self.mBoardLimitsGridDisplayFactorPopUpButton?.unbind_selectedTag ()
-    self.mBoardLimitsBoundingBoxUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsGridTextField?.unbind_dimensionAndUnit ()
-    self.mBoardLimitsTopTextField?.unbind_valueObserver ()
-    self.mBoardLimitsBottomTextField?.unbind_valueObserver ()
-    self.mBoardLimitsLeftTextField?.unbind_valueObserver ()
-    self.mBoardLimitsRightTextField?.unbind_valueObserver ()
     self.mBoardLimitsElementCountTextField?.unbind_valueObserver ()
+    self.mBoardLimitPointsTopTextField?.unbind_valueObserver ()
+    self.mBoardLimitPointsBottomTextField?.unbind_valueObserver ()
+    self.mBoardLimitPointsLeftTextField?.unbind_valueObserver ()
+    self.mBoardLimitPointsRightTextField?.unbind_valueObserver ()
+    self.mBoardPointsBoundingBoxUnitPopUp?.unbind_selectedTag ()
+    self.mBoardLimitBorderTopTextField?.unbind_valueObserver ()
+    self.mBoardLimitBorderBottomTextField?.unbind_valueObserver ()
+    self.mBoardLimitBorderLeftTextField?.unbind_valueObserver ()
+    self.mBoardLimitBorderRightTextField?.unbind_valueObserver ()
+    self.mBoardLimitsBoundingBoxUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsWidthTextField?.unbind_dimensionAndUnit ()
   //--------------------------- Unbind multiple bindings
@@ -1742,7 +1762,14 @@ import Cocoa
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
-    self.mBoardLimitsBottomTextField?.ebCleanUp ()
+    self.mBoardLimitBorderBottomTextField?.ebCleanUp ()
+    self.mBoardLimitBorderLeftTextField?.ebCleanUp ()
+    self.mBoardLimitBorderRightTextField?.ebCleanUp ()
+    self.mBoardLimitBorderTopTextField?.ebCleanUp ()
+    self.mBoardLimitPointsBottomTextField?.ebCleanUp ()
+    self.mBoardLimitPointsLeftTextField?.ebCleanUp ()
+    self.mBoardLimitPointsRightTextField?.ebCleanUp ()
+    self.mBoardLimitPointsTopTextField?.ebCleanUp ()
     self.mBoardLimitsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mBoardLimitsElementCountTextField?.ebCleanUp ()
     self.mBoardLimitsGridDisplayFactorPopUpButton?.ebCleanUp ()
@@ -1751,14 +1778,12 @@ import Cocoa
     self.mBoardLimitsGridUnitPopUp?.ebCleanUp ()
     self.mBoardLimitsHorizontalFlipSwitch?.ebCleanUp ()
     self.mBoardLimitsInspectorSegmentedControl?.ebCleanUp ()
-    self.mBoardLimitsLeftTextField?.ebCleanUp ()
-    self.mBoardLimitsRightTextField?.ebCleanUp ()
-    self.mBoardLimitsTopTextField?.ebCleanUp ()
     self.mBoardLimitsVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardLimitsView?.ebCleanUp ()
     self.mBoardLimitsWidthTextField?.ebCleanUp ()
     self.mBoardLimitsWidthUnitPopUp?.ebCleanUp ()
     self.mBoardObjectsPageView?.ebCleanUp ()
+    self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -1910,7 +1935,14 @@ import Cocoa
 //    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardBorderPageView = nil
-//    self.mBoardLimitsBottomTextField = nil
+//    self.mBoardLimitBorderBottomTextField = nil
+//    self.mBoardLimitBorderLeftTextField = nil
+//    self.mBoardLimitBorderRightTextField = nil
+//    self.mBoardLimitBorderTopTextField = nil
+//    self.mBoardLimitPointsBottomTextField = nil
+//    self.mBoardLimitPointsLeftTextField = nil
+//    self.mBoardLimitPointsRightTextField = nil
+//    self.mBoardLimitPointsTopTextField = nil
 //    self.mBoardLimitsBoundingBoxUnitPopUp = nil
 //    self.mBoardLimitsElementCountTextField = nil
 //    self.mBoardLimitsGridDisplayFactorPopUpButton = nil
@@ -1919,14 +1951,12 @@ import Cocoa
 //    self.mBoardLimitsGridUnitPopUp = nil
 //    self.mBoardLimitsHorizontalFlipSwitch = nil
 //    self.mBoardLimitsInspectorSegmentedControl = nil
-//    self.mBoardLimitsLeftTextField = nil
-//    self.mBoardLimitsRightTextField = nil
-//    self.mBoardLimitsTopTextField = nil
 //    self.mBoardLimitsVerticalFlipSwitch = nil
 //    self.mBoardLimitsView = nil
 //    self.mBoardLimitsWidthTextField = nil
 //    self.mBoardLimitsWidthUnitPopUp = nil
 //    self.mBoardObjectsPageView = nil
+//    self.mBoardPointsBoundingBoxUnitPopUp = nil
 //    self.mChangeComponentValueComboxBox = nil
 //    self.mChangePackageComponentListTextField = nil
 //    self.mChangePackageOfSelectedComponentsActionButton = nil

@@ -72,6 +72,12 @@ protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardPointsBoundingBoxUnit : class {
+  var mBoardPointsBoundingBoxUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
@@ -150,26 +156,50 @@ protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitsTop : class {
-  var boardLimitsTop : String? { get }
+protocol ProjectRoot_boardLimitPointsTop : class {
+  var boardLimitPointsTop : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitsBottom : class {
-  var boardLimitsBottom : String? { get }
+protocol ProjectRoot_boardLimitPointsBottom : class {
+  var boardLimitPointsBottom : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitsLeft : class {
-  var boardLimitsLeft : String? { get }
+protocol ProjectRoot_boardLimitPointsLeft : class {
+  var boardLimitPointsLeft : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitsRight : class {
-  var boardLimitsRight : String? { get }
+protocol ProjectRoot_boardLimitPointsRight : class {
+  var boardLimitPointsRight : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitBorderTop : class {
+  var boardLimitBorderTop : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitBorderBottom : class {
+  var boardLimitBorderBottom : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitBorderLeft : class {
+  var boardLimitBorderLeft : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardLimitBorderRight : class {
+  var boardLimitBorderRight : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -266,6 +296,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardLimitsGridStep,
          ProjectRoot_mBoardLimitsGridStepUnit,
          ProjectRoot_mBoardLimitsBoundingBoxUnit,
+         ProjectRoot_mBoardPointsBoundingBoxUnit,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -279,10 +310,14 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mSchematicSheetOrientation,
          ProjectRoot_selectedSheetTitle,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
-         ProjectRoot_boardLimitsTop,
-         ProjectRoot_boardLimitsBottom,
-         ProjectRoot_boardLimitsLeft,
-         ProjectRoot_boardLimitsRight,
+         ProjectRoot_boardLimitPointsTop,
+         ProjectRoot_boardLimitPointsBottom,
+         ProjectRoot_boardLimitPointsLeft,
+         ProjectRoot_boardLimitPointsRight,
+         ProjectRoot_boardLimitBorderTop,
+         ProjectRoot_boardLimitBorderBottom,
+         ProjectRoot_boardLimitBorderLeft,
+         ProjectRoot_boardLimitBorderRight,
          ProjectRoot_borderElementCountString,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_connectedPoints,
@@ -502,6 +537,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardLimitsBoundingBoxUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardPointsBoundingBoxUnit
+  //····················································································································
+
+  let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+
+  //····················································································································
+
+  var mBoardPointsBoundingBoxUnit : Int {
+    get { return self.mBoardPointsBoundingBoxUnit_property.propval }
+    set { self.mBoardPointsBoundingBoxUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -886,21 +938,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardLimitsTop
+  //   Transient property: boardLimitPointsTop
   //····················································································································
 
-  let boardLimitsTop_property = EBTransientProperty_String ()
+  let boardLimitPointsTop_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitsTop_property_selection : EBSelection <String> {
-    return self.boardLimitsTop_property.prop
+  var boardLimitPointsTop_property_selection : EBSelection <String> {
+    return self.boardLimitPointsTop_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsTop : String? {
-    switch self.boardLimitsTop_property_selection {
+  var boardLimitPointsTop : String? {
+    switch self.boardLimitPointsTop_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -909,21 +961,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardLimitsBottom
+  //   Transient property: boardLimitPointsBottom
   //····················································································································
 
-  let boardLimitsBottom_property = EBTransientProperty_String ()
+  let boardLimitPointsBottom_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitsBottom_property_selection : EBSelection <String> {
-    return self.boardLimitsBottom_property.prop
+  var boardLimitPointsBottom_property_selection : EBSelection <String> {
+    return self.boardLimitPointsBottom_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsBottom : String? {
-    switch self.boardLimitsBottom_property_selection {
+  var boardLimitPointsBottom : String? {
+    switch self.boardLimitPointsBottom_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -932,21 +984,21 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardLimitsLeft
+  //   Transient property: boardLimitPointsLeft
   //····················································································································
 
-  let boardLimitsLeft_property = EBTransientProperty_String ()
+  let boardLimitPointsLeft_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitsLeft_property_selection : EBSelection <String> {
-    return self.boardLimitsLeft_property.prop
+  var boardLimitPointsLeft_property_selection : EBSelection <String> {
+    return self.boardLimitPointsLeft_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsLeft : String? {
-    switch self.boardLimitsLeft_property_selection {
+  var boardLimitPointsLeft : String? {
+    switch self.boardLimitPointsLeft_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -955,21 +1007,113 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardLimitsRight
+  //   Transient property: boardLimitPointsRight
   //····················································································································
 
-  let boardLimitsRight_property = EBTransientProperty_String ()
+  let boardLimitPointsRight_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var boardLimitsRight_property_selection : EBSelection <String> {
-    return self.boardLimitsRight_property.prop
+  var boardLimitPointsRight_property_selection : EBSelection <String> {
+    return self.boardLimitPointsRight_property.prop
   }
 
   //····················································································································
 
-  var boardLimitsRight : String? {
-    switch self.boardLimitsRight_property_selection {
+  var boardLimitPointsRight : String? {
+    switch self.boardLimitPointsRight_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitBorderTop
+  //····················································································································
+
+  let boardLimitBorderTop_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitBorderTop_property_selection : EBSelection <String> {
+    return self.boardLimitBorderTop_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitBorderTop : String? {
+    switch self.boardLimitBorderTop_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitBorderBottom
+  //····················································································································
+
+  let boardLimitBorderBottom_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitBorderBottom_property_selection : EBSelection <String> {
+    return self.boardLimitBorderBottom_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitBorderBottom : String? {
+    switch self.boardLimitBorderBottom_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitBorderLeft
+  //····················································································································
+
+  let boardLimitBorderLeft_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitBorderLeft_property_selection : EBSelection <String> {
+    return self.boardLimitBorderLeft_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitBorderLeft : String? {
+    switch self.boardLimitBorderLeft_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitBorderRight
+  //····················································································································
+
+  let boardLimitBorderRight_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var boardLimitBorderRight_property_selection : EBSelection <String> {
+    return self.boardLimitBorderRight_property.prop
+  }
+
+  //····················································································································
+
+  var boardLimitBorderRight : String? {
+    switch self.boardLimitBorderRight_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1344,6 +1488,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsGridStepUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
     self.mBoardLimitsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardPointsBoundingBoxUnit
+    self.mBoardPointsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -1438,20 +1584,20 @@ class ProjectRoot : EBManagedObject,
     }
     self.mBoardLimitsGridStep_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
-  //--- Atomic property: boardLimitsTop
-    self.boardLimitsTop_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: boardLimitPointsTop
+    self.boardLimitPointsTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderPoints_property_selection.kind ()
-        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardPointsBoundingBoxUnit_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardPointsBoundingBoxUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boardLimitsTop (v0, v1))
+            return .single (transient_ProjectRoot_boardLimitPointsTop (v0, v1))
           default :
             return .empty
           }
@@ -1460,22 +1606,22 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitsTop_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsTop_property)
-  //--- Atomic property: boardLimitsBottom
-    self.boardLimitsBottom_property.mReadModelFunction = { [weak self] in
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitPointsTop_property)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardLimitPointsTop_property)
+  //--- Atomic property: boardLimitPointsBottom
+    self.boardLimitPointsBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderPoints_property_selection.kind ()
-        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardPointsBoundingBoxUnit_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardPointsBoundingBoxUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boardLimitsBottom (v0, v1))
+            return .single (transient_ProjectRoot_boardLimitPointsBottom (v0, v1))
           default :
             return .empty
           }
@@ -1484,22 +1630,22 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitsBottom_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsBottom_property)
-  //--- Atomic property: boardLimitsLeft
-    self.boardLimitsLeft_property.mReadModelFunction = { [weak self] in
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitPointsBottom_property)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardLimitPointsBottom_property)
+  //--- Atomic property: boardLimitPointsLeft
+    self.boardLimitPointsLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderPoints_property_selection.kind ()
-        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardPointsBoundingBoxUnit_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardPointsBoundingBoxUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boardLimitsLeft (v0, v1))
+            return .single (transient_ProjectRoot_boardLimitPointsLeft (v0, v1))
           default :
             return .empty
           }
@@ -1508,22 +1654,22 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitsLeft_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsLeft_property)
-  //--- Atomic property: boardLimitsRight
-    self.boardLimitsRight_property.mReadModelFunction = { [weak self] in
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitPointsLeft_property)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardLimitPointsLeft_property)
+  //--- Atomic property: boardLimitPointsRight
+    self.boardLimitPointsRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mBorderPoints_property_selection.kind ()
-        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardPointsBoundingBoxUnit_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection) {
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardPointsBoundingBoxUnit_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectRoot_boardLimitsRight (v0, v1))
+            return .single (transient_ProjectRoot_boardLimitPointsRight (v0, v1))
           default :
             return .empty
           }
@@ -1532,8 +1678,112 @@ class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitsRight_property)
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitsRight_property)
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitPointsRight_property)
+    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.boardLimitPointsRight_property)
+  //--- Atomic property: boardLimitBorderTop
+    self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection, unwSelf.mBoardLimitsWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_boardLimitBorderTop (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitBorderTop_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderTop_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.boardLimitBorderTop_property)
+  //--- Atomic property: boardLimitBorderBottom
+    self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection, unwSelf.mBoardLimitsWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_boardLimitBorderBottom (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mY (self.boardLimitBorderBottom_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderBottom_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.boardLimitBorderBottom_property)
+  //--- Atomic property: boardLimitBorderLeft
+    self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection, unwSelf.mBoardLimitsWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_boardLimitBorderLeft (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitBorderLeft_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderLeft_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.boardLimitBorderLeft_property)
+  //--- Atomic property: boardLimitBorderRight
+    self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBorderPoints_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsBoundingBoxUnit_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBorderPoints_property_selection, unwSelf.mBoardLimitsBoundingBoxUnit_property_selection, unwSelf.mBoardLimitsWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_ProjectRoot_boardLimitBorderRight (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBorderPoints_property.addEBObserverOf_mX (self.boardLimitBorderRight_property)
+    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderRight_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.boardLimitBorderRight_property)
   //--- Atomic property: borderElementCountString
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1876,14 +2126,26 @@ class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_modelDidChangeController = nil
     self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
     self.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
-    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitsTop_property)
-    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsTop_property)
-    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitsBottom_property)
-    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsBottom_property)
-    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitsLeft_property)
-    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsLeft_property)
-    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitsRight_property)
-    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitsRight_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitPointsTop_property)
+    self.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.boardLimitPointsTop_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitPointsBottom_property)
+    self.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.boardLimitPointsBottom_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitPointsLeft_property)
+    self.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.boardLimitPointsLeft_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitPointsRight_property)
+    self.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.boardLimitPointsRight_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitBorderTop_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderTop_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderTop_property)
+    self.mBorderPoints_property.removeEBObserverOf_mY (self.boardLimitBorderBottom_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderBottom_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderBottom_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitBorderLeft_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderLeft_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderLeft_property)
+    self.mBorderPoints_property.removeEBObserverOf_mX (self.boardLimitBorderRight_property)
+    self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderRight_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBorderPoints_property.removeEBObserver (self.borderElementCountString_property)
     self.mSelectedSheet_property.removeEBObserverOf_issues (self.selectedSheetIssues_property)
     self.mSelectedSheet_property.removeEBObserverOf_connectedPoints (self.connectedPoints_property)
@@ -2013,6 +2275,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardPointsBoundingBoxUnit",
+      idx: self.mBoardPointsBoundingBoxUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardPointsBoundingBoxUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mSelectedPageIndex",
       idx: self.mSelectedPageIndex_property.ebObjectIndex,
       y: &y,
@@ -2110,36 +2380,68 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.boardLimitsGridStepMultipliedByDisplayFactor_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitsTop",
-      idx: self.boardLimitsTop_property.ebObjectIndex,
+      "boardLimitPointsTop",
+      idx: self.boardLimitPointsTop_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.boardLimitsTop_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsTop_property.mValueExplorer
+      observerExplorer: &self.boardLimitPointsTop_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitPointsTop_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitsBottom",
-      idx: self.boardLimitsBottom_property.ebObjectIndex,
+      "boardLimitPointsBottom",
+      idx: self.boardLimitPointsBottom_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.boardLimitsBottom_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsBottom_property.mValueExplorer
+      observerExplorer: &self.boardLimitPointsBottom_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitPointsBottom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitsLeft",
-      idx: self.boardLimitsLeft_property.ebObjectIndex,
+      "boardLimitPointsLeft",
+      idx: self.boardLimitPointsLeft_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.boardLimitsLeft_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsLeft_property.mValueExplorer
+      observerExplorer: &self.boardLimitPointsLeft_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitPointsLeft_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitsRight",
-      idx: self.boardLimitsRight_property.ebObjectIndex,
+      "boardLimitPointsRight",
+      idx: self.boardLimitPointsRight_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.boardLimitsRight_property.mObserverExplorer,
-      valueExplorer: &self.boardLimitsRight_property.mValueExplorer
+      observerExplorer: &self.boardLimitPointsRight_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitPointsRight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitBorderTop",
+      idx: self.boardLimitBorderTop_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitBorderTop_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitBorderTop_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitBorderBottom",
+      idx: self.boardLimitBorderBottom_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitBorderBottom_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitBorderBottom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitBorderLeft",
+      idx: self.boardLimitBorderLeft_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitBorderLeft_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitBorderLeft_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitBorderRight",
+      idx: self.boardLimitBorderRight_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boardLimitBorderRight_property.mObserverExplorer,
+      valueExplorer: &self.boardLimitBorderRight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "borderElementCountString",
@@ -2346,6 +2648,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
     self.mBoardLimitsBoundingBoxUnit_property.mObserverExplorer = nil
     self.mBoardLimitsBoundingBoxUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardPointsBoundingBoxUnit
+    self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer = nil
+    self.mBoardPointsBoundingBoxUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
@@ -2463,6 +2768,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsGridStepUnit")
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
     self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
+  //--- Atomic property: mBoardPointsBoundingBoxUnit
+    self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardPointsBoundingBoxUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -2617,6 +2924,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsGridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsGridStepUnit")
   //--- Atomic property: mBoardLimitsBoundingBoxUnit
     self.mBoardLimitsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
+  //--- Atomic property: mBoardPointsBoundingBoxUnit
+    self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector

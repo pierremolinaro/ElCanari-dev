@@ -52,15 +52,25 @@ entity ProjectRoot {
   property Int mBoardLimitsGridStep default 57_150 ; // 25 mils
   property Int mBoardLimitsGridStepUnit default 2_286 ; // mil
   property Int mBoardLimitsBoundingBoxUnit default 2_286 ; // mil
+  property Int mBoardPointsBoundingBoxUnit default 2_286 ; // mil
 
   transient Int boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
-  transient String boardLimitsTop dependsFrom self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit ;
-  transient String boardLimitsBottom dependsFrom self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit ;
-  transient String boardLimitsLeft dependsFrom self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit ;
-  transient String boardLimitsRight dependsFrom self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit ;
+  transient String boardLimitPointsTop dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsBottom dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsLeft dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsRight dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
+
+  transient String boardLimitBorderTop dependsFrom
+    self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+  transient String boardLimitBorderBottom dependsFrom
+    self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+  transient String boardLimitBorderLeft dependsFrom
+    self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+  transient String boardLimitBorderRight dependsFrom
+    self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
   
   transient String borderElementCountString dependsFrom self.mBorderPoints.count ;
 

@@ -461,20 +461,27 @@ document ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mBoardLimitsGridStylePopUpButton $selectedIndex root.mBoardLimitsGridStyle ;
   outlet EBPopUpButton mBoardLimitsGridDisplayFactorPopUpButton $selectedTag root.mBoardLimitsGridDisplayFactor ;
 
-  outlet EBPopUpButton mBoardLimitsBoundingBoxUnitPopUp $selectedTag root.mBoardLimitsBoundingBoxUnit ;
-
   outlet EBPopUpButton mBoardLimitsGridUnitPopUp $selectedTag root.mBoardLimitsGridStepUnit ;
   outlet CanariDimensionTextField mBoardLimitsGridTextField
      $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
   ;
   
 //--- Operation Inspector
-  outlet EBTextObserverField mBoardLimitsTopTextField $valueObserver root.boardLimitsTop ;
-  outlet EBTextObserverField mBoardLimitsBottomTextField $valueObserver root.boardLimitsBottom ;
-  outlet EBTextObserverField mBoardLimitsLeftTextField $valueObserver root.boardLimitsLeft ;
-  outlet EBTextObserverField mBoardLimitsRightTextField $valueObserver root.boardLimitsRight ;  
-
   outlet EBTextObserverField mBoardLimitsElementCountTextField $valueObserver root.borderElementCountString ;  
+
+  outlet EBTextObserverField mBoardLimitPointsTopTextField $valueObserver root.boardLimitPointsTop ;
+  outlet EBTextObserverField mBoardLimitPointsBottomTextField $valueObserver root.boardLimitPointsBottom ;
+  outlet EBTextObserverField mBoardLimitPointsLeftTextField $valueObserver root.boardLimitPointsLeft ;
+  outlet EBTextObserverField mBoardLimitPointsRightTextField $valueObserver root.boardLimitPointsRight ;  
+
+  outlet EBPopUpButton mBoardPointsBoundingBoxUnitPopUp $selectedTag root.mBoardPointsBoundingBoxUnit ;
+
+  outlet EBTextObserverField mBoardLimitBorderTopTextField $valueObserver root.boardLimitBorderTop ;
+  outlet EBTextObserverField mBoardLimitBorderBottomTextField $valueObserver root.boardLimitBorderBottom ;
+  outlet EBTextObserverField mBoardLimitBorderLeftTextField $valueObserver root.boardLimitBorderLeft ;
+  outlet EBTextObserverField mBoardLimitBorderRightTextField $valueObserver root.boardLimitBorderRight ;  
+
+  outlet EBPopUpButton mBoardLimitsBoundingBoxUnitPopUp $selectedTag root.mBoardLimitsBoundingBoxUnit ;
 
   outlet EBPopUpButton mBoardLimitsWidthUnitPopUp $selectedTag root.mBoardLimitsWidthUnit ;
   outlet CanariDimensionTextField mBoardLimitsWidthTextField
