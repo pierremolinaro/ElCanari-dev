@@ -84,6 +84,18 @@ protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardClearance : class {
+  var mBoardClearance : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_mBoardClearanceUnit : class {
+  var mBoardClearanceUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
@@ -310,6 +322,8 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardLimitsBoundingBoxUnit,
          ProjectRoot_mBoardPointsBoundingBoxUnit,
          ProjectRoot_mBoardSelectedCurveDisplayUnit,
+         ProjectRoot_mBoardClearance,
+         ProjectRoot_mBoardClearanceUnit,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -585,6 +599,40 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardClearance
+  //····················································································································
+
+  let mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mBoardClearance : Int {
+    get { return self.mBoardClearance_property.propval }
+    set { self.mBoardClearance_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardClearance_property_selection : EBSelection <Int> { return self.mBoardClearance_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardClearanceUnit
+  //····················································································································
+
+  let mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mBoardClearanceUnit : Int {
+    get { return self.mBoardClearanceUnit_property.propval }
+    set { self.mBoardClearanceUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardClearanceUnit_property_selection : EBSelection <Int> { return self.mBoardClearanceUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -1546,6 +1594,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardClearance
+    self.mBoardClearance_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardClearanceUnit
+    self.mBoardClearanceUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -2373,6 +2425,22 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardClearance",
+      idx: self.mBoardClearance_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardClearance_property.mObserverExplorer,
+      valueExplorer: &self.mBoardClearance_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mBoardClearanceUnit",
+      idx: self.mBoardClearanceUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardClearanceUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardClearanceUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mSelectedPageIndex",
       idx: self.mSelectedPageIndex_property.ebObjectIndex,
       y: &y,
@@ -2752,6 +2820,12 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer = nil
     self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardClearance
+    self.mBoardClearance_property.mObserverExplorer = nil
+    self.mBoardClearance_property.mValueExplorer = nil
+  //--- Atomic property: mBoardClearanceUnit
+    self.mBoardClearanceUnit_property.mObserverExplorer = nil
+    self.mBoardClearanceUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
@@ -2873,6 +2947,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
+  //--- Atomic property: mBoardClearance
+    self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearance")
+  //--- Atomic property: mBoardClearanceUnit
+    self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardClearanceUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -3031,6 +3109,10 @@ class ProjectRoot : EBManagedObject,
     self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardPointsBoundingBoxUnit")
   //--- Atomic property: mBoardSelectedCurveDisplayUnit
     self.mBoardSelectedCurveDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
+  //--- Atomic property: mBoardClearance
+    self.mBoardClearance_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearance")
+  //--- Atomic property: mBoardClearanceUnit
+    self.mBoardClearanceUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardClearanceUnit")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector

@@ -508,6 +508,11 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mBoardLimitsWidthTextField
      $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
   ;
+
+  outlet EBPopUpButton mBoardClearanceUnitPopUp $selectedTag root.mBoardClearanceUnit ;
+  outlet CanariDimensionTextField mBoardClearanceTextField
+     $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
+  ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -379,6 +379,8 @@ import Cocoa
   @IBOutlet var mBaseBoardLimitsInspectorView : NSView?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardClearanceTextField : CanariDimensionTextField?
+  @IBOutlet var mBoardClearanceUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardCurveCPX1TextField : EBTextObserverField?
   @IBOutlet var mBoardCurveCPX2TextField : EBTextObserverField?
   @IBOutlet var mBoardCurveCPY1TextField : EBTextObserverField?
@@ -685,6 +687,8 @@ import Cocoa
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardClearanceTextField, "mBoardClearanceTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBoardClearanceUnitPopUp, "mBoardClearanceUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
@@ -1225,6 +1229,8 @@ import Cocoa
     self.mBoardLimitsBoundingBoxUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsBoundingBoxUnit_property, file: #file, line: #line)
     self.mBoardLimitsWidthUnitPopUp?.bind_selectedTag (self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
     self.mBoardLimitsWidthTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
+    self.mBoardClearanceUnitPopUp?.bind_selectedTag (self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
+    self.mBoardClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1681,6 +1687,8 @@ import Cocoa
     self.mBoardLimitsBoundingBoxUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsWidthUnitPopUp?.unbind_selectedTag ()
     self.mBoardLimitsWidthTextField?.unbind_dimensionAndUnit ()
+    self.mBoardClearanceUnitPopUp?.unbind_selectedTag ()
+    self.mBoardClearanceTextField?.unbind_dimensionAndUnit ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1831,6 +1839,8 @@ import Cocoa
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
+    self.mBoardClearanceTextField?.ebCleanUp ()
+    self.mBoardClearanceUnitPopUp?.ebCleanUp ()
     self.mBoardCurveCPX1TextField?.ebCleanUp ()
     self.mBoardCurveCPX2TextField?.ebCleanUp ()
     self.mBoardCurveCPY1TextField?.ebCleanUp ()
@@ -2016,6 +2026,8 @@ import Cocoa
 //    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardBorderPageView = nil
+//    self.mBoardClearanceTextField = nil
+//    self.mBoardClearanceUnitPopUp = nil
 //    self.mBoardCurveCPX1TextField = nil
 //    self.mBoardCurveCPX2TextField = nil
 //    self.mBoardCurveCPY1TextField = nil

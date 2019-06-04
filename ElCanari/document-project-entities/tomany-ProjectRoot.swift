@@ -28,6 +28,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mBoardLimitsBoundingBoxUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardPointsBoundingBoxUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardClearance_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSelectedSchematicInspector_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mSchematicTitle_fromElementsOfSet (inRemovedSet) // Stored property
@@ -76,6 +78,8 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mBoardLimitsBoundingBoxUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardPointsBoundingBoxUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardClearance_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSelectedSchematicInspector_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mSchematicTitle_toElementsOfSet (inAddedSet) // Stored property
@@ -849,6 +853,120 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardClearance' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardClearance = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardClearance.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardClearance_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardClearance.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardClearance_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+        managedObject.mBoardClearance_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardClearance_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardClearanceUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardClearanceUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardClearanceUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardClearanceUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mBoardClearanceUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+        managedObject.mBoardClearanceUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
       }
     }
   }
