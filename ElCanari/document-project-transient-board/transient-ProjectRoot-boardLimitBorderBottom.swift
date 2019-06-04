@@ -14,16 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardLimitBorderBottom (
-       _ self_mBorderPoints_mY : [BorderPoint_mY], 
+       _ self_boardBoundBox : CanariRect,          
        _ self_mBoardLimitsBoundingBoxUnit : Int,   
        _ self_mBoardLimitsWidth : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        var minY = Int.max
-        for p in self_mBorderPoints_mY {
-          minY = min (minY, p.mY)
-        }
-        minY -= self_mBoardLimitsWidth / 2
+        let minY = self_boardBoundBox.bottom - self_mBoardLimitsWidth / 2
         return stringFrom (valueInCanariUnit: minY, displayUnit: self_mBoardLimitsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }

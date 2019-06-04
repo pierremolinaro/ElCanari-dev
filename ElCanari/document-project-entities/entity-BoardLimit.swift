@@ -36,6 +36,12 @@ protocol BoardLimit_mCPY2 : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardLimit_descriptor : class {
+  var descriptor : BoardLimitDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardLimit_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -110,6 +116,7 @@ class BoardLimit : EBGraphicManagedObject,
          BoardLimit_mCPY1,
          BoardLimit_mCPX2,
          BoardLimit_mCPY2,
+         BoardLimit_descriptor,
          BoardLimit_objectDisplay,
          BoardLimit_isLine,
          BoardLimit_selectionDisplay,
@@ -319,6 +326,29 @@ class BoardLimit : EBGraphicManagedObject,
 
   var mP2_none_selection : EBSelection <Bool> {
     return .single (self.mP2_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: descriptor
+  //····················································································································
+
+  let descriptor_property = EBTransientProperty_BoardLimitDescriptor ()
+
+  //····················································································································
+
+  var descriptor_property_selection : EBSelection <BoardLimitDescriptor> {
+    return self.descriptor_property.prop
+  }
+
+  //····················································································································
+
+  var descriptor : BoardLimitDescriptor? {
+    switch self.descriptor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -562,6 +592,44 @@ class BoardLimit : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mCurve2_property.setProp (me) } },
       resetter: { inObject in inObject.mCurve2_property.setProp (nil) }
     )
+  //--- Atomic property: descriptor
+    self.descriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP1_property.mX_property_selection.kind ()
+        kind &= unwSelf.mP1_property.mY_property_selection.kind ()
+        kind &= unwSelf.mP2_property.mX_property_selection.kind ()
+        kind &= unwSelf.mP2_property.mY_property_selection.kind ()
+        kind &= unwSelf.mCPX1_property_selection.kind ()
+        kind &= unwSelf.mCPY1_property_selection.kind ()
+        kind &= unwSelf.mCPX2_property_selection.kind ()
+        kind &= unwSelf.mCPY2_property_selection.kind ()
+        kind &= unwSelf.mShape_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_BoardLimit_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_mX (self.descriptor_property)
+    self.mP1_property.addEBObserverOf_mY (self.descriptor_property)
+    self.mP2_property.addEBObserverOf_mX (self.descriptor_property)
+    self.mP2_property.addEBObserverOf_mY (self.descriptor_property)
+    self.mCPX1_property.addEBObserver (self.descriptor_property)
+    self.mCPY1_property.addEBObserver (self.descriptor_property)
+    self.mCPX2_property.addEBObserver (self.descriptor_property)
+    self.mCPY2_property.addEBObserver (self.descriptor_property)
+    self.mShape_property.addEBObserver (self.descriptor_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -865,6 +933,15 @@ class BoardLimit : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mP1_property.removeEBObserverOf_mX (self.descriptor_property)
+    self.mP1_property.removeEBObserverOf_mY (self.descriptor_property)
+    self.mP2_property.removeEBObserverOf_mX (self.descriptor_property)
+    self.mP2_property.removeEBObserverOf_mY (self.descriptor_property)
+    self.mCPX1_property.removeEBObserver (self.descriptor_property)
+    self.mCPY1_property.removeEBObserver (self.descriptor_property)
+    self.mCPX2_property.removeEBObserver (self.descriptor_property)
+    self.mCPY2_property.removeEBObserver (self.descriptor_property)
+    self.mShape_property.removeEBObserver (self.descriptor_property)
     self.mP1_property.removeEBObserverOf_mX (self.objectDisplay_property)
     self.mP1_property.removeEBObserverOf_mY (self.objectDisplay_property)
     self.mP2_property.removeEBObserverOf_mX (self.objectDisplay_property)
@@ -957,6 +1034,14 @@ class BoardLimit : EBGraphicManagedObject,
       valueExplorer: &self.mCPY2_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "descriptor",
+      idx: self.descriptor_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.descriptor_property.mObserverExplorer,
+      valueExplorer: &self.descriptor_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx: self.objectDisplay_property.ebObjectIndex,

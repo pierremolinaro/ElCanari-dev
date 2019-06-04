@@ -13,15 +13,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardLimitBorderTop (
-       _ self_boardBoundBox : CanariRect,       
-       _ self_mBoardLimitsWidth : Int,          
-       _ self_mBoardLimitsBoundingBoxUnit : Int
-) -> String {
+func transient_BoardLimit_descriptor (
+       _ self_mP1_mX : Int?,          
+       _ self_mP1_mY : Int?,          
+       _ self_mP2_mX : Int?,          
+       _ self_mP2_mY : Int?,          
+       _ self_mCPX1 : Int,            
+       _ self_mCPY1 : Int,            
+       _ self_mCPX2 : Int,            
+       _ self_mCPY2 : Int,            
+       _ self_mShape : BoardLimitShape
+) -> BoardLimitDescriptor {
 //--- START OF USER ZONE 2
-        let maxY = self_boardBoundBox.top + self_mBoardLimitsWidth / 2
-        return stringFrom (valueInCanariUnit: maxY, displayUnit: self_mBoardLimitsBoundingBoxUnit)
-
+    return BoardLimitDescriptor (
+      p1: CanariPoint (x: self_mP1_mX!, y: self_mP1_mY!),
+      p2: CanariPoint (x: self_mP2_mX!, y: self_mP2_mY!),
+      cp1: CanariPoint (x: self_mCPX1, y: self_mCPY1),
+      cp2: CanariPoint (x: self_mCPX2, y: self_mCPY2),
+      shape: self_mShape
+    )
 //--- END OF USER ZONE 2
 }
 

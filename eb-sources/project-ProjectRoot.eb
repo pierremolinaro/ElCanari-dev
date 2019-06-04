@@ -27,6 +27,11 @@ graphic entity BoardLimit {
   property Int mCPX2 default 0 ;
   property Int mCPY2 default 0 ;
 
+  override transient BoardLimitDescriptor descriptor dependsFrom
+    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape ;
+
   override transient EBShape objectDisplay dependsFrom
     self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
@@ -79,19 +84,21 @@ entity ProjectRoot {
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
+  transient CanariRect boardBoundBox dependsFrom self.mBoardLimits.all.descriptor, self.mBoardLimitsWidth ;
+    
   transient String boardLimitPointsTop dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
   transient String boardLimitPointsBottom dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
   transient String boardLimitPointsLeft dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
   transient String boardLimitPointsRight dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
 
   transient String boardLimitBorderTop dependsFrom
-    self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+    self.boardBoundBox, self.mBoardLimitsWidth, self.mBoardLimitsBoundingBoxUnit ;
   transient String boardLimitBorderBottom dependsFrom
-    self.mBorderPoints.all.mY, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+    self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
   transient String boardLimitBorderLeft dependsFrom
-    self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+    self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
   transient String boardLimitBorderRight dependsFrom
-    self.mBorderPoints.all.mX, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
+    self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
   
   transient String borderElementCountString dependsFrom self.mBorderPoints.count ;
 

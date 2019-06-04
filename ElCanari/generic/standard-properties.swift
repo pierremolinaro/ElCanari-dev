@@ -1898,6 +1898,12 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property BoardLimitDescriptor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_BoardLimitDescriptor  = EBReadOnlyValueProperty <BoardLimitDescriptor>
+typealias EBTransientProperty_BoardLimitDescriptor = EBTransientValueProperty <BoardLimitDescriptor>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property NetInfoPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

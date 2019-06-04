@@ -51,6 +51,16 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   }
 
   //····················································································································
+  //   Selection observable property: descriptor
+  //····················································································································
+
+  var descriptor_property = EBTransientProperty_BoardLimitDescriptor ()
+
+  var descriptor_property_selection : EBSelection <BoardLimitDescriptor> {
+    return self.descriptor_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: isLine
   //····················································································································
 
@@ -196,6 +206,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
     self.bind_property_cp1Ystring (model: model)
     self.bind_property_cp2Xstring (model: model)
     self.bind_property_cp2Ystring (model: model)
+    self.bind_property_descriptor (model: model)
     self.bind_property_isLine (model: model)
     self.bind_property_mCPX1 (model: model)
     self.bind_property_mCPX2 (model: model)
@@ -227,6 +238,9 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   //--- cp2Ystring
     self.cp2Ystring_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_cp2Ystring (self.cp2Ystring_property)
+  //--- descriptor
+    self.descriptor_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_descriptor (self.descriptor_property)
   //--- isLine
     self.isLine_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_isLine (self.isLine_property)
@@ -540,6 +554,46 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.cp2Ystring_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_descriptor (model : ReadOnlyArrayOf_BoardLimit) {
+    model.addEBObserverOf_descriptor (self.descriptor_property)
+    self.descriptor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BoardLimitDescriptor> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.descriptor_property_selection {
             case .empty :
               return .empty
             case .multiple :

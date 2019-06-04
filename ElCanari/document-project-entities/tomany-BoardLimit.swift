@@ -20,6 +20,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
     self.removeEBObserversOf_mCPY1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
@@ -37,6 +38,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
     self.addEBObserversOf_mCPY1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
@@ -331,6 +333,62 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mCPY2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
       }
     }
   }
