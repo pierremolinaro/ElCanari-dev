@@ -59,6 +59,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_boardLimitBorderBottom_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderLeft_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderRight_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
@@ -109,6 +110,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_boardLimitBorderBottom_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderLeft_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderRight_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_borderClearanceBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
@@ -2659,6 +2661,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
         managedObject.boardLimitBorderRight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'borderClearanceBackground' transient property
+  //····················································································································
+
+  private var mObserversOf_borderClearanceBackground = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_borderClearanceBackground (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_borderClearanceBackground.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.borderClearanceBackground_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_borderClearanceBackground (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_borderClearanceBackground.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.borderClearanceBackground_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_borderClearanceBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_borderClearanceBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderClearanceBackground_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_borderClearanceBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderClearanceBackground_property.removeEBObserver (observer)
       }
     }
   }

@@ -37,9 +37,7 @@ graphic entity BoardLimit {
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape,
     self.mRoot.one.mBoardLimitsWidth,
-    prefs.boardLimitsColorForBoard,
-    self.mRoot.one.mBoardClearance,
-    prefs.boardClearanceColorForBoard
+    prefs.boardLimitsColorForBoard
   ;
 
   transient Bool isLine dependsFrom self.mShape ;
@@ -106,6 +104,8 @@ entity ProjectRoot {
   
   transient String borderElementCountString dependsFrom self.mBorderPoints.count ;
 
+  transient EBShape borderClearanceBackground dependsFrom
+     self.mBoardLimits.all.descriptor, self.mBoardLimitsWidth, self.mBoardClearance, prefs.boardClearanceColorForBoard ;
 //---
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;

@@ -24,9 +24,7 @@ func transient_BoardLimit_objectDisplay (
        _ self_mCPY2 : Int,               
        _ self_mShape : BoardLimitShape,  
        _ self_mRoot_mBoardLimitsWidth : Int?,
-       _ prefs_boardLimitsColorForBoard : NSColor,
-       _ self_mRoot_mBoardClearance : Int?,
-       _ prefs_boardClearanceColorForBoard : NSColor
+       _ prefs_boardLimitsColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let result = EBShape ()
@@ -34,25 +32,21 @@ func transient_BoardLimit_objectDisplay (
            let y1 = self_mP1_mY,
            let x2 = self_mP2_mX,
            let y2 = self_mP2_mY,
-           let clearance = self_mRoot_mBoardClearance,
            let width = self_mRoot_mBoardLimitsWidth {
           let p1 = CanariPoint (x: x1, y: y1).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          let clearanceBP = NSBezierPath ()
-          clearanceBP.move (to: p1)
+          var bp = NSBezierPath ()
+          bp.move (to: p1)
           switch self_mShape {
           case .line :
-            clearanceBP.line (to: p2)
+            bp.line (to: p2)
           case .bezier :
             let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
             let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
-            clearanceBP.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
-          clearanceBP.lineCapStyle = .round
-          clearanceBP.lineJoinStyle = .round
-          var bp = clearanceBP.copy () as! NSBezierPath
-          clearanceBP.lineWidth = canariUnitToCocoa (width + clearance)
-          result.append (EBStrokeBezierPathShape ([clearanceBP], prefs_boardClearanceColorForBoard))
+          bp.lineCapStyle = .round
+          bp.lineJoinStyle = .round
           bp.lineWidth = canariUnitToCocoa (width)
           result.append (EBStrokeBezierPathShape ([bp], prefs_boardLimitsColorForBoard))
         //---

@@ -9,30 +9,34 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBStrokeBezierPathShape : EBShape {
-  private var mFilledPaths : [NSBezierPath]
+  private let mFilledPaths : [NSBezierPath]
   private let mColor : NSColor
+  private let mClipBezierPath : NSBezierPath?
 
   //····················································································································
   //  Init
   //····················································································································
 
-  init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mFilledPaths = []
-    mColor = inColor
-    super.init ()
+  init (_ inPaths : [NSBezierPath], _ inColor : NSColor, _ inClipBezierPath : NSBezierPath? = nil) {
+    var filledPaths = [NSBezierPath] ()
     for path in inPaths {
       if !path.isEmpty {
         let cgPath = path.pathByStroking
-        self.mFilledPaths.append (cgPath.bezierPath)
+        filledPaths.append (cgPath.bezierPath)
       }
     }
+    mFilledPaths = filledPaths
+    mColor = inColor
+    mClipBezierPath = inClipBezierPath
+    super.init ()
   }
 
   //····················································································································
 
-  private init (transformedPaths inFilledPaths: [NSBezierPath], _ inColor: NSColor) {
+  private init (transformedPaths inFilledPaths : [NSBezierPath], _ inColor : NSColor, _ inClipBezierPath : NSBezierPath?) {
     mFilledPaths = inFilledPaths
     mColor = inColor
+    mClipBezierPath = inClipBezierPath
     super.init ()
   }
 
@@ -46,7 +50,7 @@ class EBStrokeBezierPathShape : EBShape {
       let bp = inAffineTransform.transform (path)
       filledPaths.append (bp)
     }
-    let result = EBStrokeBezierPathShape (transformedPaths: filledPaths, self.mColor)
+    let result = EBStrokeBezierPathShape (transformedPaths: filledPaths, self.mColor, self.mClipBezierPath)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -58,10 +62,17 @@ class EBStrokeBezierPathShape : EBShape {
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
+    if let clipBezierPath = self.mClipBezierPath {
+      NSGraphicsContext.saveGraphicsState ()
+      clipBezierPath.addClip ()
+    }
     for bp in self.mFilledPaths {
       if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
         bp.fill ()
       }
+    }
+    if self.mClipBezierPath != nil {
+      NSGraphicsContext.restoreGraphicsState ()
     }
   }
 

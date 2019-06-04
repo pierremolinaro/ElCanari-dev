@@ -429,7 +429,7 @@ document ProjectDocument root ProjectRoot {
   arrayController #boardLimitsObjectsController : root.mBoardLimits ;
 
   outlet EBGraphicView mBoardLimitsView
-//    $underObjectsDisplay root.schematicBackgroundDisplay
+    $underObjectsDisplay root.borderClearanceBackground
 //    $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip

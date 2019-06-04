@@ -59,6 +59,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.boardLimitBorderBottom_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
     inOldValue?.boardLimitBorderLeft_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
     inOldValue?.boardLimitBorderRight_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
+    inOldValue?.borderClearanceBackground_property.removeEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
     inOldValue?.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     inOldValue?.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
@@ -109,6 +110,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.boardLimitBorderBottom_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
     self.mInternalValue?.boardLimitBorderLeft_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
     self.mInternalValue?.boardLimitBorderRight_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
+    self.mInternalValue?.borderClearanceBackground_property.addEBObserversFrom (&self.mObserversOf_borderClearanceBackground) // Transient property
     self.mInternalValue?.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
     self.mInternalValue?.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
     self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
@@ -3244,6 +3246,75 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
         managedObject.boardLimitBorderRight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'borderClearanceBackground' transient property
+  //····················································································································
+
+  private var mObserversOf_borderClearanceBackground = EBWeakEventSet ()
+
+  //····················································································································
+
+  var borderClearanceBackground_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.borderClearanceBackground_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_borderClearanceBackground (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_borderClearanceBackground.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.borderClearanceBackground_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_borderClearanceBackground (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_borderClearanceBackground.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.borderClearanceBackground_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_borderClearanceBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_borderClearanceBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderClearanceBackground_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_borderClearanceBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_borderClearanceBackground.apply { (_ observer : EBEvent) in
+        managedObject.borderClearanceBackground_property.removeEBObserver (observer)
       }
     }
   }

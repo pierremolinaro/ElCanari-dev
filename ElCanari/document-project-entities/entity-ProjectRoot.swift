@@ -276,6 +276,12 @@ protocol ProjectRoot_boardLimitBorderRight : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_borderClearanceBackground : class {
+  var borderClearanceBackground : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_deviceNames : class {
   var deviceNames : StringArray? { get }
 }
@@ -354,6 +360,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardLimitBorderBottom,
          ProjectRoot_boardLimitBorderLeft,
          ProjectRoot_boardLimitBorderRight,
+         ProjectRoot_borderClearanceBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
@@ -1446,6 +1453,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: borderClearanceBackground
+  //····················································································································
+
+  let borderClearanceBackground_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var borderClearanceBackground_property_selection : EBSelection <EBShape> {
+    return self.borderClearanceBackground_property.prop
+  }
+
+  //····················································································································
+
+  var borderClearanceBackground : EBShape? {
+    switch self.borderClearanceBackground_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceNames
   //····················································································································
 
@@ -2096,6 +2126,34 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.addEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsWidth_property.addEBObserver (self.boardLimitBorderRight_property)
+  //--- Atomic property: borderClearanceBackground
+    self.borderClearanceBackground_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mBoardLimits_property_selection.kind ()
+        kind &= unwSelf.mBoardLimitsWidth_property_selection.kind ()
+        kind &= unwSelf.mBoardClearance_property_selection.kind ()
+        kind &= g_Preferences!.boardClearanceColorForBoard_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mBoardLimits_property_selection, unwSelf.mBoardLimitsWidth_property_selection, unwSelf.mBoardClearance_property_selection, g_Preferences!.boardClearanceColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_ProjectRoot_borderClearanceBackground (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimits_property.addEBObserverOf_descriptor (self.borderClearanceBackground_property)
+    self.mBoardLimitsWidth_property.addEBObserver (self.borderClearanceBackground_property)
+    self.mBoardClearance_property.addEBObserver (self.borderClearanceBackground_property)
+    g_Preferences?.boardClearanceColorForBoard_property.addEBObserver (self.borderClearanceBackground_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2289,6 +2347,10 @@ class ProjectRoot : EBManagedObject,
     self.boardBoundBox_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderRight_property)
+    self.mBoardLimits_property.removeEBObserverOf_descriptor (self.borderClearanceBackground_property)
+    self.mBoardLimitsWidth_property.removeEBObserver (self.borderClearanceBackground_property)
+    self.mBoardClearance_property.removeEBObserver (self.borderClearanceBackground_property)
+    g_Preferences?.boardClearanceColorForBoard_property.removeEBObserver (self.borderClearanceBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
@@ -2672,6 +2734,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.boardLimitBorderRight_property.mObserverExplorer,
       valueExplorer: &self.boardLimitBorderRight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "borderClearanceBackground",
+      idx: self.borderClearanceBackground_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.borderClearanceBackground_property.mObserverExplorer,
+      valueExplorer: &self.borderClearanceBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceNames",
