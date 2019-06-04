@@ -455,6 +455,27 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mGridZoomBoardLimitsInspectorView ;
   outlet CanariViewWithKeyView mOperationBoardLimitsInspectorView ;
 
+//--- Limit Curve inspector view
+  selectionController BoardLimit #boardLimitSelectionController :
+    #boardLimitsObjectsController.selectedArray
+  ;
+  outlet CanariViewWithKeyView mSelectedBoardLimitInspectorView ;
+  outlet EBPopUpButton mSelectedLimitDisplayUnitPopUp $selectedTag root.mBoardSelectedCurveDisplayUnit ;
+
+  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardLimitSelectionController.p1Xstring ;
+  outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardLimitSelectionController.p1Ystring ;
+  outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardLimitSelectionController.p2Xstring ;
+  outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardLimitSelectionController.p2Ystring ;
+
+  outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardLimitSelectionController.mShape ;
+
+  outlet EBTextObserverField mBoardCurveCPX1TextField $valueObserver #boardLimitSelectionController.cp1Xstring ;
+  outlet EBTextObserverField mBoardCurveCPY1TextField $valueObserver #boardLimitSelectionController.cp1Ystring ;
+  outlet EBTextObserverField mBoardCurveCPX2TextField $valueObserver #boardLimitSelectionController.cp2Xstring ;
+  outlet EBTextObserverField mBoardCurveCPY2TextField $valueObserver #boardLimitSelectionController.cp2Ystring ;
+
+  outlet NSView mLimitCurveBezierControlPointsView $hidden #boardLimitSelectionController.isLine ;
+  
 //--- Grid and Flip inspector
   outlet EBSwitch mBoardLimitsHorizontalFlipSwitch $value root.mBoardLimitsHorizontalFlip ;
   outlet EBSwitch mBoardLimitsVerticalFlipSwitch $value root.mBoardLimitsVerticalFlip ;

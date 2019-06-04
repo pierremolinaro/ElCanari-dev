@@ -26,6 +26,14 @@
                 <outlet property="mBaseBoardLimitsInspectorView" destination="tLm-rs-Pgv" id="S5m-nI-AVa"/>
                 <outlet property="mBaseSchematicsInspectorView" destination="15192" id="URz-7L-u9S"/>
                 <outlet property="mBoardBorderPageView" destination="jyP-KX-6Ox" id="dW1-Qg-xrr"/>
+                <outlet property="mBoardCurveCPX1TextField" destination="AFG-67-eCo" id="SB9-OV-Afk"/>
+                <outlet property="mBoardCurveCPX2TextField" destination="BUU-Oo-bUK" id="9J6-Zy-J7W"/>
+                <outlet property="mBoardCurveCPY1TextField" destination="YxB-BC-66z" id="9Rq-nn-4jj"/>
+                <outlet property="mBoardCurveCPY2TextField" destination="hjR-Jv-YYp" id="Hxw-6f-Ili"/>
+                <outlet property="mBoardCurveX1TextField" destination="gNg-h7-pdK" id="s9n-Gu-Kk5"/>
+                <outlet property="mBoardCurveX2TextField" destination="FK6-VZ-PnJ" id="SYv-zz-d49"/>
+                <outlet property="mBoardCurveY1TextField" destination="s7y-ih-t4w" id="Fgc-61-HSh"/>
+                <outlet property="mBoardCurveY2TextField" destination="ZbB-fW-WWe" id="yGa-yz-sVZ"/>
                 <outlet property="mBoardLimitBorderBottomTextField" destination="X9Y-cZ-IOx" id="55p-bk-LWr"/>
                 <outlet property="mBoardLimitBorderLeftTextField" destination="3i8-DP-5MF" id="YPk-UH-r9q"/>
                 <outlet property="mBoardLimitBorderRightTextField" destination="zkz-dd-y0f" id="Y3P-I0-Acb"/>
@@ -87,6 +95,7 @@
                 <outlet property="mInconsistentSchematicErrorPanel" destination="16252" id="8uM-AP-x78"/>
                 <outlet property="mInconsistentSchematicErrorTextView" destination="16263" id="4xP-DG-kTS"/>
                 <outlet property="mLibraryPageView" destination="2935" id="v8E-FH-RL9"/>
+                <outlet property="mLimitCurveBezierControlPointsView" destination="c48-xm-8fN" id="dIR-7X-tkX"/>
                 <outlet property="mMasterView" destination="3296" id="l4E-2m-udS"/>
                 <outlet property="mMergeNetDialog" destination="1060" id="O70-BN-hCy"/>
                 <outlet property="mMergeNetPopUpButton" destination="1063" id="wxY-OR-vo0"/>
@@ -163,7 +172,10 @@
                 <outlet property="mSelectNetClassInNetTabButton" destination="nDf-F4-dfT" id="Kva-8Y-EEU"/>
                 <outlet property="mSelectNetClassPanel" destination="scs-de-Snm" id="Z4m-17-l2U"/>
                 <outlet property="mSelectNetClassPopUpButton" destination="idj-0G-w2U" id="FHY-Uo-Rfn"/>
-                <outlet property="mSelectedObjectsBoardLimitsInspectorView" destination="m9b-ER-vMM" id="opv-uJ-8c1"/>
+                <outlet property="mSelectedBoardLimitInspectorView" destination="m9b-ER-vMM" id="IhS-DS-Del"/>
+                <outlet property="mSelectedLimitDisplayUnitPopUp" destination="cVG-k1-9Re" id="ZjO-Zn-Dc5"/>
+                <outlet property="mSelectedLimitShapePopUpButton" destination="NhK-wf-daA" id="gRi-cf-5jV"/>
+                <outlet property="mSelectedObjectsBoardLimitsInspectorView" destination="ph8-QY-Yza" id="ll0-e8-xGS"/>
                 <outlet property="mSelectedObjectsSchematicsInspectorView" destination="15205" id="agk-Rg-7i0"/>
                 <outlet property="mSelectedSheetTitleTextField" destination="15310" id="EIV-hz-EDO"/>
                 <outlet property="mSetDatePanel" destination="9r6-bV-Bde" id="Mpv-wB-AtM"/>
@@ -3355,7 +3367,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="98" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="99" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3369,11 +3381,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="98" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="99" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3388,7 +3400,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="229.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="228.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3402,11 +3414,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="569.5" y="1" width="229.5" height="17"/>
+                                                <rect key="frame" x="570.5" y="1" width="228.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="229.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="228.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -8746,20 +8758,227 @@ DQ
             <point key="canvasLocation" x="-473" y="247.5"/>
         </customView>
         <customView id="m9b-ER-vMM" userLabel="Board Limits Inspector : Selected Limit" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="181"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="225"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="CyQ-xr-gG3">
-                    <rect key="frame" x="56" y="162" width="138" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <rect key="frame" x="56" y="206" width="138" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Limit Inspector" id="Lcf-qM-ms3">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton id="cVG-k1-9Re" customClass="EBPopUpButton">
+                    <rect key="frame" x="170" y="178" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="inch" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Eau-r8-nYU" id="GIH-Z8-SaH">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="wZF-wW-vxL">
+                            <items>
+                                <menuItem title="µm" tag="90" id="SqU-3h-3tS"/>
+                                <menuItem title="mm" tag="90000" id="ZZ2-YI-Xqn"/>
+                                <menuItem title="mil" tag="2286" id="o84-SH-tsz"/>
+                                <menuItem title="inch" state="on" tag="2286000" id="Eau-r8-nYU"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VXn-ef-v0C">
+                    <rect key="frame" x="18" y="152" width="21" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="Teu-yl-9hi">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bu0-QI-KEY">
+                    <rect key="frame" x="128" y="152" width="21" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="lql-OW-LfF">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8OD-c2-C3G">
+                    <rect key="frame" x="18" y="180" width="64" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="End Points" id="f46-07-jYp">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s7y-ih-t4w" customClass="EBTextObserverField">
+                    <rect key="frame" x="149" y="152" width="83" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="qVJ-mH-5rK">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gNg-h7-pdK" customClass="EBTextObserverField">
+                    <rect key="frame" x="41" y="152" width="83" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="Php-da-e6h">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SpG-qH-6V6">
+                    <rect key="frame" x="18" y="130" width="21" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="n8N-Sl-bgl">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NLv-74-d0Q">
+                    <rect key="frame" x="128" y="130" width="21" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="37L-Wx-hkA">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZbB-fW-WWe" customClass="EBTextObserverField">
+                    <rect key="frame" x="149" y="130" width="83" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="LRZ-d2-dIm">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FK6-VZ-PnJ" customClass="EBTextObserverField">
+                    <rect key="frame" x="41" y="130" width="83" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="aS6-bn-TXW">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView id="c48-xm-8fN">
+                    <rect key="frame" x="20" y="20" width="210" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yr3-DG-XVy">
+                            <rect key="frame" x="108" y="0.0" width="21" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="CwL-YX-J4B">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fTd-7B-Vdq">
+                            <rect key="frame" x="-2" y="50" width="84" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="Control Points" id="rtc-kz-mn3">
+                                <font key="font" metaFont="systemBold" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bt8-Zr-Evu">
+                            <rect key="frame" x="-2" y="0.0" width="21" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="o5x-P3-lNB">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AFG-67-eCo" customClass="EBTextObserverField">
+                            <rect key="frame" x="21" y="22" width="83" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="izJ-WY-eI8">
+                                <font key="font" metaFont="systemBold" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hjR-Jv-YYp" customClass="EBTextObserverField">
+                            <rect key="frame" x="129" y="0.0" width="83" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="VcK-Tj-oKN">
+                                <font key="font" metaFont="systemBold" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YxB-BC-66z" customClass="EBTextObserverField">
+                            <rect key="frame" x="129" y="22" width="83" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="aJm-d1-8Xj">
+                                <font key="font" metaFont="systemBold" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BUU-Oo-bUK" customClass="EBTextObserverField">
+                            <rect key="frame" x="21" y="0.0" width="83" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="9 999, 99 mm" id="Qr0-Ph-SJb">
+                                <font key="font" metaFont="systemBold" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ym4-72-wuQ">
+                            <rect key="frame" x="-2" y="22" width="21" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="X" id="ET3-4q-wHE">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6bb-Xi-jkc">
+                            <rect key="frame" x="108" y="22" width="21" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="Y" id="dOL-SG-pzJ">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wko-6p-6v9">
+                    <rect key="frame" x="18" y="98" width="50" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="Shape" id="a7c-zs-fi5">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton id="NhK-wf-daA" customClass="EBPopUpButton">
+                    <rect key="frame" x="74" y="96" width="101" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Bezier Curve" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="90000" inset="2" preferredEdge="maxY" selectedItem="wcy-eu-cTu" id="JM4-z3-AlT">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="iyq-Z8-4n1">
+                            <items>
+                                <menuItem title="Line" tag="90" id="6sX-9t-c0D"/>
+                                <menuItem title="Bezier Curve" state="on" tag="90000" id="wcy-eu-cTu"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-331" y="215.5"/>
+            <point key="canvasLocation" x="-738" y="-82.5"/>
         </customView>
         <customView id="4A5-MX-PW7" userLabel="Board Limits Inspector : Operation" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="287"/>
@@ -8954,6 +9173,11 @@ DQ
                 </textField>
             </subviews>
             <point key="canvasLocation" x="-1133" y="256.5"/>
+        </customView>
+        <customView id="ph8-QY-Yza" userLabel="Board Limits Inspector : Base View" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="181"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <point key="canvasLocation" x="-403" y="112"/>
         </customView>
     </objects>
     <resources>

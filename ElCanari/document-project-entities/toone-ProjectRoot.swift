@@ -27,6 +27,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     inOldValue?.mBoardLimitsGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
     inOldValue?.mBoardLimitsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
     inOldValue?.mBoardPointsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
+    inOldValue?.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     inOldValue?.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     inOldValue?.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     inOldValue?.mSchematicTitle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
@@ -73,6 +74,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mInternalValue?.mBoardLimitsGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
     self.mInternalValue?.mBoardLimitsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
     self.mInternalValue?.mBoardPointsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
+    self.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
     self.mInternalValue?.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
     self.mInternalValue?.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
     self.mInternalValue?.mSchematicTitle_property.addEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
@@ -944,6 +946,76 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mBoardPointsBoundingBoxUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mBoardSelectedCurveDisplayUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mBoardSelectedCurveDisplayUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.mBoardSelectedCurveDisplayUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mBoardSelectedCurveDisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
+        managedObject.mBoardSelectedCurveDisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
       }
     }
   }

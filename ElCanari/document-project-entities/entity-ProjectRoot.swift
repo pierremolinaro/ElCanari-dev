@@ -78,6 +78,12 @@ protocol ProjectRoot_mBoardPointsBoundingBoxUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : class {
+  var mBoardSelectedCurveDisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
@@ -297,6 +303,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardLimitsGridStepUnit,
          ProjectRoot_mBoardLimitsBoundingBoxUnit,
          ProjectRoot_mBoardPointsBoundingBoxUnit,
+         ProjectRoot_mBoardSelectedCurveDisplayUnit,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -355,7 +362,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidth
   //····················································································································
 
-  let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 114300)
+  let mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -372,7 +379,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsWidthUnit
   //····················································································································
 
-  let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -457,7 +464,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridDisplayFactor
   //····················································································································
 
-  let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
+  let mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
 
   //····················································································································
 
@@ -491,7 +498,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStep
   //····················································································································
 
-  let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
+  let mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -508,7 +515,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsGridStepUnit
   //····················································································································
 
-  let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -525,7 +532,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardLimitsBoundingBoxUnit
   //····················································································································
 
-  let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -542,7 +549,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardPointsBoundingBoxUnit
   //····················································································································
 
-  let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 2286)
+  let mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -554,6 +561,23 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int> { return self.mBoardPointsBoundingBoxUnit_property.prop }
+
+  //····················································································································
+  //   Atomic property: mBoardSelectedCurveDisplayUnit
+  //····················································································································
+
+  let mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+
+  //····················································································································
+
+  var mBoardSelectedCurveDisplayUnit : Int {
+    get { return self.mBoardSelectedCurveDisplayUnit_property.propval }
+    set { self.mBoardSelectedCurveDisplayUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int> { return self.mBoardSelectedCurveDisplayUnit_property.prop }
 
   //····················································································································
   //   To many property: mSheets
@@ -1490,6 +1514,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mBoardPointsBoundingBoxUnit
     self.mBoardPointsBoundingBoxUnit_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mBoardSelectedCurveDisplayUnit
+    self.mBoardSelectedCurveDisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -2283,6 +2309,14 @@ class ProjectRoot : EBManagedObject,
       valueExplorer: &self.mBoardPointsBoundingBoxUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mBoardSelectedCurveDisplayUnit",
+      idx: self.mBoardSelectedCurveDisplayUnit_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer,
+      valueExplorer: &self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "mSelectedPageIndex",
       idx: self.mSelectedPageIndex_property.ebObjectIndex,
       y: &y,
@@ -2651,6 +2685,9 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mBoardPointsBoundingBoxUnit
     self.mBoardPointsBoundingBoxUnit_property.mObserverExplorer = nil
     self.mBoardPointsBoundingBoxUnit_property.mValueExplorer = nil
+  //--- Atomic property: mBoardSelectedCurveDisplayUnit
+    self.mBoardSelectedCurveDisplayUnit_property.mObserverExplorer = nil
+    self.mBoardSelectedCurveDisplayUnit_property.mValueExplorer = nil
   //--- To many property: mSheets
     self.mSheets_property.mValueExplorer = nil
   //--- Atomic property: mSelectedPageIndex
@@ -2770,6 +2807,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
   //--- Atomic property: mBoardPointsBoundingBoxUnit
     self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardPointsBoundingBoxUnit")
+  //--- Atomic property: mBoardSelectedCurveDisplayUnit
+    self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval,
@@ -2926,6 +2965,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardLimitsBoundingBoxUnit")
   //--- Atomic property: mBoardPointsBoundingBoxUnit
     self.mBoardPointsBoundingBoxUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardPointsBoundingBoxUnit")
+  //--- Atomic property: mBoardSelectedCurveDisplayUnit
+    self.mBoardSelectedCurveDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"mBoardSelectedCurveDisplayUnit")
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
   //--- Atomic property: mSelectedSchematicInspector

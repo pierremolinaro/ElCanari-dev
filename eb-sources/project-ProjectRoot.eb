@@ -12,26 +12,46 @@ entity BorderPoint {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum BoardLimitShape { line, bezier }
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity BoardLimit {
+  property BoardLimitShape mShape default line ;
   toOne ProjectRoot mRoot inverse toMany mBoardLimits ;
   toOne BorderPoint mP1 inverse toOne mCurve1 ;
   toOne BorderPoint mP2 inverse toOne mCurve2 ;
 
+  property Int mCPX1 default 0 ;
+  property Int mCPY1 default 0 ;
+  property Int mCPX2 default 0 ;
+  property Int mCPY2 default 0 ;
+
   override transient EBShape objectDisplay dependsFrom
-    self.mP1.one.mX,
-    self.mP1.one.mY,
-    self.mP2.one.mX,
-    self.mP2.one.mY,
+    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape,
     self.mRoot.one.mBoardLimitsWidth,
     prefs.boardLimitsColorForBoard
   ;
 
+  transient Bool isLine dependsFrom self.mShape ;
+
   override transient EBShape selectionDisplay dependsFrom
-    self.mP1.one.mX,
-    self.mP1.one.mY,
-    self.mP2.one.mX,
-    self.mP2.one.mY
+    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape
   ;
+  
+  transient String p1Xstring dependsFrom self.mP1.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p1Ystring dependsFrom self.mP1.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Xstring dependsFrom self.mP2.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Ystring dependsFrom self.mP2.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  
+  transient String cp1Xstring dependsFrom self.mCPX1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp1Ystring dependsFrom self.mCPY1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp2Xstring dependsFrom self.mCPX2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp2Ystring dependsFrom self.mCPY2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -40,19 +60,20 @@ entity ProjectRoot {
 //--- Board border
   toMany BorderPoint mBorderPoints ;
   toMany BoardLimit mBoardLimits inverse toOne mRoot ;
-  property Int mBoardLimitsWidth default 114_300 ; // 50 mil
-  property Int mBoardLimitsWidthUnit default 2_286 ; // mil
+  property Int mBoardLimitsWidth default 90_000 ; // 1 mm
+  property Int mBoardLimitsWidthUnit default 90_000 ; // mm
 
   property Int mBoardLimitsSelectedInspector default 1 ;
   property Bool mBoardLimitsHorizontalFlip default no ;
   property Bool mBoardLimitsVerticalFlip default no ;
   property GridStyle mBoardLimitsGridStyle default line ;
-  property Int mBoardLimitsGridDisplayFactor default 4 ;
+  property Int mBoardLimitsGridDisplayFactor default 5 ;
   property Int mBoardLimitsZoom default 200 ;
-  property Int mBoardLimitsGridStep default 57_150 ; // 25 mils
-  property Int mBoardLimitsGridStepUnit default 2_286 ; // mil
-  property Int mBoardLimitsBoundingBoxUnit default 2_286 ; // mil
-  property Int mBoardPointsBoundingBoxUnit default 2_286 ; // mil
+  property Int mBoardLimitsGridStep default 90_000 ; // mm
+  property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
+  property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
+  property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
+  property Int mBoardSelectedCurveDisplayUnit default 90_000 ; // mm
 
   transient Int boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor

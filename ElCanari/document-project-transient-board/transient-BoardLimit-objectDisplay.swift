@@ -18,6 +18,11 @@ func transient_BoardLimit_objectDisplay (
        _ self_mP1_mY : Int?,             
        _ self_mP2_mX : Int?,             
        _ self_mP2_mY : Int?,             
+       _ self_mCPX1 : Int,               
+       _ self_mCPY1 : Int,               
+       _ self_mCPX2 : Int,               
+       _ self_mCPY2 : Int,               
+       _ self_mShape : BoardLimitShape,  
        _ self_mRoot_mBoardLimitsWidth : Int?,
        _ prefs_boardLimitsColorForBoard : NSColor
 ) -> EBShape {
@@ -26,19 +31,35 @@ func transient_BoardLimit_objectDisplay (
         if let x1 = self_mP1_mX, let y1 = self_mP1_mY, let x2 = self_mP2_mX, let y2 = self_mP2_mY, let width = self_mRoot_mBoardLimitsWidth{
           let p1 = CanariPoint (x: x1, y: y1).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          let bp = NSBezierPath ()
+          var bp = NSBezierPath ()
           bp.move (to: p1)
-          bp.line (to: p2)
+          switch self_mShape {
+          case .line :
+            bp.line (to: p2)
+          case .bezier :
+            let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
+            let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
+            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+          }
           bp.lineWidth = canariUnitToCocoa (width)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           result.append (EBStrokeBezierPathShape ([bp], prefs_boardLimitsColorForBoard))
+        //---
           let s = BOARD_LIMITS_KNOB_SIZE / 2.0
           let r1 = NSRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
-          let bp2 = NSBezierPath (ovalIn: r1)
+          bp = NSBezierPath (ovalIn: r1)
           let r2 = NSRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
-          bp2.appendOval (in: r2)
-          result.append (EBFilledBezierPathShape ([bp2], .orange))
+          bp.appendOval (in: r2)
+          result.append (EBFilledBezierPathShape ([bp], .orange))
+        //---
+//          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
+//          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
+//          let rp1 = NSRect (x: cp1.x - s / 2.0, y: cp1.y - s / 2.0, width: s, height: s)
+//          bp = NSBezierPath (ovalIn: rp1)
+//          let rp2 = NSRect (x: cp2.x - s / 2.0, y: cp2.y - s / 2.0, width: s, height: s)
+//          bp.appendOval (in: rp2)
+//          result.append (EBFilledBezierPathShape ([bp], .red))
         }
         return result
 //--- END OF USER ZONE 2

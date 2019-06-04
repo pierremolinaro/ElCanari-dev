@@ -75,6 +75,12 @@ import Cocoa
   var boardLimitsObjectsController = Controller_ProjectDocument_boardLimitsObjectsController ()
 
   //····················································································································
+  //   Selection controller: boardLimitSelectionController
+  //····················································································································
+
+  var boardLimitSelectionController = SelectionController_ProjectDocument_boardLimitSelectionController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -373,6 +379,14 @@ import Cocoa
   @IBOutlet var mBaseBoardLimitsInspectorView : NSView?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
   @IBOutlet var mBoardBorderPageView : CanariViewWithKeyView?
+  @IBOutlet var mBoardCurveCPX1TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveCPX2TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveCPY1TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveCPY2TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveX1TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveX2TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveY1TextField : EBTextObserverField?
+  @IBOutlet var mBoardCurveY2TextField : EBTextObserverField?
   @IBOutlet var mBoardLimitBorderBottomTextField : EBTextObserverField?
   @IBOutlet var mBoardLimitBorderLeftTextField : EBTextObserverField?
   @IBOutlet var mBoardLimitBorderRightTextField : EBTextObserverField?
@@ -434,6 +448,7 @@ import Cocoa
   @IBOutlet var mInconsistentSchematicErrorPanel : NSPanel?
   @IBOutlet var mInconsistentSchematicErrorTextView : NSTextView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
+  @IBOutlet var mLimitCurveBezierControlPointsView : NSView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mMergeNetDialog : NSPanel?
   @IBOutlet var mMergeNetPopUpButton : EBPopUpButton?
@@ -510,6 +525,9 @@ import Cocoa
   @IBOutlet var mSelectNetClassInNetTabButton : EBButton?
   @IBOutlet var mSelectNetClassPanel : NSPanel?
   @IBOutlet var mSelectNetClassPopUpButton : EBPopUpButton?
+  @IBOutlet var mSelectedBoardLimitInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSelectedLimitDisplayUnitPopUp : EBPopUpButton?
+  @IBOutlet var mSelectedLimitShapePopUpButton : EBPopUpButton?
   @IBOutlet var mSelectedObjectsBoardLimitsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedObjectsSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSelectedSheetTitleTextField : EBTextField?
@@ -562,6 +580,7 @@ import Cocoa
   var mController_mSelectNetClassInNetTabButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mNetWarningImageView_hidden : MultipleBindingController_hidden? = nil
   var mController_mNetWarningTextField_hidden : MultipleBindingController_hidden? = nil
+  var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -615,6 +634,8 @@ import Cocoa
     self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
   //--- Array controller property: boardLimitsObjectsController
     self.boardLimitsObjectsController.addExplorer (name: "boardLimitsObjectsController", y:&y, view:view)
+  //--- Selection controller property: boardLimitSelectionController
+    self.boardLimitSelectionController.addExplorer (name: "boardLimitSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -664,6 +685,14 @@ import Cocoa
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardBorderPageView, "mBoardBorderPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveCPX1TextField, "mBoardCurveCPX1TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveCPX2TextField, "mBoardCurveCPX2TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveCPY1TextField, "mBoardCurveCPY1TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveCPY2TextField, "mBoardCurveCPY2TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveX1TextField, "mBoardCurveX1TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveX2TextField, "mBoardCurveX2TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveY1TextField, "mBoardCurveY1TextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mBoardCurveY2TextField, "mBoardCurveY2TextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitBorderBottomTextField, "mBoardLimitBorderBottomTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitBorderLeftTextField, "mBoardLimitBorderLeftTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBoardLimitBorderRightTextField, "mBoardLimitBorderRightTextField", EBTextObserverField.self, #file, #line)
@@ -725,6 +754,7 @@ import Cocoa
     checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mLimitCurveBezierControlPointsView, "mLimitCurveBezierControlPointsView", NSView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mMergeNetDialog, "mMergeNetDialog", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
@@ -801,6 +831,9 @@ import Cocoa
     checkOutletConnection (self.mSelectNetClassInNetTabButton, "mSelectNetClassInNetTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPanel, "mSelectNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mSelectNetClassPopUpButton, "mSelectNetClassPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSelectedBoardLimitInspectorView, "mSelectedBoardLimitInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSelectedLimitDisplayUnitPopUp, "mSelectedLimitDisplayUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSelectedLimitShapePopUpButton, "mSelectedLimitShapePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsBoardLimitsInspectorView, "mSelectedObjectsBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedObjectsSchematicsInspectorView, "mSelectedObjectsSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSelectedSheetTitleTextField, "mSelectedSheetTitleTextField", EBTextField.self, #file, #line)
@@ -851,6 +884,8 @@ import Cocoa
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: boardLimitsObjectsController
     self.boardLimitsObjectsController.bind_model (self.rootObject.mBoardLimits_property, self.ebUndoManager)
+  //--- Selection controller property: boardLimitSelectionController
+    self.boardLimitSelectionController.bind_selection (model: self.boardLimitsObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1161,6 +1196,16 @@ import Cocoa
     self.mBoardLimitsView?.bind_xPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
     self.mBoardLimitsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardLimitsSelectedInspector_property, file: #file, line: #line)
+    self.mSelectedLimitDisplayUnitPopUp?.bind_selectedTag (self.rootObject.mBoardSelectedCurveDisplayUnit_property, file: #file, line: #line)
+    self.mBoardCurveX1TextField?.bind_valueObserver (self.boardLimitSelectionController.p1Xstring_property, file: #file, line: #line)
+    self.mBoardCurveY1TextField?.bind_valueObserver (self.boardLimitSelectionController.p1Ystring_property, file: #file, line: #line)
+    self.mBoardCurveX2TextField?.bind_valueObserver (self.boardLimitSelectionController.p2Xstring_property, file: #file, line: #line)
+    self.mBoardCurveY2TextField?.bind_valueObserver (self.boardLimitSelectionController.p2Ystring_property, file: #file, line: #line)
+    self.mSelectedLimitShapePopUpButton?.bind_selectedIndex (self.boardLimitSelectionController.mShape_property, file: #file, line: #line)
+    self.mBoardCurveCPX1TextField?.bind_valueObserver (self.boardLimitSelectionController.cp1Xstring_property, file: #file, line: #line)
+    self.mBoardCurveCPY1TextField?.bind_valueObserver (self.boardLimitSelectionController.cp1Ystring_property, file: #file, line: #line)
+    self.mBoardCurveCPX2TextField?.bind_valueObserver (self.boardLimitSelectionController.cp2Xstring_property, file: #file, line: #line)
+    self.mBoardCurveCPY2TextField?.bind_valueObserver (self.boardLimitSelectionController.cp2Ystring_property, file: #file, line: #line)
     self.mBoardLimitsHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
     self.mBoardLimitsVerticalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
@@ -1475,6 +1520,16 @@ import Cocoa
       self.rootObject.netWarningCount_property.addEBObserver (controller)
       self.mController_mNetWarningTextField_hidden = controller
     }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.boardLimitSelectionController.isLine_property_selection
+        },
+        outlet: self.mLimitCurveBezierControlPointsView
+      )
+      self.boardLimitSelectionController.isLine_property.addEBObserver (controller)
+      self.mController_mLimitCurveBezierControlPointsView_hidden = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -1597,6 +1652,16 @@ import Cocoa
     self.mBoardLimitsView?.unbind_xPlacardUnit ()
     self.mBoardLimitsView?.unbind_yPlacardUnit ()
     self.mBoardLimitsInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mSelectedLimitDisplayUnitPopUp?.unbind_selectedTag ()
+    self.mBoardCurveX1TextField?.unbind_valueObserver ()
+    self.mBoardCurveY1TextField?.unbind_valueObserver ()
+    self.mBoardCurveX2TextField?.unbind_valueObserver ()
+    self.mBoardCurveY2TextField?.unbind_valueObserver ()
+    self.mSelectedLimitShapePopUpButton?.unbind_selectedIndex ()
+    self.mBoardCurveCPX1TextField?.unbind_valueObserver ()
+    self.mBoardCurveCPY1TextField?.unbind_valueObserver ()
+    self.mBoardCurveCPX2TextField?.unbind_valueObserver ()
+    self.mBoardCurveCPY2TextField?.unbind_valueObserver ()
     self.mBoardLimitsHorizontalFlipSwitch?.unbind_value ()
     self.mBoardLimitsVerticalFlipSwitch?.unbind_value ()
     self.mBoardLimitsGridStylePopUpButton?.unbind_selectedIndex ()
@@ -1679,6 +1744,8 @@ import Cocoa
     self.mController_mNetWarningImageView_hidden = nil
     self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningTextField_hidden!)
     self.mController_mNetWarningTextField_hidden = nil
+    self.boardLimitSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
+    self.mController_mLimitCurveBezierControlPointsView_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)
@@ -1708,6 +1775,8 @@ import Cocoa
     self.componentSymbolSelectionController.unbind_selection ()
   //--- Array controller property: boardLimitsObjectsController
     self.boardLimitsObjectsController.unbind_model ()
+  //--- Selection controller property: boardLimitSelectionController
+    self.boardLimitSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -1762,6 +1831,14 @@ import Cocoa
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
     self.mBoardBorderPageView?.ebCleanUp ()
+    self.mBoardCurveCPX1TextField?.ebCleanUp ()
+    self.mBoardCurveCPX2TextField?.ebCleanUp ()
+    self.mBoardCurveCPY1TextField?.ebCleanUp ()
+    self.mBoardCurveCPY2TextField?.ebCleanUp ()
+    self.mBoardCurveX1TextField?.ebCleanUp ()
+    self.mBoardCurveX2TextField?.ebCleanUp ()
+    self.mBoardCurveY1TextField?.ebCleanUp ()
+    self.mBoardCurveY2TextField?.ebCleanUp ()
     self.mBoardLimitBorderBottomTextField?.ebCleanUp ()
     self.mBoardLimitBorderLeftTextField?.ebCleanUp ()
     self.mBoardLimitBorderRightTextField?.ebCleanUp ()
@@ -1823,6 +1900,7 @@ import Cocoa
     self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
     self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
+    self.mLimitCurveBezierControlPointsView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mMergeNetDialog?.ebCleanUp ()
     self.mMergeNetPopUpButton?.ebCleanUp ()
@@ -1899,6 +1977,9 @@ import Cocoa
     self.mSelectNetClassInNetTabButton?.ebCleanUp ()
     self.mSelectNetClassPanel?.ebCleanUp ()
     self.mSelectNetClassPopUpButton?.ebCleanUp ()
+    self.mSelectedBoardLimitInspectorView?.ebCleanUp ()
+    self.mSelectedLimitDisplayUnitPopUp?.ebCleanUp ()
+    self.mSelectedLimitShapePopUpButton?.ebCleanUp ()
     self.mSelectedObjectsBoardLimitsInspectorView?.ebCleanUp ()
     self.mSelectedObjectsSchematicsInspectorView?.ebCleanUp ()
     self.mSelectedSheetTitleTextField?.ebCleanUp ()
@@ -1935,6 +2016,14 @@ import Cocoa
 //    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
 //    self.mBoardBorderPageView = nil
+//    self.mBoardCurveCPX1TextField = nil
+//    self.mBoardCurveCPX2TextField = nil
+//    self.mBoardCurveCPY1TextField = nil
+//    self.mBoardCurveCPY2TextField = nil
+//    self.mBoardCurveX1TextField = nil
+//    self.mBoardCurveX2TextField = nil
+//    self.mBoardCurveY1TextField = nil
+//    self.mBoardCurveY2TextField = nil
 //    self.mBoardLimitBorderBottomTextField = nil
 //    self.mBoardLimitBorderLeftTextField = nil
 //    self.mBoardLimitBorderRightTextField = nil
@@ -1996,6 +2085,7 @@ import Cocoa
 //    self.mInconsistentSchematicErrorPanel = nil
 //    self.mInconsistentSchematicErrorTextView = nil
 //    self.mLibraryPageView = nil
+//    self.mLimitCurveBezierControlPointsView = nil
 //    self.mMasterView = nil
 //    self.mMergeNetDialog = nil
 //    self.mMergeNetPopUpButton = nil
@@ -2072,6 +2162,9 @@ import Cocoa
 //    self.mSelectNetClassInNetTabButton = nil
 //    self.mSelectNetClassPanel = nil
 //    self.mSelectNetClassPopUpButton = nil
+//    self.mSelectedBoardLimitInspectorView = nil
+//    self.mSelectedLimitDisplayUnitPopUp = nil
+//    self.mSelectedLimitShapePopUpButton = nil
 //    self.mSelectedObjectsBoardLimitsInspectorView = nil
 //    self.mSelectedObjectsSchematicsInspectorView = nil
 //    self.mSelectedSheetTitleTextField = nil

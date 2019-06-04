@@ -15,11 +15,324 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
   internal override func updateObservers (removedSet inRemovedSet : Set <BoardLimit>, addedSet inAddedSet : Set <BoardLimit>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
+    self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCPX1_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCPY1_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_p1Xstring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_p1Ystring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_p2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_p2Ystring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_cp1Xstring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_cp1Ystring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_cp2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_cp2Ystring_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
+    self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCPX1_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCPY1_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_p1Xstring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_p1Ystring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_p2Xstring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_p2Ystring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_cp1Xstring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_cp1Ystring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_cp2Xstring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_cp2Ystring_toElementsOfSet (inAddedSet) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'mShape' stored property
+  //····················································································································
+
+  private var mObserversOf_mShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShape_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShape_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
+        managedObject.mShape_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShape_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCPX1' stored property
+  //····················································································································
+
+  private var mObserversOf_mCPX1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCPX1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPX1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCPX1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPX1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCPX1_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCPX1.apply { (_ observer : EBEvent) in
+        managedObject.mCPX1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    self.mObserversOf_mCPX1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCPX1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCPY1' stored property
+  //····················································································································
+
+  private var mObserversOf_mCPY1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCPY1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPY1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCPY1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPY1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCPY1_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCPY1.apply { (_ observer : EBEvent) in
+        managedObject.mCPY1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    self.mObserversOf_mCPY1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCPY1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCPX2' stored property
+  //····················································································································
+
+  private var mObserversOf_mCPX2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCPX2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPX2_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCPX2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPX2_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCPX2_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCPX2.apply { (_ observer : EBEvent) in
+        managedObject.mCPX2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    self.mObserversOf_mCPX2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCPX2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mCPY2' stored property
+  //····················································································································
+
+  private var mObserversOf_mCPY2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mCPY2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPY2_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mCPY2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mCPY2_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mCPY2_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_mCPY2.apply { (_ observer : EBEvent) in
+        managedObject.mCPY2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    self.mObserversOf_mCPY2.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mCPY2_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -79,6 +392,62 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
   }
 
   //····················································································································
+  //   Observers of 'isLine' transient property
+  //····················································································································
+
+  private var mObserversOf_isLine = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isLine.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isLine_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isLine.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isLine_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
+        managedObject.isLine_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
+        managedObject.isLine_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -130,6 +499,454 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'p1Xstring' transient property
+  //····················································································································
+
+  private var mObserversOf_p1Xstring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_p1Xstring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_p1Xstring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p1Xstring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_p1Xstring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_p1Xstring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p1Xstring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_p1Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
+        managedObject.p1Xstring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_p1Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
+        managedObject.p1Xstring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'p1Ystring' transient property
+  //····················································································································
+
+  private var mObserversOf_p1Ystring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_p1Ystring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_p1Ystring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p1Ystring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_p1Ystring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_p1Ystring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p1Ystring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_p1Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
+        managedObject.p1Ystring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_p1Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
+        managedObject.p1Ystring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'p2Xstring' transient property
+  //····················································································································
+
+  private var mObserversOf_p2Xstring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_p2Xstring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p2Xstring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_p2Xstring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p2Xstring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_p2Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
+        managedObject.p2Xstring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_p2Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
+        managedObject.p2Xstring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'p2Ystring' transient property
+  //····················································································································
+
+  private var mObserversOf_p2Ystring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_p2Ystring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p2Ystring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_p2Ystring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.p2Ystring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_p2Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
+        managedObject.p2Ystring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_p2Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
+        managedObject.p2Ystring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cp1Xstring' transient property
+  //····················································································································
+
+  private var mObserversOf_cp1Xstring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cp1Xstring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_cp1Xstring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp1Xstring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cp1Xstring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_cp1Xstring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp1Xstring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cp1Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp1Xstring.apply { (_ observer : EBEvent) in
+        managedObject.cp1Xstring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cp1Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp1Xstring.apply { (_ observer : EBEvent) in
+        managedObject.cp1Xstring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cp1Ystring' transient property
+  //····················································································································
+
+  private var mObserversOf_cp1Ystring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cp1Ystring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_cp1Ystring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp1Ystring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cp1Ystring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_cp1Ystring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp1Ystring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cp1Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp1Ystring.apply { (_ observer : EBEvent) in
+        managedObject.cp1Ystring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cp1Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp1Ystring.apply { (_ observer : EBEvent) in
+        managedObject.cp1Ystring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cp2Xstring' transient property
+  //····················································································································
+
+  private var mObserversOf_cp2Xstring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cp2Xstring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_cp2Xstring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp2Xstring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cp2Xstring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_cp2Xstring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp2Xstring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cp2Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp2Xstring.apply { (_ observer : EBEvent) in
+        managedObject.cp2Xstring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cp2Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp2Xstring.apply { (_ observer : EBEvent) in
+        managedObject.cp2Xstring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cp2Ystring' transient property
+  //····················································································································
+
+  private var mObserversOf_cp2Ystring = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cp2Ystring (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_cp2Ystring.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp2Ystring_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cp2Ystring (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_cp2Ystring.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cp2Ystring_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cp2Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp2Ystring.apply { (_ observer : EBEvent) in
+        managedObject.cp2Ystring_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cp2Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+    for managedObject in inSet {
+      self.mObserversOf_cp2Ystring.apply { (_ observer : EBEvent) in
+        managedObject.cp2Ystring_property.removeEBObserver (observer)
       }
     }
   }

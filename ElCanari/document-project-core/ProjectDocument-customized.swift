@@ -53,6 +53,10 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     left.mP2 = bottomLeft
     self.rootObject.mBorderPoints = [bottomLeft, bottomRight, topRight, topLeft]
     self.rootObject.mBoardLimits = [bottom, right, top, left]
+    left.setControlPointsDefaultValuesForLine ()
+    right.setControlPointsDefaultValuesForLine ()
+    bottom.setControlPointsDefaultValuesForLine ()
+    top.setControlPointsDefaultValuesForLine ()
   //---
     self.ebUndoManager.enableUndoRegistration ()
   }
@@ -98,6 +102,9 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Register board limits inspector views
+    self.boardLimitsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardLimitsInspectorView)
+    self.boardLimitsObjectsController.register (inspectorView: self.mSelectedBoardLimitInspectorView, for: BoardLimit.self)
   //--- Option click for creating wire
      self.mSchematicsView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
@@ -213,6 +220,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSymbolCountToInsertController = nil
     self.mSheetController.unregister ()
     self.mSchematicsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mBoardLimitsView?.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   //--- Pop up button controllers
     self.mSelectedWireNetClassPopUpController.unbind_model ()

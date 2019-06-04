@@ -6,8 +6,44 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardLimit_mShape : class {
+  var mShape : BoardLimitShape { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_mCPX1 : class {
+  var mCPX1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_mCPY1 : class {
+  var mCPY1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_mCPX2 : class {
+  var mCPX2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_mCPY2 : class {
+  var mCPY2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardLimit_objectDisplay : class {
   var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_isLine : class {
+  var isLine : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -17,12 +53,159 @@ protocol BoardLimit_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_p1Xstring : class {
+  var p1Xstring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_p1Ystring : class {
+  var p1Ystring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_p2Xstring : class {
+  var p2Xstring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_p2Ystring : class {
+  var p2Ystring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_cp1Xstring : class {
+  var cp1Xstring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_cp1Ystring : class {
+  var cp1Ystring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_cp2Xstring : class {
+  var cp2Xstring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardLimit_cp2Ystring : class {
+  var cp2Ystring : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardLimit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardLimit : EBGraphicManagedObject,
+         BoardLimit_mShape,
+         BoardLimit_mCPX1,
+         BoardLimit_mCPY1,
+         BoardLimit_mCPX2,
+         BoardLimit_mCPY2,
          BoardLimit_objectDisplay,
-         BoardLimit_selectionDisplay {
+         BoardLimit_isLine,
+         BoardLimit_selectionDisplay,
+         BoardLimit_p1Xstring,
+         BoardLimit_p1Ystring,
+         BoardLimit_p2Xstring,
+         BoardLimit_p2Ystring,
+         BoardLimit_cp1Xstring,
+         BoardLimit_cp1Ystring,
+         BoardLimit_cp2Xstring,
+         BoardLimit_cp2Ystring {
+
+  //····················································································································
+  //   Atomic property: mShape
+  //····················································································································
+
+  let mShape_property = EBStoredProperty_BoardLimitShape (defaultValue: BoardLimitShape.line)
+
+  //····················································································································
+
+  var mShape : BoardLimitShape {
+    get { return self.mShape_property.propval }
+    set { self.mShape_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mShape_property_selection : EBSelection <BoardLimitShape> { return self.mShape_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCPX1
+  //····················································································································
+
+  let mCPX1_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mCPX1 : Int {
+    get { return self.mCPX1_property.propval }
+    set { self.mCPX1_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCPX1_property_selection : EBSelection <Int> { return self.mCPX1_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCPY1
+  //····················································································································
+
+  let mCPY1_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mCPY1 : Int {
+    get { return self.mCPY1_property.propval }
+    set { self.mCPY1_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCPY1_property_selection : EBSelection <Int> { return self.mCPY1_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCPX2
+  //····················································································································
+
+  let mCPX2_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mCPX2 : Int {
+    get { return self.mCPX2_property.propval }
+    set { self.mCPX2_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCPX2_property_selection : EBSelection <Int> { return self.mCPX2_property.prop }
+
+  //····················································································································
+  //   Atomic property: mCPY2
+  //····················································································································
+
+  let mCPY2_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mCPY2 : Int {
+    get { return self.mCPY2_property.propval }
+    set { self.mCPY2_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  var mCPY2_property_selection : EBSelection <Int> { return self.mCPY2_property.prop }
 
   //····················································································································
   //   To one property: mRoot
@@ -139,11 +322,228 @@ class BoardLimit : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: isLine
+  //····················································································································
+
+  let isLine_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var isLine_property_selection : EBSelection <Bool> {
+    return self.isLine_property.prop
+  }
+
+  //····················································································································
+
+  var isLine : Bool? {
+    switch self.isLine_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p1Xstring
+  //····················································································································
+
+  let p1Xstring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var p1Xstring_property_selection : EBSelection <String> {
+    return self.p1Xstring_property.prop
+  }
+
+  //····················································································································
+
+  var p1Xstring : String? {
+    switch self.p1Xstring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p1Ystring
+  //····················································································································
+
+  let p1Ystring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var p1Ystring_property_selection : EBSelection <String> {
+    return self.p1Ystring_property.prop
+  }
+
+  //····················································································································
+
+  var p1Ystring : String? {
+    switch self.p1Ystring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p2Xstring
+  //····················································································································
+
+  let p2Xstring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var p2Xstring_property_selection : EBSelection <String> {
+    return self.p2Xstring_property.prop
+  }
+
+  //····················································································································
+
+  var p2Xstring : String? {
+    switch self.p2Xstring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: p2Ystring
+  //····················································································································
+
+  let p2Ystring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var p2Ystring_property_selection : EBSelection <String> {
+    return self.p2Ystring_property.prop
+  }
+
+  //····················································································································
+
+  var p2Ystring : String? {
+    switch self.p2Ystring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: cp1Xstring
+  //····················································································································
+
+  let cp1Xstring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var cp1Xstring_property_selection : EBSelection <String> {
+    return self.cp1Xstring_property.prop
+  }
+
+  //····················································································································
+
+  var cp1Xstring : String? {
+    switch self.cp1Xstring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: cp1Ystring
+  //····················································································································
+
+  let cp1Ystring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var cp1Ystring_property_selection : EBSelection <String> {
+    return self.cp1Ystring_property.prop
+  }
+
+  //····················································································································
+
+  var cp1Ystring : String? {
+    switch self.cp1Ystring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: cp2Xstring
+  //····················································································································
+
+  let cp2Xstring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var cp2Xstring_property_selection : EBSelection <String> {
+    return self.cp2Xstring_property.prop
+  }
+
+  //····················································································································
+
+  var cp2Xstring : String? {
+    switch self.cp2Xstring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: cp2Ystring
+  //····················································································································
+
+  let cp2Ystring_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var cp2Ystring_property_selection : EBSelection <String> {
+    return self.cp2Ystring_property.prop
+  }
+
+  //····················································································································
+
+  var cp2Ystring : String? {
+    switch self.cp2Ystring_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mShape
+    self.mShape_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCPX1
+    self.mCPX1_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCPY1
+    self.mCPY1_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCPX2
+    self.mCPX2_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mCPY2
+    self.mCPY2_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mBoardLimits) §
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -169,6 +569,11 @@ class BoardLimit : EBGraphicManagedObject,
         kind &= unwSelf.mP1_property.mY_property_selection.kind ()
         kind &= unwSelf.mP2_property.mX_property_selection.kind ()
         kind &= unwSelf.mP2_property.mY_property_selection.kind ()
+        kind &= unwSelf.mCPX1_property_selection.kind ()
+        kind &= unwSelf.mCPY1_property_selection.kind ()
+        kind &= unwSelf.mCPX2_property_selection.kind ()
+        kind &= unwSelf.mCPY2_property_selection.kind ()
+        kind &= unwSelf.mShape_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mBoardLimitsWidth_property_selection.kind ()
         kind &= g_Preferences!.boardLimitsColorForBoard_property_selection.kind ()
         switch kind {
@@ -177,9 +582,9 @@ class BoardLimit : EBGraphicManagedObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardLimit_objectDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, g_Preferences!.boardLimitsColorForBoard_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_BoardLimit_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
             return .empty
           }
@@ -192,8 +597,35 @@ class BoardLimit : EBGraphicManagedObject,
     self.mP1_property.addEBObserverOf_mY (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_mX (self.objectDisplay_property)
     self.mP2_property.addEBObserverOf_mY (self.objectDisplay_property)
+    self.mCPX1_property.addEBObserver (self.objectDisplay_property)
+    self.mCPY1_property.addEBObserver (self.objectDisplay_property)
+    self.mCPX2_property.addEBObserver (self.objectDisplay_property)
+    self.mCPY2_property.addEBObserver (self.objectDisplay_property)
+    self.mShape_property.addEBObserver (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: isLine
+    self.isLine_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mShape_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mShape_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardLimit_isLine (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mShape_property.addEBObserver (self.isLine_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -201,15 +633,20 @@ class BoardLimit : EBGraphicManagedObject,
         kind &= unwSelf.mP1_property.mY_property_selection.kind ()
         kind &= unwSelf.mP2_property.mX_property_selection.kind ()
         kind &= unwSelf.mP2_property.mY_property_selection.kind ()
+        kind &= unwSelf.mCPX1_property_selection.kind ()
+        kind &= unwSelf.mCPY1_property_selection.kind ()
+        kind &= unwSelf.mCPX2_property_selection.kind ()
+        kind &= unwSelf.mCPY2_property_selection.kind ()
+        kind &= unwSelf.mShape_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_BoardLimit_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mP1_property.mY_property_selection, unwSelf.mP2_property.mX_property_selection, unwSelf.mP2_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_BoardLimit_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -222,6 +659,203 @@ class BoardLimit : EBGraphicManagedObject,
     self.mP1_property.addEBObserverOf_mY (self.selectionDisplay_property)
     self.mP2_property.addEBObserverOf_mX (self.selectionDisplay_property)
     self.mP2_property.addEBObserverOf_mY (self.selectionDisplay_property)
+    self.mCPX1_property.addEBObserver (self.selectionDisplay_property)
+    self.mCPY1_property.addEBObserver (self.selectionDisplay_property)
+    self.mCPX2_property.addEBObserver (self.selectionDisplay_property)
+    self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
+    self.mShape_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: p1Xstring
+    self.p1Xstring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP1_property.mX_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP1_property.mX_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_p1Xstring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_mX (self.p1Xstring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Xstring_property)
+  //--- Atomic property: p1Ystring
+    self.p1Ystring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP1_property.mY_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP1_property.mY_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_p1Ystring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserverOf_mY (self.p1Ystring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Ystring_property)
+  //--- Atomic property: p2Xstring
+    self.p2Xstring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP2_property.mX_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP2_property.mX_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_p2Xstring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP2_property.addEBObserverOf_mX (self.p2Xstring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
+  //--- Atomic property: p2Ystring
+    self.p2Ystring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mP2_property.mY_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mP2_property.mY_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_p2Ystring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP2_property.addEBObserverOf_mY (self.p2Ystring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
+  //--- Atomic property: cp1Xstring
+    self.cp1Xstring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mCPX1_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mCPX1_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_cp1Xstring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCPX1_property.addEBObserver (self.cp1Xstring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Xstring_property)
+  //--- Atomic property: cp1Ystring
+    self.cp1Ystring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mCPY1_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mCPY1_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_cp1Ystring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCPY1_property.addEBObserver (self.cp1Ystring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Ystring_property)
+  //--- Atomic property: cp2Xstring
+    self.cp2Xstring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mCPX2_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mCPX2_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_cp2Xstring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCPX2_property.addEBObserver (self.cp2Xstring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Xstring_property)
+  //--- Atomic property: cp2Ystring
+    self.cp2Ystring_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mCPY2_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.mCPY2_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardLimit_cp2Ystring (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCPY2_property.addEBObserver (self.cp2Ystring_property)
+    self.mRoot_property.addEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Ystring_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -235,12 +869,39 @@ class BoardLimit : EBGraphicManagedObject,
     self.mP1_property.removeEBObserverOf_mY (self.objectDisplay_property)
     self.mP2_property.removeEBObserverOf_mX (self.objectDisplay_property)
     self.mP2_property.removeEBObserverOf_mY (self.objectDisplay_property)
+    self.mCPX1_property.removeEBObserver (self.objectDisplay_property)
+    self.mCPY1_property.removeEBObserver (self.objectDisplay_property)
+    self.mCPX2_property.removeEBObserver (self.objectDisplay_property)
+    self.mCPY2_property.removeEBObserver (self.objectDisplay_property)
+    self.mShape_property.removeEBObserver (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mBoardLimitsWidth (self.objectDisplay_property)
     g_Preferences?.boardLimitsColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    self.mShape_property.removeEBObserver (self.isLine_property)
     self.mP1_property.removeEBObserverOf_mX (self.selectionDisplay_property)
     self.mP1_property.removeEBObserverOf_mY (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_mX (self.selectionDisplay_property)
     self.mP2_property.removeEBObserverOf_mY (self.selectionDisplay_property)
+    self.mCPX1_property.removeEBObserver (self.selectionDisplay_property)
+    self.mCPY1_property.removeEBObserver (self.selectionDisplay_property)
+    self.mCPX2_property.removeEBObserver (self.selectionDisplay_property)
+    self.mCPY2_property.removeEBObserver (self.selectionDisplay_property)
+    self.mShape_property.removeEBObserver (self.selectionDisplay_property)
+    self.mP1_property.removeEBObserverOf_mX (self.p1Xstring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Xstring_property)
+    self.mP1_property.removeEBObserverOf_mY (self.p1Ystring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p1Ystring_property)
+    self.mP2_property.removeEBObserverOf_mX (self.p2Xstring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Xstring_property)
+    self.mP2_property.removeEBObserverOf_mY (self.p2Ystring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.p2Ystring_property)
+    self.mCPX1_property.removeEBObserver (self.cp1Xstring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Xstring_property)
+    self.mCPY1_property.removeEBObserver (self.cp1Ystring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp1Ystring_property)
+    self.mCPX2_property.removeEBObserver (self.cp2Xstring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Xstring_property)
+    self.mCPY2_property.removeEBObserver (self.cp2Ystring_property)
+    self.mRoot_property.removeEBObserverOf_mBoardSelectedCurveDisplayUnit (self.cp2Ystring_property)
   //--- Unregister properties for handling signature
   }
 
@@ -255,6 +916,46 @@ class BoardLimit : EBGraphicManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mShape",
+      idx: self.mShape_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mShape_property.mObserverExplorer,
+      valueExplorer: &self.mShape_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCPX1",
+      idx: self.mCPX1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCPX1_property.mObserverExplorer,
+      valueExplorer: &self.mCPX1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCPY1",
+      idx: self.mCPY1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCPY1_property.mObserverExplorer,
+      valueExplorer: &self.mCPY1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCPX2",
+      idx: self.mCPX2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCPX2_property.mObserverExplorer,
+      valueExplorer: &self.mCPX2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mCPY2",
+      idx: self.mCPY2_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mCPY2_property.mObserverExplorer,
+      valueExplorer: &self.mCPY2_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -265,12 +966,84 @@ class BoardLimit : EBGraphicManagedObject,
       valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "isLine",
+      idx: self.isLine_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.isLine_property.mObserverExplorer,
+      valueExplorer: &self.isLine_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "selectionDisplay",
       idx: self.selectionDisplay_property.ebObjectIndex,
       y: &y,
       view: view,
       observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
       valueExplorer: &self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p1Xstring",
+      idx: self.p1Xstring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p1Xstring_property.mObserverExplorer,
+      valueExplorer: &self.p1Xstring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p1Ystring",
+      idx: self.p1Ystring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p1Ystring_property.mObserverExplorer,
+      valueExplorer: &self.p1Ystring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p2Xstring",
+      idx: self.p2Xstring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p2Xstring_property.mObserverExplorer,
+      valueExplorer: &self.p2Xstring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "p2Ystring",
+      idx: self.p2Ystring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.p2Ystring_property.mObserverExplorer,
+      valueExplorer: &self.p2Ystring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cp1Xstring",
+      idx: self.cp1Xstring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cp1Xstring_property.mObserverExplorer,
+      valueExplorer: &self.cp1Xstring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cp1Ystring",
+      idx: self.cp1Ystring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cp1Ystring_property.mObserverExplorer,
+      valueExplorer: &self.cp1Ystring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cp2Xstring",
+      idx: self.cp2Xstring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cp2Xstring_property.mObserverExplorer,
+      valueExplorer: &self.cp2Xstring_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cp2Ystring",
+      idx: self.cp2Ystring_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.cp2Ystring_property.mObserverExplorer,
+      valueExplorer: &self.cp2Ystring_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
@@ -303,6 +1076,21 @@ class BoardLimit : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mShape
+    self.mShape_property.mObserverExplorer = nil
+    self.mShape_property.mValueExplorer = nil
+  //--- Atomic property: mCPX1
+    self.mCPX1_property.mObserverExplorer = nil
+    self.mCPX1_property.mValueExplorer = nil
+  //--- Atomic property: mCPY1
+    self.mCPY1_property.mObserverExplorer = nil
+    self.mCPY1_property.mValueExplorer = nil
+  //--- Atomic property: mCPX2
+    self.mCPX2_property.mObserverExplorer = nil
+    self.mCPX2_property.mValueExplorer = nil
+  //--- Atomic property: mCPY2
+    self.mCPY2_property.mObserverExplorer = nil
+    self.mCPY2_property.mValueExplorer = nil
   //--- To one property: mRoot
     self.mRoot_property.mObserverExplorer = nil
     self.mRoot_property.mValueExplorer = nil
@@ -343,6 +1131,16 @@ class BoardLimit : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mShape
+    self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
+  //--- Atomic property: mCPX1
+    self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey:"mCPX1")
+  //--- Atomic property: mCPY1
+    self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey:"mCPY1")
+  //--- Atomic property: mCPX2
+    self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey:"mCPX2")
+  //--- Atomic property: mCPY2
+    self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey:"mCPY2")
   //--- To one property: mP1 // Opposite is toOne mCurve1
     self.store (managedObject:self.mP1_property.propval,
       relationshipName: "mP1",
@@ -401,6 +1199,16 @@ class BoardLimit : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mShape
+    self.mShape_property.readFrom (dictionary: inDictionary, forKey:"mShape")
+  //--- Atomic property: mCPX1
+    self.mCPX1_property.readFrom (dictionary: inDictionary, forKey:"mCPX1")
+  //--- Atomic property: mCPY1
+    self.mCPY1_property.readFrom (dictionary: inDictionary, forKey:"mCPY1")
+  //--- Atomic property: mCPX2
+    self.mCPX2_property.readFrom (dictionary: inDictionary, forKey:"mCPX2")
+  //--- Atomic property: mCPY2
+    self.mCPY2_property.readFrom (dictionary: inDictionary, forKey:"mCPY2")
   }
 
   //····················································································································
