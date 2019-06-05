@@ -122,30 +122,30 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
   //   Selection observable property: mShape
   //····················································································································
 
-  var mShape_property = EBPropertyProxy_BoarderCurveShape ()
+  var mShape_property = EBPropertyProxy_BorderCurveShape ()
 
-  var mShape_property_selection : EBSelection <BoarderCurveShape> {
+  var mShape_property_selection : EBSelection <BorderCurveShape> {
     return self.mShape_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: mX1
+  //   Selection observable property: mX
   //····················································································································
 
-  var mX1_property = EBPropertyProxy_Int ()
+  var mX_property = EBPropertyProxy_Int ()
 
-  var mX1_property_selection : EBSelection <Int> {
-    return self.mX1_property.prop
+  var mX_property_selection : EBSelection <Int> {
+    return self.mX_property.prop
   }
 
   //····················································································································
-  //   Selection observable property: mY1
+  //   Selection observable property: mY
   //····················································································································
 
-  var mY1_property = EBPropertyProxy_Int ()
+  var mY_property = EBPropertyProxy_Int ()
 
-  var mY1_property_selection : EBSelection <Int> {
-    return self.mY1_property.prop
+  var mY_property_selection : EBSelection <Int> {
+    return self.mY_property.prop
   }
 
   //····················································································································
@@ -229,8 +229,8 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     self.bind_property_mCPY1 (model: model)
     self.bind_property_mCPY2 (model: model)
     self.bind_property_mShape (model: model)
-    self.bind_property_mX1 (model: model)
-    self.bind_property_mY1 (model: model)
+    self.bind_property_mX (model: model)
+    self.bind_property_mY (model: model)
     self.bind_property_objectDisplay (model: model)
     self.bind_property_p1Xstring (model: model)
     self.bind_property_p1Ystring (model: model)
@@ -287,16 +287,16 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     self.mShape_property.mWriteModelFunction = nil 
     self.mShape_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mShape (self.mShape_property)
-  //--- mX1
-    self.mX1_property.mReadModelFunction = nil 
-    self.mX1_property.mWriteModelFunction = nil 
-    self.mX1_property.mValidateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mX1 (self.mX1_property)
-  //--- mY1
-    self.mY1_property.mReadModelFunction = nil 
-    self.mY1_property.mWriteModelFunction = nil 
-    self.mY1_property.mValidateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mY1 (self.mY1_property)
+  //--- mX
+    self.mX_property.mReadModelFunction = nil 
+    self.mX_property.mWriteModelFunction = nil 
+    self.mX_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mX (self.mX_property)
+  //--- mY
+    self.mY_property.mReadModelFunction = nil 
+    self.mY_property.mWriteModelFunction = nil 
+    self.mY_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mY (self.mY_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -396,20 +396,20 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
       valueExplorer: &self.mShape_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mX1",
-      idx: self.mX1_property.ebObjectIndex,
+      "mX",
+      idx: self.mX_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mX1_property.mObserverExplorer,
-      valueExplorer: &self.mX1_property.mValueExplorer
+      observerExplorer: &self.mX_property.mObserverExplorer,
+      valueExplorer: &self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mY1",
-      idx: self.mY1_property.ebObjectIndex,
+      "mY",
+      idx: self.mY_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mY1_property.mObserverExplorer,
-      valueExplorer: &self.mY1_property.mValueExplorer
+      observerExplorer: &self.mY_property.mObserverExplorer,
+      valueExplorer: &self.mY_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -994,7 +994,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <BoarderCurveShape> ()
+          var s = Set <BorderCurveShape> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mShape_property_selection {
@@ -1020,7 +1020,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         return .empty
       }
     }
-    self.mShape_property.mWriteModelFunction = { [weak self] (inValue : BoarderCurveShape) in
+    self.mShape_property.mWriteModelFunction = { [weak self] (inValue : BorderCurveShape) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1032,7 +1032,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         }
       }
     }
-    self.mShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoarderCurveShape, windowForSheet : NSWindow?) in
+    self.mShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BorderCurveShape, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1054,9 +1054,9 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mX1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mX1 (self.mX1_property)
-    self.mX1_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mX (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mX (self.mX_property)
+    self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -1067,7 +1067,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX1_property_selection {
+            switch object.mX_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1090,26 +1090,26 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         return .empty
       }
     }
-    self.mX1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mX1_property.setProp (inValue)
+            object.mX_property.setProp (inValue)
           }
         }
       }
     }
-    self.mX1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.mX_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.mX1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.mX_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1124,9 +1124,9 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mY1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mY1 (self.mY1_property)
-    self.mY1_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mY (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mY (self.mY_property)
+    self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -1137,7 +1137,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY1_property_selection {
+            switch object.mY_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1160,26 +1160,26 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
         return .empty
       }
     }
-    self.mY1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mY1_property.setProp (inValue)
+            object.mY_property.setProp (inValue)
           }
         }
       }
     }
-    self.mY1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.mY_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.mY1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.mY_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

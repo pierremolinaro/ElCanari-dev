@@ -13,8 +13,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_isLine (
-       _ self_mShape : BoardLimitShape
+func transient_BorderCurve_isLine (
+       _ self_mShape : BorderCurveShape
 ) -> Bool {
 //--- START OF USER ZONE 2
        return self_mShape == .line

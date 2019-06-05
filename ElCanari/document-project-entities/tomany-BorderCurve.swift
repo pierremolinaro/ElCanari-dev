@@ -15,8 +15,8 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   internal override func updateObservers (removedSet inRemovedSet : Set <BorderCurve>, addedSet inAddedSet : Set <BorderCurve>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mX1_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mY1_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPX1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPY1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
@@ -35,8 +35,8 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
-    self.addEBObserversOf_mX1_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mY1_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPX1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPY1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
@@ -57,115 +57,115 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   }
 
   //····················································································································
-  //   Observers of 'mX1' stored property
+  //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX1 = EBWeakEventSet ()
+  private var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mX1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX1.insert (inObserver)
+    self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX1_property.addEBObserver (inObserver)
+        managedObject.mX_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX1.remove (inObserver)
+    self.mObserversOf_mX.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX1_property.removeEBObserver (inObserver)
+        managedObject.mX_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
-        managedObject.mX1_property.addEBObserver (observer)
+      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+        managedObject.mX_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX1_property.removeEBObserver (observer)
+        managedObject.mX_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'mY1' stored property
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY1 = EBWeakEventSet ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mY1 (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY1.insert (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY1_property.addEBObserver (inObserver)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY1 (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY1.remove (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY1_property.removeEBObserver (inObserver)
+        managedObject.mY_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
-        managedObject.mY1_property.addEBObserver (observer)
+      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mY1_property.removeEBObserver (observer)
+        managedObject.mY_property.removeEBObserver (observer)
       }
     }
   }

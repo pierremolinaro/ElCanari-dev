@@ -13,21 +13,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_descriptor (
-       _ self_mP1_mX : Int?,          
-       _ self_mP1_mY : Int?,          
-       _ self_mP2_mX : Int?,          
-       _ self_mP2_mY : Int?,          
-       _ self_mCPX1 : Int,            
-       _ self_mCPY1 : Int,            
-       _ self_mCPX2 : Int,            
-       _ self_mCPY2 : Int,            
-       _ self_mShape : BoardLimitShape
-) -> BoardLimitDescriptor {
+func transient_BorderCurve_descriptor (
+       _ self_mX : Int,                
+       _ self_mY : Int,                
+       _ self_mNext_mX : Int?,         
+       _ self_mNext_mY : Int?,         
+       _ self_mCPX1 : Int,             
+       _ self_mCPY1 : Int,             
+       _ self_mCPX2 : Int,             
+       _ self_mCPY2 : Int,             
+       _ self_mShape : BorderCurveShape
+) -> BorderCurveDescriptor {
 //--- START OF USER ZONE 2
-    return BoardLimitDescriptor (
-      p1: CanariPoint (x: self_mP1_mX!, y: self_mP1_mY!),
-      p2: CanariPoint (x: self_mP2_mX!, y: self_mP2_mY!),
+    return BorderCurveDescriptor (
+      p1: CanariPoint (x: self_mX, y: self_mY),
+      p2: CanariPoint (x: self_mNext_mX!, y: self_mNext_mY!),
       cp1: CanariPoint (x: self_mCPX1, y: self_mCPY1),
       cp2: CanariPoint (x: self_mCPX2, y: self_mCPY2),
       shape: self_mShape

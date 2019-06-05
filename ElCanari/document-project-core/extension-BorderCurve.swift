@@ -26,24 +26,40 @@ extension BorderCurve {
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return true
+    var accept = false
+    if let next = self.mNext {
+      accept = true
+      if (self.mX + inDx) < 0 {
+        accept = false
+      }else if (self.mY + inDy) < 0 {
+        accept = false
+      }
+      if (next.mX + inDx) < 0 {
+        accept = false
+      }else if (next.mY + inDy) < 0 {
+        accept = false
+      }
+    }
+    return accept
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let p1 = self.mP1, let p2 = self.mP2 {
-      if !ioSet.objects.contains (p1) {
-        ioSet.objects.insert (p1)
-        p1.mX += inDx
-        p1.mY += inDy
-        p1.mCurve2?.setControlPointsDefaultValuesForLine ()
+    if let next = self.mNext {
+      let dx = max (inDx, -self.mX, -next.mX)
+      let dy = max (inDy, -self.mY, -next.mY)
+      if !ioSet.objects.contains (self) {
+        ioSet.objects.insert (self)
+        self.mX += dx
+        self.mY += dy
+        next.setControlPointsDefaultValuesForLine ()
       }
-      if !ioSet.objects.contains (p2) {
-        ioSet.objects.insert (p2)
-        p2.mX += inDx
-        p2.mY += inDy
-        p2.mCurve1?.setControlPointsDefaultValuesForLine ()
+      if !ioSet.objects.contains (next) {
+        ioSet.objects.insert (next)
+        next.mX += dx
+        next.mY += dy
+        next.setControlPointsDefaultValuesForLine ()
       }
       self.setControlPointsDefaultValuesForLine ()
     }
@@ -54,17 +70,21 @@ extension BorderCurve {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    if inKnobIndex == BOARD_LIMIT_P1_KNOB, let point = self.mP1, let other = self.mP2 {
-      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+    if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
+      let dx = max (inDx, -self.mX)
+      let dy = max (inDy, -self.mY)
+      if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
         return OCCanariPoint (x: 0, y: 0)
       }else{
-        return OCCanariPoint (x: inDx, y: inDy)
+        return OCCanariPoint (x: dx, y: dy)
       }
-    }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let point = self.mP2, let other = self.mP1 {
-      if ((point.mX + inDx) == other.mX) && ((point.mY + inDy) == other.mY) {
+    }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
+      let dx = max (inDx, -next.mX)
+      let dy = max (inDy, -next.mY)
+      if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
         return OCCanariPoint (x: 0, y: 0)
       }else{
-        return OCCanariPoint (x: inDx, y: inDy)
+        return OCCanariPoint (x: dx, y: dy)
       }
     }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
       return OCCanariPoint (x: inDx, y: inDy)
@@ -78,16 +98,16 @@ extension BorderCurve {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
-    if inKnobIndex == BOARD_LIMIT_P1_KNOB, let point = self.mP1 {
-      point.mX += inDx
-      point.mY += inDy
+    if inKnobIndex == BOARD_LIMIT_P1_KNOB {
+      self.mX += inDx
+      self.mY += inDy
       self.setControlPointsDefaultValuesForLine ()
-      point.mCurve2?.setControlPointsDefaultValuesForLine ()
-    }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let point = self.mP2 {
-      point.mX += inDx
-      point.mY += inDy
+      self.mNext?.setControlPointsDefaultValuesForLine ()
+    }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext{
+      next.mX += inDx
+      next.mY += inDy
       self.setControlPointsDefaultValuesForLine ()
-      point.mCurve1?.setControlPointsDefaultValuesForLine ()
+      next.setControlPointsDefaultValuesForLine ()
     }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
       self.mCPX1 += inDx
       self.mCPY1 += inDy
@@ -114,16 +134,16 @@ extension BorderCurve {
       isAligned = self.mCPY2.isAlignedOnGrid (grid)
     }
     if isAligned {
-      isAligned = self.mP1!.mX.isAlignedOnGrid (grid)
+      isAligned = self.mX.isAlignedOnGrid (grid)
     }
     if isAligned {
-      isAligned = self.mP1!.mY.isAlignedOnGrid (grid)
+      isAligned = self.mY.isAlignedOnGrid (grid)
     }
     if isAligned {
-      isAligned = self.mP2!.mX.isAlignedOnGrid (grid)
+      isAligned = self.mNext!.mX.isAlignedOnGrid (grid)
     }
     if isAligned {
-      isAligned = self.mP2!.mY.isAlignedOnGrid (grid)
+      isAligned = self.mNext!.mY.isAlignedOnGrid (grid)
     }
     return !isAligned
   }
@@ -136,10 +156,10 @@ extension BorderCurve {
     self.mCPY1.align (onGrid: grid)
     self.mCPX2.align (onGrid: grid)
     self.mCPY2.align (onGrid: grid)
-    self.mP1!.mX.align (onGrid: grid)
-    self.mP1!.mY.align (onGrid: grid)
-    self.mP2!.mX.align (onGrid: grid)
-    self.mP2!.mY.align (onGrid: grid)
+    self.mX.align (onGrid: grid)
+    self.mY.align (onGrid: grid)
+    self.mNext!.mX.align (onGrid: grid)
+    self.mNext!.mY.align (onGrid: grid)
   }
 
   //····················································································································
@@ -153,11 +173,11 @@ extension BorderCurve {
   //····················································································································
 
   func setControlPointsDefaultValuesForLine () {
-    if self.mShape == .line, let p1 = self.mP1, let p2 = self.mP2 {
-      self.mCPX1 = ((2 * p1.mX + 1 * p2.mX) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
-      self.mCPY1 = ((2 * p1.mY + 1 * p2.mY) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
-      self.mCPX2 = ((1 * p1.mX + 2 * p2.mX) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
-      self.mCPY2 = ((1 * p1.mY + 2 * p2.mY) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
+    if self.mShape == .line, let x2 = self.mNext?.mX, let y2 = self.mNext?.mY {
+      self.mCPX1 = ((2 * self.mX + 1 * x2) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPY1 = ((2 * self.mY + 1 * y2) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPX2 = ((1 * self.mX + 2 * x2) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPY2 = ((1 * self.mY + 2 * y2) / 3).value (alignedOnGrid: self.mRoot!.mBoardLimitsGridStep)
     }
   }
 }

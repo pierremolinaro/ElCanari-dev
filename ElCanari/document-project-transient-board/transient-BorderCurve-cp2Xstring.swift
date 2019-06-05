@@ -13,8 +13,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_cp2Xstring (
-       _ self_mCPX2 : Int,            
+func transient_BorderCurve_cp2Xstring (
+       _ self_mCPX2 : Int,             
        _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
 ) -> String {
 //--- START OF USER ZONE 2

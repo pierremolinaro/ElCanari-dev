@@ -13,13 +13,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_p1Xstring (
-       _ self_mP1_mX : Int?,         
+func transient_BorderCurve_p1Xstring (
+       _ self_mX : Int,               
        _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
 ) -> String {
 //--- START OF USER ZONE 2
-        if let x = self_mP1_mX, let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
-          return stringFrom (valueInCanariUnit: x, displayUnit: unit)
+        if let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
+          return stringFrom (valueInCanariUnit: self_mX, displayUnit: unit)
         }else{
           return "???"
         }

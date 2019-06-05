@@ -13,21 +13,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLimit_selectionDisplay (
-       _ self_mP1_mX : Int?,                
-       _ self_mP1_mY : Int?,                
-       _ self_mP2_mX : Int?,                
-       _ self_mP2_mY : Int?,                
-       _ self_mCPX1 : Int,                  
-       _ self_mCPY1 : Int,                  
-       _ self_mCPX2 : Int,                  
-       _ self_mCPY2 : Int,                  
-       _ self_mShape : BoardLimitShape
+func transient_BorderCurve_selectionDisplay (
+       _ self_mX : Int,                      
+       _ self_mY : Int,                      
+       _ self_mNext_mX : Int?,               
+       _ self_mNext_mY : Int?,               
+       _ self_mCPX1 : Int,                   
+       _ self_mCPY1 : Int,                   
+       _ self_mCPX2 : Int,                   
+       _ self_mCPY2 : Int,                   
+       _ self_mShape : BorderCurveShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let shape = EBShape ()
-        if let x1 = self_mP1_mX, let y1 = self_mP1_mY, let x2 = self_mP2_mX, let y2 = self_mP2_mY {
-          let p1 = CanariPoint (x: x1, y: y1).cocoaPoint
+        if let x2 = self_mNext_mX, let y2 = self_mNext_mY {
+          let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
           let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
           let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
