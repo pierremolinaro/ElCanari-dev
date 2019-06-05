@@ -3374,7 +3374,6 @@
 		CF518E072282CF84002BCEE5 /* document — project — controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CFD7FFF522A7B9120039DB80 /* selectionController-ProjectDocument-boardCurveSelectionController.swift */,
 				CFD7FFE622A7B88E0039DB80 /* controller-array-ProjectDocument-boardCurveObjectsController.swift */,
 				CF518E102282CFAE002BCEE5 /* controller-array-ProjectDocument-schematicObjectsController.swift */,
 				CFDB94DB22A1315700C3AF3C /* controller-popup-net-class-from-selected-labels.swift */,
@@ -3384,6 +3383,7 @@
 				CF518E082282CFAE002BCEE5 /* controller-table-view-ProjectDocument-netClassController.swift */,
 				CF518E0F2282CFAE002BCEE5 /* controller-table-view-ProjectDocument-projectDeviceController.swift */,
 				CF518E0E2282CFAE002BCEE5 /* controller-table-view-ProjectDocument-projectFontController.swift */,
+				CFD7FFF522A7B9120039DB80 /* selectionController-ProjectDocument-boardCurveSelectionController.swift */,
 				CF518E0A2282CFAE002BCEE5 /* selectionController-ProjectDocument-commentInSchematicSelectionController.swift */,
 				CF518E0B2282CFAE002BCEE5 /* selectionController-ProjectDocument-componentSymbolSelectionController.swift */,
 				CF518E0C2282CFAE002BCEE5 /* selectionController-ProjectDocument-ncInSchematicSelectionController.swift */,
@@ -4081,9 +4081,6 @@
 		CFB1DAFE2282D2FB005F9811 /* document — project — entities */ = {
 			isa = PBXGroup;
 			children = (
-				CFD7FFF822A7BA840039DB80 /* enum-BorderCurveShape.swift */,
-				CFD7FFEC22A7B8E40039DB80 /* tomany-BorderCurve.swift */,
-				CFD7FFEE22A7B8E50039DB80 /* toone-BorderCurve.swift */,
 				CFD7FFE922A7B8DA0039DB80 /* entity-BorderCurve.swift */,
 				CFB1DB002282D31E005F9811 /* entity-CommentInSchematic.swift */,
 				CFB1DB0D2282D31F005F9811 /* entity-ComponentInProject.swift */,
@@ -4106,7 +4103,9 @@
 				CFB1DB0C2282D31F005F9811 /* entity-SchematicObject.swift */,
 				CFB1DB072282D31E005F9811 /* entity-SheetInProject.swift */,
 				CFB1DB102282D31F005F9811 /* entity-WireInSchematic.swift */,
+				CFD7FFF822A7BA840039DB80 /* enum-BorderCurveShape.swift */,
 				CFB1DB082282D31F005F9811 /* enum-SchematicSheetOrientation.swift */,
+				CFD7FFEC22A7B8E40039DB80 /* tomany-BorderCurve.swift */,
 				CFA43025229AEB93000AA8C8 /* tomany-CommentInSchematic.swift */,
 				CFA43037229AEB95000AA8C8 /* tomany-ComponentInProject.swift */,
 				CFA4302F229AEB94000AA8C8 /* tomany-ComponentSymbolInProject.swift */,
@@ -4128,6 +4127,7 @@
 				CFA4301C229AEB92000AA8C8 /* tomany-SchematicObject.swift */,
 				CFA4302A229AEB94000AA8C8 /* tomany-SheetInProject.swift */,
 				CFA4303B229AEB95000AA8C8 /* tomany-WireInSchematic.swift */,
+				CFD7FFEE22A7B8E50039DB80 /* toone-BorderCurve.swift */,
 				CFA43019229AEB92000AA8C8 /* toone-CommentInSchematic.swift */,
 				CFA43023229AEB93000AA8C8 /* toone-ComponentInProject.swift */,
 				CFA4303A229AEB95000AA8C8 /* toone-ComponentSymbolInProject.swift */,

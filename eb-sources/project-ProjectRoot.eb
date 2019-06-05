@@ -9,7 +9,8 @@ enum BorderCurveShape { line, bezier }
 graphic entity BorderCurve {
   property BorderCurveShape mShape default line ;
   toOne ProjectRoot mRoot inverse toMany mBorderCurves ;
-  toOne BorderCurve mNext ;
+  toOne BorderCurve mNext inverse toOne mPrevious ;
+  toOne BorderCurve mPrevious inverse toOne mNext ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;

@@ -20,20 +20,27 @@ func transient_ProjectRoot_borderClearanceBackground (
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+        for curve in self_mBorderCurves_descriptor {
+          let descriptor = curve.descriptor!
+          curveDictionary [descriptor.p1] = descriptor
+        }
         let clearanceBP = NSBezierPath ()
-        let p1 = self_mBorderCurves_descriptor [0].descriptor!.p1.cocoaPoint
-        clearanceBP.move (to: p1)
-        for limitCurve in self_mBorderCurves_descriptor {
-          let descriptor = limitCurve.descriptor!
-          let p2 = descriptor.p2.cocoaPoint
+        var descriptor = self_mBorderCurves_descriptor [0].descriptor!
+        let p = descriptor.p1
+        clearanceBP.move (to: p.cocoaPoint)
+        var loop = true
+        while loop {
           switch descriptor.shape {
           case .line :
-            clearanceBP.line (to: p2)
+            clearanceBP.line (to: descriptor.p2.cocoaPoint)
           case .bezier :
             let cp1 = descriptor.cp1.cocoaPoint
             let cp2 = descriptor.cp2.cocoaPoint
-            clearanceBP.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+            clearanceBP.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
           }
+          descriptor = curveDictionary [descriptor.p2]!
+          loop = p != descriptor.p1
         }
         clearanceBP.lineCapStyle = .round
         clearanceBP.lineJoinStyle = .round

@@ -46,19 +46,21 @@ extension BorderCurve {
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let next = self.mNext {
+    if let next = self.mNext, let previous = self.mPrevious {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
       if !ioSet.objects.contains (self) {
         ioSet.objects.insert (self)
         self.mX += dx
         self.mY += dy
-        next.setControlPointsDefaultValuesForLine ()
+        self.setControlPointsDefaultValuesForLine ()
+        previous.setControlPointsDefaultValuesForLine ()
       }
       if !ioSet.objects.contains (next) {
         ioSet.objects.insert (next)
         next.mX += dx
         next.mY += dy
+        self.setControlPointsDefaultValuesForLine ()
         next.setControlPointsDefaultValuesForLine ()
       }
       self.setControlPointsDefaultValuesForLine ()
@@ -102,7 +104,7 @@ extension BorderCurve {
       self.mX += inDx
       self.mY += inDy
       self.setControlPointsDefaultValuesForLine ()
-      self.mNext?.setControlPointsDefaultValuesForLine ()
+      self.mPrevious?.setControlPointsDefaultValuesForLine ()
     }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext{
       next.mX += inDx
       next.mY += inDy

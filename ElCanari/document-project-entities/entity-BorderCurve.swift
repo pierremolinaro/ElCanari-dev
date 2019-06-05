@@ -339,6 +339,44 @@ class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To one property: mPrevious
+  //····················································································································
+
+   let mPrevious_property = StoredObject_BorderCurve ()
+
+  //····················································································································
+
+  var mPrevious_property_selection : EBSelection <BorderCurve?> {
+    return .single (self.mPrevious_property.propval)
+  }
+
+  //····················································································································
+
+  var mPrevious : BorderCurve? {
+    get {
+      return self.mPrevious_property.propval
+    }
+    set {
+      if self.mPrevious_property.propval != nil {
+        self.mPrevious_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mPrevious_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mPrevious_none : StoredObject_BorderCurve { return self.mPrevious_property }
+
+  //····················································································································
+
+  var mPrevious_none_selection : EBSelection <Bool> {
+    return .single (self.mPrevious_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: p1Xstring
   //····················································································································
 
@@ -594,8 +632,18 @@ class BorderCurve : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.remove (me) } }
     )
-  //--- To one property: mNext
+  //--- To one property: mNext (has opposite to one relationship: mPrevious)
     self.mNext_property.ebUndoManager = self.ebUndoManager
+    self.mNext_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mPrevious_property.setProp (me) } },
+      resetter: { inObject in inObject.mPrevious_property.setProp (nil) }
+    )
+  //--- To one property: mPrevious (has opposite to one relationship: mNext)
+    self.mPrevious_property.ebUndoManager = self.ebUndoManager
+    self.mPrevious_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mNext_property.setProp (me) } },
+      resetter: { inObject in inObject.mNext_property.setProp (nil) }
+    )
   //--- Atomic property: p1Xstring
     self.p1Xstring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1166,6 +1214,13 @@ class BorderCurve : EBGraphicManagedObject,
       view: view,
       valueExplorer:&self.mNext_property.mValueExplorer
     )
+    createEntryForToOneRelationshipNamed (
+      "mPrevious",
+      idx:self.mPrevious_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mPrevious_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -1201,6 +1256,9 @@ class BorderCurve : EBGraphicManagedObject,
   //--- To one property: mNext
     self.mNext_property.mObserverExplorer = nil
     self.mNext_property.mValueExplorer = nil
+  //--- To one property: mPrevious
+    self.mPrevious_property.mObserverExplorer = nil
+    self.mPrevious_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -1221,6 +1279,7 @@ class BorderCurve : EBGraphicManagedObject,
   override internal func cleanUpToOneRelationships () {
     self.mRoot = nil
     self.mNext = nil
+    self.mPrevious = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1245,9 +1304,13 @@ class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey:"mCPY2")
   //--- Atomic property: mShape
     self.mShape_property.storeIn (dictionary: ioDictionary, forKey:"mShape")
-  //--- To one property: mNext
+  //--- To one property: mNext // Opposite is toOne mPrevious
     self.store (managedObject:self.mNext_property.propval,
       relationshipName: "mNext",
+      intoDictionary: ioDictionary)
+  //--- To one property: mPrevious // Opposite is toOne mNext
+    self.store (managedObject:self.mPrevious_property.propval,
+      relationshipName: "mPrevious",
       intoDictionary: ioDictionary)
   }
 
@@ -1278,6 +1341,17 @@ class BorderCurve : EBGraphicManagedObject,
       )
       if let entity = possibleEntity as? BorderCurve {
         self.mNext_property.setProp (entity)
+      }
+    }
+  //--- To one property: mPrevious
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mPrevious",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? BorderCurve {
+        self.mPrevious_property.setProp (entity)
       }
     }
   }
@@ -1318,6 +1392,10 @@ class BorderCurve : EBGraphicManagedObject,
     if let object = self.mNext {
       objects.append (object)
     }
+  //--- To one property: mPrevious
+    if let object = self.mPrevious {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -1332,6 +1410,10 @@ class BorderCurve : EBGraphicManagedObject,
     }
   //--- To one property: mNext
     if let object = self.mNext {
+      objects.append (object)
+    }
+  //--- To one property: mPrevious
+    if let object = self.mPrevious {
       objects.append (object)
     }
   }

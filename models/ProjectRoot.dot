@@ -21,7 +21,7 @@ digraph G {
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   ComponentInProject[label="<ComponentInProject>ComponentInProject|String mComponentValue|<mDevice>DeviceInProject? mDevice|Int mNameIndex|String mNamePrefix|<mSelectedPackage>DevicePackageInProject? mSelectedPackage|<mSymbols>[ComponentSymbolInProject] mSymbols"] ;
   ComponentSymbolInProject[label="<ComponentSymbolInProject>ComponentSymbolInProject|String componentValueProxy|Int mCenterX|Int mCenterY|<mComponent>ComponentInProject? mComponent|Int mDisplayComponentNameOffsetX|Int mDisplayComponentNameOffsetY|Bool mDisplayComponentValue|Int mDisplayComponentValueOffsetX|Int mDisplayComponentValueOffsetY|Bool mMirror|<mPoints>[PointInSchematic] mPoints|QuadrantRotation mRotation|<mSheet>SheetInProject? mSheet|String mSymbolInstanceName|String mSymbolTypeName"] ;
-  BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
+  BorderCurve[label="<BorderCurve>BorderCurve|Int mCPX1|Int mCPX2|Int mCPY1|Int mCPY2|<mNext>BorderCurve? mNext|<mPrevious>BorderCurve? mPrevious|<mRoot>ProjectRoot? mRoot|BorderCurveShape mShape|Int mX|Int mY"] ;
   ProjectRoot:mBorderCurves -> BorderCurve:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
   ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
@@ -53,5 +53,5 @@ digraph G {
   ComponentInProject:mSymbols -> ComponentSymbolInProject:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
   ComponentSymbolInProject -> SchematicObject [arrowhead=dot] ;
   ComponentSymbolInProject:mPoints -> PointInSchematic:mSymbol [dir=both arrowtail=onormal arrowhead=vee] ;
-  BorderCurve:mNext -> BorderCurve:BorderCurve [dir=both arrowtail=none arrowhead=onormal] ;
+  BorderCurve:mPrevious -> BorderCurve:mNext [dir=both arrowtail=onormal arrowhead=onormal] ;
 }
