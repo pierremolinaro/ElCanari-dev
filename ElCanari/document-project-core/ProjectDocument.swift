@@ -69,16 +69,16 @@ import Cocoa
   var componentSymbolSelectionController = SelectionController_ProjectDocument_componentSymbolSelectionController ()
 
   //····················································································································
-  //   Array controller: boardLimitsObjectsController
+  //   Array controller: boardCurveObjectsController
   //····················································································································
 
-  var boardLimitsObjectsController = Controller_ProjectDocument_boardLimitsObjectsController ()
+  var boardCurveObjectsController = Controller_ProjectDocument_boardCurveObjectsController ()
 
   //····················································································································
-  //   Selection controller: boardLimitSelectionController
+  //   Selection controller: boardCurveSelectionController
   //····················································································································
 
-  var boardLimitSelectionController = SelectionController_ProjectDocument_boardLimitSelectionController ()
+  var boardCurveSelectionController = SelectionController_ProjectDocument_boardCurveSelectionController ()
 
   //····················································································································
   //   Transient property: componentCount
@@ -634,10 +634,10 @@ import Cocoa
     self.schematicLabelSelectionController.addExplorer (name: "schematicLabelSelectionController", y:&y, view:view)
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.addExplorer (name: "componentSymbolSelectionController", y:&y, view:view)
-  //--- Array controller property: boardLimitsObjectsController
-    self.boardLimitsObjectsController.addExplorer (name: "boardLimitsObjectsController", y:&y, view:view)
-  //--- Selection controller property: boardLimitSelectionController
-    self.boardLimitSelectionController.addExplorer (name: "boardLimitSelectionController", y:&y, view:view)
+  //--- Array controller property: boardCurveObjectsController
+    self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
+  //--- Selection controller property: boardCurveSelectionController
+    self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -886,10 +886,10 @@ import Cocoa
     self.schematicLabelSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property, file: #file, line: #line)
-  //--- Array controller property: boardLimitsObjectsController
-    self.boardLimitsObjectsController.bind_model (self.rootObject.mBoardLimits_property, self.ebUndoManager)
-  //--- Selection controller property: boardLimitSelectionController
-    self.boardLimitSelectionController.bind_selection (model: self.boardLimitsObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: boardCurveObjectsController
+    self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
+  //--- Selection controller property: boardCurveSelectionController
+    self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1139,7 +1139,7 @@ import Cocoa
     self.projectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
     self.schematicObjectsController.bind_ebView (self.mSchematicsView)
-    self.boardLimitsObjectsController.bind_ebView (self.mBoardLimitsView)
+    self.boardCurveObjectsController.bind_ebView (self.mBoardLimitsView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
@@ -1202,15 +1202,15 @@ import Cocoa
     self.mBoardLimitsView?.bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property, file: #file, line: #line)
     self.mBoardLimitsInspectorSegmentedControl?.bind_selectedPage (self.rootObject.mBoardLimitsSelectedInspector_property, file: #file, line: #line)
     self.mSelectedLimitDisplayUnitPopUp?.bind_selectedTag (self.rootObject.mBoardSelectedCurveDisplayUnit_property, file: #file, line: #line)
-    self.mBoardCurveX1TextField?.bind_valueObserver (self.boardLimitSelectionController.p1Xstring_property, file: #file, line: #line)
-    self.mBoardCurveY1TextField?.bind_valueObserver (self.boardLimitSelectionController.p1Ystring_property, file: #file, line: #line)
-    self.mBoardCurveX2TextField?.bind_valueObserver (self.boardLimitSelectionController.p2Xstring_property, file: #file, line: #line)
-    self.mBoardCurveY2TextField?.bind_valueObserver (self.boardLimitSelectionController.p2Ystring_property, file: #file, line: #line)
-    self.mSelectedLimitShapePopUpButton?.bind_selectedIndex (self.boardLimitSelectionController.mShape_property, file: #file, line: #line)
-    self.mBoardCurveCPX1TextField?.bind_valueObserver (self.boardLimitSelectionController.cp1Xstring_property, file: #file, line: #line)
-    self.mBoardCurveCPY1TextField?.bind_valueObserver (self.boardLimitSelectionController.cp1Ystring_property, file: #file, line: #line)
-    self.mBoardCurveCPX2TextField?.bind_valueObserver (self.boardLimitSelectionController.cp2Xstring_property, file: #file, line: #line)
-    self.mBoardCurveCPY2TextField?.bind_valueObserver (self.boardLimitSelectionController.cp2Ystring_property, file: #file, line: #line)
+    self.mBoardCurveX1TextField?.bind_valueObserver (self.boardCurveSelectionController.p1Xstring_property, file: #file, line: #line)
+    self.mBoardCurveY1TextField?.bind_valueObserver (self.boardCurveSelectionController.p1Ystring_property, file: #file, line: #line)
+    self.mBoardCurveX2TextField?.bind_valueObserver (self.boardCurveSelectionController.p2Xstring_property, file: #file, line: #line)
+    self.mBoardCurveY2TextField?.bind_valueObserver (self.boardCurveSelectionController.p2Ystring_property, file: #file, line: #line)
+    self.mSelectedLimitShapePopUpButton?.bind_selectedIndex (self.boardCurveSelectionController.mShape_property, file: #file, line: #line)
+    self.mBoardCurveCPX1TextField?.bind_valueObserver (self.boardCurveSelectionController.cp1Xstring_property, file: #file, line: #line)
+    self.mBoardCurveCPY1TextField?.bind_valueObserver (self.boardCurveSelectionController.cp1Ystring_property, file: #file, line: #line)
+    self.mBoardCurveCPX2TextField?.bind_valueObserver (self.boardCurveSelectionController.cp2Xstring_property, file: #file, line: #line)
+    self.mBoardCurveCPY2TextField?.bind_valueObserver (self.boardCurveSelectionController.cp2Ystring_property, file: #file, line: #line)
     self.mBoardLimitsHorizontalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
     self.mBoardLimitsVerticalFlipSwitch?.bind_value (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsGridStylePopUpButton?.bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
@@ -1530,11 +1530,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return self.boardLimitSelectionController.isLine_property_selection
+          return self.boardCurveSelectionController.isLine_property_selection
         },
         outlet: self.mLimitCurveBezierControlPointsView
       )
-      self.boardLimitSelectionController.isLine_property.addEBObserver (controller)
+      self.boardCurveSelectionController.isLine_property.addEBObserver (controller)
       self.mController_mLimitCurveBezierControlPointsView_hidden = controller
     }
   //--------------------------- Set targets / actions
@@ -1754,7 +1754,7 @@ import Cocoa
     self.mController_mNetWarningImageView_hidden = nil
     self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningTextField_hidden!)
     self.mController_mNetWarningTextField_hidden = nil
-    self.boardLimitSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
+    self.boardCurveSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
     self.mController_mLimitCurveBezierControlPointsView_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
@@ -1762,7 +1762,7 @@ import Cocoa
     self.projectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.projectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
-    self.boardLimitsObjectsController.unbind_ebView (self.mBoardLimitsView)
+    self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
   //--- Array controller property: netClassController
@@ -1783,10 +1783,10 @@ import Cocoa
     self.schematicLabelSelectionController.unbind_selection ()
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.unbind_selection ()
-  //--- Array controller property: boardLimitsObjectsController
-    self.boardLimitsObjectsController.unbind_model ()
-  //--- Selection controller property: boardLimitSelectionController
-    self.boardLimitSelectionController.unbind_selection ()
+  //--- Array controller property: boardCurveObjectsController
+    self.boardCurveObjectsController.unbind_model ()
+  //--- Selection controller property: boardCurveSelectionController
+    self.boardCurveSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)

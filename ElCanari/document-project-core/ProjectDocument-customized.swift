@@ -26,33 +26,25 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
   //--- Add board limits
-    let boardLength = millimeterToCanariUnit (100.0)
-    let bottomLeft = BorderPoint (self.ebUndoManager)
-    bottomLeft.mX = 0
-    bottomLeft.mY = 0
-    let bottomRight = BorderPoint (self.ebUndoManager)
-    bottomRight.mX = boardLength
-    bottomRight.mY = 0
-    let topRight = BorderPoint (self.ebUndoManager)
-    topRight.mX = boardLength
-    topRight.mY = boardLength
-    let topLeft = BorderPoint (self.ebUndoManager)
-    topLeft.mX = 0
-    topLeft.mY = boardLength
-    let bottom = BoardLimit (self.ebUndoManager)
-    bottom.mP1 = bottomLeft
-    bottom.mP2 = bottomRight
-    let right = BoardLimit (self.ebUndoManager)
-    right.mP1 = bottomRight
-    right.mP2 = topRight
-    let top = BoardLimit (self.ebUndoManager)
-    top.mP1 = topRight
-    top.mP2 = topLeft
-    let left = BoardLimit (self.ebUndoManager)
-    left.mP1 = topLeft
-    left.mP2 = bottomLeft
-    self.rootObject.mBorderPoints = [bottomLeft, bottomRight, topRight, topLeft]
-    self.rootObject.mBoardLimits = [bottom, right, top, left]
+    let boardWidth = millimeterToCanariUnit (100.0)
+    let boardHeight = millimeterToCanariUnit (100.0)
+    let bottom = BorderCurve (self.ebUndoManager)
+    bottom.mX = 0
+    bottom.mY = 0
+    let right = BorderCurve (self.ebUndoManager)
+    right.mX = boardWidth
+    right.mY = 0
+    let top = BorderCurve (self.ebUndoManager)
+    top.mX = boardWidth
+    top.mY = boardHeight
+    let left = BorderCurve (self.ebUndoManager)
+    left.mX = 0
+    left.mY = boardHeight
+    bottom.mNext = right
+    right.mNext = top
+    top.mNext = left
+    left.mNext = bottom
+    self.rootObject.mBorderCurves = [bottom, right, top, left]
     left.setControlPointsDefaultValuesForLine ()
     right.setControlPointsDefaultValuesForLine ()
     bottom.setControlPointsDefaultValuesForLine ()
@@ -103,8 +95,8 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Register board limits inspector views
-    self.boardLimitsObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardLimitsInspectorView)
-    self.boardLimitsObjectsController.register (inspectorView: self.mSelectedBoardLimitInspectorView, for: BoardLimit.self)
+    self.boardCurveObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardLimitsInspectorView)
+    self.boardCurveObjectsController.register (inspectorView: self.mSelectedBoardLimitInspectorView, for: BorderCurve.self)
   //--- Option click for creating wire
      self.mSchematicsView?.setOptionMouseCallbacks (
        start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },

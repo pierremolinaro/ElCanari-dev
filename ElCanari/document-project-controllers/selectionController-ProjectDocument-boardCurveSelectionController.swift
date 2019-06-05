@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Base Selection Controller ProjectDocument boardLimitSelectionController
+//    Base Selection Controller ProjectDocument boardCurveSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_boardLimitSelectionController : EBObject {
+final class SelectionController_ProjectDocument_boardCurveSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: cp1Xstring
@@ -54,9 +54,9 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   //   Selection observable property: descriptor
   //····················································································································
 
-  var descriptor_property = EBTransientProperty_BoardLimitDescriptor ()
+  var descriptor_property = EBTransientProperty_BorderCurveDescriptor ()
 
-  var descriptor_property_selection : EBSelection <BoardLimitDescriptor> {
+  var descriptor_property_selection : EBSelection <BorderCurveDescriptor> {
     return self.descriptor_property.prop
   }
 
@@ -111,11 +111,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   }
 
   //····················································································································
-  //   Selection observable property: mP1
-  //····················································································································
-
-  //····················································································································
-  //   Selection observable property: mP2
+  //   Selection observable property: mNext
   //····················································································································
 
   //····················································································································
@@ -126,10 +122,30 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   //   Selection observable property: mShape
   //····················································································································
 
-  var mShape_property = EBPropertyProxy_BoardLimitShape ()
+  var mShape_property = EBPropertyProxy_BoarderCurveShape ()
 
-  var mShape_property_selection : EBSelection <BoardLimitShape> {
+  var mShape_property_selection : EBSelection <BoarderCurveShape> {
     return self.mShape_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mX1
+  //····················································································································
+
+  var mX1_property = EBPropertyProxy_Int ()
+
+  var mX1_property_selection : EBSelection <Int> {
+    return self.mX1_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mY1
+  //····················································································································
+
+  var mY1_property = EBPropertyProxy_Int ()
+
+  var mY1_property_selection : EBSelection <Int> {
+    return self.mY1_property.prop
   }
 
   //····················································································································
@@ -196,11 +212,11 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_BoardLimit? = nil
+  private var mModel : ReadOnlyArrayOf_BorderCurve? = nil
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardLimit, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_BorderCurve, file:String, line:Int) {
     self.mModel = model
     self.bind_property_cp1Xstring (model: model)
     self.bind_property_cp1Ystring (model: model)
@@ -213,6 +229,8 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
     self.bind_property_mCPY1 (model: model)
     self.bind_property_mCPY2 (model: model)
     self.bind_property_mShape (model: model)
+    self.bind_property_mX1 (model: model)
+    self.bind_property_mY1 (model: model)
     self.bind_property_objectDisplay (model: model)
     self.bind_property_p1Xstring (model: model)
     self.bind_property_p1Ystring (model: model)
@@ -269,6 +287,16 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
     self.mShape_property.mWriteModelFunction = nil 
     self.mShape_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mShape (self.mShape_property)
+  //--- mX1
+    self.mX1_property.mReadModelFunction = nil 
+    self.mX1_property.mWriteModelFunction = nil 
+    self.mX1_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mX1 (self.mX1_property)
+  //--- mY1
+    self.mY1_property.mReadModelFunction = nil 
+    self.mY1_property.mWriteModelFunction = nil 
+    self.mY1_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mY1 (self.mY1_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -312,7 +340,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_ProjectDocument_boardLimitSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -367,6 +395,22 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
       observerExplorer: &self.mShape_property.mObserverExplorer,
       valueExplorer: &self.mShape_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mX1",
+      idx: self.mX1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mX1_property.mObserverExplorer,
+      valueExplorer: &self.mX1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mY1",
+      idx: self.mY1_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mY1_property.mObserverExplorer,
+      valueExplorer: &self.mY1_property.mValueExplorer
+    )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
     let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
@@ -376,7 +420,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_ProjectDocument_boardLimitSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
@@ -420,7 +464,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_cp1Xstring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_cp1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_cp1Xstring (self.cp1Xstring_property)
     self.cp1Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -460,7 +504,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_cp1Ystring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_cp1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_cp1Ystring (self.cp1Ystring_property)
     self.cp1Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -500,7 +544,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_cp2Xstring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_cp2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_cp2Xstring (self.cp2Xstring_property)
     self.cp2Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -540,7 +584,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_cp2Ystring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_cp2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_cp2Ystring (self.cp2Ystring_property)
     self.cp2Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -580,7 +624,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_descriptor (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_descriptor (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_descriptor (self.descriptor_property)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -590,7 +634,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <BoardLimitDescriptor> ()
+          var s = Set <BorderCurveDescriptor> ()
           var isMultipleSelection = false
           for object in v {
             switch object.descriptor_property_selection {
@@ -620,7 +664,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_isLine (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_isLine (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_isLine (self.isLine_property)
     self.isLine_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -660,7 +704,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mCPX1 (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mCPX1 (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_mCPX1 (self.mCPX1_property)
     self.mCPX1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -730,7 +774,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mCPX2 (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mCPX2 (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_mCPX2 (self.mCPX2_property)
     self.mCPX2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -800,7 +844,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mCPY1 (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mCPY1 (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_mCPY1 (self.mCPY1_property)
     self.mCPY1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -870,7 +914,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mCPY2 (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mCPY2 (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_mCPY2 (self.mCPY2_property)
     self.mCPY2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -940,7 +984,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_mShape (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mShape (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_mShape (self.mShape_property)
     self.mShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -950,7 +994,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <BoardLimitShape> ()
+          var s = Set <BoarderCurveShape> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mShape_property_selection {
@@ -976,7 +1020,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
         return .empty
       }
     }
-    self.mShape_property.mWriteModelFunction = { [weak self] (inValue : BoardLimitShape) in
+    self.mShape_property.mWriteModelFunction = { [weak self] (inValue : BoarderCurveShape) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -988,7 +1032,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
         }
       }
     }
-    self.mShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoardLimitShape, windowForSheet : NSWindow?) in
+    self.mShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : BoarderCurveShape, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1010,7 +1054,147 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_mX1 (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mX1 (self.mX1_property)
+    self.mX1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mX1_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mX1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mX1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mX1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_mY1 (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_mY1 (self.mY1_property)
+    self.mY1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mY1_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mY1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mY1_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mY1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mY1_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -1050,7 +1234,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_p1Xstring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_p1Xstring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_p1Xstring (self.p1Xstring_property)
     self.p1Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -1090,7 +1274,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_p1Ystring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_p1Ystring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_p1Ystring (self.p1Ystring_property)
     self.p1Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -1130,7 +1314,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_p2Xstring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_p2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_p2Xstring (self.p2Xstring_property)
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -1170,7 +1354,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_p2Ystring (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_p2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_p2Ystring (self.p2Ystring_property)
     self.p2Ystring_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -1210,7 +1394,7 @@ final class SelectionController_ProjectDocument_boardLimitSelectionController : 
 
   //···················································································································*
 
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_BoardLimit) {
+  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_BorderCurve) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {

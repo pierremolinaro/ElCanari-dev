@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardLimitShape : Int, EnumPropertyProtocol {
+enum BorderCurveShape : Int, EnumPropertyProtocol {
   case line = 0
   case bezier = 1
 
@@ -34,8 +34,8 @@ enum BoardLimitShape : Int, EnumPropertyProtocol {
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> BoardLimitShape? {
-    if let v = BoardLimitShape (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> BorderCurveShape? {
+    if let v = BorderCurveShape (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +44,9 @@ enum BoardLimitShape : Int, EnumPropertyProtocol {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> BoardLimitShape {
+  func enumfromRawValue (rawValue : Int) -> BorderCurveShape {
     var result = self
-    let v : BoardLimitShape? = BoardLimitShape (rawValue:rawValue) ;
+    let v : BorderCurveShape? = BorderCurveShape (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -65,9 +65,9 @@ enum BoardLimitShape : Int, EnumPropertyProtocol {
     return NSNumber (value: self.rawValue)
   }
 
-  static func convertFromNSObject (object : NSObject) -> BoardLimitShape {
-    var result = BoardLimitShape.line
-    if let number = object as? NSNumber, let v = BoardLimitShape (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> BorderCurveShape {
+    var result = BorderCurveShape.line
+    if let number = object as? NSNumber, let v = BorderCurveShape (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,10 +79,10 @@ enum BoardLimitShape : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardLimitShape = EBReadOnlyEnumProperty <BoardLimitShape>
-typealias EBTransientProperty_BoardLimitShape = EBTransientEnumProperty <BoardLimitShape>
-typealias EBReadWriteProperty_BoardLimitShape = EBReadWriteEnumProperty <BoardLimitShape>
-typealias EBStoredProperty_BoardLimitShape = EBStoredEnumProperty <BoardLimitShape>
-typealias EBPropertyProxy_BoardLimitShape = EBPropertyEnumProxy <BoardLimitShape>
+typealias EBReadOnlyProperty_BorderCurveShape = EBReadOnlyEnumProperty <BorderCurveShape>
+typealias EBTransientProperty_BorderCurveShape = EBTransientEnumProperty <BorderCurveShape>
+typealias EBReadWriteProperty_BorderCurveShape = EBReadWriteEnumProperty <BorderCurveShape>
+typealias EBStoredProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
+typealias EBPropertyProxy_BorderCurveShape = EBPropertyEnumProxy <BorderCurveShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

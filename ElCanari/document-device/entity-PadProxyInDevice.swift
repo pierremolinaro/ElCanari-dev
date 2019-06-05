@@ -196,7 +196,7 @@ class PadProxyInDevice : EBManagedObject,
     self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsNC
     self.mIsNC_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy) §
+  //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.ebUndoManager = self.ebUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },

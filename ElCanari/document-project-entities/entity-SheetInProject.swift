@@ -280,7 +280,7 @@ class SheetInProject : EBManagedObject,
     )
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mRoot (has opposite to many relationship: mSheets) §
+  //--- To one property: mRoot (has opposite to many relationship: mSheets)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheets_property.add (me) } },

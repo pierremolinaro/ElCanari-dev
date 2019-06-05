@@ -429,7 +429,7 @@ class ComponentInProject : EBManagedObject,
     }
     self.mNamePrefix_property.addEBObserver (self.componentName_property)
     self.mNameIndex_property.addEBObserver (self.componentName_property)
-  //--- To one property: mDevice (has opposite to many relationship: mComponents) §
+  //--- To one property: mDevice (has opposite to many relationship: mComponents)
     self.mDevice_property.ebUndoManager = self.ebUndoManager
     self.mDevice_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },

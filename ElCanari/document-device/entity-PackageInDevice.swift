@@ -365,7 +365,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mRoot (has opposite to many relationship: mPackages) §
+  //--- To one property: mRoot (has opposite to many relationship: mPackages)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },

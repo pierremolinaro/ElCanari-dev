@@ -426,14 +426,14 @@ document ProjectDocument root ProjectRoot {
   ;
 
 //----------------- Board limits tab
-  arrayController #boardLimitsObjectsController : root.mBoardLimits ;
+  arrayController #boardCurveObjectsController : root.mBorderCurves ;
 
   outlet EBGraphicView mBoardLimitsView
     $underObjectsDisplay root.borderClearanceBackground
 //    $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip
-    $graphicController #boardLimitsObjectsController
+    $graphicController #boardCurveObjectsController
     $gridStyle root.mBoardLimitsGridStyle
     $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
     $gridLineColor prefs.lineColorGridForBoard
@@ -456,25 +456,25 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mOperationBoardLimitsInspectorView ;
 
 //--- Limit Curve inspector view
-  selectionController BoardLimit #boardLimitSelectionController :
-    #boardLimitsObjectsController.selectedArray
+  selectionController BorderCurve #boardCurveSelectionController :
+    #boardCurveObjectsController.selectedArray
   ;
   outlet CanariViewWithKeyView mSelectedBoardLimitInspectorView ;
   outlet EBPopUpButton mSelectedLimitDisplayUnitPopUp $selectedTag root.mBoardSelectedCurveDisplayUnit ;
 
-  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardLimitSelectionController.p1Xstring ;
-  outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardLimitSelectionController.p1Ystring ;
-  outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardLimitSelectionController.p2Xstring ;
-  outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardLimitSelectionController.p2Ystring ;
+  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardCurveSelectionController.p1Xstring ;
+  outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardCurveSelectionController.p1Ystring ;
+  outlet EBTextObserverField mBoardCurveX2TextField $valueObserver #boardCurveSelectionController.p2Xstring ;
+  outlet EBTextObserverField mBoardCurveY2TextField $valueObserver #boardCurveSelectionController.p2Ystring ;
 
-  outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardLimitSelectionController.mShape ;
+  outlet EBPopUpButton mSelectedLimitShapePopUpButton $selectedIndex #boardCurveSelectionController.mShape ;
 
-  outlet EBTextObserverField mBoardCurveCPX1TextField $valueObserver #boardLimitSelectionController.cp1Xstring ;
-  outlet EBTextObserverField mBoardCurveCPY1TextField $valueObserver #boardLimitSelectionController.cp1Ystring ;
-  outlet EBTextObserverField mBoardCurveCPX2TextField $valueObserver #boardLimitSelectionController.cp2Xstring ;
-  outlet EBTextObserverField mBoardCurveCPY2TextField $valueObserver #boardLimitSelectionController.cp2Ystring ;
+  outlet EBTextObserverField mBoardCurveCPX1TextField $valueObserver #boardCurveSelectionController.cp1Xstring ;
+  outlet EBTextObserverField mBoardCurveCPY1TextField $valueObserver #boardCurveSelectionController.cp1Ystring ;
+  outlet EBTextObserverField mBoardCurveCPX2TextField $valueObserver #boardCurveSelectionController.cp2Xstring ;
+  outlet EBTextObserverField mBoardCurveCPY2TextField $valueObserver #boardCurveSelectionController.cp2Ystring ;
 
-  outlet NSView mLimitCurveBezierControlPointsView $hidden #boardLimitSelectionController.isLine ;
+  outlet NSView mLimitCurveBezierControlPointsView $hidden #boardCurveSelectionController.isLine ;
   
 //--- Grid and Flip inspector
   outlet EBSwitch mBoardLimitsHorizontalFlipSwitch $value root.mBoardLimitsHorizontalFlip ;

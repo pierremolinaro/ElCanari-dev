@@ -261,7 +261,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mY
     self.mY_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mType (has opposite to many relationship: mInstances) §
+  //--- To one property: mType (has opposite to many relationship: mInstances)
     self.mType_property.ebUndoManager = self.ebUndoManager
     self.mType_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },

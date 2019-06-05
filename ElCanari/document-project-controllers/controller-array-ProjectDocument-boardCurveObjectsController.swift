@@ -5,20 +5,20 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Array controller ProjectDocument boardLimitsObjectsController
+//    Array controller ProjectDocument boardCurveObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
+final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol {
  
   //····················································································································
   // Model
   //····················································································································
  
-  private var mModel : ReadWriteArrayOf_BoardLimit? = nil
+  private var mModel : ReadWriteArrayOf_BorderCurve? = nil
 
   //····················································································································
 
-  var selectedSet : Set <BoardLimit> {
+  var selectedSet : Set <BorderCurve> {
     set (newValue) {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet) {
@@ -42,7 +42,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  private var mPrivateSelectedSet = Set <BoardLimit> () {
+  private var mPrivateSelectedSet = Set <BorderCurve> () {
     didSet {
       self.selectedArray_property.postEvent ()
       self.mInternalSelectedArrayProperty.setProp (Array (self.mPrivateSelectedSet))
@@ -53,19 +53,19 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_BoardLimit ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_BorderCurve ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_BoardLimit { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_BorderCurve { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [BoardLimit] { return self.selectedArray_property.propval }
+  var selectedArray : [BorderCurve] { return self.selectedArray_property.propval }
 
   //····················································································································
 
-  var selectedArray_property_selection : EBSelection <[BoardLimit]> { return self.selectedArray_property.prop }
+  var selectedArray_property_selection : EBSelection <[BorderCurve]> { return self.selectedArray_property.prop }
  
   //····················································································································
   //   Init
@@ -156,7 +156,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func bind_model (_ inModel : ReadWriteArrayOf_BoardLimit, _ inUndoManager : EBUndoManager) {
+  func bind_model (_ inModel : ReadWriteArrayOf_BorderCurve, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -213,7 +213,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  func setSelection (_ inObjects : [BoardLimit]) {
+  func setSelection (_ inObjects : [BorderCurve]) {
     self.selectedSet = Set (inObjects)
   }
 
@@ -371,7 +371,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
   //    select
   //····················································································································
 
-  func select (object inObject : BoardLimit) {
+  func select (object inObject : BorderCurve) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -394,7 +394,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = BoardLimit (self.ebUndoManager)
+        let newObject = BorderCurve (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -416,7 +416,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
       case .single (let model_prop) :
       //------------- Find the object to be selected after selected object removing
       //--- Dictionary of object sorted indexes
-        var sortedObjectDictionary = [BoardLimit : Int] ()
+        var sortedObjectDictionary = [BorderCurve : Int] ()
         for (index, object) in model_prop.enumerated () {
           sortedObjectDictionary [object] = index
         }
@@ -438,13 +438,13 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
             newSelectionIndex = index + 1
           }
         }
-        var newSelectedObject : BoardLimit? = nil
+        var newSelectedObject : BorderCurve? = nil
         if (newSelectionIndex >= 0) && (newSelectionIndex < model_prop.count) {
           newSelectedObject = model_prop [newSelectionIndex]
         }
       //----------------------------------------- Remove selected object
       //--- Dictionary of object absolute indexes
-        var objectDictionary = [BoardLimit : Int] ()
+        var objectDictionary = [BorderCurve : Int] ()
         for (index, object) in model_prop.enumerated () {
           objectDictionary [object] = index
         }
@@ -464,7 +464,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
           newObjectArray.remove (at: index)
         }
       //----------------------------------------- Set new selection
-        var newSelectionSet = Set <BoardLimit> ()
+        var newSelectionSet = Set <BorderCurve> ()
         if let object = newSelectedObject {
           newSelectionSet.insert (object)
         }
@@ -584,10 +584,10 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
        let X = dataDictionary ["X"] as? Int,
        let Y = dataDictionary ["Y"] as? Int {
-      var newObjects = [BoardLimit] ()
+      var newObjects = [BorderCurve] ()
       let userSet = OCObjectSet ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? BoardLimit {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? BorderCurve {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y, userSet: userSet)
           newObjects.append (object)
@@ -948,7 +948,7 @@ final class Controller_ProjectDocument_boardLimitsObjectsController : ReadOnlyAb
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = self.mModel?.propval ?? []
-    var selectedObjects = [BoardLimit] ()
+    var selectedObjects = [BorderCurve] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)

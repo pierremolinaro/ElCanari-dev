@@ -533,7 +533,7 @@ class PackageSlavePad : PackageObject,
     self.holeDiameterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: master (has opposite to many relationship: slaves) §
+  //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.ebUndoManager = self.ebUndoManager
     self.master_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },

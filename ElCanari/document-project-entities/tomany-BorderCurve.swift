@@ -5,25 +5,23 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardLimit
+//    ReadOnlyArrayOf_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
+class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> {
 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardLimit>, addedSet inAddedSet : Set <BoardLimit>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <BorderCurve>, addedSet inAddedSet : Set <BorderCurve>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mX1_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mY1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPX1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPY1_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_p1Xstring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p1Ystring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
@@ -32,16 +30,18 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
     self.removeEBObserversOf_cp1Ystring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_cp2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_cp2Ystring_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
-    self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mX1_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mY1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPX1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPY1_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_p1Xstring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p1Ystring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p2Xstring_toElementsOfSet (inAddedSet) // Transient property
@@ -50,61 +50,122 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
     self.addEBObserversOf_cp1Ystring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_cp2Xstring_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_cp2Ystring_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
-  //   Observers of 'mShape' stored property
+  //   Observers of 'mX1' stored property
   //····················································································································
 
-  private var mObserversOf_mShape = EBWeakEventSet ()
+  private var mObserversOf_mX1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mShape.insert (inObserver)
+    self.mObserversOf_mX1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShape_property.addEBObserver (inObserver)
+        managedObject.mX1_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mShape.remove (inObserver)
+    self.mObserversOf_mX1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mShape_property.removeEBObserver (inObserver)
+        managedObject.mX1_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mX1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
-        managedObject.mShape_property.addEBObserver (observer)
+      self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
+        managedObject.mX1_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
-    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mX1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mShape_property.removeEBObserver (observer)
+        managedObject.mX1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mY1' stored property
+  //····················································································································
+
+  private var mObserversOf_mY1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mY1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mY1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mY1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mY1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mY1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mY1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mY1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
+        managedObject.mY1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mY1.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mY1_property.removeEBObserver (observer)
       }
     }
   }
@@ -147,7 +208,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_mCPX1_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mCPX1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_mCPX1.apply { (_ observer : EBEvent) in
         managedObject.mCPX1_property.addEBObserver (observer)
@@ -157,7 +218,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     self.mObserversOf_mCPX1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -204,7 +265,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_mCPY1_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mCPY1_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_mCPY1.apply { (_ observer : EBEvent) in
         managedObject.mCPY1_property.addEBObserver (observer)
@@ -214,7 +275,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     self.mObserversOf_mCPY1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -261,7 +322,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_mCPX2_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mCPX2_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_mCPX2.apply { (_ observer : EBEvent) in
         managedObject.mCPX2_property.addEBObserver (observer)
@@ -271,7 +332,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     self.mObserversOf_mCPX2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -318,7 +379,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_mCPY2_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mCPY2_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_mCPY2.apply { (_ observer : EBEvent) in
         managedObject.mCPY2_property.addEBObserver (observer)
@@ -328,7 +389,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     self.mObserversOf_mCPY2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -338,225 +399,58 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
   }
 
   //····················································································································
-  //   Observers of 'descriptor' transient property
+  //   Observers of 'mShape' stored property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_descriptor.insert (inObserver)
+    self.mObserversOf_mShape.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver)
+        managedObject.mShape_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_descriptor.remove (inObserver)
+    self.mObserversOf_mShape.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.removeEBObserver (inObserver)
+        managedObject.mShape_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.addEBObserver (observer)
+      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
+        managedObject.mShape_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'isLine' transient property
-  //····················································································································
-
-  private var mObserversOf_isLine = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_isLine.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isLine_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_isLine.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isLine_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
-        managedObject.isLine_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
-        managedObject.isLine_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
+  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShape_property.removeEBObserver (observer)
       }
     }
   }
@@ -599,7 +493,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_p1Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_p1Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
         managedObject.p1Xstring_property.addEBObserver (observer)
@@ -609,7 +503,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_p1Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_p1Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p1Xstring.apply { (_ observer : EBEvent) in
         managedObject.p1Xstring_property.removeEBObserver (observer)
@@ -655,7 +549,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_p1Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_p1Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
         managedObject.p1Ystring_property.addEBObserver (observer)
@@ -665,7 +559,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_p1Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_p1Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p1Ystring.apply { (_ observer : EBEvent) in
         managedObject.p1Ystring_property.removeEBObserver (observer)
@@ -711,7 +605,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_p2Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_p2Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
         managedObject.p2Xstring_property.addEBObserver (observer)
@@ -721,7 +615,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_p2Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
         managedObject.p2Xstring_property.removeEBObserver (observer)
@@ -767,7 +661,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_p2Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_p2Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
         managedObject.p2Ystring_property.addEBObserver (observer)
@@ -777,7 +671,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_p2Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
         managedObject.p2Ystring_property.removeEBObserver (observer)
@@ -823,7 +717,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_cp1Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_cp1Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp1Xstring.apply { (_ observer : EBEvent) in
         managedObject.cp1Xstring_property.addEBObserver (observer)
@@ -833,7 +727,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_cp1Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_cp1Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp1Xstring.apply { (_ observer : EBEvent) in
         managedObject.cp1Xstring_property.removeEBObserver (observer)
@@ -879,7 +773,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_cp1Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_cp1Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp1Ystring.apply { (_ observer : EBEvent) in
         managedObject.cp1Ystring_property.addEBObserver (observer)
@@ -889,7 +783,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_cp1Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_cp1Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp1Ystring.apply { (_ observer : EBEvent) in
         managedObject.cp1Ystring_property.removeEBObserver (observer)
@@ -935,7 +829,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_cp2Xstring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_cp2Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp2Xstring.apply { (_ observer : EBEvent) in
         managedObject.cp2Xstring_property.addEBObserver (observer)
@@ -945,7 +839,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_cp2Xstring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_cp2Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp2Xstring.apply { (_ observer : EBEvent) in
         managedObject.cp2Xstring_property.removeEBObserver (observer)
@@ -991,7 +885,7 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func addEBObserversOf_cp2Ystring_toElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func addEBObserversOf_cp2Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp2Ystring.apply { (_ observer : EBEvent) in
         managedObject.cp2Ystring_property.addEBObserver (observer)
@@ -1001,10 +895,234 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 
   //····················································································································
 
-  final func removeEBObserversOf_cp2Ystring_fromElementsOfSet (_ inSet : Set<BoardLimit>) {
+  final func removeEBObserversOf_cp2Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
     for managedObject in inSet {
       self.mObserversOf_cp2Ystring.apply { (_ observer : EBEvent) in
         managedObject.cp2Ystring_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'descriptor' transient property
+  //····················································································································
+
+  private var mObserversOf_descriptor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_descriptor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_descriptor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.descriptor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
+        managedObject.descriptor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isLine' transient property
+  //····················································································································
+
+  private var mObserversOf_isLine = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isLine.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isLine_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isLine.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isLine_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
+        managedObject.isLine_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
+        managedObject.isLine_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
+    for managedObject in inSet {
+      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -1014,28 +1132,28 @@ class ReadOnlyArrayOf_BoardLimit : ReadOnlyAbstractArrayProperty <BoardLimit> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf BoardLimit
+//    TransientArrayOf BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardLimit : ReadOnlyArrayOf_BoardLimit {
+class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
   //   Sort
   //····················································································································
 
-  private var mIsOrderedBefore : Optional < (_ left : BoardLimit, _ right : BoardLimit) -> Bool > = nil 
+  private var mIsOrderedBefore : Optional < (_ left : BorderCurve, _ right : BorderCurve) -> Bool > = nil 
   private var mSortObserver : EBModelNotifierEvent? = nil
 
   //····················································································································
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BoardLimit? = nil
+  private var mDataProvider : ReadOnlyArrayOf_BorderCurve? = nil
   private var mTransientKind : PropertyKind = .empty
 
  
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_BoardLimit,
-                        sortCallback inSortCallBack : Optional < (_ left : BoardLimit, _ right : BoardLimit) -> Bool >,
+  func setDataProvider (_ inProvider : ReadOnlyArrayOf_BorderCurve,
+                        sortCallback inSortCallBack : Optional < (_ left : BorderCurve, _ right : BorderCurve) -> Bool >,
                         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
                         removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     if self.mDataProvider !== inProvider {
@@ -1071,7 +1189,7 @@ class TransientArrayOf_BoardLimit : ReadOnlyArrayOf_BoardLimit {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newArray : [BoardLimit] 
+    let newArray : [BorderCurve] 
     if let dataProvider = self.mDataProvider {
       switch dataProvider.prop {
       case .empty :
@@ -1098,7 +1216,7 @@ class TransientArrayOf_BoardLimit : ReadOnlyArrayOf_BoardLimit {
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardLimit] > {
+  override var prop : EBSelection < [BorderCurve] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1111,17 +1229,17 @@ class TransientArrayOf_BoardLimit : ReadOnlyArrayOf_BoardLimit {
 
   //····················································································································
 
-  override var propval : [BoardLimit] { return self.mInternalArrayValue }
+  override var propval : [BorderCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf BoardLimit
+//    TransientArrayOfSuperOf BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOfSuperOf_BoardLimit <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardLimit {
+class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
   //   Data provider
@@ -1160,9 +1278,9 @@ class TransientArrayOfSuperOf_BoardLimit <SUPER : EBManagedObject> : ReadOnlyArr
       newModelArray = []
       self.mTransientKind = .empty
     }
-    var newArray = [BoardLimit] ()
+    var newArray = [BorderCurve] ()
     for superObject in newModelArray {
-      if let object = superObject as? BoardLimit {
+      if let object = superObject as? BorderCurve {
         newArray.append (object)
       }
     }
@@ -1172,7 +1290,7 @@ class TransientArrayOfSuperOf_BoardLimit <SUPER : EBManagedObject> : ReadOnlyArr
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardLimit] > {
+  override var prop : EBSelection < [BorderCurve] > {
     switch self.mTransientKind {
     case .empty :
       return .empty
@@ -1185,39 +1303,39 @@ class TransientArrayOfSuperOf_BoardLimit <SUPER : EBManagedObject> : ReadOnlyArr
 
   //····················································································································
 
-  override var propval : [BoardLimit] { return self.mInternalArrayValue }
+  override var propval : [BorderCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: BoardLimit
+//    To many relationship read write: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_BoardLimit : ReadOnlyArrayOf_BoardLimit {
+class ReadWriteArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardLimit]) { } // Abstract method
+  func setProp (_ value :  [BorderCurve]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_BoardLimit
+//    Proxy: ProxyArrayOf_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit {
+final class ProxyArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardLimit? = nil
+  private var mModel : ReadWriteArrayOf_BorderCurve? = nil
 
   //····················································································································
 
-  func setModel (_ inModel : ReadWriteArrayOf_BoardLimit?) {
+  func setModel (_ inModel : ReadWriteArrayOf_BorderCurve?) {
     if self.mModel !== inModel {
       self.mModel?.detachClient (self)
       self.mModel = inModel
@@ -1228,7 +1346,7 @@ final class ProxyArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit {
   //····················································································································
 
   override func notifyModelDidChange () {
-    let newModelArray : [BoardLimit]
+    let newModelArray : [BorderCurve]
     if let model = self.mModel {
       switch model.prop {
       case .empty :
@@ -1247,13 +1365,13 @@ final class ProxyArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit {
 
   //····················································································································
 
-  override func setProp (_ inArrayValue : [BoardLimit]) {
+  override func setProp (_ inArrayValue : [BorderCurve]) {
     self.mModel?.setProp (inArrayValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardLimit] > {
+  override var prop : EBSelection < [BorderCurve] > {
     if let model = self.mModel {
       return model.prop
     }else{
@@ -1263,7 +1381,7 @@ final class ProxyArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit {
 
   //····················································································································
 
-  override var propval : [BoardLimit] {
+  override var propval : [BorderCurve] {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -1281,10 +1399,10 @@ final class ProxyArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardLimit
+//    To many relationship: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureObserverProtocol {
+final class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol {
 
   //····················································································································
   //   Undo manager
@@ -1296,13 +1414,13 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardLimit) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardLimit) -> Void > = nil
+  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BorderCurve) -> Void > = nil
+  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BorderCurve) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardLimit) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardLimit) -> Void) {
+  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BorderCurve) -> Void,
+                                         resetter inResetter : @escaping (_ inManagedObject : BorderCurve) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
@@ -1334,9 +1452,9 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [BoardLimit] ()
+      var objectArray = [BorderCurve] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardLimit") as? BoardLimit {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BorderCurve") as? BorderCurve {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1349,7 +1467,7 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
   // Model will change 
   //····················································································································
 
-  override func notifyModelDidChangeFrom (oldValue inOldValue : [BoardLimit]) {
+  override func notifyModelDidChangeFrom (oldValue inOldValue : [BorderCurve]) {
   //--- Register old value in undo manager
     self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object: inOldValue)
   //---
@@ -1358,7 +1476,7 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
  
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [BoardLimit]) {
+  @objc func performUndo (_ oldValue : [BorderCurve]) {
     self.mInternalArrayValue = oldValue
   }
  
@@ -1384,7 +1502,7 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardLimit>, addedSet inAddedSet : Set <BoardLimit>) {
+  internal override func updateObservers (removedSet inRemovedSet : Set <BorderCurve>, addedSet inAddedSet : Set <BorderCurve>) {
     for managedObject in inRemovedSet {
       managedObject.setSignatureObserver (observer: nil)
       self.mResetOppositeRelationship? (managedObject)
@@ -1400,15 +1518,15 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
  
   //····················································································································
 
-  override var prop : EBSelection < [BoardLimit] > { return .single (self.mInternalArrayValue) }
+  override var prop : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [BoardLimit]) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : [BorderCurve]) { self.mInternalArrayValue = inValue }
 
   //····················································································································
 
-  override var propval : [BoardLimit] { return self.mInternalArrayValue }
+  override var propval : [BorderCurve] { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -1427,7 +1545,7 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
 
   //····················································································································
 
-  func remove (_ object : BoardLimit) {
+  func remove (_ object : BorderCurve) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1435,7 +1553,7 @@ final class StoredArrayOf_BoardLimit : ReadWriteArrayOf_BoardLimit, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : BoardLimit) {
+  func add (_ object : BorderCurve) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }

@@ -188,7 +188,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mSheet (has opposite to many relationship: mObjects) §
+  //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },

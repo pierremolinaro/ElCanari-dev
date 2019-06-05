@@ -184,7 +184,7 @@ class LabelInSchematic : SchematicObject,
     super.init (ebUndoManager)
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPoint (has opposite to many relationship: mLabels) §
+  //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },

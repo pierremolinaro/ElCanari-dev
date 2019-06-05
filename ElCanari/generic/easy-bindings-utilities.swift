@@ -935,7 +935,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   //····················································································································
 
-  final var propset : Set <T> { return self.mInternalSetValue } // § Useful ???
+  final var propset : Set <T> { return self.mInternalSetValue }
 
   //····················································································································
   //  Internal value

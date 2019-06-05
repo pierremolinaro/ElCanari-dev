@@ -14,12 +14,31 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_borderClearanceBackground (
-       _ self_mBoardLimits_descriptor : [BoardLimit_descriptor],
+       _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
+       _ self_mBoardLimitsWidth : Int,                
        _ self_mBoardClearance : Int,                  
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+        let clearanceBP = NSBezierPath ()
+        let p1 = self_mBorderCurves_descriptor [0].descriptor!.p1.cocoaPoint
+        clearanceBP.move (to: p1)
+        for limitCurve in self_mBorderCurves_descriptor {
+          let descriptor = limitCurve.descriptor!
+          let p2 = descriptor.p2.cocoaPoint
+          switch descriptor.shape {
+          case .line :
+            clearanceBP.line (to: p2)
+          case .bezier :
+            let cp1 = descriptor.cp1.cocoaPoint
+            let cp2 = descriptor.cp2.cocoaPoint
+            clearanceBP.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+          }
+        }
+        clearanceBP.lineCapStyle = .round
+        clearanceBP.lineJoinStyle = .round
+        clearanceBP.lineWidth = canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
+        return EBStrokeBezierPathShape ([clearanceBP], prefs_boardClearanceColorForBoard, clearanceBP)
 //--- END OF USER ZONE 2
 }
 

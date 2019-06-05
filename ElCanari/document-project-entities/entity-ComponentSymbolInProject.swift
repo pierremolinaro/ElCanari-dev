@@ -549,7 +549,7 @@ class ComponentSymbolInProject : SchematicObject,
       return self?.mComponent?.mComponentValue_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mComponent_property.addEBObserverOf_mComponentValue (self.componentValueProxy_property)
-  //--- To one property: mComponent (has opposite to many relationship: mSymbols) §
+  //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.ebUndoManager = self.ebUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },

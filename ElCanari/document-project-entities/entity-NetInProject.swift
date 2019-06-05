@@ -195,7 +195,7 @@ class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
-  //--- To one property: mNetClass (has opposite to many relationship: mNets) §
+  //--- To one property: mNetClass (has opposite to many relationship: mNets)
     self.mNetClass_property.ebUndoManager = self.ebUndoManager
     self.mNetClass_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },

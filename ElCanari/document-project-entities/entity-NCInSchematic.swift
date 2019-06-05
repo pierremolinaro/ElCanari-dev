@@ -94,7 +94,7 @@ class NCInSchematic : SchematicObject,
     super.init (ebUndoManager)
   //--- Atomic property: mOrientation
     self.mOrientation_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mPoint (has opposite to one relationship: mNC) §
+  //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNC_property.setProp (me) } },

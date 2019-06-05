@@ -2,38 +2,29 @@
 //     P R O J E C T    R O O T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BorderPoint {
-  toOne BoardLimit mCurve1 inverse toOne mP1 ;
-  toOne BoardLimit mCurve2 inverse toOne mP2 ;
+enum BorderCurveShape { line, bezier }
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity BorderCurve {
+  property BorderCurveShape mShape default line ;
+  toOne ProjectRoot mRoot inverse toMany mBorderCurves ;
+  toOne BorderCurve mNext ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;
-}
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum BoardLimitShape { line, bezier }
-
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-graphic entity BoardLimit {
-  property BoardLimitShape mShape default line ;
-  toOne ProjectRoot mRoot inverse toMany mBoardLimits ;
-  toOne BorderPoint mP1 inverse toOne mCurve1 ;
-  toOne BorderPoint mP2 inverse toOne mCurve2 ;
-
   property Int mCPX1 default 0 ;
   property Int mCPY1 default 0 ;
   property Int mCPX2 default 0 ;
   property Int mCPY2 default 0 ;
 
-  override transient BoardLimitDescriptor descriptor dependsFrom
-    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+  override transient BorderCurveDescriptor descriptor dependsFrom
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape ;
 
   override transient EBShape objectDisplay dependsFrom
-    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape,
     self.mRoot.one.mBoardLimitsWidth,
@@ -43,15 +34,15 @@ graphic entity BoardLimit {
   transient Bool isLine dependsFrom self.mShape ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mP1.one.mX, self.mP1.one.mY, self.mP2.one.mX, self.mP2.one.mY,
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape
   ;
   
-  transient String p1Xstring dependsFrom self.mP1.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String p1Ystring dependsFrom self.mP1.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String p2Xstring dependsFrom self.mP2.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String p2Ystring dependsFrom self.mP2.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p1Xstring dependsFrom self.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p1Ystring dependsFrom self.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Xstring dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Ystring dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
   
   transient String cp1Xstring dependsFrom self.mCPX1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
   transient String cp1Ystring dependsFrom self.mCPY1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
@@ -63,8 +54,7 @@ graphic entity BoardLimit {
 
 entity ProjectRoot {
 //--- Board border
-  toMany BorderPoint mBorderPoints ;
-  toMany BoardLimit mBoardLimits inverse toOne mRoot ;
+  toMany BorderCurve mBorderCurves inverse toOne mRoot ;
   property Int mBoardLimitsWidth default 90_000 ; // 1 mm
   property Int mBoardLimitsWidthUnit default 90_000 ; // mm
 
@@ -86,12 +76,12 @@ entity ProjectRoot {
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
-  transient CanariRect boardBoundBox dependsFrom self.mBoardLimits.all.descriptor, self.mBoardLimitsWidth ;
+  transient CanariRect boardBoundBox dependsFrom self.mBorderCurves.all.descriptor, self.mBoardLimitsWidth ;
     
-  transient String boardLimitPointsTop dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
-  transient String boardLimitPointsBottom dependsFrom self.mBorderPoints.all.mY, self.mBoardPointsBoundingBoxUnit ;
-  transient String boardLimitPointsLeft dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
-  transient String boardLimitPointsRight dependsFrom self.mBorderPoints.all.mX, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsTop dependsFrom self.mBorderCurves.all.mY, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsBottom dependsFrom self.mBorderCurves.all.mY, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsLeft dependsFrom self.mBorderCurves.all.mX, self.mBoardPointsBoundingBoxUnit ;
+  transient String boardLimitPointsRight dependsFrom self.mBorderCurves.all.mX, self.mBoardPointsBoundingBoxUnit ;
 
   transient String boardLimitBorderTop dependsFrom
     self.boardBoundBox, self.mBoardLimitsWidth, self.mBoardLimitsBoundingBoxUnit ;
@@ -102,10 +92,10 @@ entity ProjectRoot {
   transient String boardLimitBorderRight dependsFrom
     self.boardBoundBox, self.mBoardLimitsBoundingBoxUnit, self.mBoardLimitsWidth ;
   
-  transient String borderElementCountString dependsFrom self.mBorderPoints.count ;
+  transient String borderElementCountString dependsFrom self.mBorderCurves.count ;
 
   transient EBShape borderClearanceBackground dependsFrom
-     self.mBoardLimits.all.descriptor, self.mBoardLimitsWidth, self.mBoardClearance, prefs.boardClearanceColorForBoard ;
+     self.mBorderCurves.all.descriptor, self.mBoardLimitsWidth, self.mBoardClearance, prefs.boardClearanceColorForBoard ;
 //---
   toMany FontInProject mFonts ;
   toMany DeviceInProject mDevices ;

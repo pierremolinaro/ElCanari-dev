@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardBoundBox (
-       _ self_mBoardLimits_descriptor : [BoardLimit_descriptor],
+       _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
        _ self_mBoardLimitsWidth : Int
 ) -> CanariRect {
 //--- START OF USER ZONE 2
@@ -22,7 +22,7 @@ func transient_ProjectRoot_boardBoundBox (
         var maxX = CGFloat.leastNormalMagnitude
         var minY = CGFloat.greatestFiniteMagnitude
         var maxY = CGFloat.leastNormalMagnitude
-        for limit in self_mBoardLimits_descriptor {
+        for limit in self_mBorderCurves_descriptor {
           let descriptor = limit.descriptor!
           let p1 = descriptor.p1.cocoaPoint
           let p2 = descriptor.p2.cocoaPoint

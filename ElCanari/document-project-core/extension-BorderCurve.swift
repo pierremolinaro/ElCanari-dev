@@ -1,5 +1,5 @@
 //
-//  extension-BoardLimit.swift
+//  extension-BorderCurve.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 03/06/2019.
@@ -18,10 +18,10 @@ let BOARD_LIMIT_CP2_KNOB = 3
 let BOARD_LIMITS_KNOB_SIZE = CGFloat (8.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION BoardLimit
+//   EXTENSION BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension BoardLimit {
+extension BorderCurve {
 
   //····················································································································
 

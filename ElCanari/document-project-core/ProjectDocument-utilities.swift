@@ -200,7 +200,7 @@ extension QuadrantRotation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct BoardLimitDescriptor : Hashable {
+struct BorderCurveDescriptor : Hashable {
 
   //····················································································································
 
@@ -208,7 +208,7 @@ struct BoardLimitDescriptor : Hashable {
   let p2 : CanariPoint
   let cp1 : CanariPoint
   let cp2 : CanariPoint
-  let shape : BoardLimitShape
+  let shape : BorderCurveShape
 
   //····················································································································
 

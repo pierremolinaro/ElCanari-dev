@@ -14,15 +14,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_borderElementCountString (
-       _ self_mBorderPoints_count : Int
+       _ self_mBorderCurves_count : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        if self_mBorderPoints_count == 0 {
+        if self_mBorderCurves_count == 0 {
           return "No element"
-        }else if self_mBorderPoints_count == 1 {
+        }else if self_mBorderCurves_count == 1 {
           return "1 element"
         }else{
-          return "\(self_mBorderPoints_count) elements"
+          return "\(self_mBorderCurves_count) elements"
         }
 //--- END OF USER ZONE 2
 }

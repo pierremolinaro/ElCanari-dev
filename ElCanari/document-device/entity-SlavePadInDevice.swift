@@ -326,7 +326,7 @@ class SlavePadInDevice : EBManagedObject,
     self.mShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStyle
     self.mStyle_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads) §
+  //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.ebUndoManager = self.ebUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.add (me) } },

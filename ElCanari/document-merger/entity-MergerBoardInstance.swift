@@ -274,7 +274,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.ebUndoManager = self.ebUndoManager
-  //--- To one property: myModel (has opposite to many relationship: myInstances) §
+  //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.ebUndoManager = self.ebUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
@@ -408,7 +408,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.myModel_property.addEBObserverOf_modelHeight (self.objectDisplay_property)
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
-  //--- To one property: myRoot (has opposite to many relationship: boardInstances) §
+  //--- To one property: myRoot (has opposite to many relationship: boardInstances)
     self.myRoot_property.ebUndoManager = self.ebUndoManager
     self.myRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },

@@ -196,13 +196,13 @@ class WireInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- To one property: mP1 (has opposite to many relationship: mWiresP1s) §
+  //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
     )
-  //--- To one property: mP2 (has opposite to many relationship: mWiresP2s) §
+  //--- To one property: mP2 (has opposite to many relationship: mWiresP2s)
     self.mP2_property.ebUndoManager = self.ebUndoManager
     self.mP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },

@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardLimitPointsRight (
-       _ self_mBorderPoints_mX : [BorderPoint_mX],
+       _ self_mBorderCurves_mX : [BorderCurve_mX],
        _ self_mBoardPointsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
         var maxX = Int.min
-        for p in self_mBorderPoints_mX {
+        for p in self_mBorderCurves_mX {
           maxX = max (maxX, p.mX)
         }
         return stringFrom (valueInCanariUnit: maxX, displayUnit: self_mBoardPointsBoundingBoxUnit)

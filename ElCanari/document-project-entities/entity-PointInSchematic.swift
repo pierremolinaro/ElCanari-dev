@@ -651,19 +651,19 @@ class PointInSchematic : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
       resetter: { inObject in inObject.mP1_property.setProp (nil) }
     )
-  //--- To one property: mSymbol (has opposite to many relationship: mPoints) §
+  //--- To one property: mSymbol (has opposite to many relationship: mPoints)
     self.mSymbol_property.ebUndoManager = self.ebUndoManager
     self.mSymbol_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
-  //--- To one property: mNet (has opposite to many relationship: mPoints) §
+  //--- To one property: mNet (has opposite to many relationship: mPoints)
     self.mNet_property.ebUndoManager = self.ebUndoManager
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
-  //--- To one property: mNC (has opposite to one relationship: mPoint) §
+  //--- To one property: mNC (has opposite to one relationship: mPoint)
     self.mNC_property.ebUndoManager = self.ebUndoManager
     self.mNC_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -833,7 +833,7 @@ class PointInSchematic : EBManagedObject,
     }
     self.mSymbol_property.addEBObserverOf_mRotation (self.symbolRotation_property)
     self.mSymbol_property.addEBObserverOf_mMirror (self.symbolRotation_property)
-  //--- To one property: mSheet (has opposite to many relationship: mPoints) §
+  //--- To one property: mSheet (has opposite to many relationship: mPoints)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
