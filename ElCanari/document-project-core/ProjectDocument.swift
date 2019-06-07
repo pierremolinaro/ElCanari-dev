@@ -81,6 +81,12 @@ import Cocoa
   var boardCurveSelectionController = SelectionController_ProjectDocument_boardCurveSelectionController ()
 
   //····················································································································
+  //   Array controller: boardObjectsController
+  //····················································································································
+
+  var boardObjectsController = Controller_ProjectDocument_boardObjectsController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -411,6 +417,7 @@ import Cocoa
   @IBOutlet var mBoardLimitsWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton?
+  @IBOutlet var mBoardView : EBGraphicView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
   @IBOutlet var mChangePackageComponentListTextField : NSTextField?
   @IBOutlet var mChangePackageOfSelectedComponentsActionButton : EBButton?
@@ -638,6 +645,8 @@ import Cocoa
     self.boardCurveObjectsController.addExplorer (name: "boardCurveObjectsController", y:&y, view:view)
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -719,6 +728,7 @@ import Cocoa
     checkOutletConnection (self.mBoardLimitsWidthUnitPopUp, "mBoardLimitsWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
     checkOutletConnection (self.mChangePackageComponentListTextField, "mChangePackageComponentListTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mChangePackageOfSelectedComponentsActionButton, "mChangePackageOfSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -890,6 +900,8 @@ import Cocoa
     self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1140,6 +1152,7 @@ import Cocoa
     self.projectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
     self.schematicObjectsController.bind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.bind_ebView (self.mBoardLimitsView)
+    self.boardObjectsController.bind_ebView (self.mBoardView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mSchematicStatusImageViewInToolbar?.bind_image (self.rootObject.schematicStatusImage_property, file: #file, line: #line)
@@ -1232,6 +1245,21 @@ import Cocoa
     self.mBoardLimitsWidthTextField?.bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property, file: #file, line: #line)
     self.mBoardClearanceUnitPopUp?.bind_selectedTag (self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
     self.mBoardClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property, file: #file, line: #line)
+    self.mBoardView?.bind_underObjectsDisplay (self.rootObject.boardBackground_property, file: #file, line: #line)
+    self.mBoardView?.bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property, file: #file, line: #line)
+    self.mBoardView?.bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property, file: #file, line: #line)
+    self.mBoardView?.bind_gridStyle (self.rootObject.mBoardGridStyle_property, file: #file, line: #line)
+    self.mBoardView?.bind_gridDisplayFactor (self.rootObject.mBoardGridDisplayFactor_property, file: #file, line: #line)
+    self.mBoardView?.bind_gridLineColor (g_Preferences!.lineColorGridForBoard_property, file: #file, line: #line)
+    self.mBoardView?.bind_gridCrossColor (g_Preferences!.crossColorGridForBoard_property, file: #file, line: #line)
+    self.mBoardView?.bind_zoom (self.rootObject.mBoardZoom_property, file: #file, line: #line)
+    self.mBoardView?.bind_backColor (g_Preferences!.boardBackgroundColorForBoard_property, file: #file, line: #line)
+    self.mBoardView?.bind_mouseGrid (self.rootObject.mBoardGridStep_property, file: #file, line: #line)
+    self.mBoardView?.bind_gridStep (self.rootObject.mBoardGridStep_property, file: #file, line: #line)
+    self.mBoardView?.bind_arrowKeyMagnitude (self.rootObject.mBoardGridStep_property, file: #file, line: #line)
+    self.mBoardView?.bind_shiftArrowKeyMagnitude (self.rootObject.boardGridStepMultipliedByDisplayFactor_property, file: #file, line: #line)
+    self.mBoardView?.bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
+    self.mBoardView?.bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1691,6 +1719,21 @@ import Cocoa
     self.mBoardLimitsWidthTextField?.unbind_dimensionAndUnit ()
     self.mBoardClearanceUnitPopUp?.unbind_selectedTag ()
     self.mBoardClearanceTextField?.unbind_dimensionAndUnit ()
+    self.mBoardView?.unbind_underObjectsDisplay ()
+    self.mBoardView?.unbind_horizontalFlip ()
+    self.mBoardView?.unbind_verticalFlip ()
+    self.mBoardView?.unbind_gridStyle ()
+    self.mBoardView?.unbind_gridDisplayFactor ()
+    self.mBoardView?.unbind_gridLineColor ()
+    self.mBoardView?.unbind_gridCrossColor ()
+    self.mBoardView?.unbind_zoom ()
+    self.mBoardView?.unbind_backColor ()
+    self.mBoardView?.unbind_mouseGrid ()
+    self.mBoardView?.unbind_gridStep ()
+    self.mBoardView?.unbind_arrowKeyMagnitude ()
+    self.mBoardView?.unbind_shiftArrowKeyMagnitude ()
+    self.mBoardView?.unbind_xPlacardUnit ()
+    self.mBoardView?.unbind_yPlacardUnit ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1763,6 +1806,7 @@ import Cocoa
     self.projectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
     self.schematicObjectsController.unbind_ebView (self.mSchematicsView)
     self.boardCurveObjectsController.unbind_ebView (self.mBoardLimitsView)
+    self.boardObjectsController.unbind_ebView (self.mBoardView)
   //--- Array controller property: componentController
     self.componentController.unbind_model ()
   //--- Array controller property: netClassController
@@ -1787,6 +1831,8 @@ import Cocoa
     self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.unbind_selection ()
+  //--- Array controller property: boardObjectsController
+    self.boardObjectsController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -1873,6 +1919,7 @@ import Cocoa
     self.mBoardLimitsWidthUnitPopUp?.ebCleanUp ()
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
+    self.mBoardView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
     self.mChangePackageComponentListTextField?.ebCleanUp ()
     self.mChangePackageOfSelectedComponentsActionButton?.ebCleanUp ()
@@ -2060,6 +2107,7 @@ import Cocoa
 //    self.mBoardLimitsWidthUnitPopUp = nil
 //    self.mBoardObjectsPageView = nil
 //    self.mBoardPointsBoundingBoxUnitPopUp = nil
+//    self.mBoardView = nil
 //    self.mChangeComponentValueComboxBox = nil
 //    self.mChangePackageComponentListTextField = nil
 //    self.mChangePackageOfSelectedComponentsActionButton = nil

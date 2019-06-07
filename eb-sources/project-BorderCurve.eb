@@ -1,0 +1,54 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//     P R O J E C T    R O O T
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum BorderCurveShape { line, bezier }
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity BorderCurve {
+  property BorderCurveShape mShape default line ;
+  toOne ProjectRoot mRoot inverse toMany mBorderCurves ;
+  toOne BorderCurve mNext inverse toOne mPrevious ;
+  toOne BorderCurve mPrevious inverse toOne mNext ;
+
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+  property Int mCPX1 default 0 ;
+  property Int mCPY1 default 0 ;
+  property Int mCPX2 default 0 ;
+  property Int mCPY2 default 0 ;
+
+  override transient BorderCurveDescriptor descriptor dependsFrom
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape,
+    self.mRoot.one.mBoardLimitsWidth,
+    prefs.boardLimitsColorForBoard
+  ;
+
+  transient Bool isLine dependsFrom self.mShape ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
+    self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
+    self.mShape
+  ;
+  
+  transient String p1Xstring dependsFrom self.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p1Ystring dependsFrom self.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Xstring dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String p2Ystring dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  
+  transient String cp1Xstring dependsFrom self.mCPX1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp1Ystring dependsFrom self.mCPY1, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp2Xstring dependsFrom self.mCPX2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient String cp2Ystring dependsFrom self.mCPY2, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

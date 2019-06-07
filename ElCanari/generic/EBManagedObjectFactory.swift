@@ -54,6 +54,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "SymbolPinTypeInDevice" : SymbolPinTypeInDevice.self,
   "SymbolPinInstanceInDevice" : SymbolPinInstanceInDevice.self,
   "ProjectRoot" : ProjectRoot.self,
+  "BoardObject" : BoardObject.self,
+  "BorderCurve" : BorderCurve.self,
   "SchematicObject" : SchematicObject.self,
   "ComponentInProject" : ComponentInProject.self,
   "DeviceInProject" : DeviceInProject.self,
@@ -73,7 +75,6 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "NetInProject" : NetInProject.self,
   "SheetInProject" : SheetInProject.self,
   "WireInSchematic" : WireInSchematic.self,
-  "BorderCurve" : BorderCurve.self,
   "CommentInSchematic" : CommentInSchematic.self
 ]
 

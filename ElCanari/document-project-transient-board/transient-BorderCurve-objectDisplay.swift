@@ -55,13 +55,13 @@ func transient_BorderCurve_objectDisplay (
           bp.appendOval (in: r2)
           result.append (EBFilledBezierPathShape ([bp], .orange))
         //---
-          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
-          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
-          let rp1 = NSRect (x: cp1.x - s / 2.0, y: cp1.y - s / 2.0, width: s, height: s)
-          bp = NSBezierPath (ovalIn: rp1)
-          let rp2 = NSRect (x: cp2.x - s / 2.0, y: cp2.y - s / 2.0, width: s, height: s)
-          bp.appendOval (in: rp2)
-          result.append (EBFilledBezierPathShape ([bp], .red))
+//          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
+//          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
+//          let rp1 = NSRect (x: cp1.x - s / 2.0, y: cp1.y - s / 2.0, width: s, height: s)
+//          bp = NSBezierPath (ovalIn: rp1)
+//          let rp2 = NSRect (x: cp2.x - s / 2.0, y: cp2.y - s / 2.0, width: s, height: s)
+//          bp.appendOval (in: rp2)
+//          result.append (EBFilledBezierPathShape ([bp], .red))
         }
         return result
 //--- END OF USER ZONE 2

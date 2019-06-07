@@ -513,6 +513,29 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mBoardClearanceTextField
      $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
   ;
+
+//----------------- Board Object tab
+  arrayController #boardObjectsController : root.mBoardObjects ;
+
+  outlet EBGraphicView mBoardView
+    $underObjectsDisplay root.boardBackground
+////    $overObjectsDisplay root.connectedPoints
+    $horizontalFlip root.mBoardHorizontalFlip
+    $verticalFlip root.mBoardVerticalFlip
+    $graphicController #boardObjectsController
+    $gridStyle root.mBoardGridStyle
+    $gridDisplayFactor root.mBoardGridDisplayFactor
+    $gridLineColor prefs.lineColorGridForBoard
+    $gridCrossColor prefs.crossColorGridForBoard
+    $zoom root.mBoardZoom
+    $backColor prefs.boardBackgroundColorForBoard
+    $mouseGrid root.mBoardGridStep
+    $gridStep root.mBoardGridStep
+    $arrowKeyMagnitude root.mBoardGridStep
+    $shiftArrowKeyMagnitude root.boardGridStepMultipliedByDisplayFactor
+    $xPlacardUnit root.mBoardGridStepUnit
+    $yPlacardUnit root.mBoardGridStepUnit
+  ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
