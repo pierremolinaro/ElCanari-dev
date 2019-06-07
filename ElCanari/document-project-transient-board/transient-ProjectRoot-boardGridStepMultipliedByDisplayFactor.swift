@@ -18,7 +18,7 @@ func transient_ProjectRoot_boardGridStepMultipliedByDisplayFactor (
        _ self_mBoardGridDisplayFactor : Int
 ) -> Int {
 //--- START OF USER ZONE 2
-
+        return self_mBoardGridStep * self_mBoardGridDisplayFactor
 //--- END OF USER ZONE 2
 }
 
