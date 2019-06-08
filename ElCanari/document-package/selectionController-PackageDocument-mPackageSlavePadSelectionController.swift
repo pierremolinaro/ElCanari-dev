@@ -362,7 +362,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -494,7 +494,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

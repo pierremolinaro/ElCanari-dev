@@ -342,7 +342,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -426,7 +426,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_ProjectDocument_boardCurveSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

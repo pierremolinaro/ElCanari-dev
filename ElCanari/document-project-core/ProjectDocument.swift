@@ -463,6 +463,8 @@ import Cocoa
   @IBOutlet var mMergeNetPopUpButton : EBPopUpButton?
   @IBOutlet var mMergeSeveralSubnetsPanel : NSPanel?
   @IBOutlet var mMergeSeveralSubnetsPopUpButton : EBPopUpButton?
+  @IBOutlet var mMoveSelectedObjectsToSheetPanel : NSPanel?
+  @IBOutlet var mMoveSelectedObjectsToSheetPopUpButton : EBPopUpButton?
   @IBOutlet var mNCInSchematicsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mNCRotationSegmentedControl : CanariQuadrantSegmentedControl?
   @IBOutlet var mNetClassColorWell : EBColorWell?
@@ -774,6 +776,8 @@ import Cocoa
     checkOutletConnection (self.mMergeNetPopUpButton, "mMergeNetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPanel, "mMergeSeveralSubnetsPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mMergeSeveralSubnetsPopUpButton, "mMergeSeveralSubnetsPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mMoveSelectedObjectsToSheetPanel, "mMoveSelectedObjectsToSheetPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mMoveSelectedObjectsToSheetPopUpButton, "mMoveSelectedObjectsToSheetPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mNCInSchematicsInspectorView, "mNCInSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNCRotationSegmentedControl, "mNCRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mNetClassColorWell, "mNetClassColorWell", EBColorWell.self, #file, #line)
@@ -1965,6 +1969,8 @@ import Cocoa
     self.mMergeNetPopUpButton?.ebCleanUp ()
     self.mMergeSeveralSubnetsPanel?.ebCleanUp ()
     self.mMergeSeveralSubnetsPopUpButton?.ebCleanUp ()
+    self.mMoveSelectedObjectsToSheetPanel?.ebCleanUp ()
+    self.mMoveSelectedObjectsToSheetPopUpButton?.ebCleanUp ()
     self.mNCInSchematicsInspectorView?.ebCleanUp ()
     self.mNCRotationSegmentedControl?.ebCleanUp ()
     self.mNetClassColorWell?.ebCleanUp ()
@@ -2153,6 +2159,8 @@ import Cocoa
 //    self.mMergeNetPopUpButton = nil
 //    self.mMergeSeveralSubnetsPanel = nil
 //    self.mMergeSeveralSubnetsPopUpButton = nil
+//    self.mMoveSelectedObjectsToSheetPanel = nil
+//    self.mMoveSelectedObjectsToSheetPopUpButton = nil
 //    self.mNCInSchematicsInspectorView = nil
 //    self.mNCRotationSegmentedControl = nil
 //    self.mNetClassColorWell = nil

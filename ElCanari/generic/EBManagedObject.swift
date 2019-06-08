@@ -212,7 +212,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
     closeButton?.target = self
     closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (self.ebObjectIndex) + className
+    let windowTitle = explorerIndexString (self.ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
@@ -366,15 +366,20 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
-  var stringValue = "nil"
   if let unwrappedObject = object {
-    stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + unwrappedObject.className
+    let stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + " " + unwrappedObject.className
+    button?.isEnabled = true
+    button?.title = stringValue
+    button?.toolTip = stringValue
+    button?.target = object
+    button?.action = #selector (EBManagedObject.showObjectWindowFromExplorerButton(_:))
+  }else{
+    button?.isEnabled = false
+    button?.title = "nil"
+    button?.toolTip = "nil"
+    button?.target = nil
+    button?.action = nil
   }
-  button?.isEnabled = object != nil
-  button?.title = stringValue
-  button?.toolTip = stringValue
-  button?.target = object
-  button?.action = #selector(EBManagedObject.showObjectWindowFromExplorerButton(_:))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -392,7 +397,7 @@ func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObjec
   popUpButton?.addItem (withTitle: title)
   popUpButton?.isEnabled = objectArray.count > 0
   for object in objectArray {
-    let stringValue = explorerIndexString (object.ebObjectIndex) + object.className
+    let stringValue = explorerIndexString (object.ebObjectIndex) + " " + object.className
     popUpButton?.addItem (withTitle: stringValue)
     let item = popUpButton?.lastItem
     item?.target = object

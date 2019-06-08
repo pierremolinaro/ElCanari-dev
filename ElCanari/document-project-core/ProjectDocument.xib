@@ -104,6 +104,8 @@
                 <outlet property="mMergeNetPopUpButton" destination="1063" id="wxY-OR-vo0"/>
                 <outlet property="mMergeSeveralSubnetsPanel" destination="840" id="giw-EK-GhW"/>
                 <outlet property="mMergeSeveralSubnetsPopUpButton" destination="846" id="Nlt-Xq-4F1"/>
+                <outlet property="mMoveSelectedObjectsToSheetPanel" destination="15139" id="Oxi-fa-IIa"/>
+                <outlet property="mMoveSelectedObjectsToSheetPopUpButton" destination="15181" id="JXM-ra-hgv"/>
                 <outlet property="mNCInSchematicsInspectorView" destination="ToC-Dv-JaV" id="7F2-pc-2hE"/>
                 <outlet property="mNCRotationSegmentedControl" destination="Fzm-dJ-2zx" id="3eG-zL-Xq6"/>
                 <outlet property="mNetClassColorWell" destination="Kqx-0w-sv8" id="w57-vU-JHE"/>
@@ -3370,7 +3372,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="100" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
+                                    <tableColumn editable="NO" width="101" minWidth="10" maxWidth="3.4028234663852886e+38" id="16062">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In Board">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3384,11 +3386,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hv0-Ij-PDv">
-                                                <rect key="frame" x="468.5" y="1" width="100" height="17"/>
+                                                <rect key="frame" x="468.5" y="1" width="101" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dkY-s7-Ehd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wH7-Ng-Duh">
                                                             <font key="font" metaFont="system"/>
@@ -3403,7 +3405,7 @@ Diameter</string>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="value" width="227.5" minWidth="33.40137" maxWidth="1000" id="2923">
+                                    <tableColumn identifier="value" width="226.5" minWidth="33.40137" maxWidth="1000" id="2923">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -3417,11 +3419,11 @@ Diameter</string>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="KCn-hR-kwC" customClass="EBTextField_TableViewCell">
-                                                <rect key="frame" x="571.5" y="1" width="227.5" height="17"/>
+                                                <rect key="frame" x="572.5" y="1" width="226.5" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="I0L-bu-tXF" customClass="EBTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="227.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="226.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="ZVb-vc-myh">
                                                             <font key="font" metaFont="system"/>
@@ -4472,25 +4474,6 @@ Diameter</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <popUpButton id="15127">
-                    <rect key="frame" x="10" y="577" width="56" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" selectedItem="15131" id="15128">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="15129">
-                            <items>
-                                <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="15131"/>
-                                <menuItem title="Select all Connected Elements" keyEquivalent="a" id="15130">
-                                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                </menuItem>
-                                <menuItem title="Move Selected Elements to Sheet…" keyEquivalent="m" id="15134">
-                                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <customView id="15192">
                     <rect key="frame" x="0.0" y="0.0" width="251" height="547"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
@@ -4510,7 +4493,7 @@ Diameter</string>
                     </segmentedCell>
                 </segmentedControl>
                 <button toolTip="Add Segment" id="ISn-xc-DLS" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="76" y="575" width="28" height="28"/>
+                    <rect key="frame" x="111" y="576" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="7UM-G5-8I7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4518,15 +4501,40 @@ Diameter</string>
                     </buttonCell>
                 </button>
                 <button toolTip="Add Wire; hint: option click starts a new wire." id="15596" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="114" y="576" width="28" height="28"/>
+                    <rect key="frame" x="154" y="576" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-in-board" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="15597">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
+                <popUpButton id="15127">
+                    <rect key="frame" x="20" y="581" width="56" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" imagePosition="only" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" preferredEdge="maxX" selectedItem="15131" id="15128">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="15129">
+                            <items>
+                                <menuItem image="NSSmartBadgeTemplate" hidden="YES" id="15131"/>
+                                <menuItem title="Select all Connected Elements" keyEquivalent="a" id="15130">
+                                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                    <connections>
+                                        <action selector="selectedAllConnectedElementsInSchematicsAction:" target="-2" id="955-4K-YlC"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Move Selected Elements to Sheet…" keyEquivalent="m" id="15134">
+                                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                    <connections>
+                                        <action selector="moveSelectedToSheetInSchematicsAction:" target="-2" id="Sg6-Hk-jBD"/>
+                                    </connections>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-457" y="-250"/>
+            <point key="canvasLocation" x="-711" y="-341"/>
         </customView>
         <customView id="3048" userLabel="Page : Net Classes" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="775" height="445"/>
@@ -4863,11 +4871,11 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="Fhv-aL-293">
-                                                        <rect key="frame" x="142" y="1" width="138" height="17"/>
+                                                        <rect key="frame" x="141.5" y="1" width="137" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="08P-jI-Ar5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="kWR-lY-cmK">
                                                                     <font key="font" metaFont="system"/>
@@ -4897,7 +4905,7 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="7Dt-bL-u5S">
-                                                        <rect key="frame" x="283" y="1" width="88" height="17"/>
+                                                        <rect key="frame" x="282" y="1" width="88" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="93r-N9-QLO">
@@ -4922,7 +4930,7 @@ Diameter</string>
                                                     </tableCellView>
                                                 </prototypeCellViews>
                                             </tableColumn>
-                                            <tableColumn identifier="subnets" editable="NO" width="91" minWidth="80" maxWidth="100" id="Q8E-D1-NF1">
+                                            <tableColumn identifier="subnets" editable="NO" width="92" minWidth="80" maxWidth="100" id="Q8E-D1-NF1">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Subnets">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -4936,7 +4944,7 @@ Diameter</string>
                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 <prototypeCellViews>
                                                     <tableCellView id="6XC-Wl-Zc7">
-                                                        <rect key="frame" x="374" y="1" width="91" height="17"/>
+                                                        <rect key="frame" x="373" y="1" width="92" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yTY-Qt-AA6">
@@ -4945,7 +4953,7 @@ Diameter</string>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="8sN-sg-rZX"/>
                                                             </imageView>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" id="2lT-JD-bw8">
-                                                                <rect key="frame" x="25" y="0.0" width="66" height="17"/>
+                                                                <rect key="frame" x="25" y="0.0" width="67" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Hox-Nh-Vj9">
                                                                     <font key="font" metaFont="system"/>
@@ -6682,7 +6690,7 @@ TW: Track Width</string>
                 </textField>
             </subviews>
         </customView>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15139" userLabel="moveSchematicsElementsToSheet" customClass="NSPanel">
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="15139" userLabel="Dialog : Move Selected Elements to Sheet" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="218" y="839" width="420" height="208"/>
@@ -6698,6 +6706,9 @@ TW: Track Width</string>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15148">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" id="15146" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
@@ -6706,6 +6717,9 @@ TW: Track Width</string>
                         <buttonCell key="cell" type="push" title="Move Selected Elements" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="15149">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                     </button>
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="15145">
@@ -6722,12 +6736,12 @@ TW: Track Width</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="15151"/>
                     </imageView>
-                    <popUpButton verticalHuggingPriority="750" id="15181">
-                        <rect key="frame" x="111" y="101" width="292" height="26"/>
+                    <popUpButton verticalHuggingPriority="750" id="15181" customClass="EBPopUpButton">
+                        <rect key="frame" x="111" y="101" width="292" height="19"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="15184" id="15182">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
+                        <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="15184" id="15182">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
                             <menu key="menu" title="OtherViews" id="15183">
                                 <items>
                                     <menuItem title="Item1" state="on" id="15184"/>

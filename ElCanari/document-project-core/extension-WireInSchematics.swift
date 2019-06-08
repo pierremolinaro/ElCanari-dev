@@ -22,27 +22,21 @@ extension WireInSchematic {
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    if let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
-      return true
-    }else{
-      return false
-    }
+    return true
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : OCObjectSet) {
-    if let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
-      if !ioSet.objects.contains (p1) {
-        ioSet.objects.insert (p1)
-        p1.mX += inDx
-        p1.mY += inDy
-      }
-      if !ioSet.objects.contains (p2) {
-        ioSet.objects.insert (p2)
-        p2.mX += inDx
-        p2.mY += inDy
-      }
+    if let p1 = self.mP1, !ioSet.objects.contains (p1) {
+      ioSet.objects.insert (p1)
+      p1.mX += inDx
+      p1.mY += inDy
+    }
+    if let p2 = self.mP2, !ioSet.objects.contains (p2) {
+      ioSet.objects.insert (p2)
+      p2.mX += inDx
+      p2.mY += inDy
     }
   }
 

@@ -202,6 +202,9 @@ document ProjectDocument root ProjectRoot {
   outlet CanariDragSourceButton mAddCommentButton ;
   outlet CanariDragSourceButton mAddWireButton ;
 
+  outlet NSPanel mMoveSelectedObjectsToSheetPanel ;
+  outlet EBPopUpButton mMoveSelectedObjectsToSheetPopUpButton ;
+
 //  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
 //  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
 
@@ -519,7 +522,7 @@ document ProjectDocument root ProjectRoot {
 
   outlet EBGraphicView mBoardView
     $underObjectsDisplay root.boardBackground
-////    $overObjectsDisplay root.connectedPoints
+//    $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mBoardHorizontalFlip
     $verticalFlip root.mBoardVerticalFlip
     $graphicController #boardObjectsController

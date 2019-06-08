@@ -178,6 +178,7 @@ extension SheetInProject {
           point.mNet = nil
         }
         for point in inPoints {
+          point.mSymbol = nil
           let idx = self.mPoints.firstIndex (of: point)!
           self.mPoints.remove (at: idx)
         }
@@ -185,9 +186,6 @@ extension SheetInProject {
       }
     }
   }
-
-  //····················································································································
-
 
   //····················································································································
 

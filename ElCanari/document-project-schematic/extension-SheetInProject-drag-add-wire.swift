@@ -39,7 +39,11 @@ extension SheetInProject {
       point.mNet = wire.mP1?.mNet
       wire.mP2 = point
       self.mPoints.append (point)
-    }else if pointsAtP2.count == 1 { // Use point at p2, create a point at p1
+      if (pointsAtP1 [0].mNet == nil) && (pointsAtP1 [0].mSymbol != nil) {
+        point.mNet = inNewNetCreator ()
+        point.propagateNetToAccessiblePointsThroughtWires ()
+      }
+    }else if (pointsAtP1.count == 0) && (pointsAtP2.count == 1) { // Use point at p2, create a point at p1
       let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
       wire.mP2 = pointsAtP2 [0]
@@ -49,6 +53,10 @@ extension SheetInProject {
       point.mNet = wire.mP2?.mNet
       wire.mP1 = point
       self.mPoints.append (point)
+      if (pointsAtP2 [0].mNet == nil) && (pointsAtP2 [0].mSymbol != nil) {
+        point.mNet = inNewNetCreator ()
+        point.propagateNetToAccessiblePointsThroughtWires ()
+      }
     }else{ // Assign no net
       let wire = WireInSchematic (self.ebUndoManager)
       possibleWire = wire
