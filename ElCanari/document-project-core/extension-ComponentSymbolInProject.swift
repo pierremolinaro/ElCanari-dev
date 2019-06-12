@@ -183,9 +183,11 @@ extension ComponentSymbolInProject {
   //--- Remove nc, and attached points in project if they are not connected to any wire
     for point in self.mPoints {
     //--- Remove NC
-      point.mNC?.mSheet = nil // Remove from sheet
+      point.mNC?.mSheet = nil // Remove NC from sheet
       point.mNC = nil // Detach from pin
-      if (point.mWiresP1s.count == 0) && (point.mWiresP1s.count == 0) {
+      point.mSymbolPinName = ""
+      if (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0 {
+        point.mSheet = nil // Remove from sheet
         point.mNet = nil // Remove from net
       }else{ // Define point location from pin
         let pinLocation = point.location!

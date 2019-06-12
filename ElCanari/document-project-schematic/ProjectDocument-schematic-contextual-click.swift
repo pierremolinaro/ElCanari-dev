@@ -22,6 +22,7 @@ extension CustomizedProjectDocument {
       let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
     //--- Add Connect symbol pins
       self.appendConnectSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
+      self.appendNCToAllUnconnectedSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
@@ -38,6 +39,51 @@ extension CustomizedProjectDocument {
     }
   //---
     return menu
+  }
+
+  //····················································································································
+  // Add NC to all unconnected pins
+  //····················································································································
+
+  internal func canAddNCToSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
+    var connectableSymbols = [ComponentSymbolInProject] ()
+    for symbol in symbolsUnderMouse {
+      for point in symbol.mPoints {
+        if ((point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0) && (point.mNC == nil) {
+          connectableSymbols.append (symbol)
+          break
+        }
+      }
+    }
+    return connectableSymbols
+  }
+
+  //····················································································································
+
+  private func appendNCToAllUnconnectedSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
+    let symbols = self.canAddNCToSymbolPins (at: inUnalignedMouseDownPoint)
+    if symbols.count > 0 {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Add NC to All Unconnected Pins", action: #selector (CustomizedProjectDocument.addNCToUnconnectedSymbolPinsAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = symbols
+      menu.addItem (menuItem)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func addNCToUnconnectedSymbolPinsAction (_ inSender : NSMenuItem) {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject], let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in symbols {
+        for point in symbol.mPoints {
+          _ = selectedSheet.addNCToPin (toPoint: point)
+        }
+      }
+    }
   }
 
   //····················································································································
@@ -84,7 +130,6 @@ extension CustomizedProjectDocument {
       }
     }
   }
-
 
   //····················································································································
   // Connect all pins of symbols
