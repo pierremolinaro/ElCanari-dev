@@ -50,7 +50,13 @@ class EBStrokeBezierPathShape : EBShape {
       let bp = inAffineTransform.transform (path)
       filledPaths.append (bp)
     }
-    let result = EBStrokeBezierPathShape (transformedPaths: filledPaths, self.mColor, self.mClipBezierPath)
+    let clipPath : NSBezierPath?
+    if let path = self.mClipBezierPath {
+      clipPath = inAffineTransform.transform (path)
+    }else{
+      clipPath = nil
+    }
+    let result = EBStrokeBezierPathShape (transformedPaths: filledPaths, self.mColor, clipPath)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -86,6 +92,9 @@ class EBStrokeBezierPathShape : EBShape {
       if !bp.isEmpty {
         r = r.union (bp.bounds)
       }
+    }
+    if let path = self.mClipBezierPath {
+      r = r.intersection (path.bounds)
     }
     return r
   }
@@ -130,6 +139,9 @@ class EBStrokeBezierPathShape : EBShape {
         equal = self.mColor == operand.mColor
       }
       if equal {
+        equal = self.mClipBezierPath == operand.mClipBezierPath
+      }
+      if equal {
         equal = super.isEqualToShape (operand)
       }
       var idx = 0
@@ -151,6 +163,7 @@ class EBStrokeBezierPathShape : EBShape {
   override func hash (into hasher: inout Hasher) {
     super.hash (into: &hasher)
     self.mColor.hash (into: &hasher)
+    self.mClipBezierPath?.hash (into: &hasher)
     for path in self.mFilledPaths {
       path.hash (into: &hasher)
     }

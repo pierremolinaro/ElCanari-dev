@@ -68,7 +68,7 @@ protocol ComponentInProject_placementInSchematic : class {
 //    Entity: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ComponentInProject : EBManagedObject,
+class ComponentInProject : BoardObject,
          ComponentInProject_mNamePrefix,
          ComponentInProject_mNameIndex,
          ComponentInProject_mComponentValue,

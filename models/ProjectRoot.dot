@@ -51,6 +51,7 @@ digraph G {
   DevicePadAssignmentInProject:mPin -> DevicePinInProject:DevicePinInProject [dir=both arrowtail=none arrowhead=onormal] ;
   DevicePackageInProject:mMasterPads -> DeviceMasterPadInProject:DeviceMasterPadInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceMasterPadInProject:mSlavePads -> DeviceSlavePadInProject:DeviceSlavePadInProject [dir=both arrowtail=none arrowhead=vee] ;
+  ComponentInProject -> BoardObject [arrowhead=dot] ;
   ComponentInProject:mSelectedPackage -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=onormal] ;
   ComponentInProject:mSymbols -> ComponentSymbolInProject:mComponent [dir=both arrowtail=onormal arrowhead=vee] ;
   ComponentSymbolInProject -> SchematicObject [arrowhead=dot] ;

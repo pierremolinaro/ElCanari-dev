@@ -43,10 +43,26 @@ extension SheetInProject {
   
   //····················································································································
 
-  func connect (points inPoints : [PointInSchematic],
-                window inWindow : NSWindow,
-                panelForMergingSeveralSubnet inPanel : NSPanel,
-                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
+  func canConnectWithoutDialog (points inPoints : [PointInSchematic]) -> Bool {
+    let wires = self.wiresStrictlyContaining (point: inPoints [0].location!)
+    var netSet = Set <NetInProject> ()
+    for wire in wires {
+      if let net = wire.mP1?.mNet {
+        netSet.insert (net)
+      }
+    }
+    for point in inPoints {
+      if let net = point.mNet {
+        netSet.insert (net)
+      }
+    }
+  //---
+    return (inPoints.count > 1) && (netSet.count < 2)
+  }
+
+  //····················································································································
+
+  func connectWithoutDialog (points inPoints : [PointInSchematic]) -> ([PointInSchematic], [NetInProject]) {
     let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
     var points = inPoints
     if let newPoint = optionalPoint {
@@ -70,9 +86,49 @@ extension SheetInProject {
       }
       let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
       self.propagateAndMerge (net: newNet, to: points)
+      return ([], []) // For indicating connection is done
     }else if netArray.count == 1 {
       self.propagateAndMerge (net: netArray [0], to: points)
-    }else if netArray.count == 2 {
+      return ([], []) // For indicating connection is done
+    }else{
+      return (points, netArray)
+    }
+  }
+
+  //····················································································································
+
+  func connect (points inPoints : [PointInSchematic],
+                window inWindow : NSWindow,
+                panelForMergingSeveralSubnet inPanel : NSPanel,
+                popUpButtonForMergingSeveralSubnet inPopUp : EBPopUpButton) {
+    let (points, netArray) = self.connectWithoutDialog (points: inPoints)
+//    let optionalPoint = self.addPointToWire (at: inPoints [0].location!)
+//    var points = inPoints
+//    if let newPoint = optionalPoint {
+//      points.append (newPoint)
+//    }
+//    var netSet = Set <NetInProject> ()
+//    for point in points {
+//      if let net = point.mNet {
+//        netSet.insert (net)
+//      }
+//    }
+//  //---
+//    let netArray = Array (netSet).sorted { $0.mNetName < $1.mNetName }
+//    if netArray.count == 0 { // Allocate a new net if a point has a label or a pin
+//      var hasPinOrLabel = false
+//      for p in points {
+//        if (p.mSymbol != nil) || (p.mLabels.count > 0) {
+//          hasPinOrLabel = true
+//          break
+//        }
+//      }
+//      let newNet : NetInProject? = hasPinOrLabel ? self.mRoot?.createNetWithAutomaticName () : nil
+//      self.propagateAndMerge (net: newNet, to: points)
+//    }else if netArray.count == 1 {
+//      self.propagateAndMerge (net: netArray [0], to: points)
+//    }else
+    if netArray.count == 2 {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
       for net in netArray {
@@ -92,7 +148,7 @@ extension SheetInProject {
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
         self.handleAlertResponseForMergingNets (response, points, netArray)
       }
-    }else{ // netArray.count > 3
+    }else if netArray.count > 3 {
       self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, inPanel, inPopUp)
     }
   }

@@ -20,6 +20,8 @@ extension CustomizedProjectDocument {
       let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
+    //--- Add Connect symbol pins
+      self.appendConnectSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
     //--- Add NC ?
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
@@ -35,6 +37,71 @@ extension CustomizedProjectDocument {
     }
   //---
     return menu
+  }
+
+  //····················································································································
+  // Connect all pins  of symbol
+  //····················································································································
+
+  internal func canConnectSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
+    var connectableSymbols = [ComponentSymbolInProject] ()
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in symbolsUnderMouse {
+        for point in symbol.mPoints {
+          let allPointsAtAlignedMouseLocation = selectedSheet.pointsInSchematics (at: point.location!)
+          if selectedSheet.canConnectWithoutDialog (points: allPointsAtAlignedMouseLocation) {
+            connectableSymbols.append (symbol)
+            break
+          }
+        }
+      }
+    }
+    return connectableSymbols
+  }
+
+  //····················································································································
+
+  private func schematicSymbols (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+    var result = [ComponentSymbolInProject] ()
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      for object in selectedSheet.mObjects {
+        if let symbol = object as? ComponentSymbolInProject, let shape = symbol.objectDisplay {
+          if shape.contains (point: inUnalignedMouseDownPoint.cocoaPoint) {
+            result.append (symbol)
+          }
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  private func appendConnectSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
+    let symbols = self.canConnectSymbolPins (at: inUnalignedMouseDownPoint)
+    if symbols.count > 0 {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Connect Symbol Pins…", action: #selector (CustomizedProjectDocument.connectSymbolPinsAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = symbols
+      menu.addItem (menuItem)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func connectSymbolPinsAction (_ inSender : NSMenuItem) {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject], let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in symbols {
+        for point in symbol.mPoints {
+          let allPoints = selectedSheet.pointsInSchematics (at: point.location!)
+          _ = selectedSheet.connectWithoutDialog (points: allPoints)
+        }
+      }
+    }
   }
 
   //····················································································································
@@ -112,6 +179,9 @@ extension CustomizedProjectDocument {
         canDisconnect = true
         break
       }else if point.mLabels.count > 1 {
+        canDisconnect = true
+        break
+      }else if point.mSymbol != nil {
         canDisconnect = true
         break
       }else if (point.mLabels.count == 1) && ((point.mWiresP1s.count + point.mWiresP2s.count) == 1) {

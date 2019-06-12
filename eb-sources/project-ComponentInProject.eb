@@ -1,6 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ComponentInProject {
+graphic entity ComponentInProject : BoardObject {
   toOne DeviceInProject mDevice inverse toMany mComponents ;
   toOne DevicePackageInProject mSelectedPackage ;
   toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;

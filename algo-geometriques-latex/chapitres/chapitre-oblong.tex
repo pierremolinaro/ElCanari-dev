@@ -280,3 +280,67 @@ func segment (from p1 : CGPoint,
 }
 \end{lstlisting}
 
+
+
+
+
+
+
+
+
+\section{Distance d'un point à une droite, 3\up{e} méthode}
+
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, 0)
+       -- (1.5, 0.75) node[midway, below] {$a$}
+       -- ++ (0.5, 0.25)  node[midway, below] {$b$}
+       -- (1, 1.5) node[midway, right] {$q$}
+        -- (0, 0) node[midway, left] {$p$} ;
+    \draw (1, 1.5) -- ++ (0.4, -0.8) node[midway, left] {$h$} ;
+    \draw[fill] (0, 0) circle (2pt) ;
+    \draw[fill] (2, 1) circle (2pt) ;
+    \draw[left] (-.3, 0) node {$P_1$} ;
+    \draw[above] (1, 1.5) node {$P$} ;
+    \draw[fill] (1, 1.5) circle (2pt) ;
+    \draw[right] (2.3, 1) node {$P_2$} ;
+  \end{tikzpicture}
+\end{center}
+
+Problème : connaissant les trois points $P_1$, $P_2$ et $P$, calculer $h$. Plus présicement, on connait :
+\begin{itemize}
+  \item $p$, distance entre $P_1$ et $P$ ;
+  \item $q$, distance entre $P_2$ et $P$ ;
+  \item $d = a + b$, distance entre $P_1$ et $P_2$.
+\end{itemize}
+
+Le système est donc (où les inconnues sont $a$, $b$ et $h$, on cherche $h$) :
+\begin{equation*}
+  \begin{array}{r}
+    d = a + b \\
+    p^2 = a^2 + h^2 \\
+    q^2 = b^2 + h^2
+  \end{array}
+\end{equation*}
+
+Il vient :
+\begin{equation*}
+ p^2 - q^2 = a^2 - b^2 = (a + b) (a- b) = d (a - b)
+\end{equation*}
+
+Donc (ce qui exige que les deux points $P_1$ et $P_2$ soient distincts) :
+\begin{equation*}
+ a - b = \frac{p^2 - q^2}{d}
+\end{equation*}
+
+D'autre part :
+\begin{equation*}
+ 2 h^2 = p^2 + q^2 - a^2 - b^2 = p^2 + q^2 - \frac{1}{2} (a+b)^2 - \frac{1}{2} (a-b)^2
+\end{equation*}
+
+Finalement :
+\begin{equation*}
+ 4 h^2 = 2 p^2 + 2 q^2 -d^2 - (\frac{p^2 - q^2}{d})^2
+\end{equation*}
+
