@@ -31,6 +31,7 @@ extension CustomizedProjectDocument {
     //--- Add Remove point from wire ?
       self.appendRemovePointFromWireItemTo (menu: menu, points: points)
     //--- Add disconnect ?
+      self.appendDisconnectAllSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
       self.appendDisconnectItemTo (menu: menu, points: points)
     //--- Add Labels
       self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: canariAlignedMouseDownLocation, points: points)
@@ -40,7 +41,53 @@ extension CustomizedProjectDocument {
   }
 
   //····················································································································
-  // Connect all pins  of symbol
+  // Disconnect all pins of symbols
+  //····················································································································
+
+  internal func canDisconnectAllSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
+    var disconnectableSymbols = [ComponentSymbolInProject] ()
+    for symbol in symbolsUnderMouse {
+      for point in symbol.mPoints {
+        if (point.mNC != nil) || ((point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) > 0) {
+          disconnectableSymbols.append (symbol)
+          break
+        }
+      }
+    }
+    return disconnectableSymbols
+  }
+
+  //····················································································································
+
+  private func appendDisconnectAllSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
+    let symbols = self.canDisconnectAllSymbolPins (at: inUnalignedMouseDownPoint)
+    if symbols.count > 0 {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Disconnect All Symbol Pins", action: #selector (CustomizedProjectDocument.disconnectAllSymbolPinsAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = symbols
+      menu.addItem (menuItem)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func disconnectAllSymbolPinsAction (_ inSender : NSMenuItem) {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
+      for symbol in symbols {
+        for point in symbol.mPoints {
+          self.disconnectInSchematic (points: [point])
+        }
+      }
+    }
+  }
+
+
+  //····················································································································
+  // Connect all pins of symbols
   //····················································································································
 
   internal func canConnectSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
@@ -84,7 +131,7 @@ extension CustomizedProjectDocument {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      let menuItem = NSMenuItem (title: "Connect Symbol Pins…", action: #selector (CustomizedProjectDocument.connectSymbolPinsAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (title: "Connect Symbol Pins", action: #selector (CustomizedProjectDocument.connectSymbolPinsAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = symbols
       menu.addItem (menuItem)
