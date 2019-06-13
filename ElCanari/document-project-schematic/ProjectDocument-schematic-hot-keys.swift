@@ -45,6 +45,8 @@ extension CustomizedProjectDocument {
     //--- Create NC
       self.mAddNCSchematicHotKeyTextField?.textColor = self.color (self.canCreateNC (points: points))
       self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (self.canAddNCToSymbolPins (at: canariMouseDownLocation).count > 0)
+    //--- Exchange symbol
+      self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (self.canExchangeSymbol (at: canariMouseDownLocation) != nil)
     }
   }
 
@@ -69,6 +71,8 @@ extension CustomizedProjectDocument {
   //--- Create NC
     self.mAddNCSchematicHotKeyTextField?.textColor = .disabledControlTextColor
     self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+  //--- Exchange symbol
+    self.mExchangeSymbolSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   }
 
   //····················································································································
@@ -123,6 +127,11 @@ extension CustomizedProjectDocument {
       let symbolsForAddingNS = self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation)
       if ((inKey == UnicodeScalar ("M")) || (inKey == UnicodeScalar ("m"))) && (symbolsForAddingNS.count > 0) {
         self.addNCToUnconnectedPins (ofSymbols: symbolsForAddingNS)
+      }
+    //--- Exchange symbol
+      let optionalSymbol = self.canExchangeSymbol (at: canariUnalignedMouseDownLocation)
+      if (inKey == UnicodeScalar ("X")) || (inKey == UnicodeScalar ("x")), let symbol = optionalSymbol {
+        self.runExchangeDialog (forSymbol: symbol)
       }
     }
   //--- For updating hot key labels

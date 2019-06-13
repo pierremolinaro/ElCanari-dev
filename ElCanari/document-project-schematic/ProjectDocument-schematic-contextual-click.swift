@@ -34,12 +34,98 @@ extension CustomizedProjectDocument {
     //--- Add disconnect ?
       self.appendDisconnectAllSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
       self.appendDisconnectItemTo (menu: menu, points: points)
+    //--- Add Exchange
+      self.appendExchangeSymbolItemTo (menu: menu, at: inUnalignedMouseDownPoint)
     //--- Add Labels
       self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: canariAlignedMouseDownLocation, points: points)
     }
   //---
     return menu
   }
+
+  //····················································································································
+  // Exchange symbol
+  //····················································································································
+
+  internal func canExchangeSymbol (at inUnalignedMouseDownPoint : CanariPoint) -> ComponentSymbolInProject? {
+    var result : ComponentSymbolInProject? = nil
+    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
+    if symbolsUnderMouse.count == 1 {
+      let symbolUnderMouse = symbolsUnderMouse [0]
+      var n = 0
+      for component in self.rootObject.mComponents {
+        for symbol in component.mSymbols {
+          if symbol.mSymbolTypeName == symbolUnderMouse.mSymbolTypeName {
+            n += 1
+          }
+        }
+      }
+      if n > 1 {
+        result = symbolUnderMouse
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+
+  private func appendExchangeSymbolItemTo (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
+    if let symbol = self.canExchangeSymbol (at: inUnalignedMouseDownPoint) {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      let menuItem = NSMenuItem (title: "Exchange Symbol…", action: #selector (CustomizedProjectDocument.exchangeSymbolAction (_:)), keyEquivalent: "")
+      menuItem.target = self
+      menuItem.representedObject = symbol
+      menu.addItem (menuItem)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func exchangeSymbolAction (_ inSender : NSMenuItem) {
+    if let symbolUnderMouse = inSender.representedObject as? ComponentSymbolInProject {
+      self.runExchangeDialog (forSymbol: symbolUnderMouse)
+    }
+  }
+
+  //····················································································································
+
+  internal func runExchangeDialog (forSymbol inSymbolUnderMouse : ComponentSymbolInProject) {
+    var candidateSymbols = [ComponentSymbolInProject] ()
+    for component in self.rootObject.mComponents {
+      for symbol in component.mSymbols {
+        if symbol.mSymbolTypeName == inSymbolUnderMouse.mSymbolTypeName {
+          candidateSymbols.append (symbol)
+        }
+      }
+    }
+    if candidateSymbols.count > 1, let panel = self.mExchangeSymbolPanel, let popup = self.mExchangeSymbolPopUpButton {
+      popup.removeAllItems ()
+      for symbol in candidateSymbols {
+        popup.addItem (withTitle: symbol.componentName! + ":" + symbol.mSymbolInstanceName)
+        popup.lastItem?.representedObject = symbol
+        if symbol === inSymbolUnderMouse {
+          popup.select (popup.lastItem)
+        }
+      }
+      self.windowForSheet?.beginSheet (panel) { (inModalResponse) in
+        if inModalResponse == .stop,
+             let candidateSymbol = popup.selectedItem?.representedObject as? ComponentSymbolInProject,
+             candidateSymbol !== inSymbolUnderMouse {
+          let symbolUnderMouseComponent = inSymbolUnderMouse.mComponent
+          let symbolUnderMouseInstanceName = inSymbolUnderMouse.mSymbolInstanceName
+          let candidateSymbolComponent = candidateSymbol.mComponent
+          let candidateSymbolInstanceName = candidateSymbol.mSymbolInstanceName
+          inSymbolUnderMouse.mComponent = candidateSymbolComponent
+          inSymbolUnderMouse.mSymbolInstanceName = candidateSymbolInstanceName
+          candidateSymbol.mComponent = symbolUnderMouseComponent
+          candidateSymbol.mSymbolInstanceName = symbolUnderMouseInstanceName
+        }
+      }
+    }
+  }
+
 
   //····················································································································
   // Add NC to all unconnected pins

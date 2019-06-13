@@ -452,6 +452,9 @@ import Cocoa
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
   @IBOutlet var mEditNetClassButton : EBButton?
+  @IBOutlet var mExchangeSymbolPanel : NSPanel?
+  @IBOutlet var mExchangeSymbolPopUpButton : EBPopUpButton?
+  @IBOutlet var mExchangeSymbolSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView?
@@ -768,6 +771,9 @@ import Cocoa
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditNetClassButton, "mEditNetClassButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExchangeSymbolPanel, "mExchangeSymbolPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mExchangeSymbolPopUpButton, "mExchangeSymbolPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -1964,6 +1970,9 @@ import Cocoa
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mEditNetClassButton?.ebCleanUp ()
+    self.mExchangeSymbolPanel?.ebCleanUp ()
+    self.mExchangeSymbolPopUpButton?.ebCleanUp ()
+    self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
     self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
@@ -2157,6 +2166,9 @@ import Cocoa
 //    self.mEditDeviceButton = nil
 //    self.mEditFontButton = nil
 //    self.mEditNetClassButton = nil
+//    self.mExchangeSymbolPanel = nil
+//    self.mExchangeSymbolPopUpButton = nil
+//    self.mExchangeSymbolSchematicHotKeyTextField = nil
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
 //    self.mGridZoomBoardLimitsInspectorView = nil

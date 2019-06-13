@@ -208,9 +208,12 @@ document ProjectDocument root ProjectRoot {
 //  outlet EBTextObserverField mConnexionErrorTextField $valueObserver root.connexionErrorString ;
 //  outlet EBTextObserverField mConnexionWarningTextField $valueObserver root.connexionWarningString ;
 
-//--- Contextual menu
+//--- Contextual menus
   outlet NSPanel mMergeSeveralSubnetsPanel ;
   outlet EBPopUpButton mMergeSeveralSubnetsPopUpButton ;
+  
+  outlet NSPanel mExchangeSymbolPanel ;
+  outlet EBPopUpButton mExchangeSymbolPopUpButton ;
   
 //--- Schematic inconsistent error
   outlet NSPanel mInconsistentSchematicErrorPanel ;
@@ -229,6 +232,7 @@ document ProjectDocument root ProjectRoot {
   outlet NSTextField mDisconnectAllSymbolPinsSchematicHotKeyTextField ;
   outlet NSTextField mConnectAllSymbolPinsSchematicHotKeyTextField ;
   outlet NSTextField mAddNCToAllSymbolPinsSchematicHotKeyTextField ;
+  outlet NSTextField mExchangeSymbolSchematicHotKeyTextField ;
    
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;
