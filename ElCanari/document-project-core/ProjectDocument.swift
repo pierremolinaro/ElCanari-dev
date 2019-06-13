@@ -373,6 +373,7 @@ import Cocoa
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mAddLeftLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddNCSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mAddNCToAllSymbolPinsSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddNetClassButton : EBButton?
   @IBOutlet var mAddNetClassErrorMessageTextField : NSTextField?
   @IBOutlet var mAddNetClassPanel : NSPanel?
@@ -439,11 +440,13 @@ import Cocoa
   @IBOutlet var mComponentSymbolValueTextField : EBTextField?
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
+  @IBOutlet var mConnectAllSymbolPinsSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mConnectSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mCurrentComponentNameTextField : NSTextField?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mDevicePackageTableView : StringArrayTableView?
   @IBOutlet var mDeviceSymbolTableView : TwoStringArrayTableView?
+  @IBOutlet var mDisconnectAllSymbolPinsSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mDisconnectSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mDuplicateSelectedComponentsActionButton : EBButton?
   @IBOutlet var mEditDeviceButton : EBButton?
@@ -686,6 +689,7 @@ import Cocoa
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddLeftLabelSchematicHotKeyTextField, "mAddLeftLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNCSchematicHotKeyTextField, "mAddNCSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mAddNCToAllSymbolPinsSchematicHotKeyTextField, "mAddNCToAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassButton, "mAddNetClassButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddNetClassErrorMessageTextField, "mAddNetClassErrorMessageTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
@@ -752,11 +756,13 @@ import Cocoa
     checkOutletConnection (self.mComponentSymbolValueTextField, "mComponentSymbolValueTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mConnectAllSymbolPinsSchematicHotKeyTextField, "mConnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mConnectSchematicHotKeyTextField, "mConnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mCurrentComponentNameTextField, "mCurrentComponentNameTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mDeviceSymbolTableView, "mDeviceSymbolTableView", TwoStringArrayTableView.self, #file, #line)
+    checkOutletConnection (self.mDisconnectAllSymbolPinsSchematicHotKeyTextField, "mDisconnectAllSymbolPinsSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDisconnectSchematicHotKeyTextField, "mDisconnectSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
@@ -1879,6 +1885,7 @@ import Cocoa
     self.mAddFontButton?.ebCleanUp ()
     self.mAddLeftLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddNCSchematicHotKeyTextField?.ebCleanUp ()
+    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddNetClassButton?.ebCleanUp ()
     self.mAddNetClassErrorMessageTextField?.ebCleanUp ()
     self.mAddNetClassPanel?.ebCleanUp ()
@@ -1945,11 +1952,13 @@ import Cocoa
     self.mComponentSymbolValueTextField?.ebCleanUp ()
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
+    self.mConnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mConnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mCurrentComponentNameTextField?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mDevicePackageTableView?.ebCleanUp ()
     self.mDeviceSymbolTableView?.ebCleanUp ()
+    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.ebCleanUp ()
     self.mDisconnectSchematicHotKeyTextField?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
@@ -2069,6 +2078,7 @@ import Cocoa
 //    self.mAddFontButton = nil
 //    self.mAddLeftLabelSchematicHotKeyTextField = nil
 //    self.mAddNCSchematicHotKeyTextField = nil
+//    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mAddNetClassButton = nil
 //    self.mAddNetClassErrorMessageTextField = nil
 //    self.mAddNetClassPanel = nil
@@ -2135,11 +2145,13 @@ import Cocoa
 //    self.mComponentSymbolValueTextField = nil
 //    self.mComponentTableView = nil
 //    self.mComponentsPageView = nil
+//    self.mConnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mConnectSchematicHotKeyTextField = nil
 //    self.mCurrentComponentNameTextField = nil
 //    self.mDeviceLibraryTableView = nil
 //    self.mDevicePackageTableView = nil
 //    self.mDeviceSymbolTableView = nil
+//    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField = nil
 //    self.mDisconnectSchematicHotKeyTextField = nil
 //    self.mDuplicateSelectedComponentsActionButton = nil
 //    self.mEditDeviceButton = nil

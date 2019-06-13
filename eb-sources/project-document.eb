@@ -226,6 +226,9 @@ document ProjectDocument root ProjectRoot {
   outlet NSTextField mAddTopLabelSchematicHotKeyTextField ;
   outlet NSTextField mAddBottomSchematicHotKeyTextField ;
   outlet NSTextField mAddNCSchematicHotKeyTextField ;
+  outlet NSTextField mDisconnectAllSymbolPinsSchematicHotKeyTextField ;
+  outlet NSTextField mConnectAllSymbolPinsSchematicHotKeyTextField ;
+  outlet NSTextField mAddNCToAllSymbolPinsSchematicHotKeyTextField ;
    
 //--- Unplaced symbols inspector
   outlet CanariDragSourceTableView mUnplacedSymbolsTableView $models root.unplacedSymbols ;

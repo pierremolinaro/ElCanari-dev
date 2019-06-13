@@ -22,8 +22,8 @@ extension CustomizedProjectDocument {
       let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
     //--- Add Connect symbol pins
       self.appendConnectSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
-      self.appendNCToAllUnconnectedSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
     //--- Add NC ?
+      self.appendNCToAllUnconnectedSymbolPins (menu: menu, at: inUnalignedMouseDownPoint)
       self.appendCreateNCItemTo (menu: menu, points: points)
     //--- Add Connect ? (only if no NC)
       self.appendCreateConnectItemTo (menu: menu, points: points)
@@ -77,8 +77,16 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func addNCToUnconnectedSymbolPinsAction (_ inSender : NSMenuItem) {
-    if let symbols = inSender.representedObject as? [ComponentSymbolInProject], let selectedSheet = self.rootObject.mSelectedSheet {
-      for symbol in symbols {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
+      self.addNCToUnconnectedPins (ofSymbols: symbols)
+    }
+  }
+
+  //····················································································································
+
+  internal func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in inSymbols {
         for point in symbol.mPoints {
           _ = selectedSheet.addNCToPin (toPoint: point)
         }
@@ -123,10 +131,16 @@ extension CustomizedProjectDocument {
 
   @objc private func disconnectAllSymbolPinsAction (_ inSender : NSMenuItem) {
     if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
-      for symbol in symbols {
-        for point in symbol.mPoints {
-          self.disconnectInSchematic (points: [point])
-        }
+      self.disconnectAllPins (ofSymbols: symbols)
+    }
+  }
+
+  //····················································································································
+
+  internal func disconnectAllPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+    for symbol in inSymbols {
+      for point in symbol.mPoints {
+        self.disconnectInSchematic (points: [point])
       }
     }
   }
@@ -186,8 +200,16 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   @objc private func connectSymbolPinsAction (_ inSender : NSMenuItem) {
-    if let symbols = inSender.representedObject as? [ComponentSymbolInProject], let selectedSheet = self.rootObject.mSelectedSheet {
-      for symbol in symbols {
+    if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
+      self.connectPins (ofSymbols: symbols)
+    }
+  }
+
+  //····················································································································
+
+  internal func connectPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      for symbol in inSymbols {
         for point in symbol.mPoints {
           let allPoints = selectedSheet.pointsInSchematics (at: point.location!)
           _ = selectedSheet.connectWithoutDialog (points: allPoints)
