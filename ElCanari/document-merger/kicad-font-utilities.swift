@@ -29,14 +29,14 @@ func stringMetrics (str inString : String,
     if let charDefinition = inKicadFont [unicodeChar.value] {
       stringWidth += charDefinition.advancement
       for charSegment in charDefinition.segments {
-        let y1 = charSegment.y1
+        let y1 = Int (charSegment.y1)
         if y1 > descent {
           descent = y1
         }
         if y1 < ascent {
           ascent = y1
         }
-        let y2 = charSegment.y2
+        let y2 = Int (charSegment.y2)
         if y2 > descent {
           descent = y2
         }
