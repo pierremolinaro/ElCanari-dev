@@ -69,6 +69,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_boardLimitBorderLeft_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardLimitBorderRight_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_borderElementCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_boarderViewBackground_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_deviceNames_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netWarningCount_fromElementsOfSet (inRemovedSet) // Transient property
@@ -130,6 +131,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_boardLimitBorderLeft_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardLimitBorderRight_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_borderElementCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_boarderViewBackground_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_deviceNames_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netWarningCount_toElementsOfSet (inAddedSet) // Transient property
@@ -3249,6 +3251,62 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     for managedObject in inSet {
       self.mObserversOf_borderElementCountString.apply { (_ observer : EBEvent) in
         managedObject.borderElementCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boarderViewBackground' transient property
+  //····················································································································
+
+  private var mObserversOf_boarderViewBackground = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boarderViewBackground (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_boarderViewBackground.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boarderViewBackground_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boarderViewBackground (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_boarderViewBackground.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boarderViewBackground_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boarderViewBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boarderViewBackground.apply { (_ observer : EBEvent) in
+        managedObject.boarderViewBackground_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boarderViewBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_boarderViewBackground.apply { (_ observer : EBEvent) in
+        managedObject.boarderViewBackground_property.removeEBObserver (observer)
       }
     }
   }

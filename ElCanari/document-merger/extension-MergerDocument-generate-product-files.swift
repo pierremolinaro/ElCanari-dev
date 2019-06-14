@@ -232,7 +232,7 @@ extension MergerDocument {
   //····················································································································
 
   fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
-    if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect () {
+    if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let boardWidth = self.rootObject.boardWidth ?? 0
       for product in self.rootObject.artwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
         let horizontalMirror = product.horizontalMirror
@@ -243,7 +243,7 @@ extension MergerDocument {
         if product.drawInternalBoardLimits {
           for board in self.rootObject.boardInstances_property.propval {
             let lineWidth : CGFloat = canariUnitToCocoa (board.myModel_property.propval!.modelLimitWidth)
-            let r : NSRect = board.instanceRect!.cocoaRect ().insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
+            let r : NSRect = board.instanceRect!.cocoaRect.insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
             let bp = NSBezierPath (rect:r)
             bp.lineWidth = lineWidth
             strokeBezierPaths.append (bp)

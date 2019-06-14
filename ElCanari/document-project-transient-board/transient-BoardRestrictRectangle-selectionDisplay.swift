@@ -13,18 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerBoardInstance_selectionDisplay (
-       _ self_instanceRect : CanariRect
+func transient_BoardRestrictRectangle_selectionDisplay (
+       _ self_mX : Int,                                 
+       _ self_mY : Int,                                 
+       _ self_mWidth : Int,                             
+       _ self_mHeight : Int,                            
+       _ self_mIsInFrontLayer : Bool,                   
+       _ self_mIsInBackLayer : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r : NSRect = self_instanceRect.cocoaRect
-  let bp = NSBezierPath (rect: r)
-  bp.lineWidth = 0.0
-  bp.lineJoinStyle = .round
-  let shapes = EBShape ()
-  shapes.append (EBFilledBezierPathShape ([bp], NSColor.cyan.withAlphaComponent (0.15)))
-  shapes.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  return shapes
+
 //--- END OF USER ZONE 2
 }
 

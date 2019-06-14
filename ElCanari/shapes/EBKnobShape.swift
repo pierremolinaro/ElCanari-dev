@@ -70,7 +70,6 @@ class EBKnobShape : EBShape {
   //····················································································································
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    super.draw (inView, inDirtyRect)
     if inView.needsToDraw (self.rect) {
       let bp : NSBezierPath
       switch mKind {
@@ -86,6 +85,7 @@ class EBKnobShape : EBShape {
       NSColor.black.setStroke ()
       bp.stroke ()
     }
+    super.draw (inView, inDirtyRect)
   }
 
   //····················································································································

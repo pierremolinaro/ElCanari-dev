@@ -99,7 +99,6 @@ class EBTextKnobShape : EBShape {
   //····················································································································
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    super.draw (inView, inDirtyRect)
     if inView.needsToDraw (self.knobRect) {
       NSColor.white.setFill ()
       NSBezierPath.fill (self.knobRect)
@@ -109,6 +108,7 @@ class EBTextKnobShape : EBShape {
       NSColor.black.setFill ()
       self.mFilledBezierPath.fill ()
     }
+    super.draw (inView, inDirtyRect)
   }
 
   //····················································································································

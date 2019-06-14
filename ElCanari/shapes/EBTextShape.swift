@@ -108,7 +108,6 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    super.draw (inView, inDirtyRect)
     if inView.needsToDraw (self.mFilledBezierPath.bounds) {
       if let backColor = self.mBackColor {
         backColor.setFill ()
@@ -117,6 +116,7 @@ class EBTextShape : EBShape {
       self.mForeColor.setFill ()
       self.mFilledBezierPath.fill ()
     }
+    super.draw (inView, inDirtyRect)
   }
 
   //····················································································································

@@ -30,6 +30,7 @@ include "eb-sources/device-deviceRoot.eb" ;
 //--- Project
 include "eb-sources/project-document.eb" ;
 include "eb-sources/project-BoardObject.eb" ;
+include "eb-sources/project-BoardRestrictRectangle.eb" ;
 include "eb-sources/project-BorderCurve.eb" ;
 include "eb-sources/project-CommentInSchematic.eb" ;
 include "eb-sources/project-ComponentInProject.eb" ;

@@ -83,7 +83,7 @@ extension SymbolSolidRect {
     if inKnobIndex == SYMBOL_SOLID_RECT_RIGHT {
       self.width += inDx
     }else if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
-      self.x += inDy
+      self.x += inDx
       self.width -= inDx
     }else if inKnobIndex == SYMBOL_SOLID_RECT_TOP {
       self.height += inDy

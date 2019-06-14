@@ -89,7 +89,7 @@ extension Array where Element == CanariIssue {
   //····················································································································
 
   mutating func appendZoneIntersectionIssueIn (rect: CanariRect) {
-    let bp = NSBezierPath (rect: rect.cocoaRect ().insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    let bp = NSBezierPath (rect: rect.cocoaRect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Intersection", path: bp))
   }

@@ -133,7 +133,7 @@ struct CanariRect : Equatable, Hashable {
   //   cocoaRect
   //····················································································································
 
-  func cocoaRect () -> NSRect {
+  var cocoaRect : NSRect {
     return NSRect (
       x: canariUnitToCocoa (self.origin.x),
       y: canariUnitToCocoa (self.origin.y),

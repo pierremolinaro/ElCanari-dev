@@ -4,9 +4,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let kDragAndDropSymbolInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.symbol")
-fileprivate let kDragAndDropCommentInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.comment")
-fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.schematic.wire")
+fileprivate let kDragAndDropSymbol = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.symbol")
+fileprivate let kDragAndDropComment = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.comment")
+fileprivate let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.schematic.wire")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -127,6 +131,8 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
       self.mProductPageView
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //--- Set document to scroll view for enabling drag and drop for schematics symbols
+    self.mBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropRestrictRectangle])
   //--- Set Board inspector segmented control
     let boardInspectors = [
       self.mSelectedObjectsBoardInspectorView,
@@ -139,7 +145,7 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mBoardInspectorSegmentedControl?.register (masterView: self.mBaseBoardInspectorView, boardInspectors)
   //--- Register Board inspector views
     self.boardObjectsController.register (inspectorReceivingView: self.mSelectedObjectsBoardInspectorView)
-//    self.boardObjectsController.register (inspectorView: self.mComponentSymbolInspectorView, for: ComponentSymbolInProject.self)
+    self.boardObjectsController.register (inspectorView: self.mRestrictRectangleInspectorView, for: BoardRestrictRectangle.self)
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -194,18 +200,24 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     self.mSchematicsView?.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
     self.mSchematicsView?.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
-    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbolInSchematic, kDragAndDropCommentInSchematic, kDragAndDropWireInSchematic])
-    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbolInSchematic)
+    self.mSchematicsScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
+    self.mUnplacedSymbolsTableView?.register (document: self, draggedType: kDragAndDropSymbol)
   //--- Drag source buttons and destination scroll view
     self.mAddCommentButton?.register (
-      draggedType: kDragAndDropCommentInSchematic,
+      draggedType: kDragAndDropComment,
       entity: CommentInSchematic.self,
       scaleProvider: self.mSchematicsView
     )
     self.mAddWireButton?.register (
-      draggedType: kDragAndDropWireInSchematic,
+      draggedType: kDragAndDropWire,
       entity: WireInSchematic.self,
       scaleProvider: self.mSchematicsView
+    )
+  //---
+    self.mAddRestrictRectangleButton?.register (
+      draggedType: kDragAndDropRestrictRectangle,
+      entity: BoardRestrictRectangle.self,
+      scaleProvider: self.mBoardView
     )
   //---
     self.schematicObjectsController.mAfterObjectRemovingCallback = self.updateSchematicsPointsAndNets
@@ -312,21 +324,35 @@ fileprivate let kDragAndDropWireInSchematic = NSPasteboard.PasteboardType (rawVa
     if let documentView = destinationScrollView.documentView, let selectedSheet = self.rootObject.mSelectedSheet {
       let draggingLocationInWindow = sender.draggingLocation
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
-      if let _ = pasteboard.data (forType: kDragAndDropSymbolInSchematic), let symbol = self.mPossibleDraggedSymbol {
+      if let _ = pasteboard.data (forType: kDragAndDropSymbol), let symbol = self.mPossibleDraggedSymbol {
         self.performAddSymbolDragOperation (symbol, draggingLocationInDestinationView)
         ok = true
-      }else if let _ = pasteboard.availableType (from: [kDragAndDropCommentInSchematic]) {
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropComment]) {
         self.performAddCommentDragOperation (draggingLocationInDestinationView)
         ok = true
-      }else if let _ = pasteboard.availableType (from: [kDragAndDropWireInSchematic]) {
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropWire]) {
         let possibleNewWire = selectedSheet.performAddWireDragOperation (draggingLocationInDestinationView, newNetCreator: self.rootObject.createNetWithAutomaticName)
         if let newWire = possibleNewWire {
           self.schematicObjectsController.setSelection ([newWire])
           ok = true
         }
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropRestrictRectangle]) {
+        self.performAddRestrictRectangleDragOperation (draggingLocationInDestinationView)
+        ok = true
       }
     }
     return ok
+  }
+
+  //····················································································································
+
+  private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGridStepInCanariUnit)
+    let restrictRectangle = BoardRestrictRectangle (self.ebUndoManager)
+    restrictRectangle.mX = p.x
+    restrictRectangle.mY = p.y
+    self.rootObject.mBoardObjects.append (restrictRectangle)
+    self.boardObjectsController.setSelection ([restrictRectangle])
   }
 
   //····················································································································

@@ -336,6 +336,12 @@ protocol ProjectRoot_borderElementCountString : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_boarderViewBackground : class {
+  var boarderViewBackground : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_deviceNames : class {
   var deviceNames : StringArray? { get }
 }
@@ -430,6 +436,7 @@ class ProjectRoot : EBManagedObject,
          ProjectRoot_boardLimitBorderLeft,
          ProjectRoot_boardLimitBorderRight,
          ProjectRoot_borderElementCountString,
+         ProjectRoot_boarderViewBackground,
          ProjectRoot_deviceNames,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
@@ -1705,6 +1712,29 @@ class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: boarderViewBackground
+  //····················································································································
+
+  let boarderViewBackground_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var boarderViewBackground_property_selection : EBSelection <EBShape> {
+    return self.boarderViewBackground_property.prop
+  }
+
+  //····················································································································
+
+  var boarderViewBackground : EBShape? {
+    switch self.boarderViewBackground_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: deviceNames
   //····················································································································
 
@@ -2446,6 +2476,30 @@ class ProjectRoot : EBManagedObject,
       }
     }
     self.mBorderCurves_property.addEBObserver (self.borderElementCountString_property)
+  //--- Atomic property: boarderViewBackground
+    self.boarderViewBackground_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.borderClearanceBackground_property_selection.kind ()
+        kind &= unwSelf.mBoardObjects_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.borderClearanceBackground_property_selection, unwSelf.mBoardObjects_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_ProjectRoot_boarderViewBackground (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.borderClearanceBackground_property.addEBObserver (self.boarderViewBackground_property)
+    self.mBoardObjects_property.addEBObserverOf_objectDisplay (self.boarderViewBackground_property)
   //--- Atomic property: deviceNames
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2669,6 +2723,8 @@ class ProjectRoot : EBManagedObject,
     self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBoardLimitsWidth_property.removeEBObserver (self.boardLimitBorderRight_property)
     self.mBorderCurves_property.removeEBObserver (self.borderElementCountString_property)
+    self.borderClearanceBackground_property.removeEBObserver (self.boarderViewBackground_property)
+    self.mBoardObjects_property.removeEBObserverOf_objectDisplay (self.boarderViewBackground_property)
     self.mDevices_property.removeEBObserverOf_mDeviceName (self.deviceNames_property)
     self.mSchematicTitle_property.removeEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.removeEBObserver (self.schematicBackgroundDisplay_property)
@@ -3134,6 +3190,14 @@ class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.borderElementCountString_property.mObserverExplorer,
       valueExplorer: &self.borderElementCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boarderViewBackground",
+      idx: self.boarderViewBackground_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.boarderViewBackground_property.mObserverExplorer,
+      valueExplorer: &self.boarderViewBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "deviceNames",

@@ -87,6 +87,12 @@ import Cocoa
   var boardObjectsController = Controller_ProjectDocument_boardObjectsController ()
 
   //····················································································································
+  //   Selection controller: restrictRectangleSelectionController
+  //····················································································································
+
+  var restrictRectangleSelectionController = SelectionController_ProjectDocument_restrictRectangleSelectionController ()
+
+  //····················································································································
   //   Transient property: componentCount
   //····················································································································
 
@@ -379,10 +385,12 @@ import Cocoa
   @IBOutlet var mAddNetClassPanel : NSPanel?
   @IBOutlet var mAddNetClassTextField : EBTextField?
   @IBOutlet var mAddNetClassValidationButton : NSButton?
+  @IBOutlet var mAddRestrictRectangleButton : CanariDragSourceButton?
   @IBOutlet var mAddRightLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddTopLabelSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mAddWireButton : CanariDragSourceButton?
   @IBOutlet var mAddWirePointSchematicHotKeyTextField : NSTextField?
+  @IBOutlet var mBackRestrictRectangleSwitch : EBSwitch?
   @IBOutlet var mBaseBoardInspectorView : NSView?
   @IBOutlet var mBaseBoardLimitsInspectorView : NSView?
   @IBOutlet var mBaseSchematicsInspectorView : NSView?
@@ -425,6 +433,7 @@ import Cocoa
   @IBOutlet var mBoardLimitsWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardObjectsPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardPointsBoundingBoxUnitPopUp : EBPopUpButton?
+  @IBOutlet var mBoardScrollView : EBScrollView?
   @IBOutlet var mBoardVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mBoardView : EBGraphicView?
   @IBOutlet var mChangeComponentValueComboxBox : CanariComboBox?
@@ -467,6 +476,7 @@ import Cocoa
   @IBOutlet var mExchangeSymbolSchematicHotKeyTextField : NSTextField?
   @IBOutlet var mExportDeviceButton : EBButton?
   @IBOutlet var mFontLibraryTableView : EBTableView?
+  @IBOutlet var mFrontRestrictRectangleSwitch : EBSwitch?
   @IBOutlet var mGridZoomBoardInspectorView : CanariViewWithKeyView?
   @IBOutlet var mGridZoomBoardLimitsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mGridZoomSchematicsInspectorView : CanariViewWithKeyView?
@@ -525,6 +535,7 @@ import Cocoa
   @IBOutlet var mRenameNetTextField : EBTextField?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
+  @IBOutlet var mRestrictRectangleInspectorView : CanariViewWithKeyView?
   @IBOutlet var mRouterBoardInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSchematicLabelInsulateSubnetButton : EBButton?
   @IBOutlet var mSchematicLabelMergeSubnetButton : EBButton?
@@ -612,6 +623,8 @@ import Cocoa
   var mController_mNetWarningImageView_hidden : MultipleBindingController_hidden? = nil
   var mController_mNetWarningTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mLimitCurveBezierControlPointsView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mFrontRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mBackRestrictRectangleSwitch_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -669,6 +682,8 @@ import Cocoa
     self.boardCurveSelectionController.addExplorer (name: "boardCurveSelectionController", y:&y, view:view)
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.addExplorer (name: "boardObjectsController", y:&y, view:view)
+  //--- Selection controller property: restrictRectangleSelectionController
+    self.restrictRectangleSelectionController.addExplorer (name: "restrictRectangleSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -712,10 +727,12 @@ import Cocoa
     checkOutletConnection (self.mAddNetClassPanel, "mAddNetClassPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mAddNetClassTextField, "mAddNetClassTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mAddNetClassValidationButton, "mAddNetClassValidationButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mAddRestrictRectangleButton, "mAddRestrictRectangleButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddRightLabelSchematicHotKeyTextField, "mAddRightLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddTopLabelSchematicHotKeyTextField, "mAddTopLabelSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAddWireButton, "mAddWireButton", CanariDragSourceButton.self, #file, #line)
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
@@ -758,6 +775,7 @@ import Cocoa
     checkOutletConnection (self.mBoardLimitsWidthUnitPopUp, "mBoardLimitsWidthUnitPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardObjectsPageView, "mBoardObjectsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mBoardPointsBoundingBoxUnitPopUp, "mBoardPointsBoundingBoxUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardScrollView, "mBoardScrollView", EBScrollView.self, #file, #line)
     checkOutletConnection (self.mBoardVerticalFlipSwitch, "mBoardVerticalFlipSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardView, "mBoardView", EBGraphicView.self, #file, #line)
     checkOutletConnection (self.mChangeComponentValueComboxBox, "mChangeComponentValueComboxBox", CanariComboBox.self, #file, #line)
@@ -800,6 +818,7 @@ import Cocoa
     checkOutletConnection (self.mExchangeSymbolSchematicHotKeyTextField, "mExchangeSymbolSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mFrontRestrictRectangleSwitch, "mFrontRestrictRectangleSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardInspectorView, "mGridZoomBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomBoardLimitsInspectorView, "mGridZoomBoardLimitsInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mGridZoomSchematicsInspectorView, "mGridZoomSchematicsInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -858,6 +877,7 @@ import Cocoa
     checkOutletConnection (self.mRenameNetTextField, "mRenameNetTextField", EBTextField.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRestrictRectangleInspectorView, "mRestrictRectangleInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRouterBoardInspectorView, "mRouterBoardInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelInsulateSubnetButton, "mSchematicLabelInsulateSubnetButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicLabelMergeSubnetButton, "mSchematicLabelMergeSubnetButton", EBButton.self, #file, #line)
@@ -946,6 +966,8 @@ import Cocoa
     self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+  //--- Selection controller property: restrictRectangleSelectionController
+    self.restrictRectangleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1242,7 +1264,7 @@ import Cocoa
     self.mNetInfoTableView?.bind_netInfo (self.rootObject.netsDescription_property, file: #file, line: #line)
     self.mNetCountTextField?.bind_valueObserver (self.netCountString_property, file: #file, line: #line)
     self.mNetWarningTextField?.bind_valueObserver (self.rootObject.netWarningCount_property, file: #file, line: #line, autoFormatter:true)
-    self.mBoardLimitsView?.bind_underObjectsDisplay (self.rootObject.borderClearanceBackground_property, file: #file, line: #line)
+    self.mBoardLimitsView?.bind_underObjectsDisplay (self.rootObject.boarderViewBackground_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_horizontalFlip (self.rootObject.mBoardLimitsHorizontalFlip_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_verticalFlip (self.rootObject.mBoardLimitsVerticalFlip_property, file: #file, line: #line)
     self.mBoardLimitsView?.bind_gridStyle (self.rootObject.mBoardLimitsGridStyle_property, file: #file, line: #line)
@@ -1311,6 +1333,8 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property, file: #file, line: #line)
     self.mBoardGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property, file: #file, line: #line)
+    self.mFrontRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInFrontLayer_property, file: #file, line: #line)
+    self.mBackRestrictRectangleSwitch?.bind_value (self.restrictRectangleSelectionController.mIsInBackLayer_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1616,6 +1640,26 @@ import Cocoa
       self.boardCurveSelectionController.isLine_property.addEBObserver (controller)
       self.mController_mLimitCurveBezierControlPointsView_hidden = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.restrictRectangleSelectionController.mIsInBackLayer_property_selection
+        },
+        outlet: self.mFrontRestrictRectangleSwitch
+      )
+      self.restrictRectangleSelectionController.mIsInBackLayer_property.addEBObserver (controller)
+      self.mController_mFrontRestrictRectangleSwitch_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.restrictRectangleSelectionController.mIsInFrontLayer_property_selection
+        },
+        outlet: self.mBackRestrictRectangleSwitch
+      )
+      self.restrictRectangleSelectionController.mIsInFrontLayer_property.addEBObserver (controller)
+      self.mController_mBackRestrictRectangleSwitch_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
@@ -1792,6 +1836,8 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mBoardGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
+    self.mFrontRestrictRectangleSwitch?.unbind_value ()
+    self.mBackRestrictRectangleSwitch?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
@@ -1857,6 +1903,10 @@ import Cocoa
     self.mController_mNetWarningTextField_hidden = nil
     self.boardCurveSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
     self.mController_mLimitCurveBezierControlPointsView_hidden = nil
+    self.restrictRectangleSelectionController.mIsInBackLayer_property.removeEBObserver (self.mController_mFrontRestrictRectangleSwitch_enabled!)
+    self.mController_mFrontRestrictRectangleSwitch_enabled = nil
+    self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
+    self.mController_mBackRestrictRectangleSwitch_enabled = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)
     self.netClassController.unbind_tableView (self.mNetClassTableView)
@@ -1891,6 +1941,8 @@ import Cocoa
     self.boardCurveSelectionController.unbind_selection ()
   //--- Array controller property: boardObjectsController
     self.boardObjectsController.unbind_model ()
+  //--- Selection controller property: restrictRectangleSelectionController
+    self.restrictRectangleSelectionController.unbind_selection ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
     self.rootObject.netsDescription_property.removeEBObserver (self.netCount_property)
     self.rootObject.mNetClasses_property.count_property.removeEBObserver (self.canRemoveNetClasses_property)
@@ -1939,10 +1991,12 @@ import Cocoa
     self.mAddNetClassPanel?.ebCleanUp ()
     self.mAddNetClassTextField?.ebCleanUp ()
     self.mAddNetClassValidationButton?.ebCleanUp ()
+    self.mAddRestrictRectangleButton?.ebCleanUp ()
     self.mAddRightLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddTopLabelSchematicHotKeyTextField?.ebCleanUp ()
     self.mAddWireButton?.ebCleanUp ()
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
+    self.mBackRestrictRectangleSwitch?.ebCleanUp ()
     self.mBaseBoardInspectorView?.ebCleanUp ()
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
@@ -1985,6 +2039,7 @@ import Cocoa
     self.mBoardLimitsWidthUnitPopUp?.ebCleanUp ()
     self.mBoardObjectsPageView?.ebCleanUp ()
     self.mBoardPointsBoundingBoxUnitPopUp?.ebCleanUp ()
+    self.mBoardScrollView?.ebCleanUp ()
     self.mBoardVerticalFlipSwitch?.ebCleanUp ()
     self.mBoardView?.ebCleanUp ()
     self.mChangeComponentValueComboxBox?.ebCleanUp ()
@@ -2027,6 +2082,7 @@ import Cocoa
     self.mExchangeSymbolSchematicHotKeyTextField?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
     self.mFontLibraryTableView?.ebCleanUp ()
+    self.mFrontRestrictRectangleSwitch?.ebCleanUp ()
     self.mGridZoomBoardInspectorView?.ebCleanUp ()
     self.mGridZoomBoardLimitsInspectorView?.ebCleanUp ()
     self.mGridZoomSchematicsInspectorView?.ebCleanUp ()
@@ -2085,6 +2141,7 @@ import Cocoa
     self.mRenameNetTextField?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
+    self.mRestrictRectangleInspectorView?.ebCleanUp ()
     self.mRouterBoardInspectorView?.ebCleanUp ()
     self.mSchematicLabelInsulateSubnetButton?.ebCleanUp ()
     self.mSchematicLabelMergeSubnetButton?.ebCleanUp ()
@@ -2149,10 +2206,12 @@ import Cocoa
 //    self.mAddNetClassPanel = nil
 //    self.mAddNetClassTextField = nil
 //    self.mAddNetClassValidationButton = nil
+//    self.mAddRestrictRectangleButton = nil
 //    self.mAddRightLabelSchematicHotKeyTextField = nil
 //    self.mAddTopLabelSchematicHotKeyTextField = nil
 //    self.mAddWireButton = nil
 //    self.mAddWirePointSchematicHotKeyTextField = nil
+//    self.mBackRestrictRectangleSwitch = nil
 //    self.mBaseBoardInspectorView = nil
 //    self.mBaseBoardLimitsInspectorView = nil
 //    self.mBaseSchematicsInspectorView = nil
@@ -2195,6 +2254,7 @@ import Cocoa
 //    self.mBoardLimitsWidthUnitPopUp = nil
 //    self.mBoardObjectsPageView = nil
 //    self.mBoardPointsBoundingBoxUnitPopUp = nil
+//    self.mBoardScrollView = nil
 //    self.mBoardVerticalFlipSwitch = nil
 //    self.mBoardView = nil
 //    self.mChangeComponentValueComboxBox = nil
@@ -2237,6 +2297,7 @@ import Cocoa
 //    self.mExchangeSymbolSchematicHotKeyTextField = nil
 //    self.mExportDeviceButton = nil
 //    self.mFontLibraryTableView = nil
+//    self.mFrontRestrictRectangleSwitch = nil
 //    self.mGridZoomBoardInspectorView = nil
 //    self.mGridZoomBoardLimitsInspectorView = nil
 //    self.mGridZoomSchematicsInspectorView = nil
@@ -2295,6 +2356,7 @@ import Cocoa
 //    self.mRenameNetTextField = nil
 //    self.mResetDeviceVersionButton = nil
 //    self.mResetFontVersionButton = nil
+//    self.mRestrictRectangleInspectorView = nil
 //    self.mRouterBoardInspectorView = nil
 //    self.mSchematicLabelInsulateSubnetButton = nil
 //    self.mSchematicLabelMergeSubnetButton = nil

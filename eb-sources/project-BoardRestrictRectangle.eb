@@ -1,0 +1,27 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   BoardRestrictRectangle
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity BoardRestrictRectangle : BoardObject {
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+  property Int mWidth default 2_286_000 ;
+  property Int mHeight default 2_286_000 ;
+
+  property Bool mIsInFrontLayer default yes ;
+  property Bool mIsInBackLayer default yes ;
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mX, self.mY, self.mWidth, self.mHeight,
+    self.mIsInFrontLayer, self.mIsInBackLayer,
+    prefs.frontSideRestrictRectangleColorForBoard, prefs.backSideRestrictRectangleColorForBoard
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mX, self.mY, self.mWidth, self.mHeight,
+    self.mIsInFrontLayer, self.mIsInBackLayer
+  ;
+
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -67,8 +67,8 @@ let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundC
 let Preferences_drawEWarningBackgroundForBoard = "Preferences:drawEWarningBackgroundForBoard"
 let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
 let Preferences_boardClearanceColorForBoard = "Preferences:boardClearanceColorForBoard"
-let Preferences_topSideRestrictRectangleColorForBoard = "Preferences:topSideRestrictRectangleColorForBoard"
-let Preferences_bottomSideRestrictRectangleColorForBoard = "Preferences:bottomSideRestrictRectangleColorForBoard"
+let Preferences_frontSideRestrictRectangleColorForBoard = "Preferences:frontSideRestrictRectangleColorForBoard"
+let Preferences_backSideRestrictRectangleColorForBoard = "Preferences:backSideRestrictRectangleColorForBoard"
 let Preferences_topSideLegendColorForBoard = "Preferences:topSideLegendColorForBoard"
 let Preferences_topSideLayoutColorForBoard = "Preferences:topSideLayoutColorForBoard"
 let Preferences_bottomSideLayoutColorForBoard = "Preferences:bottomSideLayoutColorForBoard"
@@ -1132,38 +1132,38 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> { return self.boardClearanceColorForBoard_property.prop }
 
   //····················································································································
-  //   Atomic property: topSideRestrictRectangleColorForBoard
+  //   Atomic property: frontSideRestrictRectangleColorForBoard
   //····················································································································
 
-  let topSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_topSideRestrictRectangleColorForBoard)
+  let frontSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideRestrictRectangleColorForBoard)
 
   //····················································································································
 
-  var topSideRestrictRectangleColorForBoard : NSColor {
-    get { return self.topSideRestrictRectangleColorForBoard_property.propval }
-    set { self.topSideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  var frontSideRestrictRectangleColorForBoard : NSColor {
+    get { return self.frontSideRestrictRectangleColorForBoard_property.propval }
+    set { self.frontSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var topSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.topSideRestrictRectangleColorForBoard_property.prop }
+  var frontSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.frontSideRestrictRectangleColorForBoard_property.prop }
 
   //····················································································································
-  //   Atomic property: bottomSideRestrictRectangleColorForBoard
+  //   Atomic property: backSideRestrictRectangleColorForBoard
   //····················································································································
 
-  let bottomSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_bottomSideRestrictRectangleColorForBoard)
+  let backSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideRestrictRectangleColorForBoard)
 
   //····················································································································
 
-  var bottomSideRestrictRectangleColorForBoard : NSColor {
-    get { return self.bottomSideRestrictRectangleColorForBoard_property.propval }
-    set { self.bottomSideRestrictRectangleColorForBoard_property.setProp (newValue) }
+  var backSideRestrictRectangleColorForBoard : NSColor {
+    get { return self.backSideRestrictRectangleColorForBoard_property.propval }
+    set { self.backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  var bottomSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.bottomSideRestrictRectangleColorForBoard_property.prop }
+  var backSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> { return self.backSideRestrictRectangleColorForBoard_property.prop }
 
   //····················································································································
   //   Atomic property: topSideLegendColorForBoard
@@ -3053,10 +3053,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.boardLimitsColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardClearanceColorForBoard
     self.boardClearanceColorForBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: topSideRestrictRectangleColorForBoard
-    self.topSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: bottomSideRestrictRectangleColorForBoard
-    self.bottomSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: frontSideRestrictRectangleColorForBoard
+    self.frontSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: backSideRestrictRectangleColorForBoard
+    self.backSideRestrictRectangleColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: topSideLegendColorForBoard
     self.topSideLegendColorForBoard_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: topSideLayoutColorForBoard
@@ -3558,8 +3558,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mBoardDrawWarningBackgroundCheckbox?.bind_value (self.drawEWarningBackgroundForBoard_property, file: #file, line: #line)
     mBoardLimitsColorWell?.bind_color (self.boardLimitsColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardClearanceColorWell?.bind_color (self.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:false)
-    mBoardTopSideRestrictRectangleColorWell?.bind_color (self.topSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSideRestrictRectangleColorWell?.bind_color (self.bottomSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSideRestrictRectangleColorWell?.bind_color (self.frontSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSideRestrictRectangleColorWell?.bind_color (self.backSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardTopSideLegendColorWell?.bind_color (self.topSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardTopSideLayoutColorWell?.bind_color (self.topSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)
     mBoardBottomSideLayoutColorWell?.bind_color (self.bottomSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)

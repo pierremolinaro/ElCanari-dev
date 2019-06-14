@@ -17,7 +17,7 @@ class EBStrokeBezierPathShape : EBShape {
   //  Init
   //····················································································································
 
-  init (_ inPaths : [NSBezierPath], _ inColor : NSColor, _ inClipBezierPath : NSBezierPath? = nil) {
+  init (_ inPaths : [NSBezierPath], _ inColor : NSColor, clip inClipBezierPath : NSBezierPath? = nil) {
     var filledPaths = [NSBezierPath] ()
     for path in inPaths {
       if !path.isEmpty {
@@ -66,7 +66,6 @@ class EBStrokeBezierPathShape : EBShape {
   //····················································································································
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
     if let clipBezierPath = self.mClipBezierPath {
       NSGraphicsContext.saveGraphicsState ()
@@ -80,6 +79,7 @@ class EBStrokeBezierPathShape : EBShape {
     if self.mClipBezierPath != nil {
       NSGraphicsContext.restoreGraphicsState ()
     }
+    super.draw (inView, inDirtyRect)
   }
 
   //····················································································································

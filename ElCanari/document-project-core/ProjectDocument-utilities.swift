@@ -30,6 +30,11 @@ let SCHEMATIC_HILITE_WIDTH : CGFloat = 0.5
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let BOARD_KNOB_SIZE : CGFloat = 4.0
+let BOARD_HILITE_WIDTH : CGFloat = 0.5
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 let SCHEMATIC_LABEL_SIZE : CGFloat = 3.6
 
 let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (400)

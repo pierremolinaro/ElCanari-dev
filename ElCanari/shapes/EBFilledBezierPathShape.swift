@@ -47,7 +47,6 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
-    super.draw (inView, inDirtyRect)
     if let color = self.mColor {
       color.setFill ()
       for bp in self.mFilledPaths {
@@ -56,6 +55,7 @@ class EBFilledBezierPathShape : EBShape {
         }
       }
     }
+    super.draw (inView, inDirtyRect)
   }
 
   //····················································································································

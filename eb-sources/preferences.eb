@@ -256,12 +256,12 @@ prefs {
 //--- Clearance Color
   property NSColor boardClearanceColorForBoard default yellow;
   outlet EBColorWell mBoardClearanceColorWell $color self.boardClearanceColorForBoard {sendContinously:no} ;
-//--- Component Side Restrict Rectangle Color
-  property NSColor topSideRestrictRectangleColorForBoard default blue;
-  outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.topSideRestrictRectangleColorForBoard {sendContinously:no} ;
-//--- Bottom Side Restrict Rectangle Color
-  property NSColor bottomSideRestrictRectangleColorForBoard default green;
-  outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.bottomSideRestrictRectangleColorForBoard {sendContinously:no} ;
+//--- Front Side Restrict Rectangle Color
+  property NSColor frontSideRestrictRectangleColorForBoard default blue;
+  outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.frontSideRestrictRectangleColorForBoard {sendContinously:no} ;
+//--- Back Side Restrict Rectangle Color
+  property NSColor backSideRestrictRectangleColorForBoard default green;
+  outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.backSideRestrictRectangleColorForBoard {sendContinously:no} ;
 //--- Top Side Legend Color
   property NSColor topSideLegendColorForBoard default brown;
   outlet EBColorWell mBoardTopSideLegendColorWell $color self.topSideLegendColorForBoard {sendContinously:no} ;

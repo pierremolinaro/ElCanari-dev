@@ -439,7 +439,7 @@ document ProjectDocument root ProjectRoot {
   arrayController #boardCurveObjectsController : root.mBorderCurves ;
 
   outlet EBGraphicView mBoardLimitsView
-    $underObjectsDisplay root.borderClearanceBackground
+    $underObjectsDisplay root.boarderViewBackground
 //    $overObjectsDisplay root.connectedPoints
     $horizontalFlip root.mBoardLimitsHorizontalFlip
     $verticalFlip root.mBoardLimitsVerticalFlip
@@ -534,7 +534,11 @@ document ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mRouterBoardInspectorView ;
   outlet CanariViewWithKeyView mERCBoardInspectorView ;
 
+  outlet CanariDragSourceButton mAddRestrictRectangleButton ;
+
   arrayController #boardObjectsController : root.mBoardObjects ;
+
+  outlet EBScrollView mBoardScrollView ;
 
   outlet EBGraphicView mBoardView
     $underObjectsDisplay root.boardBackground
@@ -567,6 +571,21 @@ document ProjectDocument root ProjectRoot {
      $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
   ;
 
+//--- Restrict rectangle inspector
+  outlet CanariViewWithKeyView mRestrictRectangleInspectorView ;
+  selectionController BoardRestrictRectangle #restrictRectangleSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  outlet EBSwitch mFrontRestrictRectangleSwitch
+    $value #restrictRectangleSelectionController.mIsInFrontLayer
+    $enabled #restrictRectangleSelectionController.mIsInBackLayer
+  ;
+
+  outlet EBSwitch mBackRestrictRectangleSwitch
+    $value #restrictRectangleSelectionController.mIsInBackLayer
+    $enabled #restrictRectangleSelectionController.mIsInFrontLayer
+  ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

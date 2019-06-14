@@ -34,7 +34,7 @@ func transient_MergerDocument_issues (
           let inset = root_overlapingArrangment ? min (instanceLimits, otherInstanceLimits) : 0
           let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: inset, dy: inset))
           if !intersection.isEmpty {
-            let intersectionEnlarged : NSRect = intersection.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
+            let intersectionEnlarged : NSRect = intersection.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
             let bp = NSBezierPath (rect: intersectionEnlarged)
             bp.lineWidth = 3.0
             let issue = CanariIssue (kind: .error, message: "Intersection", path: bp)
@@ -49,7 +49,7 @@ func transient_MergerDocument_issues (
         let instanceRect = instance.instanceRect!
         let r = root_boardRect.union (instanceRect)
         if r != root_boardRect {
-          let intersectionEnlarged : NSRect = instanceRect.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
+          let intersectionEnlarged : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
           let bp = NSBezierPath (rect: intersectionEnlarged)
           bp.lineWidth = 3.0
           let issue = CanariIssue (kind: .error, message: "Outside board", path: bp)
