@@ -10,10 +10,10 @@ entity ProjectRoot {
   property Bool mBoardHorizontalFlip default no ;
   property Bool mBoardVerticalFlip default no ;
   property GridStyle mBoardGridStyle default line ;
-  property Int mBoardGridDisplayFactor default 5 ;
+  property Int mBoardGridDisplayFactor default 4 ;
   property Int mBoardZoom default 200 ;
-  property Int mBoardGridStep default 90_000 ; // mm
-  property Int mBoardGridStepUnit default 90_000 ; // mm
+  property Int mBoardGridStep default 57_150 ; // 25 mils
+  property Int mBoardGridStepUnit default 2_286 ; // mil
 
   transient Int boardGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardGridStep, self.mBoardGridDisplayFactor

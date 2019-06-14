@@ -509,7 +509,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridDisplayFactor
   //····················································································································
 
-  let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5)
+  let mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -543,7 +543,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStep
   //····················································································································
 
-  let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 90000)
+  let mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -560,7 +560,7 @@ class ProjectRoot : EBManagedObject,
   //   Atomic property: mBoardGridStepUnit
   //····················································································································
 
-  let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000)
+  let mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 

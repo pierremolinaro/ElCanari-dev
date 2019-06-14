@@ -219,7 +219,7 @@ document ProjectDocument root ProjectRoot {
   outlet NSPanel mInconsistentSchematicErrorPanel ;
   outlet NSTextView mInconsistentSchematicErrorTextView ;
 
-//--- Hot kets inspector
+//--- Hot keys inspector
   outlet NSTextField mConnectSchematicHotKeyTextField ;
   outlet NSTextField mDisconnectSchematicHotKeyTextField ;
   outlet NSTextField mAddWirePointSchematicHotKeyTextField ;
@@ -525,6 +525,15 @@ document ProjectDocument root ProjectRoot {
   ;
 
 //----------------- Board Object tab
+  outlet CanariSegmentedControl mBoardInspectorSegmentedControl $selectedPage root.mBoardSelectedInspector ;
+  outlet NSView mBaseBoardInspectorView ;
+  outlet CanariViewWithKeyView mSelectedObjectsBoardInspectorView ;
+  outlet CanariViewWithKeyView mUnplacedPackagesBoardInspectorView ;
+  outlet CanariViewWithKeyView mGridZoomBoardInspectorView ;
+  outlet CanariViewWithKeyView mDisplayBoardInspectorView ;
+  outlet CanariViewWithKeyView mRouterBoardInspectorView ;
+  outlet CanariViewWithKeyView mERCBoardInspectorView ;
+
   arrayController #boardObjectsController : root.mBoardObjects ;
 
   outlet EBGraphicView mBoardView
@@ -546,6 +555,18 @@ document ProjectDocument root ProjectRoot {
     $xPlacardUnit root.mBoardGridStepUnit
     $yPlacardUnit root.mBoardGridStepUnit
   ;
+
+//--- Grid and Flip inspector
+  outlet EBSwitch mBoardHorizontalFlipSwitch $value root.mBoardHorizontalFlip ;
+  outlet EBSwitch mBoardVerticalFlipSwitch $value root.mBoardVerticalFlip ;
+  outlet EBPopUpButton mBoardGridStylePopUpButton $selectedIndex root.mBoardGridStyle ;
+  outlet EBPopUpButton mBoardGridDisplayFactorPopUpButton $selectedTag root.mBoardGridDisplayFactor ;
+  
+  outlet EBPopUpButton mBoardGridUnitPopUp $selectedTag root.mBoardGridStepUnit ;
+  outlet CanariDimensionTextField mBoardGridTextField
+     $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
+  ;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
