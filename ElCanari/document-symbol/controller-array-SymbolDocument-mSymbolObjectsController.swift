@@ -1016,6 +1016,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
           inspectorView.addSubview (tf)
           self.mCurrentAttachedView = tf
         }else if let selectionInspectorView = self.mInspectorDictionary [selectionTypes.first!] {
+          selectionInspectorView.autoresizingMask = [.width, .minYMargin]
           selectionInspectorView.frame = inspectorView.frame
           inspectorView.addSubview (selectionInspectorView)
           self.mCurrentAttachedView = selectionInspectorView

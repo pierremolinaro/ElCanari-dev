@@ -47,7 +47,6 @@ func runShellCommandAndGetDataOutput (_ command : String, _ arguments : [String]
   for s in arguments {
     if s.contains ("'") {
      commandString += " '" + s + "'"
-
     }else{
      commandString += " " + s
     }
